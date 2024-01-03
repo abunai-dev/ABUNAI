@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Uncertainty Aware Confidentiality Analysis
+Bundle-SymbolicName: dev.abunai.confidentiality.analysis
+Bundle-Version: 1.0.0.qualifier
+Export-Package: dev.abunai.confidentiality.analysis
+Require-Bundle: org.dataflowanalysis.analysis;bundle-version="1.0.0";visibility:=reexport
+Automatic-Module-Name: dev.abunai.confidentiality.analysis
+Bundle-RequiredExecutionEnvironment: JavaSE-17

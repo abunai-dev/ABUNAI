@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Uncertainty Aware Confidentiality Analysis Testmodels
+Bundle-SymbolicName: dev.abunai.confidentiality.analysis.testmodels
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: dev.abunai.confidentiality.analysis.testmodels.Activator
+Require-Bundle: org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Automatic-Module-Name: dev.abunai.confidentiality.analysis.testmodels
+Bundle-ActivationPolicy: lazy
