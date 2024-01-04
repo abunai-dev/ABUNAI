@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uncertainty="http://abunai.dev/uncertainty">
+  <sources xsi:type="uncertainty:BehaviorUncertaintySource">
+    <target href="default.repository#_B1yF0Nv0EeyYrpd_1AtxSw"/>
+    <scenarios probability="0.5">
+      <target href="default.repository#_IFQ3EITlEeywmO_IpTxeAg"/>
+    </scenarios>
+  </sources>
+</uncertainty:UncertaintySourceCollection>
