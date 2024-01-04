@@ -48,7 +48,7 @@ public interface ExternalUncertaintySourceInResource extends ExternalUncertainty
 
 	/**
 	 * Returns the value of the '<em><b>Scenarios</b></em>' containment reference list.
-	 * The list contents are of type {@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInResourceScenario}.
+	 * The list contents are of type {@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInResource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Scenarios</em>' containment reference list.
@@ -56,6 +56,6 @@ public interface ExternalUncertaintySourceInResource extends ExternalUncertainty
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ExternalUncertaintyInResourceScenario> getScenarios();
+	EList<ExternalUncertaintyScenarioInResource> getScenarios();
 
 } // ExternalUncertaintySourceInResource

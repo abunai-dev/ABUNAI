@@ -84,20 +84,6 @@ public class UncertaintySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case UncertaintyPackage.BEHAVIOR_UNCERTAINTY_SOURCE: {
-				BehaviorUncertaintySource behaviorUncertaintySource = (BehaviorUncertaintySource)theEObject;
-				T result = caseBehaviorUncertaintySource(behaviorUncertaintySource);
-				if (result == null) result = caseUncertaintySource(behaviorUncertaintySource);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case UncertaintyPackage.BEHAVIOR_UNCERTAINTY_SCENARIO: {
-				BehaviorUncertaintyScenario behaviorUncertaintyScenario = (BehaviorUncertaintyScenario)theEObject;
-				T result = caseBehaviorUncertaintyScenario(behaviorUncertaintyScenario);
-				if (result == null) result = caseUncertaintyScenario(behaviorUncertaintyScenario);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_SOURCE: {
 				ExternalUncertaintySource externalUncertaintySource = (ExternalUncertaintySource)theEObject;
 				T result = caseExternalUncertaintySource(externalUncertaintySource);
@@ -121,17 +107,96 @@ public class UncertaintySwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_IN_RESOURCE_SCENARIO: {
-				ExternalUncertaintyInResourceScenario externalUncertaintyInResourceScenario = (ExternalUncertaintyInResourceScenario)theEObject;
-				T result = caseExternalUncertaintyInResourceScenario(externalUncertaintyInResourceScenario);
-				if (result == null) result = caseUncertaintyScenario(externalUncertaintyInResourceScenario);
+			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE: {
+				ExternalUncertaintyScenarioInResource externalUncertaintyScenarioInResource = (ExternalUncertaintyScenarioInResource)theEObject;
+				T result = caseExternalUncertaintyScenarioInResource(externalUncertaintyScenarioInResource);
+				if (result == null) result = caseUncertaintyScenario(externalUncertaintyScenarioInResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_IN_USAGE_SCENARIO: {
-				ExternalUncertaintyInUsageScenario externalUncertaintyInUsageScenario = (ExternalUncertaintyInUsageScenario)theEObject;
-				T result = caseExternalUncertaintyInUsageScenario(externalUncertaintyInUsageScenario);
-				if (result == null) result = caseUncertaintyScenario(externalUncertaintyInUsageScenario);
+			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE: {
+				ExternalUncertaintyScenarioInUsage externalUncertaintyScenarioInUsage = (ExternalUncertaintyScenarioInUsage)theEObject;
+				T result = caseExternalUncertaintyScenarioInUsage(externalUncertaintyScenarioInUsage);
+				if (result == null) result = caseUncertaintyScenario(externalUncertaintyScenarioInUsage);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UncertaintyPackage.BEHAVIOR_UNCERTAINTY_SOURCE: {
+				BehaviorUncertaintySource behaviorUncertaintySource = (BehaviorUncertaintySource)theEObject;
+				T result = caseBehaviorUncertaintySource(behaviorUncertaintySource);
+				if (result == null) result = caseUncertaintySource(behaviorUncertaintySource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UncertaintyPackage.BEHAVIOR_UNCERTAINTY_SCENARIO: {
+				BehaviorUncertaintyScenario behaviorUncertaintyScenario = (BehaviorUncertaintyScenario)theEObject;
+				T result = caseBehaviorUncertaintyScenario(behaviorUncertaintyScenario);
+				if (result == null) result = caseUncertaintyScenario(behaviorUncertaintyScenario);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UncertaintyPackage.INTERFACE_UNCERTAINTY_SOURCE: {
+				InterfaceUncertaintySource interfaceUncertaintySource = (InterfaceUncertaintySource)theEObject;
+				T result = caseInterfaceUncertaintySource(interfaceUncertaintySource);
+				if (result == null) result = caseUncertaintySource(interfaceUncertaintySource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UncertaintyPackage.INTERFACE_UNCERTAINTY_SCENARIO: {
+				InterfaceUncertaintyScenario interfaceUncertaintyScenario = (InterfaceUncertaintyScenario)theEObject;
+				T result = caseInterfaceUncertaintyScenario(interfaceUncertaintyScenario);
+				if (result == null) result = caseUncertaintyScenario(interfaceUncertaintyScenario);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UncertaintyPackage.CONNECTOR_UNCERTAINTY_SOURCE: {
+				ConnectorUncertaintySource connectorUncertaintySource = (ConnectorUncertaintySource)theEObject;
+				T result = caseConnectorUncertaintySource(connectorUncertaintySource);
+				if (result == null) result = caseUncertaintySource(connectorUncertaintySource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UncertaintyPackage.CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL: {
+				ConnectorUncertaintySourceInExternalCall connectorUncertaintySourceInExternalCall = (ConnectorUncertaintySourceInExternalCall)theEObject;
+				T result = caseConnectorUncertaintySourceInExternalCall(connectorUncertaintySourceInExternalCall);
+				if (result == null) result = caseConnectorUncertaintySource(connectorUncertaintySourceInExternalCall);
+				if (result == null) result = caseUncertaintySource(connectorUncertaintySourceInExternalCall);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UncertaintyPackage.CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL: {
+				ConnectorUncertaintySourceInEntryLevelSystemCall connectorUncertaintySourceInEntryLevelSystemCall = (ConnectorUncertaintySourceInEntryLevelSystemCall)theEObject;
+				T result = caseConnectorUncertaintySourceInEntryLevelSystemCall(connectorUncertaintySourceInEntryLevelSystemCall);
+				if (result == null) result = caseConnectorUncertaintySource(connectorUncertaintySourceInEntryLevelSystemCall);
+				if (result == null) result = caseUncertaintySource(connectorUncertaintySourceInEntryLevelSystemCall);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UncertaintyPackage.CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL: {
+				ConnectorUncertaintyScenarioInExternalCall connectorUncertaintyScenarioInExternalCall = (ConnectorUncertaintyScenarioInExternalCall)theEObject;
+				T result = caseConnectorUncertaintyScenarioInExternalCall(connectorUncertaintyScenarioInExternalCall);
+				if (result == null) result = caseUncertaintyScenario(connectorUncertaintyScenarioInExternalCall);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UncertaintyPackage.CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL: {
+				ConnectorUncertaintyScenarioInEntryLevelSystemCall connectorUncertaintyScenarioInEntryLevelSystemCall = (ConnectorUncertaintyScenarioInEntryLevelSystemCall)theEObject;
+				T result = caseConnectorUncertaintyScenarioInEntryLevelSystemCall(connectorUncertaintyScenarioInEntryLevelSystemCall);
+				if (result == null) result = caseUncertaintyScenario(connectorUncertaintyScenarioInEntryLevelSystemCall);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UncertaintyPackage.COMPONENT_UNCERTAINTY_SOURCE: {
+				ComponentUncertaintySource componentUncertaintySource = (ComponentUncertaintySource)theEObject;
+				T result = caseComponentUncertaintySource(componentUncertaintySource);
+				if (result == null) result = caseUncertaintySource(componentUncertaintySource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UncertaintyPackage.COMPONENT_UNCERTAINTY_SCENARIO: {
+				ComponentUncertaintyScenario componentUncertaintyScenario = (ComponentUncertaintyScenario)theEObject;
+				T result = caseComponentUncertaintyScenario(componentUncertaintyScenario);
+				if (result == null) result = caseUncertaintyScenario(componentUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -185,36 +250,6 @@ public class UncertaintySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Behavior Uncertainty Source</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Behavior Uncertainty Source</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBehaviorUncertaintySource(BehaviorUncertaintySource object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Behavior Uncertainty Scenario</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Behavior Uncertainty Scenario</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBehaviorUncertaintyScenario(BehaviorUncertaintyScenario object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -260,32 +295,197 @@ public class UncertaintySwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty In Resource Scenario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty Scenario In Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>External Uncertainty In Resource Scenario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>External Uncertainty Scenario In Resource</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExternalUncertaintyInResourceScenario(ExternalUncertaintyInResourceScenario object) {
+	public T caseExternalUncertaintyScenarioInResource(ExternalUncertaintyScenarioInResource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty In Usage Scenario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty Scenario In Usage</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>External Uncertainty In Usage Scenario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>External Uncertainty Scenario In Usage</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExternalUncertaintyInUsageScenario(ExternalUncertaintyInUsageScenario object) {
+	public T caseExternalUncertaintyScenarioInUsage(ExternalUncertaintyScenarioInUsage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Behavior Uncertainty Source</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Behavior Uncertainty Source</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBehaviorUncertaintySource(BehaviorUncertaintySource object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Behavior Uncertainty Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Behavior Uncertainty Scenario</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseBehaviorUncertaintyScenario(BehaviorUncertaintyScenario object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Interface Uncertainty Source</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Interface Uncertainty Source</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInterfaceUncertaintySource(InterfaceUncertaintySource object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Interface Uncertainty Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Interface Uncertainty Scenario</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInterfaceUncertaintyScenario(InterfaceUncertaintyScenario object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Source</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Source</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnectorUncertaintySource(ConnectorUncertaintySource object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Source In External Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Source In External Call</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnectorUncertaintySourceInExternalCall(ConnectorUncertaintySourceInExternalCall object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Source In Entry Level System Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Source In Entry Level System Call</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnectorUncertaintySourceInEntryLevelSystemCall(ConnectorUncertaintySourceInEntryLevelSystemCall object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Scenario In External Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Scenario In External Call</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnectorUncertaintyScenarioInExternalCall(ConnectorUncertaintyScenarioInExternalCall object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Scenario In Entry Level System Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Scenario In Entry Level System Call</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConnectorUncertaintyScenarioInEntryLevelSystemCall(ConnectorUncertaintyScenarioInEntryLevelSystemCall object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Component Uncertainty Source</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Component Uncertainty Source</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComponentUncertaintySource(ComponentUncertaintySource object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Component Uncertainty Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Component Uncertainty Scenario</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseComponentUncertaintyScenario(ComponentUncertaintyScenario object) {
 		return null;
 	}
 

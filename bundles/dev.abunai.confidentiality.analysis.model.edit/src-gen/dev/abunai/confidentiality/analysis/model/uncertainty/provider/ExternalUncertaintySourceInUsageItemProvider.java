@@ -160,7 +160,7 @@ public class ExternalUncertaintySourceInUsageItemProvider extends ExternalUncert
 		newChildDescriptors.add
 			(createChildParameter
 				(UncertaintyPackage.Literals.EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__SCENARIOS,
-				 UncertaintyFactory.eINSTANCE.createExternalUncertaintyInUsageScenario()));
+				 UncertaintyFactory.eINSTANCE.createExternalUncertaintyScenarioInUsage()));
 	}
 
 }

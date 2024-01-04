@@ -160,7 +160,7 @@ public class ExternalUncertaintySourceInResourceItemProvider extends ExternalUnc
 		newChildDescriptors.add
 			(createChildParameter
 				(UncertaintyPackage.Literals.EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__SCENARIOS,
-				 UncertaintyFactory.eINSTANCE.createExternalUncertaintyInResourceScenario()));
+				 UncertaintyFactory.eINSTANCE.createExternalUncertaintyScenarioInResource()));
 	}
 
 }

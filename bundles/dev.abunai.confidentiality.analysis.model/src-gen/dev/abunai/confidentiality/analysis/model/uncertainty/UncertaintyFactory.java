@@ -31,24 +31,6 @@ public interface UncertaintyFactory extends EFactory {
 	UncertaintySourceCollection createUncertaintySourceCollection();
 
 	/**
-	 * Returns a new object of class '<em>Behavior Uncertainty Source</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Behavior Uncertainty Source</em>'.
-	 * @generated
-	 */
-	BehaviorUncertaintySource createBehaviorUncertaintySource();
-
-	/**
-	 * Returns a new object of class '<em>Behavior Uncertainty Scenario</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Behavior Uncertainty Scenario</em>'.
-	 * @generated
-	 */
-	BehaviorUncertaintyScenario createBehaviorUncertaintyScenario();
-
-	/**
 	 * Returns a new object of class '<em>External Uncertainty Source In Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,22 +49,112 @@ public interface UncertaintyFactory extends EFactory {
 	ExternalUncertaintySourceInUsage createExternalUncertaintySourceInUsage();
 
 	/**
-	 * Returns a new object of class '<em>External Uncertainty In Resource Scenario</em>'.
+	 * Returns a new object of class '<em>External Uncertainty Scenario In Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>External Uncertainty In Resource Scenario</em>'.
+	 * @return a new object of class '<em>External Uncertainty Scenario In Resource</em>'.
 	 * @generated
 	 */
-	ExternalUncertaintyInResourceScenario createExternalUncertaintyInResourceScenario();
+	ExternalUncertaintyScenarioInResource createExternalUncertaintyScenarioInResource();
 
 	/**
-	 * Returns a new object of class '<em>External Uncertainty In Usage Scenario</em>'.
+	 * Returns a new object of class '<em>External Uncertainty Scenario In Usage</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>External Uncertainty In Usage Scenario</em>'.
+	 * @return a new object of class '<em>External Uncertainty Scenario In Usage</em>'.
 	 * @generated
 	 */
-	ExternalUncertaintyInUsageScenario createExternalUncertaintyInUsageScenario();
+	ExternalUncertaintyScenarioInUsage createExternalUncertaintyScenarioInUsage();
+
+	/**
+	 * Returns a new object of class '<em>Behavior Uncertainty Source</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Behavior Uncertainty Source</em>'.
+	 * @generated
+	 */
+	BehaviorUncertaintySource createBehaviorUncertaintySource();
+
+	/**
+	 * Returns a new object of class '<em>Behavior Uncertainty Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Behavior Uncertainty Scenario</em>'.
+	 * @generated
+	 */
+	BehaviorUncertaintyScenario createBehaviorUncertaintyScenario();
+
+	/**
+	 * Returns a new object of class '<em>Interface Uncertainty Source</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Interface Uncertainty Source</em>'.
+	 * @generated
+	 */
+	InterfaceUncertaintySource createInterfaceUncertaintySource();
+
+	/**
+	 * Returns a new object of class '<em>Interface Uncertainty Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Interface Uncertainty Scenario</em>'.
+	 * @generated
+	 */
+	InterfaceUncertaintyScenario createInterfaceUncertaintyScenario();
+
+	/**
+	 * Returns a new object of class '<em>Connector Uncertainty Source In External Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Connector Uncertainty Source In External Call</em>'.
+	 * @generated
+	 */
+	ConnectorUncertaintySourceInExternalCall createConnectorUncertaintySourceInExternalCall();
+
+	/**
+	 * Returns a new object of class '<em>Connector Uncertainty Source In Entry Level System Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Connector Uncertainty Source In Entry Level System Call</em>'.
+	 * @generated
+	 */
+	ConnectorUncertaintySourceInEntryLevelSystemCall createConnectorUncertaintySourceInEntryLevelSystemCall();
+
+	/**
+	 * Returns a new object of class '<em>Connector Uncertainty Scenario In External Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Connector Uncertainty Scenario In External Call</em>'.
+	 * @generated
+	 */
+	ConnectorUncertaintyScenarioInExternalCall createConnectorUncertaintyScenarioInExternalCall();
+
+	/**
+	 * Returns a new object of class '<em>Connector Uncertainty Scenario In Entry Level System Call</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Connector Uncertainty Scenario In Entry Level System Call</em>'.
+	 * @generated
+	 */
+	ConnectorUncertaintyScenarioInEntryLevelSystemCall createConnectorUncertaintyScenarioInEntryLevelSystemCall();
+
+	/**
+	 * Returns a new object of class '<em>Component Uncertainty Source</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Component Uncertainty Source</em>'.
+	 * @generated
+	 */
+	ComponentUncertaintySource createComponentUncertaintySource();
+
+	/**
+	 * Returns a new object of class '<em>Component Uncertainty Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Component Uncertainty Scenario</em>'.
+	 * @generated
+	 */
+	ComponentUncertaintyScenario createComponentUncertaintyScenario();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -5,5 +5,18 @@
     <scenarios probability="0.5">
       <target href="default.repository#_IFQ3EITlEeywmO_IpTxeAg"/>
     </scenarios>
+    <scenarios probability="0.2">
+      <target href="default.repository#_tMGKUITmEeywmO_IpTxeAg"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="uncertainty:ExternalUncertaintySourceInResource">
+    <target href="default.nodecharacteristics#//@assignee.0"/>
+    <scenarios>
+      <target href="default.nodecharacteristics#//@assignee.1"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="uncertainty:InterfaceUncertaintySource"/>
+  <sources xsi:type="uncertainty:ConnectorUncertaintySourceInEntryLevelSystemCall">
+    <target href="default.repository#_DX-mcNv2EeyYrpd_1AtxSw"/>
   </sources>
 </uncertainty:UncertaintySourceCollection>

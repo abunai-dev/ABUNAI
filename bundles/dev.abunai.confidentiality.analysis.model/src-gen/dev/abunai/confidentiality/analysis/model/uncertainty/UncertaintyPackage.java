@@ -159,98 +159,6 @@ public interface UncertaintyPackage extends EPackage {
 	int UNCERTAINTY_SCENARIO_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintySourceImpl <em>Behavior Uncertainty Source</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintySourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getBehaviorUncertaintySource()
-	 * @generated
-	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE = 3;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Behavior Uncertainty Source</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE_FEATURE_COUNT = UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Behavior Uncertainty Source</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE_OPERATION_COUNT = UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintyScenarioImpl <em>Behavior Uncertainty Scenario</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintyScenarioImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getBehaviorUncertaintyScenario()
-	 * @generated
-	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO = 4;
-
-	/**
-	 * The feature id for the '<em><b>Probability</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO__PROBABILITY = UNCERTAINTY_SCENARIO__PROBABILITY;
-
-	/**
-	 * The feature id for the '<em><b>Target</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Behavior Uncertainty Scenario</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Behavior Uncertainty Scenario</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintySourceImpl <em>External Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -258,7 +166,7 @@ public interface UncertaintyPackage extends EPackage {
 	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getExternalUncertaintySource()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE = 5;
+	int EXTERNAL_UNCERTAINTY_SOURCE = 3;
 
 	/**
 	 * The number of structural features of the '<em>External Uncertainty Source</em>' class.
@@ -286,7 +194,7 @@ public interface UncertaintyPackage extends EPackage {
 	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getExternalUncertaintySourceInResource()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE = 6;
+	int EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -332,7 +240,7 @@ public interface UncertaintyPackage extends EPackage {
 	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getExternalUncertaintySourceInUsage()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE = 7;
+	int EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -371,14 +279,14 @@ public interface UncertaintyPackage extends EPackage {
 	int EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE_OPERATION_COUNT = EXTERNAL_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyInResourceScenarioImpl <em>External Uncertainty In Resource Scenario</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyScenarioInResourceImpl <em>External Uncertainty Scenario In Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyInResourceScenarioImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getExternalUncertaintyInResourceScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyScenarioInResourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getExternalUncertaintyScenarioInResource()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_IN_RESOURCE_SCENARIO = 8;
+	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -387,7 +295,7 @@ public interface UncertaintyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_IN_RESOURCE_SCENARIO__PROBABILITY = UNCERTAINTY_SCENARIO__PROBABILITY;
+	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__PROBABILITY = UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -396,35 +304,35 @@ public interface UncertaintyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_IN_RESOURCE_SCENARIO__TARGET = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__TARGET = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>External Uncertainty In Resource Scenario</em>' class.
+	 * The number of structural features of the '<em>External Uncertainty Scenario In Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_IN_RESOURCE_SCENARIO_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>External Uncertainty In Resource Scenario</em>' class.
+	 * The number of operations of the '<em>External Uncertainty Scenario In Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_IN_RESOURCE_SCENARIO_OPERATION_COUNT = UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE_OPERATION_COUNT = UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyInUsageScenarioImpl <em>External Uncertainty In Usage Scenario</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyScenarioInUsageImpl <em>External Uncertainty Scenario In Usage</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyInUsageScenarioImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getExternalUncertaintyInUsageScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyScenarioInUsageImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getExternalUncertaintyScenarioInUsage()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_IN_USAGE_SCENARIO = 9;
+	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -433,34 +341,522 @@ public interface UncertaintyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_IN_USAGE_SCENARIO__PROBABILITY = UNCERTAINTY_SCENARIO__PROBABILITY;
+	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__PROBABILITY = UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
-	 * The feature id for the '<em><b>Targetd</b></em>' reference.
+	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_IN_USAGE_SCENARIO__TARGETD = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__TARGET = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>External Uncertainty In Usage Scenario</em>' class.
+	 * The number of structural features of the '<em>External Uncertainty Scenario In Usage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_IN_USAGE_SCENARIO_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>External Uncertainty In Usage Scenario</em>' class.
+	 * The number of operations of the '<em>External Uncertainty Scenario In Usage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_IN_USAGE_SCENARIO_OPERATION_COUNT = UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE_OPERATION_COUNT = UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintySourceImpl <em>Behavior Uncertainty Source</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getBehaviorUncertaintySource()
+	 * @generated
+	 */
+	int BEHAVIOR_UNCERTAINTY_SOURCE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Behavior Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR_UNCERTAINTY_SOURCE_FEATURE_COUNT = UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Behavior Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR_UNCERTAINTY_SOURCE_OPERATION_COUNT = UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintyScenarioImpl <em>Behavior Uncertainty Scenario</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintyScenarioImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getBehaviorUncertaintyScenario()
+	 * @generated
+	 */
+	int BEHAVIOR_UNCERTAINTY_SCENARIO = 9;
+
+	/**
+	 * The feature id for the '<em><b>Probability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR_UNCERTAINTY_SCENARIO__PROBABILITY = UNCERTAINTY_SCENARIO__PROBABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Behavior Uncertainty Scenario</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Behavior Uncertainty Scenario</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BEHAVIOR_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.InterfaceUncertaintySourceImpl <em>Interface Uncertainty Source</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.InterfaceUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getInterfaceUncertaintySource()
+	 * @generated
+	 */
+	int INTERFACE_UNCERTAINTY_SOURCE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_UNCERTAINTY_SOURCE__TARGET = UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Interface Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_UNCERTAINTY_SOURCE_FEATURE_COUNT = UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Interface Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_UNCERTAINTY_SOURCE_OPERATION_COUNT = UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.InterfaceUncertaintyScenarioImpl <em>Interface Uncertainty Scenario</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.InterfaceUncertaintyScenarioImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getInterfaceUncertaintyScenario()
+	 * @generated
+	 */
+	int INTERFACE_UNCERTAINTY_SCENARIO = 11;
+
+	/**
+	 * The feature id for the '<em><b>Probability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_UNCERTAINTY_SCENARIO__PROBABILITY = UNCERTAINTY_SCENARIO__PROBABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_UNCERTAINTY_SCENARIO__TARGET = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Interface Uncertainty Scenario</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Interface Uncertainty Scenario</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERFACE_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceImpl <em>Connector Uncertainty Source</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getConnectorUncertaintySource()
+	 * @generated
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE = 12;
+
+	/**
+	 * The number of structural features of the '<em>Connector Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT = UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Connector Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_OPERATION_COUNT = UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceInExternalCallImpl <em>Connector Uncertainty Source In External Call</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceInExternalCallImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getConnectorUncertaintySourceInExternalCall()
+	 * @generated
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL = 13;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__TARGET = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__SCENARIOS = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Connector Uncertainty Source In External Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL_FEATURE_COUNT = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Connector Uncertainty Source In External Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL_OPERATION_COUNT = CONNECTOR_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceInEntryLevelSystemCallImpl <em>Connector Uncertainty Source In Entry Level System Call</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceInEntryLevelSystemCallImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getConnectorUncertaintySourceInEntryLevelSystemCall()
+	 * @generated
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL = 14;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Connector Uncertainty Source In Entry Level System Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL_FEATURE_COUNT = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Connector Uncertainty Source In Entry Level System Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL_OPERATION_COUNT = CONNECTOR_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintyScenarioInExternalCallImpl <em>Connector Uncertainty Scenario In External Call</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintyScenarioInExternalCallImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getConnectorUncertaintyScenarioInExternalCall()
+	 * @generated
+	 */
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL = 15;
+
+	/**
+	 * The feature id for the '<em><b>Probability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__PROBABILITY = UNCERTAINTY_SCENARIO__PROBABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__TARGET = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__SCENARIOS = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Connector Uncertainty Scenario In External Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Connector Uncertainty Scenario In External Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL_OPERATION_COUNT = UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintyScenarioInEntryLevelSystemCallImpl <em>Connector Uncertainty Scenario In Entry Level System Call</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintyScenarioInEntryLevelSystemCallImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getConnectorUncertaintyScenarioInEntryLevelSystemCall()
+	 * @generated
+	 */
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL = 16;
+
+	/**
+	 * The feature id for the '<em><b>Probability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__PROBABILITY = UNCERTAINTY_SCENARIO__PROBABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Connector Uncertainty Scenario In Entry Level System Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Connector Uncertainty Scenario In Entry Level System Call</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL_OPERATION_COUNT = UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ComponentUncertaintySourceImpl <em>Component Uncertainty Source</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ComponentUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getComponentUncertaintySource()
+	 * @generated
+	 */
+	int COMPONENT_UNCERTAINTY_SOURCE = 17;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_UNCERTAINTY_SOURCE__TARGET = UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_UNCERTAINTY_SOURCE__SCENARIOS = UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Component Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_UNCERTAINTY_SOURCE_FEATURE_COUNT = UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Component Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_UNCERTAINTY_SOURCE_OPERATION_COUNT = UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ComponentUncertaintyScenarioImpl <em>Component Uncertainty Scenario</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ComponentUncertaintyScenarioImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getComponentUncertaintyScenario()
+	 * @generated
+	 */
+	int COMPONENT_UNCERTAINTY_SCENARIO = 18;
+
+	/**
+	 * The feature id for the '<em><b>Probability</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_UNCERTAINTY_SCENARIO__PROBABILITY = UNCERTAINTY_SCENARIO__PROBABILITY;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_UNCERTAINTY_SCENARIO__TARGET = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Component Uncertainty Scenario</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Component Uncertainty Scenario</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPONENT_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 
 	/**
@@ -514,59 +910,6 @@ public interface UncertaintyPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getUncertaintyScenario_Probability();
-
-	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource <em>Behavior Uncertainty Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Behavior Uncertainty Source</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource
-	 * @generated
-	 */
-	EClass getBehaviorUncertaintySource();
-
-	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource#getTarget()
-	 * @see #getBehaviorUncertaintySource()
-	 * @generated
-	 */
-	EReference getBehaviorUncertaintySource_Target();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource#getScenarios <em>Scenarios</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource#getScenarios()
-	 * @see #getBehaviorUncertaintySource()
-	 * @generated
-	 */
-	EReference getBehaviorUncertaintySource_Scenarios();
-
-	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario <em>Behavior Uncertainty Scenario</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Behavior Uncertainty Scenario</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario
-	 * @generated
-	 */
-	EClass getBehaviorUncertaintyScenario();
-
-	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario#getTarget()
-	 * @see #getBehaviorUncertaintyScenario()
-	 * @generated
-	 */
-	EReference getBehaviorUncertaintyScenario_Target();
 
 	/**
 	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintySource <em>External Uncertainty Source</em>}'.
@@ -643,46 +986,321 @@ public interface UncertaintyPackage extends EPackage {
 	EReference getExternalUncertaintySourceInUsage_Scenarios();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInResourceScenario <em>External Uncertainty In Resource Scenario</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInResource <em>External Uncertainty Scenario In Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>External Uncertainty In Resource Scenario</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInResourceScenario
+	 * @return the meta object for class '<em>External Uncertainty Scenario In Resource</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInResource
 	 * @generated
 	 */
-	EClass getExternalUncertaintyInResourceScenario();
+	EClass getExternalUncertaintyScenarioInResource();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInResourceScenario#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInResource#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInResourceScenario#getTarget()
-	 * @see #getExternalUncertaintyInResourceScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInResource#getTarget()
+	 * @see #getExternalUncertaintyScenarioInResource()
 	 * @generated
 	 */
-	EReference getExternalUncertaintyInResourceScenario_Target();
+	EReference getExternalUncertaintyScenarioInResource_Target();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInUsageScenario <em>External Uncertainty In Usage Scenario</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInUsage <em>External Uncertainty Scenario In Usage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>External Uncertainty In Usage Scenario</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInUsageScenario
+	 * @return the meta object for class '<em>External Uncertainty Scenario In Usage</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInUsage
 	 * @generated
 	 */
-	EClass getExternalUncertaintyInUsageScenario();
+	EClass getExternalUncertaintyScenarioInUsage();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInUsageScenario#getTargetd <em>Targetd</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInUsage#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Targetd</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInUsageScenario#getTargetd()
-	 * @see #getExternalUncertaintyInUsageScenario()
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInUsage#getTarget()
+	 * @see #getExternalUncertaintyScenarioInUsage()
 	 * @generated
 	 */
-	EReference getExternalUncertaintyInUsageScenario_Targetd();
+	EReference getExternalUncertaintyScenarioInUsage_Target();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource <em>Behavior Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Behavior Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource
+	 * @generated
+	 */
+	EClass getBehaviorUncertaintySource();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource#getTarget()
+	 * @see #getBehaviorUncertaintySource()
+	 * @generated
+	 */
+	EReference getBehaviorUncertaintySource_Target();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource#getScenarios <em>Scenarios</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource#getScenarios()
+	 * @see #getBehaviorUncertaintySource()
+	 * @generated
+	 */
+	EReference getBehaviorUncertaintySource_Scenarios();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario <em>Behavior Uncertainty Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Behavior Uncertainty Scenario</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario
+	 * @generated
+	 */
+	EClass getBehaviorUncertaintyScenario();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario#getTarget()
+	 * @see #getBehaviorUncertaintyScenario()
+	 * @generated
+	 */
+	EReference getBehaviorUncertaintyScenario_Target();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintySource <em>Interface Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Interface Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintySource
+	 * @generated
+	 */
+	EClass getInterfaceUncertaintySource();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintySource#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintySource#getTarget()
+	 * @see #getInterfaceUncertaintySource()
+	 * @generated
+	 */
+	EReference getInterfaceUncertaintySource_Target();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintySource#getScenarios <em>Scenarios</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintySource#getScenarios()
+	 * @see #getInterfaceUncertaintySource()
+	 * @generated
+	 */
+	EReference getInterfaceUncertaintySource_Scenarios();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintyScenario <em>Interface Uncertainty Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Interface Uncertainty Scenario</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintyScenario
+	 * @generated
+	 */
+	EClass getInterfaceUncertaintyScenario();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintyScenario#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintyScenario#getTarget()
+	 * @see #getInterfaceUncertaintyScenario()
+	 * @generated
+	 */
+	EReference getInterfaceUncertaintyScenario_Target();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySource <em>Connector Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Connector Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySource
+	 * @generated
+	 */
+	EClass getConnectorUncertaintySource();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInExternalCall <em>Connector Uncertainty Source In External Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Connector Uncertainty Source In External Call</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInExternalCall
+	 * @generated
+	 */
+	EClass getConnectorUncertaintySourceInExternalCall();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInExternalCall#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInExternalCall#getTarget()
+	 * @see #getConnectorUncertaintySourceInExternalCall()
+	 * @generated
+	 */
+	EReference getConnectorUncertaintySourceInExternalCall_Target();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInExternalCall#getScenarios <em>Scenarios</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInExternalCall#getScenarios()
+	 * @see #getConnectorUncertaintySourceInExternalCall()
+	 * @generated
+	 */
+	EReference getConnectorUncertaintySourceInExternalCall_Scenarios();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInEntryLevelSystemCall <em>Connector Uncertainty Source In Entry Level System Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Connector Uncertainty Source In Entry Level System Call</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInEntryLevelSystemCall
+	 * @generated
+	 */
+	EClass getConnectorUncertaintySourceInEntryLevelSystemCall();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInEntryLevelSystemCall#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInEntryLevelSystemCall#getTarget()
+	 * @see #getConnectorUncertaintySourceInEntryLevelSystemCall()
+	 * @generated
+	 */
+	EReference getConnectorUncertaintySourceInEntryLevelSystemCall_Target();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInExternalCall <em>Connector Uncertainty Scenario In External Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Connector Uncertainty Scenario In External Call</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInExternalCall
+	 * @generated
+	 */
+	EClass getConnectorUncertaintyScenarioInExternalCall();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInExternalCall#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInExternalCall#getTarget()
+	 * @see #getConnectorUncertaintyScenarioInExternalCall()
+	 * @generated
+	 */
+	EReference getConnectorUncertaintyScenarioInExternalCall_Target();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInExternalCall#getScenarios <em>Scenarios</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInExternalCall#getScenarios()
+	 * @see #getConnectorUncertaintyScenarioInExternalCall()
+	 * @generated
+	 */
+	EReference getConnectorUncertaintyScenarioInExternalCall_Scenarios();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInEntryLevelSystemCall <em>Connector Uncertainty Scenario In Entry Level System Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Connector Uncertainty Scenario In Entry Level System Call</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInEntryLevelSystemCall
+	 * @generated
+	 */
+	EClass getConnectorUncertaintyScenarioInEntryLevelSystemCall();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInEntryLevelSystemCall#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInEntryLevelSystemCall#getTarget()
+	 * @see #getConnectorUncertaintyScenarioInEntryLevelSystemCall()
+	 * @generated
+	 */
+	EReference getConnectorUncertaintyScenarioInEntryLevelSystemCall_Target();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintySource <em>Component Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Component Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintySource
+	 * @generated
+	 */
+	EClass getComponentUncertaintySource();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintySource#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintySource#getTarget()
+	 * @see #getComponentUncertaintySource()
+	 * @generated
+	 */
+	EReference getComponentUncertaintySource_Target();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintySource#getScenarios <em>Scenarios</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintySource#getScenarios()
+	 * @see #getComponentUncertaintySource()
+	 * @generated
+	 */
+	EReference getComponentUncertaintySource_Scenarios();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintyScenario <em>Component Uncertainty Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Component Uncertainty Scenario</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintyScenario
+	 * @generated
+	 */
+	EClass getComponentUncertaintyScenario();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintyScenario#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintyScenario#getTarget()
+	 * @see #getComponentUncertaintyScenario()
+	 * @generated
+	 */
+	EReference getComponentUncertaintyScenario_Target();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -754,50 +1372,6 @@ public interface UncertaintyPackage extends EPackage {
 		EAttribute UNCERTAINTY_SCENARIO__PROBABILITY = eINSTANCE.getUncertaintyScenario_Probability();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintySourceImpl <em>Behavior Uncertainty Source</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintySourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getBehaviorUncertaintySource()
-		 * @generated
-		 */
-		EClass BEHAVIOR_UNCERTAINTY_SOURCE = eINSTANCE.getBehaviorUncertaintySource();
-
-		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getBehaviorUncertaintySource_Target();
-
-		/**
-		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getBehaviorUncertaintySource_Scenarios();
-
-		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintyScenarioImpl <em>Behavior Uncertainty Scenario</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintyScenarioImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getBehaviorUncertaintyScenario()
-		 * @generated
-		 */
-		EClass BEHAVIOR_UNCERTAINTY_SCENARIO = eINSTANCE.getBehaviorUncertaintyScenario();
-
-		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getBehaviorUncertaintyScenario_Target();
-
-		/**
 		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintySourceImpl <em>External Uncertainty Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -860,14 +1434,14 @@ public interface UncertaintyPackage extends EPackage {
 		EReference EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__SCENARIOS = eINSTANCE.getExternalUncertaintySourceInUsage_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyInResourceScenarioImpl <em>External Uncertainty In Resource Scenario</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyScenarioInResourceImpl <em>External Uncertainty Scenario In Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyInResourceScenarioImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getExternalUncertaintyInResourceScenario()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyScenarioInResourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getExternalUncertaintyScenarioInResource()
 		 * @generated
 		 */
-		EClass EXTERNAL_UNCERTAINTY_IN_RESOURCE_SCENARIO = eINSTANCE.getExternalUncertaintyInResourceScenario();
+		EClass EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE = eINSTANCE.getExternalUncertaintyScenarioInResource();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -875,25 +1449,255 @@ public interface UncertaintyPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTERNAL_UNCERTAINTY_IN_RESOURCE_SCENARIO__TARGET = eINSTANCE.getExternalUncertaintyInResourceScenario_Target();
+		EReference EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__TARGET = eINSTANCE.getExternalUncertaintyScenarioInResource_Target();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyInUsageScenarioImpl <em>External Uncertainty In Usage Scenario</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyScenarioInUsageImpl <em>External Uncertainty Scenario In Usage</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyInUsageScenarioImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getExternalUncertaintyInUsageScenario()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ExternalUncertaintyScenarioInUsageImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getExternalUncertaintyScenarioInUsage()
 		 * @generated
 		 */
-		EClass EXTERNAL_UNCERTAINTY_IN_USAGE_SCENARIO = eINSTANCE.getExternalUncertaintyInUsageScenario();
+		EClass EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE = eINSTANCE.getExternalUncertaintyScenarioInUsage();
 
 		/**
-		 * The meta object literal for the '<em><b>Targetd</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTERNAL_UNCERTAINTY_IN_USAGE_SCENARIO__TARGETD = eINSTANCE.getExternalUncertaintyInUsageScenario_Targetd();
+		EReference EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__TARGET = eINSTANCE.getExternalUncertaintyScenarioInUsage_Target();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintySourceImpl <em>Behavior Uncertainty Source</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getBehaviorUncertaintySource()
+		 * @generated
+		 */
+		EClass BEHAVIOR_UNCERTAINTY_SOURCE = eINSTANCE.getBehaviorUncertaintySource();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getBehaviorUncertaintySource_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getBehaviorUncertaintySource_Scenarios();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintyScenarioImpl <em>Behavior Uncertainty Scenario</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.BehaviorUncertaintyScenarioImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getBehaviorUncertaintyScenario()
+		 * @generated
+		 */
+		EClass BEHAVIOR_UNCERTAINTY_SCENARIO = eINSTANCE.getBehaviorUncertaintyScenario();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getBehaviorUncertaintyScenario_Target();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.InterfaceUncertaintySourceImpl <em>Interface Uncertainty Source</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.InterfaceUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getInterfaceUncertaintySource()
+		 * @generated
+		 */
+		EClass INTERFACE_UNCERTAINTY_SOURCE = eINSTANCE.getInterfaceUncertaintySource();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERFACE_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getInterfaceUncertaintySource_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getInterfaceUncertaintySource_Scenarios();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.InterfaceUncertaintyScenarioImpl <em>Interface Uncertainty Scenario</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.InterfaceUncertaintyScenarioImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getInterfaceUncertaintyScenario()
+		 * @generated
+		 */
+		EClass INTERFACE_UNCERTAINTY_SCENARIO = eINSTANCE.getInterfaceUncertaintyScenario();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERFACE_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getInterfaceUncertaintyScenario_Target();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceImpl <em>Connector Uncertainty Source</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getConnectorUncertaintySource()
+		 * @generated
+		 */
+		EClass CONNECTOR_UNCERTAINTY_SOURCE = eINSTANCE.getConnectorUncertaintySource();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceInExternalCallImpl <em>Connector Uncertainty Source In External Call</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceInExternalCallImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getConnectorUncertaintySourceInExternalCall()
+		 * @generated
+		 */
+		EClass CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL = eINSTANCE.getConnectorUncertaintySourceInExternalCall();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__TARGET = eINSTANCE.getConnectorUncertaintySourceInExternalCall_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__SCENARIOS = eINSTANCE.getConnectorUncertaintySourceInExternalCall_Scenarios();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceInEntryLevelSystemCallImpl <em>Connector Uncertainty Source In Entry Level System Call</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintySourceInEntryLevelSystemCallImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getConnectorUncertaintySourceInEntryLevelSystemCall()
+		 * @generated
+		 */
+		EClass CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL = eINSTANCE.getConnectorUncertaintySourceInEntryLevelSystemCall();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = eINSTANCE.getConnectorUncertaintySourceInEntryLevelSystemCall_Target();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintyScenarioInExternalCallImpl <em>Connector Uncertainty Scenario In External Call</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintyScenarioInExternalCallImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getConnectorUncertaintyScenarioInExternalCall()
+		 * @generated
+		 */
+		EClass CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL = eINSTANCE.getConnectorUncertaintyScenarioInExternalCall();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__TARGET = eINSTANCE.getConnectorUncertaintyScenarioInExternalCall_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__SCENARIOS = eINSTANCE.getConnectorUncertaintyScenarioInExternalCall_Scenarios();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintyScenarioInEntryLevelSystemCallImpl <em>Connector Uncertainty Scenario In Entry Level System Call</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintyScenarioInEntryLevelSystemCallImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getConnectorUncertaintyScenarioInEntryLevelSystemCall()
+		 * @generated
+		 */
+		EClass CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL = eINSTANCE.getConnectorUncertaintyScenarioInEntryLevelSystemCall();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = eINSTANCE.getConnectorUncertaintyScenarioInEntryLevelSystemCall_Target();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ComponentUncertaintySourceImpl <em>Component Uncertainty Source</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ComponentUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getComponentUncertaintySource()
+		 * @generated
+		 */
+		EClass COMPONENT_UNCERTAINTY_SOURCE = eINSTANCE.getComponentUncertaintySource();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getComponentUncertaintySource_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getComponentUncertaintySource_Scenarios();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ComponentUncertaintyScenarioImpl <em>Component Uncertainty Scenario</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.ComponentUncertaintyScenarioImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl#getComponentUncertaintyScenario()
+		 * @generated
+		 */
+		EClass COMPONENT_UNCERTAINTY_SCENARIO = eINSTANCE.getComponentUncertaintyScenario();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference COMPONENT_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getComponentUncertaintyScenario_Target();
 
 	}
 

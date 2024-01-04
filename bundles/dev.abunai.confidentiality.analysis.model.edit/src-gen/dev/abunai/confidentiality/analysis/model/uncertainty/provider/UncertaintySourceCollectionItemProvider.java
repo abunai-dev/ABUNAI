@@ -151,17 +151,37 @@ public class UncertaintySourceCollectionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 UncertaintyFactory.eINSTANCE.createBehaviorUncertaintySource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
 				 UncertaintyFactory.eINSTANCE.createExternalUncertaintySourceInResource()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
 				 UncertaintyFactory.eINSTANCE.createExternalUncertaintySourceInUsage()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
+				 UncertaintyFactory.eINSTANCE.createBehaviorUncertaintySource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
+				 UncertaintyFactory.eINSTANCE.createInterfaceUncertaintySource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
+				 UncertaintyFactory.eINSTANCE.createConnectorUncertaintySourceInExternalCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
+				 UncertaintyFactory.eINSTANCE.createConnectorUncertaintySourceInEntryLevelSystemCall()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
+				 UncertaintyFactory.eINSTANCE.createComponentUncertaintySource()));
 	}
 
 	/**

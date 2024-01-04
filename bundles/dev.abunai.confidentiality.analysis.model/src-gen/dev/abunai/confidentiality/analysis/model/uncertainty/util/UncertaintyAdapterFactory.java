@@ -80,14 +80,6 @@ public class UncertaintyAdapterFactory extends AdapterFactoryImpl {
 				return createUncertaintyScenarioAdapter();
 			}
 			@Override
-			public Adapter caseBehaviorUncertaintySource(BehaviorUncertaintySource object) {
-				return createBehaviorUncertaintySourceAdapter();
-			}
-			@Override
-			public Adapter caseBehaviorUncertaintyScenario(BehaviorUncertaintyScenario object) {
-				return createBehaviorUncertaintyScenarioAdapter();
-			}
-			@Override
 			public Adapter caseExternalUncertaintySource(ExternalUncertaintySource object) {
 				return createExternalUncertaintySourceAdapter();
 			}
@@ -100,12 +92,56 @@ public class UncertaintyAdapterFactory extends AdapterFactoryImpl {
 				return createExternalUncertaintySourceInUsageAdapter();
 			}
 			@Override
-			public Adapter caseExternalUncertaintyInResourceScenario(ExternalUncertaintyInResourceScenario object) {
-				return createExternalUncertaintyInResourceScenarioAdapter();
+			public Adapter caseExternalUncertaintyScenarioInResource(ExternalUncertaintyScenarioInResource object) {
+				return createExternalUncertaintyScenarioInResourceAdapter();
 			}
 			@Override
-			public Adapter caseExternalUncertaintyInUsageScenario(ExternalUncertaintyInUsageScenario object) {
-				return createExternalUncertaintyInUsageScenarioAdapter();
+			public Adapter caseExternalUncertaintyScenarioInUsage(ExternalUncertaintyScenarioInUsage object) {
+				return createExternalUncertaintyScenarioInUsageAdapter();
+			}
+			@Override
+			public Adapter caseBehaviorUncertaintySource(BehaviorUncertaintySource object) {
+				return createBehaviorUncertaintySourceAdapter();
+			}
+			@Override
+			public Adapter caseBehaviorUncertaintyScenario(BehaviorUncertaintyScenario object) {
+				return createBehaviorUncertaintyScenarioAdapter();
+			}
+			@Override
+			public Adapter caseInterfaceUncertaintySource(InterfaceUncertaintySource object) {
+				return createInterfaceUncertaintySourceAdapter();
+			}
+			@Override
+			public Adapter caseInterfaceUncertaintyScenario(InterfaceUncertaintyScenario object) {
+				return createInterfaceUncertaintyScenarioAdapter();
+			}
+			@Override
+			public Adapter caseConnectorUncertaintySource(ConnectorUncertaintySource object) {
+				return createConnectorUncertaintySourceAdapter();
+			}
+			@Override
+			public Adapter caseConnectorUncertaintySourceInExternalCall(ConnectorUncertaintySourceInExternalCall object) {
+				return createConnectorUncertaintySourceInExternalCallAdapter();
+			}
+			@Override
+			public Adapter caseConnectorUncertaintySourceInEntryLevelSystemCall(ConnectorUncertaintySourceInEntryLevelSystemCall object) {
+				return createConnectorUncertaintySourceInEntryLevelSystemCallAdapter();
+			}
+			@Override
+			public Adapter caseConnectorUncertaintyScenarioInExternalCall(ConnectorUncertaintyScenarioInExternalCall object) {
+				return createConnectorUncertaintyScenarioInExternalCallAdapter();
+			}
+			@Override
+			public Adapter caseConnectorUncertaintyScenarioInEntryLevelSystemCall(ConnectorUncertaintyScenarioInEntryLevelSystemCall object) {
+				return createConnectorUncertaintyScenarioInEntryLevelSystemCallAdapter();
+			}
+			@Override
+			public Adapter caseComponentUncertaintySource(ComponentUncertaintySource object) {
+				return createComponentUncertaintySourceAdapter();
+			}
+			@Override
+			public Adapter caseComponentUncertaintyScenario(ComponentUncertaintyScenario object) {
+				return createComponentUncertaintyScenarioAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -170,34 +206,6 @@ public class UncertaintyAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource <em>Behavior Uncertainty Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource
-	 * @generated
-	 */
-	public Adapter createBehaviorUncertaintySourceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario <em>Behavior Uncertainty Scenario</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario
-	 * @generated
-	 */
-	public Adapter createBehaviorUncertaintyScenarioAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintySource <em>External Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -240,30 +248,184 @@ public class UncertaintyAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInResourceScenario <em>External Uncertainty In Resource Scenario</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInResource <em>External Uncertainty Scenario In Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInResourceScenario
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInResource
 	 * @generated
 	 */
-	public Adapter createExternalUncertaintyInResourceScenarioAdapter() {
+	public Adapter createExternalUncertaintyScenarioInResourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInUsageScenario <em>External Uncertainty In Usage Scenario</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInUsage <em>External Uncertainty Scenario In Usage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInUsageScenario
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInUsage
 	 * @generated
 	 */
-	public Adapter createExternalUncertaintyInUsageScenarioAdapter() {
+	public Adapter createExternalUncertaintyScenarioInUsageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource <em>Behavior Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource
+	 * @generated
+	 */
+	public Adapter createBehaviorUncertaintySourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario <em>Behavior Uncertainty Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario
+	 * @generated
+	 */
+	public Adapter createBehaviorUncertaintyScenarioAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintySource <em>Interface Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintySource
+	 * @generated
+	 */
+	public Adapter createInterfaceUncertaintySourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintyScenario <em>Interface Uncertainty Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaintyScenario
+	 * @generated
+	 */
+	public Adapter createInterfaceUncertaintyScenarioAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySource <em>Connector Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySource
+	 * @generated
+	 */
+	public Adapter createConnectorUncertaintySourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInExternalCall <em>Connector Uncertainty Source In External Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInExternalCall
+	 * @generated
+	 */
+	public Adapter createConnectorUncertaintySourceInExternalCallAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInEntryLevelSystemCall <em>Connector Uncertainty Source In Entry Level System Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInEntryLevelSystemCall
+	 * @generated
+	 */
+	public Adapter createConnectorUncertaintySourceInEntryLevelSystemCallAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInExternalCall <em>Connector Uncertainty Scenario In External Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInExternalCall
+	 * @generated
+	 */
+	public Adapter createConnectorUncertaintyScenarioInExternalCallAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInEntryLevelSystemCall <em>Connector Uncertainty Scenario In Entry Level System Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInEntryLevelSystemCall
+	 * @generated
+	 */
+	public Adapter createConnectorUncertaintyScenarioInEntryLevelSystemCallAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintySource <em>Component Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintySource
+	 * @generated
+	 */
+	public Adapter createComponentUncertaintySourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintyScenario <em>Component Uncertainty Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaintyScenario
+	 * @generated
+	 */
+	public Adapter createComponentUncertaintyScenarioAdapter() {
 		return null;
 	}
 

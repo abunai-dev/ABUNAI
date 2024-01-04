@@ -17,13 +17,6 @@
     <genClasses image="false" ecoreClass="uncertainty.ecore#//UncertaintyScenario">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute uncertainty.ecore#//UncertaintyScenario/probability"/>
     </genClasses>
-    <genClasses ecoreClass="uncertainty.ecore#//BehaviorUncertaintySource">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//BehaviorUncertaintySource/target"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//BehaviorUncertaintySource/scenarios"/>
-    </genClasses>
-    <genClasses ecoreClass="uncertainty.ecore#//BehaviorUncertaintyScenario">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//BehaviorUncertaintyScenario/target"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="uncertainty.ecore#//ExternalUncertaintySource"/>
     <genClasses ecoreClass="uncertainty.ecore#//ExternalUncertaintySourceInResource">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ExternalUncertaintySourceInResource/target"/>
@@ -33,11 +26,47 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ExternalUncertaintySourceInUsage/target"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ExternalUncertaintySourceInUsage/scenarios"/>
     </genClasses>
-    <genClasses ecoreClass="uncertainty.ecore#//ExternalUncertaintyInResourceScenario">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ExternalUncertaintyInResourceScenario/target"/>
+    <genClasses ecoreClass="uncertainty.ecore#//ExternalUncertaintyScenarioInResource">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ExternalUncertaintyScenarioInResource/target"/>
     </genClasses>
-    <genClasses ecoreClass="uncertainty.ecore#//ExternalUncertaintyInUsageScenario">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ExternalUncertaintyInUsageScenario/targetd"/>
+    <genClasses ecoreClass="uncertainty.ecore#//ExternalUncertaintyScenarioInUsage">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ExternalUncertaintyScenarioInUsage/target"/>
+    </genClasses>
+    <genClasses ecoreClass="uncertainty.ecore#//BehaviorUncertaintySource">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//BehaviorUncertaintySource/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//BehaviorUncertaintySource/scenarios"/>
+    </genClasses>
+    <genClasses ecoreClass="uncertainty.ecore#//BehaviorUncertaintyScenario">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//BehaviorUncertaintyScenario/target"/>
+    </genClasses>
+    <genClasses ecoreClass="uncertainty.ecore#//InterfaceUncertaintySource">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//InterfaceUncertaintySource/target"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//InterfaceUncertaintySource/scenarios"/>
+    </genClasses>
+    <genClasses ecoreClass="uncertainty.ecore#//InterfaceUncertaintyScenario">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//InterfaceUncertaintyScenario/target"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="uncertainty.ecore#//ConnectorUncertaintySource"/>
+    <genClasses ecoreClass="uncertainty.ecore#//ConnectorUncertaintySourceInExternalCall">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ConnectorUncertaintySourceInExternalCall/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ConnectorUncertaintySourceInExternalCall/scenarios"/>
+    </genClasses>
+    <genClasses ecoreClass="uncertainty.ecore#//ConnectorUncertaintySourceInEntryLevelSystemCall">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ConnectorUncertaintySourceInEntryLevelSystemCall/target"/>
+    </genClasses>
+    <genClasses ecoreClass="uncertainty.ecore#//ConnectorUncertaintyScenarioInExternalCall">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ConnectorUncertaintyScenarioInExternalCall/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ConnectorUncertaintyScenarioInExternalCall/scenarios"/>
+    </genClasses>
+    <genClasses ecoreClass="uncertainty.ecore#//ConnectorUncertaintyScenarioInEntryLevelSystemCall">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ConnectorUncertaintyScenarioInEntryLevelSystemCall/target"/>
+    </genClasses>
+    <genClasses ecoreClass="uncertainty.ecore#//ComponentUncertaintySource">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ComponentUncertaintySource/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ComponentUncertaintySource/scenarios"/>
+    </genClasses>
+    <genClasses ecoreClass="uncertainty.ecore#//ComponentUncertaintyScenario">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ComponentUncertaintyScenario/target"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

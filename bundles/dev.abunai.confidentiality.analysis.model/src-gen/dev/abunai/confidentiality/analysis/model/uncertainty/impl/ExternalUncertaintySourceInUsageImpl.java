@@ -2,7 +2,7 @@
  */
 package dev.abunai.confidentiality.analysis.model.uncertainty.impl;
 
-import dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInUsageScenario;
+import dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInUsage;
 import dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintySourceInUsage;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage;
 
@@ -57,7 +57,7 @@ public class ExternalUncertaintySourceInUsageImpl extends ExternalUncertaintySou
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<ExternalUncertaintyInUsageScenario> scenarios;
+	protected EList<ExternalUncertaintyScenarioInUsage> scenarios;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -121,9 +121,9 @@ public class ExternalUncertaintySourceInUsageImpl extends ExternalUncertaintySou
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ExternalUncertaintyInUsageScenario> getScenarios() {
+	public EList<ExternalUncertaintyScenarioInUsage> getScenarios() {
 		if (scenarios == null) {
-			scenarios = new EObjectContainmentEList<ExternalUncertaintyInUsageScenario>(ExternalUncertaintyInUsageScenario.class, this, UncertaintyPackage.EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__SCENARIOS);
+			scenarios = new EObjectContainmentEList<ExternalUncertaintyScenarioInUsage>(ExternalUncertaintyScenarioInUsage.class, this, UncertaintyPackage.EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__SCENARIOS);
 		}
 		return scenarios;
 	}
@@ -173,7 +173,7 @@ public class ExternalUncertaintySourceInUsageImpl extends ExternalUncertaintySou
 				return;
 			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__SCENARIOS:
 				getScenarios().clear();
-				getScenarios().addAll((Collection<? extends ExternalUncertaintyInUsageScenario>)newValue);
+				getScenarios().addAll((Collection<? extends ExternalUncertaintyScenarioInUsage>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
