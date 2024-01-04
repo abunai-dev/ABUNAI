@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uncertainty" nsURI="http://abunai.dev/uncertainty/0.1/" nsPrefix="uncertainty">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="uncertainty" nsURI="http://abunai.dev/uncertainty" nsPrefix="uncertainty">
   <eClassifiers xsi:type="ecore:EClass" name="UncertaintySourceCollection">
     <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
         eType="#//UncertaintySource" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UncertaintySource" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Scenario">
+  <eClassifiers xsi:type="ecore:EClass" name="Scenario" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="probability" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BehaviorUncertaintySource" eSuperTypes="#//UncertaintySource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass http://palladiosimulator.org/PalladioComponentModel/5.2#//seff/SetVariableAction"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//seff/SetVariableAction"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
-        eType="#//BehaviorUncertaintyScenario"/>
+        eType="#//BehaviorUncertaintyScenario" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BehaviorUncertaintyScenario" eSuperTypes="#//Scenario">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass http://palladiosimulator.org/PalladioComponentModel/5.2#//seff/SetVariableAction"/>
+        eType="ecore:EClass platform:/plugin/org.palladiosimulator.pcm/model/pcm.ecore#//seff/SetVariableAction"/>
   </eClassifiers>
 </ecore:EPackage>
