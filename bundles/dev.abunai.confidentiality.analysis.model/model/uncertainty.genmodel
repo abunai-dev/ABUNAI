@@ -41,7 +41,7 @@
     </genClasses>
     <genClasses ecoreClass="uncertainty.ecore#//InterfaceUncertaintySource">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//InterfaceUncertaintySource/target"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//InterfaceUncertaintySource/scenarios"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//InterfaceUncertaintySource/scenarios"/>
     </genClasses>
     <genClasses ecoreClass="uncertainty.ecore#//InterfaceUncertaintyScenario">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//InterfaceUncertaintyScenario/target"/>
@@ -53,10 +53,10 @@
     </genClasses>
     <genClasses ecoreClass="uncertainty.ecore#//ConnectorUncertaintySourceInEntryLevelSystemCall">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ConnectorUncertaintySourceInEntryLevelSystemCall/target"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ConnectorUncertaintySourceInEntryLevelSystemCall/scenarios"/>
     </genClasses>
     <genClasses ecoreClass="uncertainty.ecore#//ConnectorUncertaintyScenarioInExternalCall">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ConnectorUncertaintyScenarioInExternalCall/target"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ConnectorUncertaintyScenarioInExternalCall/scenarios"/>
     </genClasses>
     <genClasses ecoreClass="uncertainty.ecore#//ConnectorUncertaintyScenarioInEntryLevelSystemCall">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference uncertainty.ecore#//ConnectorUncertaintyScenarioInEntryLevelSystemCall/target"/>

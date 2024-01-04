@@ -2,7 +2,9 @@
  */
 package dev.abunai.confidentiality.analysis.model.uncertainty;
 
-import org.palladiosimulator.pcm.seff.ExternalCallAction;
+import org.eclipse.emf.common.util.EList;
+
+import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,6 +16,7 @@ import org.palladiosimulator.pcm.seff.ExternalCallAction;
  * </p>
  * <ul>
  *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInEntryLevelSystemCall#getTarget <em>Target</em>}</li>
+ *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInEntryLevelSystemCall#getScenarios <em>Scenarios</em>}</li>
  * </ul>
  *
  * @see dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage#getConnectorUncertaintySourceInEntryLevelSystemCall()
@@ -26,12 +29,12 @@ public interface ConnectorUncertaintySourceInEntryLevelSystemCall extends Connec
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(ExternalCallAction)
+	 * @see #setTarget(EntryLevelSystemCall)
 	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage#getConnectorUncertaintySourceInEntryLevelSystemCall_Target()
 	 * @model required="true"
 	 * @generated
 	 */
-	ExternalCallAction getTarget();
+	EntryLevelSystemCall getTarget();
 
 	/**
 	 * Sets the value of the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInEntryLevelSystemCall#getTarget <em>Target</em>}' reference.
@@ -41,6 +44,18 @@ public interface ConnectorUncertaintySourceInEntryLevelSystemCall extends Connec
 	 * @see #getTarget()
 	 * @generated
 	 */
-	void setTarget(ExternalCallAction value);
+	void setTarget(EntryLevelSystemCall value);
+
+	/**
+	 * Returns the value of the '<em><b>Scenarios</b></em>' containment reference list.
+	 * The list contents are of type {@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInEntryLevelSystemCall}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Scenarios</em>' containment reference list.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage#getConnectorUncertaintySourceInEntryLevelSystemCall_Scenarios()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<ConnectorUncertaintyScenarioInEntryLevelSystemCall> getScenarios();
 
 } // ConnectorUncertaintySourceInEntryLevelSystemCall

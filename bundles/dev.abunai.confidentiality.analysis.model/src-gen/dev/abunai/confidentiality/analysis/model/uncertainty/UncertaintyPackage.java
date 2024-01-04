@@ -648,13 +648,22 @@ public interface UncertaintyPackage extends EPackage {
 	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__SCENARIOS = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Connector Uncertainty Source In Entry Level System Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL_FEATURE_COUNT = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL_FEATURE_COUNT = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Connector Uncertainty Source In Entry Level System Call</em>' class.
@@ -694,22 +703,13 @@ public interface UncertaintyPackage extends EPackage {
 	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__TARGET = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__SCENARIOS = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Connector Uncertainty Scenario In External Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 2;
+	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL_FEATURE_COUNT = UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Connector Uncertainty Scenario In External Call</em>' class.
@@ -1197,6 +1197,17 @@ public interface UncertaintyPackage extends EPackage {
 	EReference getConnectorUncertaintySourceInEntryLevelSystemCall_Target();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInEntryLevelSystemCall#getScenarios <em>Scenarios</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintySourceInEntryLevelSystemCall#getScenarios()
+	 * @see #getConnectorUncertaintySourceInEntryLevelSystemCall()
+	 * @generated
+	 */
+	EReference getConnectorUncertaintySourceInEntryLevelSystemCall_Scenarios();
+
+	/**
 	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInExternalCall <em>Connector Uncertainty Scenario In External Call</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1216,17 +1227,6 @@ public interface UncertaintyPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getConnectorUncertaintyScenarioInExternalCall_Target();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInExternalCall#getScenarios <em>Scenarios</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInExternalCall#getScenarios()
-	 * @see #getConnectorUncertaintyScenarioInExternalCall()
-	 * @generated
-	 */
-	EReference getConnectorUncertaintyScenarioInExternalCall_Scenarios();
 
 	/**
 	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaintyScenarioInEntryLevelSystemCall <em>Connector Uncertainty Scenario In Entry Level System Call</em>}'.
@@ -1612,6 +1612,14 @@ public interface UncertaintyPackage extends EPackage {
 		EReference CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = eINSTANCE.getConnectorUncertaintySourceInEntryLevelSystemCall_Target();
 
 		/**
+		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__SCENARIOS = eINSTANCE.getConnectorUncertaintySourceInEntryLevelSystemCall_Scenarios();
+
+		/**
 		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintyScenarioInExternalCallImpl <em>Connector Uncertainty Scenario In External Call</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1628,14 +1636,6 @@ public interface UncertaintyPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__TARGET = eINSTANCE.getConnectorUncertaintyScenarioInExternalCall_Target();
-
-		/**
-		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__SCENARIOS = eINSTANCE.getConnectorUncertaintyScenarioInExternalCall_Scenarios();
 
 		/**
 		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.ConnectorUncertaintyScenarioInEntryLevelSystemCallImpl <em>Connector Uncertainty Scenario In Entry Level System Call</em>}' class.

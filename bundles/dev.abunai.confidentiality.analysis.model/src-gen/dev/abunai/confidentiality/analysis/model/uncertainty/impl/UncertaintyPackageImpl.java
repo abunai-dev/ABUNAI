@@ -563,6 +563,15 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getConnectorUncertaintySourceInEntryLevelSystemCall_Scenarios() {
+		return (EReference)connectorUncertaintySourceInEntryLevelSystemCallEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getConnectorUncertaintyScenarioInExternalCall() {
 		return connectorUncertaintyScenarioInExternalCallEClass;
 	}
@@ -574,15 +583,6 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 	 */
 	public EReference getConnectorUncertaintyScenarioInExternalCall_Target() {
 		return (EReference)connectorUncertaintyScenarioInExternalCallEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getConnectorUncertaintyScenarioInExternalCall_Scenarios() {
-		return (EReference)connectorUncertaintyScenarioInExternalCallEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -722,10 +722,10 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 
 		connectorUncertaintySourceInEntryLevelSystemCallEClass = createEClass(CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL);
 		createEReference(connectorUncertaintySourceInEntryLevelSystemCallEClass, CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET);
+		createEReference(connectorUncertaintySourceInEntryLevelSystemCallEClass, CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__SCENARIOS);
 
 		connectorUncertaintyScenarioInExternalCallEClass = createEClass(CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL);
 		createEReference(connectorUncertaintyScenarioInExternalCallEClass, CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__TARGET);
-		createEReference(connectorUncertaintyScenarioInExternalCallEClass, CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__SCENARIOS);
 
 		connectorUncertaintyScenarioInEntryLevelSystemCallEClass = createEClass(CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL);
 		createEReference(connectorUncertaintyScenarioInEntryLevelSystemCallEClass, CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET);
@@ -836,11 +836,11 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 		initEReference(getConnectorUncertaintySourceInExternalCall_Scenarios(), this.getConnectorUncertaintyScenarioInExternalCall(), null, "scenarios", null, 0, -1, ConnectorUncertaintySourceInExternalCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectorUncertaintySourceInEntryLevelSystemCallEClass, ConnectorUncertaintySourceInEntryLevelSystemCall.class, "ConnectorUncertaintySourceInEntryLevelSystemCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConnectorUncertaintySourceInEntryLevelSystemCall_Target(), theSeffPackage.getExternalCallAction(), null, "target", null, 1, 1, ConnectorUncertaintySourceInEntryLevelSystemCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectorUncertaintySourceInEntryLevelSystemCall_Target(), theUsagemodelPackage.getEntryLevelSystemCall(), null, "target", null, 1, 1, ConnectorUncertaintySourceInEntryLevelSystemCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectorUncertaintySourceInEntryLevelSystemCall_Scenarios(), this.getConnectorUncertaintyScenarioInEntryLevelSystemCall(), null, "scenarios", null, 0, -1, ConnectorUncertaintySourceInEntryLevelSystemCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectorUncertaintyScenarioInExternalCallEClass, ConnectorUncertaintyScenarioInExternalCall.class, "ConnectorUncertaintyScenarioInExternalCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConnectorUncertaintyScenarioInExternalCall_Target(), theUsagemodelPackage.getEntryLevelSystemCall(), null, "target", null, 1, 1, ConnectorUncertaintyScenarioInExternalCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConnectorUncertaintyScenarioInExternalCall_Scenarios(), this.getConnectorUncertaintyScenarioInEntryLevelSystemCall(), null, "scenarios", null, 0, -1, ConnectorUncertaintyScenarioInExternalCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConnectorUncertaintyScenarioInExternalCall_Target(), theSeffPackage.getExternalCallAction(), null, "target", null, 1, 1, ConnectorUncertaintyScenarioInExternalCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(connectorUncertaintyScenarioInEntryLevelSystemCallEClass, ConnectorUncertaintyScenarioInEntryLevelSystemCall.class, "ConnectorUncertaintyScenarioInEntryLevelSystemCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConnectorUncertaintyScenarioInEntryLevelSystemCall_Target(), theUsagemodelPackage.getEntryLevelSystemCall(), null, "target", null, 1, 1, ConnectorUncertaintyScenarioInEntryLevelSystemCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

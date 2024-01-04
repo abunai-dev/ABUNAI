@@ -14,25 +14,25 @@
   <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintySourceInResource"
       eSuperTypes="#//ExternalUncertaintySource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass platform:/plugin/org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//RessourceAssignee"/>
+        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//RessourceAssignee"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
         eType="#//ExternalUncertaintyScenarioInResource" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintySourceInUsage" eSuperTypes="#//ExternalUncertaintySource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass platform:/plugin/org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAsignee"/>
+        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAsignee"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
         eType="#//ExternalUncertaintyScenarioInUsage" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintyScenarioInResource"
       eSuperTypes="#//UncertaintyScenario">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass platform:/plugin/org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//RessourceAssignee"/>
+        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//RessourceAssignee"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintyScenarioInUsage"
       eSuperTypes="#//UncertaintyScenario">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass platform:/plugin/org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAsignee"/>
+        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAsignee"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BehaviorUncertaintySource" eSuperTypes="#//UncertaintySource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
@@ -66,14 +66,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintySourceInEntryLevelSystemCall"
       eSuperTypes="#//ConnectorUncertaintySource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//seff/ExternalCallAction"/>
+        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel/EntryLevelSystemCall"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
+        eType="#//ConnectorUncertaintyScenarioInEntryLevelSystemCall" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintyScenarioInExternalCall"
       eSuperTypes="#//UncertaintyScenario">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel/EntryLevelSystemCall"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
-        eType="#//ConnectorUncertaintyScenarioInEntryLevelSystemCall" containment="true"/>
+        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//seff/ExternalCallAction"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintyScenarioInEntryLevelSystemCall"
       eSuperTypes="#//UncertaintyScenario">
