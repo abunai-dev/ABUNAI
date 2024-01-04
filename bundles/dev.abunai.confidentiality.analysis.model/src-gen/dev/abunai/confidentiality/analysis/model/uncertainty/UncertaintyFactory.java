@@ -49,6 +49,42 @@ public interface UncertaintyFactory extends EFactory {
 	BehaviorUncertaintyScenario createBehaviorUncertaintyScenario();
 
 	/**
+	 * Returns a new object of class '<em>External Uncertainty Source In Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>External Uncertainty Source In Resource</em>'.
+	 * @generated
+	 */
+	ExternalUncertaintySourceInResource createExternalUncertaintySourceInResource();
+
+	/**
+	 * Returns a new object of class '<em>External Uncertainty Source In Usage</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>External Uncertainty Source In Usage</em>'.
+	 * @generated
+	 */
+	ExternalUncertaintySourceInUsage createExternalUncertaintySourceInUsage();
+
+	/**
+	 * Returns a new object of class '<em>External Uncertainty In Resource Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>External Uncertainty In Resource Scenario</em>'.
+	 * @generated
+	 */
+	ExternalUncertaintyInResourceScenario createExternalUncertaintyInResourceScenario();
+
+	/**
+	 * Returns a new object of class '<em>External Uncertainty In Usage Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>External Uncertainty In Usage Scenario</em>'.
+	 * @generated
+	 */
+	ExternalUncertaintyInUsageScenario createExternalUncertaintyInUsageScenario();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

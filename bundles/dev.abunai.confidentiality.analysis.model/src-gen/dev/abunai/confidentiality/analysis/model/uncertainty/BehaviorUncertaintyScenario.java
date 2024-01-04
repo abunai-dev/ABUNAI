@@ -20,7 +20,7 @@ import org.palladiosimulator.pcm.seff.SetVariableAction;
  * @model
  * @generated
  */
-public interface BehaviorUncertaintyScenario extends Scenario {
+public interface BehaviorUncertaintyScenario extends UncertaintyScenario {
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->

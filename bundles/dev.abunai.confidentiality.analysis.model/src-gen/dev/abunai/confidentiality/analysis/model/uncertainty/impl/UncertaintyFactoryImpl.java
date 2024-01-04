@@ -59,6 +59,10 @@ public class UncertaintyFactoryImpl extends EFactoryImpl implements UncertaintyF
 			case UncertaintyPackage.UNCERTAINTY_SOURCE_COLLECTION: return createUncertaintySourceCollection();
 			case UncertaintyPackage.BEHAVIOR_UNCERTAINTY_SOURCE: return createBehaviorUncertaintySource();
 			case UncertaintyPackage.BEHAVIOR_UNCERTAINTY_SCENARIO: return createBehaviorUncertaintyScenario();
+			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE: return createExternalUncertaintySourceInResource();
+			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE: return createExternalUncertaintySourceInUsage();
+			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_IN_RESOURCE_SCENARIO: return createExternalUncertaintyInResourceScenario();
+			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_IN_USAGE_SCENARIO: return createExternalUncertaintyInUsageScenario();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -92,6 +96,46 @@ public class UncertaintyFactoryImpl extends EFactoryImpl implements UncertaintyF
 	public BehaviorUncertaintyScenario createBehaviorUncertaintyScenario() {
 		BehaviorUncertaintyScenarioImpl behaviorUncertaintyScenario = new BehaviorUncertaintyScenarioImpl();
 		return behaviorUncertaintyScenario;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExternalUncertaintySourceInResource createExternalUncertaintySourceInResource() {
+		ExternalUncertaintySourceInResourceImpl externalUncertaintySourceInResource = new ExternalUncertaintySourceInResourceImpl();
+		return externalUncertaintySourceInResource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExternalUncertaintySourceInUsage createExternalUncertaintySourceInUsage() {
+		ExternalUncertaintySourceInUsageImpl externalUncertaintySourceInUsage = new ExternalUncertaintySourceInUsageImpl();
+		return externalUncertaintySourceInUsage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExternalUncertaintyInResourceScenario createExternalUncertaintyInResourceScenario() {
+		ExternalUncertaintyInResourceScenarioImpl externalUncertaintyInResourceScenario = new ExternalUncertaintyInResourceScenarioImpl();
+		return externalUncertaintyInResourceScenario;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExternalUncertaintyInUsageScenario createExternalUncertaintyInUsageScenario() {
+		ExternalUncertaintyInUsageScenarioImpl externalUncertaintyInUsageScenario = new ExternalUncertaintyInUsageScenarioImpl();
+		return externalUncertaintyInUsageScenario;
 	}
 
 	/**

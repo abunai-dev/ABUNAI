@@ -12,11 +12,24 @@ import de.uka.ipd.sdq.units.UnitsPackage;
 
 import dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.Scenario;
+import dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInResourceScenario;
+import dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyInUsageScenario;
+import dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintySource;
+import dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintySourceInResource;
+import dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintySourceInUsage;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyFactory;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage;
+import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCollection;
+
+import org.dataflowanalysis.pcm.extension.dictionary.DataDictionary.DataDictionaryPackage;
+
+import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.DataDictionaryCharacterizedPackage;
+
+import org.dataflowanalysis.pcm.extension.model.confidentiality.ConfidentialityPackage;
+
+import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.NodeCharacteristicsPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -56,7 +69,7 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass scenarioEClass = null;
+	private EClass uncertaintyScenarioEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -71,6 +84,41 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 	 * @generated
 	 */
 	private EClass behaviorUncertaintyScenarioEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass externalUncertaintySourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass externalUncertaintySourceInResourceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass externalUncertaintySourceInUsageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass externalUncertaintyInResourceScenarioEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass externalUncertaintyInUsageScenarioEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -119,8 +167,12 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 		isInited = true;
 
 		// Initialize simple dependencies
+		DataDictionaryPackage.eINSTANCE.eClass();
+		DataDictionaryCharacterizedPackage.eINSTANCE.eClass();
+		ConfidentialityPackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 		IdentifierPackage.eINSTANCE.eClass();
+		NodeCharacteristicsPackage.eINSTANCE.eClass();
 		PcmPackage.eINSTANCE.eClass();
 		ProbfunctionPackage.eINSTANCE.eClass();
 		StoexPackage.eINSTANCE.eClass();
@@ -172,8 +224,8 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getScenario() {
-		return scenarioEClass;
+	public EClass getUncertaintyScenario() {
+		return uncertaintyScenarioEClass;
 	}
 
 	/**
@@ -181,8 +233,8 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getScenario_Probability() {
-		return (EAttribute)scenarioEClass.getEStructuralFeatures().get(0);
+	public EAttribute getUncertaintyScenario_Probability() {
+		return (EAttribute)uncertaintyScenarioEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -235,6 +287,105 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getExternalUncertaintySource() {
+		return externalUncertaintySourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExternalUncertaintySourceInResource() {
+		return externalUncertaintySourceInResourceEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExternalUncertaintySourceInResource_Target() {
+		return (EReference)externalUncertaintySourceInResourceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExternalUncertaintySourceInResource_Scenarios() {
+		return (EReference)externalUncertaintySourceInResourceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExternalUncertaintySourceInUsage() {
+		return externalUncertaintySourceInUsageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExternalUncertaintySourceInUsage_Target() {
+		return (EReference)externalUncertaintySourceInUsageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExternalUncertaintySourceInUsage_Scenarios() {
+		return (EReference)externalUncertaintySourceInUsageEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExternalUncertaintyInResourceScenario() {
+		return externalUncertaintyInResourceScenarioEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExternalUncertaintyInResourceScenario_Target() {
+		return (EReference)externalUncertaintyInResourceScenarioEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getExternalUncertaintyInUsageScenario() {
+		return externalUncertaintyInUsageScenarioEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExternalUncertaintyInUsageScenario_Targetd() {
+		return (EReference)externalUncertaintyInUsageScenarioEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public UncertaintyFactory getUncertaintyFactory() {
 		return (UncertaintyFactory)getEFactoryInstance();
 	}
@@ -263,8 +414,8 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 
 		uncertaintySourceEClass = createEClass(UNCERTAINTY_SOURCE);
 
-		scenarioEClass = createEClass(SCENARIO);
-		createEAttribute(scenarioEClass, SCENARIO__PROBABILITY);
+		uncertaintyScenarioEClass = createEClass(UNCERTAINTY_SCENARIO);
+		createEAttribute(uncertaintyScenarioEClass, UNCERTAINTY_SCENARIO__PROBABILITY);
 
 		behaviorUncertaintySourceEClass = createEClass(BEHAVIOR_UNCERTAINTY_SOURCE);
 		createEReference(behaviorUncertaintySourceEClass, BEHAVIOR_UNCERTAINTY_SOURCE__TARGET);
@@ -272,6 +423,22 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 
 		behaviorUncertaintyScenarioEClass = createEClass(BEHAVIOR_UNCERTAINTY_SCENARIO);
 		createEReference(behaviorUncertaintyScenarioEClass, BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET);
+
+		externalUncertaintySourceEClass = createEClass(EXTERNAL_UNCERTAINTY_SOURCE);
+
+		externalUncertaintySourceInResourceEClass = createEClass(EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE);
+		createEReference(externalUncertaintySourceInResourceEClass, EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__TARGET);
+		createEReference(externalUncertaintySourceInResourceEClass, EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__SCENARIOS);
+
+		externalUncertaintySourceInUsageEClass = createEClass(EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE);
+		createEReference(externalUncertaintySourceInUsageEClass, EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__TARGET);
+		createEReference(externalUncertaintySourceInUsageEClass, EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__SCENARIOS);
+
+		externalUncertaintyInResourceScenarioEClass = createEClass(EXTERNAL_UNCERTAINTY_IN_RESOURCE_SCENARIO);
+		createEReference(externalUncertaintyInResourceScenarioEClass, EXTERNAL_UNCERTAINTY_IN_RESOURCE_SCENARIO__TARGET);
+
+		externalUncertaintyInUsageScenarioEClass = createEClass(EXTERNAL_UNCERTAINTY_IN_USAGE_SCENARIO);
+		createEReference(externalUncertaintyInUsageScenarioEClass, EXTERNAL_UNCERTAINTY_IN_USAGE_SCENARIO__TARGETD);
 	}
 
 	/**
@@ -299,6 +466,7 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 
 		// Obtain other dependent packages
 		SeffPackage theSeffPackage = (SeffPackage)EPackage.Registry.INSTANCE.getEPackage(SeffPackage.eNS_URI);
+		NodeCharacteristicsPackage theNodeCharacteristicsPackage = (NodeCharacteristicsPackage)EPackage.Registry.INSTANCE.getEPackage(NodeCharacteristicsPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -306,7 +474,12 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 
 		// Add supertypes to classes
 		behaviorUncertaintySourceEClass.getESuperTypes().add(this.getUncertaintySource());
-		behaviorUncertaintyScenarioEClass.getESuperTypes().add(this.getScenario());
+		behaviorUncertaintyScenarioEClass.getESuperTypes().add(this.getUncertaintyScenario());
+		externalUncertaintySourceEClass.getESuperTypes().add(this.getUncertaintySource());
+		externalUncertaintySourceInResourceEClass.getESuperTypes().add(this.getExternalUncertaintySource());
+		externalUncertaintySourceInUsageEClass.getESuperTypes().add(this.getExternalUncertaintySource());
+		externalUncertaintyInResourceScenarioEClass.getESuperTypes().add(this.getUncertaintyScenario());
+		externalUncertaintyInUsageScenarioEClass.getESuperTypes().add(this.getUncertaintyScenario());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(uncertaintySourceCollectionEClass, UncertaintySourceCollection.class, "UncertaintySourceCollection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -314,8 +487,8 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 
 		initEClass(uncertaintySourceEClass, UncertaintySource.class, "UncertaintySource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(scenarioEClass, Scenario.class, "Scenario", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getScenario_Probability(), ecorePackage.getEDouble(), "probability", null, 0, 1, Scenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(uncertaintyScenarioEClass, UncertaintyScenario.class, "UncertaintyScenario", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUncertaintyScenario_Probability(), ecorePackage.getEDouble(), "probability", null, 0, 1, UncertaintyScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(behaviorUncertaintySourceEClass, BehaviorUncertaintySource.class, "BehaviorUncertaintySource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBehaviorUncertaintySource_Target(), theSeffPackage.getSetVariableAction(), null, "target", null, 1, 1, BehaviorUncertaintySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -323,6 +496,22 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 
 		initEClass(behaviorUncertaintyScenarioEClass, BehaviorUncertaintyScenario.class, "BehaviorUncertaintyScenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBehaviorUncertaintyScenario_Target(), theSeffPackage.getSetVariableAction(), null, "target", null, 1, 1, BehaviorUncertaintyScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(externalUncertaintySourceEClass, ExternalUncertaintySource.class, "ExternalUncertaintySource", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(externalUncertaintySourceInResourceEClass, ExternalUncertaintySourceInResource.class, "ExternalUncertaintySourceInResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExternalUncertaintySourceInResource_Target(), theNodeCharacteristicsPackage.getRessourceAssignee(), null, "target", null, 1, 1, ExternalUncertaintySourceInResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExternalUncertaintySourceInResource_Scenarios(), this.getExternalUncertaintyInResourceScenario(), null, "scenarios", null, 0, -1, ExternalUncertaintySourceInResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(externalUncertaintySourceInUsageEClass, ExternalUncertaintySourceInUsage.class, "ExternalUncertaintySourceInUsage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExternalUncertaintySourceInUsage_Target(), theNodeCharacteristicsPackage.getUsageAsignee(), null, "target", null, 1, 1, ExternalUncertaintySourceInUsage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExternalUncertaintySourceInUsage_Scenarios(), this.getExternalUncertaintyInUsageScenario(), null, "scenarios", null, 0, -1, ExternalUncertaintySourceInUsage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(externalUncertaintyInResourceScenarioEClass, ExternalUncertaintyInResourceScenario.class, "ExternalUncertaintyInResourceScenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExternalUncertaintyInResourceScenario_Target(), theNodeCharacteristicsPackage.getRessourceAssignee(), null, "target", null, 1, 1, ExternalUncertaintyInResourceScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(externalUncertaintyInUsageScenarioEClass, ExternalUncertaintyInUsageScenario.class, "ExternalUncertaintyInUsageScenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExternalUncertaintyInUsageScenario_Targetd(), theNodeCharacteristicsPackage.getUsageAsignee(), null, "targetd", null, 1, 1, ExternalUncertaintyInUsageScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

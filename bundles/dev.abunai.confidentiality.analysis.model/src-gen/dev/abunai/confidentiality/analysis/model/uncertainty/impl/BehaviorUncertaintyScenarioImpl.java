@@ -27,7 +27,7 @@ import org.palladiosimulator.pcm.seff.SetVariableAction;
  *
  * @generated
  */
-public class BehaviorUncertaintyScenarioImpl extends ScenarioImpl implements BehaviorUncertaintyScenario {
+public class BehaviorUncertaintyScenarioImpl extends UncertaintyScenarioImpl implements BehaviorUncertaintyScenario {
 	/**
 	 * The cached value of the '{@link #getTarget() <em>Target</em>}' reference.
 	 * <!-- begin-user-doc -->

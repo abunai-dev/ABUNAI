@@ -12,6 +12,8 @@ Export-Package: dev.abunai.confidentiality.analysis.model.uncertainty,
  dev.abunai.confidentiality.analysis.model.uncertainty.impl,
  dev.abunai.confidentiality.analysis.model.uncertainty.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
+ org.dataflowanalysis.pcm.extension.dictionary;visibility:=reexport,
+ org.dataflowanalysis.pcm.extension.dictionary.characterized;visibility:=reexport,
  org.eclipse.emf.cdo;visibility:=reexport,
  de.uka.ipd.sdq.identifier;visibility:=reexport,
  org.palladiosimulator.pcm;visibility:=reexport,
@@ -19,7 +21,7 @@ Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  de.uka.ipd.sdq.stoex;visibility:=reexport,
  de.uka.ipd.sdq.units;visibility:=reexport,
  org.eclipse.core.runtime,
- org.dataflowanalysis.pcm.extension.model;bundle-version="5.1.0",
+ org.dataflowanalysis.pcm.extension.model;bundle-version="5.1.0";visibility:=reexport,
  org.dataflowanalysis.analysis;bundle-version="1.0.0",
- org.dataflowanalysis.pcm.extension.nodecharacteristics;bundle-version="0.1.0"
+ org.dataflowanalysis.pcm.extension.nodecharacteristics;bundle-version="0.1.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
