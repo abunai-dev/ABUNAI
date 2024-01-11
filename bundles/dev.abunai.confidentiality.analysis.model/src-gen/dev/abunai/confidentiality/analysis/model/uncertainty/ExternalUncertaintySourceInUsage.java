@@ -2,9 +2,9 @@
  */
 package dev.abunai.confidentiality.analysis.model.uncertainty;
 
-import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAsignee;
+import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
+import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,12 +29,12 @@ public interface ExternalUncertaintySourceInUsage extends ExternalUncertaintySou
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(UsageAsignee)
+	 * @see #setTarget(UsageAssignee)
 	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage#getExternalUncertaintySourceInUsage_Target()
 	 * @model required="true"
 	 * @generated
 	 */
-	UsageAsignee getTarget();
+	UsageAssignee getTarget();
 
 	/**
 	 * Sets the value of the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintySourceInUsage#getTarget <em>Target</em>}' reference.
@@ -44,7 +44,7 @@ public interface ExternalUncertaintySourceInUsage extends ExternalUncertaintySou
 	 * @see #getTarget()
 	 * @generated
 	 */
-	void setTarget(UsageAsignee value);
+	void setTarget(UsageAssignee value);
 
 	/**
 	 * Returns the value of the '<em><b>Scenarios</b></em>' containment reference list.
@@ -56,6 +56,6 @@ public interface ExternalUncertaintySourceInUsage extends ExternalUncertaintySou
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ExternalUncertaintyScenarioInUsage> getScenarios();
+	List<ExternalUncertaintyScenarioInUsage> getScenarios();
 
 } // ExternalUncertaintySourceInUsage

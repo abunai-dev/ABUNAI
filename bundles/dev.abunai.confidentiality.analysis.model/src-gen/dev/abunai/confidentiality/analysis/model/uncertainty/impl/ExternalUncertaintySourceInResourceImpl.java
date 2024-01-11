@@ -7,6 +7,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertainty
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.RessourceAssignee;
 
@@ -121,7 +122,7 @@ public class ExternalUncertaintySourceInResourceImpl extends ExternalUncertainty
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ExternalUncertaintyScenarioInResource> getScenarios() {
+	public List<ExternalUncertaintyScenarioInResource> getScenarios() {
 		if (scenarios == null) {
 			scenarios = new EObjectContainmentEList<ExternalUncertaintyScenarioInResource>(ExternalUncertaintyScenarioInResource.class, this, UncertaintyPackage.EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__SCENARIOS);
 		}

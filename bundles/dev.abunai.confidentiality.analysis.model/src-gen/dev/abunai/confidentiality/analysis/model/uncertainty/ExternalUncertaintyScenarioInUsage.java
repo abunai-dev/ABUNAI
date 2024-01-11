@@ -2,7 +2,7 @@
  */
 package dev.abunai.confidentiality.analysis.model.uncertainty;
 
-import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAsignee;
+import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,12 +26,12 @@ public interface ExternalUncertaintyScenarioInUsage extends UncertaintyScenario 
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(UsageAsignee)
+	 * @see #setTarget(UsageAssignee)
 	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage#getExternalUncertaintyScenarioInUsage_Target()
 	 * @model required="true"
 	 * @generated
 	 */
-	UsageAsignee getTarget();
+	UsageAssignee getTarget();
 
 	/**
 	 * Sets the value of the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInUsage#getTarget <em>Target</em>}' reference.
@@ -41,6 +41,6 @@ public interface ExternalUncertaintyScenarioInUsage extends UncertaintyScenario 
 	 * @see #getTarget()
 	 * @generated
 	 */
-	void setTarget(UsageAsignee value);
+	void setTarget(UsageAssignee value);
 
 } // ExternalUncertaintyScenarioInUsage

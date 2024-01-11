@@ -2,7 +2,7 @@
  */
 package dev.abunai.confidentiality.analysis.model.uncertainty;
 
-import org.eclipse.emf.common.util.EList;
+import java.util.List;
 
 import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
 
@@ -56,6 +56,6 @@ public interface ConnectorUncertaintySourceInEntryLevelSystemCall extends Connec
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ConnectorUncertaintyScenarioInEntryLevelSystemCall> getScenarios();
+	List<ConnectorUncertaintyScenarioInEntryLevelSystemCall> getScenarios();
 
 } // ConnectorUncertaintySourceInEntryLevelSystemCall

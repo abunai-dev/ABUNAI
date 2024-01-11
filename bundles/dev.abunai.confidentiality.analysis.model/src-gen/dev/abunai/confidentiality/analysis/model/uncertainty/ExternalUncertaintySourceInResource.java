@@ -2,9 +2,9 @@
  */
 package dev.abunai.confidentiality.analysis.model.uncertainty;
 
-import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.RessourceAssignee;
+import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
+import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.RessourceAssignee;
 
 /**
  * <!-- begin-user-doc -->
@@ -56,6 +56,6 @@ public interface ExternalUncertaintySourceInResource extends ExternalUncertainty
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ExternalUncertaintyScenarioInResource> getScenarios();
+	List<ExternalUncertaintyScenarioInResource> getScenarios();
 
 } // ExternalUncertaintySourceInResource

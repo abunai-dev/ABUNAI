@@ -5,7 +5,7 @@ package dev.abunai.confidentiality.analysis.model.uncertainty.impl;
 import dev.abunai.confidentiality.analysis.model.uncertainty.ExternalUncertaintyScenarioInUsage;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage;
 
-import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAsignee;
+import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -37,7 +37,7 @@ public class ExternalUncertaintyScenarioInUsageImpl extends UncertaintyScenarioI
 	 * @generated
 	 * @ordered
 	 */
-	protected UsageAsignee target;
+	protected UsageAssignee target;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -63,10 +63,10 @@ public class ExternalUncertaintyScenarioInUsageImpl extends UncertaintyScenarioI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UsageAsignee getTarget() {
+	public UsageAssignee getTarget() {
 		if (target != null && ((EObject)target).eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject)target;
-			target = (UsageAsignee)eResolveProxy(oldTarget);
+			target = (UsageAssignee)eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, UncertaintyPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__TARGET, oldTarget, target));
@@ -80,7 +80,7 @@ public class ExternalUncertaintyScenarioInUsageImpl extends UncertaintyScenarioI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UsageAsignee basicGetTarget() {
+	public UsageAssignee basicGetTarget() {
 		return target;
 	}
 
@@ -89,8 +89,8 @@ public class ExternalUncertaintyScenarioInUsageImpl extends UncertaintyScenarioI
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTarget(UsageAsignee newTarget) {
-		UsageAsignee oldTarget = target;
+	public void setTarget(UsageAssignee newTarget) {
+		UsageAssignee oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, UncertaintyPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__TARGET, oldTarget, target));
@@ -120,7 +120,7 @@ public class ExternalUncertaintyScenarioInUsageImpl extends UncertaintyScenarioI
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__TARGET:
-				setTarget((UsageAsignee)newValue);
+				setTarget((UsageAssignee)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -135,7 +135,7 @@ public class ExternalUncertaintyScenarioInUsageImpl extends UncertaintyScenarioI
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case UncertaintyPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__TARGET:
-				setTarget((UsageAsignee)null);
+				setTarget((UsageAssignee)null);
 				return;
 		}
 		super.eUnset(featureID);

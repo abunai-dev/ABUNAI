@@ -7,6 +7,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.ConnectorUncertaint
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -120,7 +121,7 @@ public class ConnectorUncertaintySourceInExternalCallImpl extends ConnectorUncer
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ConnectorUncertaintyScenarioInExternalCall> getScenarios() {
+	public List<ConnectorUncertaintyScenarioInExternalCall> getScenarios() {
 		if (scenarios == null) {
 			scenarios = new EObjectContainmentEList<ConnectorUncertaintyScenarioInExternalCall>(ConnectorUncertaintyScenarioInExternalCall.class, this, UncertaintyPackage.CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__SCENARIOS);
 		}

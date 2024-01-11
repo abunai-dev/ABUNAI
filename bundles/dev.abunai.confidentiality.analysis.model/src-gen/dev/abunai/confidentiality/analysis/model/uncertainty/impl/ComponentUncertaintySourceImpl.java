@@ -7,6 +7,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.ComponentUncertaint
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -120,7 +121,7 @@ public class ComponentUncertaintySourceImpl extends UncertaintySourceImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<ComponentUncertaintyScenario> getScenarios() {
+	public List<ComponentUncertaintyScenario> getScenarios() {
 		if (scenarios == null) {
 			scenarios = new EObjectContainmentEList<ComponentUncertaintyScenario>(ComponentUncertaintyScenario.class, this, UncertaintyPackage.COMPONENT_UNCERTAINTY_SOURCE__SCENARIOS);
 		}

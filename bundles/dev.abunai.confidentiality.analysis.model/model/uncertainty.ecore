@@ -20,7 +20,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintySourceInUsage" eSuperTypes="#//ExternalUncertaintySource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAsignee"/>
+        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAssignee"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
         eType="#//ExternalUncertaintyScenarioInUsage" containment="true"/>
   </eClassifiers>
@@ -32,7 +32,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintyScenarioInUsage"
       eSuperTypes="#//UncertaintyScenario">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAsignee"/>
+        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAssignee"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BehaviorUncertaintySource" eSuperTypes="#//UncertaintySource">
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"

@@ -7,6 +7,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.InterfaceUncertaint
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -120,7 +121,7 @@ public class InterfaceUncertaintySourceImpl extends UncertaintySourceImpl implem
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<InterfaceUncertaintyScenario> getScenarios() {
+	public List<InterfaceUncertaintyScenario> getScenarios() {
 		if (scenarios == null) {
 			scenarios = new EObjectContainmentEList<InterfaceUncertaintyScenario>(InterfaceUncertaintyScenario.class, this, UncertaintyPackage.INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS);
 		}

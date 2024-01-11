@@ -7,6 +7,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.BehaviorUncertainty
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -120,7 +121,7 @@ public class BehaviorUncertaintySourceImpl extends UncertaintySourceImpl impleme
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<BehaviorUncertaintyScenario> getScenarios() {
+	public List<BehaviorUncertaintyScenario> getScenarios() {
 		if (scenarios == null) {
 			scenarios = new EObjectContainmentEList<BehaviorUncertaintyScenario>(BehaviorUncertaintyScenario.class, this, UncertaintyPackage.BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS);
 		}

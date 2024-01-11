@@ -2,7 +2,7 @@
  */
 package dev.abunai.confidentiality.analysis.model.uncertainty;
 
-import org.eclipse.emf.common.util.EList;
+import java.util.List;
 
 import org.palladiosimulator.pcm.seff.ExternalCallAction;
 
@@ -56,6 +56,6 @@ public interface ConnectorUncertaintySourceInExternalCall extends ConnectorUncer
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ConnectorUncertaintyScenarioInExternalCall> getScenarios();
+	List<ConnectorUncertaintyScenarioInExternalCall> getScenarios();
 
 } // ConnectorUncertaintySourceInExternalCall

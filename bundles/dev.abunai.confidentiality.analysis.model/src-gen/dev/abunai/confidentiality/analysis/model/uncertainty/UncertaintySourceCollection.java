@@ -2,7 +2,7 @@
  */
 package dev.abunai.confidentiality.analysis.model.uncertainty;
 
-import org.eclipse.emf.common.util.EList;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -33,6 +33,6 @@ public interface UncertaintySourceCollection extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<UncertaintySource> getSources();
+	List<UncertaintySource> getSources();
 
 } // UncertaintySourceCollection

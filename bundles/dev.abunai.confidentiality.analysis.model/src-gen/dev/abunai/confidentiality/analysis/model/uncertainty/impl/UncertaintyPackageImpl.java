@@ -806,14 +806,14 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 		initEReference(getExternalUncertaintySourceInResource_Scenarios(), this.getExternalUncertaintyScenarioInResource(), null, "scenarios", null, 0, -1, ExternalUncertaintySourceInResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(externalUncertaintySourceInUsageEClass, ExternalUncertaintySourceInUsage.class, "ExternalUncertaintySourceInUsage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExternalUncertaintySourceInUsage_Target(), theNodeCharacteristicsPackage.getUsageAsignee(), null, "target", null, 1, 1, ExternalUncertaintySourceInUsage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExternalUncertaintySourceInUsage_Target(), theNodeCharacteristicsPackage.getUsageAssignee(), null, "target", null, 1, 1, ExternalUncertaintySourceInUsage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getExternalUncertaintySourceInUsage_Scenarios(), this.getExternalUncertaintyScenarioInUsage(), null, "scenarios", null, 0, -1, ExternalUncertaintySourceInUsage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(externalUncertaintyScenarioInResourceEClass, ExternalUncertaintyScenarioInResource.class, "ExternalUncertaintyScenarioInResource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExternalUncertaintyScenarioInResource_Target(), theNodeCharacteristicsPackage.getRessourceAssignee(), null, "target", null, 1, 1, ExternalUncertaintyScenarioInResource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(externalUncertaintyScenarioInUsageEClass, ExternalUncertaintyScenarioInUsage.class, "ExternalUncertaintyScenarioInUsage", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExternalUncertaintyScenarioInUsage_Target(), theNodeCharacteristicsPackage.getUsageAsignee(), null, "target", null, 1, 1, ExternalUncertaintyScenarioInUsage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExternalUncertaintyScenarioInUsage_Target(), theNodeCharacteristicsPackage.getUsageAssignee(), null, "target", null, 1, 1, ExternalUncertaintyScenarioInUsage.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(behaviorUncertaintySourceEClass, BehaviorUncertaintySource.class, "BehaviorUncertaintySource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBehaviorUncertaintySource_Target(), theSeffPackage.getSetVariableAction(), null, "target", null, 1, 1, BehaviorUncertaintySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

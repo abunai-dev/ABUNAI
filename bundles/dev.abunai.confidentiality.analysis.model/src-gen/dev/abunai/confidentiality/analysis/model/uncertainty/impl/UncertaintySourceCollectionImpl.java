@@ -7,6 +7,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCollection;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -68,7 +69,7 @@ public class UncertaintySourceCollectionImpl extends MinimalEObjectImpl.Containe
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<UncertaintySource> getSources() {
+	public List<UncertaintySource> getSources() {
 		if (sources == null) {
 			sources = new EObjectContainmentEList<UncertaintySource>(UncertaintySource.class, this, UncertaintyPackage.UNCERTAINTY_SOURCE_COLLECTION__SOURCES);
 		}

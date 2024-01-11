@@ -2,7 +2,7 @@
  */
 package dev.abunai.confidentiality.analysis.model.uncertainty;
 
-import org.eclipse.emf.common.util.EList;
+import java.util.List;
 
 import org.palladiosimulator.pcm.seff.SetVariableAction;
 
@@ -56,6 +56,6 @@ public interface BehaviorUncertaintySource extends UncertaintySource {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<BehaviorUncertaintyScenario> getScenarios();
+	List<BehaviorUncertaintyScenario> getScenarios();
 
 } // BehaviorUncertaintySource
