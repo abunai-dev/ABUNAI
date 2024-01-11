@@ -38,7 +38,7 @@ public class ElementLookupHelper extends TestBase {
 
 		printDivider("Set Variable Actions", "Behavior Uncertainty");
 		printSetVariableActions();
-		
+
 		printDivider("Operation Signatures", "Interface Uncertainty");
 		System.out.println("To  be continued...");
 
@@ -96,13 +96,15 @@ public class ElementLookupHelper extends TestBase {
 	private ResourceDemandingSEFF findSEFFOfAction(SetVariableAction action) {
 		EObject container = action.eContainer();
 
-		while (true) {
+		while (container != null) {
 			if (container instanceof ResourceDemandingSEFF seff) {
 				return seff;
 			} else {
 				container = container.eContainer();
 			}
 		}
+		
+		return null;
 	}
 
 	private String prettyPrintSignature(Signature signature) {
@@ -117,8 +119,7 @@ public class ElementLookupHelper extends TestBase {
 	private <T> List<T> findAllElementsOfType(EClass targetType, Class<T> targetClass) {
 		ArrayList<EObject> result = new ArrayList<EObject>();
 
-		// Note: This has a very bad cubic runtime but it is also not part of the actual
-		// analysis :)
+		// This has a cubic runtime but it is also not part of the actual analysis :)
 		while (true) {
 			var element = analysis.getResourceProvider()
 					.lookupElementWithCondition(it -> it.eClass().equals(targetType) && !result.contains(it));
