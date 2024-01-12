@@ -11,8 +11,11 @@ import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristic
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.junit.jupiter.api.Test;
+import org.palladiosimulator.pcm.repository.CompositeDataType;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Parameter;
+import org.palladiosimulator.pcm.repository.PrimitiveDataType;
+import org.palladiosimulator.pcm.repository.RepositoryPackage;
 import org.palladiosimulator.pcm.repository.Signature;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
 import org.palladiosimulator.pcm.seff.SeffPackage;
@@ -40,7 +43,7 @@ public class ElementLookupHelper extends TestBase {
 		printSetVariableActions();
 
 		printDivider("Operation Signatures", "Interface Uncertainty");
-		System.out.println("To  be continued...");
+		printOperationSignatures();
 
 	}
 
@@ -105,6 +108,33 @@ public class ElementLookupHelper extends TestBase {
 		}
 		
 		return null;
+	}
+	
+	private void printOperationSignatures() {
+		var operationSignatures = findAllElementsOfType(RepositoryPackage.eINSTANCE.getOperationSignature(),
+				OperationSignature.class);
+		
+		for (var signature : operationSignatures) {
+			System.out.println("%s - %s.%s(%s)".formatted(signature.getId(), signature.getInterface__OperationSignature().getEntityName(), signature.getEntityName(), prettyPrintParameters(signature)));
+		}
+	}
+	
+	private String prettyPrintParameters(OperationSignature signature) {
+		var result = new ArrayList<String>();
+		
+		for(var parameter : signature.getParameters__OperationSignature()) {
+			var dataType = parameter.getDataType__Parameter();
+			
+			if(dataType instanceof CompositeDataType comp) {
+				result.add("%s %s".formatted(comp.getEntityName(), parameter.getParameterName()));
+			} else if (dataType instanceof PrimitiveDataType prim) {
+				result.add("%s %s".formatted(prim.getType().getName(), parameter.getParameterName()));
+			} else {
+				result.add(parameter.getParameterName());
+			}
+		}
+		
+		return String.join(", ", result);
 	}
 
 	private String prettyPrintSignature(Signature signature) {
