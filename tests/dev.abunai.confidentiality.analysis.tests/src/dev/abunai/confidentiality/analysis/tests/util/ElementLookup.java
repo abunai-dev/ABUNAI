@@ -34,7 +34,7 @@ import dev.abunai.confidentiality.analysis.tests.TestBase;
 public class ElementLookup extends TestBase {
 	@Override
 	protected String getFolderName() {
-		return "BranchingOnlineShop";
+		return "CoronaWarnApp";
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class ElementLookup extends TestBase {
 
 	@Override
 	protected String getBaseFolder() {
-		return "models";
+		return "casestudies/CaseStudy-CoronaWarnApp";
 	}
 
 	@Test
