@@ -34,4 +34,32 @@
       </editor>
    </extension>
 
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated uncertainty -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="dev.abunai.confidentiality.analysis.model.uncertainty.pcm.presentation.PcmModelWizardID"
+            name="%_UI_PcmModelWizard_label"
+            class="dev.abunai.confidentiality.analysis.model.uncertainty.pcm.presentation.PcmModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/PcmModelFile.gif">
+         <description>%_UI_PcmModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated uncertainty -->
+      <editor
+            id="dev.abunai.confidentiality.analysis.model.uncertainty.pcm.presentation.PcmEditorID"
+            name="%_UI_PcmEditor_label"
+            icon="icons/full/obj16/PcmModelFile.gif"
+            extensions="pcm"
+            class="dev.abunai.confidentiality.analysis.model.uncertainty.pcm.presentation.PcmEditor"
+            contributorClass="dev.abunai.confidentiality.analysis.model.uncertainty.pcm.presentation.PcmActionBarContributor">
+      </editor>
+   </extension>
+
 </plugin>

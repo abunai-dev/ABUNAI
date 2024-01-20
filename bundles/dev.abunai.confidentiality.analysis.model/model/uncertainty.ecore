@@ -9,85 +9,88 @@
   <eClassifiers xsi:type="ecore:EClass" name="UncertaintyScenario" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="probability" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintySource" abstract="true"
-      eSuperTypes="#//UncertaintySource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintySourceInResource"
-      eSuperTypes="#//ExternalUncertaintySource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//RessourceAssignee"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
-        eType="#//ExternalUncertaintyScenarioInResource" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintySourceInUsage" eSuperTypes="#//ExternalUncertaintySource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAssignee"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
-        eType="#//ExternalUncertaintyScenarioInUsage" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintyScenarioInResource"
-      eSuperTypes="#//UncertaintyScenario">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//RessourceAssignee"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintyScenarioInUsage"
-      eSuperTypes="#//UncertaintyScenario">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAssignee"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BehaviorUncertaintySource" eSuperTypes="#//UncertaintySource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//seff/SetVariableAction"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
-        eType="#//BehaviorUncertaintyScenario" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BehaviorUncertaintyScenario" eSuperTypes="#//UncertaintyScenario">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//seff/SetVariableAction"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InterfaceUncertaintySource" eSuperTypes="#//UncertaintySource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationSignature"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
-        eType="#//InterfaceUncertaintyScenario" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InterfaceUncertaintyScenario" eSuperTypes="#//UncertaintyScenario">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationSignature"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintySource" abstract="true"
-      eSuperTypes="#//UncertaintySource"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintySourceInExternalCall"
-      eSuperTypes="#//ConnectorUncertaintySource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//seff/ExternalCallAction"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
-        eType="#//ConnectorUncertaintyScenarioInExternalCall" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintySourceInEntryLevelSystemCall"
-      eSuperTypes="#//ConnectorUncertaintySource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel/EntryLevelSystemCall"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
-        eType="#//ConnectorUncertaintyScenarioInEntryLevelSystemCall" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintyScenarioInExternalCall"
-      eSuperTypes="#//UncertaintyScenario">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//seff/ExternalCallAction"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintyScenarioInEntryLevelSystemCall"
-      eSuperTypes="#//UncertaintyScenario">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel/EntryLevelSystemCall"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ComponentUncertaintySource" eSuperTypes="#//UncertaintySource">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
-        eType="#//ComponentUncertaintyScenario" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ComponentUncertaintyScenario" eSuperTypes="#//UncertaintyScenario">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-        eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
-  </eClassifiers>
+  <eSubpackages name="pcm" nsURI="http://abunai.dev/uncertainty/pcm" nsPrefix="pcm">
+    <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintySource" abstract="true"
+        eSuperTypes="#//UncertaintySource"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintySourceInResource"
+        eSuperTypes="#//pcm/ExternalUncertaintySource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//RessourceAssignee"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
+          eType="#//pcm/ExternalUncertaintyScenarioInResource" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintySourceInUsage"
+        eSuperTypes="#//pcm/ExternalUncertaintySource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAssignee"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
+          eType="#//pcm/ExternalUncertaintyScenarioInUsage" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintyScenarioInResource"
+        eSuperTypes="#//UncertaintyScenario">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//RessourceAssignee"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ExternalUncertaintyScenarioInUsage"
+        eSuperTypes="#//UncertaintyScenario">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.dataflowanalysis.pcm.extension.nodecharacteristics/model/nodeCharacteristics.ecore#//UsageAssignee"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BehaviorUncertaintySource" eSuperTypes="#//UncertaintySource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//seff/SetVariableAction"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
+          eType="#//pcm/BehaviorUncertaintyScenario" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BehaviorUncertaintyScenario" eSuperTypes="#//UncertaintyScenario">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//seff/SetVariableAction"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="InterfaceUncertaintySource" eSuperTypes="#//UncertaintySource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationSignature"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
+          eType="#//pcm/InterfaceUncertaintyScenario" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="InterfaceUncertaintyScenario" eSuperTypes="#//UncertaintyScenario">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//repository/OperationSignature"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintySource" abstract="true"
+        eSuperTypes="#//UncertaintySource"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintySourceInExternalCall"
+        eSuperTypes="#//pcm/ConnectorUncertaintySource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//seff/ExternalCallAction"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
+          eType="#//pcm/ConnectorUncertaintyScenarioInExternalCall" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintySourceInEntryLevelSystemCall"
+        eSuperTypes="#//pcm/ConnectorUncertaintySource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel/EntryLevelSystemCall"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
+          eType="#//pcm/ConnectorUncertaintyScenarioInEntryLevelSystemCall" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintyScenarioInExternalCall"
+        eSuperTypes="#//UncertaintyScenario">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//seff/ExternalCallAction"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ConnectorUncertaintyScenarioInEntryLevelSystemCall"
+        eSuperTypes="#//UncertaintyScenario">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//usagemodel/EntryLevelSystemCall"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ComponentUncertaintySource" eSuperTypes="#//UncertaintySource">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
+          eType="#//pcm/ComponentUncertaintyScenario" containment="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ComponentUncertaintyScenario" eSuperTypes="#//UncertaintyScenario">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+          eType="ecore:EClass ../../org.palladiosimulator.pcm/model/pcm.ecore#//core/composition/AssemblyContext"/>
+    </eClassifiers>
+  </eSubpackages>
 </ecore:EPackage>

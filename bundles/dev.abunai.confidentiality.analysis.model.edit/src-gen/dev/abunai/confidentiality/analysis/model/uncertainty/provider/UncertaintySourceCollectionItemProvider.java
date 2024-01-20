@@ -3,9 +3,10 @@
 package dev.abunai.confidentiality.analysis.model.uncertainty.provider;
 
 
-import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyFactory;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCollection;
+
+import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PcmFactory;
 
 import java.util.Collection;
 import java.util.List;
@@ -151,37 +152,37 @@ public class UncertaintySourceCollectionItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 UncertaintyFactory.eINSTANCE.createExternalUncertaintySourceInResource()));
+				 PcmFactory.eINSTANCE.createExternalUncertaintySourceInResource()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 UncertaintyFactory.eINSTANCE.createExternalUncertaintySourceInUsage()));
+				 PcmFactory.eINSTANCE.createExternalUncertaintySourceInUsage()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 UncertaintyFactory.eINSTANCE.createBehaviorUncertaintySource()));
+				 PcmFactory.eINSTANCE.createBehaviorUncertaintySource()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 UncertaintyFactory.eINSTANCE.createInterfaceUncertaintySource()));
+				 PcmFactory.eINSTANCE.createInterfaceUncertaintySource()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 UncertaintyFactory.eINSTANCE.createConnectorUncertaintySourceInExternalCall()));
+				 PcmFactory.eINSTANCE.createConnectorUncertaintySourceInExternalCall()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 UncertaintyFactory.eINSTANCE.createConnectorUncertaintySourceInEntryLevelSystemCall()));
+				 PcmFactory.eINSTANCE.createConnectorUncertaintySourceInEntryLevelSystemCall()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 UncertaintyFactory.eINSTANCE.createComponentUncertaintySource()));
+				 PcmFactory.eINSTANCE.createComponentUncertaintySource()));
 	}
 
 	/**

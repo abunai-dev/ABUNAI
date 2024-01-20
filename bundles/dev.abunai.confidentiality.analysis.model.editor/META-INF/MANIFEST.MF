@@ -9,7 +9,8 @@ Bundle-Activator: dev.abunai.confidentiality.analysis.model.uncertainty.presenta
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: dev.abunai.confidentiality.analysis.model.uncertainty.presentation
+Export-Package: dev.abunai.confidentiality.analysis.model.uncertainty.pcm.presentation,
+ dev.abunai.confidentiality.analysis.model.uncertainty.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
  dev.abunai.confidentiality.analysis.model.edit;visibility:=reexport,

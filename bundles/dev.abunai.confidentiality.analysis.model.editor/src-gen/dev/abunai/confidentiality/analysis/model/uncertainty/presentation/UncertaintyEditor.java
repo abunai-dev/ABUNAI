@@ -165,6 +165,8 @@ import de.uka.ipd.sdq.stoex.provider.StoexItemProviderAdapterFactory;
 
 import de.uka.ipd.sdq.units.provider.UnitsItemProviderAdapterFactory;
 
+import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.provider.PcmItemProviderAdapterFactory;
+
 import org.dataflowanalysis.pcm.extension.dictionary.DataDictionary.provider.DataDictionaryItemProviderAdapterFactory;
 
 import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.expressions.provider.ExpressionsItemProviderAdapterFactory;
@@ -200,8 +202,6 @@ import org.palladiosimulator.pcm.core.provider.CoreItemProviderAdapterFactory;
 import org.palladiosimulator.pcm.parameter.provider.ParameterItemProviderAdapterFactory;
 
 import org.palladiosimulator.pcm.protocol.provider.ProtocolItemProviderAdapterFactory;
-
-import org.palladiosimulator.pcm.provider.PcmItemProviderAdapterFactory;
 
 import org.palladiosimulator.pcm.qosannotations.provider.QosannotationsItemProviderAdapterFactory;
 
@@ -769,6 +769,7 @@ public class UncertaintyEditor
 
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new UncertaintyItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new PcmItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new DataDictionaryItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new DataDictionaryCharacterizedItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ExpressionsItemProviderAdapterFactory());
@@ -781,7 +782,7 @@ public class UncertaintyEditor
 		adapterFactory.addAdapterFactory(new EcoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new IdentifierItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new NodeCharacteristicsItemProviderAdapterFactory());
-		adapterFactory.addAdapterFactory(new PcmItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new org.palladiosimulator.pcm.provider.PcmItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CoreItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new EntityItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new CompositionItemProviderAdapterFactory());

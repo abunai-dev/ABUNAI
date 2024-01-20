@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uncertainty="http://abunai.dev/uncertainty">
-  <sources xsi:type="uncertainty:BehaviorUncertaintySource">
+<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pcm="http://abunai.dev/uncertainty/pcm" xmlns:uncertainty="http://abunai.dev/uncertainty">
+  <sources xsi:type="pcm:BehaviorUncertaintySource">
     <target href="default.repository#_B1yF0Nv0EeyYrpd_1AtxSw"/>
     <scenarios probability="0.5">
       <target href="default.repository#_IFQ3EITlEeywmO_IpTxeAg"/>
@@ -9,31 +9,31 @@
       <target href="default.repository#_tMGKUITmEeywmO_IpTxeAg"/>
     </scenarios>
   </sources>
-  <sources xsi:type="uncertainty:ExternalUncertaintySourceInResource">
+  <sources xsi:type="pcm:ExternalUncertaintySourceInResource">
     <target href="default.nodecharacteristics#//@assignee.0"/>
     <scenarios>
       <target href="default.nodecharacteristics#//@assignee.1"/>
     </scenarios>
   </sources>
-  <sources xsi:type="uncertainty:InterfaceUncertaintySource">
+  <sources xsi:type="pcm:InterfaceUncertaintySource">
     <target href="default.repository#_8XSe8ITiEeywmO_IpTxeAg"/>
     <scenarios probability="0.3">
       <target href="default.repository#_nK-QENvzEeyYrpd_1AtxSw"/>
     </scenarios>
   </sources>
-  <sources xsi:type="uncertainty:ComponentUncertaintySource">
+  <sources xsi:type="pcm:ComponentUncertaintySource">
     <target href="default.system#_4YTEYITjEeywmO_IpTxeAg"/>
     <scenarios>
       <target href="default.system#_4YTEYITjEeywmO_IpTxeAg"/>
     </scenarios>
   </sources>
-  <sources xsi:type="uncertainty:ConnectorUncertaintySourceInExternalCall">
+  <sources xsi:type="pcm:ConnectorUncertaintySourceInExternalCall">
     <target href="default.repository#_DX-mcNv2EeyYrpd_1AtxSw"/>
     <scenarios>
       <target href="default.repository#_QqAdMNv2EeyYrpd_1AtxSw"/>
     </scenarios>
   </sources>
-  <sources xsi:type="uncertainty:ConnectorUncertaintySourceInEntryLevelSystemCall">
+  <sources xsi:type="pcm:ConnectorUncertaintySourceInEntryLevelSystemCall">
     <target href="default.usagemodel#_hq6RAITkEeywmO_IpTxeAg"/>
     <scenarios>
       <target href="default.usagemodel#_Js2OAITnEeywmO_IpTxeAg"/>

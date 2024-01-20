@@ -10,6 +10,9 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: dev.abunai.confidentiality.analysis.model.uncertainty,
  dev.abunai.confidentiality.analysis.model.uncertainty.impl,
+ dev.abunai.confidentiality.analysis.model.uncertainty.pcm,
+ dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl,
+ dev.abunai.confidentiality.analysis.model.uncertainty.pcm.util,
  dev.abunai.confidentiality.analysis.model.uncertainty.util
 Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.dataflowanalysis.pcm.extension.dictionary;visibility:=reexport,
