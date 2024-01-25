@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.dataflowanalysis.analysis.pcm.utils.PCMQueryUtils;
 import org.dataflowanalysis.pcm.extension.model.confidentiality.characteristics.EnumCharacteristic;
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.NodeCharacteristicsPackage;
-import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.RessourceAssignee;
+import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.ResourceAssignee;
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -75,8 +75,8 @@ public class ElementLookup extends TestBase {
 	}
 
 	private void printNodeCharacteristicsAssignees() {
-		var resourceAssignees = findAllElementsOfType(NodeCharacteristicsPackage.eINSTANCE.getRessourceAssignee(),
-				RessourceAssignee.class);
+		var resourceAssignees = findAllElementsOfType(NodeCharacteristicsPackage.eINSTANCE.getResourceAssignee(),
+				ResourceAssignee.class);
 		var usageAssignees = findAllElementsOfType(NodeCharacteristicsPackage.eINSTANCE.getUsageAssignee(),
 				UsageAssignee.class);
 

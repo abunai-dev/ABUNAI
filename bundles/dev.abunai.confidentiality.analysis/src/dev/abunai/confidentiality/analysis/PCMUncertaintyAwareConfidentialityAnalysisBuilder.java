@@ -1,7 +1,6 @@
 package dev.abunai.confidentiality.analysis;
 
 import org.apache.log4j.Logger;
-import org.dataflowanalysis.analysis.AnalysisData;
 import org.dataflowanalysis.analysis.pcm.PCMDataFlowConfidentialityAnalysisBuilder;
 import org.dataflowanalysis.analysis.pcm.core.PCMDataCharacteristicsCalculatorFactory;
 import org.dataflowanalysis.analysis.pcm.core.PCMNodeCharacteristicsCalculator;
@@ -78,17 +77,14 @@ public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFl
 	public PCMUncertaintyAwareConfidentialityAnalysis build() {
 		this.validate();
 
-		// TODO: Rework once analysis data has been removed
 		PCMUncertaintyResourceProvider resourceProvider = new PCMUncertaintyResourceProvider(
 				ResourceUtils.createRelativePluginURI(this.relativeUsageModelPath, modelProjectName),
 				ResourceUtils.createRelativePluginURI(this.relativeAllocationModelPath, modelProjectName),
 				ResourceUtils.createRelativePluginURI(this.relativeNodeCharacteristicsPath, modelProjectName),
 				ResourceUtils.createRelativePluginURI(this.relativeUncertaintyModelPath, modelProjectName));
 
-		AnalysisData analysisData = new AnalysisData(resourceProvider,
-				new PCMNodeCharacteristicsCalculator(resourceProvider),
-				new PCMDataCharacteristicsCalculatorFactory(resourceProvider));
-
-		return new PCMUncertaintyAwareConfidentialityAnalysis(analysisData, modelProjectName, pluginActivator);
+		return new PCMUncertaintyAwareConfidentialityAnalysis(new PCMNodeCharacteristicsCalculator(resourceProvider),
+				new PCMDataCharacteristicsCalculatorFactory(resourceProvider), resourceProvider, modelProjectName,
+				pluginActivator);
 	}
 }

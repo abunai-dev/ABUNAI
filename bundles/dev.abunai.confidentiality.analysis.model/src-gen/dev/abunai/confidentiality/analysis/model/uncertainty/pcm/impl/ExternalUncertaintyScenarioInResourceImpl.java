@@ -7,7 +7,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintySce
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInResource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PcmPackage;
 
-import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.RessourceAssignee;
+import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.ResourceAssignee;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -39,7 +39,7 @@ public class ExternalUncertaintyScenarioInResourceImpl extends UncertaintyScenar
 	 * @generated
 	 * @ordered
 	 */
-	protected RessourceAssignee target;
+	protected ResourceAssignee target;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -65,10 +65,10 @@ public class ExternalUncertaintyScenarioInResourceImpl extends UncertaintyScenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RessourceAssignee getTarget() {
+	public ResourceAssignee getTarget() {
 		if (target != null && ((EObject)target).eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject)target;
-			target = (RessourceAssignee)eResolveProxy(oldTarget);
+			target = (ResourceAssignee)eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, PcmPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__TARGET, oldTarget, target));
@@ -82,7 +82,7 @@ public class ExternalUncertaintyScenarioInResourceImpl extends UncertaintyScenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public RessourceAssignee basicGetTarget() {
+	public ResourceAssignee basicGetTarget() {
 		return target;
 	}
 
@@ -91,8 +91,8 @@ public class ExternalUncertaintyScenarioInResourceImpl extends UncertaintyScenar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTarget(RessourceAssignee newTarget) {
-		RessourceAssignee oldTarget = target;
+	public void setTarget(ResourceAssignee newTarget) {
+		ResourceAssignee oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, PcmPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__TARGET, oldTarget, target));
@@ -122,7 +122,7 @@ public class ExternalUncertaintyScenarioInResourceImpl extends UncertaintyScenar
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case PcmPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__TARGET:
-				setTarget((RessourceAssignee)newValue);
+				setTarget((ResourceAssignee)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -137,7 +137,7 @@ public class ExternalUncertaintyScenarioInResourceImpl extends UncertaintyScenar
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case PcmPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__TARGET:
-				setTarget((RessourceAssignee)null);
+				setTarget((ResourceAssignee)null);
 				return;
 		}
 		super.eUnset(featureID);

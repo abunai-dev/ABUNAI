@@ -4,7 +4,7 @@ package dev.abunai.confidentiality.analysis.model.uncertainty.pcm;
 
 import java.util.List;
 
-import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.RessourceAssignee;
+import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.ResourceAssignee;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,12 +29,12 @@ public interface ExternalUncertaintySourceInResource extends ExternalUncertainty
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(RessourceAssignee)
+	 * @see #setTarget(ResourceAssignee)
 	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PcmPackage#getExternalUncertaintySourceInResource_Target()
 	 * @model required="true"
 	 * @generated
 	 */
-	RessourceAssignee getTarget();
+	ResourceAssignee getTarget();
 
 	/**
 	 * Sets the value of the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInResource#getTarget <em>Target</em>}' reference.
@@ -44,7 +44,7 @@ public interface ExternalUncertaintySourceInResource extends ExternalUncertainty
 	 * @see #getTarget()
 	 * @generated
 	 */
-	void setTarget(RessourceAssignee value);
+	void setTarget(ResourceAssignee value);
 
 	/**
 	 * Returns the value of the '<em><b>Scenarios</b></em>' containment reference list.
