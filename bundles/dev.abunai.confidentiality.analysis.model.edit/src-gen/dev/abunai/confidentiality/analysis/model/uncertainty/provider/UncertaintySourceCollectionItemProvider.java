@@ -190,6 +190,26 @@ public class UncertaintySourceCollectionItemProvider
 			(createChildParameter
 				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
 				 DfdFactory.eINSTANCE.createExternalUncertaintySource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
+				 DfdFactory.eINSTANCE.createBehaviorUncertaintySource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
+				 DfdFactory.eINSTANCE.createInterfaceUncertaintySource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
+				 DfdFactory.eINSTANCE.createConnectorUncertaintySource()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
+				 DfdFactory.eINSTANCE.createComponentUncertaintySource()));
 	}
 
 	/**
