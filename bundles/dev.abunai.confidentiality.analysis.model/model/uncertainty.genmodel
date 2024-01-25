@@ -109,16 +109,38 @@
       </genClasses>
       <genClasses ecoreClass="uncertainty.ecore#//dfd/InterfaceUncertaintySource">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/InterfaceUncertaintySource/targetPin"/>
+            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/InterfaceUncertaintySource/targetInPin"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/InterfaceUncertaintySource/targetFlow"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/InterfaceUncertaintySource/scenarios"/>
       </genClasses>
       <genClasses ecoreClass="uncertainty.ecore#//dfd/InterfaceUncertaintyScenario">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/InterfaceUncertaintyScenario/targetPin"/>
+            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/InterfaceUncertaintyScenario/targetInPin"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/InterfaceUncertaintyScenario/targetFlow"/>
+      </genClasses>
+      <genClasses ecoreClass="uncertainty.ecore#//dfd/ConnectorUncertaintySource">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/ConnectorUncertaintySource/targetAssignement"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/ConnectorUncertaintySource/targetFlow"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/ConnectorUncertaintySource/scenarios"/>
+      </genClasses>
+      <genClasses ecoreClass="uncertainty.ecore#//dfd/ConnectorUncertaintyScenario">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/ConnectorUncertaintyScenario/targetAssignment"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/ConnectorUncertaintyScenario/targetFlow"/>
+      </genClasses>
+      <genClasses ecoreClass="uncertainty.ecore#//dfd/ComponentUncertaintySource">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/ComponentUncertaintySource/target"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/ComponentUncertaintySource/scenarios"/>
+      </genClasses>
+      <genClasses ecoreClass="uncertainty.ecore#//dfd/ComponentUncertaintyScenario">
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/ComponentUncertaintyScenario/target"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>
