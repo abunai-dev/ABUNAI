@@ -7,8 +7,11 @@ Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: dev.abunai.confidentiality.analysis.model.uncertainty,
+ dev.abunai.confidentiality.analysis.model.uncertainty.dfd,
+ dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl,
+ dev.abunai.confidentiality.analysis.model.uncertainty.dfd.util,
  dev.abunai.confidentiality.analysis.model.uncertainty.impl,
  dev.abunai.confidentiality.analysis.model.uncertainty.pcm,
  dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl,
@@ -27,5 +30,7 @@ Require-Bundle: org.eclipse.emf.ecore;visibility:=reexport,
  org.dataflowanalysis.pcm.extension.model;bundle-version="5.1.0";visibility:=reexport,
  org.dataflowanalysis.analysis;bundle-version="1.0.0",
  org.dataflowanalysis.pcm.extension.nodecharacteristics;bundle-version="0.1.0";visibility:=reexport,
- tools.mdsd.modelingfoundations.identifier;bundle-version="0.1.0"
+ tools.mdsd.modelingfoundations.identifier;bundle-version="0.1.0";visibility:=reexport,
+ org.dataflowanalysis.dfd.datadictionary;visibility:=reexport,
+ org.dataflowanalysis.dfd.dataflowdiagram;visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -165,7 +165,13 @@ import de.uka.ipd.sdq.stoex.provider.StoexItemProviderAdapterFactory;
 
 import de.uka.ipd.sdq.units.provider.UnitsItemProviderAdapterFactory;
 
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.provider.DfdItemProviderAdapterFactory;
+
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.provider.PcmItemProviderAdapterFactory;
+
+import org.dataflowanalysis.dfd.datadictionary.provider.datadictionaryItemProviderAdapterFactory;
+
+import org.dataflowanalysis.dfd.dataflowdiagram.provider.dataflowdiagramItemProviderAdapterFactory;
 
 import org.dataflowanalysis.pcm.extension.dictionary.DataDictionary.provider.DataDictionaryItemProviderAdapterFactory;
 
@@ -770,6 +776,7 @@ public class UncertaintyEditor
 		adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new UncertaintyItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new PcmItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new DfdItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new DataDictionaryItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new DataDictionaryCharacterizedItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ExpressionsItemProviderAdapterFactory());
@@ -805,6 +812,9 @@ public class UncertaintyEditor
 		adapterFactory.addAdapterFactory(new ProbfunctionItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new StoexItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new UnitsItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new tools.mdsd.modelingfoundations.identifier.provider.IdentifierItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new datadictionaryItemProviderAdapterFactory());
+		adapterFactory.addAdapterFactory(new dataflowdiagramItemProviderAdapterFactory());
 		adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
 		// Create the command stack that will notify this editor as commands are executed.

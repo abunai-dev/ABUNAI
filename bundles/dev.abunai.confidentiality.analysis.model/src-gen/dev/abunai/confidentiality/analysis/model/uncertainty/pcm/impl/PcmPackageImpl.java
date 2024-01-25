@@ -12,6 +12,10 @@ import de.uka.ipd.sdq.units.UnitsPackage;
 
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage;
 
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage;
+
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl;
+
 import dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyPackageImpl;
 
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintyScenario;
@@ -32,6 +36,10 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncert
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PcmFactory;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PcmPackage;
+
+import org.dataflowanalysis.dfd.datadictionary.datadictionaryPackage;
+
+import org.dataflowanalysis.dfd.dataflowdiagram.dataflowdiagramPackage;
 
 import org.dataflowanalysis.pcm.extension.dictionary.DataDictionary.DataDictionaryPackage;
 
@@ -232,18 +240,25 @@ public class PcmPackageImpl extends EPackageImpl implements PcmPackage {
 		ProbfunctionPackage.eINSTANCE.eClass();
 		StoexPackage.eINSTANCE.eClass();
 		UnitsPackage.eINSTANCE.eClass();
+		tools.mdsd.modelingfoundations.identifier.IdentifierPackage.eINSTANCE.eClass();
+		datadictionaryPackage.eINSTANCE.eClass();
+		dataflowdiagramPackage.eINSTANCE.eClass();
 
 		// Obtain or create and register interdependencies
 		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(UncertaintyPackage.eNS_URI);
 		UncertaintyPackageImpl theUncertaintyPackage = (UncertaintyPackageImpl)(registeredPackage instanceof UncertaintyPackageImpl ? registeredPackage : UncertaintyPackage.eINSTANCE);
+		registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DfdPackage.eNS_URI);
+		DfdPackageImpl theDfdPackage = (DfdPackageImpl)(registeredPackage instanceof DfdPackageImpl ? registeredPackage : DfdPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		thePcmPackage.createPackageContents();
 		theUncertaintyPackage.createPackageContents();
+		theDfdPackage.createPackageContents();
 
 		// Initialize created meta-data
 		thePcmPackage.initializePackageContents();
 		theUncertaintyPackage.initializePackageContents();
+		theDfdPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		thePcmPackage.freeze();

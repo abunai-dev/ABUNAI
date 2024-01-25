@@ -62,4 +62,32 @@
       </editor>
    </extension>
 
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated uncertainty -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="dev.abunai.confidentiality.analysis.model.uncertainty.dfd.presentation.DfdModelWizardID"
+            name="%_UI_DfdModelWizard_label"
+            class="dev.abunai.confidentiality.analysis.model.uncertainty.dfd.presentation.DfdModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/DfdModelFile.gif">
+         <description>%_UI_DfdModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated uncertainty -->
+      <editor
+            id="dev.abunai.confidentiality.analysis.model.uncertainty.dfd.presentation.DfdEditorID"
+            name="%_UI_DfdEditor_label"
+            icon="icons/full/obj16/DfdModelFile.gif"
+            extensions="dfd"
+            class="dev.abunai.confidentiality.analysis.model.uncertainty.dfd.presentation.DfdEditor"
+            contributorClass="dev.abunai.confidentiality.analysis.model.uncertainty.dfd.presentation.DfdActionBarContributor">
+      </editor>
+   </extension>
+
 </plugin>

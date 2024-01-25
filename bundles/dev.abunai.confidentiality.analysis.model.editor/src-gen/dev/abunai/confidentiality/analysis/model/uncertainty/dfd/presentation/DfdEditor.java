@@ -1,6 +1,6 @@
 /**
  */
-package dev.abunai.confidentiality.analysis.model.uncertainty.pcm.presentation;
+package dev.abunai.confidentiality.analysis.model.uncertainty.dfd.presentation;
 
 
 import java.io.IOException;
@@ -155,7 +155,7 @@ import org.eclipse.emf.edit.ui.util.EditUIUtil;
 
 import org.eclipse.emf.edit.ui.view.ExtendedPropertySheetPage;
 
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.provider.PcmItemProviderAdapterFactory;
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.provider.DfdItemProviderAdapterFactory;
 
 import de.uka.ipd.sdq.identifier.provider.IdentifierItemProviderAdapterFactory;
 
@@ -165,7 +165,7 @@ import de.uka.ipd.sdq.stoex.provider.StoexItemProviderAdapterFactory;
 
 import de.uka.ipd.sdq.units.provider.UnitsItemProviderAdapterFactory;
 
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.provider.DfdItemProviderAdapterFactory;
+import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.provider.PcmItemProviderAdapterFactory;
 
 import dev.abunai.confidentiality.analysis.model.uncertainty.presentation.UncertaintyEditorPlugin;
 
@@ -237,12 +237,12 @@ import org.palladiosimulator.pcm.usagemodel.provider.UsagemodelItemProviderAdapt
 
 
 /**
- * This is an example of a Pcm model editor.
+ * This is an example of a Dfd model editor.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class PcmEditor
+public class DfdEditor
 	extends MultiPageEditorPart
 	implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 	/**
@@ -404,18 +404,18 @@ public class PcmEditor
 			public void partActivated(IWorkbenchPart p) {
 				if (p instanceof ContentOutline) {
 					if (((ContentOutline)p).getCurrentPage() == contentOutlinePage) {
-						getActionBarContributor().setActiveEditor(PcmEditor.this);
+						getActionBarContributor().setActiveEditor(DfdEditor.this);
 
 						setCurrentViewer(contentOutlineViewer);
 					}
 				}
 				else if (p instanceof PropertySheet) {
 					if (propertySheetPages.contains(((PropertySheet)p).getCurrentPage())) {
-						getActionBarContributor().setActiveEditor(PcmEditor.this);
+						getActionBarContributor().setActiveEditor(DfdEditor.this);
 						handleActivate();
 					}
 				}
-				else if (p == PcmEditor.this) {
+				else if (p == DfdEditor.this) {
 					handleActivate();
 				}
 			}
@@ -588,7 +588,7 @@ public class PcmEditor
 								 public void run() {
 									 removedResources.addAll(visitor.getRemovedResources());
 									 if (!isDirty()) {
-										 getSite().getPage().closeEditor(PcmEditor.this, false);
+										 getSite().getPage().closeEditor(DfdEditor.this, false);
 									 }
 								 }
 							 });
@@ -599,7 +599,7 @@ public class PcmEditor
 							(new Runnable() {
 								 public void run() {
 									 changedResources.addAll(visitor.getChangedResources());
-									 if (getSite().getPage().getActiveEditor() == PcmEditor.this) {
+									 if (getSite().getPage().getActiveEditor() == DfdEditor.this) {
 										 handleActivate();
 									 }
 								 }
@@ -631,7 +631,7 @@ public class PcmEditor
 
 		if (!removedResources.isEmpty()) {
 			if (handleDirtyConflict()) {
-				getSite().getPage().closeEditor(PcmEditor.this, false);
+				getSite().getPage().closeEditor(DfdEditor.this, false);
 			}
 			else {
 				removedResources.clear();
@@ -759,7 +759,7 @@ public class PcmEditor
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PcmEditor() {
+	public DfdEditor() {
 		super();
 		initializeEditingDomain();
 	}
@@ -1137,7 +1137,7 @@ public class PcmEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), PcmEditor.this) {
+					new ViewerPane(getSite().getPage(), DfdEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							Tree tree = new Tree(composite, SWT.MULTI);
@@ -1172,7 +1172,7 @@ public class PcmEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), PcmEditor.this) {
+					new ViewerPane(getSite().getPage(), DfdEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							Tree tree = new Tree(composite, SWT.MULTI);
@@ -1201,7 +1201,7 @@ public class PcmEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), PcmEditor.this) {
+					new ViewerPane(getSite().getPage(), DfdEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							return new ListViewer(composite);
@@ -1226,7 +1226,7 @@ public class PcmEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), PcmEditor.this) {
+					new ViewerPane(getSite().getPage(), DfdEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							return new TreeViewer(composite);
@@ -1253,7 +1253,7 @@ public class PcmEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), PcmEditor.this) {
+					new ViewerPane(getSite().getPage(), DfdEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							return new TableViewer(composite);
@@ -1296,7 +1296,7 @@ public class PcmEditor
 			//
 			{
 				ViewerPane viewerPane =
-					new ViewerPane(getSite().getPage(), PcmEditor.this) {
+					new ViewerPane(getSite().getPage(), DfdEditor.this) {
 						@Override
 						public Viewer createViewer(Composite composite) {
 							return new TreeViewer(composite);
@@ -1518,8 +1518,8 @@ public class PcmEditor
 			new ExtendedPropertySheetPage(editingDomain, ExtendedPropertySheetPage.Decoration.NONE, null, 0, false) {
 				@Override
 				public void setSelectionToViewer(List<?> selection) {
-					PcmEditor.this.setSelectionToViewer(selection);
-					PcmEditor.this.setFocus();
+					DfdEditor.this.setSelectionToViewer(selection);
+					DfdEditor.this.setFocus();
 				}
 
 				@Override

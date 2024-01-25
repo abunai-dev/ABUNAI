@@ -8,8 +8,9 @@ Bundle-ClassPath: .
 Bundle-Activator: dev.abunai.confidentiality.analysis.model.uncertainty.provider.UncertaintyEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: dev.abunai.confidentiality.analysis.model.uncertainty.pcm.provider,
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: dev.abunai.confidentiality.analysis.model.uncertainty.dfd.provider,
+ dev.abunai.confidentiality.analysis.model.uncertainty.pcm.provider,
  dev.abunai.confidentiality.analysis.model.uncertainty.provider
 Require-Bundle: org.eclipse.core.runtime,
  dev.abunai.confidentiality.analysis.model;visibility:=reexport,
@@ -33,5 +34,11 @@ Require-Bundle: org.eclipse.core.runtime,
  de.uka.ipd.sdq.stoex;visibility:=reexport,
  de.uka.ipd.sdq.stoex.edit;visibility:=reexport,
  de.uka.ipd.sdq.units;visibility:=reexport,
- de.uka.ipd.sdq.units.edit;visibility:=reexport
+ de.uka.ipd.sdq.units.edit;visibility:=reexport,
+ tools.mdsd.modelingfoundations.identifier;visibility:=reexport,
+ tools.mdsd.modelingfoundations.identifier.edit;visibility:=reexport,
+ org.dataflowanalysis.dfd.datadictionary;visibility:=reexport,
+ org.dataflowanalysis.dfd.datadictionary.edit;visibility:=reexport,
+ org.dataflowanalysis.dfd.dataflowdiagram;visibility:=reexport,
+ org.dataflowanalysis.dfd.dataflowdiagram.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -10,6 +10,8 @@ import de.uka.ipd.sdq.stoex.provider.StoexEditPlugin;
 
 import de.uka.ipd.sdq.units.provider.UnitsEditPlugin;
 
+import org.dataflowanalysis.dfd.dataflowdiagram.provider.DataFlowDiagramEditPlugin;
+
 import org.dataflowanalysis.pcm.extension.dictionary.DataDictionary.provider.DataDictionaryEditPlugin;
 
 import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.provider.DataDictionaryCharacterizedEditPlugin;
@@ -25,6 +27,8 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.provider.EcoreEditPlugin;
 
 import org.palladiosimulator.pcm.core.provider.PalladioComponentModelEditPlugin;
+
+import tools.mdsd.modelingfoundations.identifier.provider.ModelEditPlugin;
 
 /**
  * This is the central singleton for the Uncertainty edit plugin.
@@ -68,6 +72,9 @@ public final class UncertaintyEditPlugin extends EMFPlugin {
 		     ProbabilityFunctionEditPlugin.INSTANCE,
 		     StoexEditPlugin.INSTANCE,
 		     UnitsEditPlugin.INSTANCE,
+		     ModelEditPlugin.INSTANCE,
+		     org.dataflowanalysis.dfd.datadictionary.provider.DataDictionaryEditPlugin.INSTANCE,
+		     DataFlowDiagramEditPlugin.INSTANCE,
 		   });
 	}
 

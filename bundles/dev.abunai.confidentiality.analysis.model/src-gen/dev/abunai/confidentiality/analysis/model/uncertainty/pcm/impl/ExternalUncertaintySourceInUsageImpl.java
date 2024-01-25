@@ -17,7 +17,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -85,7 +84,7 @@ public class ExternalUncertaintySourceInUsageImpl extends ExternalUncertaintySou
 	 * @generated
 	 */
 	public UsageAssignee getTarget() {
-		if (target != null && ((EObject)target).eIsProxy()) {
+		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject)target;
 			target = (UsageAssignee)eResolveProxy(oldTarget);
 			if (target != oldTarget) {

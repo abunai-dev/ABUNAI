@@ -22,4 +22,12 @@
             genModel="model/uncertainty.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated uncertainty -->
+      <package
+            uri="http://abunai.dev/uncertainty/dfd"
+            class="dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage"
+            genModel="model/uncertainty.genmodel"/>
+   </extension>
+
 </plugin>

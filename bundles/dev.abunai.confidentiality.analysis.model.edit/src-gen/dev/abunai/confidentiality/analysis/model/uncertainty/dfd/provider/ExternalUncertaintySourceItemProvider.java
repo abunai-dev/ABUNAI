@@ -1,14 +1,14 @@
 /**
  */
-package dev.abunai.confidentiality.analysis.model.uncertainty.provider;
+package dev.abunai.confidentiality.analysis.model.uncertainty.dfd.provider;
 
-
-import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage;
-import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCollection;
 
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdFactory;
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage;
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource;
 
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PcmFactory;
+import dev.abunai.confidentiality.analysis.model.uncertainty.provider.UncertaintyEditPlugin;
+import dev.abunai.confidentiality.analysis.model.uncertainty.provider.UncertaintySourceItemProvider;
 
 import java.util.Collection;
 import java.util.List;
@@ -20,36 +20,24 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCollection} object.
+ * This is the item provider adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class UncertaintySourceCollectionItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class ExternalUncertaintySourceItemProvider extends UncertaintySourceItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UncertaintySourceCollectionItemProvider(AdapterFactory adapterFactory) {
+	public ExternalUncertaintySourceItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -64,8 +52,54 @@ public class UncertaintySourceCollectionItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
+			addTargetPropertyDescriptor(object);
+			addTargetPropertiesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
+	}
+
+	/**
+	 * This adds a property descriptor for the Target feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTargetPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ExternalUncertaintySource_target_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExternalUncertaintySource_target_feature", "_UI_ExternalUncertaintySource_type"),
+				 DfdPackage.Literals.EXTERNAL_UNCERTAINTY_SOURCE__TARGET,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Target Properties feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTargetPropertiesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ExternalUncertaintySource_targetProperties_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ExternalUncertaintySource_targetProperties_feature", "_UI_ExternalUncertaintySource_type"),
+				 DfdPackage.Literals.EXTERNAL_UNCERTAINTY_SOURCE__TARGET_PROPERTIES,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
 	}
 
 	/**
@@ -80,7 +114,7 @@ public class UncertaintySourceCollectionItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES);
+			childrenFeatures.add(DfdPackage.Literals.EXTERNAL_UNCERTAINTY_SOURCE__SCENARIOS);
 		}
 		return childrenFeatures;
 	}
@@ -99,14 +133,14 @@ public class UncertaintySourceCollectionItemProvider
 	}
 
 	/**
-	 * This returns UncertaintySourceCollection.gif.
+	 * This returns ExternalUncertaintySource.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/UncertaintySourceCollection"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ExternalUncertaintySource"));
 	}
 
 	/**
@@ -117,7 +151,7 @@ public class UncertaintySourceCollectionItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_UncertaintySourceCollection_type");
+		return getString("_UI_ExternalUncertaintySource_type");
 	}
 
 
@@ -132,8 +166,8 @@ public class UncertaintySourceCollectionItemProvider
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(UncertaintySourceCollection.class)) {
-			case UncertaintyPackage.UNCERTAINTY_SOURCE_COLLECTION__SOURCES:
+		switch (notification.getFeatureID(ExternalUncertaintySource.class)) {
+			case DfdPackage.EXTERNAL_UNCERTAINTY_SOURCE__SCENARIOS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
@@ -153,43 +187,8 @@ public class UncertaintySourceCollectionItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
-				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 PcmFactory.eINSTANCE.createExternalUncertaintySourceInResource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 PcmFactory.eINSTANCE.createExternalUncertaintySourceInUsage()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 PcmFactory.eINSTANCE.createBehaviorUncertaintySource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 PcmFactory.eINSTANCE.createInterfaceUncertaintySource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 PcmFactory.eINSTANCE.createConnectorUncertaintySourceInExternalCall()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 PcmFactory.eINSTANCE.createConnectorUncertaintySourceInEntryLevelSystemCall()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 PcmFactory.eINSTANCE.createComponentUncertaintySource()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(UncertaintyPackage.Literals.UNCERTAINTY_SOURCE_COLLECTION__SOURCES,
-				 DfdFactory.eINSTANCE.createExternalUncertaintySource()));
+				(DfdPackage.Literals.EXTERNAL_UNCERTAINTY_SOURCE__SCENARIOS,
+				 DfdFactory.eINSTANCE.createExternalUncertaintyScenario()));
 	}
 
 	/**

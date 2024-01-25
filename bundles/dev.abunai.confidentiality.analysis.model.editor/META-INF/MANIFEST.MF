@@ -8,8 +8,9 @@ Bundle-ClassPath: .
 Bundle-Activator: dev.abunai.confidentiality.analysis.model.uncertainty.presentation.UncertaintyEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-17
-Export-Package: dev.abunai.confidentiality.analysis.model.uncertainty.pcm.presentation,
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: dev.abunai.confidentiality.analysis.model.uncertainty.dfd.presentation,
+ dev.abunai.confidentiality.analysis.model.uncertainty.pcm.presentation,
  dev.abunai.confidentiality.analysis.model.uncertainty.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
@@ -26,5 +27,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.palladiosimulator.pcm.edit;visibility:=reexport,
  de.uka.ipd.sdq.probfunction.edit;visibility:=reexport,
  de.uka.ipd.sdq.stoex.edit;visibility:=reexport,
- de.uka.ipd.sdq.units.edit;visibility:=reexport
+ de.uka.ipd.sdq.units.edit;visibility:=reexport,
+ tools.mdsd.modelingfoundations.identifier.edit;visibility:=reexport,
+ org.dataflowanalysis.dfd.datadictionary.edit;visibility:=reexport,
+ org.dataflowanalysis.dfd.dataflowdiagram.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy

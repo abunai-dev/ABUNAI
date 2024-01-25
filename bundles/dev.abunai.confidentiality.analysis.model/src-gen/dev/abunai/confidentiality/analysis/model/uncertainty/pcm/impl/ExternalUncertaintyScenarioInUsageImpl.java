@@ -12,7 +12,6 @@ import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristic
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -66,7 +65,7 @@ public class ExternalUncertaintyScenarioInUsageImpl extends UncertaintyScenarioI
 	 * @generated
 	 */
 	public UsageAssignee getTarget() {
-		if (target != null && ((EObject)target).eIsProxy()) {
+		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject)target;
 			target = (UsageAssignee)eResolveProxy(oldTarget);
 			if (target != oldTarget) {
