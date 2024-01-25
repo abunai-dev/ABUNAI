@@ -1,4 +1,4 @@
-package dev.abunai.confidentiality.analysis;
+package dev.abunai.confidentiality.analysis.pcm;
 
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.pcm.PCMDataFlowConfidentialityAnalysisBuilder;

@@ -3,7 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Uncertainty Aware Confidentiality Analysis
 Bundle-SymbolicName: dev.abunai.confidentiality.analysis
 Bundle-Version: 1.0.0.qualifier
-Export-Package: dev.abunai.confidentiality.analysis
+Export-Package: dev.abunai.confidentiality.analysis,
+ dev.abunai.confidentiality.analysis.pcm
 Require-Bundle: org.dataflowanalysis.analysis;bundle-version="1.0.0";visibility:=reexport,
  dev.abunai.confidentiality.analysis.model;bundle-version="0.1.0";visibility:=reexport,
  org.dataflowanalysis.analysis.pcm;bundle-version="1.0.0";visibility:=reexport

@@ -3,14 +3,15 @@ package dev.abunai.confidentiality.analysis.tests;
 import java.nio.file.Paths;
 
 import org.junit.jupiter.api.BeforeEach;
-import dev.abunai.confidentiality.analysis.PCMUncertaintyAwareConfidentialityAnalysis;
-import dev.abunai.confidentiality.analysis.PCMUncertaintyAwareConfidentialityAnalysisBuilder;
+
+import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
+import dev.abunai.confidentiality.analysis.pcm.PCMUncertaintyAwareConfidentialityAnalysisBuilder;
 import dev.abunai.confidentiality.analysis.testmodels.Activator;
 
 public abstract class TestBase {
 
 	public static final String TEST_MODEL_PROJECT_NAME = "dev.abunai.confidentiality.analysis.testmodels";
-	protected PCMUncertaintyAwareConfidentialityAnalysis analysis = null;
+	protected UncertaintyAwareConfidentialityAnalysis analysis = null;
 
 	protected abstract String getFolderName();
 
@@ -36,7 +37,7 @@ public abstract class TestBase {
 				.useUsageModel(usageModelPath).useAllocationModel(allocationPath).useUncertaintyModel(uncertaintyPath)
 				.useNodeCharacteristicsModel(nodeCharacteristicsPath);
 
-		var analysis = builder.build();
+		UncertaintyAwareConfidentialityAnalysis analysis = builder.build();
 		analysis.initializeAnalysis();
 
 		this.analysis = analysis;

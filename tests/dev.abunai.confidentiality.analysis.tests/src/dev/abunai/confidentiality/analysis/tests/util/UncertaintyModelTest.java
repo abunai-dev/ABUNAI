@@ -25,7 +25,7 @@ public class UncertaintyModelTest extends TestBase {
 
 	@Test
 	void testUncertaintyModel() {
-		var sourceCollection = analysis.getResourceProvider().getUncertaintySourceCollection();
+		var sourceCollection = analysis.getUncertaintySourceCollection();
 		System.out.println(sourceCollection.getSources().size());
 	}
 
