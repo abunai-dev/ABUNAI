@@ -3,6 +3,7 @@ package dev.abunai.confidentiality.analysis.dfd;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.dataflowanalysis.analysis.core.ActionSequence;
 import org.dataflowanalysis.analysis.dfd.resource.DFDURIResourceProvider;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -35,6 +36,10 @@ public class DFDUncertaintyResourceProvider extends DFDURIResourceProvider imple
 	@Override
 	public UncertaintySourceCollection getUncertaintySourceCollection() {
 		return this.uncertaintySourceCollection;
+	}
+	
+	public void applyUncertaintyScenarios(List<ActionSequence> sequences) {
+		// TODO: Create type independent structure for uncertainty in action sequences, then generate and return it here
 	}
 
 }

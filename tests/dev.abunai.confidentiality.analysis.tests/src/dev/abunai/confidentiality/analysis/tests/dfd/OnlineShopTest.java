@@ -25,7 +25,9 @@ public class OnlineShopTest extends DFDTestBase {
 	void testAnalysis() {
 		var sourceCollection = analysis.getUncertaintySourceCollection();
 		System.out.println(sourceCollection.getSources().size());
-		
+
+		sourceCollection.getSources().forEach(source -> System.out.println(source.getClass().getSimpleName()));
+
 		var evaluatedSequences = analysis.evaluateDataFlows(analysis.findAllSequences());
 		System.out.println(evaluatedSequences.size());
 	}
