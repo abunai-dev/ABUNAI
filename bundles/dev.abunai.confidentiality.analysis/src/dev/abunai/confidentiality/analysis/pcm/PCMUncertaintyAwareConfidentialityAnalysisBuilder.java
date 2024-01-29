@@ -69,7 +69,7 @@ public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFl
 
 		if (this.relativeUncertaintyModelPath == null || this.relativeUncertaintyModelPath.isEmpty()) {
 			logger.warn(
-					"Uncertainty model missing. Only confidentiality analysis without considering uncertainty will be possible");
+					"Uncertainty model missing. Only confidentiality analysis without considering uncertainty will be possible.");
 		}
 	}
 

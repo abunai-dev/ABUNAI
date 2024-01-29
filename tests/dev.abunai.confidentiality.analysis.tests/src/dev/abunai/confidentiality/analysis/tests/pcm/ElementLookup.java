@@ -1,4 +1,4 @@
-package dev.abunai.confidentiality.analysis.tests.util;
+package dev.abunai.confidentiality.analysis.tests.pcm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,9 +30,9 @@ import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
 import org.palladiosimulator.pcm.usagemodel.UsageScenario;
 import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage;
 
-import dev.abunai.confidentiality.analysis.tests.TestBase;
+import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
-public class ElementLookup extends TestBase {
+public class ElementLookup extends PCMTestBase {
 	@Override
 	protected String getFolderName() {
 		return "BranchingOnlineSHop";
@@ -47,7 +47,7 @@ public class ElementLookup extends TestBase {
 	@Override
 	protected String getBaseFolder() {
 		return "models";
-		//return "casestudies/CaseStudy-CoronaWarnApp";
+		// return "casestudies/CaseStudy-CoronaWarnApp";
 	}
 
 	@Disabled

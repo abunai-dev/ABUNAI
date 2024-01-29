@@ -10,7 +10,8 @@ import org.eclipse.core.runtime.Plugin;
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCollection;
 
-public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfidentialityAnalysis implements UncertaintyAwareConfidentialityAnalysis {
+public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfidentialityAnalysis
+		implements UncertaintyAwareConfidentialityAnalysis {
 	public PCMUncertaintyAwareConfidentialityAnalysis(NodeCharacteristicsCalculator nodeCharacteristicsCalculator,
 			DataCharacteristicsCalculatorFactory dataCharacteristicsCalculatorFactory,
 			PCMUncertaintyResourceProvider resourceProvider, String modelProjectName,
@@ -23,7 +24,7 @@ public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfi
 	public PCMUncertaintyResourceProvider getResourceProvider() {
 		return (PCMUncertaintyResourceProvider) resourceProvider;
 	}
-	
+
 	public UncertaintySourceCollection getUncertaintySourceCollection() {
 		return this.getResourceProvider().getUncertaintySourceCollection();
 	}

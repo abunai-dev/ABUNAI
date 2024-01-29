@@ -7,5 +7,6 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCo
 
 public interface UncertaintyAwareConfidentialityAnalysis extends DataFlowConfidentialityAnalysis {
 	UncertaintySourceCollection getUncertaintySourceCollection();
+
 	ResourceProvider getResourceProvider();
 }

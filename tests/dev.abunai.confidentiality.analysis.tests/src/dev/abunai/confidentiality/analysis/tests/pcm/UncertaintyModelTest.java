@@ -1,10 +1,10 @@
-package dev.abunai.confidentiality.analysis.tests.util;
+package dev.abunai.confidentiality.analysis.tests.pcm;
 
 import org.junit.jupiter.api.Test;
 
-import dev.abunai.confidentiality.analysis.tests.TestBase;
+import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
-public class UncertaintyModelTest extends TestBase {
+public class UncertaintyModelTest extends PCMTestBase {
 
 	@Override
 	protected String getFolderName() {
