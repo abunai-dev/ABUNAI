@@ -71,68 +71,72 @@ public class PcmAdapterFactory extends AdapterFactoryImpl {
 	protected PcmSwitch<Adapter> modelSwitch =
 		new PcmSwitch<Adapter>() {
 			@Override
-			public Adapter caseExternalUncertaintySource(ExternalUncertaintySource object) {
-				return createExternalUncertaintySourceAdapter();
+			public Adapter casePCMUncertaintySource(PCMUncertaintySource object) {
+				return createPCMUncertaintySourceAdapter();
 			}
 			@Override
-			public Adapter caseExternalUncertaintySourceInResource(ExternalUncertaintySourceInResource object) {
-				return createExternalUncertaintySourceInResourceAdapter();
+			public Adapter casePCMExternalUncertaintySource(PCMExternalUncertaintySource object) {
+				return createPCMExternalUncertaintySourceAdapter();
 			}
 			@Override
-			public Adapter caseExternalUncertaintySourceInUsage(ExternalUncertaintySourceInUsage object) {
-				return createExternalUncertaintySourceInUsageAdapter();
+			public Adapter casePCMExternalUncertaintySourceInResource(PCMExternalUncertaintySourceInResource object) {
+				return createPCMExternalUncertaintySourceInResourceAdapter();
 			}
 			@Override
-			public Adapter caseExternalUncertaintyScenarioInResource(ExternalUncertaintyScenarioInResource object) {
-				return createExternalUncertaintyScenarioInResourceAdapter();
+			public Adapter casePCMExternalUncertaintySourceInUsage(PCMExternalUncertaintySourceInUsage object) {
+				return createPCMExternalUncertaintySourceInUsageAdapter();
 			}
 			@Override
-			public Adapter caseExternalUncertaintyScenarioInUsage(ExternalUncertaintyScenarioInUsage object) {
-				return createExternalUncertaintyScenarioInUsageAdapter();
+			public Adapter casePCMExternalUncertaintyScenarioInResource(PCMExternalUncertaintyScenarioInResource object) {
+				return createPCMExternalUncertaintyScenarioInResourceAdapter();
 			}
 			@Override
-			public Adapter caseBehaviorUncertaintySource(BehaviorUncertaintySource object) {
-				return createBehaviorUncertaintySourceAdapter();
+			public Adapter casePCMExternalUncertaintyScenarioInUsage(PCMExternalUncertaintyScenarioInUsage object) {
+				return createPCMExternalUncertaintyScenarioInUsageAdapter();
 			}
 			@Override
-			public Adapter caseBehaviorUncertaintyScenario(BehaviorUncertaintyScenario object) {
-				return createBehaviorUncertaintyScenarioAdapter();
+			public Adapter casePCMBehaviorUncertaintySource(PCMBehaviorUncertaintySource object) {
+				return createPCMBehaviorUncertaintySourceAdapter();
 			}
 			@Override
-			public Adapter caseInterfaceUncertaintySource(InterfaceUncertaintySource object) {
-				return createInterfaceUncertaintySourceAdapter();
+			public Adapter casePCMBehaviorUncertaintyScenario(PCMBehaviorUncertaintyScenario object) {
+				return createPCMBehaviorUncertaintyScenarioAdapter();
 			}
 			@Override
-			public Adapter caseInterfaceUncertaintyScenario(InterfaceUncertaintyScenario object) {
-				return createInterfaceUncertaintyScenarioAdapter();
+			public Adapter casePCMInterfaceUncertaintySource(PCMInterfaceUncertaintySource object) {
+				return createPCMInterfaceUncertaintySourceAdapter();
 			}
 			@Override
-			public Adapter caseConnectorUncertaintySource(ConnectorUncertaintySource object) {
-				return createConnectorUncertaintySourceAdapter();
+			public Adapter casePCMInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario object) {
+				return createPCMInterfaceUncertaintyScenarioAdapter();
 			}
 			@Override
-			public Adapter caseConnectorUncertaintySourceInExternalCall(ConnectorUncertaintySourceInExternalCall object) {
-				return createConnectorUncertaintySourceInExternalCallAdapter();
+			public Adapter casePCMConnectorUncertaintySource(PCMConnectorUncertaintySource object) {
+				return createPCMConnectorUncertaintySourceAdapter();
 			}
 			@Override
-			public Adapter caseConnectorUncertaintySourceInEntryLevelSystemCall(ConnectorUncertaintySourceInEntryLevelSystemCall object) {
-				return createConnectorUncertaintySourceInEntryLevelSystemCallAdapter();
+			public Adapter casePCMConnectorUncertaintySourceInExternalCall(PCMConnectorUncertaintySourceInExternalCall object) {
+				return createPCMConnectorUncertaintySourceInExternalCallAdapter();
 			}
 			@Override
-			public Adapter caseConnectorUncertaintyScenarioInExternalCall(ConnectorUncertaintyScenarioInExternalCall object) {
-				return createConnectorUncertaintyScenarioInExternalCallAdapter();
+			public Adapter casePCMConnectorUncertaintySourceInEntryLevelSystemCall(PCMConnectorUncertaintySourceInEntryLevelSystemCall object) {
+				return createPCMConnectorUncertaintySourceInEntryLevelSystemCallAdapter();
 			}
 			@Override
-			public Adapter caseConnectorUncertaintyScenarioInEntryLevelSystemCall(ConnectorUncertaintyScenarioInEntryLevelSystemCall object) {
-				return createConnectorUncertaintyScenarioInEntryLevelSystemCallAdapter();
+			public Adapter casePCMConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall object) {
+				return createPCMConnectorUncertaintyScenarioInExternalCallAdapter();
 			}
 			@Override
-			public Adapter caseComponentUncertaintySource(ComponentUncertaintySource object) {
-				return createComponentUncertaintySourceAdapter();
+			public Adapter casePCMConnectorUncertaintyScenarioInEntryLevelSystemCall(PCMConnectorUncertaintyScenarioInEntryLevelSystemCall object) {
+				return createPCMConnectorUncertaintyScenarioInEntryLevelSystemCallAdapter();
 			}
 			@Override
-			public Adapter caseComponentUncertaintyScenario(ComponentUncertaintyScenario object) {
-				return createComponentUncertaintyScenarioAdapter();
+			public Adapter casePCMComponentUncertaintySource(PCMComponentUncertaintySource object) {
+				return createPCMComponentUncertaintySourceAdapter();
+			}
+			@Override
+			public Adapter casePCMComponentUncertaintyScenario(PCMComponentUncertaintyScenario object) {
+				return createPCMComponentUncertaintyScenarioAdapter();
 			}
 			@Override
 			public Adapter caseUncertaintySource(UncertaintySource object) {
@@ -163,226 +167,240 @@ public class PcmAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySource <em>External Uncertainty Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource <em>PCM Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource
 	 * @generated
 	 */
-	public Adapter createExternalUncertaintySourceAdapter() {
+	public Adapter createPCMUncertaintySourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInResource <em>External Uncertainty Source In Resource</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySource <em>PCM External Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInResource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySource
 	 * @generated
 	 */
-	public Adapter createExternalUncertaintySourceInResourceAdapter() {
+	public Adapter createPCMExternalUncertaintySourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInUsage <em>External Uncertainty Source In Usage</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInResource <em>PCM External Uncertainty Source In Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInUsage
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInResource
 	 * @generated
 	 */
-	public Adapter createExternalUncertaintySourceInUsageAdapter() {
+	public Adapter createPCMExternalUncertaintySourceInResourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInResource <em>External Uncertainty Scenario In Resource</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInUsage <em>PCM External Uncertainty Source In Usage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInResource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInUsage
 	 * @generated
 	 */
-	public Adapter createExternalUncertaintyScenarioInResourceAdapter() {
+	public Adapter createPCMExternalUncertaintySourceInUsageAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInUsage <em>External Uncertainty Scenario In Usage</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInResource <em>PCM External Uncertainty Scenario In Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInUsage
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInResource
 	 * @generated
 	 */
-	public Adapter createExternalUncertaintyScenarioInUsageAdapter() {
+	public Adapter createPCMExternalUncertaintyScenarioInResourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintySource <em>Behavior Uncertainty Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInUsage <em>PCM External Uncertainty Scenario In Usage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintySource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInUsage
 	 * @generated
 	 */
-	public Adapter createBehaviorUncertaintySourceAdapter() {
+	public Adapter createPCMExternalUncertaintyScenarioInUsageAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintyScenario <em>Behavior Uncertainty Scenario</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource <em>PCM Behavior Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintyScenario
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource
 	 * @generated
 	 */
-	public Adapter createBehaviorUncertaintyScenarioAdapter() {
+	public Adapter createPCMBehaviorUncertaintySourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintySource <em>Interface Uncertainty Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintyScenario <em>PCM Behavior Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintySource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintyScenario
 	 * @generated
 	 */
-	public Adapter createInterfaceUncertaintySourceAdapter() {
+	public Adapter createPCMBehaviorUncertaintyScenarioAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintyScenario <em>Interface Uncertainty Scenario</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource <em>PCM Interface Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintyScenario
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource
 	 * @generated
 	 */
-	public Adapter createInterfaceUncertaintyScenarioAdapter() {
+	public Adapter createPCMInterfaceUncertaintySourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySource <em>Connector Uncertainty Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintyScenario <em>PCM Interface Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintyScenario
 	 * @generated
 	 */
-	public Adapter createConnectorUncertaintySourceAdapter() {
+	public Adapter createPCMInterfaceUncertaintyScenarioAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInExternalCall <em>Connector Uncertainty Source In External Call</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySource <em>PCM Connector Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInExternalCall
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySource
 	 * @generated
 	 */
-	public Adapter createConnectorUncertaintySourceInExternalCallAdapter() {
+	public Adapter createPCMConnectorUncertaintySourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInEntryLevelSystemCall <em>Connector Uncertainty Source In Entry Level System Call</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInExternalCall <em>PCM Connector Uncertainty Source In External Call</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInEntryLevelSystemCall
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInExternalCall
 	 * @generated
 	 */
-	public Adapter createConnectorUncertaintySourceInEntryLevelSystemCallAdapter() {
+	public Adapter createPCMConnectorUncertaintySourceInExternalCallAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInExternalCall <em>Connector Uncertainty Scenario In External Call</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInEntryLevelSystemCall <em>PCM Connector Uncertainty Source In Entry Level System Call</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInExternalCall
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInEntryLevelSystemCall
 	 * @generated
 	 */
-	public Adapter createConnectorUncertaintyScenarioInExternalCallAdapter() {
+	public Adapter createPCMConnectorUncertaintySourceInEntryLevelSystemCallAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInEntryLevelSystemCall <em>Connector Uncertainty Scenario In Entry Level System Call</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInExternalCall <em>PCM Connector Uncertainty Scenario In External Call</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInEntryLevelSystemCall
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInExternalCall
 	 * @generated
 	 */
-	public Adapter createConnectorUncertaintyScenarioInEntryLevelSystemCallAdapter() {
+	public Adapter createPCMConnectorUncertaintyScenarioInExternalCallAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintySource <em>Component Uncertainty Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInEntryLevelSystemCall <em>PCM Connector Uncertainty Scenario In Entry Level System Call</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintySource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInEntryLevelSystemCall
 	 * @generated
 	 */
-	public Adapter createComponentUncertaintySourceAdapter() {
+	public Adapter createPCMConnectorUncertaintyScenarioInEntryLevelSystemCallAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintyScenario <em>Component Uncertainty Scenario</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintySource <em>PCM Component Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintyScenario
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintySource
 	 * @generated
 	 */
-	public Adapter createComponentUncertaintyScenarioAdapter() {
+	public Adapter createPCMComponentUncertaintySourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintyScenario <em>PCM Component Uncertainty Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintyScenario
+	 * @generated
+	 */
+	public Adapter createPCMComponentUncertaintyScenarioAdapter() {
 		return null;
 	}
 

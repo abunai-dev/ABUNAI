@@ -56,20 +56,20 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case PcmPackage.EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE: return createExternalUncertaintySourceInResource();
-			case PcmPackage.EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE: return createExternalUncertaintySourceInUsage();
-			case PcmPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE: return createExternalUncertaintyScenarioInResource();
-			case PcmPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE: return createExternalUncertaintyScenarioInUsage();
-			case PcmPackage.BEHAVIOR_UNCERTAINTY_SOURCE: return createBehaviorUncertaintySource();
-			case PcmPackage.BEHAVIOR_UNCERTAINTY_SCENARIO: return createBehaviorUncertaintyScenario();
-			case PcmPackage.INTERFACE_UNCERTAINTY_SOURCE: return createInterfaceUncertaintySource();
-			case PcmPackage.INTERFACE_UNCERTAINTY_SCENARIO: return createInterfaceUncertaintyScenario();
-			case PcmPackage.CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL: return createConnectorUncertaintySourceInExternalCall();
-			case PcmPackage.CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL: return createConnectorUncertaintySourceInEntryLevelSystemCall();
-			case PcmPackage.CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL: return createConnectorUncertaintyScenarioInExternalCall();
-			case PcmPackage.CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL: return createConnectorUncertaintyScenarioInEntryLevelSystemCall();
-			case PcmPackage.COMPONENT_UNCERTAINTY_SOURCE: return createComponentUncertaintySource();
-			case PcmPackage.COMPONENT_UNCERTAINTY_SCENARIO: return createComponentUncertaintyScenario();
+			case PcmPackage.PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE: return createPCMExternalUncertaintySourceInResource();
+			case PcmPackage.PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE: return createPCMExternalUncertaintySourceInUsage();
+			case PcmPackage.PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE: return createPCMExternalUncertaintyScenarioInResource();
+			case PcmPackage.PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE: return createPCMExternalUncertaintyScenarioInUsage();
+			case PcmPackage.PCM_BEHAVIOR_UNCERTAINTY_SOURCE: return createPCMBehaviorUncertaintySource();
+			case PcmPackage.PCM_BEHAVIOR_UNCERTAINTY_SCENARIO: return createPCMBehaviorUncertaintyScenario();
+			case PcmPackage.PCM_INTERFACE_UNCERTAINTY_SOURCE: return createPCMInterfaceUncertaintySource();
+			case PcmPackage.PCM_INTERFACE_UNCERTAINTY_SCENARIO: return createPCMInterfaceUncertaintyScenario();
+			case PcmPackage.PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL: return createPCMConnectorUncertaintySourceInExternalCall();
+			case PcmPackage.PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL: return createPCMConnectorUncertaintySourceInEntryLevelSystemCall();
+			case PcmPackage.PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL: return createPCMConnectorUncertaintyScenarioInExternalCall();
+			case PcmPackage.PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL: return createPCMConnectorUncertaintyScenarioInEntryLevelSystemCall();
+			case PcmPackage.PCM_COMPONENT_UNCERTAINTY_SOURCE: return createPCMComponentUncertaintySource();
+			case PcmPackage.PCM_COMPONENT_UNCERTAINTY_SCENARIO: return createPCMComponentUncertaintyScenario();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -80,9 +80,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExternalUncertaintySourceInResource createExternalUncertaintySourceInResource() {
-		ExternalUncertaintySourceInResourceImpl externalUncertaintySourceInResource = new ExternalUncertaintySourceInResourceImpl();
-		return externalUncertaintySourceInResource;
+	public PCMExternalUncertaintySourceInResource createPCMExternalUncertaintySourceInResource() {
+		PCMExternalUncertaintySourceInResourceImpl pcmExternalUncertaintySourceInResource = new PCMExternalUncertaintySourceInResourceImpl();
+		return pcmExternalUncertaintySourceInResource;
 	}
 
 	/**
@@ -90,9 +90,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExternalUncertaintySourceInUsage createExternalUncertaintySourceInUsage() {
-		ExternalUncertaintySourceInUsageImpl externalUncertaintySourceInUsage = new ExternalUncertaintySourceInUsageImpl();
-		return externalUncertaintySourceInUsage;
+	public PCMExternalUncertaintySourceInUsage createPCMExternalUncertaintySourceInUsage() {
+		PCMExternalUncertaintySourceInUsageImpl pcmExternalUncertaintySourceInUsage = new PCMExternalUncertaintySourceInUsageImpl();
+		return pcmExternalUncertaintySourceInUsage;
 	}
 
 	/**
@@ -100,9 +100,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExternalUncertaintyScenarioInResource createExternalUncertaintyScenarioInResource() {
-		ExternalUncertaintyScenarioInResourceImpl externalUncertaintyScenarioInResource = new ExternalUncertaintyScenarioInResourceImpl();
-		return externalUncertaintyScenarioInResource;
+	public PCMExternalUncertaintyScenarioInResource createPCMExternalUncertaintyScenarioInResource() {
+		PCMExternalUncertaintyScenarioInResourceImpl pcmExternalUncertaintyScenarioInResource = new PCMExternalUncertaintyScenarioInResourceImpl();
+		return pcmExternalUncertaintyScenarioInResource;
 	}
 
 	/**
@@ -110,9 +110,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExternalUncertaintyScenarioInUsage createExternalUncertaintyScenarioInUsage() {
-		ExternalUncertaintyScenarioInUsageImpl externalUncertaintyScenarioInUsage = new ExternalUncertaintyScenarioInUsageImpl();
-		return externalUncertaintyScenarioInUsage;
+	public PCMExternalUncertaintyScenarioInUsage createPCMExternalUncertaintyScenarioInUsage() {
+		PCMExternalUncertaintyScenarioInUsageImpl pcmExternalUncertaintyScenarioInUsage = new PCMExternalUncertaintyScenarioInUsageImpl();
+		return pcmExternalUncertaintyScenarioInUsage;
 	}
 
 	/**
@@ -120,9 +120,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BehaviorUncertaintySource createBehaviorUncertaintySource() {
-		BehaviorUncertaintySourceImpl behaviorUncertaintySource = new BehaviorUncertaintySourceImpl();
-		return behaviorUncertaintySource;
+	public PCMBehaviorUncertaintySource createPCMBehaviorUncertaintySource() {
+		PCMBehaviorUncertaintySourceImpl pcmBehaviorUncertaintySource = new PCMBehaviorUncertaintySourceImpl();
+		return pcmBehaviorUncertaintySource;
 	}
 
 	/**
@@ -130,9 +130,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BehaviorUncertaintyScenario createBehaviorUncertaintyScenario() {
-		BehaviorUncertaintyScenarioImpl behaviorUncertaintyScenario = new BehaviorUncertaintyScenarioImpl();
-		return behaviorUncertaintyScenario;
+	public PCMBehaviorUncertaintyScenario createPCMBehaviorUncertaintyScenario() {
+		PCMBehaviorUncertaintyScenarioImpl pcmBehaviorUncertaintyScenario = new PCMBehaviorUncertaintyScenarioImpl();
+		return pcmBehaviorUncertaintyScenario;
 	}
 
 	/**
@@ -140,9 +140,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterfaceUncertaintySource createInterfaceUncertaintySource() {
-		InterfaceUncertaintySourceImpl interfaceUncertaintySource = new InterfaceUncertaintySourceImpl();
-		return interfaceUncertaintySource;
+	public PCMInterfaceUncertaintySource createPCMInterfaceUncertaintySource() {
+		PCMInterfaceUncertaintySourceImpl pcmInterfaceUncertaintySource = new PCMInterfaceUncertaintySourceImpl();
+		return pcmInterfaceUncertaintySource;
 	}
 
 	/**
@@ -150,9 +150,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterfaceUncertaintyScenario createInterfaceUncertaintyScenario() {
-		InterfaceUncertaintyScenarioImpl interfaceUncertaintyScenario = new InterfaceUncertaintyScenarioImpl();
-		return interfaceUncertaintyScenario;
+	public PCMInterfaceUncertaintyScenario createPCMInterfaceUncertaintyScenario() {
+		PCMInterfaceUncertaintyScenarioImpl pcmInterfaceUncertaintyScenario = new PCMInterfaceUncertaintyScenarioImpl();
+		return pcmInterfaceUncertaintyScenario;
 	}
 
 	/**
@@ -160,9 +160,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConnectorUncertaintySourceInExternalCall createConnectorUncertaintySourceInExternalCall() {
-		ConnectorUncertaintySourceInExternalCallImpl connectorUncertaintySourceInExternalCall = new ConnectorUncertaintySourceInExternalCallImpl();
-		return connectorUncertaintySourceInExternalCall;
+	public PCMConnectorUncertaintySourceInExternalCall createPCMConnectorUncertaintySourceInExternalCall() {
+		PCMConnectorUncertaintySourceInExternalCallImpl pcmConnectorUncertaintySourceInExternalCall = new PCMConnectorUncertaintySourceInExternalCallImpl();
+		return pcmConnectorUncertaintySourceInExternalCall;
 	}
 
 	/**
@@ -170,9 +170,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConnectorUncertaintySourceInEntryLevelSystemCall createConnectorUncertaintySourceInEntryLevelSystemCall() {
-		ConnectorUncertaintySourceInEntryLevelSystemCallImpl connectorUncertaintySourceInEntryLevelSystemCall = new ConnectorUncertaintySourceInEntryLevelSystemCallImpl();
-		return connectorUncertaintySourceInEntryLevelSystemCall;
+	public PCMConnectorUncertaintySourceInEntryLevelSystemCall createPCMConnectorUncertaintySourceInEntryLevelSystemCall() {
+		PCMConnectorUncertaintySourceInEntryLevelSystemCallImpl pcmConnectorUncertaintySourceInEntryLevelSystemCall = new PCMConnectorUncertaintySourceInEntryLevelSystemCallImpl();
+		return pcmConnectorUncertaintySourceInEntryLevelSystemCall;
 	}
 
 	/**
@@ -180,9 +180,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConnectorUncertaintyScenarioInExternalCall createConnectorUncertaintyScenarioInExternalCall() {
-		ConnectorUncertaintyScenarioInExternalCallImpl connectorUncertaintyScenarioInExternalCall = new ConnectorUncertaintyScenarioInExternalCallImpl();
-		return connectorUncertaintyScenarioInExternalCall;
+	public PCMConnectorUncertaintyScenarioInExternalCall createPCMConnectorUncertaintyScenarioInExternalCall() {
+		PCMConnectorUncertaintyScenarioInExternalCallImpl pcmConnectorUncertaintyScenarioInExternalCall = new PCMConnectorUncertaintyScenarioInExternalCallImpl();
+		return pcmConnectorUncertaintyScenarioInExternalCall;
 	}
 
 	/**
@@ -190,9 +190,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConnectorUncertaintyScenarioInEntryLevelSystemCall createConnectorUncertaintyScenarioInEntryLevelSystemCall() {
-		ConnectorUncertaintyScenarioInEntryLevelSystemCallImpl connectorUncertaintyScenarioInEntryLevelSystemCall = new ConnectorUncertaintyScenarioInEntryLevelSystemCallImpl();
-		return connectorUncertaintyScenarioInEntryLevelSystemCall;
+	public PCMConnectorUncertaintyScenarioInEntryLevelSystemCall createPCMConnectorUncertaintyScenarioInEntryLevelSystemCall() {
+		PCMConnectorUncertaintyScenarioInEntryLevelSystemCallImpl pcmConnectorUncertaintyScenarioInEntryLevelSystemCall = new PCMConnectorUncertaintyScenarioInEntryLevelSystemCallImpl();
+		return pcmConnectorUncertaintyScenarioInEntryLevelSystemCall;
 	}
 
 	/**
@@ -200,9 +200,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComponentUncertaintySource createComponentUncertaintySource() {
-		ComponentUncertaintySourceImpl componentUncertaintySource = new ComponentUncertaintySourceImpl();
-		return componentUncertaintySource;
+	public PCMComponentUncertaintySource createPCMComponentUncertaintySource() {
+		PCMComponentUncertaintySourceImpl pcmComponentUncertaintySource = new PCMComponentUncertaintySourceImpl();
+		return pcmComponentUncertaintySource;
 	}
 
 	/**
@@ -210,9 +210,9 @@ public class PcmFactoryImpl extends EFactoryImpl implements PcmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComponentUncertaintyScenario createComponentUncertaintyScenario() {
-		ComponentUncertaintyScenarioImpl componentUncertaintyScenario = new ComponentUncertaintyScenarioImpl();
-		return componentUncertaintyScenario;
+	public PCMComponentUncertaintyScenario createPCMComponentUncertaintyScenario() {
+		PCMComponentUncertaintyScenarioImpl pcmComponentUncertaintyScenario = new PCMComponentUncertaintyScenarioImpl();
+		return pcmComponentUncertaintyScenario;
 	}
 
 	/**

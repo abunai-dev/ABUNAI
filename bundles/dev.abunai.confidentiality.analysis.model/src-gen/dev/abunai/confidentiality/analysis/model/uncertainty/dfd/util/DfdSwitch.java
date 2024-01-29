@@ -69,73 +69,85 @@ public class DfdSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case DfdPackage.EXTERNAL_UNCERTAINTY_SOURCE: {
-				ExternalUncertaintySource externalUncertaintySource = (ExternalUncertaintySource)theEObject;
-				T result = caseExternalUncertaintySource(externalUncertaintySource);
-				if (result == null) result = caseUncertaintySource(externalUncertaintySource);
+			case DfdPackage.DFD_UNCERTAINTY_SOURCE: {
+				DFDUncertaintySource dfdUncertaintySource = (DFDUncertaintySource)theEObject;
+				T result = caseDFDUncertaintySource(dfdUncertaintySource);
+				if (result == null) result = caseUncertaintySource(dfdUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DfdPackage.EXTERNAL_UNCERTAINTY_SCENARIO: {
-				ExternalUncertaintyScenario externalUncertaintyScenario = (ExternalUncertaintyScenario)theEObject;
-				T result = caseExternalUncertaintyScenario(externalUncertaintyScenario);
-				if (result == null) result = caseUncertaintyScenario(externalUncertaintyScenario);
+			case DfdPackage.DFD_EXTERNAL_UNCERTAINTY_SOURCE: {
+				DFDExternalUncertaintySource dfdExternalUncertaintySource = (DFDExternalUncertaintySource)theEObject;
+				T result = caseDFDExternalUncertaintySource(dfdExternalUncertaintySource);
+				if (result == null) result = caseDFDUncertaintySource(dfdExternalUncertaintySource);
+				if (result == null) result = caseUncertaintySource(dfdExternalUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DfdPackage.BEHAVIOR_UNCERTAINTY_SOURCE: {
-				BehaviorUncertaintySource behaviorUncertaintySource = (BehaviorUncertaintySource)theEObject;
-				T result = caseBehaviorUncertaintySource(behaviorUncertaintySource);
-				if (result == null) result = caseUncertaintySource(behaviorUncertaintySource);
+			case DfdPackage.DFD_EXTERNAL_UNCERTAINTY_SCENARIO: {
+				DFDExternalUncertaintyScenario dfdExternalUncertaintyScenario = (DFDExternalUncertaintyScenario)theEObject;
+				T result = caseDFDExternalUncertaintyScenario(dfdExternalUncertaintyScenario);
+				if (result == null) result = caseUncertaintyScenario(dfdExternalUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DfdPackage.BEHAVIOR_UNCERTAINTY_SCENARIO: {
-				BehaviorUncertaintyScenario behaviorUncertaintyScenario = (BehaviorUncertaintyScenario)theEObject;
-				T result = caseBehaviorUncertaintyScenario(behaviorUncertaintyScenario);
-				if (result == null) result = caseUncertaintyScenario(behaviorUncertaintyScenario);
+			case DfdPackage.DFD_BEHAVIOR_UNCERTAINTY_SOURCE: {
+				DFDBehaviorUncertaintySource dfdBehaviorUncertaintySource = (DFDBehaviorUncertaintySource)theEObject;
+				T result = caseDFDBehaviorUncertaintySource(dfdBehaviorUncertaintySource);
+				if (result == null) result = caseDFDUncertaintySource(dfdBehaviorUncertaintySource);
+				if (result == null) result = caseUncertaintySource(dfdBehaviorUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DfdPackage.INTERFACE_UNCERTAINTY_SOURCE: {
-				InterfaceUncertaintySource interfaceUncertaintySource = (InterfaceUncertaintySource)theEObject;
-				T result = caseInterfaceUncertaintySource(interfaceUncertaintySource);
-				if (result == null) result = caseUncertaintySource(interfaceUncertaintySource);
+			case DfdPackage.DFD_BEHAVIOR_UNCERTAINTY_SCENARIO: {
+				DFDBehaviorUncertaintyScenario dfdBehaviorUncertaintyScenario = (DFDBehaviorUncertaintyScenario)theEObject;
+				T result = caseDFDBehaviorUncertaintyScenario(dfdBehaviorUncertaintyScenario);
+				if (result == null) result = caseUncertaintyScenario(dfdBehaviorUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DfdPackage.INTERFACE_UNCERTAINTY_SCENARIO: {
-				InterfaceUncertaintyScenario interfaceUncertaintyScenario = (InterfaceUncertaintyScenario)theEObject;
-				T result = caseInterfaceUncertaintyScenario(interfaceUncertaintyScenario);
-				if (result == null) result = caseUncertaintyScenario(interfaceUncertaintyScenario);
+			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SOURCE: {
+				DFDInterfaceUncertaintySource dfdInterfaceUncertaintySource = (DFDInterfaceUncertaintySource)theEObject;
+				T result = caseDFDInterfaceUncertaintySource(dfdInterfaceUncertaintySource);
+				if (result == null) result = caseDFDUncertaintySource(dfdInterfaceUncertaintySource);
+				if (result == null) result = caseUncertaintySource(dfdInterfaceUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DfdPackage.CONNECTOR_UNCERTAINTY_SOURCE: {
-				ConnectorUncertaintySource connectorUncertaintySource = (ConnectorUncertaintySource)theEObject;
-				T result = caseConnectorUncertaintySource(connectorUncertaintySource);
-				if (result == null) result = caseUncertaintySource(connectorUncertaintySource);
+			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO: {
+				DFDInterfaceUncertaintyScenario dfdInterfaceUncertaintyScenario = (DFDInterfaceUncertaintyScenario)theEObject;
+				T result = caseDFDInterfaceUncertaintyScenario(dfdInterfaceUncertaintyScenario);
+				if (result == null) result = caseUncertaintyScenario(dfdInterfaceUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DfdPackage.CONNECTOR_UNCERTAINTY_SCENARIO: {
-				ConnectorUncertaintyScenario connectorUncertaintyScenario = (ConnectorUncertaintyScenario)theEObject;
-				T result = caseConnectorUncertaintyScenario(connectorUncertaintyScenario);
-				if (result == null) result = caseUncertaintyScenario(connectorUncertaintyScenario);
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE: {
+				DFDConnectorUncertaintySource dfdConnectorUncertaintySource = (DFDConnectorUncertaintySource)theEObject;
+				T result = caseDFDConnectorUncertaintySource(dfdConnectorUncertaintySource);
+				if (result == null) result = caseDFDUncertaintySource(dfdConnectorUncertaintySource);
+				if (result == null) result = caseUncertaintySource(dfdConnectorUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DfdPackage.COMPONENT_UNCERTAINTY_SOURCE: {
-				ComponentUncertaintySource componentUncertaintySource = (ComponentUncertaintySource)theEObject;
-				T result = caseComponentUncertaintySource(componentUncertaintySource);
-				if (result == null) result = caseUncertaintySource(componentUncertaintySource);
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO: {
+				DFDConnectorUncertaintyScenario dfdConnectorUncertaintyScenario = (DFDConnectorUncertaintyScenario)theEObject;
+				T result = caseDFDConnectorUncertaintyScenario(dfdConnectorUncertaintyScenario);
+				if (result == null) result = caseUncertaintyScenario(dfdConnectorUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DfdPackage.COMPONENT_UNCERTAINTY_SCENARIO: {
-				ComponentUncertaintyScenario componentUncertaintyScenario = (ComponentUncertaintyScenario)theEObject;
-				T result = caseComponentUncertaintyScenario(componentUncertaintyScenario);
-				if (result == null) result = caseUncertaintyScenario(componentUncertaintyScenario);
+			case DfdPackage.DFD_COMPONENT_UNCERTAINTY_SOURCE: {
+				DFDComponentUncertaintySource dfdComponentUncertaintySource = (DFDComponentUncertaintySource)theEObject;
+				T result = caseDFDComponentUncertaintySource(dfdComponentUncertaintySource);
+				if (result == null) result = caseDFDUncertaintySource(dfdComponentUncertaintySource);
+				if (result == null) result = caseUncertaintySource(dfdComponentUncertaintySource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DfdPackage.DFD_COMPONENT_UNCERTAINTY_SCENARIO: {
+				DFDComponentUncertaintyScenario dfdComponentUncertaintyScenario = (DFDComponentUncertaintyScenario)theEObject;
+				T result = caseDFDComponentUncertaintyScenario(dfdComponentUncertaintyScenario);
+				if (result == null) result = caseUncertaintyScenario(dfdComponentUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -144,152 +156,167 @@ public class DfdSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DFD Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>External Uncertainty Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DFD Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExternalUncertaintySource(ExternalUncertaintySource object) {
+	public T caseDFDUncertaintySource(DFDUncertaintySource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty Scenario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DFD External Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>External Uncertainty Scenario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DFD External Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExternalUncertaintyScenario(ExternalUncertaintyScenario object) {
+	public T caseDFDExternalUncertaintySource(DFDExternalUncertaintySource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Behavior Uncertainty Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DFD External Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Behavior Uncertainty Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DFD External Uncertainty Scenario</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBehaviorUncertaintySource(BehaviorUncertaintySource object) {
+	public T caseDFDExternalUncertaintyScenario(DFDExternalUncertaintyScenario object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Behavior Uncertainty Scenario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DFD Behavior Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Behavior Uncertainty Scenario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DFD Behavior Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBehaviorUncertaintyScenario(BehaviorUncertaintyScenario object) {
+	public T caseDFDBehaviorUncertaintySource(DFDBehaviorUncertaintySource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Interface Uncertainty Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DFD Behavior Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Interface Uncertainty Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DFD Behavior Uncertainty Scenario</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInterfaceUncertaintySource(InterfaceUncertaintySource object) {
+	public T caseDFDBehaviorUncertaintyScenario(DFDBehaviorUncertaintyScenario object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Interface Uncertainty Scenario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DFD Interface Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Interface Uncertainty Scenario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DFD Interface Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInterfaceUncertaintyScenario(InterfaceUncertaintyScenario object) {
+	public T caseDFDInterfaceUncertaintySource(DFDInterfaceUncertaintySource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DFD Interface Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DFD Interface Uncertainty Scenario</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConnectorUncertaintySource(ConnectorUncertaintySource object) {
+	public T caseDFDInterfaceUncertaintyScenario(DFDInterfaceUncertaintyScenario object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Scenario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DFD Connector Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Scenario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DFD Connector Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConnectorUncertaintyScenario(ConnectorUncertaintyScenario object) {
+	public T caseDFDConnectorUncertaintySource(DFDConnectorUncertaintySource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Uncertainty Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DFD Connector Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Uncertainty Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DFD Connector Uncertainty Scenario</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseComponentUncertaintySource(ComponentUncertaintySource object) {
+	public T caseDFDConnectorUncertaintyScenario(DFDConnectorUncertaintyScenario object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Uncertainty Scenario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>DFD Component Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Uncertainty Scenario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>DFD Component Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseComponentUncertaintyScenario(ComponentUncertaintyScenario object) {
+	public T caseDFDComponentUncertaintySource(DFDComponentUncertaintySource object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>DFD Component Uncertainty Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>DFD Component Uncertainty Scenario</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDFDComponentUncertaintyScenario(DFDComponentUncertaintyScenario object) {
 		return null;
 	}
 

@@ -69,119 +69,135 @@ public class PcmSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case PcmPackage.EXTERNAL_UNCERTAINTY_SOURCE: {
-				ExternalUncertaintySource externalUncertaintySource = (ExternalUncertaintySource)theEObject;
-				T result = caseExternalUncertaintySource(externalUncertaintySource);
-				if (result == null) result = caseUncertaintySource(externalUncertaintySource);
+			case PcmPackage.PCM_UNCERTAINTY_SOURCE: {
+				PCMUncertaintySource pcmUncertaintySource = (PCMUncertaintySource)theEObject;
+				T result = casePCMUncertaintySource(pcmUncertaintySource);
+				if (result == null) result = caseUncertaintySource(pcmUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE: {
-				ExternalUncertaintySourceInResource externalUncertaintySourceInResource = (ExternalUncertaintySourceInResource)theEObject;
-				T result = caseExternalUncertaintySourceInResource(externalUncertaintySourceInResource);
-				if (result == null) result = caseExternalUncertaintySource(externalUncertaintySourceInResource);
-				if (result == null) result = caseUncertaintySource(externalUncertaintySourceInResource);
+			case PcmPackage.PCM_EXTERNAL_UNCERTAINTY_SOURCE: {
+				PCMExternalUncertaintySource pcmExternalUncertaintySource = (PCMExternalUncertaintySource)theEObject;
+				T result = casePCMExternalUncertaintySource(pcmExternalUncertaintySource);
+				if (result == null) result = casePCMUncertaintySource(pcmExternalUncertaintySource);
+				if (result == null) result = caseUncertaintySource(pcmExternalUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE: {
-				ExternalUncertaintySourceInUsage externalUncertaintySourceInUsage = (ExternalUncertaintySourceInUsage)theEObject;
-				T result = caseExternalUncertaintySourceInUsage(externalUncertaintySourceInUsage);
-				if (result == null) result = caseExternalUncertaintySource(externalUncertaintySourceInUsage);
-				if (result == null) result = caseUncertaintySource(externalUncertaintySourceInUsage);
+			case PcmPackage.PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE: {
+				PCMExternalUncertaintySourceInResource pcmExternalUncertaintySourceInResource = (PCMExternalUncertaintySourceInResource)theEObject;
+				T result = casePCMExternalUncertaintySourceInResource(pcmExternalUncertaintySourceInResource);
+				if (result == null) result = casePCMExternalUncertaintySource(pcmExternalUncertaintySourceInResource);
+				if (result == null) result = casePCMUncertaintySource(pcmExternalUncertaintySourceInResource);
+				if (result == null) result = caseUncertaintySource(pcmExternalUncertaintySourceInResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE: {
-				ExternalUncertaintyScenarioInResource externalUncertaintyScenarioInResource = (ExternalUncertaintyScenarioInResource)theEObject;
-				T result = caseExternalUncertaintyScenarioInResource(externalUncertaintyScenarioInResource);
-				if (result == null) result = caseUncertaintyScenario(externalUncertaintyScenarioInResource);
+			case PcmPackage.PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE: {
+				PCMExternalUncertaintySourceInUsage pcmExternalUncertaintySourceInUsage = (PCMExternalUncertaintySourceInUsage)theEObject;
+				T result = casePCMExternalUncertaintySourceInUsage(pcmExternalUncertaintySourceInUsage);
+				if (result == null) result = casePCMExternalUncertaintySource(pcmExternalUncertaintySourceInUsage);
+				if (result == null) result = casePCMUncertaintySource(pcmExternalUncertaintySourceInUsage);
+				if (result == null) result = caseUncertaintySource(pcmExternalUncertaintySourceInUsage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE: {
-				ExternalUncertaintyScenarioInUsage externalUncertaintyScenarioInUsage = (ExternalUncertaintyScenarioInUsage)theEObject;
-				T result = caseExternalUncertaintyScenarioInUsage(externalUncertaintyScenarioInUsage);
-				if (result == null) result = caseUncertaintyScenario(externalUncertaintyScenarioInUsage);
+			case PcmPackage.PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE: {
+				PCMExternalUncertaintyScenarioInResource pcmExternalUncertaintyScenarioInResource = (PCMExternalUncertaintyScenarioInResource)theEObject;
+				T result = casePCMExternalUncertaintyScenarioInResource(pcmExternalUncertaintyScenarioInResource);
+				if (result == null) result = caseUncertaintyScenario(pcmExternalUncertaintyScenarioInResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.BEHAVIOR_UNCERTAINTY_SOURCE: {
-				BehaviorUncertaintySource behaviorUncertaintySource = (BehaviorUncertaintySource)theEObject;
-				T result = caseBehaviorUncertaintySource(behaviorUncertaintySource);
-				if (result == null) result = caseUncertaintySource(behaviorUncertaintySource);
+			case PcmPackage.PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE: {
+				PCMExternalUncertaintyScenarioInUsage pcmExternalUncertaintyScenarioInUsage = (PCMExternalUncertaintyScenarioInUsage)theEObject;
+				T result = casePCMExternalUncertaintyScenarioInUsage(pcmExternalUncertaintyScenarioInUsage);
+				if (result == null) result = caseUncertaintyScenario(pcmExternalUncertaintyScenarioInUsage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.BEHAVIOR_UNCERTAINTY_SCENARIO: {
-				BehaviorUncertaintyScenario behaviorUncertaintyScenario = (BehaviorUncertaintyScenario)theEObject;
-				T result = caseBehaviorUncertaintyScenario(behaviorUncertaintyScenario);
-				if (result == null) result = caseUncertaintyScenario(behaviorUncertaintyScenario);
+			case PcmPackage.PCM_BEHAVIOR_UNCERTAINTY_SOURCE: {
+				PCMBehaviorUncertaintySource pcmBehaviorUncertaintySource = (PCMBehaviorUncertaintySource)theEObject;
+				T result = casePCMBehaviorUncertaintySource(pcmBehaviorUncertaintySource);
+				if (result == null) result = casePCMUncertaintySource(pcmBehaviorUncertaintySource);
+				if (result == null) result = caseUncertaintySource(pcmBehaviorUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.INTERFACE_UNCERTAINTY_SOURCE: {
-				InterfaceUncertaintySource interfaceUncertaintySource = (InterfaceUncertaintySource)theEObject;
-				T result = caseInterfaceUncertaintySource(interfaceUncertaintySource);
-				if (result == null) result = caseUncertaintySource(interfaceUncertaintySource);
+			case PcmPackage.PCM_BEHAVIOR_UNCERTAINTY_SCENARIO: {
+				PCMBehaviorUncertaintyScenario pcmBehaviorUncertaintyScenario = (PCMBehaviorUncertaintyScenario)theEObject;
+				T result = casePCMBehaviorUncertaintyScenario(pcmBehaviorUncertaintyScenario);
+				if (result == null) result = caseUncertaintyScenario(pcmBehaviorUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.INTERFACE_UNCERTAINTY_SCENARIO: {
-				InterfaceUncertaintyScenario interfaceUncertaintyScenario = (InterfaceUncertaintyScenario)theEObject;
-				T result = caseInterfaceUncertaintyScenario(interfaceUncertaintyScenario);
-				if (result == null) result = caseUncertaintyScenario(interfaceUncertaintyScenario);
+			case PcmPackage.PCM_INTERFACE_UNCERTAINTY_SOURCE: {
+				PCMInterfaceUncertaintySource pcmInterfaceUncertaintySource = (PCMInterfaceUncertaintySource)theEObject;
+				T result = casePCMInterfaceUncertaintySource(pcmInterfaceUncertaintySource);
+				if (result == null) result = casePCMUncertaintySource(pcmInterfaceUncertaintySource);
+				if (result == null) result = caseUncertaintySource(pcmInterfaceUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.CONNECTOR_UNCERTAINTY_SOURCE: {
-				ConnectorUncertaintySource connectorUncertaintySource = (ConnectorUncertaintySource)theEObject;
-				T result = caseConnectorUncertaintySource(connectorUncertaintySource);
-				if (result == null) result = caseUncertaintySource(connectorUncertaintySource);
+			case PcmPackage.PCM_INTERFACE_UNCERTAINTY_SCENARIO: {
+				PCMInterfaceUncertaintyScenario pcmInterfaceUncertaintyScenario = (PCMInterfaceUncertaintyScenario)theEObject;
+				T result = casePCMInterfaceUncertaintyScenario(pcmInterfaceUncertaintyScenario);
+				if (result == null) result = caseUncertaintyScenario(pcmInterfaceUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL: {
-				ConnectorUncertaintySourceInExternalCall connectorUncertaintySourceInExternalCall = (ConnectorUncertaintySourceInExternalCall)theEObject;
-				T result = caseConnectorUncertaintySourceInExternalCall(connectorUncertaintySourceInExternalCall);
-				if (result == null) result = caseConnectorUncertaintySource(connectorUncertaintySourceInExternalCall);
-				if (result == null) result = caseUncertaintySource(connectorUncertaintySourceInExternalCall);
+			case PcmPackage.PCM_CONNECTOR_UNCERTAINTY_SOURCE: {
+				PCMConnectorUncertaintySource pcmConnectorUncertaintySource = (PCMConnectorUncertaintySource)theEObject;
+				T result = casePCMConnectorUncertaintySource(pcmConnectorUncertaintySource);
+				if (result == null) result = casePCMUncertaintySource(pcmConnectorUncertaintySource);
+				if (result == null) result = caseUncertaintySource(pcmConnectorUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL: {
-				ConnectorUncertaintySourceInEntryLevelSystemCall connectorUncertaintySourceInEntryLevelSystemCall = (ConnectorUncertaintySourceInEntryLevelSystemCall)theEObject;
-				T result = caseConnectorUncertaintySourceInEntryLevelSystemCall(connectorUncertaintySourceInEntryLevelSystemCall);
-				if (result == null) result = caseConnectorUncertaintySource(connectorUncertaintySourceInEntryLevelSystemCall);
-				if (result == null) result = caseUncertaintySource(connectorUncertaintySourceInEntryLevelSystemCall);
+			case PcmPackage.PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL: {
+				PCMConnectorUncertaintySourceInExternalCall pcmConnectorUncertaintySourceInExternalCall = (PCMConnectorUncertaintySourceInExternalCall)theEObject;
+				T result = casePCMConnectorUncertaintySourceInExternalCall(pcmConnectorUncertaintySourceInExternalCall);
+				if (result == null) result = casePCMConnectorUncertaintySource(pcmConnectorUncertaintySourceInExternalCall);
+				if (result == null) result = casePCMUncertaintySource(pcmConnectorUncertaintySourceInExternalCall);
+				if (result == null) result = caseUncertaintySource(pcmConnectorUncertaintySourceInExternalCall);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL: {
-				ConnectorUncertaintyScenarioInExternalCall connectorUncertaintyScenarioInExternalCall = (ConnectorUncertaintyScenarioInExternalCall)theEObject;
-				T result = caseConnectorUncertaintyScenarioInExternalCall(connectorUncertaintyScenarioInExternalCall);
-				if (result == null) result = caseUncertaintyScenario(connectorUncertaintyScenarioInExternalCall);
+			case PcmPackage.PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL: {
+				PCMConnectorUncertaintySourceInEntryLevelSystemCall pcmConnectorUncertaintySourceInEntryLevelSystemCall = (PCMConnectorUncertaintySourceInEntryLevelSystemCall)theEObject;
+				T result = casePCMConnectorUncertaintySourceInEntryLevelSystemCall(pcmConnectorUncertaintySourceInEntryLevelSystemCall);
+				if (result == null) result = casePCMConnectorUncertaintySource(pcmConnectorUncertaintySourceInEntryLevelSystemCall);
+				if (result == null) result = casePCMUncertaintySource(pcmConnectorUncertaintySourceInEntryLevelSystemCall);
+				if (result == null) result = caseUncertaintySource(pcmConnectorUncertaintySourceInEntryLevelSystemCall);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL: {
-				ConnectorUncertaintyScenarioInEntryLevelSystemCall connectorUncertaintyScenarioInEntryLevelSystemCall = (ConnectorUncertaintyScenarioInEntryLevelSystemCall)theEObject;
-				T result = caseConnectorUncertaintyScenarioInEntryLevelSystemCall(connectorUncertaintyScenarioInEntryLevelSystemCall);
-				if (result == null) result = caseUncertaintyScenario(connectorUncertaintyScenarioInEntryLevelSystemCall);
+			case PcmPackage.PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL: {
+				PCMConnectorUncertaintyScenarioInExternalCall pcmConnectorUncertaintyScenarioInExternalCall = (PCMConnectorUncertaintyScenarioInExternalCall)theEObject;
+				T result = casePCMConnectorUncertaintyScenarioInExternalCall(pcmConnectorUncertaintyScenarioInExternalCall);
+				if (result == null) result = caseUncertaintyScenario(pcmConnectorUncertaintyScenarioInExternalCall);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.COMPONENT_UNCERTAINTY_SOURCE: {
-				ComponentUncertaintySource componentUncertaintySource = (ComponentUncertaintySource)theEObject;
-				T result = caseComponentUncertaintySource(componentUncertaintySource);
-				if (result == null) result = caseUncertaintySource(componentUncertaintySource);
+			case PcmPackage.PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL: {
+				PCMConnectorUncertaintyScenarioInEntryLevelSystemCall pcmConnectorUncertaintyScenarioInEntryLevelSystemCall = (PCMConnectorUncertaintyScenarioInEntryLevelSystemCall)theEObject;
+				T result = casePCMConnectorUncertaintyScenarioInEntryLevelSystemCall(pcmConnectorUncertaintyScenarioInEntryLevelSystemCall);
+				if (result == null) result = caseUncertaintyScenario(pcmConnectorUncertaintyScenarioInEntryLevelSystemCall);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PcmPackage.COMPONENT_UNCERTAINTY_SCENARIO: {
-				ComponentUncertaintyScenario componentUncertaintyScenario = (ComponentUncertaintyScenario)theEObject;
-				T result = caseComponentUncertaintyScenario(componentUncertaintyScenario);
-				if (result == null) result = caseUncertaintyScenario(componentUncertaintyScenario);
+			case PcmPackage.PCM_COMPONENT_UNCERTAINTY_SOURCE: {
+				PCMComponentUncertaintySource pcmComponentUncertaintySource = (PCMComponentUncertaintySource)theEObject;
+				T result = casePCMComponentUncertaintySource(pcmComponentUncertaintySource);
+				if (result == null) result = casePCMUncertaintySource(pcmComponentUncertaintySource);
+				if (result == null) result = caseUncertaintySource(pcmComponentUncertaintySource);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case PcmPackage.PCM_COMPONENT_UNCERTAINTY_SCENARIO: {
+				PCMComponentUncertaintyScenario pcmComponentUncertaintyScenario = (PCMComponentUncertaintyScenario)theEObject;
+				T result = casePCMComponentUncertaintyScenario(pcmComponentUncertaintyScenario);
+				if (result == null) result = caseUncertaintyScenario(pcmComponentUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -190,242 +206,257 @@ public class PcmSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>External Uncertainty Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExternalUncertaintySource(ExternalUncertaintySource object) {
+	public T casePCMUncertaintySource(PCMUncertaintySource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty Source In Resource</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM External Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>External Uncertainty Source In Resource</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM External Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExternalUncertaintySourceInResource(ExternalUncertaintySourceInResource object) {
+	public T casePCMExternalUncertaintySource(PCMExternalUncertaintySource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty Source In Usage</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM External Uncertainty Source In Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>External Uncertainty Source In Usage</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM External Uncertainty Source In Resource</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExternalUncertaintySourceInUsage(ExternalUncertaintySourceInUsage object) {
+	public T casePCMExternalUncertaintySourceInResource(PCMExternalUncertaintySourceInResource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty Scenario In Resource</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM External Uncertainty Source In Usage</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>External Uncertainty Scenario In Resource</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM External Uncertainty Source In Usage</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExternalUncertaintyScenarioInResource(ExternalUncertaintyScenarioInResource object) {
+	public T casePCMExternalUncertaintySourceInUsage(PCMExternalUncertaintySourceInUsage object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>External Uncertainty Scenario In Usage</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM External Uncertainty Scenario In Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>External Uncertainty Scenario In Usage</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM External Uncertainty Scenario In Resource</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExternalUncertaintyScenarioInUsage(ExternalUncertaintyScenarioInUsage object) {
+	public T casePCMExternalUncertaintyScenarioInResource(PCMExternalUncertaintyScenarioInResource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Behavior Uncertainty Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM External Uncertainty Scenario In Usage</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Behavior Uncertainty Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM External Uncertainty Scenario In Usage</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBehaviorUncertaintySource(BehaviorUncertaintySource object) {
+	public T casePCMExternalUncertaintyScenarioInUsage(PCMExternalUncertaintyScenarioInUsage object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Behavior Uncertainty Scenario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Behavior Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Behavior Uncertainty Scenario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Behavior Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBehaviorUncertaintyScenario(BehaviorUncertaintyScenario object) {
+	public T casePCMBehaviorUncertaintySource(PCMBehaviorUncertaintySource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Interface Uncertainty Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Behavior Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Interface Uncertainty Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Behavior Uncertainty Scenario</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInterfaceUncertaintySource(InterfaceUncertaintySource object) {
+	public T casePCMBehaviorUncertaintyScenario(PCMBehaviorUncertaintyScenario object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Interface Uncertainty Scenario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Interface Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Interface Uncertainty Scenario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Interface Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInterfaceUncertaintyScenario(InterfaceUncertaintyScenario object) {
+	public T casePCMInterfaceUncertaintySource(PCMInterfaceUncertaintySource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Interface Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Interface Uncertainty Scenario</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConnectorUncertaintySource(ConnectorUncertaintySource object) {
+	public T casePCMInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Source In External Call</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Connector Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Source In External Call</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Connector Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConnectorUncertaintySourceInExternalCall(ConnectorUncertaintySourceInExternalCall object) {
+	public T casePCMConnectorUncertaintySource(PCMConnectorUncertaintySource object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Source In Entry Level System Call</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Connector Uncertainty Source In External Call</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Source In Entry Level System Call</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Connector Uncertainty Source In External Call</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConnectorUncertaintySourceInEntryLevelSystemCall(ConnectorUncertaintySourceInEntryLevelSystemCall object) {
+	public T casePCMConnectorUncertaintySourceInExternalCall(PCMConnectorUncertaintySourceInExternalCall object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Scenario In External Call</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Connector Uncertainty Source In Entry Level System Call</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Scenario In External Call</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Connector Uncertainty Source In Entry Level System Call</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConnectorUncertaintyScenarioInExternalCall(ConnectorUncertaintyScenarioInExternalCall object) {
+	public T casePCMConnectorUncertaintySourceInEntryLevelSystemCall(PCMConnectorUncertaintySourceInEntryLevelSystemCall object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Connector Uncertainty Scenario In Entry Level System Call</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Connector Uncertainty Scenario In External Call</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Connector Uncertainty Scenario In Entry Level System Call</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Connector Uncertainty Scenario In External Call</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseConnectorUncertaintyScenarioInEntryLevelSystemCall(ConnectorUncertaintyScenarioInEntryLevelSystemCall object) {
+	public T casePCMConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Uncertainty Source</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Connector Uncertainty Scenario In Entry Level System Call</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Uncertainty Source</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Connector Uncertainty Scenario In Entry Level System Call</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseComponentUncertaintySource(ComponentUncertaintySource object) {
+	public T casePCMConnectorUncertaintyScenarioInEntryLevelSystemCall(PCMConnectorUncertaintyScenarioInEntryLevelSystemCall object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Component Uncertainty Scenario</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Component Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Component Uncertainty Scenario</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Component Uncertainty Source</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseComponentUncertaintyScenario(ComponentUncertaintyScenario object) {
+	public T casePCMComponentUncertaintySource(PCMComponentUncertaintySource object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>PCM Component Uncertainty Scenario</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>PCM Component Uncertainty Scenario</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePCMComponentUncertaintyScenario(PCMComponentUncertaintyScenario object) {
 		return null;
 	}
 

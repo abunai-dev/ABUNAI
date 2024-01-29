@@ -72,233 +72,233 @@ public class DfdItemProviderAdapterFactory extends DfdAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExternalUncertaintySourceItemProvider externalUncertaintySourceItemProvider;
+	protected DFDExternalUncertaintySourceItemProvider dfdExternalUncertaintySourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createExternalUncertaintySourceAdapter() {
-		if (externalUncertaintySourceItemProvider == null) {
-			externalUncertaintySourceItemProvider = new ExternalUncertaintySourceItemProvider(this);
+	public Adapter createDFDExternalUncertaintySourceAdapter() {
+		if (dfdExternalUncertaintySourceItemProvider == null) {
+			dfdExternalUncertaintySourceItemProvider = new DFDExternalUncertaintySourceItemProvider(this);
 		}
 
-		return externalUncertaintySourceItemProvider;
+		return dfdExternalUncertaintySourceItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintyScenario} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExternalUncertaintyScenarioItemProvider externalUncertaintyScenarioItemProvider;
+	protected DFDExternalUncertaintyScenarioItemProvider dfdExternalUncertaintyScenarioItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintyScenario}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createExternalUncertaintyScenarioAdapter() {
-		if (externalUncertaintyScenarioItemProvider == null) {
-			externalUncertaintyScenarioItemProvider = new ExternalUncertaintyScenarioItemProvider(this);
+	public Adapter createDFDExternalUncertaintyScenarioAdapter() {
+		if (dfdExternalUncertaintyScenarioItemProvider == null) {
+			dfdExternalUncertaintyScenarioItemProvider = new DFDExternalUncertaintyScenarioItemProvider(this);
 		}
 
-		return externalUncertaintyScenarioItemProvider;
+		return dfdExternalUncertaintyScenarioItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BehaviorUncertaintySourceItemProvider behaviorUncertaintySourceItemProvider;
+	protected DFDBehaviorUncertaintySourceItemProvider dfdBehaviorUncertaintySourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createBehaviorUncertaintySourceAdapter() {
-		if (behaviorUncertaintySourceItemProvider == null) {
-			behaviorUncertaintySourceItemProvider = new BehaviorUncertaintySourceItemProvider(this);
+	public Adapter createDFDBehaviorUncertaintySourceAdapter() {
+		if (dfdBehaviorUncertaintySourceItemProvider == null) {
+			dfdBehaviorUncertaintySourceItemProvider = new DFDBehaviorUncertaintySourceItemProvider(this);
 		}
 
-		return behaviorUncertaintySourceItemProvider;
+		return dfdBehaviorUncertaintySourceItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintyScenario} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BehaviorUncertaintyScenarioItemProvider behaviorUncertaintyScenarioItemProvider;
+	protected DFDBehaviorUncertaintyScenarioItemProvider dfdBehaviorUncertaintyScenarioItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintyScenario}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createBehaviorUncertaintyScenarioAdapter() {
-		if (behaviorUncertaintyScenarioItemProvider == null) {
-			behaviorUncertaintyScenarioItemProvider = new BehaviorUncertaintyScenarioItemProvider(this);
+	public Adapter createDFDBehaviorUncertaintyScenarioAdapter() {
+		if (dfdBehaviorUncertaintyScenarioItemProvider == null) {
+			dfdBehaviorUncertaintyScenarioItemProvider = new DFDBehaviorUncertaintyScenarioItemProvider(this);
 		}
 
-		return behaviorUncertaintyScenarioItemProvider;
+		return dfdBehaviorUncertaintyScenarioItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InterfaceUncertaintySourceItemProvider interfaceUncertaintySourceItemProvider;
+	protected DFDInterfaceUncertaintySourceItemProvider dfdInterfaceUncertaintySourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createInterfaceUncertaintySourceAdapter() {
-		if (interfaceUncertaintySourceItemProvider == null) {
-			interfaceUncertaintySourceItemProvider = new InterfaceUncertaintySourceItemProvider(this);
+	public Adapter createDFDInterfaceUncertaintySourceAdapter() {
+		if (dfdInterfaceUncertaintySourceItemProvider == null) {
+			dfdInterfaceUncertaintySourceItemProvider = new DFDInterfaceUncertaintySourceItemProvider(this);
 		}
 
-		return interfaceUncertaintySourceItemProvider;
+		return dfdInterfaceUncertaintySourceItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintyScenario} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InterfaceUncertaintyScenarioItemProvider interfaceUncertaintyScenarioItemProvider;
+	protected DFDInterfaceUncertaintyScenarioItemProvider dfdInterfaceUncertaintyScenarioItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintyScenario}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createInterfaceUncertaintyScenarioAdapter() {
-		if (interfaceUncertaintyScenarioItemProvider == null) {
-			interfaceUncertaintyScenarioItemProvider = new InterfaceUncertaintyScenarioItemProvider(this);
+	public Adapter createDFDInterfaceUncertaintyScenarioAdapter() {
+		if (dfdInterfaceUncertaintyScenarioItemProvider == null) {
+			dfdInterfaceUncertaintyScenarioItemProvider = new DFDInterfaceUncertaintyScenarioItemProvider(this);
 		}
 
-		return interfaceUncertaintyScenarioItemProvider;
+		return dfdInterfaceUncertaintyScenarioItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConnectorUncertaintySourceItemProvider connectorUncertaintySourceItemProvider;
+	protected DFDConnectorUncertaintySourceItemProvider dfdConnectorUncertaintySourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createConnectorUncertaintySourceAdapter() {
-		if (connectorUncertaintySourceItemProvider == null) {
-			connectorUncertaintySourceItemProvider = new ConnectorUncertaintySourceItemProvider(this);
+	public Adapter createDFDConnectorUncertaintySourceAdapter() {
+		if (dfdConnectorUncertaintySourceItemProvider == null) {
+			dfdConnectorUncertaintySourceItemProvider = new DFDConnectorUncertaintySourceItemProvider(this);
 		}
 
-		return connectorUncertaintySourceItemProvider;
+		return dfdConnectorUncertaintySourceItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintyScenario} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConnectorUncertaintyScenarioItemProvider connectorUncertaintyScenarioItemProvider;
+	protected DFDConnectorUncertaintyScenarioItemProvider dfdConnectorUncertaintyScenarioItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintyScenario}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createConnectorUncertaintyScenarioAdapter() {
-		if (connectorUncertaintyScenarioItemProvider == null) {
-			connectorUncertaintyScenarioItemProvider = new ConnectorUncertaintyScenarioItemProvider(this);
+	public Adapter createDFDConnectorUncertaintyScenarioAdapter() {
+		if (dfdConnectorUncertaintyScenarioItemProvider == null) {
+			dfdConnectorUncertaintyScenarioItemProvider = new DFDConnectorUncertaintyScenarioItemProvider(this);
 		}
 
-		return connectorUncertaintyScenarioItemProvider;
+		return dfdConnectorUncertaintyScenarioItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintySource} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComponentUncertaintySourceItemProvider componentUncertaintySourceItemProvider;
+	protected DFDComponentUncertaintySourceItemProvider dfdComponentUncertaintySourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintySource}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createComponentUncertaintySourceAdapter() {
-		if (componentUncertaintySourceItemProvider == null) {
-			componentUncertaintySourceItemProvider = new ComponentUncertaintySourceItemProvider(this);
+	public Adapter createDFDComponentUncertaintySourceAdapter() {
+		if (dfdComponentUncertaintySourceItemProvider == null) {
+			dfdComponentUncertaintySourceItemProvider = new DFDComponentUncertaintySourceItemProvider(this);
 		}
 
-		return componentUncertaintySourceItemProvider;
+		return dfdComponentUncertaintySourceItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintyScenario} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComponentUncertaintyScenarioItemProvider componentUncertaintyScenarioItemProvider;
+	protected DFDComponentUncertaintyScenarioItemProvider dfdComponentUncertaintyScenarioItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintyScenario}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createComponentUncertaintyScenarioAdapter() {
-		if (componentUncertaintyScenarioItemProvider == null) {
-			componentUncertaintyScenarioItemProvider = new ComponentUncertaintyScenarioItemProvider(this);
+	public Adapter createDFDComponentUncertaintyScenarioAdapter() {
+		if (dfdComponentUncertaintyScenarioItemProvider == null) {
+			dfdComponentUncertaintyScenarioItemProvider = new DFDComponentUncertaintyScenarioItemProvider(this);
 		}
 
-		return componentUncertaintyScenarioItemProvider;
+		return dfdComponentUncertaintyScenarioItemProvider;
 	}
 
 	/**
@@ -400,16 +400,16 @@ public class DfdItemProviderAdapterFactory extends DfdAdapterFactory implements 
 	 * @generated
 	 */
 	public void dispose() {
-		if (externalUncertaintySourceItemProvider != null) externalUncertaintySourceItemProvider.dispose();
-		if (externalUncertaintyScenarioItemProvider != null) externalUncertaintyScenarioItemProvider.dispose();
-		if (behaviorUncertaintySourceItemProvider != null) behaviorUncertaintySourceItemProvider.dispose();
-		if (behaviorUncertaintyScenarioItemProvider != null) behaviorUncertaintyScenarioItemProvider.dispose();
-		if (interfaceUncertaintySourceItemProvider != null) interfaceUncertaintySourceItemProvider.dispose();
-		if (interfaceUncertaintyScenarioItemProvider != null) interfaceUncertaintyScenarioItemProvider.dispose();
-		if (connectorUncertaintySourceItemProvider != null) connectorUncertaintySourceItemProvider.dispose();
-		if (connectorUncertaintyScenarioItemProvider != null) connectorUncertaintyScenarioItemProvider.dispose();
-		if (componentUncertaintySourceItemProvider != null) componentUncertaintySourceItemProvider.dispose();
-		if (componentUncertaintyScenarioItemProvider != null) componentUncertaintyScenarioItemProvider.dispose();
+		if (dfdExternalUncertaintySourceItemProvider != null) dfdExternalUncertaintySourceItemProvider.dispose();
+		if (dfdExternalUncertaintyScenarioItemProvider != null) dfdExternalUncertaintyScenarioItemProvider.dispose();
+		if (dfdBehaviorUncertaintySourceItemProvider != null) dfdBehaviorUncertaintySourceItemProvider.dispose();
+		if (dfdBehaviorUncertaintyScenarioItemProvider != null) dfdBehaviorUncertaintyScenarioItemProvider.dispose();
+		if (dfdInterfaceUncertaintySourceItemProvider != null) dfdInterfaceUncertaintySourceItemProvider.dispose();
+		if (dfdInterfaceUncertaintyScenarioItemProvider != null) dfdInterfaceUncertaintyScenarioItemProvider.dispose();
+		if (dfdConnectorUncertaintySourceItemProvider != null) dfdConnectorUncertaintySourceItemProvider.dispose();
+		if (dfdConnectorUncertaintyScenarioItemProvider != null) dfdConnectorUncertaintyScenarioItemProvider.dispose();
+		if (dfdComponentUncertaintySourceItemProvider != null) dfdComponentUncertaintySourceItemProvider.dispose();
+		if (dfdComponentUncertaintyScenarioItemProvider != null) dfdComponentUncertaintyScenarioItemProvider.dispose();
 	}
 
 }

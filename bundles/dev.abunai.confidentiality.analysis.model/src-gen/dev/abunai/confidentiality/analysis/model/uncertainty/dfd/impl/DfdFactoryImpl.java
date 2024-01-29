@@ -56,16 +56,16 @@ public class DfdFactoryImpl extends EFactoryImpl implements DfdFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case DfdPackage.EXTERNAL_UNCERTAINTY_SOURCE: return createExternalUncertaintySource();
-			case DfdPackage.EXTERNAL_UNCERTAINTY_SCENARIO: return createExternalUncertaintyScenario();
-			case DfdPackage.BEHAVIOR_UNCERTAINTY_SOURCE: return createBehaviorUncertaintySource();
-			case DfdPackage.BEHAVIOR_UNCERTAINTY_SCENARIO: return createBehaviorUncertaintyScenario();
-			case DfdPackage.INTERFACE_UNCERTAINTY_SOURCE: return createInterfaceUncertaintySource();
-			case DfdPackage.INTERFACE_UNCERTAINTY_SCENARIO: return createInterfaceUncertaintyScenario();
-			case DfdPackage.CONNECTOR_UNCERTAINTY_SOURCE: return createConnectorUncertaintySource();
-			case DfdPackage.CONNECTOR_UNCERTAINTY_SCENARIO: return createConnectorUncertaintyScenario();
-			case DfdPackage.COMPONENT_UNCERTAINTY_SOURCE: return createComponentUncertaintySource();
-			case DfdPackage.COMPONENT_UNCERTAINTY_SCENARIO: return createComponentUncertaintyScenario();
+			case DfdPackage.DFD_EXTERNAL_UNCERTAINTY_SOURCE: return createDFDExternalUncertaintySource();
+			case DfdPackage.DFD_EXTERNAL_UNCERTAINTY_SCENARIO: return createDFDExternalUncertaintyScenario();
+			case DfdPackage.DFD_BEHAVIOR_UNCERTAINTY_SOURCE: return createDFDBehaviorUncertaintySource();
+			case DfdPackage.DFD_BEHAVIOR_UNCERTAINTY_SCENARIO: return createDFDBehaviorUncertaintyScenario();
+			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SOURCE: return createDFDInterfaceUncertaintySource();
+			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO: return createDFDInterfaceUncertaintyScenario();
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE: return createDFDConnectorUncertaintySource();
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO: return createDFDConnectorUncertaintyScenario();
+			case DfdPackage.DFD_COMPONENT_UNCERTAINTY_SOURCE: return createDFDComponentUncertaintySource();
+			case DfdPackage.DFD_COMPONENT_UNCERTAINTY_SCENARIO: return createDFDComponentUncertaintyScenario();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -76,9 +76,9 @@ public class DfdFactoryImpl extends EFactoryImpl implements DfdFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExternalUncertaintySource createExternalUncertaintySource() {
-		ExternalUncertaintySourceImpl externalUncertaintySource = new ExternalUncertaintySourceImpl();
-		return externalUncertaintySource;
+	public DFDExternalUncertaintySource createDFDExternalUncertaintySource() {
+		DFDExternalUncertaintySourceImpl dfdExternalUncertaintySource = new DFDExternalUncertaintySourceImpl();
+		return dfdExternalUncertaintySource;
 	}
 
 	/**
@@ -86,9 +86,9 @@ public class DfdFactoryImpl extends EFactoryImpl implements DfdFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExternalUncertaintyScenario createExternalUncertaintyScenario() {
-		ExternalUncertaintyScenarioImpl externalUncertaintyScenario = new ExternalUncertaintyScenarioImpl();
-		return externalUncertaintyScenario;
+	public DFDExternalUncertaintyScenario createDFDExternalUncertaintyScenario() {
+		DFDExternalUncertaintyScenarioImpl dfdExternalUncertaintyScenario = new DFDExternalUncertaintyScenarioImpl();
+		return dfdExternalUncertaintyScenario;
 	}
 
 	/**
@@ -96,9 +96,9 @@ public class DfdFactoryImpl extends EFactoryImpl implements DfdFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BehaviorUncertaintySource createBehaviorUncertaintySource() {
-		BehaviorUncertaintySourceImpl behaviorUncertaintySource = new BehaviorUncertaintySourceImpl();
-		return behaviorUncertaintySource;
+	public DFDBehaviorUncertaintySource createDFDBehaviorUncertaintySource() {
+		DFDBehaviorUncertaintySourceImpl dfdBehaviorUncertaintySource = new DFDBehaviorUncertaintySourceImpl();
+		return dfdBehaviorUncertaintySource;
 	}
 
 	/**
@@ -106,9 +106,9 @@ public class DfdFactoryImpl extends EFactoryImpl implements DfdFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BehaviorUncertaintyScenario createBehaviorUncertaintyScenario() {
-		BehaviorUncertaintyScenarioImpl behaviorUncertaintyScenario = new BehaviorUncertaintyScenarioImpl();
-		return behaviorUncertaintyScenario;
+	public DFDBehaviorUncertaintyScenario createDFDBehaviorUncertaintyScenario() {
+		DFDBehaviorUncertaintyScenarioImpl dfdBehaviorUncertaintyScenario = new DFDBehaviorUncertaintyScenarioImpl();
+		return dfdBehaviorUncertaintyScenario;
 	}
 
 	/**
@@ -116,9 +116,9 @@ public class DfdFactoryImpl extends EFactoryImpl implements DfdFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterfaceUncertaintySource createInterfaceUncertaintySource() {
-		InterfaceUncertaintySourceImpl interfaceUncertaintySource = new InterfaceUncertaintySourceImpl();
-		return interfaceUncertaintySource;
+	public DFDInterfaceUncertaintySource createDFDInterfaceUncertaintySource() {
+		DFDInterfaceUncertaintySourceImpl dfdInterfaceUncertaintySource = new DFDInterfaceUncertaintySourceImpl();
+		return dfdInterfaceUncertaintySource;
 	}
 
 	/**
@@ -126,9 +126,9 @@ public class DfdFactoryImpl extends EFactoryImpl implements DfdFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InterfaceUncertaintyScenario createInterfaceUncertaintyScenario() {
-		InterfaceUncertaintyScenarioImpl interfaceUncertaintyScenario = new InterfaceUncertaintyScenarioImpl();
-		return interfaceUncertaintyScenario;
+	public DFDInterfaceUncertaintyScenario createDFDInterfaceUncertaintyScenario() {
+		DFDInterfaceUncertaintyScenarioImpl dfdInterfaceUncertaintyScenario = new DFDInterfaceUncertaintyScenarioImpl();
+		return dfdInterfaceUncertaintyScenario;
 	}
 
 	/**
@@ -136,9 +136,9 @@ public class DfdFactoryImpl extends EFactoryImpl implements DfdFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConnectorUncertaintySource createConnectorUncertaintySource() {
-		ConnectorUncertaintySourceImpl connectorUncertaintySource = new ConnectorUncertaintySourceImpl();
-		return connectorUncertaintySource;
+	public DFDConnectorUncertaintySource createDFDConnectorUncertaintySource() {
+		DFDConnectorUncertaintySourceImpl dfdConnectorUncertaintySource = new DFDConnectorUncertaintySourceImpl();
+		return dfdConnectorUncertaintySource;
 	}
 
 	/**
@@ -146,9 +146,9 @@ public class DfdFactoryImpl extends EFactoryImpl implements DfdFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ConnectorUncertaintyScenario createConnectorUncertaintyScenario() {
-		ConnectorUncertaintyScenarioImpl connectorUncertaintyScenario = new ConnectorUncertaintyScenarioImpl();
-		return connectorUncertaintyScenario;
+	public DFDConnectorUncertaintyScenario createDFDConnectorUncertaintyScenario() {
+		DFDConnectorUncertaintyScenarioImpl dfdConnectorUncertaintyScenario = new DFDConnectorUncertaintyScenarioImpl();
+		return dfdConnectorUncertaintyScenario;
 	}
 
 	/**
@@ -156,9 +156,9 @@ public class DfdFactoryImpl extends EFactoryImpl implements DfdFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComponentUncertaintySource createComponentUncertaintySource() {
-		ComponentUncertaintySourceImpl componentUncertaintySource = new ComponentUncertaintySourceImpl();
-		return componentUncertaintySource;
+	public DFDComponentUncertaintySource createDFDComponentUncertaintySource() {
+		DFDComponentUncertaintySourceImpl dfdComponentUncertaintySource = new DFDComponentUncertaintySourceImpl();
+		return dfdComponentUncertaintySource;
 	}
 
 	/**
@@ -166,9 +166,9 @@ public class DfdFactoryImpl extends EFactoryImpl implements DfdFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComponentUncertaintyScenario createComponentUncertaintyScenario() {
-		ComponentUncertaintyScenarioImpl componentUncertaintyScenario = new ComponentUncertaintyScenarioImpl();
-		return componentUncertaintyScenario;
+	public DFDComponentUncertaintyScenario createDFDComponentUncertaintyScenario() {
+		DFDComponentUncertaintyScenarioImpl dfdComponentUncertaintyScenario = new DFDComponentUncertaintyScenarioImpl();
+		return dfdComponentUncertaintyScenario;
 	}
 
 	/**

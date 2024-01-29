@@ -71,44 +71,48 @@ public class DfdAdapterFactory extends AdapterFactoryImpl {
 	protected DfdSwitch<Adapter> modelSwitch =
 		new DfdSwitch<Adapter>() {
 			@Override
-			public Adapter caseExternalUncertaintySource(ExternalUncertaintySource object) {
-				return createExternalUncertaintySourceAdapter();
+			public Adapter caseDFDUncertaintySource(DFDUncertaintySource object) {
+				return createDFDUncertaintySourceAdapter();
 			}
 			@Override
-			public Adapter caseExternalUncertaintyScenario(ExternalUncertaintyScenario object) {
-				return createExternalUncertaintyScenarioAdapter();
+			public Adapter caseDFDExternalUncertaintySource(DFDExternalUncertaintySource object) {
+				return createDFDExternalUncertaintySourceAdapter();
 			}
 			@Override
-			public Adapter caseBehaviorUncertaintySource(BehaviorUncertaintySource object) {
-				return createBehaviorUncertaintySourceAdapter();
+			public Adapter caseDFDExternalUncertaintyScenario(DFDExternalUncertaintyScenario object) {
+				return createDFDExternalUncertaintyScenarioAdapter();
 			}
 			@Override
-			public Adapter caseBehaviorUncertaintyScenario(BehaviorUncertaintyScenario object) {
-				return createBehaviorUncertaintyScenarioAdapter();
+			public Adapter caseDFDBehaviorUncertaintySource(DFDBehaviorUncertaintySource object) {
+				return createDFDBehaviorUncertaintySourceAdapter();
 			}
 			@Override
-			public Adapter caseInterfaceUncertaintySource(InterfaceUncertaintySource object) {
-				return createInterfaceUncertaintySourceAdapter();
+			public Adapter caseDFDBehaviorUncertaintyScenario(DFDBehaviorUncertaintyScenario object) {
+				return createDFDBehaviorUncertaintyScenarioAdapter();
 			}
 			@Override
-			public Adapter caseInterfaceUncertaintyScenario(InterfaceUncertaintyScenario object) {
-				return createInterfaceUncertaintyScenarioAdapter();
+			public Adapter caseDFDInterfaceUncertaintySource(DFDInterfaceUncertaintySource object) {
+				return createDFDInterfaceUncertaintySourceAdapter();
 			}
 			@Override
-			public Adapter caseConnectorUncertaintySource(ConnectorUncertaintySource object) {
-				return createConnectorUncertaintySourceAdapter();
+			public Adapter caseDFDInterfaceUncertaintyScenario(DFDInterfaceUncertaintyScenario object) {
+				return createDFDInterfaceUncertaintyScenarioAdapter();
 			}
 			@Override
-			public Adapter caseConnectorUncertaintyScenario(ConnectorUncertaintyScenario object) {
-				return createConnectorUncertaintyScenarioAdapter();
+			public Adapter caseDFDConnectorUncertaintySource(DFDConnectorUncertaintySource object) {
+				return createDFDConnectorUncertaintySourceAdapter();
 			}
 			@Override
-			public Adapter caseComponentUncertaintySource(ComponentUncertaintySource object) {
-				return createComponentUncertaintySourceAdapter();
+			public Adapter caseDFDConnectorUncertaintyScenario(DFDConnectorUncertaintyScenario object) {
+				return createDFDConnectorUncertaintyScenarioAdapter();
 			}
 			@Override
-			public Adapter caseComponentUncertaintyScenario(ComponentUncertaintyScenario object) {
-				return createComponentUncertaintyScenarioAdapter();
+			public Adapter caseDFDComponentUncertaintySource(DFDComponentUncertaintySource object) {
+				return createDFDComponentUncertaintySourceAdapter();
+			}
+			@Override
+			public Adapter caseDFDComponentUncertaintyScenario(DFDComponentUncertaintyScenario object) {
+				return createDFDComponentUncertaintyScenarioAdapter();
 			}
 			@Override
 			public Adapter caseUncertaintySource(UncertaintySource object) {
@@ -139,142 +143,156 @@ public class DfdAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource <em>External Uncertainty Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource <em>DFD Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource
 	 * @generated
 	 */
-	public Adapter createExternalUncertaintySourceAdapter() {
+	public Adapter createDFDUncertaintySourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintyScenario <em>External Uncertainty Scenario</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource <em>DFD External Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintyScenario
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource
 	 * @generated
 	 */
-	public Adapter createExternalUncertaintyScenarioAdapter() {
+	public Adapter createDFDExternalUncertaintySourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource <em>Behavior Uncertainty Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario <em>DFD External Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario
 	 * @generated
 	 */
-	public Adapter createBehaviorUncertaintySourceAdapter() {
+	public Adapter createDFDExternalUncertaintyScenarioAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintyScenario <em>Behavior Uncertainty Scenario</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource <em>DFD Behavior Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintyScenario
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource
 	 * @generated
 	 */
-	public Adapter createBehaviorUncertaintyScenarioAdapter() {
+	public Adapter createDFDBehaviorUncertaintySourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource <em>Interface Uncertainty Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario <em>DFD Behavior Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario
 	 * @generated
 	 */
-	public Adapter createInterfaceUncertaintySourceAdapter() {
+	public Adapter createDFDBehaviorUncertaintyScenarioAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintyScenario <em>Interface Uncertainty Scenario</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource <em>DFD Interface Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintyScenario
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource
 	 * @generated
 	 */
-	public Adapter createInterfaceUncertaintyScenarioAdapter() {
+	public Adapter createDFDInterfaceUncertaintySourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource <em>Connector Uncertainty Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario <em>DFD Interface Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario
 	 * @generated
 	 */
-	public Adapter createConnectorUncertaintySourceAdapter() {
+	public Adapter createDFDInterfaceUncertaintyScenarioAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintyScenario <em>Connector Uncertainty Scenario</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource <em>DFD Connector Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintyScenario
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource
 	 * @generated
 	 */
-	public Adapter createConnectorUncertaintyScenarioAdapter() {
+	public Adapter createDFDConnectorUncertaintySourceAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintySource <em>Component Uncertainty Source</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario <em>DFD Connector Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintySource
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario
 	 * @generated
 	 */
-	public Adapter createComponentUncertaintySourceAdapter() {
+	public Adapter createDFDConnectorUncertaintyScenarioAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintyScenario <em>Component Uncertainty Scenario</em>}'.
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource <em>DFD Component Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintyScenario
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource
 	 * @generated
 	 */
-	public Adapter createComponentUncertaintyScenarioAdapter() {
+	public Adapter createDFDComponentUncertaintySourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario <em>DFD Component Uncertainty Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario
+	 * @generated
+	 */
+	public Adapter createDFDComponentUncertaintyScenarioAdapter() {
 		return null;
 	}
 

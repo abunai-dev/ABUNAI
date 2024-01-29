@@ -72,325 +72,325 @@ public class PcmItemProviderAdapterFactory extends PcmAdapterFactory implements 
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInResource} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInResource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExternalUncertaintySourceInResourceItemProvider externalUncertaintySourceInResourceItemProvider;
+	protected PCMExternalUncertaintySourceInResourceItemProvider pcmExternalUncertaintySourceInResourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInResource}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInResource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createExternalUncertaintySourceInResourceAdapter() {
-		if (externalUncertaintySourceInResourceItemProvider == null) {
-			externalUncertaintySourceInResourceItemProvider = new ExternalUncertaintySourceInResourceItemProvider(this);
+	public Adapter createPCMExternalUncertaintySourceInResourceAdapter() {
+		if (pcmExternalUncertaintySourceInResourceItemProvider == null) {
+			pcmExternalUncertaintySourceInResourceItemProvider = new PCMExternalUncertaintySourceInResourceItemProvider(this);
 		}
 
-		return externalUncertaintySourceInResourceItemProvider;
+		return pcmExternalUncertaintySourceInResourceItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInUsage} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInUsage} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExternalUncertaintySourceInUsageItemProvider externalUncertaintySourceInUsageItemProvider;
+	protected PCMExternalUncertaintySourceInUsageItemProvider pcmExternalUncertaintySourceInUsageItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInUsage}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInUsage}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createExternalUncertaintySourceInUsageAdapter() {
-		if (externalUncertaintySourceInUsageItemProvider == null) {
-			externalUncertaintySourceInUsageItemProvider = new ExternalUncertaintySourceInUsageItemProvider(this);
+	public Adapter createPCMExternalUncertaintySourceInUsageAdapter() {
+		if (pcmExternalUncertaintySourceInUsageItemProvider == null) {
+			pcmExternalUncertaintySourceInUsageItemProvider = new PCMExternalUncertaintySourceInUsageItemProvider(this);
 		}
 
-		return externalUncertaintySourceInUsageItemProvider;
+		return pcmExternalUncertaintySourceInUsageItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInResource} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInResource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExternalUncertaintyScenarioInResourceItemProvider externalUncertaintyScenarioInResourceItemProvider;
+	protected PCMExternalUncertaintyScenarioInResourceItemProvider pcmExternalUncertaintyScenarioInResourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInResource}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInResource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createExternalUncertaintyScenarioInResourceAdapter() {
-		if (externalUncertaintyScenarioInResourceItemProvider == null) {
-			externalUncertaintyScenarioInResourceItemProvider = new ExternalUncertaintyScenarioInResourceItemProvider(this);
+	public Adapter createPCMExternalUncertaintyScenarioInResourceAdapter() {
+		if (pcmExternalUncertaintyScenarioInResourceItemProvider == null) {
+			pcmExternalUncertaintyScenarioInResourceItemProvider = new PCMExternalUncertaintyScenarioInResourceItemProvider(this);
 		}
 
-		return externalUncertaintyScenarioInResourceItemProvider;
+		return pcmExternalUncertaintyScenarioInResourceItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInUsage} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInUsage} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ExternalUncertaintyScenarioInUsageItemProvider externalUncertaintyScenarioInUsageItemProvider;
+	protected PCMExternalUncertaintyScenarioInUsageItemProvider pcmExternalUncertaintyScenarioInUsageItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInUsage}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInUsage}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createExternalUncertaintyScenarioInUsageAdapter() {
-		if (externalUncertaintyScenarioInUsageItemProvider == null) {
-			externalUncertaintyScenarioInUsageItemProvider = new ExternalUncertaintyScenarioInUsageItemProvider(this);
+	public Adapter createPCMExternalUncertaintyScenarioInUsageAdapter() {
+		if (pcmExternalUncertaintyScenarioInUsageItemProvider == null) {
+			pcmExternalUncertaintyScenarioInUsageItemProvider = new PCMExternalUncertaintyScenarioInUsageItemProvider(this);
 		}
 
-		return externalUncertaintyScenarioInUsageItemProvider;
+		return pcmExternalUncertaintyScenarioInUsageItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintySource} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BehaviorUncertaintySourceItemProvider behaviorUncertaintySourceItemProvider;
+	protected PCMBehaviorUncertaintySourceItemProvider pcmBehaviorUncertaintySourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintySource}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createBehaviorUncertaintySourceAdapter() {
-		if (behaviorUncertaintySourceItemProvider == null) {
-			behaviorUncertaintySourceItemProvider = new BehaviorUncertaintySourceItemProvider(this);
+	public Adapter createPCMBehaviorUncertaintySourceAdapter() {
+		if (pcmBehaviorUncertaintySourceItemProvider == null) {
+			pcmBehaviorUncertaintySourceItemProvider = new PCMBehaviorUncertaintySourceItemProvider(this);
 		}
 
-		return behaviorUncertaintySourceItemProvider;
+		return pcmBehaviorUncertaintySourceItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintyScenario} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintyScenario} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BehaviorUncertaintyScenarioItemProvider behaviorUncertaintyScenarioItemProvider;
+	protected PCMBehaviorUncertaintyScenarioItemProvider pcmBehaviorUncertaintyScenarioItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintyScenario}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintyScenario}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createBehaviorUncertaintyScenarioAdapter() {
-		if (behaviorUncertaintyScenarioItemProvider == null) {
-			behaviorUncertaintyScenarioItemProvider = new BehaviorUncertaintyScenarioItemProvider(this);
+	public Adapter createPCMBehaviorUncertaintyScenarioAdapter() {
+		if (pcmBehaviorUncertaintyScenarioItemProvider == null) {
+			pcmBehaviorUncertaintyScenarioItemProvider = new PCMBehaviorUncertaintyScenarioItemProvider(this);
 		}
 
-		return behaviorUncertaintyScenarioItemProvider;
+		return pcmBehaviorUncertaintyScenarioItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintySource} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InterfaceUncertaintySourceItemProvider interfaceUncertaintySourceItemProvider;
+	protected PCMInterfaceUncertaintySourceItemProvider pcmInterfaceUncertaintySourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintySource}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createInterfaceUncertaintySourceAdapter() {
-		if (interfaceUncertaintySourceItemProvider == null) {
-			interfaceUncertaintySourceItemProvider = new InterfaceUncertaintySourceItemProvider(this);
+	public Adapter createPCMInterfaceUncertaintySourceAdapter() {
+		if (pcmInterfaceUncertaintySourceItemProvider == null) {
+			pcmInterfaceUncertaintySourceItemProvider = new PCMInterfaceUncertaintySourceItemProvider(this);
 		}
 
-		return interfaceUncertaintySourceItemProvider;
+		return pcmInterfaceUncertaintySourceItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintyScenario} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintyScenario} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InterfaceUncertaintyScenarioItemProvider interfaceUncertaintyScenarioItemProvider;
+	protected PCMInterfaceUncertaintyScenarioItemProvider pcmInterfaceUncertaintyScenarioItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintyScenario}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintyScenario}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createInterfaceUncertaintyScenarioAdapter() {
-		if (interfaceUncertaintyScenarioItemProvider == null) {
-			interfaceUncertaintyScenarioItemProvider = new InterfaceUncertaintyScenarioItemProvider(this);
+	public Adapter createPCMInterfaceUncertaintyScenarioAdapter() {
+		if (pcmInterfaceUncertaintyScenarioItemProvider == null) {
+			pcmInterfaceUncertaintyScenarioItemProvider = new PCMInterfaceUncertaintyScenarioItemProvider(this);
 		}
 
-		return interfaceUncertaintyScenarioItemProvider;
+		return pcmInterfaceUncertaintyScenarioItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInExternalCall} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInExternalCall} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConnectorUncertaintySourceInExternalCallItemProvider connectorUncertaintySourceInExternalCallItemProvider;
+	protected PCMConnectorUncertaintySourceInExternalCallItemProvider pcmConnectorUncertaintySourceInExternalCallItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInExternalCall}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInExternalCall}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createConnectorUncertaintySourceInExternalCallAdapter() {
-		if (connectorUncertaintySourceInExternalCallItemProvider == null) {
-			connectorUncertaintySourceInExternalCallItemProvider = new ConnectorUncertaintySourceInExternalCallItemProvider(this);
+	public Adapter createPCMConnectorUncertaintySourceInExternalCallAdapter() {
+		if (pcmConnectorUncertaintySourceInExternalCallItemProvider == null) {
+			pcmConnectorUncertaintySourceInExternalCallItemProvider = new PCMConnectorUncertaintySourceInExternalCallItemProvider(this);
 		}
 
-		return connectorUncertaintySourceInExternalCallItemProvider;
+		return pcmConnectorUncertaintySourceInExternalCallItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInEntryLevelSystemCall} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInEntryLevelSystemCall} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConnectorUncertaintySourceInEntryLevelSystemCallItemProvider connectorUncertaintySourceInEntryLevelSystemCallItemProvider;
+	protected PCMConnectorUncertaintySourceInEntryLevelSystemCallItemProvider pcmConnectorUncertaintySourceInEntryLevelSystemCallItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInEntryLevelSystemCall}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInEntryLevelSystemCall}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createConnectorUncertaintySourceInEntryLevelSystemCallAdapter() {
-		if (connectorUncertaintySourceInEntryLevelSystemCallItemProvider == null) {
-			connectorUncertaintySourceInEntryLevelSystemCallItemProvider = new ConnectorUncertaintySourceInEntryLevelSystemCallItemProvider(this);
+	public Adapter createPCMConnectorUncertaintySourceInEntryLevelSystemCallAdapter() {
+		if (pcmConnectorUncertaintySourceInEntryLevelSystemCallItemProvider == null) {
+			pcmConnectorUncertaintySourceInEntryLevelSystemCallItemProvider = new PCMConnectorUncertaintySourceInEntryLevelSystemCallItemProvider(this);
 		}
 
-		return connectorUncertaintySourceInEntryLevelSystemCallItemProvider;
+		return pcmConnectorUncertaintySourceInEntryLevelSystemCallItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInExternalCall} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInExternalCall} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConnectorUncertaintyScenarioInExternalCallItemProvider connectorUncertaintyScenarioInExternalCallItemProvider;
+	protected PCMConnectorUncertaintyScenarioInExternalCallItemProvider pcmConnectorUncertaintyScenarioInExternalCallItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInExternalCall}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInExternalCall}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createConnectorUncertaintyScenarioInExternalCallAdapter() {
-		if (connectorUncertaintyScenarioInExternalCallItemProvider == null) {
-			connectorUncertaintyScenarioInExternalCallItemProvider = new ConnectorUncertaintyScenarioInExternalCallItemProvider(this);
+	public Adapter createPCMConnectorUncertaintyScenarioInExternalCallAdapter() {
+		if (pcmConnectorUncertaintyScenarioInExternalCallItemProvider == null) {
+			pcmConnectorUncertaintyScenarioInExternalCallItemProvider = new PCMConnectorUncertaintyScenarioInExternalCallItemProvider(this);
 		}
 
-		return connectorUncertaintyScenarioInExternalCallItemProvider;
+		return pcmConnectorUncertaintyScenarioInExternalCallItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInEntryLevelSystemCall} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInEntryLevelSystemCall} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ConnectorUncertaintyScenarioInEntryLevelSystemCallItemProvider connectorUncertaintyScenarioInEntryLevelSystemCallItemProvider;
+	protected PCMConnectorUncertaintyScenarioInEntryLevelSystemCallItemProvider pcmConnectorUncertaintyScenarioInEntryLevelSystemCallItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInEntryLevelSystemCall}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInEntryLevelSystemCall}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createConnectorUncertaintyScenarioInEntryLevelSystemCallAdapter() {
-		if (connectorUncertaintyScenarioInEntryLevelSystemCallItemProvider == null) {
-			connectorUncertaintyScenarioInEntryLevelSystemCallItemProvider = new ConnectorUncertaintyScenarioInEntryLevelSystemCallItemProvider(this);
+	public Adapter createPCMConnectorUncertaintyScenarioInEntryLevelSystemCallAdapter() {
+		if (pcmConnectorUncertaintyScenarioInEntryLevelSystemCallItemProvider == null) {
+			pcmConnectorUncertaintyScenarioInEntryLevelSystemCallItemProvider = new PCMConnectorUncertaintyScenarioInEntryLevelSystemCallItemProvider(this);
 		}
 
-		return connectorUncertaintyScenarioInEntryLevelSystemCallItemProvider;
+		return pcmConnectorUncertaintyScenarioInEntryLevelSystemCallItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintySource} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintySource} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComponentUncertaintySourceItemProvider componentUncertaintySourceItemProvider;
+	protected PCMComponentUncertaintySourceItemProvider pcmComponentUncertaintySourceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintySource}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintySource}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createComponentUncertaintySourceAdapter() {
-		if (componentUncertaintySourceItemProvider == null) {
-			componentUncertaintySourceItemProvider = new ComponentUncertaintySourceItemProvider(this);
+	public Adapter createPCMComponentUncertaintySourceAdapter() {
+		if (pcmComponentUncertaintySourceItemProvider == null) {
+			pcmComponentUncertaintySourceItemProvider = new PCMComponentUncertaintySourceItemProvider(this);
 		}
 
-		return componentUncertaintySourceItemProvider;
+		return pcmComponentUncertaintySourceItemProvider;
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintyScenario} instances.
+	 * This keeps track of the one adapter used for all {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintyScenario} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ComponentUncertaintyScenarioItemProvider componentUncertaintyScenarioItemProvider;
+	protected PCMComponentUncertaintyScenarioItemProvider pcmComponentUncertaintyScenarioItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintyScenario}.
+	 * This creates an adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintyScenario}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createComponentUncertaintyScenarioAdapter() {
-		if (componentUncertaintyScenarioItemProvider == null) {
-			componentUncertaintyScenarioItemProvider = new ComponentUncertaintyScenarioItemProvider(this);
+	public Adapter createPCMComponentUncertaintyScenarioAdapter() {
+		if (pcmComponentUncertaintyScenarioItemProvider == null) {
+			pcmComponentUncertaintyScenarioItemProvider = new PCMComponentUncertaintyScenarioItemProvider(this);
 		}
 
-		return componentUncertaintyScenarioItemProvider;
+		return pcmComponentUncertaintyScenarioItemProvider;
 	}
 
 	/**
@@ -492,20 +492,20 @@ public class PcmItemProviderAdapterFactory extends PcmAdapterFactory implements 
 	 * @generated
 	 */
 	public void dispose() {
-		if (externalUncertaintySourceInResourceItemProvider != null) externalUncertaintySourceInResourceItemProvider.dispose();
-		if (externalUncertaintySourceInUsageItemProvider != null) externalUncertaintySourceInUsageItemProvider.dispose();
-		if (externalUncertaintyScenarioInResourceItemProvider != null) externalUncertaintyScenarioInResourceItemProvider.dispose();
-		if (externalUncertaintyScenarioInUsageItemProvider != null) externalUncertaintyScenarioInUsageItemProvider.dispose();
-		if (behaviorUncertaintySourceItemProvider != null) behaviorUncertaintySourceItemProvider.dispose();
-		if (behaviorUncertaintyScenarioItemProvider != null) behaviorUncertaintyScenarioItemProvider.dispose();
-		if (interfaceUncertaintySourceItemProvider != null) interfaceUncertaintySourceItemProvider.dispose();
-		if (interfaceUncertaintyScenarioItemProvider != null) interfaceUncertaintyScenarioItemProvider.dispose();
-		if (connectorUncertaintySourceInExternalCallItemProvider != null) connectorUncertaintySourceInExternalCallItemProvider.dispose();
-		if (connectorUncertaintySourceInEntryLevelSystemCallItemProvider != null) connectorUncertaintySourceInEntryLevelSystemCallItemProvider.dispose();
-		if (connectorUncertaintyScenarioInExternalCallItemProvider != null) connectorUncertaintyScenarioInExternalCallItemProvider.dispose();
-		if (connectorUncertaintyScenarioInEntryLevelSystemCallItemProvider != null) connectorUncertaintyScenarioInEntryLevelSystemCallItemProvider.dispose();
-		if (componentUncertaintySourceItemProvider != null) componentUncertaintySourceItemProvider.dispose();
-		if (componentUncertaintyScenarioItemProvider != null) componentUncertaintyScenarioItemProvider.dispose();
+		if (pcmExternalUncertaintySourceInResourceItemProvider != null) pcmExternalUncertaintySourceInResourceItemProvider.dispose();
+		if (pcmExternalUncertaintySourceInUsageItemProvider != null) pcmExternalUncertaintySourceInUsageItemProvider.dispose();
+		if (pcmExternalUncertaintyScenarioInResourceItemProvider != null) pcmExternalUncertaintyScenarioInResourceItemProvider.dispose();
+		if (pcmExternalUncertaintyScenarioInUsageItemProvider != null) pcmExternalUncertaintyScenarioInUsageItemProvider.dispose();
+		if (pcmBehaviorUncertaintySourceItemProvider != null) pcmBehaviorUncertaintySourceItemProvider.dispose();
+		if (pcmBehaviorUncertaintyScenarioItemProvider != null) pcmBehaviorUncertaintyScenarioItemProvider.dispose();
+		if (pcmInterfaceUncertaintySourceItemProvider != null) pcmInterfaceUncertaintySourceItemProvider.dispose();
+		if (pcmInterfaceUncertaintyScenarioItemProvider != null) pcmInterfaceUncertaintyScenarioItemProvider.dispose();
+		if (pcmConnectorUncertaintySourceInExternalCallItemProvider != null) pcmConnectorUncertaintySourceInExternalCallItemProvider.dispose();
+		if (pcmConnectorUncertaintySourceInEntryLevelSystemCallItemProvider != null) pcmConnectorUncertaintySourceInEntryLevelSystemCallItemProvider.dispose();
+		if (pcmConnectorUncertaintyScenarioInExternalCallItemProvider != null) pcmConnectorUncertaintyScenarioInExternalCallItemProvider.dispose();
+		if (pcmConnectorUncertaintyScenarioInEntryLevelSystemCallItemProvider != null) pcmConnectorUncertaintyScenarioInEntryLevelSystemCallItemProvider.dispose();
+		if (pcmComponentUncertaintySourceItemProvider != null) pcmComponentUncertaintySourceItemProvider.dispose();
+		if (pcmComponentUncertaintyScenarioItemProvider != null) pcmComponentUncertaintyScenarioItemProvider.dispose();
 	}
 
 }

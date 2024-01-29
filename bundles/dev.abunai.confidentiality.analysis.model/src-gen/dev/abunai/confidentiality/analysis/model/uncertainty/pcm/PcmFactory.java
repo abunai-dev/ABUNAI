@@ -22,130 +22,130 @@ public interface PcmFactory extends EFactory {
 	PcmFactory eINSTANCE = dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>External Uncertainty Source In Resource</em>'.
+	 * Returns a new object of class '<em>PCM External Uncertainty Source In Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>External Uncertainty Source In Resource</em>'.
+	 * @return a new object of class '<em>PCM External Uncertainty Source In Resource</em>'.
 	 * @generated
 	 */
-	ExternalUncertaintySourceInResource createExternalUncertaintySourceInResource();
+	PCMExternalUncertaintySourceInResource createPCMExternalUncertaintySourceInResource();
 
 	/**
-	 * Returns a new object of class '<em>External Uncertainty Source In Usage</em>'.
+	 * Returns a new object of class '<em>PCM External Uncertainty Source In Usage</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>External Uncertainty Source In Usage</em>'.
+	 * @return a new object of class '<em>PCM External Uncertainty Source In Usage</em>'.
 	 * @generated
 	 */
-	ExternalUncertaintySourceInUsage createExternalUncertaintySourceInUsage();
+	PCMExternalUncertaintySourceInUsage createPCMExternalUncertaintySourceInUsage();
 
 	/**
-	 * Returns a new object of class '<em>External Uncertainty Scenario In Resource</em>'.
+	 * Returns a new object of class '<em>PCM External Uncertainty Scenario In Resource</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>External Uncertainty Scenario In Resource</em>'.
+	 * @return a new object of class '<em>PCM External Uncertainty Scenario In Resource</em>'.
 	 * @generated
 	 */
-	ExternalUncertaintyScenarioInResource createExternalUncertaintyScenarioInResource();
+	PCMExternalUncertaintyScenarioInResource createPCMExternalUncertaintyScenarioInResource();
 
 	/**
-	 * Returns a new object of class '<em>External Uncertainty Scenario In Usage</em>'.
+	 * Returns a new object of class '<em>PCM External Uncertainty Scenario In Usage</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>External Uncertainty Scenario In Usage</em>'.
+	 * @return a new object of class '<em>PCM External Uncertainty Scenario In Usage</em>'.
 	 * @generated
 	 */
-	ExternalUncertaintyScenarioInUsage createExternalUncertaintyScenarioInUsage();
+	PCMExternalUncertaintyScenarioInUsage createPCMExternalUncertaintyScenarioInUsage();
 
 	/**
-	 * Returns a new object of class '<em>Behavior Uncertainty Source</em>'.
+	 * Returns a new object of class '<em>PCM Behavior Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Behavior Uncertainty Source</em>'.
+	 * @return a new object of class '<em>PCM Behavior Uncertainty Source</em>'.
 	 * @generated
 	 */
-	BehaviorUncertaintySource createBehaviorUncertaintySource();
+	PCMBehaviorUncertaintySource createPCMBehaviorUncertaintySource();
 
 	/**
-	 * Returns a new object of class '<em>Behavior Uncertainty Scenario</em>'.
+	 * Returns a new object of class '<em>PCM Behavior Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Behavior Uncertainty Scenario</em>'.
+	 * @return a new object of class '<em>PCM Behavior Uncertainty Scenario</em>'.
 	 * @generated
 	 */
-	BehaviorUncertaintyScenario createBehaviorUncertaintyScenario();
+	PCMBehaviorUncertaintyScenario createPCMBehaviorUncertaintyScenario();
 
 	/**
-	 * Returns a new object of class '<em>Interface Uncertainty Source</em>'.
+	 * Returns a new object of class '<em>PCM Interface Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Interface Uncertainty Source</em>'.
+	 * @return a new object of class '<em>PCM Interface Uncertainty Source</em>'.
 	 * @generated
 	 */
-	InterfaceUncertaintySource createInterfaceUncertaintySource();
+	PCMInterfaceUncertaintySource createPCMInterfaceUncertaintySource();
 
 	/**
-	 * Returns a new object of class '<em>Interface Uncertainty Scenario</em>'.
+	 * Returns a new object of class '<em>PCM Interface Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Interface Uncertainty Scenario</em>'.
+	 * @return a new object of class '<em>PCM Interface Uncertainty Scenario</em>'.
 	 * @generated
 	 */
-	InterfaceUncertaintyScenario createInterfaceUncertaintyScenario();
+	PCMInterfaceUncertaintyScenario createPCMInterfaceUncertaintyScenario();
 
 	/**
-	 * Returns a new object of class '<em>Connector Uncertainty Source In External Call</em>'.
+	 * Returns a new object of class '<em>PCM Connector Uncertainty Source In External Call</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Connector Uncertainty Source In External Call</em>'.
+	 * @return a new object of class '<em>PCM Connector Uncertainty Source In External Call</em>'.
 	 * @generated
 	 */
-	ConnectorUncertaintySourceInExternalCall createConnectorUncertaintySourceInExternalCall();
+	PCMConnectorUncertaintySourceInExternalCall createPCMConnectorUncertaintySourceInExternalCall();
 
 	/**
-	 * Returns a new object of class '<em>Connector Uncertainty Source In Entry Level System Call</em>'.
+	 * Returns a new object of class '<em>PCM Connector Uncertainty Source In Entry Level System Call</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Connector Uncertainty Source In Entry Level System Call</em>'.
+	 * @return a new object of class '<em>PCM Connector Uncertainty Source In Entry Level System Call</em>'.
 	 * @generated
 	 */
-	ConnectorUncertaintySourceInEntryLevelSystemCall createConnectorUncertaintySourceInEntryLevelSystemCall();
+	PCMConnectorUncertaintySourceInEntryLevelSystemCall createPCMConnectorUncertaintySourceInEntryLevelSystemCall();
 
 	/**
-	 * Returns a new object of class '<em>Connector Uncertainty Scenario In External Call</em>'.
+	 * Returns a new object of class '<em>PCM Connector Uncertainty Scenario In External Call</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Connector Uncertainty Scenario In External Call</em>'.
+	 * @return a new object of class '<em>PCM Connector Uncertainty Scenario In External Call</em>'.
 	 * @generated
 	 */
-	ConnectorUncertaintyScenarioInExternalCall createConnectorUncertaintyScenarioInExternalCall();
+	PCMConnectorUncertaintyScenarioInExternalCall createPCMConnectorUncertaintyScenarioInExternalCall();
 
 	/**
-	 * Returns a new object of class '<em>Connector Uncertainty Scenario In Entry Level System Call</em>'.
+	 * Returns a new object of class '<em>PCM Connector Uncertainty Scenario In Entry Level System Call</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Connector Uncertainty Scenario In Entry Level System Call</em>'.
+	 * @return a new object of class '<em>PCM Connector Uncertainty Scenario In Entry Level System Call</em>'.
 	 * @generated
 	 */
-	ConnectorUncertaintyScenarioInEntryLevelSystemCall createConnectorUncertaintyScenarioInEntryLevelSystemCall();
+	PCMConnectorUncertaintyScenarioInEntryLevelSystemCall createPCMConnectorUncertaintyScenarioInEntryLevelSystemCall();
 
 	/**
-	 * Returns a new object of class '<em>Component Uncertainty Source</em>'.
+	 * Returns a new object of class '<em>PCM Component Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Component Uncertainty Source</em>'.
+	 * @return a new object of class '<em>PCM Component Uncertainty Source</em>'.
 	 * @generated
 	 */
-	ComponentUncertaintySource createComponentUncertaintySource();
+	PCMComponentUncertaintySource createPCMComponentUncertaintySource();
 
 	/**
-	 * Returns a new object of class '<em>Component Uncertainty Scenario</em>'.
+	 * Returns a new object of class '<em>PCM Component Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Component Uncertainty Scenario</em>'.
+	 * @return a new object of class '<em>PCM Component Uncertainty Scenario</em>'.
 	 * @generated
 	 */
-	ComponentUncertaintyScenario createComponentUncertaintyScenario();
+	PCMComponentUncertaintyScenario createPCMComponentUncertaintyScenario();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -58,14 +58,42 @@ public interface DfdPackage extends EPackage {
 	DfdPackage eINSTANCE = dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ExternalUncertaintySourceImpl <em>External Uncertainty Source</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDUncertaintySourceImpl <em>DFD Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ExternalUncertaintySourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getExternalUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDUncertaintySource()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE = 0;
+	int DFD_UNCERTAINTY_SOURCE = 0;
+
+	/**
+	 * The number of structural features of the '<em>DFD Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>DFD Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDExternalUncertaintySourceImpl <em>DFD External Uncertainty Source</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDExternalUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDExternalUncertaintySource()
+	 * @generated
+	 */
+	int DFD_EXTERNAL_UNCERTAINTY_SOURCE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -74,7 +102,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE__TARGET = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int DFD_EXTERNAL_UNCERTAINTY_SOURCE__TARGET = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target Properties</b></em>' reference list.
@@ -83,7 +111,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE__TARGET_PROPERTIES = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int DFD_EXTERNAL_UNCERTAINTY_SOURCE__TARGET_PROPERTIES = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -92,35 +120,35 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE__SCENARIOS = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int DFD_EXTERNAL_UNCERTAINTY_SOURCE__SCENARIOS = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>External Uncertainty Source</em>' class.
+	 * The number of structural features of the '<em>DFD External Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 3;
+	int DFD_EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>External Uncertainty Source</em>' class.
+	 * The number of operations of the '<em>DFD External Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int DFD_EXTERNAL_UNCERTAINTY_SOURCE_OPERATION_COUNT = DFD_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ExternalUncertaintyScenarioImpl <em>External Uncertainty Scenario</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDExternalUncertaintyScenarioImpl <em>DFD External Uncertainty Scenario</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ExternalUncertaintyScenarioImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getExternalUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDExternalUncertaintyScenarioImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDExternalUncertaintyScenario()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO = 1;
+	int DFD_EXTERNAL_UNCERTAINTY_SCENARIO = 2;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -129,7 +157,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int DFD_EXTERNAL_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target Properties</b></em>' reference list.
@@ -138,35 +166,35 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO__TARGET_PROPERTIES = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int DFD_EXTERNAL_UNCERTAINTY_SCENARIO__TARGET_PROPERTIES = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>External Uncertainty Scenario</em>' class.
+	 * The number of structural features of the '<em>DFD External Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int DFD_EXTERNAL_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>External Uncertainty Scenario</em>' class.
+	 * The number of operations of the '<em>DFD External Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int DFD_EXTERNAL_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.BehaviorUncertaintySourceImpl <em>Behavior Uncertainty Source</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDBehaviorUncertaintySourceImpl <em>DFD Behavior Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.BehaviorUncertaintySourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getBehaviorUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDBehaviorUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDBehaviorUncertaintySource()
 	 * @generated
 	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE = 2;
+	int DFD_BEHAVIOR_UNCERTAINTY_SOURCE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -175,7 +203,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int DFD_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target Assignments</b></em>' reference list.
@@ -184,7 +212,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int DFD_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -193,35 +221,35 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int DFD_BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Behavior Uncertainty Source</em>' class.
+	 * The number of structural features of the '<em>DFD Behavior Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 3;
+	int DFD_BEHAVIOR_UNCERTAINTY_SOURCE_FEATURE_COUNT = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Behavior Uncertainty Source</em>' class.
+	 * The number of operations of the '<em>DFD Behavior Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int DFD_BEHAVIOR_UNCERTAINTY_SOURCE_OPERATION_COUNT = DFD_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.BehaviorUncertaintyScenarioImpl <em>Behavior Uncertainty Scenario</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDBehaviorUncertaintyScenarioImpl <em>DFD Behavior Uncertainty Scenario</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.BehaviorUncertaintyScenarioImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getBehaviorUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDBehaviorUncertaintyScenarioImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDBehaviorUncertaintyScenario()
 	 * @generated
 	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO = 3;
+	int DFD_BEHAVIOR_UNCERTAINTY_SCENARIO = 4;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -230,7 +258,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int DFD_BEHAVIOR_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target Assignments</b></em>' reference list.
@@ -239,35 +267,35 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int DFD_BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Behavior Uncertainty Scenario</em>' class.
+	 * The number of structural features of the '<em>DFD Behavior Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int DFD_BEHAVIOR_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Behavior Uncertainty Scenario</em>' class.
+	 * The number of operations of the '<em>DFD Behavior Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int DFD_BEHAVIOR_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.InterfaceUncertaintySourceImpl <em>Interface Uncertainty Source</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDInterfaceUncertaintySourceImpl <em>DFD Interface Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.InterfaceUncertaintySourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getInterfaceUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDInterfaceUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDInterfaceUncertaintySource()
 	 * @generated
 	 */
-	int INTERFACE_UNCERTAINTY_SOURCE = 4;
+	int DFD_INTERFACE_UNCERTAINTY_SOURCE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Target In Pin</b></em>' reference.
@@ -276,7 +304,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SOURCE__TARGET_IN_PIN = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int DFD_INTERFACE_UNCERTAINTY_SOURCE__TARGET_IN_PIN = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target Flow</b></em>' reference.
@@ -285,7 +313,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SOURCE__TARGET_FLOW = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int DFD_INTERFACE_UNCERTAINTY_SOURCE__TARGET_FLOW = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -294,35 +322,35 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int DFD_INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Interface Uncertainty Source</em>' class.
+	 * The number of structural features of the '<em>DFD Interface Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 3;
+	int DFD_INTERFACE_UNCERTAINTY_SOURCE_FEATURE_COUNT = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Interface Uncertainty Source</em>' class.
+	 * The number of operations of the '<em>DFD Interface Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int DFD_INTERFACE_UNCERTAINTY_SOURCE_OPERATION_COUNT = DFD_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.InterfaceUncertaintyScenarioImpl <em>Interface Uncertainty Scenario</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDInterfaceUncertaintyScenarioImpl <em>DFD Interface Uncertainty Scenario</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.InterfaceUncertaintyScenarioImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getInterfaceUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDInterfaceUncertaintyScenarioImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDInterfaceUncertaintyScenario()
 	 * @generated
 	 */
-	int INTERFACE_UNCERTAINTY_SCENARIO = 5;
+	int DFD_INTERFACE_UNCERTAINTY_SCENARIO = 6;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -331,7 +359,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int DFD_INTERFACE_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target In Pin</b></em>' reference.
@@ -340,7 +368,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SCENARIO__TARGET_IN_PIN = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_IN_PIN = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target Flow</b></em>' reference.
@@ -349,35 +377,35 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Interface Uncertainty Scenario</em>' class.
+	 * The number of structural features of the '<em>DFD Interface Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 2;
+	int DFD_INTERFACE_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Interface Uncertainty Scenario</em>' class.
+	 * The number of operations of the '<em>DFD Interface Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int DFD_INTERFACE_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ConnectorUncertaintySourceImpl <em>Connector Uncertainty Source</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintySourceImpl <em>DFD Connector Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ConnectorUncertaintySourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getConnectorUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDConnectorUncertaintySource()
 	 * @generated
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE = 6;
+	int DFD_CONNECTOR_UNCERTAINTY_SOURCE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Target Assignement</b></em>' reference.
@@ -386,7 +414,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target Flow</b></em>' reference.
@@ -395,7 +423,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE__TARGET_FLOW = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_FLOW = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -404,35 +432,35 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE__SCENARIOS = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int DFD_CONNECTOR_UNCERTAINTY_SOURCE__SCENARIOS = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Connector Uncertainty Source</em>' class.
+	 * The number of structural features of the '<em>DFD Connector Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 3;
+	int DFD_CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Connector Uncertainty Source</em>' class.
+	 * The number of operations of the '<em>DFD Connector Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int DFD_CONNECTOR_UNCERTAINTY_SOURCE_OPERATION_COUNT = DFD_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ConnectorUncertaintyScenarioImpl <em>Connector Uncertainty Scenario</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintyScenarioImpl <em>DFD Connector Uncertainty Scenario</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ConnectorUncertaintyScenarioImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getConnectorUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintyScenarioImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDConnectorUncertaintyScenario()
 	 * @generated
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO = 7;
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO = 8;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -441,7 +469,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target Assignment</b></em>' reference.
@@ -450,7 +478,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target Flow</b></em>' reference.
@@ -459,35 +487,35 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Connector Uncertainty Scenario</em>' class.
+	 * The number of structural features of the '<em>DFD Connector Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 2;
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Connector Uncertainty Scenario</em>' class.
+	 * The number of operations of the '<em>DFD Connector Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ComponentUncertaintySourceImpl <em>Component Uncertainty Source</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDComponentUncertaintySourceImpl <em>DFD Component Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ComponentUncertaintySourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getComponentUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDComponentUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDComponentUncertaintySource()
 	 * @generated
 	 */
-	int COMPONENT_UNCERTAINTY_SOURCE = 8;
+	int DFD_COMPONENT_UNCERTAINTY_SOURCE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -496,7 +524,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SOURCE__TARGET = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int DFD_COMPONENT_UNCERTAINTY_SOURCE__TARGET = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -505,35 +533,35 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SOURCE__SCENARIOS = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int DFD_COMPONENT_UNCERTAINTY_SOURCE__SCENARIOS = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Component Uncertainty Source</em>' class.
+	 * The number of structural features of the '<em>DFD Component Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int DFD_COMPONENT_UNCERTAINTY_SOURCE_FEATURE_COUNT = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Component Uncertainty Source</em>' class.
+	 * The number of operations of the '<em>DFD Component Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int DFD_COMPONENT_UNCERTAINTY_SOURCE_OPERATION_COUNT = DFD_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ComponentUncertaintyScenarioImpl <em>Component Uncertainty Scenario</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDComponentUncertaintyScenarioImpl <em>DFD Component Uncertainty Scenario</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ComponentUncertaintyScenarioImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getComponentUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDComponentUncertaintyScenarioImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDComponentUncertaintyScenario()
 	 * @generated
 	 */
-	int COMPONENT_UNCERTAINTY_SCENARIO = 9;
+	int DFD_COMPONENT_UNCERTAINTY_SCENARIO = 10;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -542,7 +570,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int DFD_COMPONENT_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -551,357 +579,367 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SCENARIO__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int DFD_COMPONENT_UNCERTAINTY_SCENARIO__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Component Uncertainty Scenario</em>' class.
+	 * The number of structural features of the '<em>DFD Component Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int DFD_COMPONENT_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Component Uncertainty Scenario</em>' class.
+	 * The number of operations of the '<em>DFD Component Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int DFD_COMPONENT_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource <em>External Uncertainty Source</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource <em>DFD Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>External Uncertainty Source</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource
+	 * @return the meta object for class '<em>DFD Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource
 	 * @generated
 	 */
-	EClass getExternalUncertaintySource();
+	EClass getDFDUncertaintySource();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource#getTarget <em>Target</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource <em>DFD External Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource#getTarget()
-	 * @see #getExternalUncertaintySource()
+	 * @return the meta object for class '<em>DFD External Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource
 	 * @generated
 	 */
-	EReference getExternalUncertaintySource_Target();
+	EClass getDFDExternalUncertaintySource();
 
 	/**
-	 * Returns the meta object for the reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource#getTargetProperties <em>Target Properties</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Target Properties</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource#getTargetProperties()
-	 * @see #getExternalUncertaintySource()
-	 * @generated
-	 */
-	EReference getExternalUncertaintySource_TargetProperties();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource#getScenarios <em>Scenarios</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintySource#getScenarios()
-	 * @see #getExternalUncertaintySource()
-	 * @generated
-	 */
-	EReference getExternalUncertaintySource_Scenarios();
-
-	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintyScenario <em>External Uncertainty Scenario</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>External Uncertainty Scenario</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintyScenario
-	 * @generated
-	 */
-	EClass getExternalUncertaintyScenario();
-
-	/**
-	 * Returns the meta object for the reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintyScenario#getTargetProperties <em>Target Properties</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Target Properties</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ExternalUncertaintyScenario#getTargetProperties()
-	 * @see #getExternalUncertaintyScenario()
-	 * @generated
-	 */
-	EReference getExternalUncertaintyScenario_TargetProperties();
-
-	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource <em>Behavior Uncertainty Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Behavior Uncertainty Source</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource
-	 * @generated
-	 */
-	EClass getBehaviorUncertaintySource();
-
-	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource#getTarget()
-	 * @see #getBehaviorUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource#getTarget()
+	 * @see #getDFDExternalUncertaintySource()
 	 * @generated
 	 */
-	EReference getBehaviorUncertaintySource_Target();
+	EReference getDFDExternalUncertaintySource_Target();
 
 	/**
-	 * Returns the meta object for the reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource#getTargetAssignments <em>Target Assignments</em>}'.
+	 * Returns the meta object for the reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource#getTargetProperties <em>Target Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Target Assignments</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource#getTargetAssignments()
-	 * @see #getBehaviorUncertaintySource()
+	 * @return the meta object for the reference list '<em>Target Properties</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource#getTargetProperties()
+	 * @see #getDFDExternalUncertaintySource()
 	 * @generated
 	 */
-	EReference getBehaviorUncertaintySource_TargetAssignments();
+	EReference getDFDExternalUncertaintySource_TargetProperties();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource#getScenarios <em>Scenarios</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintySource#getScenarios()
-	 * @see #getBehaviorUncertaintySource()
-	 * @generated
-	 */
-	EReference getBehaviorUncertaintySource_Scenarios();
-
-	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintyScenario <em>Behavior Uncertainty Scenario</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Behavior Uncertainty Scenario</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintyScenario
-	 * @generated
-	 */
-	EClass getBehaviorUncertaintyScenario();
-
-	/**
-	 * Returns the meta object for the reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintyScenario#getTargetAssignments <em>Target Assignments</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Target Assignments</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.BehaviorUncertaintyScenario#getTargetAssignments()
-	 * @see #getBehaviorUncertaintyScenario()
-	 * @generated
-	 */
-	EReference getBehaviorUncertaintyScenario_TargetAssignments();
-
-	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource <em>Interface Uncertainty Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Interface Uncertainty Source</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource
-	 * @generated
-	 */
-	EClass getInterfaceUncertaintySource();
-
-	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource#getTargetInPin <em>Target In Pin</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target In Pin</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource#getTargetInPin()
-	 * @see #getInterfaceUncertaintySource()
-	 * @generated
-	 */
-	EReference getInterfaceUncertaintySource_TargetInPin();
-
-	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource#getTargetFlow <em>Target Flow</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target Flow</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource#getTargetFlow()
-	 * @see #getInterfaceUncertaintySource()
-	 * @generated
-	 */
-	EReference getInterfaceUncertaintySource_TargetFlow();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource#getScenarios <em>Scenarios</em>}'.
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintySource#getScenarios()
-	 * @see #getInterfaceUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource#getScenarios()
+	 * @see #getDFDExternalUncertaintySource()
 	 * @generated
 	 */
-	EReference getInterfaceUncertaintySource_Scenarios();
+	EReference getDFDExternalUncertaintySource_Scenarios();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintyScenario <em>Interface Uncertainty Scenario</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario <em>DFD External Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Interface Uncertainty Scenario</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintyScenario
+	 * @return the meta object for class '<em>DFD External Uncertainty Scenario</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario
 	 * @generated
 	 */
-	EClass getInterfaceUncertaintyScenario();
+	EClass getDFDExternalUncertaintyScenario();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintyScenario#getTargetInPin <em>Target In Pin</em>}'.
+	 * Returns the meta object for the reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario#getTargetProperties <em>Target Properties</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Target Properties</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario#getTargetProperties()
+	 * @see #getDFDExternalUncertaintyScenario()
+	 * @generated
+	 */
+	EReference getDFDExternalUncertaintyScenario_TargetProperties();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource <em>DFD Behavior Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>DFD Behavior Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource
+	 * @generated
+	 */
+	EClass getDFDBehaviorUncertaintySource();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource#getTarget()
+	 * @see #getDFDBehaviorUncertaintySource()
+	 * @generated
+	 */
+	EReference getDFDBehaviorUncertaintySource_Target();
+
+	/**
+	 * Returns the meta object for the reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource#getTargetAssignments <em>Target Assignments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Target Assignments</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource#getTargetAssignments()
+	 * @see #getDFDBehaviorUncertaintySource()
+	 * @generated
+	 */
+	EReference getDFDBehaviorUncertaintySource_TargetAssignments();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource#getScenarios <em>Scenarios</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource#getScenarios()
+	 * @see #getDFDBehaviorUncertaintySource()
+	 * @generated
+	 */
+	EReference getDFDBehaviorUncertaintySource_Scenarios();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario <em>DFD Behavior Uncertainty Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>DFD Behavior Uncertainty Scenario</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario
+	 * @generated
+	 */
+	EClass getDFDBehaviorUncertaintyScenario();
+
+	/**
+	 * Returns the meta object for the reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario#getTargetAssignments <em>Target Assignments</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Target Assignments</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario#getTargetAssignments()
+	 * @see #getDFDBehaviorUncertaintyScenario()
+	 * @generated
+	 */
+	EReference getDFDBehaviorUncertaintyScenario_TargetAssignments();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource <em>DFD Interface Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>DFD Interface Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource
+	 * @generated
+	 */
+	EClass getDFDInterfaceUncertaintySource();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource#getTargetInPin <em>Target In Pin</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target In Pin</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintyScenario#getTargetInPin()
-	 * @see #getInterfaceUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource#getTargetInPin()
+	 * @see #getDFDInterfaceUncertaintySource()
 	 * @generated
 	 */
-	EReference getInterfaceUncertaintyScenario_TargetInPin();
+	EReference getDFDInterfaceUncertaintySource_TargetInPin();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintyScenario#getTargetFlow <em>Target Flow</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource#getTargetFlow <em>Target Flow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target Flow</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.InterfaceUncertaintyScenario#getTargetFlow()
-	 * @see #getInterfaceUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource#getTargetFlow()
+	 * @see #getDFDInterfaceUncertaintySource()
 	 * @generated
 	 */
-	EReference getInterfaceUncertaintyScenario_TargetFlow();
+	EReference getDFDInterfaceUncertaintySource_TargetFlow();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource <em>Connector Uncertainty Source</em>}'.
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Connector Uncertainty Source</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource
+	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource#getScenarios()
+	 * @see #getDFDInterfaceUncertaintySource()
 	 * @generated
 	 */
-	EClass getConnectorUncertaintySource();
+	EReference getDFDInterfaceUncertaintySource_Scenarios();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource#getTargetAssignement <em>Target Assignement</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario <em>DFD Interface Uncertainty Scenario</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>DFD Interface Uncertainty Scenario</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario
+	 * @generated
+	 */
+	EClass getDFDInterfaceUncertaintyScenario();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetInPin <em>Target In Pin</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target In Pin</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetInPin()
+	 * @see #getDFDInterfaceUncertaintyScenario()
+	 * @generated
+	 */
+	EReference getDFDInterfaceUncertaintyScenario_TargetInPin();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetFlow <em>Target Flow</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target Flow</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetFlow()
+	 * @see #getDFDInterfaceUncertaintyScenario()
+	 * @generated
+	 */
+	EReference getDFDInterfaceUncertaintyScenario_TargetFlow();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource <em>DFD Connector Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>DFD Connector Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource
+	 * @generated
+	 */
+	EClass getDFDConnectorUncertaintySource();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetAssignement <em>Target Assignement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target Assignement</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource#getTargetAssignement()
-	 * @see #getConnectorUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetAssignement()
+	 * @see #getDFDConnectorUncertaintySource()
 	 * @generated
 	 */
-	EReference getConnectorUncertaintySource_TargetAssignement();
+	EReference getDFDConnectorUncertaintySource_TargetAssignement();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource#getTargetFlow <em>Target Flow</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetFlow <em>Target Flow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target Flow</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource#getTargetFlow()
-	 * @see #getConnectorUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetFlow()
+	 * @see #getDFDConnectorUncertaintySource()
 	 * @generated
 	 */
-	EReference getConnectorUncertaintySource_TargetFlow();
+	EReference getDFDConnectorUncertaintySource_TargetFlow();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource#getScenarios <em>Scenarios</em>}'.
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintySource#getScenarios()
-	 * @see #getConnectorUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getScenarios()
+	 * @see #getDFDConnectorUncertaintySource()
 	 * @generated
 	 */
-	EReference getConnectorUncertaintySource_Scenarios();
+	EReference getDFDConnectorUncertaintySource_Scenarios();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintyScenario <em>Connector Uncertainty Scenario</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario <em>DFD Connector Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Connector Uncertainty Scenario</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintyScenario
+	 * @return the meta object for class '<em>DFD Connector Uncertainty Scenario</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario
 	 * @generated
 	 */
-	EClass getConnectorUncertaintyScenario();
+	EClass getDFDConnectorUncertaintyScenario();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintyScenario#getTargetAssignment <em>Target Assignment</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetAssignment <em>Target Assignment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target Assignment</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintyScenario#getTargetAssignment()
-	 * @see #getConnectorUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetAssignment()
+	 * @see #getDFDConnectorUncertaintyScenario()
 	 * @generated
 	 */
-	EReference getConnectorUncertaintyScenario_TargetAssignment();
+	EReference getDFDConnectorUncertaintyScenario_TargetAssignment();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintyScenario#getTargetFlow <em>Target Flow</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetFlow <em>Target Flow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target Flow</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ConnectorUncertaintyScenario#getTargetFlow()
-	 * @see #getConnectorUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetFlow()
+	 * @see #getDFDConnectorUncertaintyScenario()
 	 * @generated
 	 */
-	EReference getConnectorUncertaintyScenario_TargetFlow();
+	EReference getDFDConnectorUncertaintyScenario_TargetFlow();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintySource <em>Component Uncertainty Source</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource <em>DFD Component Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Component Uncertainty Source</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintySource
+	 * @return the meta object for class '<em>DFD Component Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource
 	 * @generated
 	 */
-	EClass getComponentUncertaintySource();
+	EClass getDFDComponentUncertaintySource();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintySource#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintySource#getTarget()
-	 * @see #getComponentUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource#getTarget()
+	 * @see #getDFDComponentUncertaintySource()
 	 * @generated
 	 */
-	EReference getComponentUncertaintySource_Target();
+	EReference getDFDComponentUncertaintySource_Target();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintySource#getScenarios <em>Scenarios</em>}'.
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintySource#getScenarios()
-	 * @see #getComponentUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource#getScenarios()
+	 * @see #getDFDComponentUncertaintySource()
 	 * @generated
 	 */
-	EReference getComponentUncertaintySource_Scenarios();
+	EReference getDFDComponentUncertaintySource_Scenarios();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintyScenario <em>Component Uncertainty Scenario</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario <em>DFD Component Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Component Uncertainty Scenario</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintyScenario
+	 * @return the meta object for class '<em>DFD Component Uncertainty Scenario</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario
 	 * @generated
 	 */
-	EClass getComponentUncertaintyScenario();
+	EClass getDFDComponentUncertaintyScenario();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintyScenario#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.ComponentUncertaintyScenario#getTarget()
-	 * @see #getComponentUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario#getTarget()
+	 * @see #getDFDComponentUncertaintyScenario()
 	 * @generated
 	 */
-	EReference getComponentUncertaintyScenario_Target();
+	EReference getDFDComponentUncertaintyScenario_Target();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -927,14 +965,24 @@ public interface DfdPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ExternalUncertaintySourceImpl <em>External Uncertainty Source</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDUncertaintySourceImpl <em>DFD Uncertainty Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ExternalUncertaintySourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getExternalUncertaintySource()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDUncertaintySource()
 		 * @generated
 		 */
-		EClass EXTERNAL_UNCERTAINTY_SOURCE = eINSTANCE.getExternalUncertaintySource();
+		EClass DFD_UNCERTAINTY_SOURCE = eINSTANCE.getDFDUncertaintySource();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDExternalUncertaintySourceImpl <em>DFD External Uncertainty Source</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDExternalUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDExternalUncertaintySource()
+		 * @generated
+		 */
+		EClass DFD_EXTERNAL_UNCERTAINTY_SOURCE = eINSTANCE.getDFDExternalUncertaintySource();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -942,7 +990,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTERNAL_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getExternalUncertaintySource_Target();
+		EReference DFD_EXTERNAL_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getDFDExternalUncertaintySource_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Properties</b></em>' reference list feature.
@@ -950,7 +998,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTERNAL_UNCERTAINTY_SOURCE__TARGET_PROPERTIES = eINSTANCE.getExternalUncertaintySource_TargetProperties();
+		EReference DFD_EXTERNAL_UNCERTAINTY_SOURCE__TARGET_PROPERTIES = eINSTANCE.getDFDExternalUncertaintySource_TargetProperties();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -958,17 +1006,17 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTERNAL_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getExternalUncertaintySource_Scenarios();
+		EReference DFD_EXTERNAL_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getDFDExternalUncertaintySource_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ExternalUncertaintyScenarioImpl <em>External Uncertainty Scenario</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDExternalUncertaintyScenarioImpl <em>DFD External Uncertainty Scenario</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ExternalUncertaintyScenarioImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getExternalUncertaintyScenario()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDExternalUncertaintyScenarioImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDExternalUncertaintyScenario()
 		 * @generated
 		 */
-		EClass EXTERNAL_UNCERTAINTY_SCENARIO = eINSTANCE.getExternalUncertaintyScenario();
+		EClass DFD_EXTERNAL_UNCERTAINTY_SCENARIO = eINSTANCE.getDFDExternalUncertaintyScenario();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Properties</b></em>' reference list feature.
@@ -976,17 +1024,17 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTERNAL_UNCERTAINTY_SCENARIO__TARGET_PROPERTIES = eINSTANCE.getExternalUncertaintyScenario_TargetProperties();
+		EReference DFD_EXTERNAL_UNCERTAINTY_SCENARIO__TARGET_PROPERTIES = eINSTANCE.getDFDExternalUncertaintyScenario_TargetProperties();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.BehaviorUncertaintySourceImpl <em>Behavior Uncertainty Source</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDBehaviorUncertaintySourceImpl <em>DFD Behavior Uncertainty Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.BehaviorUncertaintySourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getBehaviorUncertaintySource()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDBehaviorUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDBehaviorUncertaintySource()
 		 * @generated
 		 */
-		EClass BEHAVIOR_UNCERTAINTY_SOURCE = eINSTANCE.getBehaviorUncertaintySource();
+		EClass DFD_BEHAVIOR_UNCERTAINTY_SOURCE = eINSTANCE.getDFDBehaviorUncertaintySource();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -994,7 +1042,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getBehaviorUncertaintySource_Target();
+		EReference DFD_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getDFDBehaviorUncertaintySource_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Assignments</b></em>' reference list feature.
@@ -1002,7 +1050,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BEHAVIOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS = eINSTANCE.getBehaviorUncertaintySource_TargetAssignments();
+		EReference DFD_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS = eINSTANCE.getDFDBehaviorUncertaintySource_TargetAssignments();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -1010,17 +1058,17 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getBehaviorUncertaintySource_Scenarios();
+		EReference DFD_BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getDFDBehaviorUncertaintySource_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.BehaviorUncertaintyScenarioImpl <em>Behavior Uncertainty Scenario</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDBehaviorUncertaintyScenarioImpl <em>DFD Behavior Uncertainty Scenario</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.BehaviorUncertaintyScenarioImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getBehaviorUncertaintyScenario()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDBehaviorUncertaintyScenarioImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDBehaviorUncertaintyScenario()
 		 * @generated
 		 */
-		EClass BEHAVIOR_UNCERTAINTY_SCENARIO = eINSTANCE.getBehaviorUncertaintyScenario();
+		EClass DFD_BEHAVIOR_UNCERTAINTY_SCENARIO = eINSTANCE.getDFDBehaviorUncertaintyScenario();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Assignments</b></em>' reference list feature.
@@ -1028,17 +1076,17 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS = eINSTANCE.getBehaviorUncertaintyScenario_TargetAssignments();
+		EReference DFD_BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS = eINSTANCE.getDFDBehaviorUncertaintyScenario_TargetAssignments();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.InterfaceUncertaintySourceImpl <em>Interface Uncertainty Source</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDInterfaceUncertaintySourceImpl <em>DFD Interface Uncertainty Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.InterfaceUncertaintySourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getInterfaceUncertaintySource()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDInterfaceUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDInterfaceUncertaintySource()
 		 * @generated
 		 */
-		EClass INTERFACE_UNCERTAINTY_SOURCE = eINSTANCE.getInterfaceUncertaintySource();
+		EClass DFD_INTERFACE_UNCERTAINTY_SOURCE = eINSTANCE.getDFDInterfaceUncertaintySource();
 
 		/**
 		 * The meta object literal for the '<em><b>Target In Pin</b></em>' reference feature.
@@ -1046,7 +1094,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTERFACE_UNCERTAINTY_SOURCE__TARGET_IN_PIN = eINSTANCE.getInterfaceUncertaintySource_TargetInPin();
+		EReference DFD_INTERFACE_UNCERTAINTY_SOURCE__TARGET_IN_PIN = eINSTANCE.getDFDInterfaceUncertaintySource_TargetInPin();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Flow</b></em>' reference feature.
@@ -1054,7 +1102,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTERFACE_UNCERTAINTY_SOURCE__TARGET_FLOW = eINSTANCE.getInterfaceUncertaintySource_TargetFlow();
+		EReference DFD_INTERFACE_UNCERTAINTY_SOURCE__TARGET_FLOW = eINSTANCE.getDFDInterfaceUncertaintySource_TargetFlow();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -1062,17 +1110,17 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getInterfaceUncertaintySource_Scenarios();
+		EReference DFD_INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getDFDInterfaceUncertaintySource_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.InterfaceUncertaintyScenarioImpl <em>Interface Uncertainty Scenario</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDInterfaceUncertaintyScenarioImpl <em>DFD Interface Uncertainty Scenario</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.InterfaceUncertaintyScenarioImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getInterfaceUncertaintyScenario()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDInterfaceUncertaintyScenarioImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDInterfaceUncertaintyScenario()
 		 * @generated
 		 */
-		EClass INTERFACE_UNCERTAINTY_SCENARIO = eINSTANCE.getInterfaceUncertaintyScenario();
+		EClass DFD_INTERFACE_UNCERTAINTY_SCENARIO = eINSTANCE.getDFDInterfaceUncertaintyScenario();
 
 		/**
 		 * The meta object literal for the '<em><b>Target In Pin</b></em>' reference feature.
@@ -1080,7 +1128,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTERFACE_UNCERTAINTY_SCENARIO__TARGET_IN_PIN = eINSTANCE.getInterfaceUncertaintyScenario_TargetInPin();
+		EReference DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_IN_PIN = eINSTANCE.getDFDInterfaceUncertaintyScenario_TargetInPin();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Flow</b></em>' reference feature.
@@ -1088,17 +1136,17 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW = eINSTANCE.getInterfaceUncertaintyScenario_TargetFlow();
+		EReference DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW = eINSTANCE.getDFDInterfaceUncertaintyScenario_TargetFlow();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ConnectorUncertaintySourceImpl <em>Connector Uncertainty Source</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintySourceImpl <em>DFD Connector Uncertainty Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ConnectorUncertaintySourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getConnectorUncertaintySource()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDConnectorUncertaintySource()
 		 * @generated
 		 */
-		EClass CONNECTOR_UNCERTAINTY_SOURCE = eINSTANCE.getConnectorUncertaintySource();
+		EClass DFD_CONNECTOR_UNCERTAINTY_SOURCE = eINSTANCE.getDFDConnectorUncertaintySource();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Assignement</b></em>' reference feature.
@@ -1106,7 +1154,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT = eINSTANCE.getConnectorUncertaintySource_TargetAssignement();
+		EReference DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT = eINSTANCE.getDFDConnectorUncertaintySource_TargetAssignement();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Flow</b></em>' reference feature.
@@ -1114,7 +1162,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONNECTOR_UNCERTAINTY_SOURCE__TARGET_FLOW = eINSTANCE.getConnectorUncertaintySource_TargetFlow();
+		EReference DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_FLOW = eINSTANCE.getDFDConnectorUncertaintySource_TargetFlow();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -1122,17 +1170,17 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONNECTOR_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getConnectorUncertaintySource_Scenarios();
+		EReference DFD_CONNECTOR_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getDFDConnectorUncertaintySource_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ConnectorUncertaintyScenarioImpl <em>Connector Uncertainty Scenario</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintyScenarioImpl <em>DFD Connector Uncertainty Scenario</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ConnectorUncertaintyScenarioImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getConnectorUncertaintyScenario()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintyScenarioImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDConnectorUncertaintyScenario()
 		 * @generated
 		 */
-		EClass CONNECTOR_UNCERTAINTY_SCENARIO = eINSTANCE.getConnectorUncertaintyScenario();
+		EClass DFD_CONNECTOR_UNCERTAINTY_SCENARIO = eINSTANCE.getDFDConnectorUncertaintyScenario();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Assignment</b></em>' reference feature.
@@ -1140,7 +1188,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT = eINSTANCE.getConnectorUncertaintyScenario_TargetAssignment();
+		EReference DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT = eINSTANCE.getDFDConnectorUncertaintyScenario_TargetAssignment();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Flow</b></em>' reference feature.
@@ -1148,17 +1196,17 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW = eINSTANCE.getConnectorUncertaintyScenario_TargetFlow();
+		EReference DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW = eINSTANCE.getDFDConnectorUncertaintyScenario_TargetFlow();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ComponentUncertaintySourceImpl <em>Component Uncertainty Source</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDComponentUncertaintySourceImpl <em>DFD Component Uncertainty Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ComponentUncertaintySourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getComponentUncertaintySource()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDComponentUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDComponentUncertaintySource()
 		 * @generated
 		 */
-		EClass COMPONENT_UNCERTAINTY_SOURCE = eINSTANCE.getComponentUncertaintySource();
+		EClass DFD_COMPONENT_UNCERTAINTY_SOURCE = eINSTANCE.getDFDComponentUncertaintySource();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1166,7 +1214,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPONENT_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getComponentUncertaintySource_Target();
+		EReference DFD_COMPONENT_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getDFDComponentUncertaintySource_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -1174,17 +1222,17 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPONENT_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getComponentUncertaintySource_Scenarios();
+		EReference DFD_COMPONENT_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getDFDComponentUncertaintySource_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ComponentUncertaintyScenarioImpl <em>Component Uncertainty Scenario</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDComponentUncertaintyScenarioImpl <em>DFD Component Uncertainty Scenario</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.ComponentUncertaintyScenarioImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getComponentUncertaintyScenario()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDComponentUncertaintyScenarioImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdPackageImpl#getDFDComponentUncertaintyScenario()
 		 * @generated
 		 */
-		EClass COMPONENT_UNCERTAINTY_SCENARIO = eINSTANCE.getComponentUncertaintyScenario();
+		EClass DFD_COMPONENT_UNCERTAINTY_SCENARIO = eINSTANCE.getDFDComponentUncertaintyScenario();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1192,7 +1240,7 @@ public interface DfdPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPONENT_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getComponentUncertaintyScenario_Target();
+		EReference DFD_COMPONENT_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getDFDComponentUncertaintyScenario_Target();
 
 	}
 

@@ -22,94 +22,94 @@ public interface DfdFactory extends EFactory {
 	DfdFactory eINSTANCE = dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DfdFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>External Uncertainty Source</em>'.
+	 * Returns a new object of class '<em>DFD External Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>External Uncertainty Source</em>'.
+	 * @return a new object of class '<em>DFD External Uncertainty Source</em>'.
 	 * @generated
 	 */
-	ExternalUncertaintySource createExternalUncertaintySource();
+	DFDExternalUncertaintySource createDFDExternalUncertaintySource();
 
 	/**
-	 * Returns a new object of class '<em>External Uncertainty Scenario</em>'.
+	 * Returns a new object of class '<em>DFD External Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>External Uncertainty Scenario</em>'.
+	 * @return a new object of class '<em>DFD External Uncertainty Scenario</em>'.
 	 * @generated
 	 */
-	ExternalUncertaintyScenario createExternalUncertaintyScenario();
+	DFDExternalUncertaintyScenario createDFDExternalUncertaintyScenario();
 
 	/**
-	 * Returns a new object of class '<em>Behavior Uncertainty Source</em>'.
+	 * Returns a new object of class '<em>DFD Behavior Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Behavior Uncertainty Source</em>'.
+	 * @return a new object of class '<em>DFD Behavior Uncertainty Source</em>'.
 	 * @generated
 	 */
-	BehaviorUncertaintySource createBehaviorUncertaintySource();
+	DFDBehaviorUncertaintySource createDFDBehaviorUncertaintySource();
 
 	/**
-	 * Returns a new object of class '<em>Behavior Uncertainty Scenario</em>'.
+	 * Returns a new object of class '<em>DFD Behavior Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Behavior Uncertainty Scenario</em>'.
+	 * @return a new object of class '<em>DFD Behavior Uncertainty Scenario</em>'.
 	 * @generated
 	 */
-	BehaviorUncertaintyScenario createBehaviorUncertaintyScenario();
+	DFDBehaviorUncertaintyScenario createDFDBehaviorUncertaintyScenario();
 
 	/**
-	 * Returns a new object of class '<em>Interface Uncertainty Source</em>'.
+	 * Returns a new object of class '<em>DFD Interface Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Interface Uncertainty Source</em>'.
+	 * @return a new object of class '<em>DFD Interface Uncertainty Source</em>'.
 	 * @generated
 	 */
-	InterfaceUncertaintySource createInterfaceUncertaintySource();
+	DFDInterfaceUncertaintySource createDFDInterfaceUncertaintySource();
 
 	/**
-	 * Returns a new object of class '<em>Interface Uncertainty Scenario</em>'.
+	 * Returns a new object of class '<em>DFD Interface Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Interface Uncertainty Scenario</em>'.
+	 * @return a new object of class '<em>DFD Interface Uncertainty Scenario</em>'.
 	 * @generated
 	 */
-	InterfaceUncertaintyScenario createInterfaceUncertaintyScenario();
+	DFDInterfaceUncertaintyScenario createDFDInterfaceUncertaintyScenario();
 
 	/**
-	 * Returns a new object of class '<em>Connector Uncertainty Source</em>'.
+	 * Returns a new object of class '<em>DFD Connector Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Connector Uncertainty Source</em>'.
+	 * @return a new object of class '<em>DFD Connector Uncertainty Source</em>'.
 	 * @generated
 	 */
-	ConnectorUncertaintySource createConnectorUncertaintySource();
+	DFDConnectorUncertaintySource createDFDConnectorUncertaintySource();
 
 	/**
-	 * Returns a new object of class '<em>Connector Uncertainty Scenario</em>'.
+	 * Returns a new object of class '<em>DFD Connector Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Connector Uncertainty Scenario</em>'.
+	 * @return a new object of class '<em>DFD Connector Uncertainty Scenario</em>'.
 	 * @generated
 	 */
-	ConnectorUncertaintyScenario createConnectorUncertaintyScenario();
+	DFDConnectorUncertaintyScenario createDFDConnectorUncertaintyScenario();
 
 	/**
-	 * Returns a new object of class '<em>Component Uncertainty Source</em>'.
+	 * Returns a new object of class '<em>DFD Component Uncertainty Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Component Uncertainty Source</em>'.
+	 * @return a new object of class '<em>DFD Component Uncertainty Source</em>'.
 	 * @generated
 	 */
-	ComponentUncertaintySource createComponentUncertaintySource();
+	DFDComponentUncertaintySource createDFDComponentUncertaintySource();
 
 	/**
-	 * Returns a new object of class '<em>Component Uncertainty Scenario</em>'.
+	 * Returns a new object of class '<em>DFD Component Uncertainty Scenario</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Component Uncertainty Scenario</em>'.
+	 * @return a new object of class '<em>DFD Component Uncertainty Scenario</em>'.
 	 * @generated
 	 */
-	ComponentUncertaintyScenario createComponentUncertaintyScenario();
+	DFDComponentUncertaintyScenario createDFDComponentUncertaintyScenario();
 
 	/**
 	 * Returns the package supported by this factory.

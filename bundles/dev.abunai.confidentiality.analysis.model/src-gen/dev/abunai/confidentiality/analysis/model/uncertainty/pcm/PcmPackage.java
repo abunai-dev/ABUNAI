@@ -58,42 +58,70 @@ public interface PcmPackage extends EPackage {
 	PcmPackage eINSTANCE = dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceImpl <em>External Uncertainty Source</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMUncertaintySourceImpl <em>PCM Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getExternalUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMUncertaintySource()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE = 0;
+	int PCM_UNCERTAINTY_SOURCE = 0;
 
 	/**
-	 * The number of structural features of the '<em>External Uncertainty Source</em>' class.
+	 * The number of structural features of the '<em>PCM Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>External Uncertainty Source</em>' class.
+	 * The number of operations of the '<em>PCM Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int PCM_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceInResourceImpl <em>External Uncertainty Source In Resource</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceImpl <em>PCM External Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceInResourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getExternalUncertaintySourceInResource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMExternalUncertaintySource()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE = 1;
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE = 1;
+
+	/**
+	 * The number of structural features of the '<em>PCM External Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT = PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>PCM External Uncertainty Source</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_OPERATION_COUNT = PCM_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceInResourceImpl <em>PCM External Uncertainty Source In Resource</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceInResourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMExternalUncertaintySourceInResource()
+	 * @generated
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE = 2;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -102,7 +130,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__TARGET = EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__TARGET = PCM_EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -111,35 +139,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__SCENARIOS = EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__SCENARIOS = PCM_EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>External Uncertainty Source In Resource</em>' class.
+	 * The number of structural features of the '<em>PCM External Uncertainty Source In Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE_FEATURE_COUNT = EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE_FEATURE_COUNT = PCM_EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>External Uncertainty Source In Resource</em>' class.
+	 * The number of operations of the '<em>PCM External Uncertainty Source In Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE_OPERATION_COUNT = EXTERNAL_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE_OPERATION_COUNT = PCM_EXTERNAL_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceInUsageImpl <em>External Uncertainty Source In Usage</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceInUsageImpl <em>PCM External Uncertainty Source In Usage</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceInUsageImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getExternalUncertaintySourceInUsage()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceInUsageImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMExternalUncertaintySourceInUsage()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE = 2;
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -148,7 +176,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__TARGET = EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__TARGET = PCM_EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -157,35 +185,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__SCENARIOS = EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__SCENARIOS = PCM_EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>External Uncertainty Source In Usage</em>' class.
+	 * The number of structural features of the '<em>PCM External Uncertainty Source In Usage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE_FEATURE_COUNT = EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE_FEATURE_COUNT = PCM_EXTERNAL_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>External Uncertainty Source In Usage</em>' class.
+	 * The number of operations of the '<em>PCM External Uncertainty Source In Usage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE_OPERATION_COUNT = EXTERNAL_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE_OPERATION_COUNT = PCM_EXTERNAL_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintyScenarioInResourceImpl <em>External Uncertainty Scenario In Resource</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintyScenarioInResourceImpl <em>PCM External Uncertainty Scenario In Resource</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintyScenarioInResourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getExternalUncertaintyScenarioInResource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintyScenarioInResourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMExternalUncertaintyScenarioInResource()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE = 3;
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -194,7 +222,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -203,35 +231,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>External Uncertainty Scenario In Resource</em>' class.
+	 * The number of structural features of the '<em>PCM External Uncertainty Scenario In Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>External Uncertainty Scenario In Resource</em>' class.
+	 * The number of operations of the '<em>PCM External Uncertainty Scenario In Resource</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintyScenarioInUsageImpl <em>External Uncertainty Scenario In Usage</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintyScenarioInUsageImpl <em>PCM External Uncertainty Scenario In Usage</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintyScenarioInUsageImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getExternalUncertaintyScenarioInUsage()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintyScenarioInUsageImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMExternalUncertaintyScenarioInUsage()
 	 * @generated
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE = 4;
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -240,7 +268,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -249,35 +277,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>External Uncertainty Scenario In Usage</em>' class.
+	 * The number of structural features of the '<em>PCM External Uncertainty Scenario In Usage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>External Uncertainty Scenario In Usage</em>' class.
+	 * The number of operations of the '<em>PCM External Uncertainty Scenario In Usage</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.BehaviorUncertaintySourceImpl <em>Behavior Uncertainty Source</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMBehaviorUncertaintySourceImpl <em>PCM Behavior Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.BehaviorUncertaintySourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getBehaviorUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMBehaviorUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMBehaviorUncertaintySource()
 	 * @generated
 	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE = 5;
+	int PCM_BEHAVIOR_UNCERTAINTY_SOURCE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -286,7 +314,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int PCM_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -295,35 +323,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int PCM_BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Behavior Uncertainty Source</em>' class.
+	 * The number of structural features of the '<em>PCM Behavior Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int PCM_BEHAVIOR_UNCERTAINTY_SOURCE_FEATURE_COUNT = PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Behavior Uncertainty Source</em>' class.
+	 * The number of operations of the '<em>PCM Behavior Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int PCM_BEHAVIOR_UNCERTAINTY_SOURCE_OPERATION_COUNT = PCM_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.BehaviorUncertaintyScenarioImpl <em>Behavior Uncertainty Scenario</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMBehaviorUncertaintyScenarioImpl <em>PCM Behavior Uncertainty Scenario</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.BehaviorUncertaintyScenarioImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getBehaviorUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMBehaviorUncertaintyScenarioImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMBehaviorUncertaintyScenario()
 	 * @generated
 	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO = 6;
+	int PCM_BEHAVIOR_UNCERTAINTY_SCENARIO = 7;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -332,7 +360,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int PCM_BEHAVIOR_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -341,35 +369,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int PCM_BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Behavior Uncertainty Scenario</em>' class.
+	 * The number of structural features of the '<em>PCM Behavior Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int PCM_BEHAVIOR_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Behavior Uncertainty Scenario</em>' class.
+	 * The number of operations of the '<em>PCM Behavior Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BEHAVIOR_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int PCM_BEHAVIOR_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.InterfaceUncertaintySourceImpl <em>Interface Uncertainty Source</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMInterfaceUncertaintySourceImpl <em>PCM Interface Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.InterfaceUncertaintySourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getInterfaceUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMInterfaceUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMInterfaceUncertaintySource()
 	 * @generated
 	 */
-	int INTERFACE_UNCERTAINTY_SOURCE = 7;
+	int PCM_INTERFACE_UNCERTAINTY_SOURCE = 8;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -378,7 +406,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SOURCE__TARGET = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int PCM_INTERFACE_UNCERTAINTY_SOURCE__TARGET = PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -387,35 +415,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int PCM_INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Interface Uncertainty Source</em>' class.
+	 * The number of structural features of the '<em>PCM Interface Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int PCM_INTERFACE_UNCERTAINTY_SOURCE_FEATURE_COUNT = PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Interface Uncertainty Source</em>' class.
+	 * The number of operations of the '<em>PCM Interface Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int PCM_INTERFACE_UNCERTAINTY_SOURCE_OPERATION_COUNT = PCM_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.InterfaceUncertaintyScenarioImpl <em>Interface Uncertainty Scenario</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMInterfaceUncertaintyScenarioImpl <em>PCM Interface Uncertainty Scenario</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.InterfaceUncertaintyScenarioImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getInterfaceUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMInterfaceUncertaintyScenarioImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMInterfaceUncertaintyScenario()
 	 * @generated
 	 */
-	int INTERFACE_UNCERTAINTY_SCENARIO = 8;
+	int PCM_INTERFACE_UNCERTAINTY_SCENARIO = 9;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -424,7 +452,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int PCM_INTERFACE_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -433,63 +461,63 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SCENARIO__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int PCM_INTERFACE_UNCERTAINTY_SCENARIO__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Interface Uncertainty Scenario</em>' class.
+	 * The number of structural features of the '<em>PCM Interface Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int PCM_INTERFACE_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Interface Uncertainty Scenario</em>' class.
+	 * The number of operations of the '<em>PCM Interface Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERFACE_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int PCM_INTERFACE_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceImpl <em>Connector Uncertainty Source</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceImpl <em>PCM Connector Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getConnectorUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMConnectorUncertaintySource()
 	 * @generated
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE = 9;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE = 10;
 
 	/**
-	 * The number of structural features of the '<em>Connector Uncertainty Source</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Connector Uncertainty Source</em>' class.
+	 * The number of structural features of the '<em>PCM Connector Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT = PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceInExternalCallImpl <em>Connector Uncertainty Source In External Call</em>}' class.
+	 * The number of operations of the '<em>PCM Connector Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceInExternalCallImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getConnectorUncertaintySourceInExternalCall()
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_OPERATION_COUNT = PCM_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceInExternalCallImpl <em>PCM Connector Uncertainty Source In External Call</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceInExternalCallImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMConnectorUncertaintySourceInExternalCall()
 	 * @generated
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL = 10;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL = 11;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -498,7 +526,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__TARGET = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__TARGET = PCM_CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -507,35 +535,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__SCENARIOS = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__SCENARIOS = PCM_CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Connector Uncertainty Source In External Call</em>' class.
+	 * The number of structural features of the '<em>PCM Connector Uncertainty Source In External Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL_FEATURE_COUNT = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL_FEATURE_COUNT = PCM_CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Connector Uncertainty Source In External Call</em>' class.
+	 * The number of operations of the '<em>PCM Connector Uncertainty Source In External Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL_OPERATION_COUNT = CONNECTOR_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL_OPERATION_COUNT = PCM_CONNECTOR_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceInEntryLevelSystemCallImpl <em>Connector Uncertainty Source In Entry Level System Call</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceInEntryLevelSystemCallImpl <em>PCM Connector Uncertainty Source In Entry Level System Call</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceInEntryLevelSystemCallImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getConnectorUncertaintySourceInEntryLevelSystemCall()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceInEntryLevelSystemCallImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMConnectorUncertaintySourceInEntryLevelSystemCall()
 	 * @generated
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL = 11;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL = 12;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -544,7 +572,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = PCM_CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -553,35 +581,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__SCENARIOS = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__SCENARIOS = PCM_CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Connector Uncertainty Source In Entry Level System Call</em>' class.
+	 * The number of structural features of the '<em>PCM Connector Uncertainty Source In Entry Level System Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL_FEATURE_COUNT = CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL_FEATURE_COUNT = PCM_CONNECTOR_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Connector Uncertainty Source In Entry Level System Call</em>' class.
+	 * The number of operations of the '<em>PCM Connector Uncertainty Source In Entry Level System Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL_OPERATION_COUNT = CONNECTOR_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL_OPERATION_COUNT = PCM_CONNECTOR_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintyScenarioInExternalCallImpl <em>Connector Uncertainty Scenario In External Call</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintyScenarioInExternalCallImpl <em>PCM Connector Uncertainty Scenario In External Call</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintyScenarioInExternalCallImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getConnectorUncertaintyScenarioInExternalCall()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintyScenarioInExternalCallImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMConnectorUncertaintyScenarioInExternalCall()
 	 * @generated
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL = 12;
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL = 13;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -590,7 +618,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -599,35 +627,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Connector Uncertainty Scenario In External Call</em>' class.
+	 * The number of structural features of the '<em>PCM Connector Uncertainty Scenario In External Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Connector Uncertainty Scenario In External Call</em>' class.
+	 * The number of operations of the '<em>PCM Connector Uncertainty Scenario In External Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintyScenarioInEntryLevelSystemCallImpl <em>Connector Uncertainty Scenario In Entry Level System Call</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintyScenarioInEntryLevelSystemCallImpl <em>PCM Connector Uncertainty Scenario In Entry Level System Call</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintyScenarioInEntryLevelSystemCallImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getConnectorUncertaintyScenarioInEntryLevelSystemCall()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintyScenarioInEntryLevelSystemCallImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMConnectorUncertaintyScenarioInEntryLevelSystemCall()
 	 * @generated
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL = 13;
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL = 14;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -636,7 +664,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -645,35 +673,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Connector Uncertainty Scenario In Entry Level System Call</em>' class.
+	 * The number of structural features of the '<em>PCM Connector Uncertainty Scenario In Entry Level System Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Connector Uncertainty Scenario In Entry Level System Call</em>' class.
+	 * The number of operations of the '<em>PCM Connector Uncertainty Scenario In Entry Level System Call</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ComponentUncertaintySourceImpl <em>Component Uncertainty Source</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMComponentUncertaintySourceImpl <em>PCM Component Uncertainty Source</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ComponentUncertaintySourceImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getComponentUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMComponentUncertaintySourceImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMComponentUncertaintySource()
 	 * @generated
 	 */
-	int COMPONENT_UNCERTAINTY_SOURCE = 14;
+	int PCM_COMPONENT_UNCERTAINTY_SOURCE = 15;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -682,7 +710,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SOURCE__TARGET = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int PCM_COMPONENT_UNCERTAINTY_SOURCE__TARGET = PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -691,35 +719,35 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SOURCE__SCENARIOS = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int PCM_COMPONENT_UNCERTAINTY_SOURCE__SCENARIOS = PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Component Uncertainty Source</em>' class.
+	 * The number of structural features of the '<em>PCM Component Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SOURCE_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int PCM_COMPONENT_UNCERTAINTY_SOURCE_FEATURE_COUNT = PCM_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Component Uncertainty Source</em>' class.
+	 * The number of operations of the '<em>PCM Component Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SOURCE_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
+	int PCM_COMPONENT_UNCERTAINTY_SOURCE_OPERATION_COUNT = PCM_UNCERTAINTY_SOURCE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ComponentUncertaintyScenarioImpl <em>Component Uncertainty Scenario</em>}' class.
+	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMComponentUncertaintyScenarioImpl <em>PCM Component Uncertainty Scenario</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ComponentUncertaintyScenarioImpl
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getComponentUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMComponentUncertaintyScenarioImpl
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMComponentUncertaintyScenario()
 	 * @generated
 	 */
-	int COMPONENT_UNCERTAINTY_SCENARIO = 15;
+	int PCM_COMPONENT_UNCERTAINTY_SCENARIO = 16;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -728,7 +756,7 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
+	int PCM_COMPONENT_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -737,417 +765,427 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SCENARIO__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int PCM_COMPONENT_UNCERTAINTY_SCENARIO__TARGET = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Component Uncertainty Scenario</em>' class.
+	 * The number of structural features of the '<em>PCM Component Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int PCM_COMPONENT_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Component Uncertainty Scenario</em>' class.
+	 * The number of operations of the '<em>PCM Component Uncertainty Scenario</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMPONENT_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
+	int PCM_COMPONENT_UNCERTAINTY_SCENARIO_OPERATION_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_OPERATION_COUNT + 0;
 
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySource <em>External Uncertainty Source</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource <em>PCM Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>External Uncertainty Source</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySource
+	 * @return the meta object for class '<em>PCM Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource
 	 * @generated
 	 */
-	EClass getExternalUncertaintySource();
+	EClass getPCMUncertaintySource();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInResource <em>External Uncertainty Source In Resource</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySource <em>PCM External Uncertainty Source</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>External Uncertainty Source In Resource</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInResource
+	 * @return the meta object for class '<em>PCM External Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySource
 	 * @generated
 	 */
-	EClass getExternalUncertaintySourceInResource();
+	EClass getPCMExternalUncertaintySource();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInResource#getTarget <em>Target</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInResource <em>PCM External Uncertainty Source In Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>PCM External Uncertainty Source In Resource</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInResource
+	 * @generated
+	 */
+	EClass getPCMExternalUncertaintySourceInResource();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInResource#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInResource#getTarget()
-	 * @see #getExternalUncertaintySourceInResource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInResource#getTarget()
+	 * @see #getPCMExternalUncertaintySourceInResource()
 	 * @generated
 	 */
-	EReference getExternalUncertaintySourceInResource_Target();
+	EReference getPCMExternalUncertaintySourceInResource_Target();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInResource#getScenarios <em>Scenarios</em>}'.
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInResource#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInResource#getScenarios()
-	 * @see #getExternalUncertaintySourceInResource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInResource#getScenarios()
+	 * @see #getPCMExternalUncertaintySourceInResource()
 	 * @generated
 	 */
-	EReference getExternalUncertaintySourceInResource_Scenarios();
+	EReference getPCMExternalUncertaintySourceInResource_Scenarios();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInUsage <em>External Uncertainty Source In Usage</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInUsage <em>PCM External Uncertainty Source In Usage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>External Uncertainty Source In Usage</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInUsage
+	 * @return the meta object for class '<em>PCM External Uncertainty Source In Usage</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInUsage
 	 * @generated
 	 */
-	EClass getExternalUncertaintySourceInUsage();
+	EClass getPCMExternalUncertaintySourceInUsage();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInUsage#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInUsage#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInUsage#getTarget()
-	 * @see #getExternalUncertaintySourceInUsage()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInUsage#getTarget()
+	 * @see #getPCMExternalUncertaintySourceInUsage()
 	 * @generated
 	 */
-	EReference getExternalUncertaintySourceInUsage_Target();
+	EReference getPCMExternalUncertaintySourceInUsage_Target();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInUsage#getScenarios <em>Scenarios</em>}'.
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInUsage#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintySourceInUsage#getScenarios()
-	 * @see #getExternalUncertaintySourceInUsage()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInUsage#getScenarios()
+	 * @see #getPCMExternalUncertaintySourceInUsage()
 	 * @generated
 	 */
-	EReference getExternalUncertaintySourceInUsage_Scenarios();
+	EReference getPCMExternalUncertaintySourceInUsage_Scenarios();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInResource <em>External Uncertainty Scenario In Resource</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInResource <em>PCM External Uncertainty Scenario In Resource</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>External Uncertainty Scenario In Resource</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInResource
+	 * @return the meta object for class '<em>PCM External Uncertainty Scenario In Resource</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInResource
 	 * @generated
 	 */
-	EClass getExternalUncertaintyScenarioInResource();
+	EClass getPCMExternalUncertaintyScenarioInResource();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInResource#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInResource#getTarget()
-	 * @see #getExternalUncertaintyScenarioInResource()
-	 * @generated
-	 */
-	EReference getExternalUncertaintyScenarioInResource_Target();
-
-	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInUsage <em>External Uncertainty Scenario In Usage</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>External Uncertainty Scenario In Usage</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInUsage
-	 * @generated
-	 */
-	EClass getExternalUncertaintyScenarioInUsage();
-
-	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInUsage#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInResource#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ExternalUncertaintyScenarioInUsage#getTarget()
-	 * @see #getExternalUncertaintyScenarioInUsage()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInResource#getTarget()
+	 * @see #getPCMExternalUncertaintyScenarioInResource()
 	 * @generated
 	 */
-	EReference getExternalUncertaintyScenarioInUsage_Target();
+	EReference getPCMExternalUncertaintyScenarioInResource_Target();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintySource <em>Behavior Uncertainty Source</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInUsage <em>PCM External Uncertainty Scenario In Usage</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Behavior Uncertainty Source</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintySource
+	 * @return the meta object for class '<em>PCM External Uncertainty Scenario In Usage</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInUsage
 	 * @generated
 	 */
-	EClass getBehaviorUncertaintySource();
+	EClass getPCMExternalUncertaintyScenarioInUsage();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintySource#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInUsage#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintySource#getTarget()
-	 * @see #getBehaviorUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintyScenarioInUsage#getTarget()
+	 * @see #getPCMExternalUncertaintyScenarioInUsage()
 	 * @generated
 	 */
-	EReference getBehaviorUncertaintySource_Target();
+	EReference getPCMExternalUncertaintyScenarioInUsage_Target();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintySource#getScenarios <em>Scenarios</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource <em>PCM Behavior Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>PCM Behavior Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource
+	 * @generated
+	 */
+	EClass getPCMBehaviorUncertaintySource();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource#getTarget()
+	 * @see #getPCMBehaviorUncertaintySource()
+	 * @generated
+	 */
+	EReference getPCMBehaviorUncertaintySource_Target();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintySource#getScenarios()
-	 * @see #getBehaviorUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource#getScenarios()
+	 * @see #getPCMBehaviorUncertaintySource()
 	 * @generated
 	 */
-	EReference getBehaviorUncertaintySource_Scenarios();
+	EReference getPCMBehaviorUncertaintySource_Scenarios();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintyScenario <em>Behavior Uncertainty Scenario</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintyScenario <em>PCM Behavior Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Behavior Uncertainty Scenario</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintyScenario
+	 * @return the meta object for class '<em>PCM Behavior Uncertainty Scenario</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintyScenario
 	 * @generated
 	 */
-	EClass getBehaviorUncertaintyScenario();
+	EClass getPCMBehaviorUncertaintyScenario();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintyScenario#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.BehaviorUncertaintyScenario#getTarget()
-	 * @see #getBehaviorUncertaintyScenario()
-	 * @generated
-	 */
-	EReference getBehaviorUncertaintyScenario_Target();
-
-	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintySource <em>Interface Uncertainty Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Interface Uncertainty Source</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintySource
-	 * @generated
-	 */
-	EClass getInterfaceUncertaintySource();
-
-	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintySource#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintyScenario#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintySource#getTarget()
-	 * @see #getInterfaceUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintyScenario#getTarget()
+	 * @see #getPCMBehaviorUncertaintyScenario()
 	 * @generated
 	 */
-	EReference getInterfaceUncertaintySource_Target();
+	EReference getPCMBehaviorUncertaintyScenario_Target();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintySource#getScenarios <em>Scenarios</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource <em>PCM Interface Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>PCM Interface Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource
+	 * @generated
+	 */
+	EClass getPCMInterfaceUncertaintySource();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource#getTarget()
+	 * @see #getPCMInterfaceUncertaintySource()
+	 * @generated
+	 */
+	EReference getPCMInterfaceUncertaintySource_Target();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintySource#getScenarios()
-	 * @see #getInterfaceUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource#getScenarios()
+	 * @see #getPCMInterfaceUncertaintySource()
 	 * @generated
 	 */
-	EReference getInterfaceUncertaintySource_Scenarios();
+	EReference getPCMInterfaceUncertaintySource_Scenarios();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintyScenario <em>Interface Uncertainty Scenario</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintyScenario <em>PCM Interface Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Interface Uncertainty Scenario</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintyScenario
+	 * @return the meta object for class '<em>PCM Interface Uncertainty Scenario</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintyScenario
 	 * @generated
 	 */
-	EClass getInterfaceUncertaintyScenario();
+	EClass getPCMInterfaceUncertaintyScenario();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintyScenario#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.InterfaceUncertaintyScenario#getTarget()
-	 * @see #getInterfaceUncertaintyScenario()
-	 * @generated
-	 */
-	EReference getInterfaceUncertaintyScenario_Target();
-
-	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySource <em>Connector Uncertainty Source</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Connector Uncertainty Source</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySource
-	 * @generated
-	 */
-	EClass getConnectorUncertaintySource();
-
-	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInExternalCall <em>Connector Uncertainty Source In External Call</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Connector Uncertainty Source In External Call</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInExternalCall
-	 * @generated
-	 */
-	EClass getConnectorUncertaintySourceInExternalCall();
-
-	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInExternalCall#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintyScenario#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInExternalCall#getTarget()
-	 * @see #getConnectorUncertaintySourceInExternalCall()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintyScenario#getTarget()
+	 * @see #getPCMInterfaceUncertaintyScenario()
 	 * @generated
 	 */
-	EReference getConnectorUncertaintySourceInExternalCall_Target();
+	EReference getPCMInterfaceUncertaintyScenario_Target();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInExternalCall#getScenarios <em>Scenarios</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySource <em>PCM Connector Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>PCM Connector Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySource
+	 * @generated
+	 */
+	EClass getPCMConnectorUncertaintySource();
+
+	/**
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInExternalCall <em>PCM Connector Uncertainty Source In External Call</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>PCM Connector Uncertainty Source In External Call</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInExternalCall
+	 * @generated
+	 */
+	EClass getPCMConnectorUncertaintySourceInExternalCall();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInExternalCall#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInExternalCall#getTarget()
+	 * @see #getPCMConnectorUncertaintySourceInExternalCall()
+	 * @generated
+	 */
+	EReference getPCMConnectorUncertaintySourceInExternalCall_Target();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInExternalCall#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInExternalCall#getScenarios()
-	 * @see #getConnectorUncertaintySourceInExternalCall()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInExternalCall#getScenarios()
+	 * @see #getPCMConnectorUncertaintySourceInExternalCall()
 	 * @generated
 	 */
-	EReference getConnectorUncertaintySourceInExternalCall_Scenarios();
+	EReference getPCMConnectorUncertaintySourceInExternalCall_Scenarios();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInEntryLevelSystemCall <em>Connector Uncertainty Source In Entry Level System Call</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInEntryLevelSystemCall <em>PCM Connector Uncertainty Source In Entry Level System Call</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Connector Uncertainty Source In Entry Level System Call</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInEntryLevelSystemCall
+	 * @return the meta object for class '<em>PCM Connector Uncertainty Source In Entry Level System Call</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInEntryLevelSystemCall
 	 * @generated
 	 */
-	EClass getConnectorUncertaintySourceInEntryLevelSystemCall();
+	EClass getPCMConnectorUncertaintySourceInEntryLevelSystemCall();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInEntryLevelSystemCall#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInEntryLevelSystemCall#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInEntryLevelSystemCall#getTarget()
-	 * @see #getConnectorUncertaintySourceInEntryLevelSystemCall()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInEntryLevelSystemCall#getTarget()
+	 * @see #getPCMConnectorUncertaintySourceInEntryLevelSystemCall()
 	 * @generated
 	 */
-	EReference getConnectorUncertaintySourceInEntryLevelSystemCall_Target();
+	EReference getPCMConnectorUncertaintySourceInEntryLevelSystemCall_Target();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInEntryLevelSystemCall#getScenarios <em>Scenarios</em>}'.
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInEntryLevelSystemCall#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintySourceInEntryLevelSystemCall#getScenarios()
-	 * @see #getConnectorUncertaintySourceInEntryLevelSystemCall()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInEntryLevelSystemCall#getScenarios()
+	 * @see #getPCMConnectorUncertaintySourceInEntryLevelSystemCall()
 	 * @generated
 	 */
-	EReference getConnectorUncertaintySourceInEntryLevelSystemCall_Scenarios();
+	EReference getPCMConnectorUncertaintySourceInEntryLevelSystemCall_Scenarios();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInExternalCall <em>Connector Uncertainty Scenario In External Call</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInExternalCall <em>PCM Connector Uncertainty Scenario In External Call</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Connector Uncertainty Scenario In External Call</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInExternalCall
+	 * @return the meta object for class '<em>PCM Connector Uncertainty Scenario In External Call</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInExternalCall
 	 * @generated
 	 */
-	EClass getConnectorUncertaintyScenarioInExternalCall();
+	EClass getPCMConnectorUncertaintyScenarioInExternalCall();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInExternalCall#getTarget <em>Target</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInExternalCall#getTarget()
-	 * @see #getConnectorUncertaintyScenarioInExternalCall()
-	 * @generated
-	 */
-	EReference getConnectorUncertaintyScenarioInExternalCall_Target();
-
-	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInEntryLevelSystemCall <em>Connector Uncertainty Scenario In Entry Level System Call</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Connector Uncertainty Scenario In Entry Level System Call</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInEntryLevelSystemCall
-	 * @generated
-	 */
-	EClass getConnectorUncertaintyScenarioInEntryLevelSystemCall();
-
-	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInEntryLevelSystemCall#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInExternalCall#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ConnectorUncertaintyScenarioInEntryLevelSystemCall#getTarget()
-	 * @see #getConnectorUncertaintyScenarioInEntryLevelSystemCall()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInExternalCall#getTarget()
+	 * @see #getPCMConnectorUncertaintyScenarioInExternalCall()
 	 * @generated
 	 */
-	EReference getConnectorUncertaintyScenarioInEntryLevelSystemCall_Target();
+	EReference getPCMConnectorUncertaintyScenarioInExternalCall_Target();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintySource <em>Component Uncertainty Source</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInEntryLevelSystemCall <em>PCM Connector Uncertainty Scenario In Entry Level System Call</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Component Uncertainty Source</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintySource
+	 * @return the meta object for class '<em>PCM Connector Uncertainty Scenario In Entry Level System Call</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInEntryLevelSystemCall
 	 * @generated
 	 */
-	EClass getComponentUncertaintySource();
+	EClass getPCMConnectorUncertaintyScenarioInEntryLevelSystemCall();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintySource#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInEntryLevelSystemCall#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintySource#getTarget()
-	 * @see #getComponentUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintyScenarioInEntryLevelSystemCall#getTarget()
+	 * @see #getPCMConnectorUncertaintyScenarioInEntryLevelSystemCall()
 	 * @generated
 	 */
-	EReference getComponentUncertaintySource_Target();
+	EReference getPCMConnectorUncertaintyScenarioInEntryLevelSystemCall_Target();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintySource#getScenarios <em>Scenarios</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintySource <em>PCM Component Uncertainty Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>PCM Component Uncertainty Source</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintySource
+	 * @generated
+	 */
+	EClass getPCMComponentUncertaintySource();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintySource#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintySource#getTarget()
+	 * @see #getPCMComponentUncertaintySource()
+	 * @generated
+	 */
+	EReference getPCMComponentUncertaintySource_Target();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintySource#getScenarios <em>Scenarios</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Scenarios</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintySource#getScenarios()
-	 * @see #getComponentUncertaintySource()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintySource#getScenarios()
+	 * @see #getPCMComponentUncertaintySource()
 	 * @generated
 	 */
-	EReference getComponentUncertaintySource_Scenarios();
+	EReference getPCMComponentUncertaintySource_Scenarios();
 
 	/**
-	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintyScenario <em>Component Uncertainty Scenario</em>}'.
+	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintyScenario <em>PCM Component Uncertainty Scenario</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Component Uncertainty Scenario</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintyScenario
+	 * @return the meta object for class '<em>PCM Component Uncertainty Scenario</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintyScenario
 	 * @generated
 	 */
-	EClass getComponentUncertaintyScenario();
+	EClass getPCMComponentUncertaintyScenario();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintyScenario#getTarget <em>Target</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintyScenario#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Target</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.ComponentUncertaintyScenario#getTarget()
-	 * @see #getComponentUncertaintyScenario()
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintyScenario#getTarget()
+	 * @see #getPCMComponentUncertaintyScenario()
 	 * @generated
 	 */
-	EReference getComponentUncertaintyScenario_Target();
+	EReference getPCMComponentUncertaintyScenario_Target();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1173,24 +1211,34 @@ public interface PcmPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceImpl <em>External Uncertainty Source</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMUncertaintySourceImpl <em>PCM Uncertainty Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getExternalUncertaintySource()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMUncertaintySource()
 		 * @generated
 		 */
-		EClass EXTERNAL_UNCERTAINTY_SOURCE = eINSTANCE.getExternalUncertaintySource();
+		EClass PCM_UNCERTAINTY_SOURCE = eINSTANCE.getPCMUncertaintySource();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceInResourceImpl <em>External Uncertainty Source In Resource</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceImpl <em>PCM External Uncertainty Source</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceInResourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getExternalUncertaintySourceInResource()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMExternalUncertaintySource()
 		 * @generated
 		 */
-		EClass EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE = eINSTANCE.getExternalUncertaintySourceInResource();
+		EClass PCM_EXTERNAL_UNCERTAINTY_SOURCE = eINSTANCE.getPCMExternalUncertaintySource();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceInResourceImpl <em>PCM External Uncertainty Source In Resource</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceInResourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMExternalUncertaintySourceInResource()
+		 * @generated
+		 */
+		EClass PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE = eINSTANCE.getPCMExternalUncertaintySourceInResource();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1198,7 +1246,7 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__TARGET = eINSTANCE.getExternalUncertaintySourceInResource_Target();
+		EReference PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__TARGET = eINSTANCE.getPCMExternalUncertaintySourceInResource_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -1206,17 +1254,17 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__SCENARIOS = eINSTANCE.getExternalUncertaintySourceInResource_Scenarios();
+		EReference PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__SCENARIOS = eINSTANCE.getPCMExternalUncertaintySourceInResource_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceInUsageImpl <em>External Uncertainty Source In Usage</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceInUsageImpl <em>PCM External Uncertainty Source In Usage</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintySourceInUsageImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getExternalUncertaintySourceInUsage()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintySourceInUsageImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMExternalUncertaintySourceInUsage()
 		 * @generated
 		 */
-		EClass EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE = eINSTANCE.getExternalUncertaintySourceInUsage();
+		EClass PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE = eINSTANCE.getPCMExternalUncertaintySourceInUsage();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1224,7 +1272,7 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__TARGET = eINSTANCE.getExternalUncertaintySourceInUsage_Target();
+		EReference PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__TARGET = eINSTANCE.getPCMExternalUncertaintySourceInUsage_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -1232,35 +1280,17 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__SCENARIOS = eINSTANCE.getExternalUncertaintySourceInUsage_Scenarios();
+		EReference PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__SCENARIOS = eINSTANCE.getPCMExternalUncertaintySourceInUsage_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintyScenarioInResourceImpl <em>External Uncertainty Scenario In Resource</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintyScenarioInResourceImpl <em>PCM External Uncertainty Scenario In Resource</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintyScenarioInResourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getExternalUncertaintyScenarioInResource()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintyScenarioInResourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMExternalUncertaintyScenarioInResource()
 		 * @generated
 		 */
-		EClass EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE = eINSTANCE.getExternalUncertaintyScenarioInResource();
-
-		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__TARGET = eINSTANCE.getExternalUncertaintyScenarioInResource_Target();
-
-		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintyScenarioInUsageImpl <em>External Uncertainty Scenario In Usage</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ExternalUncertaintyScenarioInUsageImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getExternalUncertaintyScenarioInUsage()
-		 * @generated
-		 */
-		EClass EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE = eINSTANCE.getExternalUncertaintyScenarioInUsage();
+		EClass PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE = eINSTANCE.getPCMExternalUncertaintyScenarioInResource();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1268,17 +1298,17 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__TARGET = eINSTANCE.getExternalUncertaintyScenarioInUsage_Target();
+		EReference PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__TARGET = eINSTANCE.getPCMExternalUncertaintyScenarioInResource_Target();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.BehaviorUncertaintySourceImpl <em>Behavior Uncertainty Source</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintyScenarioInUsageImpl <em>PCM External Uncertainty Scenario In Usage</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.BehaviorUncertaintySourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getBehaviorUncertaintySource()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMExternalUncertaintyScenarioInUsageImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMExternalUncertaintyScenarioInUsage()
 		 * @generated
 		 */
-		EClass BEHAVIOR_UNCERTAINTY_SOURCE = eINSTANCE.getBehaviorUncertaintySource();
+		EClass PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE = eINSTANCE.getPCMExternalUncertaintyScenarioInUsage();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1286,7 +1316,25 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getBehaviorUncertaintySource_Target();
+		EReference PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__TARGET = eINSTANCE.getPCMExternalUncertaintyScenarioInUsage_Target();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMBehaviorUncertaintySourceImpl <em>PCM Behavior Uncertainty Source</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMBehaviorUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMBehaviorUncertaintySource()
+		 * @generated
+		 */
+		EClass PCM_BEHAVIOR_UNCERTAINTY_SOURCE = eINSTANCE.getPCMBehaviorUncertaintySource();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PCM_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getPCMBehaviorUncertaintySource_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -1294,35 +1342,17 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getBehaviorUncertaintySource_Scenarios();
+		EReference PCM_BEHAVIOR_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getPCMBehaviorUncertaintySource_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.BehaviorUncertaintyScenarioImpl <em>Behavior Uncertainty Scenario</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMBehaviorUncertaintyScenarioImpl <em>PCM Behavior Uncertainty Scenario</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.BehaviorUncertaintyScenarioImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getBehaviorUncertaintyScenario()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMBehaviorUncertaintyScenarioImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMBehaviorUncertaintyScenario()
 		 * @generated
 		 */
-		EClass BEHAVIOR_UNCERTAINTY_SCENARIO = eINSTANCE.getBehaviorUncertaintyScenario();
-
-		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getBehaviorUncertaintyScenario_Target();
-
-		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.InterfaceUncertaintySourceImpl <em>Interface Uncertainty Source</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.InterfaceUncertaintySourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getInterfaceUncertaintySource()
-		 * @generated
-		 */
-		EClass INTERFACE_UNCERTAINTY_SOURCE = eINSTANCE.getInterfaceUncertaintySource();
+		EClass PCM_BEHAVIOR_UNCERTAINTY_SCENARIO = eINSTANCE.getPCMBehaviorUncertaintyScenario();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1330,7 +1360,25 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTERFACE_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getInterfaceUncertaintySource_Target();
+		EReference PCM_BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getPCMBehaviorUncertaintyScenario_Target();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMInterfaceUncertaintySourceImpl <em>PCM Interface Uncertainty Source</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMInterfaceUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMInterfaceUncertaintySource()
+		 * @generated
+		 */
+		EClass PCM_INTERFACE_UNCERTAINTY_SOURCE = eINSTANCE.getPCMInterfaceUncertaintySource();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PCM_INTERFACE_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getPCMInterfaceUncertaintySource_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -1338,45 +1386,17 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getInterfaceUncertaintySource_Scenarios();
+		EReference PCM_INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getPCMInterfaceUncertaintySource_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.InterfaceUncertaintyScenarioImpl <em>Interface Uncertainty Scenario</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMInterfaceUncertaintyScenarioImpl <em>PCM Interface Uncertainty Scenario</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.InterfaceUncertaintyScenarioImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getInterfaceUncertaintyScenario()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMInterfaceUncertaintyScenarioImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMInterfaceUncertaintyScenario()
 		 * @generated
 		 */
-		EClass INTERFACE_UNCERTAINTY_SCENARIO = eINSTANCE.getInterfaceUncertaintyScenario();
-
-		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INTERFACE_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getInterfaceUncertaintyScenario_Target();
-
-		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceImpl <em>Connector Uncertainty Source</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getConnectorUncertaintySource()
-		 * @generated
-		 */
-		EClass CONNECTOR_UNCERTAINTY_SOURCE = eINSTANCE.getConnectorUncertaintySource();
-
-		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceInExternalCallImpl <em>Connector Uncertainty Source In External Call</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceInExternalCallImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getConnectorUncertaintySourceInExternalCall()
-		 * @generated
-		 */
-		EClass CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL = eINSTANCE.getConnectorUncertaintySourceInExternalCall();
+		EClass PCM_INTERFACE_UNCERTAINTY_SCENARIO = eINSTANCE.getPCMInterfaceUncertaintyScenario();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1384,7 +1404,35 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__TARGET = eINSTANCE.getConnectorUncertaintySourceInExternalCall_Target();
+		EReference PCM_INTERFACE_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getPCMInterfaceUncertaintyScenario_Target();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceImpl <em>PCM Connector Uncertainty Source</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMConnectorUncertaintySource()
+		 * @generated
+		 */
+		EClass PCM_CONNECTOR_UNCERTAINTY_SOURCE = eINSTANCE.getPCMConnectorUncertaintySource();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceInExternalCallImpl <em>PCM Connector Uncertainty Source In External Call</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceInExternalCallImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMConnectorUncertaintySourceInExternalCall()
+		 * @generated
+		 */
+		EClass PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL = eINSTANCE.getPCMConnectorUncertaintySourceInExternalCall();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__TARGET = eINSTANCE.getPCMConnectorUncertaintySourceInExternalCall_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -1392,17 +1440,17 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__SCENARIOS = eINSTANCE.getConnectorUncertaintySourceInExternalCall_Scenarios();
+		EReference PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__SCENARIOS = eINSTANCE.getPCMConnectorUncertaintySourceInExternalCall_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceInEntryLevelSystemCallImpl <em>Connector Uncertainty Source In Entry Level System Call</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceInEntryLevelSystemCallImpl <em>PCM Connector Uncertainty Source In Entry Level System Call</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintySourceInEntryLevelSystemCallImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getConnectorUncertaintySourceInEntryLevelSystemCall()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintySourceInEntryLevelSystemCallImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMConnectorUncertaintySourceInEntryLevelSystemCall()
 		 * @generated
 		 */
-		EClass CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL = eINSTANCE.getConnectorUncertaintySourceInEntryLevelSystemCall();
+		EClass PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL = eINSTANCE.getPCMConnectorUncertaintySourceInEntryLevelSystemCall();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1410,7 +1458,7 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = eINSTANCE.getConnectorUncertaintySourceInEntryLevelSystemCall_Target();
+		EReference PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = eINSTANCE.getPCMConnectorUncertaintySourceInEntryLevelSystemCall_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -1418,35 +1466,17 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__SCENARIOS = eINSTANCE.getConnectorUncertaintySourceInEntryLevelSystemCall_Scenarios();
+		EReference PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__SCENARIOS = eINSTANCE.getPCMConnectorUncertaintySourceInEntryLevelSystemCall_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintyScenarioInExternalCallImpl <em>Connector Uncertainty Scenario In External Call</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintyScenarioInExternalCallImpl <em>PCM Connector Uncertainty Scenario In External Call</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintyScenarioInExternalCallImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getConnectorUncertaintyScenarioInExternalCall()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintyScenarioInExternalCallImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMConnectorUncertaintyScenarioInExternalCall()
 		 * @generated
 		 */
-		EClass CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL = eINSTANCE.getConnectorUncertaintyScenarioInExternalCall();
-
-		/**
-		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__TARGET = eINSTANCE.getConnectorUncertaintyScenarioInExternalCall_Target();
-
-		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintyScenarioInEntryLevelSystemCallImpl <em>Connector Uncertainty Scenario In Entry Level System Call</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ConnectorUncertaintyScenarioInEntryLevelSystemCallImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getConnectorUncertaintyScenarioInEntryLevelSystemCall()
-		 * @generated
-		 */
-		EClass CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL = eINSTANCE.getConnectorUncertaintyScenarioInEntryLevelSystemCall();
+		EClass PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL = eINSTANCE.getPCMConnectorUncertaintyScenarioInExternalCall();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1454,17 +1484,17 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = eINSTANCE.getConnectorUncertaintyScenarioInEntryLevelSystemCall_Target();
+		EReference PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__TARGET = eINSTANCE.getPCMConnectorUncertaintyScenarioInExternalCall_Target();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ComponentUncertaintySourceImpl <em>Component Uncertainty Source</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintyScenarioInEntryLevelSystemCallImpl <em>PCM Connector Uncertainty Scenario In Entry Level System Call</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ComponentUncertaintySourceImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getComponentUncertaintySource()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMConnectorUncertaintyScenarioInEntryLevelSystemCallImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMConnectorUncertaintyScenarioInEntryLevelSystemCall()
 		 * @generated
 		 */
-		EClass COMPONENT_UNCERTAINTY_SOURCE = eINSTANCE.getComponentUncertaintySource();
+		EClass PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL = eINSTANCE.getPCMConnectorUncertaintyScenarioInEntryLevelSystemCall();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1472,7 +1502,25 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPONENT_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getComponentUncertaintySource_Target();
+		EReference PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__TARGET = eINSTANCE.getPCMConnectorUncertaintyScenarioInEntryLevelSystemCall_Target();
+
+		/**
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMComponentUncertaintySourceImpl <em>PCM Component Uncertainty Source</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMComponentUncertaintySourceImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMComponentUncertaintySource()
+		 * @generated
+		 */
+		EClass PCM_COMPONENT_UNCERTAINTY_SOURCE = eINSTANCE.getPCMComponentUncertaintySource();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PCM_COMPONENT_UNCERTAINTY_SOURCE__TARGET = eINSTANCE.getPCMComponentUncertaintySource_Target();
 
 		/**
 		 * The meta object literal for the '<em><b>Scenarios</b></em>' containment reference list feature.
@@ -1480,17 +1528,17 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPONENT_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getComponentUncertaintySource_Scenarios();
+		EReference PCM_COMPONENT_UNCERTAINTY_SOURCE__SCENARIOS = eINSTANCE.getPCMComponentUncertaintySource_Scenarios();
 
 		/**
-		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ComponentUncertaintyScenarioImpl <em>Component Uncertainty Scenario</em>}' class.
+		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMComponentUncertaintyScenarioImpl <em>PCM Component Uncertainty Scenario</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.ComponentUncertaintyScenarioImpl
-		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getComponentUncertaintyScenario()
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PCMComponentUncertaintyScenarioImpl
+		 * @see dev.abunai.confidentiality.analysis.model.uncertainty.pcm.impl.PcmPackageImpl#getPCMComponentUncertaintyScenario()
 		 * @generated
 		 */
-		EClass COMPONENT_UNCERTAINTY_SCENARIO = eINSTANCE.getComponentUncertaintyScenario();
+		EClass PCM_COMPONENT_UNCERTAINTY_SCENARIO = eINSTANCE.getPCMComponentUncertaintyScenario();
 
 		/**
 		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
@@ -1498,7 +1546,7 @@ public interface PcmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference COMPONENT_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getComponentUncertaintyScenario_Target();
+		EReference PCM_COMPONENT_UNCERTAINTY_SCENARIO__TARGET = eINSTANCE.getPCMComponentUncertaintyScenario_Target();
 
 	}
 

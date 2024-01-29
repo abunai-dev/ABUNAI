@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dataflowdiagram="http://www.example.org/dataflowdiagram" xmlns:dfd="http://abunai.dev/uncertainty/dfd" xmlns:uncertainty="http://abunai.dev/uncertainty">
-  <sources xsi:type="dfd:ExternalUncertaintySource">
+  <sources xsi:type="dfd:DFDExternalUncertaintySource">
     <target xsi:type="dataflowdiagram:Store" href="onlineshop.dataflowdiagram#_U27Lor6CEe6fAKdvyu1GEg"/>
     <targetProperties href="onlineshop.datadictionary#_Zd8vML6EEe6fAKdvyu1GEg"/>
     <scenarios probability="0.5">
