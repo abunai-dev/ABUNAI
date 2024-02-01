@@ -23,12 +23,13 @@ import org.eclipse.emf.ecore.EObject;
 public interface UncertaintyScenario extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Probability</b></em>' attribute.
+	 * The default value is <code>"-1.0"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Probability</em>' attribute.
 	 * @see #setProbability(double)
 	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyPackage#getUncertaintyScenario_Probability()
-	 * @model
+	 * @model default="-1.0" required="true"
 	 * @generated
 	 */
 	double getProbability();

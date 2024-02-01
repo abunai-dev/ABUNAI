@@ -4,15 +4,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 import java.util.TreeMap;
-
-import org.eclipse.emf.ecore.EObject;
-
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
-
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCollection;
@@ -152,9 +146,9 @@ public class UncertainState {
 	public static List<UncertaintyScenario> getUncertaintyScenarios(UncertaintySource uncertaintySource) {
 		// Blame EMF, not me
 		if (uncertaintySource instanceof DFDExternalUncertaintySource s) {
-			 
+
 		}
-		
+
 		return null;
 	}
 }

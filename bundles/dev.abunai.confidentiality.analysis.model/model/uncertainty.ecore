@@ -7,7 +7,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UncertaintySource" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="UncertaintyScenario" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="probability" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="probability" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble" defaultValueLiteral="-1.0"/>
   </eClassifiers>
   <eSubpackages name="pcm" nsURI="http://abunai.dev/uncertainty/pcm" nsPrefix="pcm">
     <eClassifiers xsi:type="ecore:EClass" name="PCMUncertaintySource" abstract="true"
