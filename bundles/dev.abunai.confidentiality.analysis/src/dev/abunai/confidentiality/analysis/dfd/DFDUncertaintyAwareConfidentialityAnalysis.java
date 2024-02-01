@@ -1,19 +1,18 @@
 package dev.abunai.confidentiality.analysis.dfd;
 
+import java.util.List;
 import java.util.Optional;
-
-import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.dfd.DFDConfidentialityAnalysis;
 import org.eclipse.core.runtime.Plugin;
-
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
-import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCollection;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
+import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
+import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
+import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
 public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentialityAnalysis
 		implements UncertaintyAwareConfidentialityAnalysis {
 
-	private final Logger logger = Logger.getLogger(DFDUncertaintyAwareConfidentialityAnalysis.class);
+	private UncertaintySourceManager uncertaintySourceManager;
 
 	public DFDUncertaintyAwareConfidentialityAnalysis(DFDUncertaintyResourceProvider resourceProvider,
 			Optional<Class<? extends Plugin>> modelProjectActivator, String modelProjectName) {
@@ -21,30 +20,23 @@ public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentiali
 	}
 
 	@Override
-	public UncertaintySourceCollection getUncertaintySourceCollection() {
-		return this.getResourceProvider().getUncertaintySourceCollection();
-	}
-
-	@Override
 	public DFDUncertaintyResourceProvider getResourceProvider() {
 		return (DFDUncertaintyResourceProvider) resourceProvider;
 	}
 
-	private boolean validateUncertaintySourceType() {
-		return this.getUncertaintySourceCollection().getSources().stream().allMatch(it -> it instanceof DFDUncertaintySource);
+	@Override
+	public List<UncertaintySource> getUncertaintySources() {
+		return this.uncertaintySourceManager.getUncertaintySources();
 	}
 
 	@Override
 	public boolean initializeAnalysis() {
 		if (!super.initializeAnalysis()) {
 			return false;
-		} else if (!this.validateUncertaintySourceType()) {
-			logger.error(
-					"Mixed uncertainty source types. Only use DFD uncertainty sources in an uncertainty-aware DFD analysis.");
-			return false;
 		} else {
+			this.uncertaintySourceManager = new UncertaintySourceManager(
+					this.getResourceProvider().getUncertaintySourceCollection(), UncertaintySourceType.DFD);
 			return true;
 		}
 	}
-
 }

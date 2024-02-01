@@ -5,14 +5,14 @@
     <scenarios probability="0.5">
       <target href="default.repository#_IFQ3EITlEeywmO_IpTxeAg"/>
     </scenarios>
-    <scenarios probability="0.2">
+    <scenarios>
       <target href="default.repository#_tMGKUITmEeywmO_IpTxeAg"/>
     </scenarios>
   </sources>
   <sources xsi:type="pcm:PCMExternalUncertaintySourceInResource">
-    <target href="default.nodecharacteristics#//@assignee.0"/>
+    <target href="default.nodecharacteristics#_Qh8vMLB7Ee6PGKdWgLSwQQ"/>
     <scenarios>
-      <target href="default.nodecharacteristics#//@assignee.1"/>
+      <target href="default.nodecharacteristics#_8BEvULB-Ee6TRb5PGryaNg"/>
     </scenarios>
   </sources>
   <sources xsi:type="pcm:PCMInterfaceUncertaintySource">
@@ -23,8 +23,11 @@
   </sources>
   <sources xsi:type="pcm:PCMComponentUncertaintySource">
     <target href="default.system#_4YTEYITjEeywmO_IpTxeAg"/>
-    <scenarios>
+    <scenarios probability="0.3">
       <target href="default.system#_4YTEYITjEeywmO_IpTxeAg"/>
+    </scenarios>
+    <scenarios probability="0.9">
+      <target href="default.system#_UTbs4Nv0EeyYrpd_1AtxSw"/>
     </scenarios>
   </sources>
   <sources xsi:type="pcm:PCMConnectorUncertaintySourceInExternalCall">

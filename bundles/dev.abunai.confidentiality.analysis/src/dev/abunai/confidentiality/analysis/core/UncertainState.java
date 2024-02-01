@@ -10,8 +10,8 @@ import java.util.Collections;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCollection;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource;
 
+// TODO: Re-implement after uncertainty source validation
 public class UncertainState {
 
 	private final List<UncertaintySource> uncertaintiesWithOriginalScenario = new ArrayList<>();
@@ -103,7 +103,7 @@ public class UncertainState {
 		for (var source : uncertaintySourceCollection.getSources()) {
 			List<Object> possibleStates = new ArrayList<>();
 			possibleStates.add(source);
-			possibleStates.addAll(getUncertaintyScenarios(source));
+			possibleStates.addAll(UncertaintyUtils.getUncertaintyScenarios(source));
 			listOfUncertaintiesAndScenarios.add(possibleStates);
 		}
 
@@ -143,12 +143,4 @@ public class UncertainState {
 		return result;
 	}
 
-	public static List<UncertaintyScenario> getUncertaintyScenarios(UncertaintySource uncertaintySource) {
-		// Blame EMF, not me
-		if (uncertaintySource instanceof DFDExternalUncertaintySource s) {
-
-		}
-
-		return null;
-	}
 }

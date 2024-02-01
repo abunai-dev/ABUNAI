@@ -6,5 +6,8 @@
     <scenarios probability="0.5">
       <targetProperties href="onlineshop.datadictionary#_YruBAL6EEe6fAKdvyu1GEg"/>
     </scenarios>
+    <scenarios probability="0.5">
+      <targetProperties href="onlineshop.datadictionary#_Zd8vML6EEe6fAKdvyu1GEg"/>
+    </scenarios>
   </sources>
 </uncertainty:UncertaintySourceCollection>

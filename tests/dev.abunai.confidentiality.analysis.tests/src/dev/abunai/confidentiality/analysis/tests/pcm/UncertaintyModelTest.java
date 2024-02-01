@@ -1,7 +1,7 @@
 package dev.abunai.confidentiality.analysis.tests.pcm;
 
 import org.junit.jupiter.api.Test;
-
+import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
 public class UncertaintyModelTest extends PCMTestBase {
@@ -25,8 +25,9 @@ public class UncertaintyModelTest extends PCMTestBase {
 
 	@Test
 	void testUncertaintyModel() {
-		var sourceCollection = analysis.getUncertaintySourceCollection();
-		System.out.println(sourceCollection.getSources().size());
+		var sourceCollection = analysis.getUncertaintySources();
+		var scenarios = UncertaintyUtils.getUncertaintyScenarios(sourceCollection.get(0));
+		System.out.println(scenarios.size());
 	}
 
 }
