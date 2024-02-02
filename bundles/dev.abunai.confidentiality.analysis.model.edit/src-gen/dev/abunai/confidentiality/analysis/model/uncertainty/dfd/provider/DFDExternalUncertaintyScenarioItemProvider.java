@@ -94,8 +94,10 @@ public class DFDExternalUncertaintyScenarioItemProvider extends UncertaintyScena
 	 */
 	@Override
 	public String getText(Object object) {
-		DFDExternalUncertaintyScenario dfdExternalUncertaintyScenario = (DFDExternalUncertaintyScenario)object;
-		return getString("_UI_DFDExternalUncertaintyScenario_type") + " " + dfdExternalUncertaintyScenario.getProbability();
+		String label = ((DFDExternalUncertaintyScenario)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_DFDExternalUncertaintyScenario_type") :
+			getString("_UI_DFDExternalUncertaintyScenario_type") + " " + label;
 	}
 
 

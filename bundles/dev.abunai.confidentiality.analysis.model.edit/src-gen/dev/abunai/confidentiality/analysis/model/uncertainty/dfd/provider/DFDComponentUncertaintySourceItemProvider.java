@@ -123,7 +123,10 @@ public class DFDComponentUncertaintySourceItemProvider extends DFDUncertaintySou
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_DFDComponentUncertaintySource_type");
+		String label = ((DFDComponentUncertaintySource)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_DFDComponentUncertaintySource_type") :
+			getString("_UI_DFDComponentUncertaintySource_type") + " " + label;
 	}
 
 

@@ -7,7 +7,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import tools.mdsd.modelingfoundations.identifier.impl.EntityImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public abstract class UncertaintySourceImpl extends MinimalEObjectImpl.Container implements UncertaintySource {
+public abstract class UncertaintySourceImpl extends EntityImpl implements UncertaintySource {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

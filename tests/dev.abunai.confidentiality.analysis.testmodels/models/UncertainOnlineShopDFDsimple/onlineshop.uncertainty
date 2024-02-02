@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:datadictionary="http://www.example.org/datadictionary" xmlns:dataflowdiagram="http://www.example.org/dataflowdiagram" xmlns:dfd="http://abunai.dev/uncertainty/dfd" xmlns:uncertainty="http://abunai.dev/uncertainty">
-  <sources xsi:type="dfd:DFDExternalUncertaintySource">
+<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:datadictionary="http://www.example.org/datadictionary" xmlns:dataflowdiagram="http://www.example.org/dataflowdiagram" xmlns:dfd="http://abunai.dev/uncertainty/dfd" xmlns:uncertainty="http://abunai.dev/uncertainty" id="_kfigYMHREe6v9Z1CIBTlxQ">
+  <sources xsi:type="dfd:DFDExternalUncertaintySource" id="_kfljsMHREe6v9Z1CIBTlxQ">
     <target xsi:type="dataflowdiagram:Store" href="onlineshop.dataflowdiagram#_U27Lor6CEe6fAKdvyu1GEg"/>
     <targetProperties href="onlineshop.datadictionary#_Zd8vML6EEe6fAKdvyu1GEg"/>
-    <scenarios probability="0.5">
+    <scenarios id="_kfnY4MHREe6v9Z1CIBTlxQ" probability="0.5">
       <targetProperties href="onlineshop.datadictionary#_YruBAL6EEe6fAKdvyu1GEg"/>
     </scenarios>
-    <scenarios probability="0.5">
+    <scenarios id="_kfn_8MHREe6v9Z1CIBTlxQ" probability="0.5">
       <targetProperties href="onlineshop.datadictionary#_Zd8vML6EEe6fAKdvyu1GEg"/>
     </scenarios>
   </sources>
-  <sources xsi:type="dfd:DFDBehaviorUncertaintySource">
+  <sources xsi:type="dfd:DFDBehaviorUncertaintySource" id="_kfn_8sHREe6v9Z1CIBTlxQ" entityName="Another Name">
     <target href="onlineshop.datadictionary#_xevj0b6GEe6fAKdvyu1GEg"/>
     <targetAssignments xsi:type="datadictionary:Assignment" href="onlineshop.datadictionary#_UIIror6FEe6fAKdvyu1GEg"/>
-    <scenarios>
+    <scenarios id="_kfpOEMHREe6v9Z1CIBTlxQ" entityName="Yet Another Name">
       <targetAssignments xsi:type="datadictionary:ForwardingAssignment" href="onlineshop.datadictionary#_zWCAI76HEe6fAKdvyu1GEg"/>
     </scenarios>
   </sources>

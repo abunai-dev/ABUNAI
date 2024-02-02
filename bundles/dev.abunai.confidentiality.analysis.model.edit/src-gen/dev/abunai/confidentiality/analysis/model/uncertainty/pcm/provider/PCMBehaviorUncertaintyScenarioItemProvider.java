@@ -94,8 +94,10 @@ public class PCMBehaviorUncertaintyScenarioItemProvider extends UncertaintyScena
 	 */
 	@Override
 	public String getText(Object object) {
-		PCMBehaviorUncertaintyScenario pcmBehaviorUncertaintyScenario = (PCMBehaviorUncertaintyScenario)object;
-		return getString("_UI_PCMBehaviorUncertaintyScenario_type") + " " + pcmBehaviorUncertaintyScenario.getProbability();
+		String label = ((PCMBehaviorUncertaintyScenario)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PCMBehaviorUncertaintyScenario_type") :
+			getString("_UI_PCMBehaviorUncertaintyScenario_type") + " " + label;
 	}
 
 

@@ -2,7 +2,7 @@
  */
 package dev.abunai.confidentiality.analysis.model.uncertainty;
 
-import org.eclipse.emf.ecore.EObject;
+import tools.mdsd.modelingfoundations.identifier.Entity;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,5 +14,5 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface UncertaintySource extends EObject {
+public interface UncertaintySource extends Entity {
 } // UncertaintySource

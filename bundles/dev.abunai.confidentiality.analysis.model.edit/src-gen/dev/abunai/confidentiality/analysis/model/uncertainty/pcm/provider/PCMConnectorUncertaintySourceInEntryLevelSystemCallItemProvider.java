@@ -123,7 +123,10 @@ public class PCMConnectorUncertaintySourceInEntryLevelSystemCallItemProvider ext
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_PCMConnectorUncertaintySourceInEntryLevelSystemCall_type");
+		String label = ((PCMConnectorUncertaintySourceInEntryLevelSystemCall)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PCMConnectorUncertaintySourceInEntryLevelSystemCall_type") :
+			getString("_UI_PCMConnectorUncertaintySourceInEntryLevelSystemCall_type") + " " + label;
 	}
 
 

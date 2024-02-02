@@ -68,6 +68,24 @@ public interface DfdPackage extends EPackage {
 	int DFD_UNCERTAINTY_SOURCE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_UNCERTAINTY_SOURCE__ID = UncertaintyPackage.UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_UNCERTAINTY_SOURCE__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SOURCE__ENTITY_NAME;
+
+	/**
 	 * The number of structural features of the '<em>DFD Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -94,6 +112,24 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 */
 	int DFD_EXTERNAL_UNCERTAINTY_SOURCE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_EXTERNAL_UNCERTAINTY_SOURCE__ID = DFD_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_EXTERNAL_UNCERTAINTY_SOURCE__ENTITY_NAME = DFD_UNCERTAINTY_SOURCE__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -151,6 +187,24 @@ public interface DfdPackage extends EPackage {
 	int DFD_EXTERNAL_UNCERTAINTY_SCENARIO = 2;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_EXTERNAL_UNCERTAINTY_SCENARIO__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_EXTERNAL_UNCERTAINTY_SCENARIO__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -195,6 +249,24 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 */
 	int DFD_BEHAVIOR_UNCERTAINTY_SOURCE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_BEHAVIOR_UNCERTAINTY_SOURCE__ID = DFD_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_BEHAVIOR_UNCERTAINTY_SOURCE__ENTITY_NAME = DFD_UNCERTAINTY_SOURCE__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -252,6 +324,24 @@ public interface DfdPackage extends EPackage {
 	int DFD_BEHAVIOR_UNCERTAINTY_SCENARIO = 4;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_BEHAVIOR_UNCERTAINTY_SCENARIO__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_BEHAVIOR_UNCERTAINTY_SCENARIO__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -296,6 +386,24 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 */
 	int DFD_INTERFACE_UNCERTAINTY_SOURCE = 5;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_INTERFACE_UNCERTAINTY_SOURCE__ID = DFD_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_INTERFACE_UNCERTAINTY_SOURCE__ENTITY_NAME = DFD_UNCERTAINTY_SOURCE__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Target In Pin</b></em>' reference.
@@ -353,6 +461,24 @@ public interface DfdPackage extends EPackage {
 	int DFD_INTERFACE_UNCERTAINTY_SCENARIO = 6;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_INTERFACE_UNCERTAINTY_SCENARIO__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_INTERFACE_UNCERTAINTY_SCENARIO__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -406,6 +532,24 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 */
 	int DFD_CONNECTOR_UNCERTAINTY_SOURCE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_CONNECTOR_UNCERTAINTY_SOURCE__ID = DFD_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_CONNECTOR_UNCERTAINTY_SOURCE__ENTITY_NAME = DFD_UNCERTAINTY_SOURCE__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Target Assignement</b></em>' reference.
@@ -463,6 +607,24 @@ public interface DfdPackage extends EPackage {
 	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO = 8;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -518,6 +680,24 @@ public interface DfdPackage extends EPackage {
 	int DFD_COMPONENT_UNCERTAINTY_SOURCE = 9;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_COMPONENT_UNCERTAINTY_SOURCE__ID = DFD_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_COMPONENT_UNCERTAINTY_SOURCE__ENTITY_NAME = DFD_UNCERTAINTY_SOURCE__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -562,6 +742,24 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 */
 	int DFD_COMPONENT_UNCERTAINTY_SCENARIO = 10;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_COMPONENT_UNCERTAINTY_SCENARIO__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_COMPONENT_UNCERTAINTY_SCENARIO__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.

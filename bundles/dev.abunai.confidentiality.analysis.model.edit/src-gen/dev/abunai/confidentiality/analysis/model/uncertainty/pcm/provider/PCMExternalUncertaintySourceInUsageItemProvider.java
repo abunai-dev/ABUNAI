@@ -123,7 +123,10 @@ public class PCMExternalUncertaintySourceInUsageItemProvider extends PCMExternal
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_PCMExternalUncertaintySourceInUsage_type");
+		String label = ((PCMExternalUncertaintySourceInUsage)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PCMExternalUncertaintySourceInUsage_type") :
+			getString("_UI_PCMExternalUncertaintySourceInUsage_type") + " " + label;
 	}
 
 

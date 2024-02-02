@@ -7,6 +7,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
+import tools.mdsd.modelingfoundations.identifier.IdentifierPackage;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Package</b> for the model.
@@ -67,13 +69,31 @@ public interface UncertaintyPackage extends EPackage {
 	int UNCERTAINTY_SOURCE_COLLECTION = 0;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNCERTAINTY_SOURCE_COLLECTION__ID = IdentifierPackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNCERTAINTY_SOURCE_COLLECTION__ENTITY_NAME = IdentifierPackage.ENTITY__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Sources</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNCERTAINTY_SOURCE_COLLECTION__SOURCES = 0;
+	int UNCERTAINTY_SOURCE_COLLECTION__SOURCES = IdentifierPackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Source Collection</em>' class.
@@ -82,7 +102,7 @@ public interface UncertaintyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNCERTAINTY_SOURCE_COLLECTION_FEATURE_COUNT = 1;
+	int UNCERTAINTY_SOURCE_COLLECTION_FEATURE_COUNT = IdentifierPackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Source Collection</em>' class.
@@ -91,7 +111,7 @@ public interface UncertaintyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNCERTAINTY_SOURCE_COLLECTION_OPERATION_COUNT = 0;
+	int UNCERTAINTY_SOURCE_COLLECTION_OPERATION_COUNT = IdentifierPackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintySourceImpl <em>Source</em>}' class.
@@ -104,13 +124,31 @@ public interface UncertaintyPackage extends EPackage {
 	int UNCERTAINTY_SOURCE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNCERTAINTY_SOURCE__ID = IdentifierPackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNCERTAINTY_SOURCE__ENTITY_NAME = IdentifierPackage.ENTITY__ENTITY_NAME;
+
+	/**
 	 * The number of structural features of the '<em>Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNCERTAINTY_SOURCE_FEATURE_COUNT = 0;
+	int UNCERTAINTY_SOURCE_FEATURE_COUNT = IdentifierPackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Source</em>' class.
@@ -119,7 +157,7 @@ public interface UncertaintyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNCERTAINTY_SOURCE_OPERATION_COUNT = 0;
+	int UNCERTAINTY_SOURCE_OPERATION_COUNT = IdentifierPackage.ENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyScenarioImpl <em>Scenario</em>}' class.
@@ -132,13 +170,31 @@ public interface UncertaintyPackage extends EPackage {
 	int UNCERTAINTY_SCENARIO = 2;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNCERTAINTY_SCENARIO__ID = IdentifierPackage.ENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int UNCERTAINTY_SCENARIO__ENTITY_NAME = IdentifierPackage.ENTITY__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int UNCERTAINTY_SCENARIO__PROBABILITY = 0;
+	int UNCERTAINTY_SCENARIO__PROBABILITY = IdentifierPackage.ENTITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Scenario</em>' class.
@@ -147,7 +203,7 @@ public interface UncertaintyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNCERTAINTY_SCENARIO_FEATURE_COUNT = 1;
+	int UNCERTAINTY_SCENARIO_FEATURE_COUNT = IdentifierPackage.ENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Scenario</em>' class.
@@ -156,7 +212,7 @@ public interface UncertaintyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int UNCERTAINTY_SCENARIO_OPERATION_COUNT = 0;
+	int UNCERTAINTY_SCENARIO_OPERATION_COUNT = IdentifierPackage.ENTITY_OPERATION_COUNT + 0;
 
 
 	/**

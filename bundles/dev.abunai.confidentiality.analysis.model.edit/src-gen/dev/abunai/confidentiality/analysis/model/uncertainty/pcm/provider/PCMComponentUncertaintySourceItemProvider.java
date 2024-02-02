@@ -123,7 +123,10 @@ public class PCMComponentUncertaintySourceItemProvider extends PCMUncertaintySou
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_PCMComponentUncertaintySource_type");
+		String label = ((PCMComponentUncertaintySource)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PCMComponentUncertaintySource_type") :
+			getString("_UI_PCMComponentUncertaintySource_type") + " " + label;
 	}
 
 

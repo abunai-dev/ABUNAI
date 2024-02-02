@@ -265,6 +265,7 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 		// Obtain other dependent packages
 		dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PcmPackage thePcmPackage_1 = (dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PcmPackage)EPackage.Registry.INSTANCE.getEPackage(dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PcmPackage.eNS_URI);
 		DfdPackage theDfdPackage = (DfdPackage)EPackage.Registry.INSTANCE.getEPackage(DfdPackage.eNS_URI);
+		tools.mdsd.modelingfoundations.identifier.IdentifierPackage theIdentifierPackage_1 = (tools.mdsd.modelingfoundations.identifier.IdentifierPackage)EPackage.Registry.INSTANCE.getEPackage(tools.mdsd.modelingfoundations.identifier.IdentifierPackage.eNS_URI);
 
 		// Add subpackages
 		getESubpackages().add(thePcmPackage_1);
@@ -275,6 +276,9 @@ public class UncertaintyPackageImpl extends EPackageImpl implements UncertaintyP
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		uncertaintySourceCollectionEClass.getESuperTypes().add(theIdentifierPackage_1.getEntity());
+		uncertaintySourceEClass.getESuperTypes().add(theIdentifierPackage_1.getEntity());
+		uncertaintyScenarioEClass.getESuperTypes().add(theIdentifierPackage_1.getEntity());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(uncertaintySourceCollectionEClass, UncertaintySourceCollection.class, "UncertaintySourceCollection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

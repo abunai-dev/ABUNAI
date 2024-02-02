@@ -1,10 +1,7 @@
 package dev.abunai.confidentiality.analysis.core;
 
 import java.util.List;
-
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario;
@@ -27,6 +24,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUnce
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PcmFactory;
+import tools.mdsd.modelingfoundations.identifier.Entity;
 
 public class UncertaintyUtils {
 
@@ -54,23 +52,29 @@ public class UncertaintyUtils {
 		return tryToGetNameOfTypeAndTarget(uncertaintyScenario);
 	}
 
-	private static String tryToGetNameOfTypeAndTarget(EObject eObject) {
-		String uncertaintySourceTypeName = eObject.getClass().getSimpleName().replace("Impl", "");
+	private static String tryToGetNameOfTypeAndTarget(Entity entity) {
+		String entityClassName = entity.getClass().getSimpleName().replace("Impl", "");
 
-		String targetFeatureName = "target";
-		EStructuralFeature feature = eObject.eClass().getEStructuralFeature(targetFeatureName);
-		if (feature == null) {
-			return uncertaintySourceTypeName;
+		var defaultEntityName = "aName";
+		var entityTypeAndName = "";
+		if (entity.getEntityName().equals(defaultEntityName)) {
+			entityTypeAndName = "%s %s".formatted(entityClassName, entity.getId());
+		} else {
+			entityTypeAndName = "%s \"%s\"".formatted(entityClassName, entity.getEntityName());
 		}
 
-		Object target = eObject.eGet(feature);
-		if (target instanceof org.palladiosimulator.pcm.core.entity.Entity entity) {
-			return "%s @ \"%s\"".formatted(uncertaintySourceTypeName, entity.getEntityName());
-		} else if (target instanceof tools.mdsd.modelingfoundations.identifier.Entity entity) {
-			return "%s @ \"%s\"".formatted(uncertaintySourceTypeName, entity.getEntityName());
+		String targetFeatureName = "target";
+		EStructuralFeature feature = entity.eClass().getEStructuralFeature(targetFeatureName);
+
+		if (feature != null
+				&& entity.eGet(feature) instanceof org.palladiosimulator.pcm.core.entity.Entity targetFeature) {
+			return "%s @ \"%s\"".formatted(entityTypeAndName, targetFeature.getEntityName());
+		} else if (feature != null
+				&& entity.eGet(feature) instanceof tools.mdsd.modelingfoundations.identifier.Entity targetFeature) {
+			return "%s @ \"%s\"".formatted(entityTypeAndName, targetFeature.getEntityName());
 		} else {
 			// No try-harding at this point, YAGNI.
-			return uncertaintySourceTypeName;
+			return entityTypeAndName;
 		}
 	}
 
@@ -130,62 +134,72 @@ public class UncertaintyUtils {
 		// If someone finds this source code and wonders whether I heard of OO: I do.
 		// But EMF-based MDSD is different. I prefer messy instance-of collections over
 		// dealing with injecting custom logic into EMF-generated code.
-		createDefaultScenario(uncertaintySource, probabilityOfDefaultScenario);
+		createDefaultScenario(uncertaintySource, probabilityOfDefaultScenario, "Default Scenario");
 	}
 
-	private static void createDefaultScenario(UncertaintySource uncertaintySource, Double probability) {
+	private static void createDefaultScenario(UncertaintySource uncertaintySource, Double probability, String name) {
 		if (uncertaintySource instanceof PCMExternalUncertaintySourceInResource source) {
 			var scenario = PcmFactory.eINSTANCE.createPCMExternalUncertaintyScenarioInResource();
 			scenario.setTarget(source.getTarget());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof PCMExternalUncertaintySourceInUsage source) {
 			var scenario = PcmFactory.eINSTANCE.createPCMExternalUncertaintyScenarioInUsage();
 			scenario.setTarget(source.getTarget());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof PCMBehaviorUncertaintySource source) {
 			var scenario = PcmFactory.eINSTANCE.createPCMBehaviorUncertaintyScenario();
 			scenario.setTarget(source.getTarget());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof PCMInterfaceUncertaintySource source) {
 			var scenario = PcmFactory.eINSTANCE.createPCMInterfaceUncertaintyScenario();
 			scenario.setTarget(source.getTarget());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof PCMConnectorUncertaintySourceInExternalCall source) {
 			var scenario = PcmFactory.eINSTANCE.createPCMConnectorUncertaintyScenarioInExternalCall();
 			scenario.setTarget(source.getTarget());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof PCMConnectorUncertaintySourceInEntryLevelSystemCall source) {
 			var scenario = PcmFactory.eINSTANCE.createPCMConnectorUncertaintyScenarioInEntryLevelSystemCall();
 			scenario.setTarget(source.getTarget());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof PCMComponentUncertaintySource source) {
 			var scenario = PcmFactory.eINSTANCE.createPCMComponentUncertaintyScenario();
 			scenario.setTarget(source.getTarget());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof DFDExternalUncertaintySource source) {
 			var scenario = DfdFactory.eINSTANCE.createDFDExternalUncertaintyScenario();
 			scenario.getTargetProperties().addAll(source.getTargetProperties());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof DFDBehaviorUncertaintySource source) {
 			var scenario = DfdFactory.eINSTANCE.createDFDBehaviorUncertaintyScenario();
 			scenario.getTargetAssignments().addAll(source.getTargetAssignments());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof DFDInterfaceUncertaintySource source) {
@@ -193,6 +207,7 @@ public class UncertaintyUtils {
 			scenario.setTargetFlow(source.getTargetFlow());
 			scenario.setTargetInPin(source.getTargetInPin());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof DFDConnectorUncertaintySource source) {
@@ -200,12 +215,14 @@ public class UncertaintyUtils {
 			scenario.setTargetAssignment(source.getTargetAssignement());
 			scenario.setTargetFlow(source.getTargetFlow());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof DFDComponentUncertaintySource source) {
 			var scenario = DfdFactory.eINSTANCE.createDFDComponentUncertaintyScenario();
 			scenario.setTarget(source.getTarget());
 			scenario.setProbability(probability);
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		}

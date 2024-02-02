@@ -3,6 +3,8 @@
 package dev.abunai.confidentiality.analysis.model.uncertainty.pcm.provider;
 
 
+import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource;
+
 import dev.abunai.confidentiality.analysis.model.uncertainty.provider.UncertaintyEditPlugin;
 import dev.abunai.confidentiality.analysis.model.uncertainty.provider.UncertaintySourceItemProvider;
 
@@ -56,7 +58,10 @@ public class PCMUncertaintySourceItemProvider extends UncertaintySourceItemProvi
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_PCMUncertaintySource_type");
+		String label = ((PCMUncertaintySource)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PCMUncertaintySource_type") :
+			getString("_UI_PCMUncertaintySource_type") + " " + label;
 	}
 
 

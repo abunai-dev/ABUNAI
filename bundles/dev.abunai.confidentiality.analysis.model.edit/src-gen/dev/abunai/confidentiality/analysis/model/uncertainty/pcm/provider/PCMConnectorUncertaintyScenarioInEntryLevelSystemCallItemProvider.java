@@ -94,8 +94,10 @@ public class PCMConnectorUncertaintyScenarioInEntryLevelSystemCallItemProvider e
 	 */
 	@Override
 	public String getText(Object object) {
-		PCMConnectorUncertaintyScenarioInEntryLevelSystemCall pcmConnectorUncertaintyScenarioInEntryLevelSystemCall = (PCMConnectorUncertaintyScenarioInEntryLevelSystemCall)object;
-		return getString("_UI_PCMConnectorUncertaintyScenarioInEntryLevelSystemCall_type") + " " + pcmConnectorUncertaintyScenarioInEntryLevelSystemCall.getProbability();
+		String label = ((PCMConnectorUncertaintyScenarioInEntryLevelSystemCall)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PCMConnectorUncertaintyScenarioInEntryLevelSystemCall_type") :
+			getString("_UI_PCMConnectorUncertaintyScenarioInEntryLevelSystemCall_type") + " " + label;
 	}
 
 

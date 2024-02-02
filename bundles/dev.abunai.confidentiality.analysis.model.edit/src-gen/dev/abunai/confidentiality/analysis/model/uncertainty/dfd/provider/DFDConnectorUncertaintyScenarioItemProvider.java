@@ -117,8 +117,10 @@ public class DFDConnectorUncertaintyScenarioItemProvider extends UncertaintyScen
 	 */
 	@Override
 	public String getText(Object object) {
-		DFDConnectorUncertaintyScenario dfdConnectorUncertaintyScenario = (DFDConnectorUncertaintyScenario)object;
-		return getString("_UI_DFDConnectorUncertaintyScenario_type") + " " + dfdConnectorUncertaintyScenario.getProbability();
+		String label = ((DFDConnectorUncertaintyScenario)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_DFDConnectorUncertaintyScenario_type") :
+			getString("_UI_DFDConnectorUncertaintyScenario_type") + " " + label;
 	}
 
 

@@ -123,7 +123,10 @@ public class PCMConnectorUncertaintySourceInExternalCallItemProvider extends PCM
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_PCMConnectorUncertaintySourceInExternalCall_type");
+		String label = ((PCMConnectorUncertaintySourceInExternalCall)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PCMConnectorUncertaintySourceInExternalCall_type") :
+			getString("_UI_PCMConnectorUncertaintySourceInExternalCall_type") + " " + label;
 	}
 
 

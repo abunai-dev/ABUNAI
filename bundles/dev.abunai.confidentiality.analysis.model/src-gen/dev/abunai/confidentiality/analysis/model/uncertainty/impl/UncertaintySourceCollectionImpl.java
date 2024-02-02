@@ -16,10 +16,10 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+
+import tools.mdsd.modelingfoundations.identifier.impl.EntityImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class UncertaintySourceCollectionImpl extends MinimalEObjectImpl.Container implements UncertaintySourceCollection {
+public class UncertaintySourceCollectionImpl extends EntityImpl implements UncertaintySourceCollection {
 	/**
 	 * The cached value of the '{@link #getSources() <em>Sources</em>}' containment reference list.
 	 * <!-- begin-user-doc -->

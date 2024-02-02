@@ -3,6 +3,8 @@
 package dev.abunai.confidentiality.analysis.model.uncertainty.dfd.provider;
 
 
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
+
 import dev.abunai.confidentiality.analysis.model.uncertainty.provider.UncertaintyEditPlugin;
 import dev.abunai.confidentiality.analysis.model.uncertainty.provider.UncertaintySourceItemProvider;
 
@@ -56,7 +58,10 @@ public class DFDUncertaintySourceItemProvider extends UncertaintySourceItemProvi
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_DFDUncertaintySource_type");
+		String label = ((DFDUncertaintySource)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_DFDUncertaintySource_type") :
+			getString("_UI_DFDUncertaintySource_type") + " " + label;
 	}
 
 

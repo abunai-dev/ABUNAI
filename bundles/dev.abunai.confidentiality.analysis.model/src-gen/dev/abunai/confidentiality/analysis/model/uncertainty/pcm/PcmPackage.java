@@ -68,6 +68,24 @@ public interface PcmPackage extends EPackage {
 	int PCM_UNCERTAINTY_SOURCE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_UNCERTAINTY_SOURCE__ID = UncertaintyPackage.UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_UNCERTAINTY_SOURCE__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SOURCE__ENTITY_NAME;
+
+	/**
 	 * The number of structural features of the '<em>PCM Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -96,6 +114,24 @@ public interface PcmPackage extends EPackage {
 	int PCM_EXTERNAL_UNCERTAINTY_SOURCE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE__ID = PCM_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE__ENTITY_NAME = PCM_UNCERTAINTY_SOURCE__ENTITY_NAME;
+
+	/**
 	 * The number of structural features of the '<em>PCM External Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -122,6 +158,24 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 */
 	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__ID = PCM_EXTERNAL_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_RESOURCE__ENTITY_NAME = PCM_EXTERNAL_UNCERTAINTY_SOURCE__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -170,6 +224,24 @@ public interface PcmPackage extends EPackage {
 	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__ID = PCM_EXTERNAL_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SOURCE_IN_USAGE__ENTITY_NAME = PCM_EXTERNAL_UNCERTAINTY_SOURCE__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -214,6 +286,24 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 */
 	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_RESOURCE__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -262,6 +352,24 @@ public interface PcmPackage extends EPackage {
 	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_EXTERNAL_UNCERTAINTY_SCENARIO_IN_USAGE__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -306,6 +414,24 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 */
 	int PCM_BEHAVIOR_UNCERTAINTY_SOURCE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_BEHAVIOR_UNCERTAINTY_SOURCE__ID = PCM_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_BEHAVIOR_UNCERTAINTY_SOURCE__ENTITY_NAME = PCM_UNCERTAINTY_SOURCE__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -354,6 +480,24 @@ public interface PcmPackage extends EPackage {
 	int PCM_BEHAVIOR_UNCERTAINTY_SCENARIO = 7;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_BEHAVIOR_UNCERTAINTY_SCENARIO__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_BEHAVIOR_UNCERTAINTY_SCENARIO__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -398,6 +542,24 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 */
 	int PCM_INTERFACE_UNCERTAINTY_SOURCE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_INTERFACE_UNCERTAINTY_SOURCE__ID = PCM_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_INTERFACE_UNCERTAINTY_SOURCE__ENTITY_NAME = PCM_UNCERTAINTY_SOURCE__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -446,6 +608,24 @@ public interface PcmPackage extends EPackage {
 	int PCM_INTERFACE_UNCERTAINTY_SCENARIO = 9;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_INTERFACE_UNCERTAINTY_SCENARIO__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_INTERFACE_UNCERTAINTY_SCENARIO__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -492,6 +672,24 @@ public interface PcmPackage extends EPackage {
 	int PCM_CONNECTOR_UNCERTAINTY_SOURCE = 10;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE__ID = PCM_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE__ENTITY_NAME = PCM_UNCERTAINTY_SOURCE__ENTITY_NAME;
+
+	/**
 	 * The number of structural features of the '<em>PCM Connector Uncertainty Source</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -518,6 +716,24 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 */
 	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL = 11;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__ID = PCM_CONNECTOR_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_EXTERNAL_CALL__ENTITY_NAME = PCM_CONNECTOR_UNCERTAINTY_SOURCE__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -566,6 +782,24 @@ public interface PcmPackage extends EPackage {
 	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL = 12;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__ID = PCM_CONNECTOR_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_CONNECTOR_UNCERTAINTY_SOURCE_IN_ENTRY_LEVEL_SYSTEM_CALL__ENTITY_NAME = PCM_CONNECTOR_UNCERTAINTY_SOURCE__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -610,6 +844,24 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 */
 	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL = 13;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_EXTERNAL_CALL__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
@@ -658,6 +910,24 @@ public interface PcmPackage extends EPackage {
 	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL = 14;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_CONNECTOR_UNCERTAINTY_SCENARIO_IN_ENTRY_LEVEL_SYSTEM_CALL__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -704,6 +974,24 @@ public interface PcmPackage extends EPackage {
 	int PCM_COMPONENT_UNCERTAINTY_SOURCE = 15;
 
 	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_COMPONENT_UNCERTAINTY_SOURCE__ID = PCM_UNCERTAINTY_SOURCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_COMPONENT_UNCERTAINTY_SOURCE__ENTITY_NAME = PCM_UNCERTAINTY_SOURCE__ENTITY_NAME;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -748,6 +1036,24 @@ public interface PcmPackage extends EPackage {
 	 * @generated
 	 */
 	int PCM_COMPONENT_UNCERTAINTY_SCENARIO = 16;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_COMPONENT_UNCERTAINTY_SCENARIO__ID = UncertaintyPackage.UNCERTAINTY_SCENARIO__ID;
+
+	/**
+	 * The feature id for the '<em><b>Entity Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PCM_COMPONENT_UNCERTAINTY_SCENARIO__ENTITY_NAME = UncertaintyPackage.UNCERTAINTY_SCENARIO__ENTITY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Probability</b></em>' attribute.

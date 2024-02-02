@@ -146,7 +146,10 @@ public class DFDInterfaceUncertaintySourceItemProvider extends DFDUncertaintySou
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_DFDInterfaceUncertaintySource_type");
+		String label = ((DFDInterfaceUncertaintySource)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_DFDInterfaceUncertaintySource_type") :
+			getString("_UI_DFDInterfaceUncertaintySource_type") + " " + label;
 	}
 
 

@@ -14,6 +14,10 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import tools.mdsd.modelingfoundations.identifier.Entity;
+import tools.mdsd.modelingfoundations.identifier.Identifier;
+import tools.mdsd.modelingfoundations.identifier.NamedElement;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Adapter Factory</b> for the model.
@@ -137,6 +141,18 @@ public class PcmAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter casePCMComponentUncertaintyScenario(PCMComponentUncertaintyScenario object) {
 				return createPCMComponentUncertaintyScenarioAdapter();
+			}
+			@Override
+			public Adapter caseIdentifier(Identifier object) {
+				return createIdentifierAdapter();
+			}
+			@Override
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
+			}
+			@Override
+			public Adapter caseEntity(Entity object) {
+				return createEntityAdapter();
 			}
 			@Override
 			public Adapter caseUncertaintySource(UncertaintySource object) {
@@ -401,6 +417,48 @@ public class PcmAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPCMComponentUncertaintyScenarioAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tools.mdsd.modelingfoundations.identifier.Identifier <em>Identifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tools.mdsd.modelingfoundations.identifier.Identifier
+	 * @generated
+	 */
+	public Adapter createIdentifierAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tools.mdsd.modelingfoundations.identifier.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tools.mdsd.modelingfoundations.identifier.NamedElement
+	 * @generated
+	 */
+	public Adapter createNamedElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link tools.mdsd.modelingfoundations.identifier.Entity <em>Entity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see tools.mdsd.modelingfoundations.identifier.Entity
+	 * @generated
+	 */
+	public Adapter createEntityAdapter() {
 		return null;
 	}
 

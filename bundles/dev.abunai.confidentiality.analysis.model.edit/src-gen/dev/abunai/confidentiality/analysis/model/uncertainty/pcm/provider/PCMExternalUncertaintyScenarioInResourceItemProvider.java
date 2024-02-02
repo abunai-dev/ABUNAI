@@ -94,8 +94,10 @@ public class PCMExternalUncertaintyScenarioInResourceItemProvider extends Uncert
 	 */
 	@Override
 	public String getText(Object object) {
-		PCMExternalUncertaintyScenarioInResource pcmExternalUncertaintyScenarioInResource = (PCMExternalUncertaintyScenarioInResource)object;
-		return getString("_UI_PCMExternalUncertaintyScenarioInResource_type") + " " + pcmExternalUncertaintyScenarioInResource.getProbability();
+		String label = ((PCMExternalUncertaintyScenarioInResource)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PCMExternalUncertaintyScenarioInResource_type") :
+			getString("_UI_PCMExternalUncertaintyScenarioInResource_type") + " " + label;
 	}
 
 

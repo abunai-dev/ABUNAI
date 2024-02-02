@@ -4,7 +4,7 @@ package dev.abunai.confidentiality.analysis.model.uncertainty;
 
 import java.util.List;
 
-import org.eclipse.emf.ecore.EObject;
+import tools.mdsd.modelingfoundations.identifier.Entity;
 
 /**
  * <!-- begin-user-doc -->
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface UncertaintySourceCollection extends EObject {
+public interface UncertaintySourceCollection extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Sources</b></em>' containment reference list.
 	 * The list contents are of type {@link dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource}.

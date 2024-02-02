@@ -146,7 +146,10 @@ public class DFDConnectorUncertaintySourceItemProvider extends DFDUncertaintySou
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_DFDConnectorUncertaintySource_type");
+		String label = ((DFDConnectorUncertaintySource)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_DFDConnectorUncertaintySource_type") :
+			getString("_UI_DFDConnectorUncertaintySource_type") + " " + label;
 	}
 
 

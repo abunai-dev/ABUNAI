@@ -94,8 +94,10 @@ public class PCMExternalUncertaintyScenarioInUsageItemProvider extends Uncertain
 	 */
 	@Override
 	public String getText(Object object) {
-		PCMExternalUncertaintyScenarioInUsage pcmExternalUncertaintyScenarioInUsage = (PCMExternalUncertaintyScenarioInUsage)object;
-		return getString("_UI_PCMExternalUncertaintyScenarioInUsage_type") + " " + pcmExternalUncertaintyScenarioInUsage.getProbability();
+		String label = ((PCMExternalUncertaintyScenarioInUsage)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PCMExternalUncertaintyScenarioInUsage_type") :
+			getString("_UI_PCMExternalUncertaintyScenarioInUsage_type") + " " + label;
 	}
 
 

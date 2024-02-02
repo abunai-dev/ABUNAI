@@ -10,7 +10,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import tools.mdsd.modelingfoundations.identifier.impl.EntityImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +26,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public abstract class UncertaintyScenarioImpl extends MinimalEObjectImpl.Container implements UncertaintyScenario {
+public abstract class UncertaintyScenarioImpl extends EntityImpl implements UncertaintyScenario {
 	/**
 	 * The default value of the '{@link #getProbability() <em>Probability</em>}' attribute.
 	 * <!-- begin-user-doc -->

@@ -12,6 +12,10 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import tools.mdsd.modelingfoundations.identifier.Entity;
+import tools.mdsd.modelingfoundations.identifier.Identifier;
+import tools.mdsd.modelingfoundations.identifier.NamedElement;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
@@ -73,6 +77,9 @@ public class DfdSwitch<T> extends Switch<T> {
 				DFDUncertaintySource dfdUncertaintySource = (DFDUncertaintySource)theEObject;
 				T result = caseDFDUncertaintySource(dfdUncertaintySource);
 				if (result == null) result = caseUncertaintySource(dfdUncertaintySource);
+				if (result == null) result = caseEntity(dfdUncertaintySource);
+				if (result == null) result = caseIdentifier(dfdUncertaintySource);
+				if (result == null) result = caseNamedElement(dfdUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -81,6 +88,9 @@ public class DfdSwitch<T> extends Switch<T> {
 				T result = caseDFDExternalUncertaintySource(dfdExternalUncertaintySource);
 				if (result == null) result = caseDFDUncertaintySource(dfdExternalUncertaintySource);
 				if (result == null) result = caseUncertaintySource(dfdExternalUncertaintySource);
+				if (result == null) result = caseEntity(dfdExternalUncertaintySource);
+				if (result == null) result = caseIdentifier(dfdExternalUncertaintySource);
+				if (result == null) result = caseNamedElement(dfdExternalUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -88,6 +98,9 @@ public class DfdSwitch<T> extends Switch<T> {
 				DFDExternalUncertaintyScenario dfdExternalUncertaintyScenario = (DFDExternalUncertaintyScenario)theEObject;
 				T result = caseDFDExternalUncertaintyScenario(dfdExternalUncertaintyScenario);
 				if (result == null) result = caseUncertaintyScenario(dfdExternalUncertaintyScenario);
+				if (result == null) result = caseEntity(dfdExternalUncertaintyScenario);
+				if (result == null) result = caseIdentifier(dfdExternalUncertaintyScenario);
+				if (result == null) result = caseNamedElement(dfdExternalUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -96,6 +109,9 @@ public class DfdSwitch<T> extends Switch<T> {
 				T result = caseDFDBehaviorUncertaintySource(dfdBehaviorUncertaintySource);
 				if (result == null) result = caseDFDUncertaintySource(dfdBehaviorUncertaintySource);
 				if (result == null) result = caseUncertaintySource(dfdBehaviorUncertaintySource);
+				if (result == null) result = caseEntity(dfdBehaviorUncertaintySource);
+				if (result == null) result = caseIdentifier(dfdBehaviorUncertaintySource);
+				if (result == null) result = caseNamedElement(dfdBehaviorUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -103,6 +119,9 @@ public class DfdSwitch<T> extends Switch<T> {
 				DFDBehaviorUncertaintyScenario dfdBehaviorUncertaintyScenario = (DFDBehaviorUncertaintyScenario)theEObject;
 				T result = caseDFDBehaviorUncertaintyScenario(dfdBehaviorUncertaintyScenario);
 				if (result == null) result = caseUncertaintyScenario(dfdBehaviorUncertaintyScenario);
+				if (result == null) result = caseEntity(dfdBehaviorUncertaintyScenario);
+				if (result == null) result = caseIdentifier(dfdBehaviorUncertaintyScenario);
+				if (result == null) result = caseNamedElement(dfdBehaviorUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -111,6 +130,9 @@ public class DfdSwitch<T> extends Switch<T> {
 				T result = caseDFDInterfaceUncertaintySource(dfdInterfaceUncertaintySource);
 				if (result == null) result = caseDFDUncertaintySource(dfdInterfaceUncertaintySource);
 				if (result == null) result = caseUncertaintySource(dfdInterfaceUncertaintySource);
+				if (result == null) result = caseEntity(dfdInterfaceUncertaintySource);
+				if (result == null) result = caseIdentifier(dfdInterfaceUncertaintySource);
+				if (result == null) result = caseNamedElement(dfdInterfaceUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -118,6 +140,9 @@ public class DfdSwitch<T> extends Switch<T> {
 				DFDInterfaceUncertaintyScenario dfdInterfaceUncertaintyScenario = (DFDInterfaceUncertaintyScenario)theEObject;
 				T result = caseDFDInterfaceUncertaintyScenario(dfdInterfaceUncertaintyScenario);
 				if (result == null) result = caseUncertaintyScenario(dfdInterfaceUncertaintyScenario);
+				if (result == null) result = caseEntity(dfdInterfaceUncertaintyScenario);
+				if (result == null) result = caseIdentifier(dfdInterfaceUncertaintyScenario);
+				if (result == null) result = caseNamedElement(dfdInterfaceUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -126,6 +151,9 @@ public class DfdSwitch<T> extends Switch<T> {
 				T result = caseDFDConnectorUncertaintySource(dfdConnectorUncertaintySource);
 				if (result == null) result = caseDFDUncertaintySource(dfdConnectorUncertaintySource);
 				if (result == null) result = caseUncertaintySource(dfdConnectorUncertaintySource);
+				if (result == null) result = caseEntity(dfdConnectorUncertaintySource);
+				if (result == null) result = caseIdentifier(dfdConnectorUncertaintySource);
+				if (result == null) result = caseNamedElement(dfdConnectorUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -133,6 +161,9 @@ public class DfdSwitch<T> extends Switch<T> {
 				DFDConnectorUncertaintyScenario dfdConnectorUncertaintyScenario = (DFDConnectorUncertaintyScenario)theEObject;
 				T result = caseDFDConnectorUncertaintyScenario(dfdConnectorUncertaintyScenario);
 				if (result == null) result = caseUncertaintyScenario(dfdConnectorUncertaintyScenario);
+				if (result == null) result = caseEntity(dfdConnectorUncertaintyScenario);
+				if (result == null) result = caseIdentifier(dfdConnectorUncertaintyScenario);
+				if (result == null) result = caseNamedElement(dfdConnectorUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -141,6 +172,9 @@ public class DfdSwitch<T> extends Switch<T> {
 				T result = caseDFDComponentUncertaintySource(dfdComponentUncertaintySource);
 				if (result == null) result = caseDFDUncertaintySource(dfdComponentUncertaintySource);
 				if (result == null) result = caseUncertaintySource(dfdComponentUncertaintySource);
+				if (result == null) result = caseEntity(dfdComponentUncertaintySource);
+				if (result == null) result = caseIdentifier(dfdComponentUncertaintySource);
+				if (result == null) result = caseNamedElement(dfdComponentUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -148,6 +182,9 @@ public class DfdSwitch<T> extends Switch<T> {
 				DFDComponentUncertaintyScenario dfdComponentUncertaintyScenario = (DFDComponentUncertaintyScenario)theEObject;
 				T result = caseDFDComponentUncertaintyScenario(dfdComponentUncertaintyScenario);
 				if (result == null) result = caseUncertaintyScenario(dfdComponentUncertaintyScenario);
+				if (result == null) result = caseEntity(dfdComponentUncertaintyScenario);
+				if (result == null) result = caseIdentifier(dfdComponentUncertaintyScenario);
+				if (result == null) result = caseNamedElement(dfdComponentUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -317,6 +354,51 @@ public class DfdSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseDFDComponentUncertaintyScenario(DFDComponentUncertaintyScenario object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identifier</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentifier(Identifier object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedElement(NamedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntity(Entity object) {
 		return null;
 	}
 

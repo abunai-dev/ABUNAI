@@ -20,14 +20,10 @@ import org.eclipse.emf.common.util.ResourceLocator;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+
+import tools.mdsd.modelingfoundations.identifier.provider.EntityItemProvider;
 
 /**
  * This is the item provider adapter for a {@link dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCollection} object.
@@ -35,14 +31,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class UncertaintySourceCollectionItemProvider 
-	extends ItemProviderAdapter
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+public class UncertaintySourceCollectionItemProvider extends EntityItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -117,7 +106,10 @@ public class UncertaintySourceCollectionItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_UncertaintySourceCollection_type");
+		String label = ((UncertaintySourceCollection)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_UncertaintySourceCollection_type") :
+			getString("_UI_UncertaintySourceCollection_type") + " " + label;
 	}
 
 

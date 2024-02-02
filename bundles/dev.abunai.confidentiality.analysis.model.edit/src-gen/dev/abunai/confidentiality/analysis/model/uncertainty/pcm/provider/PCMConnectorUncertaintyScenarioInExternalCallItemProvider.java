@@ -94,8 +94,10 @@ public class PCMConnectorUncertaintyScenarioInExternalCallItemProvider extends U
 	 */
 	@Override
 	public String getText(Object object) {
-		PCMConnectorUncertaintyScenarioInExternalCall pcmConnectorUncertaintyScenarioInExternalCall = (PCMConnectorUncertaintyScenarioInExternalCall)object;
-		return getString("_UI_PCMConnectorUncertaintyScenarioInExternalCall_type") + " " + pcmConnectorUncertaintyScenarioInExternalCall.getProbability();
+		String label = ((PCMConnectorUncertaintyScenarioInExternalCall)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_PCMConnectorUncertaintyScenarioInExternalCall_type") :
+			getString("_UI_PCMConnectorUncertaintyScenarioInExternalCall_type") + " " + label;
 	}
 
 

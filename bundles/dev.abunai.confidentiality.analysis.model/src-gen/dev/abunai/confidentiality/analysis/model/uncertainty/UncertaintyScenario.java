@@ -2,7 +2,7 @@
  */
 package dev.abunai.confidentiality.analysis.model.uncertainty;
 
-import org.eclipse.emf.ecore.EObject;
+import tools.mdsd.modelingfoundations.identifier.Entity;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface UncertaintyScenario extends EObject {
+public interface UncertaintyScenario extends Entity {
 	/**
 	 * Returns the value of the '<em><b>Probability</b></em>' attribute.
 	 * The default value is <code>"-1.0"</code>.

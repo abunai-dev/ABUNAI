@@ -146,7 +146,10 @@ public class DFDExternalUncertaintySourceItemProvider extends DFDUncertaintySour
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_DFDExternalUncertaintySource_type");
+		String label = ((DFDExternalUncertaintySource)object).getEntityName();
+		return label == null || label.length() == 0 ?
+			getString("_UI_DFDExternalUncertaintySource_type") :
+			getString("_UI_DFDExternalUncertaintySource_type") + " " + label;
 	}
 
 

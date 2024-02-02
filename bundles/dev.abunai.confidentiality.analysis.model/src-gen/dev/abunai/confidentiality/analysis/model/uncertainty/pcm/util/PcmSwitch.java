@@ -12,6 +12,10 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import tools.mdsd.modelingfoundations.identifier.Entity;
+import tools.mdsd.modelingfoundations.identifier.Identifier;
+import tools.mdsd.modelingfoundations.identifier.NamedElement;
+
 /**
  * <!-- begin-user-doc -->
  * The <b>Switch</b> for the model's inheritance hierarchy.
@@ -73,6 +77,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				PCMUncertaintySource pcmUncertaintySource = (PCMUncertaintySource)theEObject;
 				T result = casePCMUncertaintySource(pcmUncertaintySource);
 				if (result == null) result = caseUncertaintySource(pcmUncertaintySource);
+				if (result == null) result = caseEntity(pcmUncertaintySource);
+				if (result == null) result = caseIdentifier(pcmUncertaintySource);
+				if (result == null) result = caseNamedElement(pcmUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -81,6 +88,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				T result = casePCMExternalUncertaintySource(pcmExternalUncertaintySource);
 				if (result == null) result = casePCMUncertaintySource(pcmExternalUncertaintySource);
 				if (result == null) result = caseUncertaintySource(pcmExternalUncertaintySource);
+				if (result == null) result = caseEntity(pcmExternalUncertaintySource);
+				if (result == null) result = caseIdentifier(pcmExternalUncertaintySource);
+				if (result == null) result = caseNamedElement(pcmExternalUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -90,6 +100,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				if (result == null) result = casePCMExternalUncertaintySource(pcmExternalUncertaintySourceInResource);
 				if (result == null) result = casePCMUncertaintySource(pcmExternalUncertaintySourceInResource);
 				if (result == null) result = caseUncertaintySource(pcmExternalUncertaintySourceInResource);
+				if (result == null) result = caseEntity(pcmExternalUncertaintySourceInResource);
+				if (result == null) result = caseIdentifier(pcmExternalUncertaintySourceInResource);
+				if (result == null) result = caseNamedElement(pcmExternalUncertaintySourceInResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -99,6 +112,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				if (result == null) result = casePCMExternalUncertaintySource(pcmExternalUncertaintySourceInUsage);
 				if (result == null) result = casePCMUncertaintySource(pcmExternalUncertaintySourceInUsage);
 				if (result == null) result = caseUncertaintySource(pcmExternalUncertaintySourceInUsage);
+				if (result == null) result = caseEntity(pcmExternalUncertaintySourceInUsage);
+				if (result == null) result = caseIdentifier(pcmExternalUncertaintySourceInUsage);
+				if (result == null) result = caseNamedElement(pcmExternalUncertaintySourceInUsage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -106,6 +122,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				PCMExternalUncertaintyScenarioInResource pcmExternalUncertaintyScenarioInResource = (PCMExternalUncertaintyScenarioInResource)theEObject;
 				T result = casePCMExternalUncertaintyScenarioInResource(pcmExternalUncertaintyScenarioInResource);
 				if (result == null) result = caseUncertaintyScenario(pcmExternalUncertaintyScenarioInResource);
+				if (result == null) result = caseEntity(pcmExternalUncertaintyScenarioInResource);
+				if (result == null) result = caseIdentifier(pcmExternalUncertaintyScenarioInResource);
+				if (result == null) result = caseNamedElement(pcmExternalUncertaintyScenarioInResource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -113,6 +132,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				PCMExternalUncertaintyScenarioInUsage pcmExternalUncertaintyScenarioInUsage = (PCMExternalUncertaintyScenarioInUsage)theEObject;
 				T result = casePCMExternalUncertaintyScenarioInUsage(pcmExternalUncertaintyScenarioInUsage);
 				if (result == null) result = caseUncertaintyScenario(pcmExternalUncertaintyScenarioInUsage);
+				if (result == null) result = caseEntity(pcmExternalUncertaintyScenarioInUsage);
+				if (result == null) result = caseIdentifier(pcmExternalUncertaintyScenarioInUsage);
+				if (result == null) result = caseNamedElement(pcmExternalUncertaintyScenarioInUsage);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -121,6 +143,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				T result = casePCMBehaviorUncertaintySource(pcmBehaviorUncertaintySource);
 				if (result == null) result = casePCMUncertaintySource(pcmBehaviorUncertaintySource);
 				if (result == null) result = caseUncertaintySource(pcmBehaviorUncertaintySource);
+				if (result == null) result = caseEntity(pcmBehaviorUncertaintySource);
+				if (result == null) result = caseIdentifier(pcmBehaviorUncertaintySource);
+				if (result == null) result = caseNamedElement(pcmBehaviorUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -128,6 +153,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				PCMBehaviorUncertaintyScenario pcmBehaviorUncertaintyScenario = (PCMBehaviorUncertaintyScenario)theEObject;
 				T result = casePCMBehaviorUncertaintyScenario(pcmBehaviorUncertaintyScenario);
 				if (result == null) result = caseUncertaintyScenario(pcmBehaviorUncertaintyScenario);
+				if (result == null) result = caseEntity(pcmBehaviorUncertaintyScenario);
+				if (result == null) result = caseIdentifier(pcmBehaviorUncertaintyScenario);
+				if (result == null) result = caseNamedElement(pcmBehaviorUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -136,6 +164,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				T result = casePCMInterfaceUncertaintySource(pcmInterfaceUncertaintySource);
 				if (result == null) result = casePCMUncertaintySource(pcmInterfaceUncertaintySource);
 				if (result == null) result = caseUncertaintySource(pcmInterfaceUncertaintySource);
+				if (result == null) result = caseEntity(pcmInterfaceUncertaintySource);
+				if (result == null) result = caseIdentifier(pcmInterfaceUncertaintySource);
+				if (result == null) result = caseNamedElement(pcmInterfaceUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -143,6 +174,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				PCMInterfaceUncertaintyScenario pcmInterfaceUncertaintyScenario = (PCMInterfaceUncertaintyScenario)theEObject;
 				T result = casePCMInterfaceUncertaintyScenario(pcmInterfaceUncertaintyScenario);
 				if (result == null) result = caseUncertaintyScenario(pcmInterfaceUncertaintyScenario);
+				if (result == null) result = caseEntity(pcmInterfaceUncertaintyScenario);
+				if (result == null) result = caseIdentifier(pcmInterfaceUncertaintyScenario);
+				if (result == null) result = caseNamedElement(pcmInterfaceUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -151,6 +185,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				T result = casePCMConnectorUncertaintySource(pcmConnectorUncertaintySource);
 				if (result == null) result = casePCMUncertaintySource(pcmConnectorUncertaintySource);
 				if (result == null) result = caseUncertaintySource(pcmConnectorUncertaintySource);
+				if (result == null) result = caseEntity(pcmConnectorUncertaintySource);
+				if (result == null) result = caseIdentifier(pcmConnectorUncertaintySource);
+				if (result == null) result = caseNamedElement(pcmConnectorUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -160,6 +197,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				if (result == null) result = casePCMConnectorUncertaintySource(pcmConnectorUncertaintySourceInExternalCall);
 				if (result == null) result = casePCMUncertaintySource(pcmConnectorUncertaintySourceInExternalCall);
 				if (result == null) result = caseUncertaintySource(pcmConnectorUncertaintySourceInExternalCall);
+				if (result == null) result = caseEntity(pcmConnectorUncertaintySourceInExternalCall);
+				if (result == null) result = caseIdentifier(pcmConnectorUncertaintySourceInExternalCall);
+				if (result == null) result = caseNamedElement(pcmConnectorUncertaintySourceInExternalCall);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -169,6 +209,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				if (result == null) result = casePCMConnectorUncertaintySource(pcmConnectorUncertaintySourceInEntryLevelSystemCall);
 				if (result == null) result = casePCMUncertaintySource(pcmConnectorUncertaintySourceInEntryLevelSystemCall);
 				if (result == null) result = caseUncertaintySource(pcmConnectorUncertaintySourceInEntryLevelSystemCall);
+				if (result == null) result = caseEntity(pcmConnectorUncertaintySourceInEntryLevelSystemCall);
+				if (result == null) result = caseIdentifier(pcmConnectorUncertaintySourceInEntryLevelSystemCall);
+				if (result == null) result = caseNamedElement(pcmConnectorUncertaintySourceInEntryLevelSystemCall);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -176,6 +219,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				PCMConnectorUncertaintyScenarioInExternalCall pcmConnectorUncertaintyScenarioInExternalCall = (PCMConnectorUncertaintyScenarioInExternalCall)theEObject;
 				T result = casePCMConnectorUncertaintyScenarioInExternalCall(pcmConnectorUncertaintyScenarioInExternalCall);
 				if (result == null) result = caseUncertaintyScenario(pcmConnectorUncertaintyScenarioInExternalCall);
+				if (result == null) result = caseEntity(pcmConnectorUncertaintyScenarioInExternalCall);
+				if (result == null) result = caseIdentifier(pcmConnectorUncertaintyScenarioInExternalCall);
+				if (result == null) result = caseNamedElement(pcmConnectorUncertaintyScenarioInExternalCall);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -183,6 +229,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				PCMConnectorUncertaintyScenarioInEntryLevelSystemCall pcmConnectorUncertaintyScenarioInEntryLevelSystemCall = (PCMConnectorUncertaintyScenarioInEntryLevelSystemCall)theEObject;
 				T result = casePCMConnectorUncertaintyScenarioInEntryLevelSystemCall(pcmConnectorUncertaintyScenarioInEntryLevelSystemCall);
 				if (result == null) result = caseUncertaintyScenario(pcmConnectorUncertaintyScenarioInEntryLevelSystemCall);
+				if (result == null) result = caseEntity(pcmConnectorUncertaintyScenarioInEntryLevelSystemCall);
+				if (result == null) result = caseIdentifier(pcmConnectorUncertaintyScenarioInEntryLevelSystemCall);
+				if (result == null) result = caseNamedElement(pcmConnectorUncertaintyScenarioInEntryLevelSystemCall);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -191,6 +240,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				T result = casePCMComponentUncertaintySource(pcmComponentUncertaintySource);
 				if (result == null) result = casePCMUncertaintySource(pcmComponentUncertaintySource);
 				if (result == null) result = caseUncertaintySource(pcmComponentUncertaintySource);
+				if (result == null) result = caseEntity(pcmComponentUncertaintySource);
+				if (result == null) result = caseIdentifier(pcmComponentUncertaintySource);
+				if (result == null) result = caseNamedElement(pcmComponentUncertaintySource);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -198,6 +250,9 @@ public class PcmSwitch<T> extends Switch<T> {
 				PCMComponentUncertaintyScenario pcmComponentUncertaintyScenario = (PCMComponentUncertaintyScenario)theEObject;
 				T result = casePCMComponentUncertaintyScenario(pcmComponentUncertaintyScenario);
 				if (result == null) result = caseUncertaintyScenario(pcmComponentUncertaintyScenario);
+				if (result == null) result = caseEntity(pcmComponentUncertaintyScenario);
+				if (result == null) result = caseIdentifier(pcmComponentUncertaintyScenario);
+				if (result == null) result = caseNamedElement(pcmComponentUncertaintyScenario);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -457,6 +512,51 @@ public class PcmSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePCMComponentUncertaintyScenario(PCMComponentUncertaintyScenario object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Identifier</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Identifier</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdentifier(Identifier object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedElement(NamedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Entity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEntity(Entity object) {
 		return null;
 	}
 
