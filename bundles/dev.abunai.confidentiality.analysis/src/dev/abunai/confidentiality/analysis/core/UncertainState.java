@@ -6,6 +6,9 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
+
+import com.google.common.collect.Streams;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -38,12 +41,37 @@ public class UncertainState {
 	public Map<UncertaintySource, UncertaintyScenario> getSourceToScenarioMapping() {
 		Map<UncertaintySource, UncertaintyScenario> mapping = new HashMap<>();
 
-		for (var scenario : this.selectedScenarios) {
-			var source = (UncertaintySource) scenario.eContainer();
+		for (UncertaintyScenario scenario : this.selectedScenarios) {
+			UncertaintySource source = (UncertaintySource) scenario.eContainer();
 			mapping.put(source, scenario);
 		}
 
 		return mapping;
+	}
+
+	public UncertainState fillWithDefaultScenarios(List<UncertaintySource> uncertaintySources) {
+		List<UncertaintySource> alreadyContainedUncertaintySources = selectedScenarios.stream().map(EObject::eContainer)
+				.map(UncertaintySource.class::cast).toList();
+
+		List<UncertaintyScenario> additionalDefaultScenarios = new ArrayList<>();
+
+		for (UncertaintySource source : uncertaintySources) {
+			if (!alreadyContainedUncertaintySources.contains(source)) {
+
+				List<? extends UncertaintyScenario> defaultScenarios = UncertaintyUtils.getUncertaintyScenarios(source)
+						.stream().filter(it -> UncertaintyUtils.isDefaultScenario(source, it)).toList();
+
+				if (defaultScenarios.size() != 1) {
+					throw new IllegalArgumentException("More than one or zero default scenarios found in %s."
+							.formatted(UncertaintyUtils.getUncertaintySourceName(source)));
+				} else {
+					additionalDefaultScenarios.add(defaultScenarios.get(0));
+				}
+			}
+		}
+
+		return new UncertainState(
+				Streams.concat(selectedScenarios.stream(), additionalDefaultScenarios.stream()).toList());
 	}
 
 	@Override

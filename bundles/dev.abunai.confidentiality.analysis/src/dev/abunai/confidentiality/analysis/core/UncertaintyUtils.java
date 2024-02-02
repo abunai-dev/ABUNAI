@@ -55,8 +55,8 @@ public class UncertaintyUtils {
 	private static String tryToGetNameOfTypeAndTarget(Entity entity) {
 		String entityClassName = entity.getClass().getSimpleName().replace("Impl", "");
 
-		var defaultEntityName = "aName";
-		var entityTypeAndName = "";
+		String defaultEntityName = "aName";
+		String entityTypeAndName = "";
 		if (entity.getEntityName().equals(defaultEntityName)) {
 			entityTypeAndName = "%s %s".formatted(entityClassName, entity.getId());
 		} else {

@@ -33,7 +33,12 @@ public class UncertaintyModelTest extends PCMTestBase {
 		
 		var allStates = UncertainState.createAllUncertainStates(sourceCollection);
 		System.out.println(allStates.size());
-		allStates.forEach(it -> System.out.println(it));
+		//allStates.forEach(it -> System.out.println(it));
+		
+		var someStates = UncertainState.createAllUncertainStates(sourceCollection.subList(0, 2));
+		var filledStates = someStates.stream().map(it -> it.fillWithDefaultScenarios(sourceCollection)).toList();
+		System.out.println(filledStates.size());
+		filledStates.forEach(it -> System.out.println(it));
 	}
 
 }
