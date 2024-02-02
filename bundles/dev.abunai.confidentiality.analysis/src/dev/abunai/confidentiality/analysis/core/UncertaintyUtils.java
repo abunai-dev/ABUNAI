@@ -1,6 +1,10 @@
 package dev.abunai.confidentiality.analysis.core;
 
 import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario;
@@ -43,11 +47,23 @@ public class UncertaintyUtils {
 	}
 
 	public static String getUncertaintySourceName(UncertaintySource uncertaintySource) {
-		String uncertaintySourceTypeName = uncertaintySource.getClass().getSimpleName().replace("Impl", "");
+		return tryToGetNameOfTypeAndTarget(uncertaintySource);
+	}
+
+	public static String getUncertaintyScenarioName(UncertaintyScenario uncertaintyScenario) {
+		return tryToGetNameOfTypeAndTarget(uncertaintyScenario);
+	}
+
+	private static String tryToGetNameOfTypeAndTarget(EObject eObject) {
+		String uncertaintySourceTypeName = eObject.getClass().getSimpleName().replace("Impl", "");
 
 		String targetFeatureName = "target";
-		Object target = uncertaintySource.eGet(uncertaintySource.eClass().getEStructuralFeature(targetFeatureName));
+		EStructuralFeature feature = eObject.eClass().getEStructuralFeature(targetFeatureName);
+		if (feature == null) {
+			return uncertaintySourceTypeName;
+		}
 
+		Object target = eObject.eGet(feature);
 		if (target instanceof org.palladiosimulator.pcm.core.entity.Entity entity) {
 			return "%s @ \"%s\"".formatted(uncertaintySourceTypeName, entity.getEntityName());
 		} else if (target instanceof tools.mdsd.modelingfoundations.identifier.Entity entity) {

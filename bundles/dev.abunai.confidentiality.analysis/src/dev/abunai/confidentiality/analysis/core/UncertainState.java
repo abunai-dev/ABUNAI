@@ -3,73 +3,44 @@ package dev.abunai.confidentiality.analysis.core;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.TreeMap;
+import java.util.stream.Collectors;
+
+import org.eclipse.emf.ecore.EObject;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCollection;
 
-// TODO: Re-implement after uncertainty source validation
 public class UncertainState {
 
-	private final List<UncertaintySource> uncertaintiesWithOriginalScenario = new ArrayList<>();
-	private final List<UncertaintySource> uncertaintiesWithAlternativeScenario = new ArrayList<>();
-	private final List<UncertaintyScenario> selectedUncertaintyScenarios = new ArrayList<>();
+	private final List<? extends UncertaintyScenario> selectedScenarios;
 
-	public UncertainState(List<UncertaintySource> involvedUncertaintySources,
-			List<UncertaintyScenario> selectedScenarios) {
-
-		registerScenariosAndCorrespondingSources(involvedUncertaintySources, selectedScenarios);
-		registerRemainingSources(involvedUncertaintySources);
+	public UncertainState(List<? extends UncertaintyScenario> selectedScenarios) {
+		this.selectedScenarios = selectedScenarios;
 	}
 
-	private void registerScenariosAndCorrespondingSources(List<UncertaintySource> involvedUncertaintySources,
-			List<UncertaintyScenario> selectedScenarios) {
-		for (var scenario : selectedScenarios) {
-			var uncertaintySource = (UncertaintySource) scenario.eContainer();
-
-			if (involvedUncertaintySources.contains(uncertaintySource)) {
-				this.uncertaintiesWithAlternativeScenario.add(uncertaintySource);
-				this.selectedUncertaintyScenarios.add(scenario);
-			} else {
-				throw new IllegalArgumentException(
-						"All selected uncertainties must be contained in an involved uncertainty source.");
-			}
-		}
+	public UncertainState(UncertaintyScenario... selectedScenarios) {
+		this(List.of(selectedScenarios));
 	}
 
-	private void registerRemainingSources(List<UncertaintySource> involvedUncertaintySources) {
-		for (var uncertaintySource : involvedUncertaintySources) {
-			if (!this.uncertaintiesWithAlternativeScenario.contains(uncertaintySource)) {
-				this.uncertaintiesWithOriginalScenario.add(uncertaintySource);
-			}
-		}
+	public List<UncertaintySource> getUncertaintySources() {
+		List<UncertaintySource> sources = selectedScenarios.stream().map(EObject::eContainer)
+				.map(UncertaintySource.class::cast).toList();
+		return Collections.unmodifiableList(sources);
 	}
 
-	public List<UncertaintySource> getUncertaintiesWithOriginalScenario() {
-		return Collections.unmodifiableList(uncertaintiesWithOriginalScenario);
+	public List<? extends UncertaintyScenario> getSelectedUncertaintyScenarios() {
+		return Collections.unmodifiableList(selectedScenarios);
 	}
 
-	public List<UncertaintySource> getUncertaintiesWithAlternativeScenario() {
-		return Collections.unmodifiableList(uncertaintiesWithAlternativeScenario);
-	}
+	public Map<UncertaintySource, UncertaintyScenario> getSourceToScenarioMapping() {
+		Map<UncertaintySource, UncertaintyScenario> mapping = new HashMap<>();
 
-	public List<UncertaintyScenario> getSelectedUncertaintyScenarios() {
-		return Collections.unmodifiableList(selectedUncertaintyScenarios);
-	}
-
-	public Map<UncertaintySource, Optional<UncertaintyScenario>> getSourceToScenarioMapping() {
-		Map<UncertaintySource, Optional<UncertaintyScenario>> mapping = new TreeMap<>();
-
-		for (var scenario : this.selectedUncertaintyScenarios) {
+		for (var scenario : this.selectedScenarios) {
 			var source = (UncertaintySource) scenario.eContainer();
-			mapping.put(source, Optional.of(scenario));
-		}
-
-		for (var source : this.uncertaintiesWithOriginalScenario) {
-			mapping.put(source, Optional.empty());
+			mapping.put(source, scenario);
 		}
 
 		return mapping;
@@ -83,60 +54,53 @@ public class UncertainState {
 			return false;
 		} else {
 			UncertainState state = (UncertainState) obj;
-			return uncertaintiesWithAlternativeScenario.equals(state.getUncertaintiesWithAlternativeScenario())
-					&& uncertaintiesWithOriginalScenario.equals(state.getUncertaintiesWithOriginalScenario())
-					&& selectedUncertaintyScenarios.equals(state.getSelectedUncertaintyScenarios());
+			return state.getSelectedUncertaintyScenarios().containsAll(this.getSelectedUncertaintyScenarios())
+					&& this.getSelectedUncertaintyScenarios().containsAll(state.getSelectedUncertaintyScenarios());
 		}
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(uncertaintiesWithAlternativeScenario, uncertaintiesWithOriginalScenario,
-				selectedUncertaintyScenarios);
+		return Objects.hash(selectedScenarios);
 	}
 
-	public static List<UncertainState> createAllTheoreticallyPossibleStates(
-			UncertaintySourceCollection uncertaintySourceCollection) {
-		List<UncertainState> states = new ArrayList<>();
+	@Override
+	public String toString() {
+		String scenarioNames = this.getSelectedUncertaintyScenarios().stream()
+				.map(it -> UncertaintyUtils.getUncertaintyScenarioName(it)).collect(Collectors.joining(", "));
 
-		List<List<Object>> listOfUncertaintiesAndScenarios = new ArrayList<>();
-		for (var source : uncertaintySourceCollection.getSources()) {
-			List<Object> possibleStates = new ArrayList<>();
-			possibleStates.add(source);
-			possibleStates.addAll(UncertaintyUtils.getUncertaintyScenarios(source));
-			listOfUncertaintiesAndScenarios.add(possibleStates);
-		}
+		return "[%s]".formatted(scenarioNames);
+	}
 
-		List<List<Object>> cartesianProduct = cartesianProductWithoutDuplicates(listOfUncertaintiesAndScenarios);
+	public static List<UncertainState> createAllUncertainStates(List<UncertaintySource> uncertaintySources) {
 
-		for (var state : cartesianProduct) {
-			var selectedUncertaintyScenarios = state.stream().filter(UncertaintyScenario.class::isInstance)
+		List<List<UncertaintyScenario>> listOfAllScenarioLists = new ArrayList<>();
+		for (UncertaintySource source : uncertaintySources) {
+			List<UncertaintyScenario> allScenarios = UncertaintyUtils.getUncertaintyScenarios(source).stream()
 					.map(UncertaintyScenario.class::cast).toList();
-
-			states.add(new UncertainState(uncertaintySourceCollection.getSources(), selectedUncertaintyScenarios));
+			listOfAllScenarioLists.add(allScenarios);
 		}
 
-		return states;
+		List<List<UncertaintyScenario>> cartesianProduct = cartesianProduct(listOfAllScenarioLists);
+		return cartesianProduct.stream().map(it -> new UncertainState(it)).toList();
 	}
 
-	private static List<List<Object>> cartesianProductWithoutDuplicates(List<List<Object>> lists) {
-		List<List<Object>> result = new ArrayList<>();
+	private static <T> List<List<T>> cartesianProduct(List<List<T>> lists) {
+		List<List<T>> result = new ArrayList<>();
 		if (lists == null || lists.isEmpty()) {
 			result.add(new ArrayList<>());
 			return result;
 		}
 
-		List<Object> firstList = lists.get(0);
-		List<List<Object>> remainingLists = cartesianProductWithoutDuplicates(lists.subList(1, lists.size()));
+		List<T> firstList = lists.get(0);
+		List<List<T>> remainingLists = cartesianProduct(lists.subList(1, lists.size()));
 
-		for (Object element : firstList) {
-			for (List<Object> remainingList : remainingLists) {
-				List<Object> temp = new ArrayList<>();
+		for (T element : firstList) {
+			for (List<T> remainingList : remainingLists) {
+				List<T> temp = new ArrayList<>();
 				temp.add(element);
 				temp.addAll(remainingList);
-				if (!result.contains(temp)) { // Avoid duplicates
-					result.add(temp);
-				}
+				result.add(temp);
 			}
 		}
 

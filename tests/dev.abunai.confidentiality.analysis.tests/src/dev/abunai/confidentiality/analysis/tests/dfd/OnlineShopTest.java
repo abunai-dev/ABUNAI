@@ -1,6 +1,8 @@
 package dev.abunai.confidentiality.analysis.tests.dfd;
 
 import org.junit.jupiter.api.Test;
+
+import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 
@@ -31,6 +33,10 @@ public class OnlineShopTest extends DFDTestBase {
 		var evaluatedSequences = analysis.evaluateDataFlows(analysis.findAllSequences());
 		System.out.println(evaluatedSequences.size());
 		System.out.println(UncertaintyUtils.getUncertaintySourceName(sourceCollection.get(0)));
+		
+		var allStates = UncertainState.createAllUncertainStates(sourceCollection);
+		System.out.println(allStates.size());
+		allStates.forEach(it -> System.out.println(it));
 	}
 
 }
