@@ -36,7 +36,9 @@ public class OnlineShopTest extends DFDTestBase {
 		
 		var allStates = UncertainState.createAllUncertainStates(sourceCollection);
 		System.out.println(allStates.size());
-		allStates.forEach(it -> System.out.println(it));
+		System.out.println(UncertainState.calculateNumberOfAllUncertainStates(sourceCollection));
+		//allStates.forEach(it -> System.out.println(it));
+		
 	}
 
 }
