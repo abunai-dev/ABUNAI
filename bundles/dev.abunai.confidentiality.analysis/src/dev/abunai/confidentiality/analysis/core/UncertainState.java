@@ -100,7 +100,7 @@ public class UncertainState {
 		return "[%s]".formatted(scenarioNames);
 	}
 
-	public static long calculateNumberOfAllUncertainStates(List<UncertaintySource> uncertaintySources) {
+	public static long calculateNumberOfAllUncertainStates(List<? extends UncertaintySource> uncertaintySources) {
 		return uncertaintySources.stream().map(UncertaintyUtils::getUncertaintyScenarios).mapToLong(List::size)
 				.reduce(1L, Math::multiplyExact);
 	}

@@ -32,4 +32,10 @@ public class UncertaintyDFDActionSequence extends UncertainActionSequence {
 		return null;
 	}
 
+	@Override
+	public ActionSequence getImpactSet() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

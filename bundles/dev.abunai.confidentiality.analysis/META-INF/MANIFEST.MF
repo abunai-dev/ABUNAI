@@ -10,6 +10,7 @@ Export-Package: dev.abunai.confidentiality.analysis,
 Require-Bundle: org.dataflowanalysis.analysis;bundle-version="1.0.0";visibility:=reexport,
  dev.abunai.confidentiality.analysis.model;bundle-version="0.1.0";visibility:=reexport,
  org.dataflowanalysis.analysis.pcm;bundle-version="1.0.0";visibility:=reexport,
- org.dataflowanalysis.analysis.dfd;visibility:=reexport
+ org.dataflowanalysis.analysis.dfd;visibility:=reexport,
+ edu.kit.kastel.dsis.uncertainty.impactanalysis
 Automatic-Module-Name: dev.abunai.confidentiality.analysis
 Bundle-RequiredExecutionEnvironment: JavaSE-17

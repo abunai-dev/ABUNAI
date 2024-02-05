@@ -9,22 +9,41 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
 public abstract class UncertainActionSequence {
 
-	protected final List<? extends UncertaintySource> relevantUncertaintySources;
-	protected final ActionSequence originalActionSequence;
-	protected final Map<UncertainState, ? extends ActionSequence> alternatieActionSequenceMapping;
+	protected List<? extends UncertaintySource> relevantUncertaintySources;
+	protected ActionSequence originalActionSequence;
+	protected Map<UncertainState, ? extends ActionSequence> alternativeActionSequenceMapping;
 
-	public UncertainActionSequence(ActionSequence originalActionSequence, List<? extends UncertaintySource> uncertaintySources) {
+	public UncertainActionSequence(ActionSequence originalActionSequence,
+			List<? extends UncertaintySource> uncertaintySources) {
 		this.originalActionSequence = originalActionSequence;
 		this.relevantUncertaintySources = filterRelevantUncertaintySources(uncertaintySources);
-		this.alternatieActionSequenceMapping = createAlternativeActionSequences(this.originalActionSequence,
+		this.alternativeActionSequenceMapping = createAlternativeActionSequences(this.originalActionSequence,
 				this.relevantUncertaintySources);
 	}
 
+	protected UncertainActionSequence(ActionSequence originalActionSequence,
+			List<? extends UncertaintySource> relevantUncertaintySources,
+			Map<UncertainState, ? extends ActionSequence> alternativeActionSequenceMapping) {
+		this.originalActionSequence = originalActionSequence;
+		this.relevantUncertaintySources = relevantUncertaintySources;
+		this.alternativeActionSequenceMapping = alternativeActionSequenceMapping;
+	}
+
+	protected UncertainActionSequence() {
+	}
+
 	protected abstract List<? extends UncertaintySource> filterRelevantUncertaintySources(
-	List<? extends UncertaintySource> uncertaintySources);
+			List<? extends UncertaintySource> uncertaintySources);
 
 	protected abstract Map<UncertainState, ? extends ActionSequence> createAlternativeActionSequences(
 			ActionSequence originalActionSequence, List<? extends UncertaintySource> relevantUncertaintySources);
+
+	public abstract ActionSequence getImpactSet();
+
+	public UncertainActionSequence evaluateDataFlow() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public List<? extends UncertaintySource> getRelevantUncertaintySources() {
 		return relevantUncertaintySources;
@@ -35,10 +54,11 @@ public abstract class UncertainActionSequence {
 	}
 
 	public List<? extends ActionSequence> getAlternativeActionSequences() {
-		return this.alternatieActionSequenceMapping.values().stream().toList();
+		return this.alternativeActionSequenceMapping.values().stream().toList();
 	}
 
 	public Map<UncertainState, ? extends ActionSequence> getScenarioToActionSequenceMapping() {
-		return alternatieActionSequenceMapping;
+		return alternativeActionSequenceMapping;
 	}
+
 }
