@@ -11,7 +11,6 @@ import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristic
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.core.composition.CompositionPackage;
@@ -35,8 +34,7 @@ import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 public class ElementLookup extends PCMTestBase {
 	@Override
 	protected String getFolderName() {
-		return "BranchingOnlineSHop";
-		// return "CoronaWarnApp";
+		return "CoronaWarnApp";
 	}
 
 	@Override
@@ -46,11 +44,9 @@ public class ElementLookup extends PCMTestBase {
 
 	@Override
 	protected String getBaseFolder() {
-		return "models";
-		// return "casestudies/CaseStudy-CoronaWarnApp";
+		return "casestudies/CaseStudy-CoronaWarnApp";
 	}
 
-	@Disabled
 	@Test
 	public void printAllRelevantElements() {
 		printDivider("Node Characteristics Assignees", "External Uncertainty");
