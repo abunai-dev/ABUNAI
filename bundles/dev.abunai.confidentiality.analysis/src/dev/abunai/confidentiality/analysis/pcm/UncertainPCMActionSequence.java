@@ -52,7 +52,7 @@ public class UncertainPCMActionSequence extends UncertainActionSequence {
 
 		List<UncertaintySource> listOfRelevantSources = new ArrayList<>();
 
-		for (var source : uncertaintySources) {
+		for (UncertaintySource source : uncertaintySources) {
 			if (source instanceof PCMExternalUncertaintySourceInResource castedSource) {
 				ResourceContainer target = castedSource.getTarget().getResourcecontainer();
 				List<? extends AbstractPCMActionSequenceElement<?>> candidates = propagationHelper
