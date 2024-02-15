@@ -4,6 +4,8 @@ package dev.abunai.confidentiality.analysis.model.uncertainty.dfd;
 
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 
+import java.util.List;
+
 import org.dataflowanalysis.dfd.datadictionary.AbstractAssignment;
 
 import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
@@ -17,7 +19,7 @@ import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetAssignment <em>Target Assignment</em>}</li>
+ *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetAssignments <em>Target Assignments</em>}</li>
  *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetFlow <em>Target Flow</em>}</li>
  * </ul>
  *
@@ -27,26 +29,16 @@ import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
  */
 public interface DFDConnectorUncertaintyScenario extends UncertaintyScenario {
 	/**
-	 * Returns the value of the '<em><b>Target Assignment</b></em>' reference.
+	 * Returns the value of the '<em><b>Target Assignments</b></em>' reference list.
+	 * The list contents are of type {@link org.dataflowanalysis.dfd.datadictionary.AbstractAssignment}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Assignment</em>' reference.
-	 * @see #setTargetAssignment(AbstractAssignment)
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage#getDFDConnectorUncertaintyScenario_TargetAssignment()
-	 * @model required="true"
+	 * @return the value of the '<em>Target Assignments</em>' reference list.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage#getDFDConnectorUncertaintyScenario_TargetAssignments()
+	 * @model
 	 * @generated
 	 */
-	AbstractAssignment getTargetAssignment();
-
-	/**
-	 * Sets the value of the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetAssignment <em>Target Assignment</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Assignment</em>' reference.
-	 * @see #getTargetAssignment()
-	 * @generated
-	 */
-	void setTargetAssignment(AbstractAssignment value);
+	List<AbstractAssignment> getTargetAssignments();
 
 	/**
 	 * Returns the value of the '<em><b>Target Flow</b></em>' reference.

@@ -47,7 +47,6 @@ public class OnlineShopTest extends DFDTestBase {
 						sourceCollection.stream().map(DFDUncertaintySource.class::cast).toList()))
 				.toList();
 
-		// FIXME: targetProperties of exernal uncertainty may be empty
 		var requiredStateCount = 0;
 		for (var seq : uncertaintySequences) {
 			var selectedSources = seq.getRelevantUncertaintySources();

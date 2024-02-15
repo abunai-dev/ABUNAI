@@ -47,26 +47,26 @@ public class DFDConnectorUncertaintySourceItemProvider extends DFDUncertaintySou
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTargetAssignementPropertyDescriptor(object);
+			addTargetAssignmentsPropertyDescriptor(object);
 			addTargetFlowPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Target Assignement feature.
+	 * This adds a property descriptor for the Target Assignments feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTargetAssignementPropertyDescriptor(Object object) {
+	protected void addTargetAssignmentsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DFDConnectorUncertaintySource_targetAssignement_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DFDConnectorUncertaintySource_targetAssignement_feature", "_UI_DFDConnectorUncertaintySource_type"),
-				 DfdPackage.Literals.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT,
+				 getString("_UI_DFDConnectorUncertaintySource_targetAssignments_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DFDConnectorUncertaintySource_targetAssignments_feature", "_UI_DFDConnectorUncertaintySource_type"),
+				 DfdPackage.Literals.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS,
 				 true,
 				 false,
 				 true,

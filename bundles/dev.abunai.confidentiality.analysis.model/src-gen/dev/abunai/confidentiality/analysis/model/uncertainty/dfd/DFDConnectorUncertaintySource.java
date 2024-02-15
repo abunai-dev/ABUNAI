@@ -17,7 +17,7 @@ import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetAssignement <em>Target Assignement</em>}</li>
+ *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetAssignments <em>Target Assignments</em>}</li>
  *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetFlow <em>Target Flow</em>}</li>
  *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getScenarios <em>Scenarios</em>}</li>
  * </ul>
@@ -28,26 +28,16 @@ import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
  */
 public interface DFDConnectorUncertaintySource extends DFDUncertaintySource {
 	/**
-	 * Returns the value of the '<em><b>Target Assignement</b></em>' reference.
+	 * Returns the value of the '<em><b>Target Assignments</b></em>' reference list.
+	 * The list contents are of type {@link org.dataflowanalysis.dfd.datadictionary.AbstractAssignment}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Assignement</em>' reference.
-	 * @see #setTargetAssignement(AbstractAssignment)
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage#getDFDConnectorUncertaintySource_TargetAssignement()
-	 * @model required="true"
+	 * @return the value of the '<em>Target Assignments</em>' reference list.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage#getDFDConnectorUncertaintySource_TargetAssignments()
+	 * @model
 	 * @generated
 	 */
-	AbstractAssignment getTargetAssignement();
-
-	/**
-	 * Sets the value of the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetAssignement <em>Target Assignement</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Assignement</em>' reference.
-	 * @see #getTargetAssignement()
-	 * @generated
-	 */
-	void setTargetAssignement(AbstractAssignment value);
+	List<AbstractAssignment> getTargetAssignments();
 
 	/**
 	 * Returns the value of the '<em><b>Target Flow</b></em>' reference.

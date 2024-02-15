@@ -109,7 +109,7 @@ public class UncertaintyUtils {
 
 		} else if (uncertaintySource instanceof DFDConnectorUncertaintySource source
 				&& uncertaintyScenario instanceof DFDConnectorUncertaintyScenario scenario) {
-			return source.getTargetAssignement().equals(scenario.getTargetAssignment())
+			return source.getTargetAssignments().equals(scenario.getTargetAssignments())
 					&& source.getTargetFlow().equals(scenario.getTargetFlow());
 
 		} else if (uncertaintySource instanceof DFDComponentUncertaintySource source
@@ -212,7 +212,7 @@ public class UncertaintyUtils {
 
 		} else if (uncertaintySource instanceof DFDConnectorUncertaintySource source) {
 			var scenario = DfdFactory.eINSTANCE.createDFDConnectorUncertaintyScenario();
-			scenario.setTargetAssignment(source.getTargetAssignement());
+			scenario.getTargetAssignments().addAll(source.getTargetAssignments());
 			scenario.setTargetFlow(source.getTargetFlow());
 			scenario.setProbability(probability);
 			scenario.setEntityName(name);

@@ -48,26 +48,26 @@ public class DFDConnectorUncertaintyScenarioItemProvider extends UncertaintyScen
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTargetAssignmentPropertyDescriptor(object);
+			addTargetAssignmentsPropertyDescriptor(object);
 			addTargetFlowPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
 	/**
-	 * This adds a property descriptor for the Target Assignment feature.
+	 * This adds a property descriptor for the Target Assignments feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTargetAssignmentPropertyDescriptor(Object object) {
+	protected void addTargetAssignmentsPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DFDConnectorUncertaintyScenario_targetAssignment_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DFDConnectorUncertaintyScenario_targetAssignment_feature", "_UI_DFDConnectorUncertaintyScenario_type"),
-				 DfdPackage.Literals.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT,
+				 getString("_UI_DFDConnectorUncertaintyScenario_targetAssignments_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DFDConnectorUncertaintyScenario_targetAssignments_feature", "_UI_DFDConnectorUncertaintyScenario_type"),
+				 DfdPackage.Literals.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS,
 				 true,
 				 false,
 				 true,

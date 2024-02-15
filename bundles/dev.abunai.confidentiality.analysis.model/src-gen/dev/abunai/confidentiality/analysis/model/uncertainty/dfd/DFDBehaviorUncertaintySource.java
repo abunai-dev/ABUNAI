@@ -55,7 +55,7 @@ public interface DFDBehaviorUncertaintySource extends DFDUncertaintySource {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target Assignments</em>' reference list.
 	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage#getDFDBehaviorUncertaintySource_TargetAssignments()
-	 * @model required="true" ordered="false"
+	 * @model ordered="false"
 	 * @generated
 	 */
 	List<AbstractAssignment> getTargetAssignments();

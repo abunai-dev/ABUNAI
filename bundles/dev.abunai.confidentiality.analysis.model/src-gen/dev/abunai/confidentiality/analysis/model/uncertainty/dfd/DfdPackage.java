@@ -552,13 +552,13 @@ public interface DfdPackage extends EPackage {
 	int DFD_CONNECTOR_UNCERTAINTY_SOURCE__ENTITY_NAME = DFD_UNCERTAINTY_SOURCE__ENTITY_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Target Assignement</b></em>' reference.
+	 * The feature id for the '<em><b>Target Assignments</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
+	int DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target Flow</b></em>' reference.
@@ -634,13 +634,13 @@ public interface DfdPackage extends EPackage {
 	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__PROBABILITY = UncertaintyPackage.UNCERTAINTY_SCENARIO__PROBABILITY;
 
 	/**
-	 * The feature id for the '<em><b>Target Assignment</b></em>' reference.
+	 * The feature id for the '<em><b>Target Assignments</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target Flow</b></em>' reference.
@@ -1022,15 +1022,15 @@ public interface DfdPackage extends EPackage {
 	EClass getDFDConnectorUncertaintySource();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetAssignement <em>Target Assignement</em>}'.
+	 * Returns the meta object for the reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetAssignments <em>Target Assignments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target Assignement</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetAssignement()
+	 * @return the meta object for the reference list '<em>Target Assignments</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetAssignments()
 	 * @see #getDFDConnectorUncertaintySource()
 	 * @generated
 	 */
-	EReference getDFDConnectorUncertaintySource_TargetAssignement();
+	EReference getDFDConnectorUncertaintySource_TargetAssignments();
 
 	/**
 	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource#getTargetFlow <em>Target Flow</em>}'.
@@ -1065,15 +1065,15 @@ public interface DfdPackage extends EPackage {
 	EClass getDFDConnectorUncertaintyScenario();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetAssignment <em>Target Assignment</em>}'.
+	 * Returns the meta object for the reference list '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetAssignments <em>Target Assignments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target Assignment</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetAssignment()
+	 * @return the meta object for the reference list '<em>Target Assignments</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetAssignments()
 	 * @see #getDFDConnectorUncertaintyScenario()
 	 * @generated
 	 */
-	EReference getDFDConnectorUncertaintyScenario_TargetAssignment();
+	EReference getDFDConnectorUncertaintyScenario_TargetAssignments();
 
 	/**
 	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetFlow <em>Target Flow</em>}'.
@@ -1347,12 +1347,12 @@ public interface DfdPackage extends EPackage {
 		EClass DFD_CONNECTOR_UNCERTAINTY_SOURCE = eINSTANCE.getDFDConnectorUncertaintySource();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Assignement</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Target Assignments</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT = eINSTANCE.getDFDConnectorUncertaintySource_TargetAssignement();
+		EReference DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS = eINSTANCE.getDFDConnectorUncertaintySource_TargetAssignments();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Flow</b></em>' reference feature.
@@ -1381,12 +1381,12 @@ public interface DfdPackage extends EPackage {
 		EClass DFD_CONNECTOR_UNCERTAINTY_SCENARIO = eINSTANCE.getDFDConnectorUncertaintyScenario();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Assignment</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Target Assignments</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT = eINSTANCE.getDFDConnectorUncertaintyScenario_TargetAssignment();
+		EReference DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS = eINSTANCE.getDFDConnectorUncertaintyScenario_TargetAssignments();
 
 		/**
 		 * The meta object literal for the '<em><b>Target Flow</b></em>' reference feature.

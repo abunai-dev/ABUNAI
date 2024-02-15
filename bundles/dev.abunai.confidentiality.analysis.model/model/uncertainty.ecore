@@ -103,8 +103,8 @@
     <eClassifiers xsi:type="ecore:EClass" name="DFDExternalUncertaintySource" eSuperTypes="#//dfd/DFDUncertaintySource">
       <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
           eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.dataflowdiagram/model/dataflowdiagram.ecore#//Node"/>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="targetProperties" lowerBound="1"
-          upperBound="-1" eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.datadictionary/model/datadictionary.ecore#//Label"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="targetProperties" upperBound="-1"
+          eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.datadictionary/model/datadictionary.ecore#//Label"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
           eType="#//dfd/DFDExternalUncertaintyScenario" containment="true"/>
     </eClassifiers>
@@ -116,7 +116,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
           eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.datadictionary/model/datadictionary.ecore#//Behaviour"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="targetAssignments" ordered="false"
-          lowerBound="1" upperBound="-1" eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.datadictionary/model/datadictionary.ecore#//AbstractAssignment"/>
+          upperBound="-1" eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.datadictionary/model/datadictionary.ecore#//AbstractAssignment"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"
           eType="#//dfd/DFDBehaviorUncertaintyScenario" containment="true"/>
     </eClassifiers>
@@ -139,7 +139,7 @@
           eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.dataflowdiagram/model/dataflowdiagram.ecore#//Flow"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DFDConnectorUncertaintySource" eSuperTypes="#//dfd/DFDUncertaintySource">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="targetAssignement" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="targetAssignments" upperBound="-1"
           eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.datadictionary/model/datadictionary.ecore#//AbstractAssignment"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="targetFlow" lowerBound="1"
           eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.dataflowdiagram/model/dataflowdiagram.ecore#//Flow"/>
@@ -147,7 +147,7 @@
           eType="#//dfd/DFDConnectorUncertaintyScenario" containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DFDConnectorUncertaintyScenario" eSuperTypes="#//UncertaintyScenario">
-      <eStructuralFeatures xsi:type="ecore:EReference" name="targetAssignment" lowerBound="1"
+      <eStructuralFeatures xsi:type="ecore:EReference" name="targetAssignments" upperBound="-1"
           eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.datadictionary/model/datadictionary.ecore#//AbstractAssignment"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="targetFlow" lowerBound="1"
           eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.dataflowdiagram/model/dataflowdiagram.ecore#//Flow"/>

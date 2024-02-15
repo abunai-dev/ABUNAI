@@ -29,11 +29,9 @@ public class UncertaintyDFDActionSequence extends UncertainActionSequence {
 	@Override
 	protected List<DFDUncertaintySource> filterRelevantUncertaintySources(
 			List<? extends UncertaintySource> uncertaintySources) {
-
+		
 		return uncertaintySources.stream().map(DFDUncertaintySource.class::cast)
 				.filter(it -> dfdQueryHelper.hasTargetNode(it)).toList();
-
-		// TODO: Fix typo in DFDConnectorUncertaintySource.getTargetAssignement
 	}
 
 	@Override

@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -34,7 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintySourceImpl#getTargetAssignement <em>Target Assignement</em>}</li>
+ *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintySourceImpl#getTargetAssignments <em>Target Assignments</em>}</li>
  *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintySourceImpl#getTargetFlow <em>Target Flow</em>}</li>
  *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintySourceImpl#getScenarios <em>Scenarios</em>}</li>
  * </ul>
@@ -43,14 +44,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class DFDConnectorUncertaintySourceImpl extends DFDUncertaintySourceImpl implements DFDConnectorUncertaintySource {
 	/**
-	 * The cached value of the '{@link #getTargetAssignement() <em>Target Assignement</em>}' reference.
+	 * The cached value of the '{@link #getTargetAssignments() <em>Target Assignments</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTargetAssignement()
+	 * @see #getTargetAssignments()
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractAssignment targetAssignement;
+	protected EList<AbstractAssignment> targetAssignments;
 
 	/**
 	 * The cached value of the '{@link #getTargetFlow() <em>Target Flow</em>}' reference.
@@ -96,37 +97,11 @@ public class DFDConnectorUncertaintySourceImpl extends DFDUncertaintySourceImpl 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractAssignment getTargetAssignement() {
-		if (targetAssignement != null && targetAssignement.eIsProxy()) {
-			InternalEObject oldTargetAssignement = (InternalEObject)targetAssignement;
-			targetAssignement = (AbstractAssignment)eResolveProxy(oldTargetAssignement);
-			if (targetAssignement != oldTargetAssignement) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT, oldTargetAssignement, targetAssignement));
-			}
+	public List<AbstractAssignment> getTargetAssignments() {
+		if (targetAssignments == null) {
+			targetAssignments = new EObjectResolvingEList<AbstractAssignment>(AbstractAssignment.class, this, DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS);
 		}
-		return targetAssignement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AbstractAssignment basicGetTargetAssignement() {
-		return targetAssignement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTargetAssignement(AbstractAssignment newTargetAssignement) {
-		AbstractAssignment oldTargetAssignement = targetAssignement;
-		targetAssignement = newTargetAssignement;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT, oldTargetAssignement, targetAssignement));
+		return targetAssignments;
 	}
 
 	/**
@@ -201,9 +176,8 @@ public class DFDConnectorUncertaintySourceImpl extends DFDUncertaintySourceImpl 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT:
-				if (resolve) return getTargetAssignement();
-				return basicGetTargetAssignement();
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS:
+				return getTargetAssignments();
 			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_FLOW:
 				if (resolve) return getTargetFlow();
 				return basicGetTargetFlow();
@@ -222,8 +196,9 @@ public class DFDConnectorUncertaintySourceImpl extends DFDUncertaintySourceImpl 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT:
-				setTargetAssignement((AbstractAssignment)newValue);
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS:
+				getTargetAssignments().clear();
+				getTargetAssignments().addAll((Collection<? extends AbstractAssignment>)newValue);
 				return;
 			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_FLOW:
 				setTargetFlow((Flow)newValue);
@@ -244,8 +219,8 @@ public class DFDConnectorUncertaintySourceImpl extends DFDUncertaintySourceImpl 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT:
-				setTargetAssignement((AbstractAssignment)null);
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS:
+				getTargetAssignments().clear();
 				return;
 			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_FLOW:
 				setTargetFlow((Flow)null);
@@ -265,8 +240,8 @@ public class DFDConnectorUncertaintySourceImpl extends DFDUncertaintySourceImpl 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNEMENT:
-				return targetAssignement != null;
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS:
+				return targetAssignments != null && !targetAssignments.isEmpty();
 			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_FLOW:
 				return targetFlow != null;
 			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SOURCE__SCENARIOS:

@@ -73,10 +73,8 @@ public class DFDQueryHelper {
 				.map(DFDActionSequenceElement::getNode)
 				.filter(it -> uncertaintySource.getTargetFlow().getDestinationNode().equals(it))
 				.filter(it -> uncertaintySource.getTargetFlow().getSourceNode().getBehaviour().getAssignment()
-						.containsAll(List.of(uncertaintySource.getTargetAssignement())))
+						.containsAll(uncertaintySource.getTargetAssignments()))
 				.toList();
-		// FIXME: Connector Uncertainty shall support multiple target assignments as
-		// there can be more than one in one out pin
 	}
 
 	private List<Node> findTargetNodesofComponentUncertainty(DFDComponentUncertaintySource uncertaintySource) {

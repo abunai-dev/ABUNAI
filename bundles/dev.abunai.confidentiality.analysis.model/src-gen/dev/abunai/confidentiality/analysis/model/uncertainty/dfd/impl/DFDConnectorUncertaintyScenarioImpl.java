@@ -7,16 +7,23 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage;
 
 import dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyScenarioImpl;
 
+import java.util.Collection;
+import java.util.List;
+
 import org.dataflowanalysis.dfd.datadictionary.AbstractAssignment;
 
 import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +33,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintyScenarioImpl#getTargetAssignment <em>Target Assignment</em>}</li>
+ *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintyScenarioImpl#getTargetAssignments <em>Target Assignments</em>}</li>
  *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintyScenarioImpl#getTargetFlow <em>Target Flow</em>}</li>
  * </ul>
  *
@@ -34,14 +41,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class DFDConnectorUncertaintyScenarioImpl extends UncertaintyScenarioImpl implements DFDConnectorUncertaintyScenario {
 	/**
-	 * The cached value of the '{@link #getTargetAssignment() <em>Target Assignment</em>}' reference.
+	 * The cached value of the '{@link #getTargetAssignments() <em>Target Assignments</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTargetAssignment()
+	 * @see #getTargetAssignments()
 	 * @generated
 	 * @ordered
 	 */
-	protected AbstractAssignment targetAssignment;
+	protected EList<AbstractAssignment> targetAssignments;
 
 	/**
 	 * The cached value of the '{@link #getTargetFlow() <em>Target Flow</em>}' reference.
@@ -77,37 +84,11 @@ public class DFDConnectorUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AbstractAssignment getTargetAssignment() {
-		if (targetAssignment != null && targetAssignment.eIsProxy()) {
-			InternalEObject oldTargetAssignment = (InternalEObject)targetAssignment;
-			targetAssignment = (AbstractAssignment)eResolveProxy(oldTargetAssignment);
-			if (targetAssignment != oldTargetAssignment) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT, oldTargetAssignment, targetAssignment));
-			}
+	public List<AbstractAssignment> getTargetAssignments() {
+		if (targetAssignments == null) {
+			targetAssignments = new EObjectResolvingEList<AbstractAssignment>(AbstractAssignment.class, this, DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS);
 		}
-		return targetAssignment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public AbstractAssignment basicGetTargetAssignment() {
-		return targetAssignment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setTargetAssignment(AbstractAssignment newTargetAssignment) {
-		AbstractAssignment oldTargetAssignment = targetAssignment;
-		targetAssignment = newTargetAssignment;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT, oldTargetAssignment, targetAssignment));
+		return targetAssignments;
 	}
 
 	/**
@@ -156,9 +137,8 @@ public class DFDConnectorUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT:
-				if (resolve) return getTargetAssignment();
-				return basicGetTargetAssignment();
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS:
+				return getTargetAssignments();
 			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW:
 				if (resolve) return getTargetFlow();
 				return basicGetTargetFlow();
@@ -171,11 +151,13 @@ public class DFDConnectorUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT:
-				setTargetAssignment((AbstractAssignment)newValue);
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS:
+				getTargetAssignments().clear();
+				getTargetAssignments().addAll((Collection<? extends AbstractAssignment>)newValue);
 				return;
 			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW:
 				setTargetFlow((Flow)newValue);
@@ -192,8 +174,8 @@ public class DFDConnectorUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT:
-				setTargetAssignment((AbstractAssignment)null);
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS:
+				getTargetAssignments().clear();
 				return;
 			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW:
 				setTargetFlow((Flow)null);
@@ -210,8 +192,8 @@ public class DFDConnectorUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENT:
-				return targetAssignment != null;
+			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS:
+				return targetAssignments != null && !targetAssignments.isEmpty();
 			case DfdPackage.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW:
 				return targetFlow != null;
 		}

@@ -56,7 +56,7 @@ public interface DFDExternalUncertaintySource extends DFDUncertaintySource {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target Properties</em>' reference list.
 	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage#getDFDExternalUncertaintySource_TargetProperties()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	List<Label> getTargetProperties();
