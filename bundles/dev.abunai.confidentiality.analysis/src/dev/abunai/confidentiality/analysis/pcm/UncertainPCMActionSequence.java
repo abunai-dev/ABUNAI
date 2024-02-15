@@ -39,6 +39,7 @@ public class UncertainPCMActionSequence extends UncertainActionSequence {
 	public UncertainPCMActionSequence(PCMActionSequence originalActionSequence,
 			List<PCMUncertaintySource> uncertaintySources, PCMResourceProvider resourceProvider) {
 		super();
+		
 		this.originalActionSequence = originalActionSequence;
 		this.propagationHelper = new PropagationHelper(List.of(this.originalActionSequence), resourceProvider);
 		this.relevantUncertaintySources = filterRelevantUncertaintySources(uncertaintySources);
