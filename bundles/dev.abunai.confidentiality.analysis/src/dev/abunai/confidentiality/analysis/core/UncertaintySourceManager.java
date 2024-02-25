@@ -41,8 +41,9 @@ public class UncertaintySourceManager {
 		uncertaintySources.forEach(this::validateScenarioProbabilities);
 		uncertaintySources.forEach(this::validateDefaultScenario);
 		
-		// TODO: Validation should check that there is at least one action sequence for each scenario
+		// FIXME: Validation should check that there is at least one action sequence for each scenario
 		// There is even one of these errors in the current test cases (should be 6 instead of 4)
+		// TODO: Check whether this is an actual issue or intened behavior 
 
 		logger.info("Finished validating uncertainty sources.");
 		return uncertaintySources;

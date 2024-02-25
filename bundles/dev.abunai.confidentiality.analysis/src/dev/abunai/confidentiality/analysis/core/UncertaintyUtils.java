@@ -134,7 +134,8 @@ public class UncertaintyUtils {
 		// If someone finds this source code and wonders whether I heard of OO: I do.
 		// But EMF-based MDSD is different. I prefer messy instance-of collections over
 		// dealing with injecting custom logic into EMF-generated code.
-		createDefaultScenario(uncertaintySource, probabilityOfDefaultScenario, "Default Scenario");
+		String defaultScenarioEntityName = "Default Scenario";
+		createDefaultScenario(uncertaintySource, probabilityOfDefaultScenario, defaultScenarioEntityName);
 	}
 
 	private static void createDefaultScenario(UncertaintySource uncertaintySource, Double probability, String name) {

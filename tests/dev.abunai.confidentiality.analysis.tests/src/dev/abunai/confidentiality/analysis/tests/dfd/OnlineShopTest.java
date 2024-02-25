@@ -57,6 +57,12 @@ public class OnlineShopTest extends DFDTestBase {
 		System.out.println(
 				"-> All states: %d".formatted(UncertainState.calculateNumberOfAllUncertainStates(sourceCollection)));
 		System.out.println("-> Actually required states: %d".formatted(requiredStateCount));
+
+		System.out.println("All action sequences lenght: %s"
+				.formatted(evaluatedSequences.stream().map(it -> it.getElements().size()).toList()));
+
+		System.out.println("Impact set: %s"
+				.formatted(uncertaintySequences.stream().map(it -> it.getImpactSet().getElements().size()).toList()));
 	}
 
 }

@@ -105,10 +105,14 @@ public class UncertainState {
 				.reduce(1L, Math::multiplyExact);
 	}
 
-	public static List<UncertainState> createAllUncertainStates(List<UncertaintySource> uncertaintySources) {
+	public static List<UncertainState> createAllUncertainStates(
+			List<? extends UncertaintySource> relevantUncertaintySources) {
+
+		// TODO: This might be underestimate in DFDs if a node exists in multiple flows,
+		// not sure if this can also happen in PCM models
 
 		List<List<UncertaintyScenario>> listOfAllScenarioLists = new ArrayList<>();
-		for (UncertaintySource source : uncertaintySources) {
+		for (UncertaintySource source : relevantUncertaintySources) {
 			List<UncertaintyScenario> allScenarios = UncertaintyUtils.getUncertaintyScenarios(source).stream()
 					.map(UncertaintyScenario.class::cast).toList();
 			listOfAllScenarioLists.add(allScenarios);
