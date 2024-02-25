@@ -1,11 +1,17 @@
 package dev.abunai.confidentiality.analysis.tests.dfd;
 
+import java.util.List;
+
+import org.dataflowanalysis.analysis.core.AbstractActionSequenceElement;
+import org.dataflowanalysis.analysis.core.DataFlowVariable;
 import org.dataflowanalysis.analysis.dfd.core.DFDActionSequence;
+import org.dataflowanalysis.analysis.dfd.core.DFDCharacteristicValue;
 import org.junit.jupiter.api.Test;
 
+import dev.abunai.confidentiality.analysis.core.UncertainActionSequence;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
-import dev.abunai.confidentiality.analysis.dfd.UncertaintyDFDActionSequence;
+import dev.abunai.confidentiality.analysis.dfd.UncertainDFDActionSequence;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 
@@ -42,10 +48,7 @@ public class OnlineShopTest extends DFDTestBase {
 		System.out.println(UncertainState.calculateNumberOfAllUncertainStates(sourceCollection));
 		allStates.forEach(it -> System.out.println(it));
 
-		var uncertaintySequences = analysis.findAllSequences().stream()
-				.map(it -> new UncertaintyDFDActionSequence((DFDActionSequence) it,
-						sourceCollection.stream().map(DFDUncertaintySource.class::cast).toList()))
-				.toList();
+		List<? extends UncertainActionSequence> uncertaintySequences = analysis.findAllUncertainSequences();
 
 		var requiredStateCount = 0;
 		for (var seq : uncertaintySequences) {
@@ -63,6 +66,33 @@ public class OnlineShopTest extends DFDTestBase {
 
 		System.out.println("Impact set: %s"
 				.formatted(uncertaintySequences.stream().map(it -> it.getImpactSet().getElements().size()).toList()));
+
+		var evaluatedFlows = analysis.evaluateUncertainDataFlows(uncertaintySequences);
+		System.out.println(evaluatedFlows);
+
+		for (var flow : evaluatedFlows) {
+			var violations = analysis.queryUncertainDataFlow(flow, it -> {
+				var nodeLabels = retrieveNodeLabels(it);
+				var dataLabels = retrieveDataLabels(it);
+
+				return nodeLabels.contains("nonEU") && dataLabels.contains("Personal");
+			});
+
+			System.out.println(violations);
+		}
+
+	}
+
+	// Copied from the original dfd test case
+	private List<String> retrieveNodeLabels(AbstractActionSequenceElement<?> vertex) {
+		return vertex.getAllNodeCharacteristics().stream().map(DFDCharacteristicValue.class::cast)
+				.map(DFDCharacteristicValue::getValueName).toList();
+	}
+
+	private List<String> retrieveDataLabels(AbstractActionSequenceElement<?> vertex) {
+		return vertex.getAllDataFlowVariables().stream().map(DataFlowVariable::getAllCharacteristics)
+				.flatMap(List::stream).map(DFDCharacteristicValue.class::cast).map(DFDCharacteristicValue::getValueName)
+				.toList();
 	}
 
 }

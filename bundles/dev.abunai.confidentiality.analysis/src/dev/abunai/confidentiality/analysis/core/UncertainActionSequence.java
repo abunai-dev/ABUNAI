@@ -21,14 +21,6 @@ public abstract class UncertainActionSequence {
 				this.relevantUncertaintySources);
 	}
 
-	protected UncertainActionSequence(ActionSequence originalActionSequence,
-			List<? extends UncertaintySource> relevantUncertaintySources,
-			Map<UncertainState, ? extends ActionSequence> alternativeActionSequenceMapping) {
-		this.originalActionSequence = originalActionSequence;
-		this.relevantUncertaintySources = relevantUncertaintySources;
-		this.alternativeActionSequenceMapping = alternativeActionSequenceMapping;
-	}
-
 	protected UncertainActionSequence() {
 	}
 
@@ -40,13 +32,8 @@ public abstract class UncertainActionSequence {
 
 	public abstract ActionSequence getImpactSet();
 
-	public UncertainActionSequence evaluateDataFlow() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	public List<? extends UncertaintySource> getRelevantUncertaintySources() {
-		return relevantUncertaintySources;
+		return List.copyOf(relevantUncertaintySources);
 	}
 
 	public ActionSequence getOriginalActionSequence() {
@@ -58,7 +45,12 @@ public abstract class UncertainActionSequence {
 	}
 
 	public Map<UncertainState, ? extends ActionSequence> getScenarioToActionSequenceMapping() {
-		return alternativeActionSequenceMapping;
+		return Map.copyOf(alternativeActionSequenceMapping);
+	}
+
+	// FIXME: This violates the encapsulation but is required to use the DFA v1
+	public void setScenarioToActionSequenceMapping(Map<UncertainState, ? extends ActionSequence> mapping) {
+		this.alternativeActionSequenceMapping = mapping;
 	}
 
 }

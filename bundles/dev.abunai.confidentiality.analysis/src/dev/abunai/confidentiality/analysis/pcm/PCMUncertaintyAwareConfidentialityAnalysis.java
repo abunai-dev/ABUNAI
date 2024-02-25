@@ -1,14 +1,19 @@
 package dev.abunai.confidentiality.analysis.pcm;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
 
+import org.dataflowanalysis.analysis.core.AbstractActionSequenceElement;
 import org.dataflowanalysis.analysis.core.DataCharacteristicsCalculatorFactory;
 import org.dataflowanalysis.analysis.core.NodeCharacteristicsCalculator;
 import org.dataflowanalysis.analysis.pcm.PCMDataFlowConfidentialityAnalysis;
 import org.eclipse.core.runtime.Plugin;
 
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
+import dev.abunai.confidentiality.analysis.core.UncertainActionSequence;
+import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
@@ -46,4 +51,25 @@ public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfi
 			return true;
 		}
 	}
+
+	@Override
+	public List<? extends UncertainActionSequence> findAllUncertainSequences() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<? extends UncertainActionSequence> evaluateUncertainDataFlows(
+			List<? extends UncertainActionSequence> sequences) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Map<UncertainState, List<AbstractActionSequenceElement<?>>> queryUncertainDataFlow(
+			UncertainActionSequence sequence, Predicate<? super AbstractActionSequenceElement<?>> condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

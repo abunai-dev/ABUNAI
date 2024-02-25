@@ -8,7 +8,14 @@ import org.dataflowanalysis.analysis.core.AbstractActionSequenceElement;
 import org.dataflowanalysis.analysis.core.ActionSequence;
 import org.dataflowanalysis.analysis.dfd.core.DFDActionSequence;
 import org.dataflowanalysis.analysis.dfd.core.DFDActionSequenceElement;
+import org.dataflowanalysis.dfd.datadictionary.Label;
+import org.dataflowanalysis.dfd.dataflowdiagram.External;
 import org.dataflowanalysis.dfd.dataflowdiagram.Node;
+import org.dataflowanalysis.dfd.dataflowdiagram.Store;
+import org.dataflowanalysis.dfd.dataflowdiagram.dataflowdiagramFactory;
+
+import com.google.common.collect.Streams;
+
 import dev.abunai.confidentiality.analysis.core.UncertainActionSequence;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
@@ -18,14 +25,15 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUnce
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario;
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 
-public class UncertaintyDFDActionSequence extends UncertainActionSequence {
+public class UncertainDFDActionSequence extends UncertainActionSequence {
 
 	private final DFDQueryHelper dfdQueryHelper;
 
-	public UncertaintyDFDActionSequence(DFDActionSequence originalActionSequence,
+	public UncertainDFDActionSequence(DFDActionSequence originalActionSequence,
 			List<? extends DFDUncertaintySource> uncertaintySources) {
 		super();
 
@@ -103,34 +111,67 @@ public class UncertaintyDFDActionSequence extends UncertainActionSequence {
 		}
 	}
 
-	private DFDActionSequence applyComponentUncertaintyScenario(DFDActionSequence actionSequence,
-			DFDComponentUncertaintyScenario uncertaintyScenario) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	private DFDActionSequence applyExternalUncertaintyScenario(DFDActionSequence actionSequence,
 			DFDExternalUncertaintyScenario uncertaintyScenario) {
-		// TODO Auto-generated method stub
-		return null;
+
+		DFDExternalUncertaintySource uncertaintySource = (DFDExternalUncertaintySource) uncertaintyScenario
+				.eContainer();
+		Node target = uncertaintySource.getTarget();
+		Node targetCopy;
+
+		if (target instanceof External) {
+			targetCopy = dataflowdiagramFactory.eINSTANCE.createExternal();
+		} else if (target instanceof Process) {
+			targetCopy = dataflowdiagramFactory.eINSTANCE.createProcess();
+		} else if (target instanceof Store) {
+			targetCopy = dataflowdiagramFactory.eINSTANCE.createStore();
+		} else {
+			throw new IllegalArgumentException("Unexpected DFD node type.");
+		}
+
+		targetCopy.setEntityName(target.getEntityName());
+		targetCopy.setBehaviour(target.getBehaviour());
+
+		List<Label> filteredOldProperties = target.getProperties().stream()
+				.filter(it -> uncertaintySource.getTargetProperties().contains(it)).toList();
+		List<Label> newPropertiesToAdd = uncertaintyScenario.getTargetProperties();
+		targetCopy.getProperties()
+				.addAll(Streams.concat(filteredOldProperties.stream(), newPropertiesToAdd.stream()).toList());
+
+		List<AbstractActionSequenceElement<?>> newElements = actionSequence.getElements().stream().map(it -> {
+			if (it instanceof DFDActionSequenceElement castedElement && castedElement.getNode().equals(target)) {
+				return new DFDActionSequenceElement(it.getAllDataFlowVariables(), it.getAllNodeCharacteristics(),
+						castedElement.getName(), targetCopy, castedElement.getPreviousNode(), castedElement.getFlow());
+			} else {
+				return it;
+			}
+		}).toList();
+
+		return new DFDActionSequence(newElements);
 	}
 
 	private DFDActionSequence applyBehaviorUncertaintyScenario(DFDActionSequence actionSequence,
 			DFDBehaviorUncertaintyScenario uncertaintyScenario) {
 		// TODO Auto-generated method stub
-		return null;
+		throw new IllegalStateException("Not yet supported uncertainty type.");
 	}
 
 	private DFDActionSequence applyInterfaceUncertaintyScenario(DFDActionSequence actionSequence,
 			DFDInterfaceUncertaintyScenario uncertaintyScenario) {
 		// TODO Auto-generated method stub
-		return null;
+		throw new IllegalStateException("Not yet supported uncertainty type.");
 	}
 
 	private DFDActionSequence applyConnectorUncertaintyScenario(DFDActionSequence actionSequence,
 			DFDConnectorUncertaintyScenario uncertaintyScenario) {
 		// TODO Auto-generated method stub
-		return null;
+		throw new IllegalStateException("Not yet supported uncertainty type.");
+	}
+
+	private DFDActionSequence applyComponentUncertaintyScenario(DFDActionSequence actionSequence,
+			DFDComponentUncertaintyScenario uncertaintyScenario) {
+		// TODO Auto-generated method stub
+		throw new IllegalStateException("Not yet supported uncertainty type.");
 	}
 
 }
