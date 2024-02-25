@@ -10,6 +10,7 @@ import org.dataflowanalysis.analysis.core.AbstractActionSequenceElement;
 import org.dataflowanalysis.analysis.core.ActionSequence;
 import org.dataflowanalysis.analysis.dfd.DFDConfidentialityAnalysis;
 import org.dataflowanalysis.analysis.dfd.core.DFDActionSequence;
+import org.dataflowanalysis.analysis.dfd.core.DFDCharacteristicsCalculator;
 import org.eclipse.core.runtime.Plugin;
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
 import dev.abunai.confidentiality.analysis.core.UncertainActionSequence;
@@ -66,8 +67,13 @@ public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentiali
 
 			for (UncertainState state : mapping.keySet()) {
 				ActionSequence dfdSequence = mapping.get(state);
-				ActionSequence evaluatedDFDSequence = this.evaluateDataFlows(List.of(dfdSequence)).get(0);
+				ActionSequence evaluatedDFDSequence = DFDCharacteristicsCalculator
+						.fillDataFlowVariables((DFDActionSequence) dfdSequence);
 				evaluatedMapping.put(state, evaluatedDFDSequence);
+			}
+
+			if (mapping.size() != evaluatedMapping.size()) {
+				throw new IllegalStateException("Evaluated mapping differs in size.");
 			}
 
 			sequence.setScenarioToActionSequenceMapping(evaluatedMapping);

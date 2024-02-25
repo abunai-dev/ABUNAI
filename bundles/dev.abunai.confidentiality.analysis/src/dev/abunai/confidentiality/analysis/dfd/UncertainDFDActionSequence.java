@@ -132,16 +132,18 @@ public class UncertainDFDActionSequence extends UncertainActionSequence {
 		targetCopy.setEntityName(target.getEntityName());
 		targetCopy.setBehaviour(target.getBehaviour());
 
-		List<Label> filteredOldProperties = target.getProperties().stream()
-				.filter(it -> uncertaintySource.getTargetProperties().contains(it)).toList();
+		List<Label> filteredOldProperties = target.getProperties().stream().filter(it -> !uncertaintySource
+				.getTargetProperties().stream().map(Label::getEntityName).toList().contains(it.getEntityName()))
+				.toList();
+
 		List<Label> newPropertiesToAdd = uncertaintyScenario.getTargetProperties();
 		targetCopy.getProperties()
 				.addAll(Streams.concat(filteredOldProperties.stream(), newPropertiesToAdd.stream()).toList());
 
 		List<AbstractActionSequenceElement<?>> newElements = actionSequence.getElements().stream().map(it -> {
 			if (it instanceof DFDActionSequenceElement castedElement && castedElement.getNode().equals(target)) {
-				return new DFDActionSequenceElement(it.getAllDataFlowVariables(), it.getAllNodeCharacteristics(),
-						castedElement.getName(), targetCopy, castedElement.getPreviousNode(), castedElement.getFlow());
+				return new DFDActionSequenceElement(List.of(), List.of(), castedElement.getName(),
+						targetCopy, castedElement.getPreviousNode(), castedElement.getFlow());
 			} else {
 				return it;
 			}
