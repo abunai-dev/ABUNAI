@@ -6,20 +6,18 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
+import org.dataflowanalysis.analysis.core.FlowGraph;
 import org.dataflowanalysis.analysis.dfd.DFDConfidentialityAnalysis;
 import org.eclipse.core.runtime.Plugin;
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
-import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainPartialFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 
 public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentialityAnalysis implements UncertaintyAwareConfidentialityAnalysis {
 	private final Logger logger = Logger.getLogger(DFDUncertaintyAwareConfidentialityAnalysis.class);
@@ -49,13 +47,12 @@ public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentiali
 	
 	@Override
 	public DFDUncertainFlowGraph findFlowGraph() {
-		// FIXME: Return type is incorrect (parallel pcm/dfd structure collides)
-		return null;
+		return new DFDUncertainFlowGraph(this.getResourceProvider());
 	}
 	
 	@Override
-	public UncertainFlowGraph evaluateUncertainDataFlows(UncertainFlowGraph flowGraph) {
-		return flowGraph.createUncertainFlows();
+	public DFDUncertainFlowGraph evaluateUncertainDataFlows(FlowGraph flowGraph) {
+		return ((DFDUncertainFlowGraph) flowGraph).createUncertainFlows();
 	}
 
 	/*
@@ -83,7 +80,7 @@ public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentiali
 
 	@Override
 	public Map<UncertainState, List<? extends AbstractVertex<?>>> queryUncertainDataFlow(
-			UncertainFlowGraph flowGraph, Predicate<? super AbstractVertex<?>> condition) {
+			FlowGraph flowGraph, Predicate<? super AbstractVertex<?>> condition) {
 		Map<UncertainState, List<? extends AbstractVertex<?>>> result = new HashMap<>();
 		
 		for (AbstractPartialFlowGraph partialFlowGraph : flowGraph.getPartialFlowGraphs()) {

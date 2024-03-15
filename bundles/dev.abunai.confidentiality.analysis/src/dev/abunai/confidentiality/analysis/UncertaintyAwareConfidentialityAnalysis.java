@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 import org.dataflowanalysis.analysis.core.AbstractVertex;
+import org.dataflowanalysis.analysis.core.FlowGraph;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
 
 import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
@@ -18,10 +19,10 @@ public interface UncertaintyAwareConfidentialityAnalysis {
 
 	ResourceProvider getResourceProvider();
 
-	UncertainFlowGraph findFlowGraph();
+	FlowGraph findFlowGraph();
 	
-	UncertainFlowGraph evaluateUncertainDataFlows(UncertainFlowGraph flowGraph);
+	FlowGraph evaluateUncertainDataFlows(FlowGraph flowGraph);
 	
-	Map<UncertainState, List<? extends AbstractVertex<?>>> queryUncertainDataFlow(UncertainFlowGraph flowGraph,
+	Map<UncertainState, List<? extends AbstractVertex<?>>> queryUncertainDataFlow(FlowGraph flowGraph,
 			Predicate<? super AbstractVertex<?>> condition);
 }

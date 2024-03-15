@@ -14,6 +14,7 @@ import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainPartialFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
+import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraph;
 import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 
 public class OnlineShopTest extends DFDTestBase {
@@ -40,10 +41,10 @@ public class OnlineShopTest extends DFDTestBase {
 
 		sourceCollection.forEach(source -> System.out.println(source.getClass().getSimpleName()));
 		
-		UncertainFlowGraph flowGraph = analysis.findFlowGraph();
+		DFDUncertainFlowGraph flowGraph = (DFDUncertainFlowGraph) analysis.findFlowGraph();
 		System.out.println("Flow graph size (without uncertainties): " + flowGraph.findPartialFlowGraphs().size());
 		
-		UncertainFlowGraph uncertainFlowGraph = analysis.evaluateUncertainDataFlows(flowGraph);
+		DFDUncertainFlowGraph uncertainFlowGraph = (DFDUncertainFlowGraph) analysis.evaluateUncertainDataFlows(flowGraph);
 		System.out.println("Flow graph size (with uncertainties): " + uncertainFlowGraph.findPartialFlowGraphs().size());
 
 		System.out.println(UncertaintyUtils.getUncertaintySourceName(sourceCollection.get(0)));
