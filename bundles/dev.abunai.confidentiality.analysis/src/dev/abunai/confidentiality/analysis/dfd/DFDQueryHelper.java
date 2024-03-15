@@ -2,8 +2,8 @@ package dev.abunai.confidentiality.analysis.dfd;
 
 import java.util.List;
 
-import org.dataflowanalysis.analysis.dfd.core.DFDActionSequence;
-import org.dataflowanalysis.analysis.dfd.core.DFDActionSequenceElement;
+import org.dataflowanalysis.analysis.core.AbstractVertex;
+import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.dataflowanalysis.dfd.dataflowdiagram.DataFlowDiagram;
 import org.dataflowanalysis.dfd.dataflowdiagram.Node;
 
@@ -17,10 +17,10 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintyS
 
 public class DFDQueryHelper {
 
-	private final DFDActionSequence actionSequence;
+	private final List<? extends AbstractVertex<?>> vertices;
 
-	public DFDQueryHelper(DFDActionSequence actionSequence) {
-		this.actionSequence = actionSequence;
+	public DFDQueryHelper(List<? extends AbstractVertex<?>> vertices) {
+		this.vertices = vertices;
 	}
 
 	public boolean hasTargetNode(DFDUncertaintySource uncertaintySource) {
@@ -45,22 +45,23 @@ public class DFDQueryHelper {
 	}
 
 	private List<Node> findTargetNodesOfExternalUncertainty(DFDExternalUncertaintySource uncertaintySource) {
-		return this.actionSequence.getElements().stream().map(DFDActionSequenceElement.class::cast)
-				.map(DFDActionSequenceElement::getNode).filter(it -> it.equals(uncertaintySource.getTarget()))
+		return vertices.stream().map(DFDVertex.class::cast)
+				.map(DFDVertex::getReferencedElement)
+				.filter(it -> it.equals(uncertaintySource.getTarget()))
 				.filter(it -> it.getProperties().containsAll(uncertaintySource.getTargetProperties())).toList();
 	}
 
 	private List<Node> findTargetNodesOfBehaviorUncertainty(DFDBehaviorUncertaintySource uncertaintySource) {
-		return this.actionSequence.getElements().stream().map(DFDActionSequenceElement.class::cast)
-				.map(DFDActionSequenceElement::getNode)
+		return vertices.stream().map(DFDVertex.class::cast)
+				.map(DFDVertex::getReferencedElement)
 				.filter(it -> it.getBehaviour().equals(uncertaintySource.getTarget()))
 				.filter(it -> it.getBehaviour().getAssignment().containsAll(uncertaintySource.getTargetAssignments()))
 				.toList();
 	}
 
 	private List<Node> findTargetNodesOfInterfaceUncertainty(DFDInterfaceUncertaintySource uncertaintySource) {
-		return this.actionSequence.getElements().stream().map(DFDActionSequenceElement.class::cast)
-				.map(DFDActionSequenceElement::getNode)
+		return vertices.stream().map(DFDVertex.class::cast)
+				.map(DFDVertex::getReferencedElement)
 				.filter(it -> it.getBehaviour().getInPin().contains(uncertaintySource.getTargetInPin()))
 				.filter(it -> ((DataFlowDiagram) it.eContainer()).getFlows().stream()
 						.filter(flow -> flow.getDestinationPin().equals(uncertaintySource.getTargetInPin()))
@@ -69,8 +70,8 @@ public class DFDQueryHelper {
 	}
 
 	private List<Node> findTargetNodesOfConnectorUncertainty(DFDConnectorUncertaintySource uncertaintySource) {
-		return this.actionSequence.getElements().stream().map(DFDActionSequenceElement.class::cast)
-				.map(DFDActionSequenceElement::getNode)
+		return vertices.stream().map(DFDVertex.class::cast)
+				.map(DFDVertex::getReferencedElement)
 				.filter(it -> uncertaintySource.getTargetFlow().getDestinationNode().equals(it))
 				.filter(it -> uncertaintySource.getTargetFlow().getSourceNode().getBehaviour().getAssignment()
 						.containsAll(uncertaintySource.getTargetAssignments()))
@@ -78,8 +79,10 @@ public class DFDQueryHelper {
 	}
 
 	private List<Node> findTargetNodesofComponentUncertainty(DFDComponentUncertaintySource uncertaintySource) {
-		return this.actionSequence.getElements().stream().map(DFDActionSequenceElement.class::cast)
-				.map(DFDActionSequenceElement::getNode).filter(it -> it.equals(uncertaintySource.getTarget())).toList();
+		return vertices.stream().map(DFDVertex.class::cast)
+				.map(DFDVertex::getReferencedElement)
+				.filter(it -> it.equals(uncertaintySource.getTarget()))
+				.toList();
 	}
 
 }

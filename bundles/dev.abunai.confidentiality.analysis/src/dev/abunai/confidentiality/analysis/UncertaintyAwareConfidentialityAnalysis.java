@@ -4,23 +4,24 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
 
-import org.dataflowanalysis.analysis.DataFlowConfidentialityAnalysis;
-import org.dataflowanalysis.analysis.core.AbstractActionSequenceElement;
+import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
 
-import dev.abunai.confidentiality.analysis.core.UncertainActionSequence;
+import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
-public interface UncertaintyAwareConfidentialityAnalysis extends DataFlowConfidentialityAnalysis {
+public interface UncertaintyAwareConfidentialityAnalysis {
+	void initializeAnalysis();
+	
 	List<UncertaintySource> getUncertaintySources();
 
 	ResourceProvider getResourceProvider();
 
-	List<? extends UncertainActionSequence> findAllUncertainSequences();
+	UncertainFlowGraph findFlowGraph();
 	
-	List<? extends UncertainActionSequence> evaluateUncertainDataFlows(List<? extends UncertainActionSequence> sequences);
+	UncertainFlowGraph evaluateUncertainDataFlows(UncertainFlowGraph flowGraph);
 	
-	Map<UncertainState, List<AbstractActionSequenceElement<?>>> queryUncertainDataFlow(UncertainActionSequence sequence,
-			Predicate<? super AbstractActionSequenceElement<?>> condition);
+	Map<UncertainState, List<? extends AbstractVertex<?>>> queryUncertainDataFlow(UncertainFlowGraph flowGraph,
+			Predicate<? super AbstractVertex<?>> condition);
 }

@@ -3,13 +3,15 @@ package dev.abunai.confidentiality.analysis.tests.dfd;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.dataflowanalysis.analysis.core.AbstractActionSequenceElement;
+import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
+import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.core.DataFlowVariable;
-import org.dataflowanalysis.analysis.dfd.core.DFDActionSequenceElement;
 import org.dataflowanalysis.analysis.dfd.core.DFDCharacteristicValue;
+import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.junit.jupiter.api.Test;
 
-import dev.abunai.confidentiality.analysis.core.UncertainActionSequence;
+import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
+import dev.abunai.confidentiality.analysis.core.UncertainPartialFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
@@ -37,9 +39,13 @@ public class OnlineShopTest extends DFDTestBase {
 		System.out.println(sourceCollection.size());
 
 		sourceCollection.forEach(source -> System.out.println(source.getClass().getSimpleName()));
+		
+		UncertainFlowGraph flowGraph = analysis.findFlowGraph();
+		System.out.println("Flow graph size (without uncertainties): " + flowGraph.findPartialFlowGraphs().size());
+		
+		UncertainFlowGraph uncertainFlowGraph = analysis.evaluateUncertainDataFlows(flowGraph);
+		System.out.println("Flow graph size (with uncertainties): " + uncertainFlowGraph.findPartialFlowGraphs().size());
 
-		var evaluatedSequences = analysis.evaluateDataFlows(analysis.findAllSequences());
-		System.out.println(evaluatedSequences.size());
 		System.out.println(UncertaintyUtils.getUncertaintySourceName(sourceCollection.get(0)));
 
 		var allStates = UncertainState.createAllUncertainStates(sourceCollection);
@@ -47,11 +53,13 @@ public class OnlineShopTest extends DFDTestBase {
 		System.out.println(UncertainState.calculateNumberOfAllUncertainStates(sourceCollection));
 		allStates.forEach(it -> System.out.println(it));
 
-		List<? extends UncertainActionSequence> uncertaintySequences = analysis.findAllUncertainSequences();
+		List<? extends UncertainPartialFlowGraph> partialFlowGraphs = uncertainFlowGraph.getPartialFlowGraphs().stream()
+				.map(UncertainPartialFlowGraph.class::cast)
+				.toList();
 
 		var requiredStateCount = 0;
-		for (var seq : uncertaintySequences) {
-			var selectedSources = seq.getRelevantUncertaintySources();
+		for (var pfg : partialFlowGraphs) {
+			var selectedSources = pfg.getRelevantUncertaintySources();
 			var stateCount = UncertainState.calculateNumberOfAllUncertainStates(selectedSources);
 			requiredStateCount += stateCount;
 		}
@@ -60,56 +68,54 @@ public class OnlineShopTest extends DFDTestBase {
 				"-> All states: %d".formatted(UncertainState.calculateNumberOfAllUncertainStates(sourceCollection)));
 		System.out.println("-> Actually required states: %d".formatted(requiredStateCount));
 
-		System.out.println("All action sequences lenght: %s"
-				.formatted(evaluatedSequences.stream().map(it -> it.getElements().size()).toList()));
+		System.out.println("All action sequences length: %s"
+				.formatted(uncertainFlowGraph.getPartialFlowGraphs().stream().map(it -> it.getVertices().size()).toList()));
 
 		System.out.println("Impact set: %s"
-				.formatted(uncertaintySequences.stream().map(it -> it.getImpactSet().getElements().size()).toList()));
+				.formatted(uncertainFlowGraph.getPartialFlowGraphs().stream()
+						.map(UncertainPartialFlowGraph.class::cast)
+						.map(it -> it.getImpactSet().size()).toList()));
 
-		List<? extends UncertainActionSequence> evaluatedFlows = analysis
-				.evaluateUncertainDataFlows(uncertaintySequences);
+		uncertainFlowGraph.evaluate();
 		System.out.println("Flows: --------------");
 
-		for (UncertainActionSequence flow : evaluatedFlows) {
-			var mapping = flow.getScenarioToActionSequenceMapping();
-
-			for (var state : mapping.keySet()) {
-				var stateDesc = state.toString();
-				var flowDesc = mapping.get(state).getElements().stream().map(DFDActionSequenceElement.class::cast)
-						.map(it -> it.getName() + ": "
-								+ it.getAllNodeCharacteristics().stream().map(x -> x.getValueName()).toList())
-						.collect(Collectors.joining("\n"));
-				System.out.println("STATE %s:\n%s".formatted(stateDesc, flowDesc));
+		for (AbstractPartialFlowGraph flow : uncertainFlowGraph.getPartialFlowGraphs()) {
+			if (!(flow instanceof UncertainPartialFlowGraph uncertainPartialFlowGraph)) {
+				System.out.println("Did not find uncertain partial flow graph");
+				continue;
 			}
-
+			
+			var stateDesc = uncertainPartialFlowGraph.getUncertainState().toString();
+			var flowDesc = flow.getVertices().stream()
+					.map(DFDVertex.class::cast)
+					.map(it -> it.getName() + ": "
+								+ it.getAllNodeCharacteristics().stream().map(x -> x.getValueName()).toList())
+					.collect(Collectors.joining("\n"));
+			System.out.println("STATE %s:\n%s".formatted(stateDesc, flowDesc));
 			System.out.println("---------------");
 		}
 
-		for (var flow : evaluatedFlows) {
-			var violations = analysis.queryUncertainDataFlow(flow, it -> {
-				var nodeLabels = retrieveNodeLabels(it);
-				var dataLabels = retrieveDataLabels(it);
+		var violations = analysis.queryUncertainDataFlow(uncertainFlowGraph, it -> {
+			var nodeLabels = retrieveNodeLabels(it);
+			var dataLabels = retrieveDataLabels(it);
 
-				if (((DFDActionSequenceElement) it).getName().equals("Database"))
-					System.out.println(
-							"%s: %s, %s".formatted(((DFDActionSequenceElement) it).getName(), nodeLabels, dataLabels));
+			if (((DFDVertex) it).getName().equals("Database"))
+				System.out.println(
+						"%s: %s, %s".formatted(((DFDVertex) it).getName(), nodeLabels, dataLabels));
 
-				// TODO: Not working yet as label propagation is broken again, waiting for v2
-				return nodeLabels.contains("nonEU") && dataLabels.contains("Personal");
-			});
-
-			System.out.println(violations);
-		}
-
+			// TODO: Not working yet as label propagation is broken again, waiting for v2
+			return nodeLabels.contains("nonEU") && dataLabels.contains("Personal");
+		});
+		System.out.println(violations);
 	}
 
 	// Copied from the original dfd test case
-	private List<String> retrieveNodeLabels(AbstractActionSequenceElement<?> vertex) {
+	private List<String> retrieveNodeLabels(AbstractVertex<?> vertex) {
 		return vertex.getAllNodeCharacteristics().stream().map(DFDCharacteristicValue.class::cast)
 				.map(DFDCharacteristicValue::getValueName).toList();
 	}
 
-	private List<String> retrieveDataLabels(AbstractActionSequenceElement<?> vertex) {
+	private List<String> retrieveDataLabels(AbstractVertex<?> vertex) {
 		return vertex.getAllDataFlowVariables().stream().map(DataFlowVariable::getAllCharacteristics)
 				.flatMap(List::stream).map(DFDCharacteristicValue.class::cast).map(DFDCharacteristicValue::getValueName)
 				.toList();
