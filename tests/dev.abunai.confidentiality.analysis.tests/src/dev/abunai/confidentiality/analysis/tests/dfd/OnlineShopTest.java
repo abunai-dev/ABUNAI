@@ -42,10 +42,10 @@ public class OnlineShopTest extends DFDTestBase {
 		sourceCollection.forEach(source -> System.out.println(source.getClass().getSimpleName()));
 		
 		DFDUncertainFlowGraph flowGraph = (DFDUncertainFlowGraph) analysis.findFlowGraph();
-		System.out.println("Flow graph size (without uncertainties): " + flowGraph.findPartialFlowGraphs().size());
+		System.out.println("Flow graph size (without uncertainties): " + flowGraph.getPartialFlowGraphs().size());
 		
 		DFDUncertainFlowGraph uncertainFlowGraph = (DFDUncertainFlowGraph) analysis.evaluateUncertainDataFlows(flowGraph);
-		System.out.println("Flow graph size (with uncertainties): " + uncertainFlowGraph.findPartialFlowGraphs().size());
+		System.out.println("Flow graph size (with uncertainties): " + uncertainFlowGraph.getPartialFlowGraphs().size());
 
 		System.out.println(UncertaintyUtils.getUncertaintySourceName(sourceCollection.get(0)));
 

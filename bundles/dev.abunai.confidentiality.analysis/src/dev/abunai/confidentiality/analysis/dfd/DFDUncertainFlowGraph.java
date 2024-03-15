@@ -50,7 +50,6 @@ public class DFDUncertainFlowGraph extends DFDFlowGraph {
             logger.error("Cannot find partial flow graphs for non-dfd resource provider");
             throw new IllegalArgumentException();
 		}
-		
 		return new DFDPartialFlowGraphFinder(dfdResourceProvider).findPartialFlowGraphs().stream()
 				.map(DFDPartialFlowGraph.class::cast)
 				.map(it -> new DFDUncertainPartialFlowGraph(it.getSink(), this.determineRelevantUncertaintySource(it, dfdResourceProvider)))
