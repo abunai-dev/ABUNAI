@@ -11,8 +11,11 @@ import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
+import org.dataflowanalysis.dfd.datadictionary.AbstractAssignment;
+import org.dataflowanalysis.dfd.datadictionary.Behaviour;
 import org.dataflowanalysis.dfd.datadictionary.Label;
 import org.dataflowanalysis.dfd.datadictionary.Pin;
+import org.dataflowanalysis.dfd.datadictionary.datadictionaryFactory;
 import org.dataflowanalysis.dfd.dataflowdiagram.External;
 import org.dataflowanalysis.dfd.dataflowdiagram.Node;
 import org.dataflowanalysis.dfd.dataflowdiagram.Store;
@@ -26,6 +29,7 @@ import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario;
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario;
@@ -152,13 +156,51 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 				return mapping.getOrDefault(vertex, vertex);
 			}));
 		
-		// FIXME: Replace with one issue with pcm/dfd parallel is fixed
+		// FIXME: Replace with once issue with pcm/dfd parallel is fixed
 		// return this.copy(mapping);
 		return copy;
 	}
 
 	private DFDUncertainPartialFlowGraph applyBehaviorUncertaintyScenario(DFDBehaviorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		// TODO Auto-generated method stub
+		DFDBehaviorUncertaintySource uncertaintySource = (DFDBehaviorUncertaintySource) uncertaintyScenario;
+		Behaviour targetBehaviour = uncertaintySource.getTarget();
+		List<AbstractAssignment> addedAssignments = uncertaintySource.getTargetAssignments();
+		
+		Behaviour resultBehaviour = datadictionaryFactory.eINSTANCE.createBehaviour();
+		resultBehaviour.setEntityName(targetBehaviour.getEntityName());
+		resultBehaviour.setId(targetBehaviour.getId());
+		resultBehaviour.getAssignment().addAll(targetBehaviour.getAssignment());
+		resultBehaviour.getAssignment().addAll(addedAssignments);
+		
+		List<DFDVertex> targetedNodes = this.getVertices().stream()
+				.filter(DFDVertex.class::isInstance)
+				.map(DFDVertex.class::cast)
+				.filter(it -> it.getReferencedElement().getBehaviour().equals(targetBehaviour))
+				.toList();
+		
+		Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
+		targetedNodes.forEach(node -> {
+			Node target = node.getReferencedElement();
+			Node targetCopy;
+
+			if (target instanceof External) {
+				targetCopy = dataflowdiagramFactory.eINSTANCE.createExternal();
+			} else if (target instanceof Process) {
+				targetCopy = dataflowdiagramFactory.eINSTANCE.createProcess();
+			} else if (target instanceof Store) {
+				targetCopy = dataflowdiagramFactory.eINSTANCE.createStore();
+			} else {
+				throw new IllegalArgumentException("Unexpected DFD node type.");
+			}
+
+			targetCopy.setEntityName(target.getEntityName());
+			targetCopy.setBehaviour(target.getBehaviour());
+			
+			Map<Pin, DFDVertex> copiedPinDFDVertexMap = new HashMap<>();
+	        node.getPinDFDVertexMap().keySet().forEach(key -> copiedPinDFDVertexMap.put(key, node.getPinDFDVertexMap().get(key).clone()));
+			mapping.put(node, new DFDVertex(targetCopy, copiedPinDFDVertexMap, new HashMap<>(node.getPinFlowMap())));
+		});
 		throw new IllegalStateException("Not yet supported uncertainty type.");
 	}
 
