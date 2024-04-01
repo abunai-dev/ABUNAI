@@ -17,6 +17,7 @@ import org.dataflowanalysis.dfd.datadictionary.Label;
 import org.dataflowanalysis.dfd.datadictionary.Pin;
 import org.dataflowanalysis.dfd.datadictionary.datadictionaryFactory;
 import org.dataflowanalysis.dfd.dataflowdiagram.External;
+import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
 import org.dataflowanalysis.dfd.dataflowdiagram.Node;
 import org.dataflowanalysis.dfd.dataflowdiagram.Store;
 import org.dataflowanalysis.dfd.dataflowdiagram.dataflowdiagramFactory;
@@ -31,10 +32,13 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario;
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario;
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario;
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 
 public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
@@ -165,12 +169,17 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		// TODO Auto-generated method stub
 		DFDBehaviorUncertaintySource uncertaintySource = (DFDBehaviorUncertaintySource) uncertaintyScenario;
 		Behaviour targetBehaviour = uncertaintySource.getTarget();
-		List<AbstractAssignment> addedAssignments = uncertaintySource.getTargetAssignments();
+		List<AbstractAssignment> targetedAssignments = uncertaintySource.getTargetAssignments();
+		
+		List<AbstractAssignment> filteredAssignments = targetBehaviour.getAssignment().stream()
+				.filter(it -> !(targetedAssignments.contains(it)))
+				.toList();
+		List<AbstractAssignment> addedAssignments = uncertaintyScenario.getTargetAssignments();
 		
 		Behaviour resultBehaviour = datadictionaryFactory.eINSTANCE.createBehaviour();
 		resultBehaviour.setEntityName(targetBehaviour.getEntityName());
 		resultBehaviour.setId(targetBehaviour.getId());
-		resultBehaviour.getAssignment().addAll(targetBehaviour.getAssignment());
+		resultBehaviour.getAssignment().addAll(filteredAssignments);
 		resultBehaviour.getAssignment().addAll(addedAssignments);
 		
 		List<DFDVertex> targetedNodes = this.getVertices().stream()
@@ -178,6 +187,10 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 				.map(DFDVertex.class::cast)
 				.filter(it -> it.getReferencedElement().getBehaviour().equals(targetBehaviour))
 				.toList();
+		
+		if (targetedNodes.size() < 1) {
+			throw new IllegalStateException("Found no targeted nodes by behaviour uncertainty");
+		}
 		
 		Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
 		targetedNodes.forEach(node -> {
@@ -201,22 +214,77 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 	        node.getPinDFDVertexMap().keySet().forEach(key -> copiedPinDFDVertexMap.put(key, node.getPinDFDVertexMap().get(key).clone()));
 			mapping.put(node, new DFDVertex(targetCopy, copiedPinDFDVertexMap, new HashMap<>(node.getPinFlowMap())));
 		});
-		throw new IllegalStateException("Not yet supported uncertainty type.");
+		
+		DFDUncertainPartialFlowGraph copy = new DFDUncertainPartialFlowGraph(mapping.getOrDefault(this.getSink(), (DFDVertex) this.getSink()), relevantUncertaintySources, uncertainState);
+		copy.getVertices().stream()
+			.map(DFDVertex.class::cast)
+			.forEach(it -> it.getPinDFDVertexMap().replaceAll((pin, vertex) -> {
+				return mapping.getOrDefault(vertex, vertex);
+			}));
+		
+		// FIXME: Replace with once issue with pcm/dfd parallel is fixed
+		// return this.copy(mapping);
+		return copy;
 	}
 
 	private DFDUncertainPartialFlowGraph applyInterfaceUncertaintyScenario(DFDInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+		DFDInterfaceUncertaintySource uncertaintySource = (DFDInterfaceUncertaintySource) uncertaintyScenario.eContainer();
+		Flow targetFlow = uncertaintySource.getTargetFlow();
+		Pin targetPin = uncertaintySource.getTargetInPin();
+		Node targetNode = (Node) targetPin.eContainer().eContainer();
+		
+		Flow replacingFlow = uncertaintyScenario.getTargetFlow();
+		Pin replacingPin = uncertaintyScenario.getTargetInPin();
+		
+		DFDVertex targetVertex = this.getVertices().stream()
+				.filter(DFDVertex.class::isInstance)
+				.map(DFDVertex.class::cast)
+				.filter(it -> it.getReferencedElement().equals(targetNode))
+				.filter(it -> targetFlow.getDestinationNode().equals(it.getReferencedElement()))
+				.findAny().orElseThrow();
 		// TODO Auto-generated method stub
 		throw new IllegalStateException("Not yet supported uncertainty type.");
 	}
 
 	private DFDUncertainPartialFlowGraph applyConnectorUncertaintyScenario(DFDConnectorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+		DFDConnectorUncertaintySource uncertaintySource = (DFDConnectorUncertaintySource) uncertaintyScenario.eContainer();
+		Flow targetFlow = uncertaintySource.getTargetFlow();
+		List<AbstractAssignment> targetAssignments = uncertaintySource.getTargetAssignments();
+		
+		Flow replacingFlow = uncertaintyScenario.getTargetFlow();
+		List<AbstractAssignment> replacingAssignments = uncertaintyScenario.getTargetAssignments();
+		
 		// TODO Auto-generated method stub
 		throw new IllegalStateException("Not yet supported uncertainty type.");
 	}
 
 	private DFDUncertainPartialFlowGraph applyComponentUncertaintyScenario(DFDComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
-		// TODO Auto-generated method stub
-		throw new IllegalStateException("Not yet supported uncertainty type.");
+		DFDComponentUncertaintySource uncertaintySource = (DFDComponentUncertaintySource) uncertaintyScenario.eContainer();
+		Node targetedNode = uncertaintySource.getTarget();
+		Node replacingNode = uncertaintyScenario.getTarget();
+		
+		Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
+		
+		this.getVertices().stream()
+			.filter(DFDVertex.class::isInstance)
+			.map(DFDVertex.class::cast)
+			.filter(it -> it.getReferencedElement().equals(targetedNode))
+			.forEach(it -> {
+				Map<Pin, DFDVertex> copiedPinDFDVertexMap = new HashMap<>();
+		        it.getPinDFDVertexMap().keySet().forEach(key -> copiedPinDFDVertexMap.put(key, it.getPinDFDVertexMap().get(key).clone()));
+				mapping.put(it, new DFDVertex(replacingNode, copiedPinDFDVertexMap, new HashMap<>(it.getPinFlowMap())));
+			});
+		
+		DFDUncertainPartialFlowGraph copy = new DFDUncertainPartialFlowGraph(mapping.getOrDefault(this.getSink(), (DFDVertex) this.getSink()), relevantUncertaintySources, uncertainState);
+		copy.getVertices().stream()
+			.map(DFDVertex.class::cast)
+			.forEach(it -> it.getPinDFDVertexMap().replaceAll((pin, vertex) -> {
+				return mapping.getOrDefault(vertex, vertex);
+			}));
+		
+		// FIXME: Replace with once issue with pcm/dfd parallel is fixed
+		// return this.copy(mapping);
+		return copy;
 	}
 
 }
