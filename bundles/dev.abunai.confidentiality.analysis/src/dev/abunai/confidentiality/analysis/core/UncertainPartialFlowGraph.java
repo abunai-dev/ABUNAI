@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
+import org.dataflowanalysis.analysis.resource.ResourceProvider;
 
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
@@ -27,7 +28,7 @@ public abstract class UncertainPartialFlowGraph extends AbstractPartialFlowGraph
 	
 	public abstract List<? extends UncertainPartialFlowGraph> determineAlternativePartialFlowGraphs();
 	
-	public abstract List<? extends AbstractVertex<?>> getImpactSet();
+	public abstract List<? extends AbstractVertex<?>> getImpactSet(ResourceProvider resourceProvider);
 
 	public UncertainState getUncertainState() {
 		return uncertainState.orElseThrow(() -> new IllegalStateException("Tried to access uncertain state of partial flow graph that has not been determined yet"));

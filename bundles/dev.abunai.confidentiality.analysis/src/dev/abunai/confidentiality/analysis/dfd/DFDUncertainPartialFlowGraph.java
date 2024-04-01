@@ -10,6 +10,7 @@ import java.util.Map;
 import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
+import org.dataflowanalysis.analysis.resource.ResourceProvider;
 import org.dataflowanalysis.dfd.datadictionary.Label;
 import org.dataflowanalysis.dfd.datadictionary.Pin;
 import org.dataflowanalysis.dfd.dataflowdiagram.External;
@@ -44,7 +45,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 	}
 	
 	@Override
-	public List<? extends DFDVertex> getImpactSet() {
+	public List<? extends DFDVertex> getImpactSet(ResourceProvider resourceProvider) {
 		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(this.getVertices());
 		
 		List<Node> targetNodes = this.relevantUncertaintySources.stream()

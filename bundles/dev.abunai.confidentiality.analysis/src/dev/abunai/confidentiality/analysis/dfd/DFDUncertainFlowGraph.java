@@ -15,7 +15,6 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintyS
 
 public class DFDUncertainFlowGraph extends DFDFlowGraph {
 	private final Logger logger = Logger.getLogger(DFDUncertainFlowGraph.class);
-	private final UncertaintySourceManager uncertaintySourceManager;
 
 	public DFDUncertainFlowGraph(DFDResourceProvider resourceProvider) {
 		super(resourceProvider);
@@ -23,7 +22,6 @@ public class DFDUncertainFlowGraph extends DFDFlowGraph {
             logger.error("Cannot find partial flow graphs for non-dfd resource provider");
             throw new IllegalArgumentException();
 		}
-		this.uncertaintySourceManager = new UncertaintySourceManager(dfdResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.DFD);
 	}
 	
 	public DFDUncertainFlowGraph(List<DFDUncertainPartialFlowGraph> partialFlowGraphs, DFDResourceProvider resourceProvider) {
@@ -32,7 +30,6 @@ public class DFDUncertainFlowGraph extends DFDFlowGraph {
             logger.error("Cannot find partial flow graphs for non-dfd resource provider");
             throw new IllegalArgumentException();
 		}
-		this.uncertaintySourceManager = new UncertaintySourceManager(dfdResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.DFD);
 	}
 
 	
@@ -50,16 +47,18 @@ public class DFDUncertainFlowGraph extends DFDFlowGraph {
             logger.error("Cannot find partial flow graphs for non-dfd resource provider");
             throw new IllegalArgumentException();
 		}
+		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(dfdResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.DFD);
+		
 		return new DFDPartialFlowGraphFinder(dfdResourceProvider).findPartialFlowGraphs().stream()
 				.map(DFDPartialFlowGraph.class::cast)
-				.map(it -> new DFDUncertainPartialFlowGraph(it.getSink(), this.determineRelevantUncertaintySource(it, dfdResourceProvider)))
+				.map(it -> new DFDUncertainPartialFlowGraph(it.getSink(), this.determineRelevantUncertaintySource(it, uncertaintySourceManager)))
 				.toList();
 	}
 
-	public List<? extends DFDUncertaintySource> determineRelevantUncertaintySource(DFDPartialFlowGraph partialFlowGraph, DFDUncertaintyResourceProvider dfdResourceProvider) {
+	public List<? extends DFDUncertaintySource> determineRelevantUncertaintySource(DFDPartialFlowGraph partialFlowGraph, UncertaintySourceManager uncertaintySourceManager) {
 		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(partialFlowGraph.getVertices());
 		
-		return new UncertaintySourceManager(dfdResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.DFD).getUncertaintySources().stream()
+		return uncertaintySourceManager.getUncertaintySources().stream()
 				.map(DFDUncertaintySource.class::cast)
 				.filter(dfdQueryHelper::hasTargetNode)
 				.toList();

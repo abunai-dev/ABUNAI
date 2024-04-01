@@ -10,7 +10,6 @@ import org.dataflowanalysis.analysis.dfd.core.DFDCharacteristicValue;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.junit.jupiter.api.Test;
 
-import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainPartialFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
@@ -75,7 +74,7 @@ public class OnlineShopTest extends DFDTestBase {
 		System.out.println("Impact set: %s"
 				.formatted(uncertainFlowGraph.getPartialFlowGraphs().stream()
 						.map(UncertainPartialFlowGraph.class::cast)
-						.map(it -> it.getImpactSet().size()).toList()));
+						.map(it -> it.getImpactSet(analysis.getResourceProvider()).size()).toList()));
 
 		uncertainFlowGraph.evaluate();
 		System.out.println("Flows: --------------");

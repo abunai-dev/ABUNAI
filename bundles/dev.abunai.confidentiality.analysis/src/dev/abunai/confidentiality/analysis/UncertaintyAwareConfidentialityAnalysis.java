@@ -8,7 +8,6 @@ import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.core.FlowGraph;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
 
-import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 

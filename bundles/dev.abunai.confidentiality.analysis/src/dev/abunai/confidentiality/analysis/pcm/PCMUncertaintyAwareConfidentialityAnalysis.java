@@ -1,34 +1,35 @@
 package dev.abunai.confidentiality.analysis.pcm;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-import org.dataflowanalysis.analysis.core.AbstractActionSequenceElement;
-import org.dataflowanalysis.analysis.core.DataCharacteristicsCalculatorFactory;
-import org.dataflowanalysis.analysis.core.NodeCharacteristicsCalculator;
+import org.apache.log4j.Logger;
+import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
+import org.dataflowanalysis.analysis.core.AbstractVertex;
+import org.dataflowanalysis.analysis.core.FlowGraph;
 import org.dataflowanalysis.analysis.pcm.PCMDataFlowConfidentialityAnalysis;
 import org.eclipse.core.runtime.Plugin;
 
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
-import dev.abunai.confidentiality.analysis.core.UncertainActionSequence;
+import dev.abunai.confidentiality.analysis.core.UncertainPartialFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
+import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraph;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
 public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfidentialityAnalysis
 		implements UncertaintyAwareConfidentialityAnalysis {
 
+	private final Logger logger = Logger.getLogger(PCMUncertaintyAwareConfidentialityAnalysis.class);
 	private UncertaintySourceManager uncertaintySourceManager;
 
-	public PCMUncertaintyAwareConfidentialityAnalysis(NodeCharacteristicsCalculator nodeCharacteristicsCalculator,
-			DataCharacteristicsCalculatorFactory dataCharacteristicsCalculatorFactory,
-			PCMUncertaintyResourceProvider resourceProvider, String modelProjectName,
-			Optional<Class<? extends Plugin>> modelProjectActivator) {
-		super(nodeCharacteristicsCalculator, dataCharacteristicsCalculatorFactory, resourceProvider, modelProjectName,
-				modelProjectActivator);
+	public PCMUncertaintyAwareConfidentialityAnalysis(PCMUncertaintyResourceProvider resourceProvider,
+			Optional<Class<? extends Plugin>> modelProjectActivator, String modelProjectName) {
+		super(resourceProvider, modelProjectName, modelProjectActivator);
 	}
 
 	@Override
@@ -42,34 +43,61 @@ public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfi
 	}
 
 	@Override
-	public boolean initializeAnalysis() {
-		if (!super.initializeAnalysis()) {
-			return false;
-		} else {
-			this.uncertaintySourceManager = new UncertaintySourceManager(
+	public void initializeAnalysis() {
+		super.initializeAnalysis();
+		this.uncertaintySourceManager = new UncertaintySourceManager(
 					this.getResourceProvider().getUncertaintySourceCollection(), UncertaintySourceType.PCM);
-			return true;
+	}
+	
+	@Override
+	public PCMUncertainFlowGraph findFlowGraph() {
+		return new PCMUncertainFlowGraph(this.getResourceProvider());
+	}
+	
+	@Override
+	public DFDUncertainFlowGraph evaluateUncertainDataFlows(FlowGraph flowGraph) {
+		return ((DFDUncertainFlowGraph) flowGraph).createUncertainFlows();
+	}
+
+	/*
+	 * FIXME: This method should no longer be necessary
+	 * @Override public List<UncertainDFDActionSequence> evaluateUncertainDataFlows(
+	 * List<? extends UncertainActionSequence> sequences) { var castedSequences =
+	 * sequences.stream().map(UncertainDFDActionSequence.class::cast).toList();
+	 * 
+	 * for (var sequence : castedSequences) { Map<UncertainState, ? extends
+	 * ActionSequence> mapping = sequence.getScenarioToActionSequenceMapping();
+	 * Map<UncertainState, ActionSequence> evaluatedMapping = new HashMap<>();
+	 * 
+	 * for (UncertainState state : mapping.keySet()) { ActionSequence dfdSequence =
+	 * mapping.get(state); ActionSequence evaluatedDFDSequence =
+	 * DFDCharacteristicsCalculator .fillDataFlowVariables((DFDActionSequence)
+	 * dfdSequence); evaluatedMapping.put(state, evaluatedDFDSequence); }
+	 * 
+	 * if (mapping.size() != evaluatedMapping.size()) { throw new
+	 * IllegalStateException("Evaluated mapping differs in size."); }
+	 * 
+	 * sequence.setScenarioToActionSequenceMapping(evaluatedMapping); }
+	 * 
+	 * return castedSequences; }
+	 */
+
+	@Override
+	public Map<UncertainState, List<? extends AbstractVertex<?>>> queryUncertainDataFlow(
+			FlowGraph flowGraph, Predicate<? super AbstractVertex<?>> condition) {
+		Map<UncertainState, List<? extends AbstractVertex<?>>> result = new HashMap<>();
+		
+		for (AbstractPartialFlowGraph partialFlowGraph : flowGraph.getPartialFlowGraphs()) {
+			if(!(partialFlowGraph instanceof UncertainPartialFlowGraph uncertainPartialFlowGraph)) {
+				logger.error("Found imcompatible partial flow graph in uncertain flow graph");
+				throw new IllegalArgumentException();
+			}
+			List<? extends AbstractVertex<?>> violations = uncertainPartialFlowGraph.getVertices().stream()
+					.filter(condition)
+					.toList();
+			result.put(uncertainPartialFlowGraph.getUncertainState(), violations);
 		}
-	}
 
-	@Override
-	public List<? extends UncertainActionSequence> findAllUncertainSequences() {
-		// TODO Auto-generated method stub
-		return null;
+		return result;
 	}
-
-	@Override
-	public List<? extends UncertainActionSequence> evaluateUncertainDataFlows(
-			List<? extends UncertainActionSequence> sequences) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Map<UncertainState, List<AbstractActionSequenceElement<?>>> queryUncertainDataFlow(
-			UncertainActionSequence sequence, Predicate<? super AbstractActionSequenceElement<?>> condition) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
