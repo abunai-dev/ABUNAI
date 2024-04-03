@@ -5,7 +5,7 @@ import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
+import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.pcm.core.AbstractPCMVertex;
 import org.dataflowanalysis.analysis.pcm.core.seff.SEFFPCMVertex;
@@ -13,7 +13,7 @@ import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
 import org.palladiosimulator.pcm.seff.SetVariableAction;
 
-import dev.abunai.confidentiality.analysis.core.UncertainPartialFlowGraph;
+import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
@@ -34,14 +34,14 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUnc
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource;
 
-public class PCMUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
-	public PCMUncertainPartialFlowGraph(AbstractVertex<?> sink,
-			List<? extends UncertaintySource> relevantUncertaintySources) {
+public class PCMUncertainTransposeFlowGraph extends UncertainTransposeFlowGraph {
+	public PCMUncertainTransposeFlowGraph(AbstractVertex<?> sink,
+										  List<? extends UncertaintySource> relevantUncertaintySources) {
 		super(sink, relevantUncertaintySources);
 	}
 	
-	public PCMUncertainPartialFlowGraph(AbstractVertex<?> sink,
-			List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph(AbstractVertex<?> sink,
+										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
 		super(sink, relevantUncertaintySources, uncertainState);
 	}
 	
@@ -66,15 +66,15 @@ public class PCMUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 	}
 
 	@Override
-	public AbstractPartialFlowGraph evaluate() {
+	public AbstractTransposeFlowGraph evaluate() {
         this.getSink().evaluateDataFlow();
         return this;
 	}
 	
 	@Override
-	public List<PCMUncertainPartialFlowGraph> determineAlternativePartialFlowGraphs() {
+	public List<PCMUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs() {
 		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
-		List<PCMUncertainPartialFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
+		List<PCMUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
 		
 		for (UncertainState state : states) {
 			alternatePartialFlowGraphs.addAll(this.applyUncertaintyScenarios(state));
@@ -82,15 +82,15 @@ public class PCMUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return alternatePartialFlowGraphs;
 	}
 	
-	private List<PCMUncertainPartialFlowGraph> applyUncertaintyScenarios(UncertainState state) {
-		List<PCMUncertainPartialFlowGraph> uncertainPartialFlowGraphs = new ArrayList<>();
+	private List<PCMUncertainTransposeFlowGraph> applyUncertaintyScenarios(UncertainState state) {
+		List<PCMUncertainTransposeFlowGraph> uncertainPartialFlowGraphs = new ArrayList<>();
 		for (UncertaintyScenario uncertaintyScenario : state.getSelectedUncertaintyScenarios()) {
 			uncertainPartialFlowGraphs.add(this.applyUncertaintyScenario(uncertaintyScenario, state));
 		}
 		return uncertainPartialFlowGraphs;
 	}
 
-	private PCMUncertainPartialFlowGraph applyUncertaintyScenario(UncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	private PCMUncertainTransposeFlowGraph applyUncertaintyScenario(UncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		if (uncertaintyScenario instanceof PCMBehaviorUncertaintyScenario castedScenario) {
 			return applyBehaviourUncertaintyScenario(castedScenario, uncertainState);
 		} else if (uncertaintyScenario instanceof PCMComponentUncertaintyScenario castedScenario) {
@@ -111,7 +111,7 @@ public class PCMUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		}
 	}
 
-	private PCMUncertainPartialFlowGraph applyBehaviourUncertaintyScenario(
+	private PCMUncertainTransposeFlowGraph applyBehaviourUncertaintyScenario(
 			PCMBehaviorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		PCMBehaviorUncertaintySource uncertaintySource = (PCMBehaviorUncertaintySource) uncertaintyScenario.eContainer();
 		SetVariableAction target = uncertaintySource.getTarget();
@@ -130,7 +130,7 @@ public class PCMUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return this.deepCopy(mapping, uncertainState);
 	}
 	
-	public PCMUncertainPartialFlowGraph applyComponentUncertaintyScenario(PCMComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyComponentUncertaintyScenario(PCMComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		PCMComponentUncertaintySource uncertaintySource = (PCMComponentUncertaintySource) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
@@ -138,7 +138,7 @@ public class PCMUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return this.deepCopy(null, uncertainState);
 	}
 	
-	public PCMUncertainPartialFlowGraph applyConnectorUncertaintyScenarioInEntryLevelSystemCall(PCMConnectorUncertaintyScenarioInEntryLevelSystemCall uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInEntryLevelSystemCall(PCMConnectorUncertaintyScenarioInEntryLevelSystemCall uncertaintyScenario, UncertainState uncertainState) {
 		PCMConnectorUncertaintySourceInEntryLevelSystemCall uncertaintySource = (PCMConnectorUncertaintySourceInEntryLevelSystemCall) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
@@ -146,7 +146,7 @@ public class PCMUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return this.deepCopy(null, uncertainState);
 	}
 	
-	public PCMUncertainPartialFlowGraph applyConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall uncertaintyScenario, UncertainState uncertainState) {
 		PCMConnectorUncertaintySourceInExternalCall uncertaintySource = (PCMConnectorUncertaintySourceInExternalCall) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
@@ -154,7 +154,7 @@ public class PCMUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return this.deepCopy(null, uncertainState);
 	}
 	
-	public PCMUncertainPartialFlowGraph applyExternalUncertaintyScenarioInResource(PCMExternalUncertaintyScenarioInResource uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInResource(PCMExternalUncertaintyScenarioInResource uncertaintyScenario, UncertainState uncertainState) {
 		PCMExternalUncertaintySourceInResource uncertaintySource = (PCMExternalUncertaintySourceInResource) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
@@ -162,7 +162,7 @@ public class PCMUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return this.deepCopy(null, uncertainState);
 	}
 	
-	public PCMUncertainPartialFlowGraph applyExternalUncertaintyScenarioInUsage(PCMExternalUncertaintyScenarioInUsage uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInUsage(PCMExternalUncertaintyScenarioInUsage uncertaintyScenario, UncertainState uncertainState) {
 		PCMExternalUncertaintySourceInUsage uncertaintySource = (PCMExternalUncertaintySourceInUsage) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
@@ -170,7 +170,7 @@ public class PCMUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return this.deepCopy(null, uncertainState);
 	}
 	
-	public PCMUncertainPartialFlowGraph applyInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		PCMInterfaceUncertaintySource uncertaintySource = (PCMInterfaceUncertaintySource) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
@@ -178,9 +178,9 @@ public class PCMUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return this.deepCopy(null, uncertainState);
 	}
 	
-	public PCMUncertainPartialFlowGraph deepCopy(Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> vertexMapping, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph deepCopy(Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> vertexMapping, UncertainState uncertainState) {
         AbstractPCMVertex<?> pcmSink = (AbstractPCMVertex<?>) this.sink;
         AbstractPCMVertex<?> clonedSink = pcmSink.deepCopy(vertexMapping);
-        return new PCMUncertainPartialFlowGraph(clonedSink, this.getRelevantUncertaintySources(), uncertainState);
+        return new PCMUncertainTransposeFlowGraph(clonedSink, this.getRelevantUncertaintySources(), uncertainState);
     }
 }

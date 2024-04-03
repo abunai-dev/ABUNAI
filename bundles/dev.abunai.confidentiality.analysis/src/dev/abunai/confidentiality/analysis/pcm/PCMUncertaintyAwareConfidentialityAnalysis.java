@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 
 import dev.abunai.confidentiality.analysis.core.*;
 import org.apache.log4j.Logger;
-import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
+import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.core.FlowGraph;
 import org.dataflowanalysis.analysis.pcm.PCMDataFlowConfidentialityAnalysis;
@@ -58,16 +58,16 @@ public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfi
 			FlowGraph flowGraph, Predicate<? super AbstractVertex<?>> condition) {
 		List<UncertainConstraintViolation> result = new ArrayList<>();
 		
-		for (AbstractPartialFlowGraph partialFlowGraph : flowGraph.getPartialFlowGraphs()) {
-			if(!(partialFlowGraph instanceof UncertainPartialFlowGraph uncertainPartialFlowGraph)) {
-				logger.error("Found imcompatible partial flow graph in uncertain flow graph");
+		for (AbstractTransposeFlowGraph transposeFlowGraph : flowGraph.getTransposeFlowGraphs()) {
+			if(!(transposeFlowGraph instanceof UncertainTransposeFlowGraph uncertainTransposeFlowGraph)) {
+				logger.error("Found incompatible transpose flow graph in uncertain flow graph");
 				throw new IllegalArgumentException();
 			}
-			List<? extends AbstractVertex<?>> violations = uncertainPartialFlowGraph.getVertices().stream()
+			List<? extends AbstractVertex<?>> violations = uncertainTransposeFlowGraph.getVertices().stream()
 					.filter(condition)
 					.toList();
 			if (!violations.isEmpty()) {
-				result.add(new UncertainConstraintViolation(uncertainPartialFlowGraph.getUncertainState(), uncertainPartialFlowGraph, violations));
+				result.add(new UncertainConstraintViolation(uncertainTransposeFlowGraph.getUncertainState(), uncertainTransposeFlowGraph, violations));
 			}
 		}
 

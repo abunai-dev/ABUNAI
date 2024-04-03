@@ -2,7 +2,7 @@ package dev.abunai.confidentiality.analysis.dfd;
 
 import java.util.*;
 
-import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
+import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
@@ -19,7 +19,7 @@ import org.dataflowanalysis.dfd.dataflowdiagram.dataflowdiagramFactory;
 
 import com.google.common.collect.Streams;
 
-import dev.abunai.confidentiality.analysis.core.UncertainPartialFlowGraph;
+import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
@@ -36,14 +36,14 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUnc
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 
-public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
-	public DFDUncertainPartialFlowGraph(AbstractVertex<?> sink,
-			List<? extends UncertaintySource> relevantUncertaintySources) {
+public class DFDUncertainTransposeFlowGraph extends UncertainTransposeFlowGraph {
+	public DFDUncertainTransposeFlowGraph(AbstractVertex<?> sink,
+										  List<? extends UncertaintySource> relevantUncertaintySources) {
 		super(sink, relevantUncertaintySources);
 	}
 	
-	public DFDUncertainPartialFlowGraph(AbstractVertex<?> sink,
-			List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
+	public DFDUncertainTransposeFlowGraph(AbstractVertex<?> sink,
+										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
 		super(sink, relevantUncertaintySources, uncertainState);
 	}
 	
@@ -65,17 +65,17 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 	}
 
 	@Override
-	public AbstractPartialFlowGraph evaluate() {
+	public AbstractTransposeFlowGraph evaluate() {
         DFDVertex newSink = ((DFDVertex) sink).clone();
         newSink.unify(new HashSet<>());
         newSink.evaluateDataFlow();
-        return new DFDUncertainPartialFlowGraph(newSink,relevantUncertaintySources, uncertainState.get());
+        return new DFDUncertainTransposeFlowGraph(newSink,relevantUncertaintySources, uncertainState.get());
 	}
 	
 	@Override
-	public List<DFDUncertainPartialFlowGraph> determineAlternativePartialFlowGraphs() {
+	public List<DFDUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs() {
 		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
-		List<DFDUncertainPartialFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
+		List<DFDUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
 		
 		for (UncertainState state : states) {
 			alternatePartialFlowGraphs.addAll(this.applyUncertaintyScenarios(state));
@@ -83,15 +83,15 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return alternatePartialFlowGraphs;
 	}
 	
-	private List<DFDUncertainPartialFlowGraph> applyUncertaintyScenarios(UncertainState state) {
-		List<DFDUncertainPartialFlowGraph> uncertainPartialFlowGraphs = new ArrayList<>();
+	private List<DFDUncertainTransposeFlowGraph> applyUncertaintyScenarios(UncertainState state) {
+		List<DFDUncertainTransposeFlowGraph> uncertainPartialFlowGraphs = new ArrayList<>();
 		for (UncertaintyScenario uncertaintyScenario : state.getSelectedUncertaintyScenarios()) {
 			uncertainPartialFlowGraphs.add(this.applyUncertaintyScenario(uncertaintyScenario, state));
 		}
 		return uncertainPartialFlowGraphs;
 	}
 
-	private DFDUncertainPartialFlowGraph applyUncertaintyScenario(UncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	private DFDUncertainTransposeFlowGraph applyUncertaintyScenario(UncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		if (uncertaintyScenario instanceof DFDExternalUncertaintyScenario castedScenario) {
 			return applyExternalUncertaintyScenario(castedScenario, uncertainState);
 		} else if (uncertaintyScenario instanceof DFDBehaviorUncertaintyScenario castedScenario) {
@@ -108,7 +108,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		}
 	}
 
-	private DFDUncertainPartialFlowGraph applyExternalUncertaintyScenario(DFDExternalUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	private DFDUncertainTransposeFlowGraph applyExternalUncertaintyScenario(DFDExternalUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 
 		DFDExternalUncertaintySource uncertaintySource = (DFDExternalUncertaintySource) uncertaintyScenario
 				.eContainer();
@@ -148,7 +148,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 				mapping.put(it, new DFDVertex(targetCopy, copiedPinDFDVertexMap, new HashMap<>(it.getPinFlowMap())));
 			});
 		
-		DFDUncertainPartialFlowGraph copy = new DFDUncertainPartialFlowGraph(mapping.getOrDefault(this.getSink(), (DFDVertex) this.getSink()), relevantUncertaintySources, uncertainState);
+		DFDUncertainTransposeFlowGraph copy = new DFDUncertainTransposeFlowGraph(mapping.getOrDefault(this.getSink(), (DFDVertex) this.getSink()), relevantUncertaintySources, uncertainState);
 		copy.getVertices().stream()
 			.map(DFDVertex.class::cast)
 			.forEach(it -> it.getPinDFDVertexMap().replaceAll((pin, vertex) -> {
@@ -160,7 +160,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return copy;
 	}
 
-	private DFDUncertainPartialFlowGraph applyBehaviorUncertaintyScenario(DFDBehaviorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	private DFDUncertainTransposeFlowGraph applyBehaviorUncertaintyScenario(DFDBehaviorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		DFDBehaviorUncertaintySource uncertaintySource = (DFDBehaviorUncertaintySource) uncertaintyScenario;
 		Behaviour targetBehaviour = uncertaintySource.getTarget();
 		List<AbstractAssignment> targetedAssignments = uncertaintySource.getTargetAssignments();
@@ -209,7 +209,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 			mapping.put(node, new DFDVertex(targetCopy, copiedPinDFDVertexMap, new HashMap<>(node.getPinFlowMap())));
 		});
 		
-		DFDUncertainPartialFlowGraph copy = new DFDUncertainPartialFlowGraph(mapping.getOrDefault(this.getSink(), (DFDVertex) this.getSink()), relevantUncertaintySources, uncertainState);
+		DFDUncertainTransposeFlowGraph copy = new DFDUncertainTransposeFlowGraph(mapping.getOrDefault(this.getSink(), (DFDVertex) this.getSink()), relevantUncertaintySources, uncertainState);
 		copy.getVertices().stream()
 			.map(DFDVertex.class::cast)
 			.forEach(it -> it.getPinDFDVertexMap().replaceAll((pin, vertex) -> {
@@ -221,7 +221,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return copy;
 	}
 
-	private DFDUncertainPartialFlowGraph applyInterfaceUncertaintyScenario(DFDInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	private DFDUncertainTransposeFlowGraph applyInterfaceUncertaintyScenario(DFDInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		DFDInterfaceUncertaintySource uncertaintySource = (DFDInterfaceUncertaintySource) uncertaintyScenario.eContainer();
 		Flow targetFlow = uncertaintySource.getTargetFlow();
 		Pin targetPin = uncertaintySource.getTargetInPin();
@@ -273,7 +273,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 					mapping.put(it, new DFDVertex(targetCopy, copiedPinDFDVertexMap, modifiedPinFlowMap));
 				});
 
-		DFDUncertainPartialFlowGraph copy = new DFDUncertainPartialFlowGraph(mapping.getOrDefault(this.getSink(), (DFDVertex) this.getSink()), relevantUncertaintySources, uncertainState);
+		DFDUncertainTransposeFlowGraph copy = new DFDUncertainTransposeFlowGraph(mapping.getOrDefault(this.getSink(), (DFDVertex) this.getSink()), relevantUncertaintySources, uncertainState);
 		copy.getVertices().stream()
 				.map(DFDVertex.class::cast)
 				.forEach(it -> it.getPinDFDVertexMap().replaceAll((pin, vertex) -> {
@@ -285,7 +285,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		return copy;
 	}
 
-	private DFDUncertainPartialFlowGraph applyConnectorUncertaintyScenario(DFDConnectorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	private DFDUncertainTransposeFlowGraph applyConnectorUncertaintyScenario(DFDConnectorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		DFDConnectorUncertaintySource uncertaintySource = (DFDConnectorUncertaintySource) uncertaintyScenario.eContainer();
 		Flow targetFlow = uncertaintySource.getTargetFlow();
 		List<AbstractAssignment> targetAssignments = uncertaintySource.getTargetAssignments();
@@ -297,7 +297,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		throw new IllegalStateException("Not yet supported uncertainty type.");
 	}
 
-	private DFDUncertainPartialFlowGraph applyComponentUncertaintyScenario(DFDComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	private DFDUncertainTransposeFlowGraph applyComponentUncertaintyScenario(DFDComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		DFDComponentUncertaintySource uncertaintySource = (DFDComponentUncertaintySource) uncertaintyScenario.eContainer();
 		Node targetedNode = uncertaintySource.getTarget();
 		Node replacingNode = uncertaintyScenario.getTarget();
@@ -314,7 +314,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 				mapping.put(it, new DFDVertex(replacingNode, copiedPinDFDVertexMap, new HashMap<>(it.getPinFlowMap())));
 			});
 		
-		DFDUncertainPartialFlowGraph copy = new DFDUncertainPartialFlowGraph(mapping.getOrDefault(this.getSink(), (DFDVertex) this.getSink()), relevantUncertaintySources, uncertainState);
+		DFDUncertainTransposeFlowGraph copy = new DFDUncertainTransposeFlowGraph(mapping.getOrDefault(this.getSink(), (DFDVertex) this.getSink()), relevantUncertaintySources, uncertainState);
 		copy.getVertices().stream()
 			.map(DFDVertex.class::cast)
 			.forEach(it -> it.getPinDFDVertexMap().replaceAll((pin, vertex) -> {

@@ -3,14 +3,14 @@ package dev.abunai.confidentiality.analysis.tests.dfd;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
+import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.core.DataFlowVariable;
 import org.dataflowanalysis.analysis.dfd.core.DFDCharacteristicValue;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.junit.jupiter.api.Test;
 
-import dev.abunai.confidentiality.analysis.core.UncertainPartialFlowGraph;
+import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraph;
@@ -41,10 +41,10 @@ public class OnlineShopTest extends DFDTestBase {
 		sourceCollection.forEach(source -> System.out.println(source.getClass().getSimpleName()));
 		
 		DFDUncertainFlowGraph flowGraph = (DFDUncertainFlowGraph) analysis.findFlowGraph();
-		System.out.println("Flow graph size (without uncertainties): " + flowGraph.getPartialFlowGraphs().size());
+		System.out.println("Flow graph size (without uncertainties): " + flowGraph.getTransposeFlowGraphs().size());
 		
 		DFDUncertainFlowGraph uncertainFlowGraph = (DFDUncertainFlowGraph) analysis.evaluateUncertainDataFlows(flowGraph);
-		System.out.println("Flow graph size (with uncertainties): " + uncertainFlowGraph.getPartialFlowGraphs().size());
+		System.out.println("Flow graph size (with uncertainties): " + uncertainFlowGraph.getTransposeFlowGraphs().size());
 
 		System.out.println(UncertaintyUtils.getUncertaintySourceName(sourceCollection.get(0)));
 
@@ -53,8 +53,8 @@ public class OnlineShopTest extends DFDTestBase {
 		System.out.println(UncertainState.calculateNumberOfAllUncertainStates(sourceCollection));
 		allStates.forEach(it -> System.out.println(it));
 
-		List<? extends UncertainPartialFlowGraph> partialFlowGraphs = uncertainFlowGraph.getPartialFlowGraphs().stream()
-				.map(UncertainPartialFlowGraph.class::cast)
+		List<? extends UncertainTransposeFlowGraph> partialFlowGraphs = uncertainFlowGraph.getTransposeFlowGraphs().stream()
+				.map(UncertainTransposeFlowGraph.class::cast)
 				.toList();
 
 		var requiredStateCount = 0;
@@ -69,23 +69,23 @@ public class OnlineShopTest extends DFDTestBase {
 		System.out.println("-> Actually required states: %d".formatted(requiredStateCount));
 
 		System.out.println("All action sequences length: %s"
-				.formatted(uncertainFlowGraph.getPartialFlowGraphs().stream().map(it -> it.getVertices().size()).toList()));
+				.formatted(uncertainFlowGraph.getTransposeFlowGraphs().stream().map(it -> it.getVertices().size()).toList()));
 
 		System.out.println("Impact set: %s"
-				.formatted(uncertainFlowGraph.getPartialFlowGraphs().stream()
-						.map(UncertainPartialFlowGraph.class::cast)
+				.formatted(uncertainFlowGraph.getTransposeFlowGraphs().stream()
+						.map(UncertainTransposeFlowGraph.class::cast)
 						.map(it -> it.getImpactSet(analysis.getResourceProvider()).size()).toList()));
 
 		uncertainFlowGraph.evaluate();
 		System.out.println("Flows: --------------");
 
-		for (AbstractPartialFlowGraph flow : uncertainFlowGraph.getPartialFlowGraphs()) {
-			if (!(flow instanceof UncertainPartialFlowGraph uncertainPartialFlowGraph)) {
+		for (AbstractTransposeFlowGraph flow : uncertainFlowGraph.getTransposeFlowGraphs()) {
+			if (!(flow instanceof UncertainTransposeFlowGraph uncertainTransposeFlowGraph)) {
 				System.out.println("Did not find uncertain partial flow graph");
 				continue;
 			}
 			
-			var stateDesc = uncertainPartialFlowGraph.getUncertainState().toString();
+			var stateDesc = uncertainTransposeFlowGraph.getUncertainState().toString();
 			var flowDesc = flow.getVertices().stream()
 					.map(DFDVertex.class::cast)
 					.map(it -> it.getName() + ": "

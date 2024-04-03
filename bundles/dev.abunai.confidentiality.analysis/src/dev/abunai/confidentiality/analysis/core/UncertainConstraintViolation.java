@@ -6,10 +6,10 @@ import org.dataflowanalysis.analysis.core.AbstractVertex;
 
 public class UncertainConstraintViolation {
 	private final UncertainState uncertainState;
-	private final UncertainPartialFlowGraph partialFlowGraph;
+	private final UncertainTransposeFlowGraph partialFlowGraph;
 	private final List<? extends AbstractVertex<?>> violations;
 
-    public UncertainConstraintViolation(UncertainState uncertainState, UncertainPartialFlowGraph partialFlowGraph, List<? extends AbstractVertex<?>> violations) {
+    public UncertainConstraintViolation(UncertainState uncertainState, UncertainTransposeFlowGraph partialFlowGraph, List<? extends AbstractVertex<?>> violations) {
         this.uncertainState = uncertainState;
         this.partialFlowGraph = partialFlowGraph;
         this.violations = violations;
@@ -19,7 +19,7 @@ public class UncertainConstraintViolation {
         return uncertainState;
     }
 
-    public UncertainPartialFlowGraph getPartialFlowGraph() {
+    public UncertainTransposeFlowGraph getPartialFlowGraph() {
         return partialFlowGraph;
     }
 

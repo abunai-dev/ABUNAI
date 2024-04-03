@@ -11,7 +11,7 @@ public abstract class UncertainFlowGraph extends FlowGraph {
 		super(resourceProvider);
 	}
 	
-	public UncertainFlowGraph(List<? extends UncertainPartialFlowGraph> partialFlowGraphs, ResourceProvider resourceProvider) {
+	public UncertainFlowGraph(List<? extends UncertainTransposeFlowGraph> partialFlowGraphs, ResourceProvider resourceProvider) {
 		super(partialFlowGraphs, resourceProvider);
 	}
 	

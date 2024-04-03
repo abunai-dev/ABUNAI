@@ -3,10 +3,10 @@ package dev.abunai.confidentiality.analysis.pcm;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
+import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.pcm.core.PCMFlowGraph;
-import org.dataflowanalysis.analysis.pcm.core.PCMPartialFlowGraph;
-import org.dataflowanalysis.analysis.pcm.core.finder.PCMPartialFlowGraphFinder;
+import org.dataflowanalysis.analysis.pcm.core.PCMTransposeFlowGraph;
+import org.dataflowanalysis.analysis.pcm.core.finder.PCMTransposeFlowGraphFinder;
 import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
 
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
@@ -24,7 +24,7 @@ public class PCMUncertainFlowGraph extends PCMFlowGraph {
 		}
 	}
 	
-	public PCMUncertainFlowGraph(List<PCMUncertainPartialFlowGraph> partialFlowGraphs, PCMResourceProvider resourceProvider) {
+	public PCMUncertainFlowGraph(List<PCMUncertainTransposeFlowGraph> partialFlowGraphs, PCMResourceProvider resourceProvider) {
 		super(partialFlowGraphs, resourceProvider);
 		if (!(this.resourceProvider instanceof PCMResourceProvider pcmResourceProvider)) {
             logger.error("Cannot find partial flow graphs for non-pcm resource provider");
@@ -34,28 +34,28 @@ public class PCMUncertainFlowGraph extends PCMFlowGraph {
 
 	
 	public PCMUncertainFlowGraph createUncertainFlows() {
-		List<PCMUncertainPartialFlowGraph> uncertainPartialFlows = this.getPartialFlowGraphs().stream()
-				.map(PCMUncertainPartialFlowGraph.class::cast)
+		List<PCMUncertainTransposeFlowGraph> uncertainPartialFlows = this.getTransposeFlowGraphs().stream()
+				.map(PCMUncertainTransposeFlowGraph.class::cast)
 				.flatMap(it -> it.determineAlternativePartialFlowGraphs().stream())
 				.toList();
 		return new PCMUncertainFlowGraph(uncertainPartialFlows, (PCMUncertaintyResourceProvider) resourceProvider);
 	}
 
 	@Override
-	public List<? extends AbstractPartialFlowGraph> findPartialFlowGraphs() {
+	public List<? extends AbstractTransposeFlowGraph> findTransposeFlowGraphs() {
 		if (!(this.resourceProvider instanceof PCMUncertaintyResourceProvider pcmResourceProvider)) {
             logger.error("Cannot find partial flow graphs for non-dfd resource provider");
             throw new IllegalArgumentException();
 		}
 		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(pcmResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.PCM);
 		
-		return new PCMPartialFlowGraphFinder(pcmResourceProvider).findPartialFlowGraphs().stream()
-				.map(PCMPartialFlowGraph.class::cast)
-				.map(it -> new PCMUncertainPartialFlowGraph(it.getSink(), this.determineRelevantUncertaintySource(it, uncertaintySourceManager, pcmResourceProvider)))
+		return new PCMTransposeFlowGraphFinder(pcmResourceProvider).findTransposeFlowGraphs().stream()
+				.map(PCMTransposeFlowGraph.class::cast)
+				.map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.determineRelevantUncertaintySource(it, uncertaintySourceManager, pcmResourceProvider)))
 				.toList();
 	}
 
-	public List<? extends PCMUncertaintySource> determineRelevantUncertaintySource(PCMPartialFlowGraph partialFlowGraph, UncertaintySourceManager uncertaintySourceManager, PCMResourceProvider resourceProvider) {
+	public List<? extends PCMUncertaintySource> determineRelevantUncertaintySource(PCMTransposeFlowGraph partialFlowGraph, UncertaintySourceManager uncertaintySourceManager, PCMResourceProvider resourceProvider) {
 		PCMQueryHelper pcmQueryHelper = new PCMQueryHelper(partialFlowGraph.getVertices(), resourceProvider);
 		
 		return uncertaintySourceManager.getUncertaintySources().stream()

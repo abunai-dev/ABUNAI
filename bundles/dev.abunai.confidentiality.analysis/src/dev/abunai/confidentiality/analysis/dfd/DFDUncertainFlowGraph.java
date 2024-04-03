@@ -3,10 +3,10 @@ package dev.abunai.confidentiality.analysis.dfd;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
+import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.dfd.core.DFDFlowGraph;
-import org.dataflowanalysis.analysis.dfd.core.DFDPartialFlowGraph;
-import org.dataflowanalysis.analysis.dfd.core.DFDPartialFlowGraphFinder;
+import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraph;
+import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraphFinder;
 import org.dataflowanalysis.analysis.dfd.resource.DFDResourceProvider;
 
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
@@ -24,7 +24,7 @@ public class DFDUncertainFlowGraph extends DFDFlowGraph {
 		}
 	}
 	
-	public DFDUncertainFlowGraph(List<DFDUncertainPartialFlowGraph> partialFlowGraphs, DFDResourceProvider resourceProvider) {
+	public DFDUncertainFlowGraph(List<DFDUncertainTransposeFlowGraph> partialFlowGraphs, DFDResourceProvider resourceProvider) {
 		super(resourceProvider, partialFlowGraphs);
 		if (!(this.resourceProvider instanceof DFDUncertaintyResourceProvider dfdResourceProvider)) {
             logger.error("Cannot find partial flow graphs for non-dfd resource provider");
@@ -34,28 +34,28 @@ public class DFDUncertainFlowGraph extends DFDFlowGraph {
 
 	
 	public DFDUncertainFlowGraph createUncertainFlows() {
-		List<DFDUncertainPartialFlowGraph> uncertainPartialFlows = this.getPartialFlowGraphs().stream()
-				.map(DFDUncertainPartialFlowGraph.class::cast)
+		List<DFDUncertainTransposeFlowGraph> uncertainPartialFlows = this.getTransposeFlowGraphs().stream()
+				.map(DFDUncertainTransposeFlowGraph.class::cast)
 				.flatMap(it -> it.determineAlternativePartialFlowGraphs().stream())
 				.toList();
 		return new DFDUncertainFlowGraph(uncertainPartialFlows, (DFDUncertaintyResourceProvider) resourceProvider);
 	}
 
 	@Override
-	public List<? extends AbstractPartialFlowGraph> findPartialFlowGraphs() {
+	public List<? extends AbstractTransposeFlowGraph> findTransposeFlowGraphs() {
 		if (!(this.resourceProvider instanceof DFDUncertaintyResourceProvider dfdResourceProvider)) {
             logger.error("Cannot find partial flow graphs for non-dfd resource provider");
             throw new IllegalArgumentException();
 		}
 		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(dfdResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.DFD);
 		
-		return new DFDPartialFlowGraphFinder(dfdResourceProvider).findPartialFlowGraphs().stream()
-				.map(DFDPartialFlowGraph.class::cast)
-				.map(it -> new DFDUncertainPartialFlowGraph(it.getSink(), this.determineRelevantUncertaintySource(it, uncertaintySourceManager)))
+		return new DFDTransposeFlowGraphFinder(dfdResourceProvider).findTransposeFlowGraphs().stream()
+				.map(DFDTransposeFlowGraph.class::cast)
+				.map(it -> new DFDUncertainTransposeFlowGraph(it.getSink(), this.determineRelevantUncertaintySource(it, uncertaintySourceManager)))
 				.toList();
 	}
 
-	public List<? extends DFDUncertaintySource> determineRelevantUncertaintySource(DFDPartialFlowGraph partialFlowGraph, UncertaintySourceManager uncertaintySourceManager) {
+	public List<? extends DFDUncertaintySource> determineRelevantUncertaintySource(DFDTransposeFlowGraph partialFlowGraph, UncertaintySourceManager uncertaintySourceManager) {
 		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(partialFlowGraph.getVertices());
 		
 		return uncertaintySourceManager.getUncertaintySources().stream()
