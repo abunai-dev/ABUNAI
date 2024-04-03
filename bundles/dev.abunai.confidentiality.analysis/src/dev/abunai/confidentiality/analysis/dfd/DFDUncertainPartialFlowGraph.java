@@ -161,7 +161,6 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 	}
 
 	private DFDUncertainPartialFlowGraph applyBehaviorUncertaintyScenario(DFDBehaviorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
-		// TODO Auto-generated method stub
 		DFDBehaviorUncertaintySource uncertaintySource = (DFDBehaviorUncertaintySource) uncertaintyScenario;
 		Behaviour targetBehaviour = uncertaintySource.getTarget();
 		List<AbstractAssignment> targetedAssignments = uncertaintySource.getTargetAssignments();
@@ -221,7 +220,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		// return this.copy(mapping);
 		return copy;
 	}
-	
+
 	private DFDUncertainPartialFlowGraph applyInterfaceUncertaintyScenario(DFDInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		DFDInterfaceUncertaintySource uncertaintySource = (DFDInterfaceUncertaintySource) uncertaintyScenario.eContainer();
 		Flow targetFlow = uncertaintySource.getTargetFlow();

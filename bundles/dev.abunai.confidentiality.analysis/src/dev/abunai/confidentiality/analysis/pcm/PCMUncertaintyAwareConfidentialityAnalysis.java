@@ -59,29 +59,6 @@ public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfi
 		return ((DFDUncertainFlowGraph) flowGraph).createUncertainFlows();
 	}
 
-	/*
-	 * FIXME: This method should no longer be necessary
-	 * @Override public List<UncertainDFDActionSequence> evaluateUncertainDataFlows(
-	 * List<? extends UncertainActionSequence> sequences) { var castedSequences =
-	 * sequences.stream().map(UncertainDFDActionSequence.class::cast).toList();
-	 * 
-	 * for (var sequence : castedSequences) { Map<UncertainState, ? extends
-	 * ActionSequence> mapping = sequence.getScenarioToActionSequenceMapping();
-	 * Map<UncertainState, ActionSequence> evaluatedMapping = new HashMap<>();
-	 * 
-	 * for (UncertainState state : mapping.keySet()) { ActionSequence dfdSequence =
-	 * mapping.get(state); ActionSequence evaluatedDFDSequence =
-	 * DFDCharacteristicsCalculator .fillDataFlowVariables((DFDActionSequence)
-	 * dfdSequence); evaluatedMapping.put(state, evaluatedDFDSequence); }
-	 * 
-	 * if (mapping.size() != evaluatedMapping.size()) { throw new
-	 * IllegalStateException("Evaluated mapping differs in size."); }
-	 * 
-	 * sequence.setScenarioToActionSequenceMapping(evaluatedMapping); }
-	 * 
-	 * return castedSequences; }
-	 */
-
 	@Override
 	public Map<UncertainState, List<? extends AbstractVertex<?>>> queryUncertainDataFlow(
 			FlowGraph flowGraph, Predicate<? super AbstractVertex<?>> condition) {
