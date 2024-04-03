@@ -1,11 +1,6 @@
 package dev.abunai.confidentiality.analysis.dfd;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.dataflowanalysis.analysis.core.AbstractPartialFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
@@ -226,7 +221,7 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		// return this.copy(mapping);
 		return copy;
 	}
-
+	
 	private DFDUncertainPartialFlowGraph applyInterfaceUncertaintyScenario(DFDInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
 		DFDInterfaceUncertaintySource uncertaintySource = (DFDInterfaceUncertaintySource) uncertaintyScenario.eContainer();
 		Flow targetFlow = uncertaintySource.getTargetFlow();
@@ -235,15 +230,60 @@ public class DFDUncertainPartialFlowGraph extends UncertainPartialFlowGraph {
 		
 		Flow replacingFlow = uncertaintyScenario.getTargetFlow();
 		Pin replacingPin = uncertaintyScenario.getTargetInPin();
-		
-		DFDVertex targetVertex = this.getVertices().stream()
+
+		if (!targetFlow.getSourceNode().equals(replacingFlow.getSourceNode())) {
+			throw new IllegalArgumentException("Flows of Interface Uncertainty have different source nodes!");
+		}
+		if (!replacingFlow.getDestinationPin().equals(replacingPin)) {
+			throw new IllegalArgumentException("Destination pins differ between in Interface Uncertainty");
+		}
+
+		Node targetCopy;
+		if (targetNode instanceof External) {
+			targetCopy = dataflowdiagramFactory.eINSTANCE.createExternal();
+		} else if (targetNode instanceof Process) {
+			targetCopy = dataflowdiagramFactory.eINSTANCE.createProcess();
+		} else if (targetNode instanceof Store) {
+			targetCopy = dataflowdiagramFactory.eINSTANCE.createStore();
+		} else {
+			throw new IllegalArgumentException("Unexpected DFD node type.");
+		}
+
+		targetCopy.setEntityName(targetNode.getEntityName());
+		Behaviour modifiedBehavior = targetNode.getBehaviour();
+		modifiedBehavior.getInPin().remove(targetPin);
+		modifiedBehavior.getInPin().add(replacingPin);
+		targetCopy.setBehaviour(modifiedBehavior);
+
+		Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
+
+		this.getVertices().stream()
 				.filter(DFDVertex.class::isInstance)
 				.map(DFDVertex.class::cast)
 				.filter(it -> it.getReferencedElement().equals(targetNode))
-				.filter(it -> targetFlow.getDestinationNode().equals(it.getReferencedElement()))
-				.findAny().orElseThrow();
-		// TODO Auto-generated method stub
-		throw new IllegalStateException("Not yet supported uncertainty type.");
+				.forEach(it -> {
+					Map<Pin, DFDVertex> copiedPinDFDVertexMap = new HashMap<>();
+					Map<Pin, DFDVertex> modifiedVertexMap = new HashMap<>(it.getPinDFDVertexMap());
+					DFDVertex targetVertex = modifiedVertexMap.remove(targetPin);
+					modifiedVertexMap.put(replacingPin, targetVertex);
+					modifiedVertexMap.keySet().forEach(key -> copiedPinDFDVertexMap.put(key, modifiedVertexMap.get(key).clone()));
+
+					Map<Pin, Flow> modifiedPinFlowMap = new HashMap<>(it.getPinFlowMap());
+					modifiedPinFlowMap.remove(targetPin);
+					modifiedPinFlowMap.put(replacingPin, replacingFlow);
+					mapping.put(it, new DFDVertex(targetCopy, copiedPinDFDVertexMap, modifiedPinFlowMap));
+				});
+
+		DFDUncertainPartialFlowGraph copy = new DFDUncertainPartialFlowGraph(mapping.getOrDefault(this.getSink(), (DFDVertex) this.getSink()), relevantUncertaintySources, uncertainState);
+		copy.getVertices().stream()
+				.map(DFDVertex.class::cast)
+				.forEach(it -> it.getPinDFDVertexMap().replaceAll((pin, vertex) -> {
+					return mapping.getOrDefault(vertex, vertex);
+				}));
+
+		// FIXME: Replace with once issue with pcm/dfd parallel is fixed
+		// return this.copy(mapping);
+		return copy;
 	}
 
 	private DFDUncertainPartialFlowGraph applyConnectorUncertaintyScenario(DFDConnectorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {

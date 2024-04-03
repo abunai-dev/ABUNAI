@@ -55,3 +55,6 @@ xtend-gen/
 
 # JDT
 *.jdt
+
+# Intellij IDEA
+*.iml
