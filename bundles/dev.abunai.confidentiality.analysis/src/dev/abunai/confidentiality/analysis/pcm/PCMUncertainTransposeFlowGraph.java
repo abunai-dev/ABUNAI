@@ -56,7 +56,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		this.uncertainState = Optional.of(uncertainState);
 		this.relevantUncertaintySources = relevantUncertaintySources;
 	}
-	
+
 	@Override
 	public List<? extends AbstractPCMVertex<?>> getImpactSet(ResourceProvider resourceProvider) {
 		if (!(resourceProvider instanceof PCMResourceProvider pcmResourceProvider)) {

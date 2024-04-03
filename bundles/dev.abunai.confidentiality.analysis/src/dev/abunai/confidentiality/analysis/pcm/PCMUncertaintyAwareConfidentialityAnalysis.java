@@ -7,11 +7,12 @@ import dev.abunai.confidentiality.analysis.core.*;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
+import org.dataflowanalysis.analysis.core.FlowGraphCollection;
 import org.dataflowanalysis.analysis.pcm.PCMDataFlowConfidentialityAnalysis;
 import org.eclipse.core.runtime.Plugin;
 
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
-import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraph;
+import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraphCollection;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
 public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfidentialityAnalysis
@@ -43,18 +44,18 @@ public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfi
 	}
 	
 	@Override
-	public PCMUncertainFlowGraph findFlowGraph() {
-		return new PCMUncertainFlowGraph(this.getResourceProvider());
+	public PCMUncertainFlowGraphCollection findFlowGraph() {
+		return new PCMUncertainFlowGraphCollection(this.getResourceProvider());
 	}
 	
 	@Override
-	public DFDUncertainFlowGraph evaluateUncertainDataFlows(FlowGraph flowGraph) {
-		return ((DFDUncertainFlowGraph) flowGraph).createUncertainFlows();
+	public DFDUncertainFlowGraphCollection evaluateUncertainDataFlows(FlowGraphCollection flowGraph) {
+		return ((DFDUncertainFlowGraphCollection) flowGraph).createUncertainFlows();
 	}
 
 	@Override
 	public List<UncertainConstraintViolation> queryUncertainDataFlow(
-			FlowGraph flowGraph, Predicate<? super AbstractVertex<?>> condition) {
+			FlowGraphCollection flowGraph, Predicate<? super AbstractVertex<?>> condition) {
 		List<UncertainConstraintViolation> result = new ArrayList<>();
 		
 		for (AbstractTransposeFlowGraph transposeFlowGraph : flowGraph.getTransposeFlowGraphs()) {
