@@ -81,26 +81,27 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 	}
 	
 	@Override
-	public List<DFDUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs() {
+	public List<DFDUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs(List<? extends AbstractTransposeFlowGraph> defaultTransposeFlowGraphs) {
 		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
 		List<DFDUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
 		
 		for (UncertainState state : states) {
-			alternatePartialFlowGraphs.add(this.applyUncertaintyScenarios(state));
+			alternatePartialFlowGraphs.add(this.applyUncertaintyScenarios(state, defaultTransposeFlowGraphs));
 		}
 		return alternatePartialFlowGraphs;
 	}
 	
-	private DFDUncertainTransposeFlowGraph applyUncertaintyScenarios(UncertainState state) {
+	private DFDUncertainTransposeFlowGraph applyUncertaintyScenarios(UncertainState state, List<? extends AbstractTransposeFlowGraph> defaultTransposeFlowGraphs) {
+		// TODO: List of current transpose flow graphs needs to be updated
 		DFDUncertainTransposeFlowGraph currentTransposeFlowGraph = this;
 		for (UncertaintyScenario uncertaintyScenario : state.getSelectedUncertaintyScenarios()) {
-			currentTransposeFlowGraph = this.applyUncertaintyScenario(uncertaintyScenario, state, currentTransposeFlowGraph);
+			currentTransposeFlowGraph = this.applyUncertaintyScenario(uncertaintyScenario, state, currentTransposeFlowGraph, defaultTransposeFlowGraphs);
 		}
 		return currentTransposeFlowGraph;
 	}
 
 	private DFDUncertainTransposeFlowGraph applyUncertaintyScenario(UncertaintyScenario uncertaintyScenario,
-																	UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
+																	UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph, List<? extends AbstractTransposeFlowGraph> defaultTransposeGraphs) {
 		if (uncertaintyScenario instanceof DFDExternalUncertaintyScenario castedScenario) {
 			return applyExternalUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph);
 		} else if (uncertaintyScenario instanceof DFDBehaviorUncertaintyScenario castedScenario) {
@@ -108,7 +109,7 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		} else if (uncertaintyScenario instanceof DFDInterfaceUncertaintyScenario castedScenario) {
 			return applyInterfaceUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph);
 		} else if (uncertaintyScenario instanceof DFDConnectorUncertaintyScenario castedScenario) {
-			return applyConnectorUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph);
+			return applyConnectorUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph, defaultTransposeGraphs);
 		} else if (uncertaintyScenario instanceof DFDComponentUncertaintyScenario castedScenario) {
 			return applyComponentUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph);
 		} else {
@@ -295,11 +296,9 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		return copy;
 	}
 
-	private DFDUncertainTransposeFlowGraph applyConnectorUncertaintyScenario(DFDConnectorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
+	private DFDUncertainTransposeFlowGraph applyConnectorUncertaintyScenario(DFDConnectorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph, List<? extends AbstractTransposeFlowGraph> defaultTransposeFlowGraphs) {
 		DFDConnectorUncertaintySource uncertaintySource = (DFDConnectorUncertaintySource) uncertaintyScenario.eContainer();
 		Flow targetFlow = uncertaintySource.getTargetFlow();
-		Node targetNode = targetFlow.getSourceNode();
-		Pin targetPin = targetFlow.getSourcePin();
 		List<AbstractAssignment> targetAssignments = uncertaintySource.getTargetAssignments();
 		
 		Flow replacingFlow = uncertaintyScenario.getTargetFlow();
@@ -308,6 +307,42 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		if (!targetFlow.getSourceNode().equals(replacingFlow.getSourceNode())) {
 			throw new IllegalArgumentException("Source of Flows in Connector Uncertainty are different");
 		}
+		/**
+		 * Theory time!!!
+		 * Every node downstream from the changed flow is no longer able to evaluate
+		 * -> Remove every node downstream starting at the destination of the target flow
+		 * -> Nodes removed unnecessarily will be added back in step three
+		 * Nodes in side branches is able to evaluate into a separate transpose flow graph
+		 * -> Follow node starting at the vertex of the source of the target flow upward
+		 * -> Each path to one node above is a tfg
+		 * -> Do these need to be evaluated? The violation will be found in the default case as well
+		 * The new node may cause multiple transpose flow graphs
+		 * -> The destination of the replacing flow and all down stream need to be used as a result
+		 * -> Take all flows with the destination node contained and search for the targeted pin
+		 */
+
+		// DFDVertex in current transpose flow graph that matches the target
+		DFDVertex targetNode = currentTransposeFlowGraph.getVertices().stream()
+				.filter(DFDVertex.class::isInstance)
+				.map(DFDVertex.class::cast)
+				.filter(it -> it.getReferencedElement().equals(targetFlow.getSourceNode()))
+				.findAny().orElseThrow();
+
+		// All default flow graphs that match the destination of the replacing flow
+		List<DFDUncertainTransposeFlowGraph> matchingFlowGraphs = defaultTransposeFlowGraphs.stream()
+				.filter(DFDUncertainTransposeFlowGraph.class::isInstance)
+				.map(DFDUncertainTransposeFlowGraph.class::cast)
+				.filter(it -> it.getVertices().stream()
+						.filter(DFDVertex.class::isInstance)
+						.map(DFDVertex.class::cast)
+						.anyMatch(vertex -> vertex.getReferencedElement().equals(replacingFlow.getDestinationNode())))
+				.toList();
+
+		// var flowGraphToTarget = List.of(); // Determine tfg branch to target
+
+		// var tfgsInSub = flowGraphToTarget + matchingFlowGraphs; // Determine choices downstream
+
+		// var tfgsInSide = current - flowGraphToTarget - downstream // Determine side tfg
 		
 		// TODO Auto-generated method stub
 		throw new IllegalStateException("Not yet supported uncertainty type.");

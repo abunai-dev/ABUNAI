@@ -3,6 +3,7 @@ package dev.abunai.confidentiality.analysis.dfd;
 import java.util.List;
 
 import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
+import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.dfd.core.DFDFlowGraph;
@@ -25,7 +26,7 @@ public class DFDUncertainFlowGraph extends DFDFlowGraph implements UncertainFlow
 		}
 	}
 	
-	public DFDUncertainFlowGraph(List<DFDUncertainTransposeFlowGraph> partialFlowGraphs, DFDResourceProvider resourceProvider) {
+	public DFDUncertainFlowGraph(List<? extends AbstractTransposeFlowGraph> partialFlowGraphs, DFDResourceProvider resourceProvider) {
 		super(resourceProvider, partialFlowGraphs);
 		if (!(this.resourceProvider instanceof DFDUncertaintyResourceProvider dfdResourceProvider)) {
             logger.error("Cannot find partial flow graphs for non-dfd resource provider");
@@ -37,7 +38,7 @@ public class DFDUncertainFlowGraph extends DFDFlowGraph implements UncertainFlow
 	public DFDUncertainFlowGraph createUncertainFlows() {
 		List<DFDUncertainTransposeFlowGraph> uncertainPartialFlows = this.getTransposeFlowGraphs().stream()
 				.map(DFDUncertainTransposeFlowGraph.class::cast)
-				.flatMap(it -> it.determineAlternativePartialFlowGraphs().stream())
+				.flatMap(it -> it.determineAlternativePartialFlowGraphs(this.getTransposeFlowGraphs()).stream())
 				.toList();
 		return new DFDUncertainFlowGraph(uncertainPartialFlows, (DFDUncertaintyResourceProvider) resourceProvider);
 	}

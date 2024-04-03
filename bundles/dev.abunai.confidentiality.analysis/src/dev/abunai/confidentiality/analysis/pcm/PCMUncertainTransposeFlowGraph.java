@@ -2,6 +2,7 @@ package dev.abunai.confidentiality.analysis.pcm;
 
 import java.util.*;
 
+import dev.abunai.confidentiality.analysis.dfd.DFDUncertainTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.pcm.core.AbstractPCMVertex;
@@ -9,6 +10,11 @@ import org.dataflowanalysis.analysis.pcm.core.PCMTransposeFlowGraph;
 import org.dataflowanalysis.analysis.pcm.core.seff.SEFFPCMVertex;
 import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
+import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.ResourceAssignee;
+import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.repository.OperationSignature;
+import org.palladiosimulator.pcm.seff.ExternalCallAction;
 import org.palladiosimulator.pcm.seff.SetVariableAction;
 
 import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
@@ -31,6 +37,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUnce
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource;
+import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
 
 public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implements UncertainTransposeFlowGraph {
 	private final Optional<UncertainState> uncertainState;
@@ -71,7 +78,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 	}
 
     @Override
-	public List<PCMUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs() {
+	public List<PCMUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs(List<? extends AbstractTransposeFlowGraph> defaultTransposeFlowGraphs) {
 		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
 		List<PCMUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
 		
@@ -131,48 +138,48 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 	
 	public PCMUncertainTransposeFlowGraph applyComponentUncertaintyScenario(PCMComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMComponentUncertaintySource uncertaintySource = (PCMComponentUncertaintySource) uncertaintyScenario.eContainer();
-		var target = uncertaintySource.getTarget();
-		var replacement = uncertaintyScenario.getTarget();
+		AssemblyContext target = uncertaintySource.getTarget();
+		AssemblyContext replacement = uncertaintyScenario.getTarget();
 		
 		return this.deepCopy(null, uncertainState);
 	}
 	
 	public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInEntryLevelSystemCall(PCMConnectorUncertaintyScenarioInEntryLevelSystemCall uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMConnectorUncertaintySourceInEntryLevelSystemCall uncertaintySource = (PCMConnectorUncertaintySourceInEntryLevelSystemCall) uncertaintyScenario.eContainer();
-		var target = uncertaintySource.getTarget();
-		var replacement = uncertaintyScenario.getTarget();
+		EntryLevelSystemCall target = uncertaintySource.getTarget();
+		EntryLevelSystemCall replacement = uncertaintyScenario.getTarget();
 		
 		return this.deepCopy(null, uncertainState);
 	}
 	
 	public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMConnectorUncertaintySourceInExternalCall uncertaintySource = (PCMConnectorUncertaintySourceInExternalCall) uncertaintyScenario.eContainer();
-		var target = uncertaintySource.getTarget();
-		var replacement = uncertaintyScenario.getTarget();
+		ExternalCallAction target = uncertaintySource.getTarget();
+		ExternalCallAction replacement = uncertaintyScenario.getTarget();
 		
 		return this.deepCopy(null, uncertainState);
 	}
 	
 	public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInResource(PCMExternalUncertaintyScenarioInResource uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMExternalUncertaintySourceInResource uncertaintySource = (PCMExternalUncertaintySourceInResource) uncertaintyScenario.eContainer();
-		var target = uncertaintySource.getTarget();
-		var replacement = uncertaintyScenario.getTarget();
+		ResourceAssignee target = uncertaintySource.getTarget();
+		ResourceAssignee replacement = uncertaintyScenario.getTarget();
 		
 		return this.deepCopy(null, uncertainState);
 	}
 	
 	public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInUsage(PCMExternalUncertaintyScenarioInUsage uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMExternalUncertaintySourceInUsage uncertaintySource = (PCMExternalUncertaintySourceInUsage) uncertaintyScenario.eContainer();
-		var target = uncertaintySource.getTarget();
-		var replacement = uncertaintyScenario.getTarget();
+		UsageAssignee target = uncertaintySource.getTarget();
+		UsageAssignee replacement = uncertaintyScenario.getTarget();
 		
 		return this.deepCopy(null, uncertainState);
 	}
 	
 	public PCMUncertainTransposeFlowGraph applyInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMInterfaceUncertaintySource uncertaintySource = (PCMInterfaceUncertaintySource) uncertaintyScenario.eContainer();
-		var target = uncertaintySource.getTarget();
-		var replacement = uncertaintyScenario.getTarget();
+		OperationSignature target = uncertaintySource.getTarget();
+		OperationSignature replacement = uncertaintyScenario.getTarget();
 		
 		return this.deepCopy(null, uncertainState);
 	}
