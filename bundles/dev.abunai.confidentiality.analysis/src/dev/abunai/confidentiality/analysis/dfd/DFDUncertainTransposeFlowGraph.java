@@ -4,6 +4,7 @@ import java.util.*;
 
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
+import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraph;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
 import org.dataflowanalysis.dfd.datadictionary.AbstractAssignment;
@@ -36,15 +37,22 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUnc
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 
-public class DFDUncertainTransposeFlowGraph extends UncertainTransposeFlowGraph {
+public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implements UncertainTransposeFlowGraph {
+	private final Optional<UncertainState> uncertainState;
+	private final List<? extends UncertaintySource> relevantUncertaintySources;
+
 	public DFDUncertainTransposeFlowGraph(AbstractVertex<?> sink,
 										  List<? extends UncertaintySource> relevantUncertaintySources) {
-		super(sink, relevantUncertaintySources);
+		super(sink);
+		this.uncertainState = Optional.empty();
+		this.relevantUncertaintySources = relevantUncertaintySources;
 	}
 	
 	public DFDUncertainTransposeFlowGraph(AbstractVertex<?> sink,
 										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
-		super(sink, relevantUncertaintySources, uncertainState);
+		super(sink);
+		this.uncertainState = Optional.of(uncertainState);
+		this.relevantUncertaintySources = relevantUncertaintySources;
 	}
 	
 	@Override
@@ -326,4 +334,13 @@ public class DFDUncertainTransposeFlowGraph extends UncertainTransposeFlowGraph 
 		return copy;
 	}
 
+	@Override
+	public List<? extends UncertaintySource> getRelevantUncertaintySources() {
+		return this.relevantUncertaintySources;
+	}
+
+	@Override
+	public UncertainState getUncertainState() {
+		return this.uncertainState.orElseThrow();
+	}
 }

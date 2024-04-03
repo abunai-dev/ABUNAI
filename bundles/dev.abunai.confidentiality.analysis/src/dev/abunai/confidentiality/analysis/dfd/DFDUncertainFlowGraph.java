@@ -2,6 +2,7 @@ package dev.abunai.confidentiality.analysis.dfd;
 
 import java.util.List;
 
+import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.dfd.core.DFDFlowGraph;
@@ -13,7 +14,7 @@ import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 
-public class DFDUncertainFlowGraph extends DFDFlowGraph {
+public class DFDUncertainFlowGraph extends DFDFlowGraph implements UncertainFlowGraph {
 	private final Logger logger = Logger.getLogger(DFDUncertainFlowGraph.class);
 
 	public DFDUncertainFlowGraph(DFDResourceProvider resourceProvider) {

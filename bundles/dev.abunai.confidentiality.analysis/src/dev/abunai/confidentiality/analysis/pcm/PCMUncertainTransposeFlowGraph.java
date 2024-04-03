@@ -1,13 +1,11 @@
 package dev.abunai.confidentiality.analysis.pcm;
 
-import java.util.ArrayList;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.pcm.core.AbstractPCMVertex;
+import org.dataflowanalysis.analysis.pcm.core.PCMTransposeFlowGraph;
 import org.dataflowanalysis.analysis.pcm.core.seff.SEFFPCMVertex;
 import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
@@ -34,15 +32,22 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUnc
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource;
 
-public class PCMUncertainTransposeFlowGraph extends UncertainTransposeFlowGraph {
+public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implements UncertainTransposeFlowGraph {
+	private final Optional<UncertainState> uncertainState;
+	private final List<? extends UncertaintySource> relevantUncertaintySources;
+
 	public PCMUncertainTransposeFlowGraph(AbstractVertex<?> sink,
 										  List<? extends UncertaintySource> relevantUncertaintySources) {
-		super(sink, relevantUncertaintySources);
+		super(sink);
+		this.uncertainState = Optional.empty();
+		this.relevantUncertaintySources = relevantUncertaintySources;
 	}
 	
 	public PCMUncertainTransposeFlowGraph(AbstractVertex<?> sink,
 										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
-		super(sink, relevantUncertaintySources, uncertainState);
+		super(sink);
+		this.uncertainState = Optional.of(uncertainState);
+		this.relevantUncertaintySources = relevantUncertaintySources;
 	}
 	
 	@Override
@@ -183,4 +188,14 @@ public class PCMUncertainTransposeFlowGraph extends UncertainTransposeFlowGraph 
         AbstractPCMVertex<?> clonedSink = pcmSink.deepCopy(vertexMapping);
         return new PCMUncertainTransposeFlowGraph(clonedSink, this.getRelevantUncertaintySources(), uncertainState);
     }
+
+	@Override
+	public List<? extends UncertaintySource> getRelevantUncertaintySources() {
+		return this.relevantUncertaintySources;
+	}
+
+	@Override
+	public UncertainState getUncertainState() {
+		return this.uncertainState.orElseThrow();
+	}
 }

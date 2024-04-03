@@ -59,7 +59,7 @@ public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentiali
 				logger.error("Found incompatible transpose flow graph in uncertain flow graph");
 				throw new IllegalArgumentException();
 			}
-			List<? extends AbstractVertex<?>> violations = uncertainTransposeFlowGraph.getVertices().stream()
+			List<? extends AbstractVertex<?>> violations = transposeFlowGraph.getVertices().stream()
 					.filter(condition)
 					.toList();
 			if (!violations.isEmpty()) {

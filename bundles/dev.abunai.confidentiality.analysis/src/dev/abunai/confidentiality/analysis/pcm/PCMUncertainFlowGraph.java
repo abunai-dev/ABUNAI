@@ -2,6 +2,7 @@ package dev.abunai.confidentiality.analysis.pcm;
 
 import java.util.List;
 
+import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.pcm.core.PCMFlowGraph;
@@ -13,7 +14,7 @@ import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource;
 
-public class PCMUncertainFlowGraph extends PCMFlowGraph {
+public class PCMUncertainFlowGraph extends PCMFlowGraph implements UncertainFlowGraph {
 	private final Logger logger = Logger.getLogger(PCMUncertainFlowGraph.class);
 
 	public PCMUncertainFlowGraph(PCMResourceProvider resourceProvider) {

@@ -1,40 +1,19 @@
 package dev.abunai.confidentiality.analysis.core;
 
 import java.util.List;
-import java.util.Optional;
 
-import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
 
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
-public abstract class UncertainTransposeFlowGraph extends AbstractTransposeFlowGraph {
-	protected final List<? extends UncertaintySource> relevantUncertaintySources;
-	protected final Optional<UncertainState> uncertainState;
+public interface UncertainTransposeFlowGraph {
+	
+	List<? extends UncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs();
+	
+	List<? extends AbstractVertex<?>> getImpactSet(ResourceProvider resourceProvider);
 
+	UncertainState getUncertainState();
 	
-	public UncertainTransposeFlowGraph(AbstractVertex<?> sink, List<? extends UncertaintySource> relevantUncertaintySources) {
-		super(sink);
-		this.relevantUncertaintySources = relevantUncertaintySources;
-		this.uncertainState = Optional.empty();
-	}
-	
-	public UncertainTransposeFlowGraph(AbstractVertex<?> sink, List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
-		super(sink);
-		this.relevantUncertaintySources = relevantUncertaintySources;
-		this.uncertainState = Optional.of(uncertainState);
-	}
-	
-	public abstract List<? extends UncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs();
-	
-	public abstract List<? extends AbstractVertex<?>> getImpactSet(ResourceProvider resourceProvider);
-
-	public UncertainState getUncertainState() {
-		return uncertainState.orElseThrow(() -> new IllegalStateException("Tried to access uncertain state of partial flow graph that has not been determined yet"));
-	}
-	
-	public List<? extends UncertaintySource> getRelevantUncertaintySources() {
-		return relevantUncertaintySources;
-	}
+	List<? extends UncertaintySource> getRelevantUncertaintySources();
 }
