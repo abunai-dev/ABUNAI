@@ -70,46 +70,40 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		return longestAffectedElementList;
 	}
 
-	@Override
-	public AbstractTransposeFlowGraph evaluate() {
-        this.getSink().evaluateDataFlow();
-        return this;
-	}
-	
-	@Override
+    @Override
 	public List<PCMUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs() {
 		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
 		List<PCMUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
 		
 		for (UncertainState state : states) {
-			alternatePartialFlowGraphs.addAll(this.applyUncertaintyScenarios(state));
+			alternatePartialFlowGraphs.add(this.applyUncertaintyScenarios(state));
 		}
 		return alternatePartialFlowGraphs;
 	}
 	
-	private List<PCMUncertainTransposeFlowGraph> applyUncertaintyScenarios(UncertainState state) {
-		List<PCMUncertainTransposeFlowGraph> uncertainPartialFlowGraphs = new ArrayList<>();
+	private PCMUncertainTransposeFlowGraph applyUncertaintyScenarios(UncertainState state) {
+		PCMUncertainTransposeFlowGraph currentTransposeFlowGraph = this;
 		for (UncertaintyScenario uncertaintyScenario : state.getSelectedUncertaintyScenarios()) {
-			uncertainPartialFlowGraphs.add(this.applyUncertaintyScenario(uncertaintyScenario, state));
+			currentTransposeFlowGraph = this.applyUncertaintyScenario(uncertaintyScenario, state, currentTransposeFlowGraph);
 		}
-		return uncertainPartialFlowGraphs;
+		return currentTransposeFlowGraph;
 	}
 
-	private PCMUncertainTransposeFlowGraph applyUncertaintyScenario(UncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	private PCMUncertainTransposeFlowGraph applyUncertaintyScenario(UncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		if (uncertaintyScenario instanceof PCMBehaviorUncertaintyScenario castedScenario) {
-			return applyBehaviourUncertaintyScenario(castedScenario, uncertainState);
+			return applyBehaviourUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph);
 		} else if (uncertaintyScenario instanceof PCMComponentUncertaintyScenario castedScenario) {
-			return applyComponentUncertaintyScenario(castedScenario, uncertainState);
+			return applyComponentUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph);
 		} else if (uncertaintyScenario instanceof PCMConnectorUncertaintyScenarioInEntryLevelSystemCall castedScenario) {
-			return applyConnectorUncertaintyScenarioInEntryLevelSystemCall(castedScenario, uncertainState);
+			return applyConnectorUncertaintyScenarioInEntryLevelSystemCall(castedScenario, uncertainState, currentTransposeFlowGraph);
 		} else if (uncertaintyScenario instanceof PCMConnectorUncertaintyScenarioInExternalCall castedScenario) {
-			return applyConnectorUncertaintyScenarioInExternalCall(castedScenario, uncertainState);
+			return applyConnectorUncertaintyScenarioInExternalCall(castedScenario, uncertainState, currentTransposeFlowGraph);
 		} else if (uncertaintyScenario instanceof PCMExternalUncertaintyScenarioInResource castedScenario) {
-			return applyExternalUncertaintyScenarioInResource(castedScenario, uncertainState);
+			return applyExternalUncertaintyScenarioInResource(castedScenario, uncertainState, currentTransposeFlowGraph);
 		} else if(uncertainState instanceof PCMExternalUncertaintyScenarioInUsage castedScenario) {
-			return applyExternalUncertaintyScenarioInUsage(castedScenario, uncertainState);
-		} else if (uncertainState instanceof PCMInterfaceUncertaintyScenario castedScenaro) {
-			return applyInterfaceUncertaintyScenario(castedScenaro, uncertainState);
+			return applyExternalUncertaintyScenarioInUsage(castedScenario, uncertainState, currentTransposeFlowGraph);
+		} else if (uncertainState instanceof PCMInterfaceUncertaintyScenario castedScenario) {
+			return applyInterfaceUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph);
 		} else {
 			throw new IllegalArgumentException("Unexpected DFD uncertainty scenario: %s"
 					.formatted(UncertaintyUtils.getUncertaintyScenarioName(uncertaintyScenario)));
@@ -117,25 +111,25 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 	}
 
 	private PCMUncertainTransposeFlowGraph applyBehaviourUncertaintyScenario(
-			PCMBehaviorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+			PCMBehaviorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMBehaviorUncertaintySource uncertaintySource = (PCMBehaviorUncertaintySource) uncertaintyScenario.eContainer();
 		SetVariableAction target = uncertaintySource.getTarget();
 		SetVariableAction replacement = uncertaintyScenario.getTarget();
-		
+
 		SEFFPCMVertex<?> targetVertex = this.getVertices().stream()
-				.filter(it -> (it instanceof SEFFPCMVertex<?>))	
+				.filter(it -> (it instanceof SEFFPCMVertex<?>))
 				.map(it -> (SEFFPCMVertex<?>) it)
 				.filter(it -> it.getReferencedElement().equals(target))
 				.findFirst().orElseThrow();
 		AbstractPCMVertex<?> replacementVertex = new SEFFPCMVertex<SetVariableAction>(replacement, targetVertex.getPreviousElements(), targetVertex.getContext(), targetVertex.getParameter(), targetVertex.getResourceProvider());
-		
+
 		Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping = new IdentityHashMap<>();
 		mapping.put(targetVertex, replacementVertex);
-		
+
 		return this.deepCopy(mapping, uncertainState);
 	}
 	
-	public PCMUncertainTransposeFlowGraph applyComponentUncertaintyScenario(PCMComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyComponentUncertaintyScenario(PCMComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMComponentUncertaintySource uncertaintySource = (PCMComponentUncertaintySource) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
@@ -143,7 +137,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		return this.deepCopy(null, uncertainState);
 	}
 	
-	public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInEntryLevelSystemCall(PCMConnectorUncertaintyScenarioInEntryLevelSystemCall uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInEntryLevelSystemCall(PCMConnectorUncertaintyScenarioInEntryLevelSystemCall uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMConnectorUncertaintySourceInEntryLevelSystemCall uncertaintySource = (PCMConnectorUncertaintySourceInEntryLevelSystemCall) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
@@ -151,7 +145,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		return this.deepCopy(null, uncertainState);
 	}
 	
-	public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMConnectorUncertaintySourceInExternalCall uncertaintySource = (PCMConnectorUncertaintySourceInExternalCall) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
@@ -159,7 +153,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		return this.deepCopy(null, uncertainState);
 	}
 	
-	public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInResource(PCMExternalUncertaintyScenarioInResource uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInResource(PCMExternalUncertaintyScenarioInResource uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMExternalUncertaintySourceInResource uncertaintySource = (PCMExternalUncertaintySourceInResource) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
@@ -167,7 +161,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		return this.deepCopy(null, uncertainState);
 	}
 	
-	public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInUsage(PCMExternalUncertaintyScenarioInUsage uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInUsage(PCMExternalUncertaintyScenarioInUsage uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMExternalUncertaintySourceInUsage uncertaintySource = (PCMExternalUncertaintySourceInUsage) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
@@ -175,14 +169,14 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		return this.deepCopy(null, uncertainState);
 	}
 	
-	public PCMUncertainTransposeFlowGraph applyInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph applyInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMInterfaceUncertaintySource uncertaintySource = (PCMInterfaceUncertaintySource) uncertaintyScenario.eContainer();
 		var target = uncertaintySource.getTarget();
 		var replacement = uncertaintyScenario.getTarget();
 		
 		return this.deepCopy(null, uncertainState);
 	}
-	
+
 	public PCMUncertainTransposeFlowGraph deepCopy(Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> vertexMapping, UncertainState uncertainState) {
         AbstractPCMVertex<?> pcmSink = (AbstractPCMVertex<?>) this.sink;
         AbstractPCMVertex<?> clonedSink = pcmSink.deepCopy(vertexMapping);
