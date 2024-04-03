@@ -106,7 +106,7 @@ public class OnlineShopTest extends DFDTestBase {
 			// TODO: Not working yet as label propagation is broken again, waiting for v2
 			return nodeLabels.contains("nonEU") && dataLabels.contains("Personal");
 		});
-		System.out.println(violations);
+		violations.forEach((violation) -> System.out.println(violation));
 	}
 
 	// Copied from the original dfd test case
