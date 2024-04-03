@@ -298,10 +298,16 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 	private DFDUncertainTransposeFlowGraph applyConnectorUncertaintyScenario(DFDConnectorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		DFDConnectorUncertaintySource uncertaintySource = (DFDConnectorUncertaintySource) uncertaintyScenario.eContainer();
 		Flow targetFlow = uncertaintySource.getTargetFlow();
+		Node targetNode = targetFlow.getSourceNode();
+		Pin targetPin = targetFlow.getSourcePin();
 		List<AbstractAssignment> targetAssignments = uncertaintySource.getTargetAssignments();
 		
 		Flow replacingFlow = uncertaintyScenario.getTargetFlow();
 		List<AbstractAssignment> replacingAssignments = uncertaintyScenario.getTargetAssignments();
+
+		if (!targetFlow.getSourceNode().equals(replacingFlow.getSourceNode())) {
+			throw new IllegalArgumentException("Source of Flows in Connector Uncertainty are different");
+		}
 		
 		// TODO Auto-generated method stub
 		throw new IllegalStateException("Not yet supported uncertainty type.");

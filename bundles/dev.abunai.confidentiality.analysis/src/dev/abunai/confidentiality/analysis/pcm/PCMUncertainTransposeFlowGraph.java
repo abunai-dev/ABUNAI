@@ -121,7 +121,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 				.map(it -> (SEFFPCMVertex<?>) it)
 				.filter(it -> it.getReferencedElement().equals(target))
 				.findFirst().orElseThrow();
-		AbstractPCMVertex<?> replacementVertex = new SEFFPCMVertex<SetVariableAction>(replacement, targetVertex.getPreviousElements(), targetVertex.getContext(), targetVertex.getParameter(), targetVertex.getResourceProvider());
+		AbstractPCMVertex<?> replacementVertex = new SEFFPCMVertex<>(replacement, targetVertex.getPreviousElements(), targetVertex.getContext(), targetVertex.getParameter(), targetVertex.getResourceProvider());
 
 		Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping = new IdentityHashMap<>();
 		mapping.put(targetVertex, replacementVertex);
