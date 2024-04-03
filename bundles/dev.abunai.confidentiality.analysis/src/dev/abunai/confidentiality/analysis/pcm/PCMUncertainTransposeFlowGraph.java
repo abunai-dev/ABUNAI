@@ -135,7 +135,12 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 
 		return this.deepCopy(mapping, uncertainState);
 	}
-	
+
+	/*
+	1. Find all calls in and out of old assembly context
+	2. Perform sequence finding to find replacing part of transpose flow graph
+	3. Splice together
+	 */
 	public PCMUncertainTransposeFlowGraph applyComponentUncertaintyScenario(PCMComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMComponentUncertaintySource uncertaintySource = (PCMComponentUncertaintySource) uncertaintyScenario.eContainer();
 		AssemblyContext target = uncertaintySource.getTarget();
@@ -143,7 +148,12 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		
 		return this.deepCopy(null, uncertainState);
 	}
-	
+
+	/*
+	1. Find call
+	2. Perform sequence finding on callee
+	3. Splice together
+	*/
 	public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInEntryLevelSystemCall(PCMConnectorUncertaintyScenarioInEntryLevelSystemCall uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMConnectorUncertaintySourceInEntryLevelSystemCall uncertaintySource = (PCMConnectorUncertaintySourceInEntryLevelSystemCall) uncertaintyScenario.eContainer();
 		EntryLevelSystemCall target = uncertaintySource.getTarget();
@@ -151,7 +161,12 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		
 		return this.deepCopy(null, uncertainState);
 	}
-	
+
+	/*
+	1. Find call
+	2. Perform sequence finding
+	3. Splice together
+	 */
 	public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMConnectorUncertaintySourceInExternalCall uncertaintySource = (PCMConnectorUncertaintySourceInExternalCall) uncertaintyScenario.eContainer();
 		ExternalCallAction target = uncertaintySource.getTarget();
@@ -159,7 +174,8 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		
 		return this.deepCopy(null, uncertainState);
 	}
-	
+
+	// Solve this via proxy: Create a uncertain tfg with proxy set, then add node characteristics after evaluation
 	public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInResource(PCMExternalUncertaintyScenarioInResource uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMExternalUncertaintySourceInResource uncertaintySource = (PCMExternalUncertaintySourceInResource) uncertaintyScenario.eContainer();
 		ResourceAssignee target = uncertaintySource.getTarget();
@@ -167,7 +183,8 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		
 		return this.deepCopy(null, uncertainState);
 	}
-	
+
+	// Same as above
 	public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInUsage(PCMExternalUncertaintyScenarioInUsage uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMExternalUncertaintySourceInUsage uncertaintySource = (PCMExternalUncertaintySourceInUsage) uncertaintyScenario.eContainer();
 		UsageAssignee target = uncertaintySource.getTarget();
@@ -175,7 +192,13 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		
 		return this.deepCopy(null, uncertainState);
 	}
-	
+
+	/*
+	1. Find called signature and parameters
+	2. Replace signature and parameters
+	3. ???
+	4. Profit
+	 */
 	public PCMUncertainTransposeFlowGraph applyInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
 		PCMInterfaceUncertaintySource uncertaintySource = (PCMInterfaceUncertaintySource) uncertaintyScenario.eContainer();
 		OperationSignature target = uncertaintySource.getTarget();
