@@ -5,7 +5,6 @@ import java.util.List;
 import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
-import org.dataflowanalysis.analysis.pcm.core.PCMFlowGraph;
 import org.dataflowanalysis.analysis.pcm.core.PCMTransposeFlowGraph;
 import org.dataflowanalysis.analysis.pcm.core.finder.PCMTransposeFlowGraphFinder;
 import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;

@@ -7,7 +7,6 @@ import dev.abunai.confidentiality.analysis.core.*;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
-import org.dataflowanalysis.analysis.core.FlowGraph;
 import org.dataflowanalysis.analysis.dfd.DFDConfidentialityAnalysis;
 import org.eclipse.core.runtime.Plugin;
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;

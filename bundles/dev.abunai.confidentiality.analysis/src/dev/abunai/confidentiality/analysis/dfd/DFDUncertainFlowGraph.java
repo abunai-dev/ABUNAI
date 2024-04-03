@@ -3,10 +3,8 @@ package dev.abunai.confidentiality.analysis.dfd;
 import java.util.List;
 
 import dev.abunai.confidentiality.analysis.core.UncertainFlowGraph;
-import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
-import org.dataflowanalysis.analysis.dfd.core.DFDFlowGraph;
 import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraph;
 import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraphFinder;
 import org.dataflowanalysis.analysis.dfd.resource.DFDResourceProvider;
