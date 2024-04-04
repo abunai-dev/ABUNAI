@@ -2,7 +2,6 @@ package dev.abunai.confidentiality.analysis.pcm;
 
 import java.util.*;
 
-import dev.abunai.confidentiality.analysis.dfd.DFDUncertainTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.pcm.core.AbstractPCMVertex;
@@ -42,6 +41,7 @@ import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
 public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implements UncertainTransposeFlowGraph {
 	private final Optional<UncertainState> uncertainState;
 	private final List<? extends UncertaintySource> relevantUncertaintySources;
+
 
 	public PCMUncertainTransposeFlowGraph(AbstractVertex<?> sink,
 										  List<? extends UncertaintySource> relevantUncertaintySources) {
@@ -133,7 +133,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping = new IdentityHashMap<>();
 		mapping.put(targetVertex, replacementVertex);
 
-		return this.deepCopy(mapping, uncertainState);
+		return this.copyWithState(mapping, uncertainState);
 	}
 
 	/*
@@ -145,8 +145,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		PCMComponentUncertaintySource uncertaintySource = (PCMComponentUncertaintySource) uncertaintyScenario.eContainer();
 		AssemblyContext target = uncertaintySource.getTarget();
 		AssemblyContext replacement = uncertaintyScenario.getTarget();
-		
-		return this.deepCopy(null, uncertainState);
+		return this.copyWithState(null, uncertainState);
 	}
 
 	/*
@@ -159,7 +158,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		EntryLevelSystemCall target = uncertaintySource.getTarget();
 		EntryLevelSystemCall replacement = uncertaintyScenario.getTarget();
 		
-		return this.deepCopy(null, uncertainState);
+		return this.copyWithState(null, uncertainState);
 	}
 
 	/*
@@ -172,7 +171,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		ExternalCallAction target = uncertaintySource.getTarget();
 		ExternalCallAction replacement = uncertaintyScenario.getTarget();
 		
-		return this.deepCopy(null, uncertainState);
+		return this.copyWithState(null, uncertainState);
 	}
 
 	// Solve this via proxy: Create a uncertain tfg with proxy set, then add node characteristics after evaluation
@@ -180,8 +179,8 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		PCMExternalUncertaintySourceInResource uncertaintySource = (PCMExternalUncertaintySourceInResource) uncertaintyScenario.eContainer();
 		ResourceAssignee target = uncertaintySource.getTarget();
 		ResourceAssignee replacement = uncertaintyScenario.getTarget();
-		
-		return this.deepCopy(null, uncertainState);
+		PCMUncertainTransposeFlowGraph copy = this.copyWithState(new IdentityHashMap<>(), uncertainState);
+		return copy;
 	}
 
 	// Same as above
@@ -189,8 +188,8 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		PCMExternalUncertaintySourceInUsage uncertaintySource = (PCMExternalUncertaintySourceInUsage) uncertaintyScenario.eContainer();
 		UsageAssignee target = uncertaintySource.getTarget();
 		UsageAssignee replacement = uncertaintyScenario.getTarget();
-		
-		return this.deepCopy(null, uncertainState);
+		PCMUncertainTransposeFlowGraph copy = this.copyWithState(new IdentityHashMap<>(), uncertainState);
+		return copy;
 	}
 
 	/*
@@ -204,12 +203,12 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		OperationSignature target = uncertaintySource.getTarget();
 		OperationSignature replacement = uncertaintyScenario.getTarget();
 		
-		return this.deepCopy(null, uncertainState);
+		return this.copyWithState(null, uncertainState);
 	}
 
-	public PCMUncertainTransposeFlowGraph deepCopy(Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> vertexMapping, UncertainState uncertainState) {
+	public PCMUncertainTransposeFlowGraph copyWithState(Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> vertexMapping, UncertainState uncertainState) {
         AbstractPCMVertex<?> pcmSink = (AbstractPCMVertex<?>) this.sink;
-        AbstractPCMVertex<?> clonedSink = pcmSink.deepCopy(vertexMapping);
+        AbstractPCMVertex<?> clonedSink = pcmSink.copy(vertexMapping);
         return new PCMUncertainTransposeFlowGraph(clonedSink, this.getRelevantUncertaintySources(), uncertainState);
     }
 
