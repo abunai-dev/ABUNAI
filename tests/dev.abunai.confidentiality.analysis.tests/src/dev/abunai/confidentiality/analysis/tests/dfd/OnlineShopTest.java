@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
-import org.dataflowanalysis.analysis.core.DataFlowVariable;
+import org.dataflowanalysis.analysis.core.DataCharacteristic;
 import org.dataflowanalysis.analysis.dfd.core.DFDCharacteristicValue;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.junit.jupiter.api.Test;
@@ -89,7 +89,7 @@ public class OnlineShopTest extends DFDTestBase {
 			var flowDesc = flow.getVertices().stream()
 					.map(DFDVertex.class::cast)
 					.map(it -> it.getName() + ": "
-								+ it.getAllNodeCharacteristics().stream().map(x -> x.getValueName()).toList())
+								+ it.getAllVertexCharacteristics().stream().map(x -> x.getValueName()).toList())
 					.collect(Collectors.joining("\n"));
 			System.out.println("STATE %s:\n%s".formatted(stateDesc, flowDesc));
 			System.out.println("---------------");
@@ -111,12 +111,13 @@ public class OnlineShopTest extends DFDTestBase {
 
 	// Copied from the original dfd test case
 	private List<String> retrieveNodeLabels(AbstractVertex<?> vertex) {
-		return vertex.getAllNodeCharacteristics().stream().map(DFDCharacteristicValue.class::cast)
+		return vertex.getAllVertexCharacteristics().stream().map(DFDCharacteristicValue.class::cast)
 				.map(DFDCharacteristicValue::getValueName).toList();
 	}
 
 	private List<String> retrieveDataLabels(AbstractVertex<?> vertex) {
-		return vertex.getAllDataFlowVariables().stream().map(DataFlowVariable::getAllCharacteristics)
+		return vertex.getAllVertexCharacteristics().stream()
+				.map(DataCharacteristic::getAllCharacteristics)
 				.flatMap(List::stream).map(DFDCharacteristicValue.class::cast).map(DFDCharacteristicValue::getValueName)
 				.toList();
 	}
