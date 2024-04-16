@@ -11,7 +11,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
 public interface UncertainTransposeFlowGraph {
 	
-	List<? extends UncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs(List<? extends AbstractTransposeFlowGraph> defaultTransposeFlowGraphs);
+	List<? extends UncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs();
 	
 	List<? extends AbstractVertex<?>> getImpactSet(ResourceProvider resourceProvider);
 

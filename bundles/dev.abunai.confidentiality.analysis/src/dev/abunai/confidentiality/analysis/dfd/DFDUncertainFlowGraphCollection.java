@@ -14,6 +14,9 @@ import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 
+/**
+ * This class contains a collection of uncertain transpose flow graphs of a dfd model
+ */
 public class DFDUncertainFlowGraphCollection extends DFDFlowGraphCollection implements UncertainFlowGraphCollection {
 	private final Logger logger = Logger.getLogger(DFDUncertainFlowGraphCollection.class);
 
@@ -37,7 +40,7 @@ public class DFDUncertainFlowGraphCollection extends DFDFlowGraphCollection impl
 	public DFDUncertainFlowGraphCollection createUncertainFlows() {
 		List<DFDUncertainTransposeFlowGraph> uncertainPartialFlows = this.getTransposeFlowGraphs().stream()
 				.map(DFDUncertainTransposeFlowGraph.class::cast)
-				.flatMap(it -> it.determineAlternativePartialFlowGraphs(this.getTransposeFlowGraphs()).stream())
+				.flatMap(it -> it.determineAlternativePartialFlowGraphs().stream())
 				.toList();
 		return new DFDUncertainFlowGraphCollection(uncertainPartialFlows, (DFDUncertaintyResourceProvider) resourceProvider);
 	}
