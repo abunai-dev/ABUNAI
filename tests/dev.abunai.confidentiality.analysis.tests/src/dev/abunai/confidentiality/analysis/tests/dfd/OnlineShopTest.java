@@ -108,18 +108,4 @@ public class OnlineShopTest extends DFDTestBase {
 		});
 		violations.forEach((violation) -> System.out.println(violation));
 	}
-
-	// Copied from the original dfd test case
-	private List<String> retrieveNodeLabels(AbstractVertex<?> vertex) {
-		return vertex.getAllVertexCharacteristics().stream().map(DFDCharacteristicValue.class::cast)
-				.map(DFDCharacteristicValue::getValueName).toList();
-	}
-
-	private List<String> retrieveDataLabels(AbstractVertex<?> vertex) {
-		return vertex.getAllVertexCharacteristics().stream()
-				.map(DataCharacteristic::getAllCharacteristics)
-				.flatMap(List::stream).map(DFDCharacteristicValue.class::cast).map(DFDCharacteristicValue::getValueName)
-				.toList();
-	}
-
 }

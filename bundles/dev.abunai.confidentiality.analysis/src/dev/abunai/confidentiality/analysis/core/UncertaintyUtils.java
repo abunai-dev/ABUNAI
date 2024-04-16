@@ -157,8 +157,7 @@ public class UncertaintyUtils {
 			var scenario = PcmFactory.eINSTANCE.createPCMBehaviorUncertaintyScenario();
 			scenario.setTarget(source.getTarget());
 			scenario.setProbability(probability);
-			scenario.setEntityName(name);
-			scenario.setEntityName(name);
+			scenario.setEntityName(name);;
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof PCMInterfaceUncertaintySource source) {

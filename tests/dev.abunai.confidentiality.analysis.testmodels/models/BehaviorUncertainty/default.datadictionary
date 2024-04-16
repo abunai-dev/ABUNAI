@@ -14,7 +14,9 @@
   </labelTypes>
   <behaviour id="_Iu2BEfvvEe6Ie5mhRfc0tw" entityName="userBehavior">
     <outPin id="_45pGIfvyEe6qEO2G6RwOIg" entityName="outUser"/>
-    <assignment xsi:type="datadictionary:Assignment" id="_7HdokvvyEe6qEO2G6RwOIg" entityName="uncryptedBuyBehavior" outputPin="_45pGIfvyEe6qEO2G6RwOIg" outputLabels="_BLK3cPvzEe6qEO2G6RwOIg _-dGAQPv1Ee6qEO2G6RwOIg"/>
+    <assignment xsi:type="datadictionary:Assignment" id="_7HdokvvyEe6qEO2G6RwOIg" entityName="userBehavior" outputPin="_45pGIfvyEe6qEO2G6RwOIg" outputLabels="_BLK3cPvzEe6qEO2G6RwOIg _-dGAQPv1Ee6qEO2G6RwOIg">
+      <term xsi:type="datadictionary:TRUE" id="_Q-qAgPwCEe6pwqpi6UYVkQ"/>
+    </assignment>
   </behaviour>
   <behaviour id="_cEId8fvzEe6qEO2G6RwOIg" entityName="buyBehavior">
     <inPin id="_jNu94PvzEe6qEO2G6RwOIg" entityName="inBuy"/>
@@ -27,6 +29,8 @@
   <behaviour id="_4CtWwfv1Ee6qEO2G6RwOIg" entityName="encryptingBuyBehavior">
     <inPin id="__7ZxUPv1Ee6qEO2G6RwOIg" entityName="inEncryptingBuy"/>
     <outPin id="_C16aofv2Ee6qEO2G6RwOIg" entityName="outEncryptingBuy"/>
-    <assignment xsi:type="datadictionary:Assignment" id="_F9BVgvv2Ee6qEO2G6RwOIg" entityName="encryptedBuyBehavior" inputPins="__7ZxUPv1Ee6qEO2G6RwOIg" outputPin="_C16aofv2Ee6qEO2G6RwOIg" outputLabels="_83VjYPv1Ee6qEO2G6RwOIg"/>
+    <assignment xsi:type="datadictionary:Assignment" id="_F9BVgvv2Ee6qEO2G6RwOIg" entityName="encryptedBuyBehavior" inputPins="__7ZxUPv1Ee6qEO2G6RwOIg" outputPin="_C16aofv2Ee6qEO2G6RwOIg" outputLabels="_83VjYPv1Ee6qEO2G6RwOIg">
+      <term xsi:type="datadictionary:TRUE" id="_TokpEPwCEe6pwqpi6UYVkQ"/>
+    </assignment>
   </behaviour>
 </datadictionary:DataDictionary>

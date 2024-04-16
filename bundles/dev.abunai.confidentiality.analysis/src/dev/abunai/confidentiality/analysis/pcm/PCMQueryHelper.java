@@ -116,7 +116,7 @@ public class PCMQueryHelper {
 		return this.vertices.stream()
 				.filter(CallingUserPCMVertex.class::isInstance)
 				.map(CallingUserPCMVertex.class::cast)
-				.filter(it -> it.getReferencedElement().getScenarioBehaviour_AbstractUserAction().getUsageScenario_SenarioBehaviour().equals(castedSource.getTarget()))
+				.filter(it -> it.getReferencedElement().getScenarioBehaviour_AbstractUserAction().getUsageScenario_SenarioBehaviour().equals(castedSource.getTarget().getUsagescenario()))
 				.toList();
 	}
 

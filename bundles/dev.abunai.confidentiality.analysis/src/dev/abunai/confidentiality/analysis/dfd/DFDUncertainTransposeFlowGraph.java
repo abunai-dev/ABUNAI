@@ -7,34 +7,11 @@ import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraph;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
-import org.dataflowanalysis.dfd.datadictionary.AbstractAssignment;
-import org.dataflowanalysis.dfd.datadictionary.Behaviour;
-import org.dataflowanalysis.dfd.datadictionary.Label;
-import org.dataflowanalysis.dfd.datadictionary.Pin;
-import org.dataflowanalysis.dfd.datadictionary.datadictionaryFactory;
-import org.dataflowanalysis.dfd.dataflowdiagram.External;
-import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
 import org.dataflowanalysis.dfd.dataflowdiagram.Node;
-import org.dataflowanalysis.dfd.dataflowdiagram.Store;
-import org.dataflowanalysis.dfd.dataflowdiagram.dataflowdiagramFactory;
-
-import com.google.common.collect.Streams;
 
 import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
-import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
-import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 
 public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implements UncertainTransposeFlowGraph {
@@ -51,7 +28,7 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 	public DFDUncertainTransposeFlowGraph(AbstractVertex<?> sink,
 										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
 		super(sink);
-		this.uncertainState = Optional.of(uncertainState);
+		this.uncertainState = Optional.ofNullable(uncertainState);
 		this.relevantUncertaintySources = relevantUncertaintySources;
 	}
 	
@@ -74,11 +51,25 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 
 	@Override
 	public AbstractTransposeFlowGraph evaluate() {
-        DFDVertex newSink = ((DFDVertex) sink).clone();
+        DFDVertex newSink = ((DFDVertex) sink).copy(new IdentityHashMap<>());
         newSink.unify(new HashSet<>());
         newSink.evaluateDataFlow();
         return new DFDUncertainTransposeFlowGraph(newSink,relevantUncertaintySources, uncertainState.get());
 	}
+	
+	@Override
+	public AbstractTransposeFlowGraph copy(Map<DFDVertex, DFDVertex> mapping) {
+        DFDVertex copiedSink = ((DFDVertex) sink).copy(mapping);
+        copiedSink.unify(new HashSet<>());
+        // TODO: This or else null is ugly
+        return new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, this.uncertainState.orElse(null));
+    }
+	
+	public AbstractTransposeFlowGraph copy(Map<DFDVertex, DFDVertex> mapping, UncertainState uncertainState) {
+        DFDVertex copiedSink = ((DFDVertex) sink).copy(mapping);
+        copiedSink.unify(new HashSet<>());
+        return new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, uncertainState);
+    }
 	
 	@Override
 	public List<DFDUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs() {
