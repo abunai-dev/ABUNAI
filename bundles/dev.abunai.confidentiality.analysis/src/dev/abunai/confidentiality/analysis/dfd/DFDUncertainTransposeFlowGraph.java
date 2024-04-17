@@ -10,6 +10,7 @@ import org.dataflowanalysis.analysis.resource.ResourceProvider;
 import org.dataflowanalysis.dfd.dataflowdiagram.Node;
 
 import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
+import dev.abunai.confidentiality.analysis.UncertaintyResourceProvider;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
@@ -72,10 +73,10 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
     }
 	
 	@Override
-	public List<DFDUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs() {
+	public List<DFDUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs(UncertaintyResourceProvider resourceProvider) {
 		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
 		List<DFDUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
-		DFDUncertainTransposeFlowGraphCalculator calculator = new DFDUncertainTransposeFlowGraphCalculator(this.relevantUncertaintySources);
+		DFDUncertainTransposeFlowGraphCalculator calculator = new DFDUncertainTransposeFlowGraphCalculator(this.relevantUncertaintySources, (DFDUncertaintyResourceProvider) resourceProvider);
 		for (UncertainState state : states) {
 			alternatePartialFlowGraphs.addAll(calculator.determineAlternativePartialFlowGraphs(state, this));
 		}

@@ -17,6 +17,7 @@ import org.palladiosimulator.pcm.seff.ExternalCallAction;
 import org.palladiosimulator.pcm.seff.SetVariableAction;
 
 import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
+import dev.abunai.confidentiality.analysis.UncertaintyResourceProvider;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
@@ -78,7 +79,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 	}
 
     @Override
-	public List<PCMUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs() {
+	public List<PCMUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs(UncertaintyResourceProvider resourceProvider) {
 		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
 		List<PCMUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
 		
