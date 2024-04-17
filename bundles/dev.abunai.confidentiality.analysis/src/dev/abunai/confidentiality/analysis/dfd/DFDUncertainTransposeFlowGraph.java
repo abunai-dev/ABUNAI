@@ -59,14 +59,14 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 	
 	@Override
 	public AbstractTransposeFlowGraph copy(Map<DFDVertex, DFDVertex> mapping) {
-        DFDVertex copiedSink = ((DFDVertex) sink).copy(mapping);
+        DFDVertex copiedSink = mapping.getOrDefault((DFDVertex) sink, ((DFDVertex) sink).copy(mapping));
         copiedSink.unify(new HashSet<>());
         // TODO: This or else null is ugly
         return new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, this.uncertainState.orElse(null));
     }
 	
 	public AbstractTransposeFlowGraph copy(Map<DFDVertex, DFDVertex> mapping, UncertainState uncertainState) {
-        DFDVertex copiedSink = ((DFDVertex) sink).copy(mapping);
+        DFDVertex copiedSink = mapping.getOrDefault((DFDVertex) sink, ((DFDVertex) sink).copy(mapping));
         copiedSink.unify(new HashSet<>());
         return new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, uncertainState);
     }

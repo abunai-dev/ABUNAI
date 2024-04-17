@@ -4,7 +4,7 @@
     <destinationPin href="default.datadictionary#_jNu94PvzEe6qEO2G6RwOIg"/>
     <sourcePin href="default.datadictionary#_45pGIfvyEe6qEO2G6RwOIg"/>
   </flows>
-  <flows id="_WqBwQPv0Ee6qEO2G6RwOIg" entityName="buyToDatabase" sourceNode="_yn0tUvvzEe6qEO2G6RwOIg" destinationNode="_BZ-TAvv0Ee6qEO2G6RwOIg">
+  <flows id="_WqBwQPv0Ee6qEO2G6RwOIg" entityName="buyToNonEUDatabase" sourceNode="_yn0tUvvzEe6qEO2G6RwOIg" destinationNode="_BZ-TAvv0Ee6qEO2G6RwOIg">
     <destinationPin href="default.datadictionary#_udk6cPvzEe6qEO2G6RwOIg"/>
     <sourcePin href="default.datadictionary#_lHBawfvzEe6qEO2G6RwOIg"/>
   </flows>

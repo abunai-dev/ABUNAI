@@ -43,7 +43,10 @@ public class DFDUncertainTransposeFlowGraphCalculator {
     }
 
     public List<DFDUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs(UncertainState state, DFDUncertainTransposeFlowGraph uncertainTransposeFlowGraph) {
-        List<DFDUncertainTransposeFlowGraph> currentTransposeFlowGraphs = List.of(uncertainTransposeFlowGraph);
+        if (state.getSelectedUncertaintyScenarios().isEmpty()) {
+        	return List.of((DFDUncertainTransposeFlowGraph) uncertainTransposeFlowGraph.copy(new IdentityHashMap<>(), state));
+        }
+    	List<DFDUncertainTransposeFlowGraph> currentTransposeFlowGraphs = List.of(uncertainTransposeFlowGraph);
         for (UncertaintyScenario uncertaintyScenario : state.getSelectedUncertaintyScenarios()) {
             currentTransposeFlowGraphs = currentTransposeFlowGraphs.stream()
                     .flatMap(it -> this.applyUncertaintyScenario(uncertaintyScenario, state, it).stream())
@@ -111,16 +114,7 @@ public class DFDUncertainTransposeFlowGraphCalculator {
                     mapping.put(it, new DFDVertex(targetCopy, copiedPinDFDVertexMap, new HashMap<>(it.getPinFlowMap())));
                 });
 
-        DFDUncertainTransposeFlowGraph copy = new DFDUncertainTransposeFlowGraph(mapping.getOrDefault(currentTransposeFlowGraph.getSink(), (DFDVertex) currentTransposeFlowGraph.getSink()), relevantUncertaintySources, uncertainState);
-        copy.getVertices().stream()
-                .map(DFDVertex.class::cast)
-                .forEach(it -> it.getPinDFDVertexMap().replaceAll((pin, vertex) -> {
-                    return mapping.getOrDefault(vertex, vertex);
-                }));
-
-        // FIXME: Replace with once issue with pcm/dfd parallel is fixed
-        // return this.copy(mapping);
-        return copy;
+        return (DFDUncertainTransposeFlowGraph) currentTransposeFlowGraph.copy(mapping, uncertainState);
     }
 
     private DFDUncertainTransposeFlowGraph applyBehaviorUncertaintyScenario(DFDBehaviorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
@@ -334,7 +328,7 @@ public class DFDUncertainTransposeFlowGraphCalculator {
         // return this.copy(mapping);
         return copy;
     }
-    private DFDUncertainTransposeFlowGraph applyComponentUncertaintyScenario(DFDComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, AbstractTransposeFlowGraph currentTransposeFlowGraph) {
+    private DFDUncertainTransposeFlowGraph applyComponentUncertaintyScenario(DFDComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         DFDComponentUncertaintySource uncertaintySource = (DFDComponentUncertaintySource) uncertaintyScenario.eContainer();
         Node targetedNode = uncertaintySource.getTarget();
         Node replacingNode = uncertaintyScenario.getTarget();
@@ -351,15 +345,6 @@ public class DFDUncertainTransposeFlowGraphCalculator {
                     mapping.put(it, new DFDVertex(replacingNode, copiedPinDFDVertexMap, new HashMap<>(it.getPinFlowMap())));
                 });
 
-        DFDUncertainTransposeFlowGraph copy = new DFDUncertainTransposeFlowGraph(mapping.getOrDefault(currentTransposeFlowGraph.getSink(), (DFDVertex) currentTransposeFlowGraph.getSink()), relevantUncertaintySources, uncertainState);
-        copy.getVertices().stream()
-                .map(DFDVertex.class::cast)
-                .forEach(it -> it.getPinDFDVertexMap().replaceAll((pin, vertex) -> {
-                    return mapping.getOrDefault(vertex, vertex);
-                }));
-
-        // FIXME: Replace with once issue with pcm/dfd parallel is fixed
-        // return this.copy(mapping);
-        return copy;
+        return (DFDUncertainTransposeFlowGraph) currentTransposeFlowGraph.copy(mapping, uncertainState);
     }
 }
