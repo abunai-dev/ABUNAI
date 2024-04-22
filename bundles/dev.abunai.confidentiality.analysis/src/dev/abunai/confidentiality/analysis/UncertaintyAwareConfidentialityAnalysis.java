@@ -1,9 +1,13 @@
 package dev.abunai.confidentiality.analysis;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
 import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
+import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
+import org.apache.log4j.Logger;
+import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.core.FlowGraphCollection;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
@@ -21,6 +25,25 @@ public interface UncertaintyAwareConfidentialityAnalysis {
 	
 	FlowGraphCollection evaluateUncertainDataFlows(FlowGraphCollection flowGraph);
 
-	List<UncertainConstraintViolation> queryUncertainDataFlow(FlowGraphCollection flowGraph,
-															  Predicate<? super AbstractVertex<?>> condition);
+	default List<UncertainConstraintViolation> queryUncertainDataFlow(FlowGraphCollection flowGraph,
+															  Predicate<? super AbstractVertex<?>> condition) {
+		List<UncertainConstraintViolation> result = new ArrayList<>();
+
+		for (AbstractTransposeFlowGraph transposeFlowGraph : flowGraph.getTransposeFlowGraphs()) {
+			if(!(transposeFlowGraph instanceof UncertainTransposeFlowGraph uncertainTransposeFlowGraph)) {
+				this.getLogger().error("Found incompatible transpose flow graph in uncertain flow graph");
+				throw new IllegalArgumentException();
+			}
+			List<? extends AbstractVertex<?>> violations = transposeFlowGraph.getVertices().stream()
+					.filter(condition)
+					.toList();
+			if (!violations.isEmpty()) {
+				result.add(new UncertainConstraintViolation(uncertainTransposeFlowGraph.getUncertainState(), uncertainTransposeFlowGraph, violations));
+			}
+		}
+
+		return result;
+	}
+
+	Logger getLogger();
 }

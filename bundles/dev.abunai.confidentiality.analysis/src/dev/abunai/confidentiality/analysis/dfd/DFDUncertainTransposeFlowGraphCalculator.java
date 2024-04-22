@@ -48,6 +48,7 @@ public class DFDUncertainTransposeFlowGraphCalculator {
         if (state.getSelectedUncertaintyScenarios().isEmpty()) {
         	return List.of((DFDUncertainTransposeFlowGraph) uncertainTransposeFlowGraph.copy(new IdentityHashMap<>(), state));
         }
+
     	List<DFDUncertainTransposeFlowGraph> currentTransposeFlowGraphs = List.of(uncertainTransposeFlowGraph);
         for (UncertaintyScenario uncertaintyScenario : state.getSelectedUncertaintyScenarios()) {
             currentTransposeFlowGraphs = currentTransposeFlowGraphs.stream()
@@ -78,34 +79,19 @@ public class DFDUncertainTransposeFlowGraphCalculator {
     private DFDUncertainTransposeFlowGraph applyExternalUncertaintyScenario(DFDExternalUncertaintyScenario uncertaintyScenario,
                                                                             UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
 
-        DFDExternalUncertaintySource uncertaintySource = (DFDExternalUncertaintySource) uncertaintyScenario
-                .eContainer();
+        DFDExternalUncertaintySource uncertaintySource = (DFDExternalUncertaintySource) uncertaintyScenario.eContainer();
         Node target = uncertaintySource.getTarget();
-        Node targetCopy;
 
-        if (target instanceof External) {
-            targetCopy = dataflowdiagramFactory.eINSTANCE.createExternal();
-        } else if (target instanceof org.dataflowanalysis.dfd.dataflowdiagram.Process) {
-            targetCopy = dataflowdiagramFactory.eINSTANCE.createProcess();
-        } else if (target instanceof Store) {
-            targetCopy = dataflowdiagramFactory.eINSTANCE.createStore();
-        } else {
-            throw new IllegalArgumentException("Unexpected DFD node type.");
-        }
-
-        targetCopy.setEntityName(target.getEntityName());
-        targetCopy.setBehaviour(target.getBehaviour());
-
+        Node targetCopy = this.copyNode(target);
+        targetCopy.getProperties().clear();
         List<Label> filteredOldProperties = target.getProperties().stream().filter(it -> !uncertaintySource
                         .getTargetProperties().stream().map(Label::getEntityName).toList().contains(it.getEntityName()))
                 .toList();
-
         List<Label> newPropertiesToAdd = uncertaintyScenario.getTargetProperties();
         targetCopy.getProperties()
                 .addAll(Streams.concat(filteredOldProperties.stream(), newPropertiesToAdd.stream()).toList());
 
         Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
-
         currentTransposeFlowGraph.getVertices().stream()
                 .filter(DFDVertex.class::isInstance)
                 .map(DFDVertex.class::cast)
@@ -135,7 +121,7 @@ public class DFDUncertainTransposeFlowGraphCalculator {
                 .filter(it -> it.getReferencedElement().getBehaviour().equals(targetBehaviour))
                 .toList();
 
-        if (targetedNodes.size() < 1) {
+        if (targetedNodes.isEmpty()) {
             throw new IllegalStateException("Found no targeted nodes by behaviour uncertainty");
         }
 
@@ -148,19 +134,8 @@ public class DFDUncertainTransposeFlowGraphCalculator {
         Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
         targetedNodes.forEach(node -> {
             Node target = node.getReferencedElement();
-            Node targetCopy;
 
-            if (target instanceof External) {
-                targetCopy = dataflowdiagramFactory.eINSTANCE.createExternal();
-            } else if (target instanceof org.dataflowanalysis.dfd.dataflowdiagram.Process) {
-                targetCopy = dataflowdiagramFactory.eINSTANCE.createProcess();
-            } else if (target instanceof Store) {
-                targetCopy = dataflowdiagramFactory.eINSTANCE.createStore();
-            } else {
-                throw new IllegalArgumentException("Unexpected DFD node type.");
-            }
-
-            targetCopy.setEntityName(target.getEntityName());
+            Node targetCopy = this.copyNode(target);
             targetCopy.setBehaviour(resultBehaviour);
 
             Map<Pin, DFDVertex> copiedPinDFDVertexMap = new HashMap<>();
@@ -270,18 +245,7 @@ public class DFDUncertainTransposeFlowGraphCalculator {
         		.map(it -> new DFDUncertainTransposeFlowGraph(it.getSink(), currentTransposeFlowGraph.getRelevantUncertaintySources(), uncertainState))
         		.toList();
 
-        Node targetCopy;
-        if (replacingFlow.getSourceNode() instanceof External) {
-            targetCopy = dataflowdiagramFactory.eINSTANCE.createExternal();
-        } else if (replacingFlow.getSourceNode() instanceof org.dataflowanalysis.dfd.dataflowdiagram.Process) {
-            targetCopy = dataflowdiagramFactory.eINSTANCE.createProcess();
-        } else if (replacingFlow.getSourceNode() instanceof Store) {
-            targetCopy = dataflowdiagramFactory.eINSTANCE.createStore();
-        } else {
-            throw new IllegalArgumentException("Unexpected DFD node type.");
-        }
-        targetCopy.setEntityName(replacingFlow.getSourceNode().getEntityName());
-        targetCopy.getProperties().addAll(replacingFlow.getSourceNode().getProperties());
+        Node targetCopy = this.copyNode(replacingFlow.getSourceNode());
         
         Behaviour resultBehaviour = datadictionaryFactory.eINSTANCE.createBehaviour();
         resultBehaviour.setEntityName(replacingFlow.getSourceNode().getBehaviour().getEntityName());
@@ -296,10 +260,9 @@ public class DFDUncertainTransposeFlowGraphCalculator {
                 .map(it -> this.merge(destinationVertex, it, uncertainState))
                 .map(it -> {
                 	Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
-                	DFDVertex node = targetNode;
-                	Map<Pin, DFDVertex> copiedPinDFDVertexMap = new HashMap<>();
-                    node.getPinDFDVertexMap().keySet().forEach(key -> copiedPinDFDVertexMap.put(key, node.getPinDFDVertexMap().get(key).copy(new IdentityHashMap<>())));
-                    mapping.put(node, new DFDVertex(targetCopy, copiedPinDFDVertexMap, new HashMap<>(node.getPinFlowMap())));
+                    Map<Pin, DFDVertex> copiedPinDFDVertexMap = new HashMap<>();
+                    targetNode.getPinDFDVertexMap().keySet().forEach(key -> copiedPinDFDVertexMap.put(key, targetNode.getPinDFDVertexMap().get(key).copy(new IdentityHashMap<>())));
+                    mapping.put(targetNode, new DFDVertex(targetCopy, copiedPinDFDVertexMap, new HashMap<>(targetNode.getPinFlowMap())));
                 	return (DFDUncertainTransposeFlowGraph) it.copy(mapping, uncertainState);
                 })
                 .toList();
@@ -314,7 +277,7 @@ public class DFDUncertainTransposeFlowGraphCalculator {
                 .filter(it -> it.getReferencedElement().equals(destinationVertex.getReferencedElement()))
                 .findFirst().orElseThrow();
 
-        destinationVertex.getPinDFDVertexMap().keySet().stream()
+        destinationVertex.getPinDFDVertexMap().keySet()
                 .forEach(pin -> {
                     correspondingRealVertex.getPinDFDVertexMap().put(pin, destinationVertex.getPinDFDVertexMap().get(pin));
                     correspondingRealVertex.getPinFlowMap().put(pin, destinationVertex.getPinFlowMap().get(pin));
@@ -340,5 +303,22 @@ public class DFDUncertainTransposeFlowGraphCalculator {
                 });
 
         return (DFDUncertainTransposeFlowGraph) currentTransposeFlowGraph.copy(mapping, uncertainState);
+    }
+
+    private Node copyNode(Node node) {
+        Node copy;
+        if (node instanceof External) {
+            copy = dataflowdiagramFactory.eINSTANCE.createExternal();
+        } else if (node instanceof org.dataflowanalysis.dfd.dataflowdiagram.Process) {
+            copy = dataflowdiagramFactory.eINSTANCE.createProcess();
+        } else if (node instanceof Store) {
+            copy = dataflowdiagramFactory.eINSTANCE.createStore();
+        } else {
+            throw new IllegalArgumentException("Unexpected DFD node type.");
+        }
+        copy.setEntityName(node.getEntityName());
+        copy.setBehaviour(node.getBehaviour());
+        copy.getProperties().addAll(node.getProperties());
+        return copy;
     }
 }

@@ -16,18 +16,37 @@ import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 
+/**
+ * This class represents an dfd transpose flow graph with uncertainties.
+ * The relevant uncertainty sources for the uncertain transpose flow graph are contained in {@link #getRelevantUncertaintySources()}.
+ * After the uncertainty scenarios were selected from the uncertainty sources with {@link #determineAlternativeTransposeFlowGraphs(UncertaintyResourceProvider)}
+ * the uncertain state of the transpose flow graph is accessible with {@link #getUncertainState()}
+ */
 public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implements UncertainTransposeFlowGraph {
 	private final Logger logger = Logger.getLogger(DFDUncertainTransposeFlowGraph.class);
 	private final Optional<UncertainState> uncertainState;
 	private final List<? extends UncertaintySource> relevantUncertaintySources;
 
+	/**
+	 * Create a new dfd uncertain transpose flow graph with the given sink and relevant uncertainty sources.
+	 * The uncertain state of the transpose flow graph will be empty
+	 * @param sink Sink of the dfd uncertain transpose flow graph
+	 * @param relevantUncertaintySources Relevant uncertainty sources of the uncertain transpose flow graph
+	 */
 	public DFDUncertainTransposeFlowGraph(AbstractVertex<?> sink,
 										  List<? extends UncertaintySource> relevantUncertaintySources) {
 		super(sink);
 		this.uncertainState = Optional.empty();
 		this.relevantUncertaintySources = relevantUncertaintySources;
 	}
-	
+
+	/**
+	 * Create a new dfd uncertain transpose flow graph with the given sink and relevant uncertainty sources.
+	 * Furthermore, an uncertain state has been selected from the relevant uncertainty sources
+	 * @param sink Sink of the dfd uncertain transpose flow graph
+	 * @param relevantUncertaintySources Relevant uncertainty sources of the uncertain transpose flow graph
+	 * @param uncertainState Uncertain state of the transpose flow graph
+	 */
 	public DFDUncertainTransposeFlowGraph(AbstractVertex<?> sink,
 										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
 		super(sink);
@@ -64,23 +83,15 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
         newSink.evaluateDataFlow();
         return new DFDUncertainTransposeFlowGraph(newSink,relevantUncertaintySources, uncertainState.get());
 	}
-	
-	@Override
-	public AbstractTransposeFlowGraph copy(Map<DFDVertex, DFDVertex> mapping) {
-        DFDVertex copiedSink = mapping.getOrDefault((DFDVertex) sink, ((DFDVertex) sink).copy(mapping));
-        copiedSink.unify(new HashSet<>());
-        return this.uncertainState.map(state -> new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, state))
-				.orElseGet(() -> new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources));
-    }
-	
-	public AbstractTransposeFlowGraph copy(Map<DFDVertex, DFDVertex> mapping, UncertainState uncertainState) {
-        DFDVertex copiedSink = mapping.getOrDefault((DFDVertex) sink, ((DFDVertex) sink).copy(mapping));
-        copiedSink.unify(new HashSet<>());
-        return new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, uncertainState);
-    }
-	
+
 	@Override
 	public List<DFDUncertainTransposeFlowGraph> determineAlternativeTransposeFlowGraphs(UncertaintyResourceProvider resourceProvider) {
+		if (this.uncertainState.isPresent()) {
+			logger.error("Tried to determine alternative transpose flow graphs on a flow graph with an uncertain state");
+			logger.error("This is most likely caused by calling determineAlternativeFlowGraphs on a transpose flow graph that was already an alternative flow graph");
+			throw new IllegalStateException();
+		}
+
 		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
 		List<DFDUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
 		DFDUncertainTransposeFlowGraphCalculator calculator = new DFDUncertainTransposeFlowGraphCalculator(this.relevantUncertaintySources, (DFDUncertaintyResourceProvider) resourceProvider);
@@ -89,6 +100,21 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		}
 		return alternatePartialFlowGraphs;
 	}
+
+	@Override
+	public AbstractTransposeFlowGraph copy(Map<DFDVertex, DFDVertex> mapping) {
+		DFDVertex copiedSink = mapping.getOrDefault((DFDVertex) sink, ((DFDVertex) sink).copy(mapping));
+		copiedSink.unify(new HashSet<>());
+		return this.uncertainState.map(state -> new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, state))
+				.orElseGet(() -> new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources));
+	}
+
+	public AbstractTransposeFlowGraph copy(Map<DFDVertex, DFDVertex> mapping, UncertainState uncertainState) {
+		DFDVertex copiedSink = mapping.getOrDefault((DFDVertex) sink, ((DFDVertex) sink).copy(mapping));
+		copiedSink.unify(new HashSet<>());
+		return new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, uncertainState);
+	}
+
 	@Override
 	public List<? extends UncertaintySource> getRelevantUncertaintySources() {
 		return this.relevantUncertaintySources;

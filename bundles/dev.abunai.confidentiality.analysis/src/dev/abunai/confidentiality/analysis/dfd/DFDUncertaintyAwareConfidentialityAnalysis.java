@@ -1,18 +1,19 @@
 package dev.abunai.confidentiality.analysis.dfd;
 
 import java.util.*;
-import java.util.function.Predicate;
 
 import dev.abunai.confidentiality.analysis.core.*;
 import org.apache.log4j.Logger;
-import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
-import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.core.FlowGraphCollection;
 import org.dataflowanalysis.analysis.dfd.DFDConfidentialityAnalysis;
 import org.eclipse.core.runtime.Plugin;
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
+/**
+ * This class represents an uncertainty aware confidentiality analysis for the dfd metamodel.
+ * The method {@link #evaluateUncertainDataFlows(FlowGraphCollection)} must be called to create uncertain data flows
+ */
 public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentialityAnalysis implements UncertaintyAwareConfidentialityAnalysis {
 	private final Logger logger = Logger.getLogger(DFDUncertaintyAwareConfidentialityAnalysis.class);
 	private UncertaintySourceManager uncertaintySourceManager;
@@ -50,23 +51,7 @@ public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentiali
 	}
 
 	@Override
-	public List<UncertainConstraintViolation> queryUncertainDataFlow(
-			FlowGraphCollection flowGraph, Predicate<? super AbstractVertex<?>> condition) {
-		List<UncertainConstraintViolation> result = new ArrayList<>();
-		
-		for (AbstractTransposeFlowGraph transposeFlowGraph : flowGraph.getTransposeFlowGraphs()) {
-			if(!(transposeFlowGraph instanceof UncertainTransposeFlowGraph uncertainTransposeFlowGraph)) {
-				logger.error("Found incompatible transpose flow graph in uncertain flow graph");
-				throw new IllegalArgumentException();
-			}
-			List<? extends AbstractVertex<?>> violations = transposeFlowGraph.getVertices().stream()
-					.filter(condition)
-					.toList();
-			if (!violations.isEmpty()) {
-				result.add(new UncertainConstraintViolation(uncertainTransposeFlowGraph.getUncertainState(), uncertainTransposeFlowGraph, violations));
-			}
-		}
-
-		return result;
+	public Logger getLogger() {
+		return logger;
 	}
 }

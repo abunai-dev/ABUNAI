@@ -6,12 +6,20 @@ import org.dataflowanalysis.analysis.dfd.resource.DFDResourceProvider;
 import org.dataflowanalysis.analysis.utils.ResourceUtils;
 import org.eclipse.core.runtime.Plugin;
 
+/**
+ * Builder class of {@link DFDUncertaintyAwareConfidentialityAnalysis}
+ */
 public class DFDUncertaintyAwareConfidentialityAnalysisBuilder extends DFDDataFlowAnalysisBuilder {
 
 	private final Logger logger = Logger.getLogger(DFDUncertaintyAwareConfidentialityAnalysisBuilder.class);
 
 	private String relativeUncertaintyModelPath;
 
+	/**
+	 * Sets the path the uncertainty model is located
+	 * @param relativeUncertaintyModelPath Relative path to the uncertainty model
+	 * @return Returns builder object of the analysis
+	 */
 	public DFDUncertaintyAwareConfidentialityAnalysisBuilder useUncertaintyModel(String relativeUncertaintyModelPath) {
 		this.relativeUncertaintyModelPath = relativeUncertaintyModelPath;
 		return this;
