@@ -1,5 +1,6 @@
 package dev.abunai.confidentiality.analysis.dfd;
 
+import java.util.HashSet;
 import java.util.List;
 
 import org.dataflowanalysis.analysis.core.AbstractVertex;
@@ -37,7 +38,7 @@ public class DFDQueryHelper {
 		} else if (uncertaintySource instanceof DFDConnectorUncertaintySource castedSource) {
 			return findTargetNodesOfConnectorUncertainty(castedSource);
 		} else if (uncertaintySource instanceof DFDComponentUncertaintySource castedSource) {
-			return findTargetNodesofComponentUncertainty(castedSource);
+			return findTargetNodesOfComponentUncertainty(castedSource);
 		} else {
 			throw new IllegalArgumentException("Unsupported uncertainty source: %s."
 					.formatted(UncertaintyUtils.getUncertaintySourceName(uncertaintySource)));
@@ -48,14 +49,14 @@ public class DFDQueryHelper {
 		return vertices.stream().map(DFDVertex.class::cast)
 				.map(DFDVertex::getReferencedElement)
 				.filter(it -> it.equals(uncertaintySource.getTarget()))
-				.filter(it -> it.getProperties().containsAll(uncertaintySource.getTargetProperties())).toList();
+				.filter(it -> new HashSet<>(it.getProperties()).containsAll(uncertaintySource.getTargetProperties())).toList();
 	}
 
 	private List<Node> findTargetNodesOfBehaviorUncertainty(DFDBehaviorUncertaintySource uncertaintySource) {
 		return vertices.stream().map(DFDVertex.class::cast)
 				.map(DFDVertex::getReferencedElement)
 				.filter(it -> it.getBehaviour().equals(uncertaintySource.getTarget()))
-				.filter(it -> it.getBehaviour().getAssignment().containsAll(uncertaintySource.getTargetAssignments()))
+				.filter(it -> new HashSet<>(it.getBehaviour().getAssignment()).containsAll(uncertaintySource.getTargetAssignments()))
 				.toList();
 	}
 
@@ -73,12 +74,12 @@ public class DFDQueryHelper {
 		return vertices.stream().map(DFDVertex.class::cast)
 				.map(DFDVertex::getReferencedElement)
 				.filter(it -> uncertaintySource.getTargetFlow().getDestinationNode().equals(it))
-				.filter(it -> uncertaintySource.getTargetFlow().getSourceNode().getBehaviour().getAssignment()
+				.filter(it -> new HashSet<>(uncertaintySource.getTargetFlow().getSourceNode().getBehaviour().getAssignment())
 						.containsAll(uncertaintySource.getTargetAssignments()))
 				.toList();
 	}
 
-	private List<Node> findTargetNodesofComponentUncertainty(DFDComponentUncertaintySource uncertaintySource) {
+	private List<Node> findTargetNodesOfComponentUncertainty(DFDComponentUncertaintySource uncertaintySource) {
 		return vertices.stream().map(DFDVertex.class::cast)
 				.map(DFDVertex::getReferencedElement)
 				.filter(it -> it.equals(uncertaintySource.getTarget()))
