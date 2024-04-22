@@ -8,7 +8,6 @@ import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.dfd.core.DFDFlowGraphCollection;
 import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraph;
 import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraphFinder;
-import org.dataflowanalysis.analysis.dfd.resource.DFDResourceProvider;
 
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
