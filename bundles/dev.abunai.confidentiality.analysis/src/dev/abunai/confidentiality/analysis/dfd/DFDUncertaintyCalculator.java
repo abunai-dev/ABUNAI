@@ -36,11 +36,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public class DFDUncertainTransposeFlowGraphCalculator {
+public class DFDUncertaintyCalculator {
     private final List<? extends UncertaintySource> relevantUncertaintySources;
     private final DFDUncertaintyResourceProvider resourceProvider;
 
-    public DFDUncertainTransposeFlowGraphCalculator(List<? extends  UncertaintySource> relevantUncertaintySources, DFDUncertaintyResourceProvider resourceProvider) {
+    public DFDUncertaintyCalculator(List<? extends  UncertaintySource> relevantUncertaintySources, DFDUncertaintyResourceProvider resourceProvider) {
         this.relevantUncertaintySources = relevantUncertaintySources;
         this.resourceProvider = resourceProvider;
     }

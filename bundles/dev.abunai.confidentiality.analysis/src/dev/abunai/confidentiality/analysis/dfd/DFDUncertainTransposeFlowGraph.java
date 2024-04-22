@@ -94,7 +94,7 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 
 		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
 		List<DFDUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
-		DFDUncertainTransposeFlowGraphCalculator calculator = new DFDUncertainTransposeFlowGraphCalculator(this.relevantUncertaintySources, (DFDUncertaintyResourceProvider) resourceProvider);
+		DFDUncertaintyCalculator calculator = new DFDUncertaintyCalculator(this.relevantUncertaintySources, (DFDUncertaintyResourceProvider) resourceProvider);
 		for (UncertainState state : states) {
 			alternatePartialFlowGraphs.addAll(calculator.determineAlternativePartialFlowGraphs(state, this));
 		}
