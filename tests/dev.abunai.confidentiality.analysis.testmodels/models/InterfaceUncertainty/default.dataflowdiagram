@@ -8,7 +8,8 @@
     <destinationPin href="default.datadictionary#_udk6cPvzEe6qEO2G6RwOIg"/>
     <sourcePin href="default.datadictionary#_lHBawfvzEe6qEO2G6RwOIg"/>
   </flows>
-  <flows id="_LMM94Pv7Ee6qEO2G6RwOIg" entityName="userToEncryptedBuy" sourceNode="_8-sagfvzEe6qEO2G6RwOIg">
+  <flows id="_LMM94Pv7Ee6qEO2G6RwOIg" entityName="userToEncryptedBuy" sourceNode="_8-sagfvzEe6qEO2G6RwOIg" destinationNode="_UbFIQ_v7Ee6qEO2G6RwOIg">
+    <destinationPin href="default.datadictionary#_ZlpvsPv7Ee6qEO2G6RwOIg"/>
     <sourcePin href="default.datadictionary#_45pGIfvyEe6qEO2G6RwOIg"/>
   </flows>
   <flows id="_tbt7MPv7Ee6qEO2G6RwOIg" entityName="EncryptedBuyToDatabase" sourceNode="_UbFIQ_v7Ee6qEO2G6RwOIg" destinationNode="_BZ-TAvv0Ee6qEO2G6RwOIg">
@@ -26,5 +27,7 @@
     <behaviour href="default.datadictionary#_rWcxcfvzEe6qEO2G6RwOIg"/>
     <properties href="default.datadictionary#_Hrkz8Pv0Ee6qEO2G6RwOIg"/>
   </nodes>
-  <nodes xsi:type="dataflowdiagram:Process" id="_UbFIQ_v7Ee6qEO2G6RwOIg" entityName="encryptedBuy"/>
+  <nodes xsi:type="dataflowdiagram:Process" id="_UbFIQ_v7Ee6qEO2G6RwOIg" entityName="encryptedBuy">
+    <behaviour href="default.datadictionary#_Xl10Efv7Ee6qEO2G6RwOIg"/>
+  </nodes>
 </dataflowdiagram:DataFlowDiagram>

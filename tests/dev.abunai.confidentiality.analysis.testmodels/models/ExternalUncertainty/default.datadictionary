@@ -10,7 +10,9 @@
   </labelTypes>
   <behaviour id="_Iu2BEfvvEe6Ie5mhRfc0tw" entityName="userBehavior">
     <outPin id="_45pGIfvyEe6qEO2G6RwOIg" entityName="outUser"/>
-    <assignment xsi:type="datadictionary:Assignment" id="_7HdokvvyEe6qEO2G6RwOIg" outputPin="_45pGIfvyEe6qEO2G6RwOIg" outputLabels="_BLK3cPvzEe6qEO2G6RwOIg"/>
+    <assignment xsi:type="datadictionary:Assignment" id="_7HdokvvyEe6qEO2G6RwOIg" outputPin="_45pGIfvyEe6qEO2G6RwOIg" outputLabels="_BLK3cPvzEe6qEO2G6RwOIg">
+      <term xsi:type="datadictionary:TRUE" id="_dHoc4PykEe6riL8n0OLC8g"/>
+    </assignment>
   </behaviour>
   <behaviour id="_cEId8fvzEe6qEO2G6RwOIg" entityName="buyBehavior">
     <inPin id="_jNu94PvzEe6qEO2G6RwOIg" entityName="inBuy"/>

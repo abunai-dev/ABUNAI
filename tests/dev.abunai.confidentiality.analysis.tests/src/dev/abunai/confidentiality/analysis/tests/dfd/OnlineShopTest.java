@@ -4,9 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
-import org.dataflowanalysis.analysis.core.AbstractVertex;
-import org.dataflowanalysis.analysis.core.DataCharacteristic;
-import org.dataflowanalysis.analysis.dfd.core.DFDCharacteristicValue;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.junit.jupiter.api.Test;
 
@@ -102,8 +99,6 @@ public class OnlineShopTest extends DFDTestBase {
 			if (((DFDVertex) it).getName().equals("Database"))
 				System.out.println(
 						"%s: %s, %s".formatted(((DFDVertex) it).getName(), nodeLabels, dataLabels));
-
-			// TODO: Not working yet as label propagation is broken again, waiting for v2
 			return nodeLabels.contains("nonEU") && dataLabels.contains("Personal");
 		});
 		violations.forEach((violation) -> System.out.println(violation));
