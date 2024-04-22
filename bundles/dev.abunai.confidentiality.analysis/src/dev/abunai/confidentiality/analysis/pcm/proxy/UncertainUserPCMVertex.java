@@ -8,7 +8,6 @@ import org.dataflowanalysis.analysis.resource.ResourceProvider;
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.AbstractAssignee;
 import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

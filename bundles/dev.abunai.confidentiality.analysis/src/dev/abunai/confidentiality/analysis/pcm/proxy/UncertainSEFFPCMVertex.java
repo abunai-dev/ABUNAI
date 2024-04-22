@@ -10,7 +10,6 @@ import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.repository.Parameter;
 import org.palladiosimulator.pcm.seff.AbstractAction;
 
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.List;
 import java.util.Map;
