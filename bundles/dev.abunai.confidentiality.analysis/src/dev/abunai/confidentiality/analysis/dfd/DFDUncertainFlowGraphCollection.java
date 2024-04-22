@@ -19,48 +19,49 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintyS
  */
 public class DFDUncertainFlowGraphCollection extends DFDFlowGraphCollection implements UncertainFlowGraphCollection {
 	private final Logger logger = Logger.getLogger(DFDUncertainFlowGraphCollection.class);
+	protected final DFDUncertaintyResourceProvider resourceProvider;
 
-	public DFDUncertainFlowGraphCollection(DFDResourceProvider resourceProvider) {
+	public DFDUncertainFlowGraphCollection(DFDUncertaintyResourceProvider resourceProvider) {
 		super(resourceProvider);
-		if (!(this.resourceProvider instanceof DFDUncertaintyResourceProvider dfdResourceProvider)) {
-            logger.error("Cannot find partial flow graphs for non-dfd resource provider");
-            throw new IllegalArgumentException();
-		}
+		this.resourceProvider = resourceProvider;
 	}
 	
-	public DFDUncertainFlowGraphCollection(List<? extends AbstractTransposeFlowGraph> transposeFlowGraphs, DFDResourceProvider resourceProvider) {
+	public DFDUncertainFlowGraphCollection(List<? extends AbstractTransposeFlowGraph> transposeFlowGraphs, DFDUncertaintyResourceProvider resourceProvider) {
 		super(resourceProvider, transposeFlowGraphs);
-		if (!(this.resourceProvider instanceof DFDUncertaintyResourceProvider dfdResourceProvider)) {
-            logger.error("Cannot find partial flow graphs for non-dfd resource provider");
-            throw new IllegalArgumentException();
-		}
+		this.resourceProvider = resourceProvider;
 	}
 
-	
+	@Override
 	public DFDUncertainFlowGraphCollection createUncertainFlows() {
 		List<DFDUncertainTransposeFlowGraph> uncertainPartialFlows = this.getTransposeFlowGraphs().stream()
 				.map(DFDUncertainTransposeFlowGraph.class::cast)
-				.flatMap(it -> it.determineAlternativeTransposeFlowGraphs((DFDUncertaintyResourceProvider) this.resourceProvider).stream())
+				.flatMap(it -> it.determineAlternativeTransposeFlowGraphs(this.resourceProvider).stream())
 				.toList();
-		return new DFDUncertainFlowGraphCollection(uncertainPartialFlows, (DFDUncertaintyResourceProvider) resourceProvider);
+		return new DFDUncertainFlowGraphCollection(uncertainPartialFlows, resourceProvider);
 	}
 
 	@Override
 	public List<? extends AbstractTransposeFlowGraph> findTransposeFlowGraphs() {
-		if (!(this.resourceProvider instanceof DFDUncertaintyResourceProvider dfdResourceProvider)) {
-            logger.error("Cannot find partial flow graphs for non-dfd resource provider");
-            throw new IllegalArgumentException();
+		if (!(super.resourceProvider instanceof DFDUncertaintyResourceProvider uncertaintyResourceProvider)) {
+			logger.error("Cannot determine transpose flow graphs without dfd uncertainty resource provider");
+			throw new IllegalStateException();
 		}
-		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(dfdResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.DFD);
+		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(uncertaintyResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.DFD);
 		
-		return new DFDTransposeFlowGraphFinder(dfdResourceProvider).findTransposeFlowGraphs().stream()
+		return new DFDTransposeFlowGraphFinder(uncertaintyResourceProvider).findTransposeFlowGraphs().stream()
 				.map(DFDTransposeFlowGraph.class::cast)
 				.map(it -> new DFDUncertainTransposeFlowGraph(it.getSink(), this.determineRelevantUncertaintySource(it, uncertaintySourceManager)))
 				.toList();
 	}
 
-	public List<? extends DFDUncertaintySource> determineRelevantUncertaintySource(DFDTransposeFlowGraph partialFlowGraph, UncertaintySourceManager uncertaintySourceManager) {
-		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(partialFlowGraph.getVertices());
+	/**
+	 * Determines the relevant uncertainty sources for the given transpose flow graph with the given uncertainty source manager
+	 * @param transposeFlowGraph Transpose flow graph of which the relevant uncertainty sources should be determined
+	 * @param uncertaintySourceManager Uncertainty source manager containing the uncertainty sources
+	 * @return Returns a list of uncertainty sources that are relevant for the given transpose flow graph
+	 */
+	private List<? extends DFDUncertaintySource> determineRelevantUncertaintySource(DFDTransposeFlowGraph transposeFlowGraph, UncertaintySourceManager uncertaintySourceManager) {
+		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(transposeFlowGraph.getVertices());
 		
 		return uncertaintySourceManager.getUncertaintySources().stream()
 				.map(DFDUncertaintySource.class::cast)
