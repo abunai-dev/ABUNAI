@@ -79,7 +79,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 	}
 
     @Override
-	public List<PCMUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs(UncertaintyResourceProvider resourceProvider) {
+	public List<PCMUncertainTransposeFlowGraph> determineAlternativeTransposeFlowGraphs(UncertaintyResourceProvider resourceProvider) {
 		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
 		List<PCMUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
 		

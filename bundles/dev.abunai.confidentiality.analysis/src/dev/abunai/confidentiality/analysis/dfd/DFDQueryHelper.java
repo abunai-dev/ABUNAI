@@ -24,7 +24,7 @@ public class DFDQueryHelper {
 	}
 
 	public boolean hasTargetNode(DFDUncertaintySource uncertaintySource) {
-		return this.findTargetNodes(uncertaintySource).size() > 0;
+		return !this.findTargetNodes(uncertaintySource).isEmpty();
 	}
 
 	public List<Node> findTargetNodes(DFDUncertaintySource uncertaintySource) {

@@ -4,31 +4,19 @@ import java.util.List;
 
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 
-public class UncertainConstraintViolation {
-	private final UncertainState uncertainState;
-	private final UncertainTransposeFlowGraph partialFlowGraph;
-	private final List<? extends AbstractVertex<?>> violations;
-
-    public UncertainConstraintViolation(UncertainState uncertainState, UncertainTransposeFlowGraph partialFlowGraph, List<? extends AbstractVertex<?>> violations) {
-        this.uncertainState = uncertainState;
-        this.partialFlowGraph = partialFlowGraph;
-        this.violations = violations;
-    }
-
-    public UncertainState getUncertainState() {
-        return uncertainState;
-    }
-
-    public UncertainTransposeFlowGraph getPartialFlowGraph() {
-        return partialFlowGraph;
-    }
-
-    public List<? extends AbstractVertex<?>> getViolations() {
-        return violations;
-    }
+/**
+ * This class models a constraint violation of an uncertain transpose flow graph with a given uncertain state.
+ * It also contains a list of vertices which violated the constraint
+ */
+public record UncertainConstraintViolation(UncertainState uncertainState, UncertainTransposeFlowGraph partialFlowGraph,
+                                           List<? extends AbstractVertex<?>> violations) {
 
     @Override
     public String toString() {
-        return String.format("Violation in flow graph %s with uncertain state %s: %s", this.partialFlowGraph, this.uncertainState, this.violations);
+        return String.format("""
+                Violation in flow graph %s
+                Uncertain state: %s
+                Violating nodes: %s
+        """, this.partialFlowGraph,this.uncertainState, this.violations);
     }
 }

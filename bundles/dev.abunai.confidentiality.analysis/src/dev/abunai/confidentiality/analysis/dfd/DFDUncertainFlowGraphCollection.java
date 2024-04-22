@@ -40,7 +40,7 @@ public class DFDUncertainFlowGraphCollection extends DFDFlowGraphCollection impl
 	public DFDUncertainFlowGraphCollection createUncertainFlows() {
 		List<DFDUncertainTransposeFlowGraph> uncertainPartialFlows = this.getTransposeFlowGraphs().stream()
 				.map(DFDUncertainTransposeFlowGraph.class::cast)
-				.flatMap(it -> it.determineAlternativePartialFlowGraphs((DFDUncertaintyResourceProvider) this.resourceProvider).stream())
+				.flatMap(it -> it.determineAlternativeTransposeFlowGraphs((DFDUncertaintyResourceProvider) this.resourceProvider).stream())
 				.toList();
 		return new DFDUncertainFlowGraphCollection(uncertainPartialFlows, (DFDUncertaintyResourceProvider) resourceProvider);
 	}

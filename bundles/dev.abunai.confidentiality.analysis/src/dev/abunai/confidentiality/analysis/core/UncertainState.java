@@ -16,28 +16,52 @@ import java.util.HashMap;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
+/**
+ * This class represents an uncertain state of a transpose flow graph.
+ * An uncertain state contains a list of selected scenarios that apply to the given uncertain state
+ */
 public class UncertainState {
 
 	private final List<? extends UncertaintyScenario> selectedScenarios;
 
+	/**
+	 * Create a new uncertain state with a given list of selected scenarios
+	 * @param selectedScenarios List of uncertainty scenarios that were selected for the uncertain state
+	 */
 	public UncertainState(List<? extends UncertaintyScenario> selectedScenarios) {
 		this.selectedScenarios = selectedScenarios;
 	}
 
+	/**
+	 * Create a new uncertain state with a given list of selected scenarios
+	 * @param selectedScenarios List of uncertainty scenarios that were selected for the uncertain state
+	 */
 	public UncertainState(UncertaintyScenario... selectedScenarios) {
 		this(List.of(selectedScenarios));
 	}
 
+	/**
+	 * Returns a list of all uncertainty sources that the selected scenarios are part of
+	 * @return Returns a list of all applied uncertainty sources
+	 */
 	public List<UncertaintySource> getUncertaintySources() {
-		List<UncertaintySource> sources = selectedScenarios.stream().map(EObject::eContainer)
-				.map(UncertaintySource.class::cast).toList();
-		return Collections.unmodifiableList(sources);
+        return selectedScenarios.stream().map(EObject::eContainer)
+				.map(UncertaintySource.class::cast)
+				.toList();
 	}
 
+	/**
+	 * Returns a list of all uncertainty scenarios that were selected by the uncertain state
+	 * @return Returns a list of all selected uncertainty scenarios
+	 */
 	public List<? extends UncertaintyScenario> getSelectedUncertaintyScenarios() {
 		return Collections.unmodifiableList(selectedScenarios);
 	}
 
+	/**
+	 * Returns the mapping between applied uncertainty scenarios and their uncertainty sources
+	 * @return Returns the mapping between uncertainty scenarios and uncertainty sources
+	 */
 	public Map<UncertaintySource, UncertaintyScenario> getSourceToScenarioMapping() {
 		Map<UncertaintySource, UncertaintyScenario> mapping = new HashMap<>();
 
@@ -49,6 +73,12 @@ public class UncertainState {
 		return mapping;
 	}
 
+	/**
+	 * Fills the uncertain state with scenarios for all uncertainty sources in the given list.
+	 * Should an uncertainty source miss an uncertainty scenario for an uncertainty source, a default one will be created
+	 * @param uncertaintySources List of uncertainty sources that the uncertain state should cover
+	 * @return Returns a new uncertain state that covers all given uncertainty sources
+	 */
 	public UncertainState fillWithDefaultScenarios(List<UncertaintySource> uncertaintySources) {
 		List<UncertaintySource> alreadyContainedUncertaintySources = selectedScenarios.stream().map(EObject::eContainer)
 				.map(UncertaintySource.class::cast).toList();
@@ -95,7 +125,7 @@ public class UncertainState {
 	@Override
 	public String toString() {
 		String scenarioNames = this.getSelectedUncertaintyScenarios().stream()
-				.map(it -> UncertaintyUtils.getUncertaintyScenarioName(it)).collect(Collectors.joining(", "));
+				.map(UncertaintyUtils::getUncertaintyScenarioName).collect(Collectors.joining(", "));
 
 		return "[%s]".formatted(scenarioNames);
 	}
@@ -105,12 +135,15 @@ public class UncertainState {
 				.reduce(1L, Math::multiplyExact);
 	}
 
+	/**
+	 * Returns a list of all uncertain states that can be created with the list of given uncertainty sources
+	 * <p/>
+	 * TODO: This might underestimate in DFDs if a node exists in multiple flows, might also happen in PCM models
+	 * @param relevantUncertaintySources List of uncertainty sources that are considered
+	 * @return Returns a list of all uncertain states created by the list of uncertainty sources
+	 */
 	public static List<UncertainState> createAllUncertainStates(
 			List<? extends UncertaintySource> relevantUncertaintySources) {
-
-		// TODO: This might be underestimate in DFDs if a node exists in multiple flows,
-		// not sure if this can also happen in PCM models
-
 		List<List<UncertaintyScenario>> listOfAllScenarioLists = new ArrayList<>();
 		for (UncertaintySource source : relevantUncertaintySources) {
 			List<UncertaintyScenario> allScenarios = UncertaintyUtils.getUncertaintyScenarios(source).stream()
@@ -119,7 +152,7 @@ public class UncertainState {
 		}
 
 		List<List<UncertaintyScenario>> cartesianProduct = cartesianProduct(listOfAllScenarioLists);
-		return cartesianProduct.stream().map(it -> new UncertainState(it)).toList();
+		return cartesianProduct.stream().map(UncertainState::new).toList();
 	}
 
 	private static <T> List<List<T>> cartesianProduct(List<List<T>> lists) {

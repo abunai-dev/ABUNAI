@@ -40,12 +40,12 @@ public class InterfaceUncertaintyTest extends DFDTestBase {
 		});
 		
 		assertEquals(1, result.size());
-		assertEquals(1, result.get(0).getUncertainState().getSelectedUncertaintyScenarios().size());
-		assertEquals(1, result.get(0).getViolations().size());
-		assertTrue(result.get(0).getViolations().get(0) instanceof DFDVertex);
+		assertEquals(1, result.get(0).uncertainState().getSelectedUncertaintyScenarios().size());
+		assertEquals(1, result.get(0).violations().size());
+		assertTrue(result.get(0).violations().get(0) instanceof DFDVertex);
 
-		assertEquals("Default Scenario", result.get(0).getUncertainState().getSelectedUncertaintyScenarios().get(0).getEntityName());
-		assertEquals("buy", ((DFDVertex) result.get(0).getViolations().get(0).getPreviousElements().get(0)).getReferencedElement().getEntityName());
-		assertEquals("database", ((DFDVertex) result.get(0).getViolations().get(0)).getReferencedElement().getEntityName());
+		assertEquals("Default Scenario", result.get(0).uncertainState().getSelectedUncertaintyScenarios().get(0).getEntityName());
+		assertEquals("buy", ((DFDVertex) result.get(0).violations().get(0).getPreviousElements().get(0)).getReferencedElement().getEntityName());
+		assertEquals("database", ((DFDVertex) result.get(0).violations().get(0)).getReferencedElement().getEntityName());
 	}
 }

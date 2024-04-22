@@ -37,7 +37,7 @@ public class PCMUncertainFlowGraphCollection extends PCMFlowGraphCollection impl
 	public PCMUncertainFlowGraphCollection createUncertainFlows() {
 		List<PCMUncertainTransposeFlowGraph> uncertainPartialFlows = this.getTransposeFlowGraphs().stream()
 				.map(PCMUncertainTransposeFlowGraph.class::cast)
-				.flatMap(it -> it.determineAlternativePartialFlowGraphs((PCMUncertaintyResourceProvider) this.resourceProvider).stream())
+				.flatMap(it -> it.determineAlternativeTransposeFlowGraphs((PCMUncertaintyResourceProvider) this.resourceProvider).stream())
 				.toList();
 		return new PCMUncertainFlowGraphCollection(uncertainPartialFlows, (PCMUncertaintyResourceProvider) resourceProvider);
 	}

@@ -118,8 +118,8 @@ public class OnlineShopTest extends DFDTestBase {
 		logger.info(String.format("Found %d violations", violations.size()));
 		violations.forEach((violation) -> logger.info(violation));
 		assertEquals(1, violations.size(), "Online shop model should contain one transpose flow graph with violations");
-		assertEquals(1, violations.get(0).getViolations().size(), "Transpose flow graph with violation should contain one vertex with violations");
-		assertEquals("Default Scenario", violations.get(0).getUncertainState().getSelectedUncertaintyScenarios().get(0).getEntityName(), "Violation should occur in default scenario");
-		assertEquals("Database", ((DFDVertex) violations.get(0).getViolations().get(0)).getReferencedElement().getEntityName(), "Violation should occur in Database");
+		assertEquals(1, violations.get(0).violations().size(), "Transpose flow graph with violation should contain one vertex with violations");
+		assertEquals("Default Scenario", violations.get(0).uncertainState().getSelectedUncertaintyScenarios().get(0).getEntityName(), "Violation should occur in default scenario");
+		assertEquals("Database", ((DFDVertex) violations.get(0).violations().get(0)).getReferencedElement().getEntityName(), "Violation should occur in Database");
 	}
 }
