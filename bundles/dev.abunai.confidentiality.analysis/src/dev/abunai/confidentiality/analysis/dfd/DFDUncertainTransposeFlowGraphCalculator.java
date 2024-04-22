@@ -34,6 +34,7 @@ import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 public class DFDUncertainTransposeFlowGraphCalculator {
     private final List<? extends UncertaintySource> relevantUncertaintySources;
@@ -46,7 +47,7 @@ public class DFDUncertainTransposeFlowGraphCalculator {
 
     public List<DFDUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs(UncertainState state, DFDUncertainTransposeFlowGraph uncertainTransposeFlowGraph) {
         if (state.getSelectedUncertaintyScenarios().isEmpty()) {
-        	return List.of((DFDUncertainTransposeFlowGraph) uncertainTransposeFlowGraph.copy(new IdentityHashMap<>(), state));
+        	return List.of(uncertainTransposeFlowGraph.copy(new IdentityHashMap<>(), state));
         }
 
     	List<DFDUncertainTransposeFlowGraph> currentTransposeFlowGraphs = List.of(uncertainTransposeFlowGraph);
@@ -121,18 +122,14 @@ public class DFDUncertainTransposeFlowGraphCalculator {
             throw new IllegalStateException("Found no targeted nodes by behaviour uncertainty");
         }
 
-        Behaviour resultBehaviour = datadictionaryFactory.eINSTANCE.createBehaviour();
-        resultBehaviour.setEntityName(targetBehaviour.getEntityName());
-        resultBehaviour.setId(targetBehaviour.getId());
-        resultBehaviour.getAssignment().addAll(filteredAssignments);
-        resultBehaviour.getAssignment().addAll(addedAssignments);
+        Behaviour replacingBehavior = this.copyBehavior(targetBehaviour, Stream.concat(filteredAssignments.stream(), addedAssignments.stream()).toList());
 
         Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
         targetedNodes.forEach(vertex -> {
-            Node targetNode = vertex.getReferencedElement();
-            Node replacingNode = this.copyNode(targetNode);
+            Node targetedNode = vertex.getReferencedElement();
+            Node replacingNode = this.copyNode(targetedNode);
 
-            replacingNode.setBehaviour(resultBehaviour);
+            replacingNode.setBehaviour(replacingBehavior);
             mapping.put(vertex, this.copyVertex(vertex, replacingNode));
         });
         
@@ -166,11 +163,9 @@ public class DFDUncertainTransposeFlowGraphCalculator {
         		.toList();
         
         followingFlowGraphs.stream()
-        	.map(it -> {
-        		return it.getVertices().stream()
-        				.filter(vertex -> vertex.getReferencedElement().equals(replacingFlow.getDestinationNode()))
-        				.findAny().orElseThrow();
-        	})
+        	.map(it -> it.getVertices().stream()
+                    .filter(vertex -> vertex.getReferencedElement().equals(replacingFlow.getDestinationNode()))
+                    .findAny().orElseThrow())
         	.filter(DFDVertex.class::isInstance)
         	.map(DFDVertex.class::cast)
         	.forEach(vertex -> {
@@ -183,20 +178,6 @@ public class DFDUncertainTransposeFlowGraphCalculator {
         return followingFlowGraphs;
     }
 
-
-    /**
-     * Theory time!!!
-     * Every node downstream from the changed flow is no longer able to evaluate
-     * -> Remove every node downstream starting at the destination of the target flow
-     * -> Nodes removed unnecessarily will be added back in step three
-     * Nodes in side branches is able to evaluate into a separate transpose flow graph
-     * -> Follow node starting at the vertex of the source of the target flow upward
-     * -> Each path to one node above is a tfg
-     * -> Do these need to be evaluated? The violation will be found in the default case as well
-     * The new node may cause multiple transpose flow graphs
-     * -> The destination of the replacing flow and all down stream need to be used as a result
-     * -> Take all flows with the destination node contained and search for the targeted pin
-     */
     private List<DFDUncertainTransposeFlowGraph> applyConnectorUncertaintyScenario(DFDConnectorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         DFDConnectorUncertaintySource uncertaintySource = (DFDConnectorUncertaintySource) uncertaintyScenario.eContainer();
         Flow targetFlow = uncertaintySource.getTargetFlow();
@@ -212,24 +193,13 @@ public class DFDUncertainTransposeFlowGraphCalculator {
             throw new IllegalArgumentException("Source of Flows in Connector Uncertainty are different");
         }
 
-        // DFDVertex in current transpose flow graph that matches the target
         DFDVertex targetNode = currentTransposeFlowGraph.getVertices().stream()
                 .filter(DFDVertex.class::isInstance)
                 .map(DFDVertex.class::cast)
                 .filter(it -> it.getReferencedElement().equals(targetFlow.getSourceNode()))
                 .findAny().orElseThrow();
 
-        List<DFDUncertainTransposeFlowGraph> transposeFlowGraphsInSide = currentTransposeFlowGraph.getVertices().stream()
-                .filter(DFDVertex.class::isInstance)
-                .map(DFDVertex.class::cast)
-                .filter(it -> it.getReferencedElement().equals(targetFlow.getDestinationNode()))
-                .flatMap(it -> it.getPreviousElements().stream())
-                .filter(DFDVertex.class::isInstance)
-                .filter(it -> !it.equals(targetNode))
-                .map(DFDVertex.class::cast)
-                .map(it -> new DFDUncertainTransposeFlowGraph(it.copy(new IdentityHashMap<>()), this.relevantUncertaintySources, uncertainState))
-                .toList();
-
+        List<DFDUncertainTransposeFlowGraph> transposeFlowGraphsInSide = this.determineSideFlowGraphs(uncertainState, currentTransposeFlowGraph, targetFlow, targetNode);
         List<DFDUncertainTransposeFlowGraph> results = new ArrayList<>(transposeFlowGraphsInSide);
 
         // All default flow graphs that match the destination of the replacing flow
@@ -240,12 +210,8 @@ public class DFDUncertainTransposeFlowGraphCalculator {
 
         Node targetCopy = this.copyNode(replacingFlow.getSourceNode());
         
-        Behaviour resultBehaviour = datadictionaryFactory.eINSTANCE.createBehaviour();
-        resultBehaviour.setEntityName(replacingFlow.getSourceNode().getBehaviour().getEntityName());
-        resultBehaviour.setId(replacingFlow.getSourceNode().getBehaviour().getId());
-        resultBehaviour.getAssignment().addAll(filteredAssignments);
-        resultBehaviour.getAssignment().addAll(addedAssignments);
-        targetCopy.setBehaviour(resultBehaviour);
+        Behaviour targetBehavior = this.copyBehavior(replacingFlow.getSourceNode().getBehaviour(), Stream.concat(filteredAssignments.stream(), addedAssignments.stream()).toList());
+        targetCopy.setBehaviour(targetBehavior);
         	
         DFDVertex destinationVertex = new DFDVertex(replacingFlow.getDestinationNode(), Map.of(replacingFlow.getDestinationPin(), targetNode), Map.of(replacingFlow.getDestinationPin(), replacingFlow));
 
@@ -255,6 +221,19 @@ public class DFDUncertainTransposeFlowGraphCalculator {
                 .toList();
         results.addAll(transposeFlowGraphsWithTarget);
         return results;
+    }
+
+    private List<DFDUncertainTransposeFlowGraph> determineSideFlowGraphs(UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph, Flow targetFlow, DFDVertex targetNode) {
+        return currentTransposeFlowGraph.getVertices().stream()
+                .filter(DFDVertex.class::isInstance)
+                .map(DFDVertex.class::cast)
+                .filter(it -> it.getReferencedElement().equals(targetFlow.getDestinationNode()))
+                .flatMap(it -> it.getPreviousElements().stream())
+                .filter(DFDVertex.class::isInstance)
+                .filter(it -> !it.equals(targetNode))
+                .map(DFDVertex.class::cast)
+                .map(it -> new DFDUncertainTransposeFlowGraph(it.copy(new IdentityHashMap<>()), this.relevantUncertaintySources, uncertainState))
+                .toList();
     }
 
     public DFDUncertainTransposeFlowGraph merge(DFDVertex destinationVertex, DFDUncertainTransposeFlowGraph followingTransposeFlowGraph, UncertainState uncertainState) {
@@ -283,11 +262,7 @@ public class DFDUncertainTransposeFlowGraphCalculator {
                 .filter(DFDVertex.class::isInstance)
                 .map(DFDVertex.class::cast)
                 .filter(it -> it.getReferencedElement().equals(targetedNode))
-                .forEach(it -> {
-                    Map<Pin, DFDVertex> copiedPinDFDVertexMap = new HashMap<>();
-                    it.getPinDFDVertexMap().keySet().forEach(key -> copiedPinDFDVertexMap.put(key, it.getPinDFDVertexMap().get(key).copy(new IdentityHashMap<>())));
-                    mapping.put(it, new DFDVertex(replacingNode, copiedPinDFDVertexMap, new HashMap<>(it.getPinFlowMap())));
-                });
+                .forEach(it -> mapping.put(it, this.copyVertex(it, replacingNode)));
 
         return currentTransposeFlowGraph.copy(mapping, uncertainState);
     }
@@ -306,6 +281,14 @@ public class DFDUncertainTransposeFlowGraphCalculator {
         copy.setEntityName(node.getEntityName());
         copy.setBehaviour(node.getBehaviour());
         copy.getProperties().addAll(node.getProperties());
+        return copy;
+    }
+
+    private Behaviour copyBehavior(Behaviour behaviour, List<AbstractAssignment> assignments) {
+        Behaviour copy = datadictionaryFactory.eINSTANCE.createBehaviour();
+        copy.setEntityName(behaviour.getEntityName());
+        copy.setId(behaviour.getId());
+        copy.getAssignment().addAll(assignments);
         return copy;
     }
 
