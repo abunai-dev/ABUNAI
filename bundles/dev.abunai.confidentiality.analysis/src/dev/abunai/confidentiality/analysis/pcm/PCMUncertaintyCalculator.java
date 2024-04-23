@@ -10,7 +10,9 @@ import dev.abunai.confidentiality.analysis.pcm.proxy.UncertainCallingUserPCMVert
 import dev.abunai.confidentiality.analysis.pcm.proxy.UncertainSEFFPCMVertex;
 import dev.abunai.confidentiality.analysis.pcm.proxy.UncertainUserPCMVertex;
 import org.apache.log4j.Logger;
+import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.pcm.core.AbstractPCMVertex;
+import org.dataflowanalysis.analysis.pcm.core.finder.PCMTransposeFlowGraphFinder;
 import org.dataflowanalysis.analysis.pcm.core.seff.CallingSEFFPCMVertex;
 import org.dataflowanalysis.analysis.pcm.core.seff.SEFFPCMVertex;
 import org.dataflowanalysis.analysis.pcm.core.user.CallingUserPCMVertex;
@@ -19,12 +21,14 @@ import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristic
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.ResourceAssignee;
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Parameter;
 import org.palladiosimulator.pcm.seff.AbstractAction;
 import org.palladiosimulator.pcm.seff.ExternalCallAction;
 import org.palladiosimulator.pcm.seff.SeffFactory;
 import org.palladiosimulator.pcm.seff.SetVariableAction;
+import org.palladiosimulator.pcm.seff.StartAction;
 import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
 import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
 import org.palladiosimulator.pcm.usagemodel.UsagemodelFactory;
@@ -64,9 +68,9 @@ public class PCMUncertaintyCalculator {
         } else if (uncertaintyScenario instanceof PCMComponentUncertaintyScenario castedScenario) {
             return List.of(applyComponentUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph));
         } else if (uncertaintyScenario instanceof PCMConnectorUncertaintyScenarioInEntryLevelSystemCall castedScenario) {
-            return List.of(applyConnectorUncertaintyScenarioInEntryLevelSystemCall(castedScenario, uncertainState, currentTransposeFlowGraph));
+            return applyConnectorUncertaintyScenarioInEntryLevelSystemCall(castedScenario, uncertainState, currentTransposeFlowGraph);
         } else if (uncertaintyScenario instanceof PCMConnectorUncertaintyScenarioInExternalCall castedScenario) {
-            return List.of(applyConnectorUncertaintyScenarioInExternalCall(castedScenario, uncertainState, currentTransposeFlowGraph));
+            return applyConnectorUncertaintyScenarioInExternalCall(castedScenario, uncertainState, currentTransposeFlowGraph);
         } else if (uncertaintyScenario instanceof PCMExternalUncertaintyScenarioInResource castedScenario) {
             return List.of(applyExternalUncertaintyScenarioInResource(castedScenario, uncertainState, currentTransposeFlowGraph));
         } else if(uncertainState instanceof PCMExternalUncertaintyScenarioInUsage castedScenario) {
@@ -110,30 +114,62 @@ public class PCMUncertaintyCalculator {
         return currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState);
     }
 
-    /*
-    1. Find call
-    2. Perform sequence finding on callee
-    3. Splice together
-    */
-    public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInEntryLevelSystemCall(PCMConnectorUncertaintyScenarioInEntryLevelSystemCall uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
+    public List<PCMUncertainTransposeFlowGraph> applyConnectorUncertaintyScenarioInEntryLevelSystemCall(PCMConnectorUncertaintyScenarioInEntryLevelSystemCall uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMConnectorUncertaintySourceInEntryLevelSystemCall uncertaintySource = (PCMConnectorUncertaintySourceInEntryLevelSystemCall) uncertaintyScenario.eContainer();
         EntryLevelSystemCall target = uncertaintySource.getTarget();
         EntryLevelSystemCall replacement = uncertaintyScenario.getTarget();
 
-        return currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState);
+        AbstractPCMVertex<?> commonNode = currentTransposeFlowGraph.getVertices().stream()
+                .filter(CallingUserPCMVertex.class::isInstance)
+                .map(CallingUserPCMVertex.class::cast)
+                .filter(it -> it.getReferencedElement().equals(target))
+                .filter(CallingUserPCMVertex::isCalling)
+                .map(AbstractPCMVertex::getPreviousElements)
+                .flatMap(List::stream)
+                .findFirst().orElseThrow();
+
+        PCMTransposeFlowGraphFinder finder = new PCMTransposeFlowGraphFinder(this.resourceProvider);
+        List<PCMUncertainTransposeFlowGraph> followingTransposeFlowGraphs = finder.findTransposeFlowGraphs(List.of(replacement)).stream()
+                .map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.relevantUncertaintySources, uncertainState))
+                .toList();
+
+        followingTransposeFlowGraphs.stream()
+                .map(it -> it.getVertices().stream().filter(AbstractVertex::isSource).findAny().orElseThrow())
+                .map(it -> (AbstractPCMVertex<?>) it)
+                .forEach(it -> {
+                    it.setPreviousElements(List.of(commonNode.copy(new IdentityHashMap<>())));
+                });
+
+        return followingTransposeFlowGraphs;
     }
 
-    /*
-    1. Find call
-    2. Perform sequence finding
-    3. Splice together
-     */
-    public PCMUncertainTransposeFlowGraph applyConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
+    public List<PCMUncertainTransposeFlowGraph> applyConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMConnectorUncertaintySourceInExternalCall uncertaintySource = (PCMConnectorUncertaintySourceInExternalCall) uncertaintyScenario.eContainer();
         ExternalCallAction target = uncertaintySource.getTarget();
         ExternalCallAction replacement = uncertaintyScenario.getTarget();
 
-        return currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState);
+        AbstractPCMVertex<?> commonNode = currentTransposeFlowGraph.getVertices().stream()
+                .filter(CallingSEFFPCMVertex.class::isInstance)
+                .map(CallingSEFFPCMVertex.class::cast)
+                .filter(it -> it.getReferencedElement().equals(target))
+                .filter(CallingSEFFPCMVertex::isCalling)
+                .map(AbstractPCMVertex::getPreviousElements)
+                .flatMap(List::stream)
+                .findFirst().orElseThrow();
+
+        PCMTransposeFlowGraphFinder finder = new PCMTransposeFlowGraphFinder(this.resourceProvider);
+        List<PCMUncertainTransposeFlowGraph> followingTransposeFlowGraphs = finder.findTransposeFlowGraphs(List.of(replacement)).stream()
+                .map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.relevantUncertaintySources, uncertainState))
+                .toList();
+
+        followingTransposeFlowGraphs.stream()
+                .map(it -> it.getVertices().stream().filter(AbstractVertex::isSource).findAny().orElseThrow())
+                .map(it -> (AbstractPCMVertex<?>) it)
+                .forEach(it -> {
+                    it.setPreviousElements(List.of(commonNode.copy(new IdentityHashMap<>())));
+                });
+
+        return followingTransposeFlowGraphs;
     }
 
     public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInResource(PCMExternalUncertaintyScenarioInResource uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
