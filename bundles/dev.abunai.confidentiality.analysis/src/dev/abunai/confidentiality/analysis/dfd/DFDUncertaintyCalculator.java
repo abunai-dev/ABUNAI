@@ -45,7 +45,7 @@ public class DFDUncertaintyCalculator {
         this.resourceProvider = resourceProvider;
     }
 
-    public List<DFDUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs(UncertainState state, DFDUncertainTransposeFlowGraph uncertainTransposeFlowGraph) {
+    public List<DFDUncertainTransposeFlowGraph> determineAlternativeTransposeFlowGraphs(UncertainState state, DFDUncertainTransposeFlowGraph uncertainTransposeFlowGraph) {
         if (state.getSelectedUncertaintyScenarios().isEmpty()) {
         	return List.of(uncertainTransposeFlowGraph.copy(new IdentityHashMap<>(), state));
         }
@@ -199,8 +199,8 @@ public class DFDUncertaintyCalculator {
                 .filter(it -> it.getReferencedElement().equals(targetFlow.getSourceNode()))
                 .findAny().orElseThrow();
 
-        List<DFDUncertainTransposeFlowGraph> transposeFlowGraphsInSide = this.determineSideFlowGraphs(uncertainState, currentTransposeFlowGraph, targetFlow, targetNode);
-        List<DFDUncertainTransposeFlowGraph> results = new ArrayList<>(transposeFlowGraphsInSide);
+        //List<DFDUncertainTransposeFlowGraph> transposeFlowGraphsInSide = this.determineSideFlowGraphs(uncertainState, currentTransposeFlowGraph, targetFlow, targetNode);
+        List<DFDUncertainTransposeFlowGraph> results = new ArrayList<>(/*transposeFlowGraphsInSide*/);
 
         // All default flow graphs that match the destination of the replacing flow
         DFDTransposeFlowGraphFinder finder = new DFDTransposeFlowGraphFinder(this.resourceProvider);

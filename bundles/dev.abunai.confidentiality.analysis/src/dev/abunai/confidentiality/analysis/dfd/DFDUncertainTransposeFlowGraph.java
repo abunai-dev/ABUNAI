@@ -54,7 +54,7 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		this.relevantUncertaintySources = relevantUncertaintySources;
 	}
 
-	// TODO: Implement impact set
+	// TODO: Implement impact set, currently broken
 	@Override
 	public List<? extends DFDVertex> getImpactSet(ResourceProvider resourceProvider) {
 		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(this.getVertices());
@@ -96,7 +96,7 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		List<DFDUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
 		DFDUncertaintyCalculator calculator = new DFDUncertaintyCalculator(this.relevantUncertaintySources, (DFDUncertaintyResourceProvider) resourceProvider);
 		for (UncertainState state : states) {
-			alternatePartialFlowGraphs.addAll(calculator.determineAlternativePartialFlowGraphs(state, this));
+			alternatePartialFlowGraphs.addAll(calculator.determineAlternativeTransposeFlowGraphs(state, this));
 		}
 		return alternatePartialFlowGraphs;
 	}
