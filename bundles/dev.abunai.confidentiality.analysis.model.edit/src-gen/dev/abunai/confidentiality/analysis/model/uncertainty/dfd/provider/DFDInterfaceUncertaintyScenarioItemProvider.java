@@ -49,7 +49,7 @@ public class DFDInterfaceUncertaintyScenarioItemProvider extends UncertaintyScen
 			super.getPropertyDescriptors(object);
 
 			addTargetInPinPropertyDescriptor(object);
-			addTargetFlowPropertyDescriptor(object);
+			addTargetNodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -77,19 +77,19 @@ public class DFDInterfaceUncertaintyScenarioItemProvider extends UncertaintyScen
 	}
 
 	/**
-	 * This adds a property descriptor for the Target Flow feature.
+	 * This adds a property descriptor for the Target Node feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTargetFlowPropertyDescriptor(Object object) {
+	protected void addTargetNodePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DFDInterfaceUncertaintyScenario_targetFlow_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DFDInterfaceUncertaintyScenario_targetFlow_feature", "_UI_DFDInterfaceUncertaintyScenario_type"),
-				 DfdPackage.Literals.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW,
+				 getString("_UI_DFDInterfaceUncertaintyScenario_targetNode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DFDInterfaceUncertaintyScenario_targetNode_feature", "_UI_DFDInterfaceUncertaintyScenario_type"),
+				 DfdPackage.Literals.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_NODE,
 				 true,
 				 false,
 				 true,

@@ -406,22 +406,13 @@ public interface DfdPackage extends EPackage {
 	int DFD_INTERFACE_UNCERTAINTY_SOURCE__ENTITY_NAME = DFD_UNCERTAINTY_SOURCE__ENTITY_NAME;
 
 	/**
-	 * The feature id for the '<em><b>Target In Pin</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int DFD_INTERFACE_UNCERTAINTY_SOURCE__TARGET_IN_PIN = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Target Flow</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DFD_INTERFACE_UNCERTAINTY_SOURCE__TARGET_FLOW = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
+	int DFD_INTERFACE_UNCERTAINTY_SOURCE__TARGET_FLOW = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Scenarios</b></em>' containment reference list.
@@ -430,7 +421,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DFD_INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
+	int DFD_INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>DFD Interface Uncertainty Source</em>' class.
@@ -439,7 +430,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DFD_INTERFACE_UNCERTAINTY_SOURCE_FEATURE_COUNT = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 3;
+	int DFD_INTERFACE_UNCERTAINTY_SOURCE_FEATURE_COUNT = DFD_UNCERTAINTY_SOURCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>DFD Interface Uncertainty Source</em>' class.
@@ -497,13 +488,13 @@ public interface DfdPackage extends EPackage {
 	int DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_IN_PIN = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Target Flow</b></em>' reference.
+	 * The feature id for the '<em><b>Target Node</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_NODE = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>DFD Interface Uncertainty Scenario</em>' class.
@@ -643,13 +634,22 @@ public interface DfdPackage extends EPackage {
 	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Target Flow</b></em>' reference.
+	 * The feature id for the '<em><b>Target Pin</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_PIN = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Target Node</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_NODE = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>DFD Connector Uncertainty Scenario</em>' class.
@@ -658,7 +658,7 @@ public interface DfdPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 2;
+	int DFD_CONNECTOR_UNCERTAINTY_SCENARIO_FEATURE_COUNT = UncertaintyPackage.UNCERTAINTY_SCENARIO_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>DFD Connector Uncertainty Scenario</em>' class.
@@ -947,17 +947,6 @@ public interface DfdPackage extends EPackage {
 	EClass getDFDInterfaceUncertaintySource();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource#getTargetInPin <em>Target In Pin</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target In Pin</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource#getTargetInPin()
-	 * @see #getDFDInterfaceUncertaintySource()
-	 * @generated
-	 */
-	EReference getDFDInterfaceUncertaintySource_TargetInPin();
-
-	/**
 	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource#getTargetFlow <em>Target Flow</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1001,15 +990,15 @@ public interface DfdPackage extends EPackage {
 	EReference getDFDInterfaceUncertaintyScenario_TargetInPin();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetFlow <em>Target Flow</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetNode <em>Target Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target Flow</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetFlow()
+	 * @return the meta object for the reference '<em>Target Node</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetNode()
 	 * @see #getDFDInterfaceUncertaintyScenario()
 	 * @generated
 	 */
-	EReference getDFDInterfaceUncertaintyScenario_TargetFlow();
+	EReference getDFDInterfaceUncertaintyScenario_TargetNode();
 
 	/**
 	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource <em>DFD Connector Uncertainty Source</em>}'.
@@ -1076,15 +1065,26 @@ public interface DfdPackage extends EPackage {
 	EReference getDFDConnectorUncertaintyScenario_TargetAssignments();
 
 	/**
-	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetFlow <em>Target Flow</em>}'.
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetPin <em>Target Pin</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Target Flow</em>'.
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetFlow()
+	 * @return the meta object for the reference '<em>Target Pin</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetPin()
 	 * @see #getDFDConnectorUncertaintyScenario()
 	 * @generated
 	 */
-	EReference getDFDConnectorUncertaintyScenario_TargetFlow();
+	EReference getDFDConnectorUncertaintyScenario_TargetPin();
+
+	/**
+	 * Returns the meta object for the reference '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetNode <em>Target Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target Node</em>'.
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario#getTargetNode()
+	 * @see #getDFDConnectorUncertaintyScenario()
+	 * @generated
+	 */
+	EReference getDFDConnectorUncertaintyScenario_TargetNode();
 
 	/**
 	 * Returns the meta object for class '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource <em>DFD Component Uncertainty Source</em>}'.
@@ -1287,14 +1287,6 @@ public interface DfdPackage extends EPackage {
 		EClass DFD_INTERFACE_UNCERTAINTY_SOURCE = eINSTANCE.getDFDInterfaceUncertaintySource();
 
 		/**
-		 * The meta object literal for the '<em><b>Target In Pin</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference DFD_INTERFACE_UNCERTAINTY_SOURCE__TARGET_IN_PIN = eINSTANCE.getDFDInterfaceUncertaintySource_TargetInPin();
-
-		/**
 		 * The meta object literal for the '<em><b>Target Flow</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1329,12 +1321,12 @@ public interface DfdPackage extends EPackage {
 		EReference DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_IN_PIN = eINSTANCE.getDFDInterfaceUncertaintyScenario_TargetInPin();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Flow</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Target Node</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW = eINSTANCE.getDFDInterfaceUncertaintyScenario_TargetFlow();
+		EReference DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_NODE = eINSTANCE.getDFDInterfaceUncertaintyScenario_TargetNode();
 
 		/**
 		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDConnectorUncertaintySourceImpl <em>DFD Connector Uncertainty Source</em>}' class.
@@ -1389,12 +1381,20 @@ public interface DfdPackage extends EPackage {
 		EReference DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS = eINSTANCE.getDFDConnectorUncertaintyScenario_TargetAssignments();
 
 		/**
-		 * The meta object literal for the '<em><b>Target Flow</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Target Pin</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW = eINSTANCE.getDFDConnectorUncertaintyScenario_TargetFlow();
+		EReference DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_PIN = eINSTANCE.getDFDConnectorUncertaintyScenario_TargetPin();
+
+		/**
+		 * The meta object literal for the '<em><b>Target Node</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_NODE = eINSTANCE.getDFDConnectorUncertaintyScenario_TargetNode();
 
 		/**
 		 * The meta object literal for the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDComponentUncertaintySourceImpl <em>DFD Component Uncertainty Source</em>}' class.

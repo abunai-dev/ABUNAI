@@ -8,9 +8,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage;
 import dev.abunai.confidentiality.analysis.model.uncertainty.impl.UncertaintyScenarioImpl;
 
 import org.dataflowanalysis.dfd.datadictionary.Pin;
-
-import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
-
+import org.dataflowanalysis.dfd.dataflowdiagram.Node;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -27,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDInterfaceUncertaintyScenarioImpl#getTargetInPin <em>Target In Pin</em>}</li>
- *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDInterfaceUncertaintyScenarioImpl#getTargetFlow <em>Target Flow</em>}</li>
+ *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.impl.DFDInterfaceUncertaintyScenarioImpl#getTargetNode <em>Target Node</em>}</li>
  * </ul>
  *
  * @generated
@@ -44,14 +42,14 @@ public class DFDInterfaceUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 	protected Pin targetInPin;
 
 	/**
-	 * The cached value of the '{@link #getTargetFlow() <em>Target Flow</em>}' reference.
+	 * The cached value of the '{@link #getTargetNode() <em>Target Node</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getTargetFlow()
+	 * @see #getTargetNode()
 	 * @generated
 	 * @ordered
 	 */
-	protected Flow targetFlow;
+	protected Node targetNode;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -115,16 +113,16 @@ public class DFDInterfaceUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Flow getTargetFlow() {
-		if (targetFlow != null && targetFlow.eIsProxy()) {
-			InternalEObject oldTargetFlow = (InternalEObject)targetFlow;
-			targetFlow = (Flow)eResolveProxy(oldTargetFlow);
-			if (targetFlow != oldTargetFlow) {
+	public Node getTargetNode() {
+		if (targetNode != null && targetNode.eIsProxy()) {
+			InternalEObject oldTargetNode = (InternalEObject)targetNode;
+			targetNode = (Node)eResolveProxy(oldTargetNode);
+			if (targetNode != oldTargetNode) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW, oldTargetFlow, targetFlow));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_NODE, oldTargetNode, targetNode));
 			}
 		}
-		return targetFlow;
+		return targetNode;
 	}
 
 	/**
@@ -132,8 +130,8 @@ public class DFDInterfaceUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Flow basicGetTargetFlow() {
-		return targetFlow;
+	public Node basicGetTargetNode() {
+		return targetNode;
 	}
 
 	/**
@@ -141,11 +139,11 @@ public class DFDInterfaceUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTargetFlow(Flow newTargetFlow) {
-		Flow oldTargetFlow = targetFlow;
-		targetFlow = newTargetFlow;
+	public void setTargetNode(Node newTargetNode) {
+		Node oldTargetNode = targetNode;
+		targetNode = newTargetNode;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW, oldTargetFlow, targetFlow));
+			eNotify(new ENotificationImpl(this, Notification.SET, DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_NODE, oldTargetNode, targetNode));
 	}
 
 	/**
@@ -159,9 +157,9 @@ public class DFDInterfaceUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_IN_PIN:
 				if (resolve) return getTargetInPin();
 				return basicGetTargetInPin();
-			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW:
-				if (resolve) return getTargetFlow();
-				return basicGetTargetFlow();
+			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_NODE:
+				if (resolve) return getTargetNode();
+				return basicGetTargetNode();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -177,8 +175,8 @@ public class DFDInterfaceUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_IN_PIN:
 				setTargetInPin((Pin)newValue);
 				return;
-			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW:
-				setTargetFlow((Flow)newValue);
+			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_NODE:
+				setTargetNode((Node)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -195,8 +193,8 @@ public class DFDInterfaceUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_IN_PIN:
 				setTargetInPin((Pin)null);
 				return;
-			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW:
-				setTargetFlow((Flow)null);
+			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_NODE:
+				setTargetNode((Node)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -212,8 +210,8 @@ public class DFDInterfaceUncertaintyScenarioImpl extends UncertaintyScenarioImpl
 		switch (featureID) {
 			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_IN_PIN:
 				return targetInPin != null;
-			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW:
-				return targetFlow != null;
+			case DfdPackage.DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_NODE:
+				return targetNode != null;
 		}
 		return super.eIsSet(featureID);
 	}

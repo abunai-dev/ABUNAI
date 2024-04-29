@@ -49,7 +49,8 @@ public class DFDConnectorUncertaintyScenarioItemProvider extends UncertaintyScen
 			super.getPropertyDescriptors(object);
 
 			addTargetAssignmentsPropertyDescriptor(object);
-			addTargetFlowPropertyDescriptor(object);
+			addTargetPinPropertyDescriptor(object);
+			addTargetNodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -77,19 +78,41 @@ public class DFDConnectorUncertaintyScenarioItemProvider extends UncertaintyScen
 	}
 
 	/**
-	 * This adds a property descriptor for the Target Flow feature.
+	 * This adds a property descriptor for the Target Pin feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addTargetFlowPropertyDescriptor(Object object) {
+	protected void addTargetPinPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_DFDConnectorUncertaintyScenario_targetFlow_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DFDConnectorUncertaintyScenario_targetFlow_feature", "_UI_DFDConnectorUncertaintyScenario_type"),
-				 DfdPackage.Literals.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW,
+				 getString("_UI_DFDConnectorUncertaintyScenario_targetPin_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DFDConnectorUncertaintyScenario_targetPin_feature", "_UI_DFDConnectorUncertaintyScenario_type"),
+				 DfdPackage.Literals.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_PIN,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Target Node feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTargetNodePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_DFDConnectorUncertaintyScenario_targetNode_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_DFDConnectorUncertaintyScenario_targetNode_feature", "_UI_DFDConnectorUncertaintyScenario_type"),
+				 DfdPackage.Literals.DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_NODE,
 				 true,
 				 false,
 				 true,
