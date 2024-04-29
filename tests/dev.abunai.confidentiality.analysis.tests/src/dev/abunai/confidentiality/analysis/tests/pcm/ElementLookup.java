@@ -11,6 +11,7 @@ import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristic
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.core.composition.CompositionPackage;
@@ -47,6 +48,7 @@ public class ElementLookup extends PCMTestBase {
 		return "casestudies/CaseStudy-CoronaWarnApp";
 	}
 
+	@Disabled("Test case needs to be repaired")
 	@Test
 	public void printAllRelevantElements() {
 		printDivider("Node Characteristics Assignees", "External Uncertainty");

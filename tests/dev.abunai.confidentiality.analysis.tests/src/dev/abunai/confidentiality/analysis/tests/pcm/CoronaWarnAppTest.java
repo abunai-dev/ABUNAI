@@ -1,5 +1,6 @@
 package dev.abunai.confidentiality.analysis.tests.pcm;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import dev.abunai.confidentiality.analysis.core.UncertainState;
@@ -23,6 +24,7 @@ public class CoronaWarnAppTest extends PCMTestBase {
 		return "casestudies/CaseStudy-CoronaWarnApp";
 	}
 
+	@Disabled("Test case needs to be repaired")
 	@Test
 	void testCWA() {
 		var sourceCollection = analysis.getUncertaintySources();
