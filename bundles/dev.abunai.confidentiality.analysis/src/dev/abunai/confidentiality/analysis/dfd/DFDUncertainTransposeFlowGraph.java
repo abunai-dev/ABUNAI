@@ -64,11 +64,10 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 				.flatMap(List::stream)
 				.toList();
 
-		List<DFDVertex> longestAffectedElementList = super.getVertices().stream()
+		List<DFDVertex> longestAffectedElementList = this.getVertices().stream()
 				.map(DFDVertex.class::cast)
 				.dropWhile(it -> !targetNodes.contains(it.getReferencedElement()))
 				.toList();
-		// OLD CODE: new DFDActionSequence((List<AbstractActionSequenceElement<?>>) longestAffectedElementList);
 		return longestAffectedElementList;
 	}
 
@@ -78,7 +77,11 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 			logger.error("Uncertain DFD Transpose flow graphs should only be evaluated if they contain an uncertain state");
 			throw new IllegalStateException("Uncertain DFD Transpose flow graphs should only be evaluated if they contain an uncertain state");
 		}
-        DFDVertex newSink = ((DFDVertex) sink).copy(new IdentityHashMap<>());
+		if (!(this.sink instanceof DFDVertex dfdSink)) {
+			logger.error("Stored sink of DFD Transpose flow graph is not a DFDVertex");
+			throw new IllegalStateException("Stored sink of DFD Transpose flow graph is not a DFD Vertex");
+		}
+        DFDVertex newSink = dfdSink.copy(new IdentityHashMap<>());
         newSink.unify(new HashSet<>());
         newSink.evaluateDataFlow();
         return new DFDUncertainTransposeFlowGraph(newSink,relevantUncertaintySources, uncertainState.get());
@@ -91,10 +94,14 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 			logger.error("This is most likely caused by calling determineAlternativeFlowGraphs on a transpose flow graph that was already an alternative flow graph");
 			throw new IllegalStateException();
 		}
+		if (!(resourceProvider instanceof DFDUncertaintyResourceProvider dfdUncertaintyResourceProvider)) {
+			logger.error("Provided uncertainty resource provider cannot be used for dfd models! Please provide a dfd uncertainty resource provider");
+			throw new IllegalStateException();
+		}
 
 		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
 		List<DFDUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
-		DFDUncertaintyCalculator calculator = new DFDUncertaintyCalculator((DFDUncertaintyResourceProvider) resourceProvider);
+		DFDUncertaintyCalculator calculator = new DFDUncertaintyCalculator(dfdUncertaintyResourceProvider);
 		for (UncertainState state : states) {
 			alternatePartialFlowGraphs.addAll(calculator.determineAlternativeTransposeFlowGraphs(state, this));
 		}
@@ -109,6 +116,12 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 				.orElseGet(() -> new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources));
 	}
 
+	/**
+	 * Copies the dfd uncertain transpose flow graph with the given mapping and uncertain state
+	 * @param mapping Mapping which is used to map old vertices to new ones
+	 * @param uncertainState Uncertain state of the copied dfd uncertain transpose flow graph
+	 * @return Returns a new dfd uncertain transpose flow graph with a copy of all vertices
+	 */
 	public DFDUncertainTransposeFlowGraph copy(Map<DFDVertex, DFDVertex> mapping, UncertainState uncertainState) {
 		DFDVertex copiedSink = mapping.getOrDefault((DFDVertex) sink, ((DFDVertex) sink).copy(mapping));
 		copiedSink.unify(new HashSet<>());

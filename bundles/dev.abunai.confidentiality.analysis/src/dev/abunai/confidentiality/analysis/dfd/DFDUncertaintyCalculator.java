@@ -35,13 +35,26 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
+/**
+ * Calculator used to determine the impact of an uncertainty state on a transpose flow graph
+ */
 public class DFDUncertaintyCalculator {
     private final DFDUncertaintyResourceProvider resourceProvider;
 
+    /**
+     * Create a new dfd uncertainty calculator with the given dfd uncertainty resource provider
+     * @param resourceProvider DFD Uncertainty resource provider, which is used to calculate the impact on transpose flow graphs
+     */
     public DFDUncertaintyCalculator(DFDUncertaintyResourceProvider resourceProvider) {
         this.resourceProvider = resourceProvider;
     }
 
+    /**
+     * Determines the alternative transpose flow graphs of the given transpose flow graph in the given uncertain state
+     * @param state Uncertain state, which impacts the given transpose flow graph
+     * @param uncertainTransposeFlowGraph Uncertain transpose flow graph that is affected by the uncertain state
+     * @return Returns a list of all alternate transpose flow graphs after all uncertainty scenarios of the uncertain state are applied
+     */
     public List<DFDUncertainTransposeFlowGraph> determineAlternativeTransposeFlowGraphs(UncertainState state, DFDUncertainTransposeFlowGraph uncertainTransposeFlowGraph) {
         if (state.getSelectedUncertaintyScenarios().isEmpty()) {
         	return List.of(uncertainTransposeFlowGraph.copy(new IdentityHashMap<>(), state));
@@ -56,6 +69,13 @@ public class DFDUncertaintyCalculator {
         return currentTransposeFlowGraphs;
     }
 
+    /**
+     * Apply a given uncertainty scenario extracted from the uncertainty state on a given transpose flow graph
+     * @param uncertaintyScenario Uncertainty scenario which is applied on the transpose flow graph
+     * @param uncertainState Uncertainty state containing the uncertainty scenario
+     * @param currentTransposeFlowGraph Transpose flow graph to which the uncertainty scenario is applied
+     * @return Returns a list of all transpose flow graphs that result from the application of the uncertainty scenario
+     */
     private List<DFDUncertainTransposeFlowGraph> applyUncertaintyScenario(UncertaintyScenario uncertaintyScenario,
                                                                           UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         if (uncertaintyScenario instanceof DFDExternalUncertaintyScenario castedScenario) {
@@ -74,10 +94,18 @@ public class DFDUncertaintyCalculator {
         }
     }
 
+    /**
+     * Apply an external uncertainty scenario on the transpose flow graph
+     * @param uncertaintyScenario Uncertainty scenario that is applied to the transpose flow graph
+     * @param uncertainState Uncertain state containing the uncertainty scenario
+     * @param currentTransposeFlowGraph Transpose flow graph to which the uncertainty scenario is applied
+     * @return Returns the transpose flow graph resulting from the application of the external uncertainty
+     */
     private DFDUncertainTransposeFlowGraph applyExternalUncertaintyScenario(DFDExternalUncertaintyScenario uncertaintyScenario,
                                                                             UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
 
         DFDExternalUncertaintySource uncertaintySource = (DFDExternalUncertaintySource) uncertaintyScenario.eContainer();
+
         Node target = uncertaintySource.getTarget();
         List<Label> filteredOldProperties = target.getProperties().stream()
                 .filter(it -> !uncertaintySource.getTargetProperties().stream().map(Label::getEntityName).toList().contains(it.getEntityName()))
@@ -99,6 +127,13 @@ public class DFDUncertaintyCalculator {
         return currentTransposeFlowGraph.copy(mapping, uncertainState);
     }
 
+    /**
+     * Apply a behavior uncertainty scenario on the transpose flow graph
+     * @param uncertaintyScenario Uncertainty scenario that is applied to the transpose flow graph
+     * @param uncertainState Uncertain state containing the uncertainty scenario
+     * @param currentTransposeFlowGraph Transpose flow graph to which the uncertainty scenario is applied
+     * @return Returns the transpose flow graph resulting from the application of the behavior uncertainty
+     */
     private DFDUncertainTransposeFlowGraph applyBehaviorUncertaintyScenario(DFDBehaviorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         DFDBehaviorUncertaintySource uncertaintySource = (DFDBehaviorUncertaintySource) uncertaintyScenario.eContainer();
         Behaviour targetBehaviour = uncertaintySource.getTarget();
@@ -133,6 +168,13 @@ public class DFDUncertaintyCalculator {
         return currentTransposeFlowGraph.copy(mapping, uncertainState);
     }
 
+    /**
+     * Apply an interface uncertainty scenario on the transpose flow graph
+     * @param uncertaintyScenario Uncertainty scenario that is applied to the transpose flow graph
+     * @param uncertainState Uncertain state containing the uncertainty scenario
+     * @param currentTransposeFlowGraph Transpose flow graph to which the uncertainty scenario is applied
+     * @return Returns the transpose flow graph resulting from the application of the interface uncertainty
+     */
     private List<DFDUncertainTransposeFlowGraph> applyInterfaceUncertaintyScenario(DFDInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         DFDInterfaceUncertaintySource uncertaintySource = (DFDInterfaceUncertaintySource) uncertaintyScenario.eContainer();
         Flow targetFlow = uncertaintySource.getTargetFlow();
@@ -143,6 +185,19 @@ public class DFDUncertaintyCalculator {
         return this.replaceFlow(targetFlow, replacingNode, replacingPin, currentTransposeFlowGraph, uncertainState, it -> it);
     }
 
+    /**
+     * This method replaces the targeted flow in the given transpose flow graph
+     * with a new flow with the given node and pin as destination.
+     * Furthermore, the uncertainty state is applied to the resulting transpose flow graphs.
+     * Each node that is targeted can be modified via the mapping function
+     * @param targetFlow Targeted flow in the transpose flow graph
+     * @param replacingNode Destination node of the replacing flow
+     * @param replacingPin Destination pin of the replacing flow
+     * @param currentTransposeFlowGraph Transpose flow graph in which the flow is replaced
+     * @param uncertainState Uncertain state of the resulting uncertain transpose flow graphs
+     * @param mapping Mapping function used to manipulate the targeted nodes
+     * @return Returns a list of all transpose flow graphs resulting from the replaced flow
+     */
     private List<DFDUncertainTransposeFlowGraph> replaceFlow(Flow targetFlow, Node replacingNode, Pin replacingPin, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph, UncertainState uncertainState, Function<Node, Node> mapping) {
         DFDVertex commonVertex = currentTransposeFlowGraph.getVertices().stream()
                 .filter(DFDVertex.class::isInstance)
@@ -182,6 +237,13 @@ public class DFDUncertaintyCalculator {
         return followingFlowGraphs;
     }
 
+    /**
+     * Apply a connector uncertainty scenario on the transpose flow graph
+     * @param uncertaintyScenario Uncertainty scenario that is applied to the transpose flow graph
+     * @param uncertainState Uncertain state containing the uncertainty scenario
+     * @param currentTransposeFlowGraph Transpose flow graph to which the uncertainty scenario is applied
+     * @return Returns the transpose flow graph resulting from the application of the connector uncertainty
+     */
     private List<DFDUncertainTransposeFlowGraph> applyConnectorUncertaintyScenario(DFDConnectorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         DFDConnectorUncertaintySource uncertaintySource = (DFDConnectorUncertaintySource) uncertaintyScenario.eContainer();
         Flow targetFlow = uncertaintySource.getTargetFlow();
@@ -201,6 +263,14 @@ public class DFDUncertaintyCalculator {
             return node;
         });
     }
+
+    /**
+     * Apply a component uncertainty scenario on the transpose flow graph
+     * @param uncertaintyScenario Uncertainty scenario that is applied to the transpose flow graph
+     * @param uncertainState Uncertain state containing the uncertainty scenario
+     * @param currentTransposeFlowGraph Transpose flow graph to which the uncertainty scenario is applied
+     * @return Returns the transpose flow graph resulting from the application of the component uncertainty
+     */
     private DFDUncertainTransposeFlowGraph applyComponentUncertaintyScenario(DFDComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         DFDComponentUncertaintySource uncertaintySource = (DFDComponentUncertaintySource) uncertaintyScenario.eContainer();
         Node targetedNode = uncertaintySource.getTarget();
@@ -217,6 +287,11 @@ public class DFDUncertaintyCalculator {
         return currentTransposeFlowGraph.copy(mapping, uncertainState);
     }
 
+    /**
+     * Copies the given node
+     * @param node Node that should be copied
+     * @return Returns a new copied node
+     */
     private Node copyNode(Node node) {
         Node copy;
         if (node instanceof External) {
@@ -234,6 +309,12 @@ public class DFDUncertaintyCalculator {
         return copy;
     }
 
+    /**
+     * Copies the given behavior with the given list of new assignments
+     * @param behaviour Behavior that should be copied
+     * @param assignments List of assignments of the new behavior
+     * @return Returns a new behavior with the copied name and id of the given behavior and the given list of assignments
+     */
     private Behaviour copyBehavior(Behaviour behaviour, List<AbstractAssignment> assignments) {
         Behaviour copy = datadictionaryFactory.eINSTANCE.createBehaviour();
         copy.setEntityName(behaviour.getEntityName());
@@ -242,6 +323,12 @@ public class DFDUncertaintyCalculator {
         return copy;
     }
 
+    /**
+     * Copies the dfd vertex with the given replacing node
+     * @param vertex DFD vertex of which the pin to vertex and pin to flow map should be copied
+     * @param replacingNode Referenced node by the new dfd vertex
+     * @return Returns a new dfd vertex with the given node and maps of the given vertex
+     */
     private DFDVertex copyVertex(DFDVertex vertex, Node replacingNode) {
         Map<Pin, DFDVertex> copiedPinDFDVertexMap = new HashMap<>();
         vertex.getPinDFDVertexMap().keySet().forEach(key -> copiedPinDFDVertexMap.put(key, vertex.getPinDFDVertexMap().get(key).copy(new IdentityHashMap<>())));

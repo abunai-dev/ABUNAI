@@ -20,11 +20,21 @@ public class DFDUncertainFlowGraphCollection extends DFDFlowGraphCollection impl
 	private final Logger logger = Logger.getLogger(DFDUncertainFlowGraphCollection.class);
 	protected final DFDUncertaintyResourceProvider resourceProvider;
 
+	/**
+	 * Creates a new dfd uncertain flow graph collection with flow graphs calculated by {@link #findTransposeFlowGraphs()}
+	 * @param resourceProvider Resource provider used to find transpose flow graphs
+	 */
 	public DFDUncertainFlowGraphCollection(DFDUncertaintyResourceProvider resourceProvider) {
 		super(resourceProvider);
 		this.resourceProvider = resourceProvider;
 	}
-	
+
+	/**
+	 * Initializes a new dfd uncertain flow graph collection with the list of transpose flow graphs and
+	 * the given resource provider
+	 * @param transposeFlowGraphs Transpose flow graphs that are saved in the flow graph collection
+	 * @param resourceProvider Resource provider used to find transpose flow graphs and create uncertain flows
+	 */
 	public DFDUncertainFlowGraphCollection(List<? extends AbstractTransposeFlowGraph> transposeFlowGraphs, DFDUncertaintyResourceProvider resourceProvider) {
 		super(resourceProvider, transposeFlowGraphs);
 		this.resourceProvider = resourceProvider;
