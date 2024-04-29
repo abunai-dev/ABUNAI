@@ -20,7 +20,7 @@
     <properties href="default.datadictionary#_Hrkz8Pv0Ee6qEO2G6RwOIg"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Store" id="_ZMVfgvv1Ee6qEO2G6RwOIg" entityName="EUDatabase">
-    <behaviour href="default.datadictionary#_rWcxcfvzEe6qEO2G6RwOIg"/>
+    <behaviour href="default.datadictionary#_fSZwgfySEe6mE-LQVO_mRg"/>
     <properties href="default.datadictionary#_GyeowPv0Ee6qEO2G6RwOIg"/>
   </nodes>
 </dataflowdiagram:DataFlowDiagram>
