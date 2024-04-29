@@ -135,8 +135,6 @@
       <genClasses ecoreClass="uncertainty.ecore#//dfd/DFDInterfaceUncertaintySource"
           labelFeature="../../tools.mdsd.modelingfoundations.identifier/model/identifier.genmodel#//identifier/NamedElement/entityName">
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/DFDInterfaceUncertaintySource/targetInPin"/>
-        <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/DFDInterfaceUncertaintySource/targetFlow"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/DFDInterfaceUncertaintySource/scenarios"/>
       </genClasses>
@@ -145,7 +143,7 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/DFDInterfaceUncertaintyScenario/targetInPin"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/DFDInterfaceUncertaintyScenario/targetFlow"/>
+            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/DFDInterfaceUncertaintyScenario/targetNode"/>
       </genClasses>
       <genClasses ecoreClass="uncertainty.ecore#//dfd/DFDConnectorUncertaintySource"
           labelFeature="../../tools.mdsd.modelingfoundations.identifier/model/identifier.genmodel#//identifier/NamedElement/entityName">
@@ -160,7 +158,9 @@
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
             ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/DFDConnectorUncertaintyScenario/targetAssignments"/>
         <genFeatures notify="false" createChild="false" propertySortChoices="true"
-            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/DFDConnectorUncertaintyScenario/targetFlow"/>
+            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/DFDConnectorUncertaintyScenario/targetPin"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference uncertainty.ecore#//dfd/DFDConnectorUncertaintyScenario/targetNode"/>
       </genClasses>
       <genClasses ecoreClass="uncertainty.ecore#//dfd/DFDComponentUncertaintySource"
           labelFeature="../../tools.mdsd.modelingfoundations.identifier/model/identifier.genmodel#//identifier/NamedElement/entityName">
