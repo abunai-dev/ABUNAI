@@ -133,13 +133,18 @@ public class UncertaintyUtils {
 			probabilityOfDefaultScenario = -1.0;
 		}
 
-		// If someone finds this source code and wonders whether I heard of OO: I do.
-		// But EMF-based MDSD is different. I prefer messy instance-of collections over
-		// dealing with injecting custom logic into EMF-generated code.
+
 		String defaultScenarioEntityName = "Default Scenario";
 		createDefaultScenario(uncertaintySource, probabilityOfDefaultScenario, defaultScenarioEntityName);
 	}
 
+	/**
+	 * Creates the default scenario for an uncertainty source with the given probability and name
+	 * <p/>
+	 * If someone finds this source code and wonders whether I heard of OO: I do.
+	 * But EMF-based MDSD is different. I prefer messy instance-of collections over
+	 * dealing with injecting custom logic into EMF-generated code.
+	 */
 	private static void createDefaultScenario(UncertaintySource uncertaintySource, Double probability, String name) {
 		if (uncertaintySource instanceof PCMExternalUncertaintySourceInResource source) {
 			var scenario = PcmFactory.eINSTANCE.createPCMExternalUncertaintyScenarioInResource();
@@ -230,5 +235,4 @@ public class UncertaintyUtils {
 
 		}
 	}
-
 }

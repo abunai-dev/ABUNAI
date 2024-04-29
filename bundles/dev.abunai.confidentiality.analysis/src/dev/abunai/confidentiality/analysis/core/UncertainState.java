@@ -21,7 +21,6 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
  * An uncertain state contains a list of selected scenarios that apply to the given uncertain state
  */
 public class UncertainState {
-
 	private final List<? extends UncertaintyScenario> selectedScenarios;
 
 	/**
@@ -137,8 +136,6 @@ public class UncertainState {
 
 	/**
 	 * Returns a list of all uncertain states that can be created with the list of given uncertainty sources
-	 * <p/>
-	 * TODO: This might underestimate in DFDs if a node exists in multiple flows, might also happen in PCM models
 	 * @param relevantUncertaintySources List of uncertainty sources that are considered
 	 * @return Returns a list of all uncertain states created by the list of uncertainty sources
 	 */
