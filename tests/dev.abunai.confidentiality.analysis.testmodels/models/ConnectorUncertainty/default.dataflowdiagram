@@ -8,10 +8,6 @@
     <destinationPin href="default.datadictionary#_udk6cPvzEe6qEO2G6RwOIg"/>
     <sourcePin href="default.datadictionary#_lHBawfvzEe6qEO2G6RwOIg"/>
   </flows>
-  <flows id="_aJSlEPv3Ee6qEO2G6RwOIg" entityName="buyToEUDatabase" sourceNode="_yn0tUvvzEe6qEO2G6RwOIg" destinationNode="_TocHMvv3Ee6qEO2G6RwOIg">
-    <destinationPin href="default.datadictionary#_ybBqoPv3Ee6qEO2G6RwOIg"/>
-    <sourcePin href="default.datadictionary#_lHBawfvzEe6qEO2G6RwOIg"/>
-  </flows>
   <nodes xsi:type="dataflowdiagram:Process" id="_yn0tUvvzEe6qEO2G6RwOIg" entityName="buy">
     <behaviour href="default.datadictionary#_cEId8fvzEe6qEO2G6RwOIg"/>
   </nodes>
@@ -24,7 +20,7 @@
     <properties href="default.datadictionary#_Hrkz8Pv0Ee6qEO2G6RwOIg"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Store" id="_TocHMvv3Ee6qEO2G6RwOIg" entityName="EUDatabase">
-    <behaviour href="default.datadictionary#_rWcxcfvzEe6qEO2G6RwOIg"/>
+    <behaviour href="default.datadictionary#_v9TD8fv3Ee6qEO2G6RwOIg"/>
     <properties href="default.datadictionary#_GyeowPv0Ee6qEO2G6RwOIg"/>
   </nodes>
 </dataflowdiagram:DataFlowDiagram>
