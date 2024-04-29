@@ -56,7 +56,7 @@ public class UncertaintyUtils {
 		String entityClassName = entity.getClass().getSimpleName().replace("Impl", "");
 
 		String defaultEntityName = "aName";
-		String entityTypeAndName = "";
+		String entityTypeAndName;
 		if (entity.getEntityName().equals(defaultEntityName)) {
 			entityTypeAndName = "%s %s".formatted(entityClassName, entity.getId());
 		} else {
@@ -104,13 +104,15 @@ public class UncertaintyUtils {
 
 		} else if (uncertaintySource instanceof DFDInterfaceUncertaintySource source
 				&& uncertaintyScenario instanceof DFDInterfaceUncertaintyScenario scenario) {
-			return source.getTargetInPin().equals(scenario.getTargetInPin())
-					&& source.getTargetFlow().equals(scenario.getTargetFlow());
+			return source.getTargetFlow().getDestinationPin().equals(scenario.getTargetInPin())
+					&& source.getTargetFlow().getDestinationNode().equals(scenario.getTargetNode())
+					&& source.getTargetFlow().getDestinationPin().equals(scenario.getTargetInPin());
 
 		} else if (uncertaintySource instanceof DFDConnectorUncertaintySource source
 				&& uncertaintyScenario instanceof DFDConnectorUncertaintyScenario scenario) {
 			return source.getTargetAssignments().equals(scenario.getTargetAssignments())
-					&& source.getTargetFlow().equals(scenario.getTargetFlow());
+					&& source.getTargetFlow().getDestinationNode().equals(scenario.getTargetNode())
+					&& source.getTargetFlow().getDestinationPin().equals(scenario.getTargetPin());
 
 		} else if (uncertaintySource instanceof DFDComponentUncertaintySource source
 				&& uncertaintyScenario instanceof DFDComponentUncertaintyScenario scenario) {
@@ -124,8 +126,8 @@ public class UncertaintyUtils {
 
 	public static void addDefaultScenario(UncertaintySource uncertaintySource) {
 		List<? extends UncertaintyScenario> scenarios = getUncertaintyScenarios(uncertaintySource);
-		Double sumOfAllProbabilities = scenarios.stream().mapToDouble(UncertaintyScenario::getProbability).sum();
-		Double probabilityOfDefaultScenario = 1.0 - sumOfAllProbabilities;
+		double sumOfAllProbabilities = scenarios.stream().mapToDouble(UncertaintyScenario::getProbability).sum();
+		double probabilityOfDefaultScenario = 1.0 - sumOfAllProbabilities;
 
 		if (sumOfAllProbabilities < 0) {
 			probabilityOfDefaultScenario = -1.0;
@@ -157,7 +159,7 @@ public class UncertaintyUtils {
 			var scenario = PcmFactory.eINSTANCE.createPCMBehaviorUncertaintyScenario();
 			scenario.setTarget(source.getTarget());
 			scenario.setProbability(probability);
-			scenario.setEntityName(name);;
+			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
 		} else if (uncertaintySource instanceof PCMInterfaceUncertaintySource source) {
@@ -204,8 +206,8 @@ public class UncertaintyUtils {
 
 		} else if (uncertaintySource instanceof DFDInterfaceUncertaintySource source) {
 			var scenario = DfdFactory.eINSTANCE.createDFDInterfaceUncertaintyScenario();
-			scenario.setTargetFlow(source.getTargetFlow());
-			scenario.setTargetInPin(source.getTargetInPin());
+			scenario.setTargetNode(source.getTargetFlow().getDestinationNode());
+			scenario.setTargetInPin(source.getTargetFlow().getDestinationPin());
 			scenario.setProbability(probability);
 			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
@@ -213,7 +215,8 @@ public class UncertaintyUtils {
 		} else if (uncertaintySource instanceof DFDConnectorUncertaintySource source) {
 			var scenario = DfdFactory.eINSTANCE.createDFDConnectorUncertaintyScenario();
 			scenario.getTargetAssignments().addAll(source.getTargetAssignments());
-			scenario.setTargetFlow(source.getTargetFlow());
+			scenario.setTargetNode(source.getTargetFlow().getDestinationNode());
+			scenario.setTargetPin(source.getTargetFlow().getDestinationPin());
 			scenario.setProbability(probability);
 			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
