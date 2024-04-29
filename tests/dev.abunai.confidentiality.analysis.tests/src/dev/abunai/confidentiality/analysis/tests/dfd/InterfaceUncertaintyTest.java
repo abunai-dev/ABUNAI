@@ -39,6 +39,7 @@ public class InterfaceUncertaintyTest extends DFDTestBase {
 			return this.retrieveNodeLabels(it).contains("nonEU") && this.retrieveDataLabels(it).contains("Personal") && !this.retrieveDataLabels(it).contains("Encrypted");
 		});
 		
+		assertEquals(2, uncertainFlowGraphs.getTransposeFlowGraphs().size());
 		assertEquals(1, result.size());
 		assertEquals(1, result.get(0).uncertainState().getSelectedUncertaintyScenarios().size());
 		assertEquals(1, result.get(0).violations().size());
