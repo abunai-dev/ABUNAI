@@ -1,29 +1,22 @@
 package dev.abunai.confidentiality.analysis.core;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Deque;
 import java.util.List;
+
+import dev.abunai.confidentiality.analysis.dfd.DFDQueryHelper;
+import dev.abunai.confidentiality.analysis.dfd.DFDUncertainTransposeFlowGraph;
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.*;
+import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.*;
+import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
+import org.dataflowanalysis.analysis.core.AbstractVertex;
+import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
+import org.dataflowanalysis.dfd.dataflowdiagram.Node;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDComponentUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDConnectorUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdFactory;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMComponentUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInEntryLevelSystemCall;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMConnectorUncertaintySourceInExternalCall;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInResource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySourceInUsage;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PcmFactory;
 import tools.mdsd.modelingfoundations.identifier.Entity;
 
 public class UncertaintyUtils {
@@ -233,6 +226,104 @@ public class UncertaintyUtils {
 			scenario.setEntityName(name);
 			source.getScenarios().add(scenario);
 
+		}
+	}
+
+	public static int compareApplicationOrder(AbstractTransposeFlowGraph transposeFlowGraph, UncertaintySource o1, UncertaintySource o2) {
+		if (UncertaintyUtils.compareOrder(transposeFlowGraph, o1, o2) != 0) {
+			return UncertaintyUtils.compareOrder(transposeFlowGraph, o1, o2);
+		} else {
+			return UncertaintyUtils.compareApplicationPrecedence(o1, o2);
+		}
+	}
+
+	public static int compareOrder(AbstractTransposeFlowGraph transposeFlowGraph, UncertaintySource o1, UncertaintySource o2) {
+		if (transposeFlowGraph instanceof DFDUncertainTransposeFlowGraph) {
+			return UncertaintyUtils.compareOrderDFD(transposeFlowGraph, o1, o2);
+		} else {
+			return UncertaintyUtils.compareOrderPCM(transposeFlowGraph, o1, o2);
+		}
+	}
+
+	public static int compareOrderDFD(AbstractTransposeFlowGraph transposeFlowGraph, UncertaintySource o1, UncertaintySource o2) {
+		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(transposeFlowGraph.getVertices());
+
+		List<DFDVertex> verticesO1 = getVertices(transposeFlowGraph, dfdQueryHelper, (DFDUncertaintySource) o1);
+		List<DFDVertex> verticesO2 = getVertices(transposeFlowGraph, dfdQueryHelper, (DFDUncertaintySource) o2);
+
+		DFDVertex min01 = verticesO1.get(0);
+		for(DFDVertex dfdVertex : verticesO1) {
+			if (dfdVertex.isSource()) {
+				return 1;
+			}
+			if (getAllPredecessors(min01).contains(dfdVertex)) {
+				min01 = dfdVertex;
+			}
+		}
+
+		DFDVertex minO2 = verticesO2.get(0);
+		for(DFDVertex dfdVertex : verticesO2) {
+			if (dfdVertex.isSource()) {
+				return -1;
+			}
+			if (getAllPredecessors(minO2).contains(dfdVertex)) {
+				minO2 = dfdVertex;
+			}
+		}
+		if(getAllPredecessors(min01).contains(minO2)) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+
+	private static List<DFDVertex> getAllPredecessors(DFDVertex vertex) {
+		List<DFDVertex> result = new ArrayList<>();
+		Deque<DFDVertex> currentVertices = new ArrayDeque<>();
+		currentVertices.push(vertex);
+		while (!currentVertices.isEmpty()) {
+			DFDVertex currentVertex = currentVertices.pop();
+			result.addAll(currentVertex.getPinDFDVertexMap().values());
+			currentVertices.addAll(currentVertex.getPinDFDVertexMap().values());
+		}
+		return result;
+	}
+
+	private static List<DFDVertex> getVertices(AbstractTransposeFlowGraph transposeFlowGraph, DFDQueryHelper dfdQueryHelper, DFDUncertaintySource uncertaintySource) {
+		List<Node> nodes = dfdQueryHelper.findTargetNodes(uncertaintySource);
+		return transposeFlowGraph.getVertices().stream()
+				.filter(DFDVertex.class::isInstance)
+				.map(DFDVertex.class::cast)
+				.filter(it -> nodes.contains(it.getReferencedElement()))
+				.toList();
+	}
+
+	public static int compareOrderPCM(AbstractTransposeFlowGraph transposeFlowGraph, UncertaintySource o1, UncertaintySource o2) {
+		// TODO: Implement prev vertex ordering
+		return -1;
+	}
+
+	public static int compareApplicationPrecedence(UncertaintySource o1, UncertaintySource o2) {
+		if (o1 instanceof DFDBehaviorUncertaintySource || o1 instanceof PCMBehaviorUncertaintySource) {
+			return -1;
+		} else if (o1 instanceof DFDExternalUncertaintySource || o1 instanceof PCMExternalUncertaintySource) {
+			return -1;
+		} else if(o1 instanceof DFDInterfaceUncertaintySource || o1 instanceof PCMInterfaceUncertaintySource) {
+			if (o2 instanceof DFDBehaviorUncertaintySource || o2 instanceof PCMBehaviorUncertaintySource) {
+				return 1;
+			} else if(o2 instanceof DFDExternalUncertaintySource || o2 instanceof PCMExternalUncertaintySource) {
+				return 1;
+			} else {
+				return -1;
+			}
+		} else if(o1 instanceof DFDConnectorUncertaintySource || o1 instanceof PCMConnectorUncertaintySource) {
+			if (o2 instanceof DFDComponentUncertaintySource || o2 instanceof PCMComponentUncertaintySource) {
+				return -1;
+			} else {
+				return 1;
+			}
+		} else {
+			return 1;
 		}
 	}
 }

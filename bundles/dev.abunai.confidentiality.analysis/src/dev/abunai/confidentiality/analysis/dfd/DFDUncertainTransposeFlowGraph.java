@@ -113,9 +113,9 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		currentPartialFlowGraphs.push(this);
 		while(!currentPartialFlowGraphs.isEmpty()) {
 			DFDUncertainTransposeFlowGraph currentPartialFlowGraph = currentPartialFlowGraphs.pop();
-			Optional<? extends DFDUncertaintySource> uncertaintySource = this.determineRelevantUncertaintySources(currentPartialFlowGraph.getVertices(), uncertaintySourceManager).stream()
-					.filter(it -> !relevantUncertaintySources.contains(it))
-					.findFirst();
+            Optional<? extends DFDUncertaintySource> uncertaintySource = this.determineRelevantUncertaintySources(currentPartialFlowGraph.getVertices(), uncertaintySourceManager).stream()
+                    .filter(it -> !relevantUncertaintySources.contains(it))
+					.min(((o1, o2) -> UncertaintyUtils.compareApplicationOrder(currentPartialFlowGraph, o1, o2)));
 			if (uncertaintySource.isEmpty()) {
 				alternatePartialFlowGraphs.add(currentPartialFlowGraph);
 				continue;
