@@ -15,7 +15,7 @@ import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 public class InterfaceUncertaintyTest extends DFDTestBase {
 	@Override
 	protected String getFolderName() {
-		return "InterfaceUncertainty";
+		return "DFDInterfaceUncertainty";
 	}
 
 	@Override

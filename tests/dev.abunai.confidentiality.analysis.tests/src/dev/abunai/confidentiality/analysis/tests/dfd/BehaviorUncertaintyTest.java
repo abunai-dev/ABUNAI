@@ -15,7 +15,7 @@ public class BehaviorUncertaintyTest extends DFDTestBase {
 
 	@Override
 	protected String getFolderName() {
-		return "BehaviorUncertainty";
+		return "DFDBehaviorUncertainty";
 	}
 
 	@Override

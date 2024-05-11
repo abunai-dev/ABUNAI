@@ -2,6 +2,10 @@ package dev.abunai.confidentiality.analysis.dfd;
 
 import java.util.*;
 
+import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
+import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
+import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
+import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
@@ -99,13 +103,47 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 			throw new IllegalStateException();
 		}
 
-		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
-		List<DFDUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
 		DFDUncertaintyCalculator calculator = new DFDUncertaintyCalculator(dfdUncertaintyResourceProvider);
-		for (UncertainState state : states) {
-			alternatePartialFlowGraphs.addAll(calculator.determineAlternativeTransposeFlowGraphs(state, this));
+		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(dfdUncertaintyResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.DFD);
+
+		List<DFDUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
+		Deque<DFDUncertainTransposeFlowGraph> currentPartialFlowGraphs = new ArrayDeque<>();
+		List<DFDUncertaintySource> relevantUncertaintySources = new ArrayList<>();
+
+		currentPartialFlowGraphs.push(this);
+		while(!currentPartialFlowGraphs.isEmpty()) {
+			DFDUncertainTransposeFlowGraph currentPartialFlowGraph = currentPartialFlowGraphs.pop();
+			Optional<? extends DFDUncertaintySource> uncertaintySource = this.determineRelevantUncertaintySources(currentPartialFlowGraph.getVertices(), uncertaintySourceManager).stream()
+					.filter(it -> !relevantUncertaintySources.contains(it))
+					.findFirst();
+			if (uncertaintySource.isEmpty()) {
+				alternatePartialFlowGraphs.add(currentPartialFlowGraph);
+				continue;
+			}
+			relevantUncertaintySources.add(uncertaintySource.get());
+			List<? extends UncertaintyScenario> uncertaintyScenarios = UncertaintyUtils.getUncertaintyScenarios(uncertaintySource.get());
+			for (UncertaintyScenario uncertaintyScenario : uncertaintyScenarios) {
+				UncertainState uncertainState;
+				if (currentPartialFlowGraph.uncertainState.isEmpty()) {
+					uncertainState = new UncertainState();
+				} else {
+					uncertainState = new UncertainState(currentPartialFlowGraph.getUncertainState().getSelectedUncertaintyScenarios());
+
+				}
+				uncertainState.addSelectedScenario(uncertaintyScenario);
+				currentPartialFlowGraphs.addAll(calculator.applyUncertaintyScenario(uncertaintyScenario, uncertainState, currentPartialFlowGraph));
+			}
 		}
 		return alternatePartialFlowGraphs;
+	}
+
+	private List<? extends DFDUncertaintySource> determineRelevantUncertaintySources(List<? extends AbstractVertex<?>> vertices, UncertaintySourceManager uncertaintySourceManager) {
+		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(vertices);
+
+		return uncertaintySourceManager.getUncertaintySources().stream()
+				.map(DFDUncertaintySource.class::cast)
+				.filter(dfdQueryHelper::hasTargetNode)
+				.toList();
 	}
 
 	@Override

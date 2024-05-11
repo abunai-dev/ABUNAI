@@ -15,7 +15,7 @@ import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 public class ConnectorUncertaintyTest extends DFDTestBase {
 	@Override
 	protected String getFolderName() {
-		return "ConnectorUncertainty";
+		return "DFDConnectorUncertainty";
 	}
 
 	@Override

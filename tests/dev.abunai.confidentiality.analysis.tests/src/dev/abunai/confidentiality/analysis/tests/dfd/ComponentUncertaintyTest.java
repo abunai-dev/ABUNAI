@@ -15,7 +15,7 @@ import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 public class ComponentUncertaintyTest extends DFDTestBase {
 	@Override
 	protected String getFolderName() {
-		return "ComponentUncertainty";
+		return "DFDComponentUncertainty";
 	}
 
 	@Override

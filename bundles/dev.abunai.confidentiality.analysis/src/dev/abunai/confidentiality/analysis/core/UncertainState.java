@@ -21,14 +21,14 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
  * An uncertain state contains a list of selected scenarios that apply to the given uncertain state
  */
 public class UncertainState {
-	private final List<? extends UncertaintyScenario> selectedScenarios;
+	private final List<UncertaintyScenario> selectedScenarios;
 
 	/**
 	 * Create a new uncertain state with a given list of selected scenarios
 	 * @param selectedScenarios List of uncertainty scenarios that were selected for the uncertain state
 	 */
-	public UncertainState(List<? extends UncertaintyScenario> selectedScenarios) {
-		this.selectedScenarios = selectedScenarios;
+	public UncertainState(List<UncertaintyScenario> selectedScenarios) {
+		this.selectedScenarios = new ArrayList<>(selectedScenarios);
 	}
 
 	/**
@@ -53,7 +53,7 @@ public class UncertainState {
 	 * Returns a list of all uncertainty scenarios that were selected by the uncertain state
 	 * @return Returns a list of all selected uncertainty scenarios
 	 */
-	public List<? extends UncertaintyScenario> getSelectedUncertaintyScenarios() {
+	public List<UncertaintyScenario> getSelectedUncertaintyScenarios() {
 		return Collections.unmodifiableList(selectedScenarios);
 	}
 
@@ -150,6 +150,10 @@ public class UncertainState {
 
 		List<List<UncertaintyScenario>> cartesianProduct = cartesianProduct(listOfAllScenarioLists);
 		return cartesianProduct.stream().map(UncertainState::new).toList();
+	}
+
+	public void addSelectedScenario(UncertaintyScenario uncertaintyScenario) {
+		this.selectedScenarios.add(uncertaintyScenario);
 	}
 
 	private static <T> List<List<T>> cartesianProduct(List<List<T>> lists) {

@@ -15,7 +15,7 @@ import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 public class ExternalUncertaintyTest extends DFDTestBase {
 	@Override
 	protected String getFolderName() {
-		return "ExternalUncertainty";
+		return "DFDExternalUncertainty";
 	}
 
 	@Override
