@@ -47,9 +47,9 @@ public class BehaviorUncertaintyTest extends PCMTestBase {
         assertEquals(2, result.size());
         PCMUncertainTransposeFlowGraph resultOne = (PCMUncertainTransposeFlowGraph) result.get(0).transposeFlowGraph();
         PCMUncertainTransposeFlowGraph resultTwo = (PCMUncertainTransposeFlowGraph) result.get(1).transposeFlowGraph();
-        assertTrue(resultOne.getVertices().get(6) instanceof SEFFPCMVertex<?>);
-        assertTrue(resultTwo.getVertices().get(6) instanceof SEFFPCMVertex<?>);
-        assertEquals("Leaky return inventory", ((SEFFPCMVertex<?>) resultOne.getVertices().get(6)).getReferencedElement().getEntityName());
-        assertEquals("Leaky return inventory", ((SEFFPCMVertex<?>) resultTwo.getVertices().get(6)).getReferencedElement().getEntityName());
+        assertTrue(resultOne.getVertices().get(5) instanceof SEFFPCMVertex<?>);
+        assertTrue(resultTwo.getVertices().get(5) instanceof SEFFPCMVertex<?>);
+        assertEquals("Leaky return inventory", ((SEFFPCMVertex<?>) resultOne.getVertices().get(5)).getReferencedElement().getEntityName());
+        assertEquals("Leaky return inventory", ((SEFFPCMVertex<?>) resultTwo.getVertices().get(5)).getReferencedElement().getEntityName());
     }
 }
