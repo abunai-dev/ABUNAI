@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 
 import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
 import dev.abunai.confidentiality.analysis.pcm.PCMUncertainFlowGraphCollection;
-import dev.abunai.confidentiality.analysis.pcm.PCMUncertainTransposeFlowGraph;
 import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
 public class ComponentUncertaintyTest extends PCMTestBase {
@@ -50,13 +49,10 @@ public class ComponentUncertaintyTest extends PCMTestBase {
                             .anyMatch(l -> l.equals("nonEU"));
         });
 
-        assertEquals(4, uncertainFlowGraphs.getTransposeFlowGraphs().size());
-        assertEquals(2, result.size());
-        PCMUncertainTransposeFlowGraph resultOne = (PCMUncertainTransposeFlowGraph) result.get(0).transposeFlowGraph();
-        PCMUncertainTransposeFlowGraph resultTwo = (PCMUncertainTransposeFlowGraph) result.get(1).transposeFlowGraph();
-        assertTrue(resultOne.getVertices().get(6) instanceof SEFFPCMVertex<?>);
-        assertTrue(resultTwo.getVertices().get(6) instanceof SEFFPCMVertex<?>);
-        assertEquals("Leaky return inventory", ((SEFFPCMVertex<?>) resultOne.getVertices().get(6)).getReferencedElement().getEntityName());
-        assertEquals("Leaky return inventory", ((SEFFPCMVertex<?>) resultTwo.getVertices().get(6)).getReferencedElement().getEntityName());
+        assertEquals(3, uncertainFlowGraphs.getTransposeFlowGraphs().size());
+        assertEquals(1, result.size());
+        assertEquals(3, result.get(0).violations().size());
+        assertTrue(result.get(0).violations().get(1) instanceof SEFFPCMVertex<?>);
+        assertEquals("save data", ((SEFFPCMVertex<?>) result.get(0).violations().get(1)).getReferencedElement().getEntityName());
     }
 }
