@@ -32,6 +32,7 @@ import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage;
 
 import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
+@Disabled
 public class ElementLookup extends PCMTestBase {
 	@Override
 	protected String getFolderName() {

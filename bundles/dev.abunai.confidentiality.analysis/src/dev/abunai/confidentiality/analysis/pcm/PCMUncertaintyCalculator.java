@@ -23,7 +23,6 @@ import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristic
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.ResourceAssignee;
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
-import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Parameter;
 import org.palladiosimulator.pcm.seff.AbstractAction;
@@ -130,34 +129,30 @@ public class PCMUncertaintyCalculator {
 
             List<ResourceDemandingSEFF> calledSEFFs = new ArrayList<>();
             calledSEFFs.addAll(callsIntoContext.stream()
+            		.flatMap(it -> it.getPreviousElements().stream())
                     .filter(CallingUserPCMVertex.class::isInstance)
                     .map(CallingUserPCMVertex.class::cast)
                     .map(it -> {
                         var providedRole = it.getReferencedElement().getProvidedRole_EntryLevelSystemCall();
                         var signature = it.getReferencedElement().getOperationSignature__EntryLevelSystemCall();
-                        var modifiedContext = new ArrayDeque<>(it.getContext());
-                        modifiedContext.pop();
-                        modifiedContext.push(replacement);
-                        var calledSEFF = PCMQueryUtils.findCalledSEFF(providedRole, signature, modifiedContext).orElseThrow();
+                        var calledSEFF = PCMQueryUtils.findCalledSEFF(providedRole, signature, it.getContext()).orElseThrow();
                         return calledSEFF.seff();
                     }).toList());
             calledSEFFs.addAll(callsIntoContext.stream()
+            		.flatMap(it -> it.getPreviousElements().stream())
                     .filter(CallingSEFFPCMVertex.class::isInstance)
                     .map(CallingSEFFPCMVertex.class::cast)
                     .map(it -> {
                         var requiredRole = it.getReferencedElement().getRole_ExternalService();
                         var signature = it.getReferencedElement().getCalledService_ExternalService();
-                        var modifiedContext = new ArrayDeque<>(it.getContext());
-                        modifiedContext.pop();
-                        modifiedContext.push(replacement);
-                        var calledSEFF = PCMQueryUtils.findCalledSEFF(requiredRole, signature, modifiedContext).orElseThrow();
+                        var calledSEFF = PCMQueryUtils.findCalledSEFF(requiredRole, signature, it.getContext()).orElseThrow();
                         return calledSEFF.seff();
                     }).toList());
             if (calledSEFFs.isEmpty()) {
                 break;
             }
             ResourceDemandingSEFF seff = calledSEFFs.get(0);
-            AbstractPCMVertex<?> call = callsIntoContext.get(0);
+            AbstractPCMVertex<?> call = callsIntoContext.get(0).getPreviousElements().get(0);
             AbstractPCMVertex<?> returningVertex = result.stream()
                     .map(PCMUncertainTransposeFlowGraph::getVertices)
                     .flatMap(List::stream)
@@ -168,7 +163,7 @@ public class PCMUncertaintyCalculator {
                     .map(it -> (AbstractPCMVertex<?>) it)
                     .filter(it -> it.getReferencedElement().equals(call.getReferencedElement()))
                     .findFirst().orElseThrow();
-            result = this.determineFlowGraphsForSEFF(seff, call, returningVertex, uncertainState);
+            result = this.determineFlowGraphsForSEFF(seff, call, returningVertex, target, replacement, uncertainState);
 
             affectedVertices = result.stream()
                     .map(PCMUncertainTransposeFlowGraph::getVertices)
@@ -205,7 +200,7 @@ public class PCMUncertaintyCalculator {
         var signature = replacement.getOperationSignature__EntryLevelSystemCall();
         var calledSEFF = PCMQueryUtils.findCalledSEFF(providedRole, signature, commonCallingVertex.getContext()).orElseThrow();
 
-        return this.determineFlowGraphsForSEFF(calledSEFF.seff(), commonCallingVertex, commonReturningVertex, uncertainState);
+        return this.determineFlowGraphsForSEFF(calledSEFF.seff(), commonCallingVertex, commonReturningVertex, calledSEFF.context().peek(), calledSEFF.context().peek(), uncertainState);
     }
     public List<PCMUncertainTransposeFlowGraph> applyConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMConnectorUncertaintySourceInExternalCall uncertaintySource = (PCMConnectorUncertaintySourceInExternalCall) uncertaintyScenario.eContainer();
@@ -229,10 +224,10 @@ public class PCMUncertaintyCalculator {
         var requiredRole = replacement.getRole_ExternalService();
         var signature = replacement.getCalledService_ExternalService();
         var calledSEFF = PCMQueryUtils.findCalledSEFF(requiredRole, signature, commonCallingVertex.getContext()).orElseThrow();
-        return this.determineFlowGraphsForSEFF(calledSEFF.seff(), commonCallingVertex, commonReturningVertex, uncertainState);
+        return this.determineFlowGraphsForSEFF(calledSEFF.seff(), commonCallingVertex, commonReturningVertex, calledSEFF.context().peek(), calledSEFF.context().peek(), uncertainState);
     }
 
-    private List<PCMUncertainTransposeFlowGraph> determineFlowGraphsForSEFF(ResourceDemandingSEFF calledSEFF, AbstractPCMVertex<?> callingVertex, AbstractPCMVertex<?> returningVertex, UncertainState uncertainState) {
+    private List<PCMUncertainTransposeFlowGraph> determineFlowGraphsForSEFF(ResourceDemandingSEFF calledSEFF, AbstractPCMVertex<?> callingVertex, AbstractPCMVertex<?> returningVertex, AssemblyContext targetContext, AssemblyContext replacingContext, UncertainState uncertainState) {
         StartAction startAction = PCMQueryUtils.getFirstStartActionInActionList(calledSEFF.getSteps_Behaviour())
                 .orElseThrow();
         StopAction stopAction = calledSEFF.getSteps_Behaviour().stream()
@@ -244,10 +239,13 @@ public class PCMUncertaintyCalculator {
         List<PCMUncertainTransposeFlowGraph> transposeFlowGraphs = finder.findTransposeFlowGraphs(List.of(stopAction), List.of(startAction)).stream()
                 .map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.relevantUncertaintySources, uncertainState))
                 .toList();
+        transposeFlowGraphs.forEach(it -> it.getVertices().stream().filter(vertex -> vertex instanceof SEFFPCMVertex<?>).map(vertex -> (SEFFPCMVertex<?>) vertex).filter(vertex -> !vertex.getContext().isEmpty()).forEach(vertex -> vertex.getContext().remove(targetContext)));
+        transposeFlowGraphs.forEach(it -> it.getVertices().stream().filter(vertex -> vertex instanceof SEFFPCMVertex<?>).map(vertex -> (SEFFPCMVertex<?>) vertex).forEach(vertex -> vertex.getContext().push(replacingContext)));
         transposeFlowGraphs
                 .forEach(it -> it.getVertices().stream().filter(AbstractVertex::isSource).map(vertex -> (AbstractPCMVertex<?>) vertex).findFirst().orElseThrow().setPreviousElements(List.of(callingVertex.copy(new IdentityHashMap<>()))));
-        transposeFlowGraphs
-                .forEach(it -> returningVertex.setPreviousElements(List.of(it.getSink())));
+        
+        List<? extends AbstractPCMVertex<?>> previousElements = transposeFlowGraphs.stream().map(it -> it.getSink()).toList();   
+        returningVertex.setPreviousElements(previousElements);
         return transposeFlowGraphs;
     }
 

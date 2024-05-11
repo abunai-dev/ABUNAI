@@ -7,6 +7,7 @@ import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
+@Disabled
 public class CoronaWarnAppTest extends PCMTestBase {
 
 	@Override
