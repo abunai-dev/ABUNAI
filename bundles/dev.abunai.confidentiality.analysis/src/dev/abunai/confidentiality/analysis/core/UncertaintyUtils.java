@@ -10,9 +10,13 @@ import dev.abunai.confidentiality.analysis.dfd.DFDQueryHelper;
 import dev.abunai.confidentiality.analysis.dfd.DFDUncertainTransposeFlowGraph;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.*;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.*;
+import dev.abunai.confidentiality.analysis.pcm.PCMQueryHelper;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
-import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
+import org.dataflowanalysis.analysis.pcm.core.AbstractPCMVertex;
+import org.dataflowanalysis.analysis.pcm.core.seff.SEFFPCMVertex;
+import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
+import org.dataflowanalysis.analysis.resource.ResourceProvider;
 import org.dataflowanalysis.dfd.dataflowdiagram.Node;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
@@ -229,34 +233,34 @@ public class UncertaintyUtils {
 		}
 	}
 
-	public static int compareApplicationOrder(AbstractTransposeFlowGraph transposeFlowGraph, UncertaintySource o1, UncertaintySource o2) {
-		if (UncertaintyUtils.compareOrder(transposeFlowGraph, o1, o2) != 0) {
-			return UncertaintyUtils.compareOrder(transposeFlowGraph, o1, o2);
+	public static int compareApplicationOrder(AbstractTransposeFlowGraph transposeFlowGraph, ResourceProvider resourceProvider, UncertaintySource o1, UncertaintySource o2) {
+		if (UncertaintyUtils.compareOrder(transposeFlowGraph, resourceProvider, o1, o2) != 0) {
+			return UncertaintyUtils.compareOrder(transposeFlowGraph, resourceProvider, o1, o2);
 		} else {
 			return UncertaintyUtils.compareApplicationPrecedence(o1, o2);
 		}
 	}
 
-	public static int compareOrder(AbstractTransposeFlowGraph transposeFlowGraph, UncertaintySource o1, UncertaintySource o2) {
+	public static int compareOrder(AbstractTransposeFlowGraph transposeFlowGraph, ResourceProvider resourceProvider, UncertaintySource o1, UncertaintySource o2) {
 		if (transposeFlowGraph instanceof DFDUncertainTransposeFlowGraph) {
 			return UncertaintyUtils.compareOrderDFD(transposeFlowGraph, o1, o2);
 		} else {
-			return UncertaintyUtils.compareOrderPCM(transposeFlowGraph, o1, o2);
+			return UncertaintyUtils.compareOrderPCM(transposeFlowGraph, (PCMResourceProvider) resourceProvider, o1, o2);
 		}
 	}
 
 	public static int compareOrderDFD(AbstractTransposeFlowGraph transposeFlowGraph, UncertaintySource o1, UncertaintySource o2) {
 		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(transposeFlowGraph.getVertices());
 
-		List<DFDVertex> verticesO1 = getVertices(transposeFlowGraph, dfdQueryHelper, (DFDUncertaintySource) o1);
-		List<DFDVertex> verticesO2 = getVertices(transposeFlowGraph, dfdQueryHelper, (DFDUncertaintySource) o2);
+		List<DFDVertex> verticesO1 = getVerticesDFD(transposeFlowGraph, dfdQueryHelper, (DFDUncertaintySource) o1);
+		List<DFDVertex> verticesO2 = getVerticesDFD(transposeFlowGraph, dfdQueryHelper, (DFDUncertaintySource) o2);
 
 		DFDVertex min01 = verticesO1.get(0);
 		for(DFDVertex dfdVertex : verticesO1) {
 			if (dfdVertex.isSource()) {
 				return 1;
 			}
-			if (getAllPredecessors(min01).contains(dfdVertex)) {
+			if (getAllPredecessorsDFD(min01).contains(dfdVertex)) {
 				min01 = dfdVertex;
 			}
 		}
@@ -266,18 +270,18 @@ public class UncertaintyUtils {
 			if (dfdVertex.isSource()) {
 				return -1;
 			}
-			if (getAllPredecessors(minO2).contains(dfdVertex)) {
+			if (getAllPredecessorsDFD(minO2).contains(dfdVertex)) {
 				minO2 = dfdVertex;
 			}
 		}
-		if(getAllPredecessors(min01).contains(minO2)) {
+		if(getAllPredecessorsDFD(min01).contains(minO2)) {
 			return 1;
 		} else {
 			return -1;
 		}
 	}
 
-	private static List<DFDVertex> getAllPredecessors(DFDVertex vertex) {
+	private static List<DFDVertex> getAllPredecessorsDFD(DFDVertex vertex) {
 		List<DFDVertex> result = new ArrayList<>();
 		Deque<DFDVertex> currentVertices = new ArrayDeque<>();
 		currentVertices.push(vertex);
@@ -289,7 +293,7 @@ public class UncertaintyUtils {
 		return result;
 	}
 
-	private static List<DFDVertex> getVertices(AbstractTransposeFlowGraph transposeFlowGraph, DFDQueryHelper dfdQueryHelper, DFDUncertaintySource uncertaintySource) {
+	private static List<DFDVertex> getVerticesDFD(AbstractTransposeFlowGraph transposeFlowGraph, DFDQueryHelper dfdQueryHelper, DFDUncertaintySource uncertaintySource) {
 		List<Node> nodes = dfdQueryHelper.findTargetNodes(uncertaintySource);
 		return transposeFlowGraph.getVertices().stream()
 				.filter(DFDVertex.class::isInstance)
@@ -298,9 +302,56 @@ public class UncertaintyUtils {
 				.toList();
 	}
 
-	public static int compareOrderPCM(AbstractTransposeFlowGraph transposeFlowGraph, UncertaintySource o1, UncertaintySource o2) {
-		// TODO: Implement prev vertex ordering
-		return -1;
+	public static int compareOrderPCM(AbstractTransposeFlowGraph transposeFlowGraph, PCMResourceProvider resourceProvider, UncertaintySource o1, UncertaintySource o2) {
+		PCMQueryHelper pcmQueryHelper = new PCMQueryHelper(transposeFlowGraph.getVertices(), resourceProvider);
+
+		List<? extends AbstractPCMVertex<?>> verticesO1 = getVerticesPCM(transposeFlowGraph, pcmQueryHelper, (PCMUncertaintySource) o1);
+		List<? extends AbstractPCMVertex<?>> verticesO2 = getVerticesPCM(transposeFlowGraph, pcmQueryHelper, (PCMUncertaintySource) o2);
+
+		AbstractPCMVertex<?> min01 = verticesO1.get(0);
+		for(AbstractPCMVertex<?> pcmVertex : verticesO1) {
+			if (pcmVertex.isSource()) {
+				return 1;
+			}
+			if (getAllPredecessorsPCM(min01).contains(pcmVertex)) {
+				min01 = pcmVertex;
+			}
+		}
+
+		AbstractPCMVertex<?> minO2 = verticesO2.get(0);
+		for(AbstractPCMVertex<?> pcmVertex : verticesO2) {
+			if (pcmVertex.isSource()) {
+				return -1;
+			}
+			if (getAllPredecessorsPCM(minO2).contains(pcmVertex)) {
+				minO2 = pcmVertex;
+			}
+		}
+		if(getAllPredecessorsPCM(min01).contains(minO2)) {
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+
+	private static List<AbstractPCMVertex<?>> getAllPredecessorsPCM(AbstractPCMVertex<?> vertex) {
+		List<AbstractPCMVertex<?>> result = new ArrayList<>();
+		AbstractPCMVertex<?> currentVertex = vertex;
+		while (!currentVertex.isSource()) {
+			if (currentVertex.getPreviousElements().size() > 1) {
+				currentVertex = currentVertex.getPreviousElements().stream()
+						.filter(it -> it instanceof SEFFPCMVertex<?>)
+						.findFirst().orElseThrow();
+			} else {
+				currentVertex = currentVertex.getPreviousElements().get(0);
+			}
+			result.add(currentVertex);
+		}
+		return result;
+	}
+
+	private static List<? extends AbstractPCMVertex<?>> getVerticesPCM(AbstractTransposeFlowGraph transposeFlowGraph, PCMQueryHelper pcmQueryHelper, PCMUncertaintySource uncertaintySource) {
+		return pcmQueryHelper.findTargetNodes(uncertaintySource);
 	}
 
 	public static int compareApplicationPrecedence(UncertaintySource o1, UncertaintySource o2) {
