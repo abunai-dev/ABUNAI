@@ -50,26 +50,6 @@ public class DFDUncertaintyCalculator {
     }
 
     /**
-     * Determines the alternative transpose flow graphs of the given transpose flow graph in the given uncertain state
-     * @param state Uncertain state, which impacts the given transpose flow graph
-     * @param uncertainTransposeFlowGraph Uncertain transpose flow graph that is affected by the uncertain state
-     * @return Returns a list of all alternate transpose flow graphs after all uncertainty scenarios of the uncertain state are applied
-     */
-    private List<DFDUncertainTransposeFlowGraph> determineAlternativeTransposeFlowGraphs(UncertainState state, DFDUncertainTransposeFlowGraph uncertainTransposeFlowGraph) {
-        if (state.getSelectedUncertaintyScenarios().isEmpty()) {
-        	return List.of(uncertainTransposeFlowGraph.copy(new IdentityHashMap<>(), state));
-        }
-
-    	List<DFDUncertainTransposeFlowGraph> currentTransposeFlowGraphs = List.of(uncertainTransposeFlowGraph);
-        for (UncertaintyScenario uncertaintyScenario : state.getSelectedUncertaintyScenarios()) {
-            currentTransposeFlowGraphs = currentTransposeFlowGraphs.stream()
-                    .flatMap(it -> this.applyUncertaintyScenario(uncertaintyScenario, state, it).stream())
-                    .toList();
-        }
-        return currentTransposeFlowGraphs;
-    }
-
-    /**
      * Apply a given uncertainty scenario extracted from the uncertainty state on a given transpose flow graph
      * @param uncertaintyScenario Uncertainty scenario which is applied on the transpose flow graph
      * @param uncertainState Uncertainty state containing the uncertainty scenario

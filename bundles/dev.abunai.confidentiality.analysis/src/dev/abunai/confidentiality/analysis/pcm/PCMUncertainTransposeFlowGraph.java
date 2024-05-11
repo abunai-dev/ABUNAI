@@ -2,6 +2,10 @@ package dev.abunai.confidentiality.analysis.pcm;
 
 import java.util.*;
 
+import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
+import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
+import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
+import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.pcm.core.AbstractPCMVertex;
@@ -62,14 +66,52 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 			logger.error("This is most likely caused by calling determineAlternativeFlowGraphs on a transpose flow graph that was already an alternative flow graph");
 			throw new IllegalStateException();
 		}
+		if (!(resourceProvider instanceof PCMUncertaintyResourceProvider pcmUncertaintyResourceProvider)) {
+			logger.error("Provided uncertainty resource provider cannot be used for dfd models! Please provide a dfd uncertainty resource provider");
+			throw new IllegalStateException();
+		}
 
-		List<UncertainState> states = UncertainState.createAllUncertainStates(this.relevantUncertaintySources);
+		PCMUncertaintyCalculator calculator = new PCMUncertaintyCalculator(pcmUncertaintyResourceProvider.getUncertaintySourceCollection().getSources(), pcmUncertaintyResourceProvider);
+		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(pcmUncertaintyResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.PCM);
+
 		List<PCMUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
-		PCMUncertaintyCalculator calculator = new PCMUncertaintyCalculator(this.relevantUncertaintySources, (PCMUncertaintyResourceProvider) resourceProvider);
-		for (UncertainState state : states) {
-			alternatePartialFlowGraphs.addAll(calculator.determineAlternativePartialFlowGraphs(state, this));
+		Deque<PCMUncertainTransposeFlowGraph> currentPartialFlowGraphs = new ArrayDeque<>();
+		List<PCMUncertaintySource> relevantUncertaintySources = new ArrayList<>();
+
+		currentPartialFlowGraphs.push(this);
+		while(!currentPartialFlowGraphs.isEmpty()) {
+			PCMUncertainTransposeFlowGraph currentPartialFlowGraph = currentPartialFlowGraphs.pop();
+			Optional<? extends PCMUncertaintySource> uncertaintySource = this.determineRelevantUncertaintySources(currentPartialFlowGraph.getVertices(), pcmUncertaintyResourceProvider, uncertaintySourceManager).stream()
+					.filter(it -> !relevantUncertaintySources.contains(it))
+					.min(((o1, o2) -> UncertaintyUtils.compareApplicationOrder(currentPartialFlowGraph, pcmUncertaintyResourceProvider, o1, o2)));
+			if (uncertaintySource.isEmpty()) {
+				alternatePartialFlowGraphs.add(currentPartialFlowGraph);
+				continue;
+			}
+			relevantUncertaintySources.add(uncertaintySource.get());
+			List<? extends UncertaintyScenario> uncertaintyScenarios = UncertaintyUtils.getUncertaintyScenarios(uncertaintySource.get());
+			for (UncertaintyScenario uncertaintyScenario : uncertaintyScenarios) {
+				UncertainState uncertainState;
+				if (currentPartialFlowGraph.uncertainState.isEmpty()) {
+					uncertainState = new UncertainState();
+				} else {
+					uncertainState = new UncertainState(currentPartialFlowGraph.getUncertainState().getSelectedUncertaintyScenarios());
+
+				}
+				uncertainState.addSelectedScenario(uncertaintyScenario);
+				currentPartialFlowGraphs.addAll(calculator.applyUncertaintyScenario(uncertaintyScenario, uncertainState, currentPartialFlowGraph));
+			}
 		}
 		return alternatePartialFlowGraphs;
+	}
+
+	private List<? extends PCMUncertaintySource> determineRelevantUncertaintySources(List<? extends AbstractVertex<?>> vertices, PCMResourceProvider resourceProvider, UncertaintySourceManager uncertaintySourceManager) {
+		PCMQueryHelper pcmQueryHelper = new PCMQueryHelper(vertices, resourceProvider);
+
+		return uncertaintySourceManager.getUncertaintySources().stream()
+				.map(PCMUncertaintySource.class::cast)
+				.filter(pcmQueryHelper::hasTargetNode)
+				.toList();
 	}
 
 	@Override

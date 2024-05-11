@@ -53,21 +53,7 @@ public class PCMUncertaintyCalculator {
         this.resourceProvider = resourceProvider;
     }
 
-    public List<PCMUncertainTransposeFlowGraph> determineAlternativePartialFlowGraphs(UncertainState state, PCMUncertainTransposeFlowGraph uncertainTransposeFlowGraph) {
-        if (state.getSelectedUncertaintyScenarios().isEmpty()) {
-            return List.of(uncertainTransposeFlowGraph.copy(new IdentityHashMap<>(), state));
-        }
-
-        List<PCMUncertainTransposeFlowGraph> currentTransposeFlowGraphs = List.of(uncertainTransposeFlowGraph);
-        for (UncertaintyScenario uncertaintyScenario : state.getSelectedUncertaintyScenarios()) {
-            currentTransposeFlowGraphs = currentTransposeFlowGraphs.stream()
-                    .flatMap(it -> this.applyUncertaintyScenario(uncertaintyScenario, state, it).stream())
-                    .toList();
-        }
-        return currentTransposeFlowGraphs;
-    }
-
-    private List<PCMUncertainTransposeFlowGraph> applyUncertaintyScenario(UncertaintyScenario uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
+    public List<PCMUncertainTransposeFlowGraph> applyUncertaintyScenario(UncertaintyScenario uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         if (uncertaintyScenario instanceof PCMBehaviorUncertaintyScenario castedScenario) {
             return List.of(applyBehaviourUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph));
         } else if (uncertaintyScenario instanceof PCMComponentUncertaintyScenario castedScenario) {
