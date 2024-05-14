@@ -44,6 +44,7 @@ import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class PCMUncertaintyCalculator {
     private final Logger logger = Logger.getLogger(PCMUncertaintyCalculator.class);
@@ -205,75 +206,123 @@ public class PCMUncertaintyCalculator {
         EntryLevelSystemCall target = uncertaintySource.getTarget();
         EntryLevelSystemCall replacement = uncertaintyScenario.getTarget();
 
-        AbstractPCMVertex<?> commonCallingVertex = currentTransposeFlowGraph.getVertices().stream()
+        Optional<CallingUserPCMVertex> commonCallingVertex = currentTransposeFlowGraph.getVertices().stream()
                 .filter(CallingUserPCMVertex.class::isInstance)
                 .map(CallingUserPCMVertex.class::cast)
                 .filter(it -> it.getReferencedElement().equals(target))
                 .filter(CallReturnBehavior::isCalling)
-                .findAny().orElseThrow();
+                .findAny();
 
-        AbstractPCMVertex<?> commonReturningVertex = currentTransposeFlowGraph.getVertices().stream()
+        Optional<CallingUserPCMVertex> commonReturningVertex = currentTransposeFlowGraph.getVertices().stream()
                 .filter(CallingUserPCMVertex.class::isInstance)
                 .map(CallingUserPCMVertex.class::cast)
                 .filter(it -> it.getReferencedElement().equals(target))
                 .filter(CallReturnBehavior::isReturning)
-                .findAny().orElseThrow();
+                .findAny();
+
+
+        if (commonCallingVertex.isEmpty() || commonReturningVertex.isEmpty()) {
+            return List.of(currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState));
+        }
 
         var providedRole = replacement.getProvidedRole_EntryLevelSystemCall();
         var signature = replacement.getOperationSignature__EntryLevelSystemCall();
-        var calledSEFF = PCMQueryUtils.findCalledSEFF(providedRole, signature, commonCallingVertex.getContext()).orElseThrow();
+        var calledSEFF = PCMQueryUtils.findCalledSEFF(providedRole, signature, commonCallingVertex.get().getContext()).orElseThrow();
 
-        return this.determineFlowGraphsForSEFF(calledSEFF.seff(), commonCallingVertex, commonReturningVertex, calledSEFF.context().peek(), calledSEFF.context().peek(), uncertainState);
+        StartAction startAction = PCMQueryUtils.getFirstStartActionInActionList(calledSEFF.seff().getSteps_Behaviour()).get();
+        StopAction stopAction = PCMQueryUtils.getFirstStopActionInActionList(calledSEFF.seff().getSteps_Behaviour()).get();
+        PCMTransposeFlowGraphFinder finder = new PCMTransposeFlowGraphFinder(this.resourceProvider);
+        List<PCMUncertainTransposeFlowGraph> replacements = finder.findTransposeFlowGraphs(List.of(stopAction), List.of(startAction)).stream()
+                .map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.relevantUncertaintySources, uncertainState))
+                .toList();
+        replacements.stream()
+                .map(PCMUncertainTransposeFlowGraph::getVertices)
+                .flatMap(Collection::stream)
+                .filter(it -> it instanceof SEFFPCMVertex<?>)
+                .map(it -> (SEFFPCMVertex<?>) it)
+                .forEach(it -> {
+                    it.getContext().clear();
+                    it.getContext().addAll(calledSEFF.context());
+                    it.getParameter().clear();
+                    it.getParameter().addAll(((OperationSignature) calledSEFF.seff().getDescribedService__SEFF()).getParameters__OperationSignature());
+                });
+        List<PCMUncertainTransposeFlowGraph> results = new ArrayList<>();
+        replacements.forEach(tfg -> {
+            SEFFPCMVertex<?> startActionVertex = tfg.stream()
+                    .filter(it -> it instanceof SEFFPCMVertex<?>)
+                    .map(it -> (SEFFPCMVertex<?>) it)
+                    .filter(it -> it.getReferencedElement().equals(startAction))
+                    .findFirst().orElseThrow();
+            AbstractPCMVertex<?> callReplacement = new CallingUserPCMVertex(replacement, commonCallingVertex.get().getPreviousElements(), true, this.resourceProvider);
+            startActionVertex.setPreviousElements(List.of(callReplacement));
+            AbstractPCMVertex<?> returnReplacement = new CallingUserPCMVertex(replacement, List.of(callReplacement, tfg.getSink()), false, this.resourceProvider);
+            Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping = new HashMap<>();
+            mapping.put(commonCallingVertex.get(), callReplacement);
+            mapping.put(commonReturningVertex.get(), returnReplacement);
+            results.add(currentTransposeFlowGraph.copy(mapping, uncertainState));
+        });
+        return results;
     }
     public List<PCMUncertainTransposeFlowGraph> applyConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMConnectorUncertaintySourceInExternalCall uncertaintySource = (PCMConnectorUncertaintySourceInExternalCall) uncertaintyScenario.eContainer();
         ExternalCallAction target = uncertaintySource.getTarget();
         ExternalCallAction replacement = uncertaintyScenario.getTarget();
 
-        AbstractPCMVertex<?> commonCallingVertex = currentTransposeFlowGraph.getVertices().stream()
+        Optional<CallingSEFFPCMVertex> commonCallingVertex = currentTransposeFlowGraph.getVertices().stream()
                 .filter(CallingSEFFPCMVertex.class::isInstance)
                 .map(CallingSEFFPCMVertex.class::cast)
                 .filter(it -> it.getReferencedElement().equals(target))
                 .filter(CallReturnBehavior::isCalling)
-                .findAny().orElseThrow();
+                .findAny();
 
-        AbstractPCMVertex<?> commonReturningVertex = currentTransposeFlowGraph.getVertices().stream()
+        Optional<CallingSEFFPCMVertex> commonReturningVertex = currentTransposeFlowGraph.getVertices().stream()
                 .filter(CallingSEFFPCMVertex.class::isInstance)
                 .map(CallingSEFFPCMVertex.class::cast)
                 .filter(it -> it.getReferencedElement().equals(target))
                 .filter(CallReturnBehavior::isReturning)
-                .findAny().orElseThrow();
+                .findAny();
+        
+        if (commonCallingVertex.isEmpty() || commonReturningVertex.isEmpty()) {
+        	return List.of(currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState));
+        }
 
         var requiredRole = replacement.getRole_ExternalService();
         var signature = replacement.getCalledService_ExternalService();
-        var calledSEFF = PCMQueryUtils.findCalledSEFF(requiredRole, signature, commonCallingVertex.getContext()).orElseThrow();
-        return this.determineFlowGraphsForSEFF(calledSEFF.seff(), commonCallingVertex, commonReturningVertex, calledSEFF.context().peek(), calledSEFF.context().peek(), uncertainState);
-    }
+        var calledSEFF = PCMQueryUtils.findCalledSEFF(requiredRole, signature, commonCallingVertex.get().getContext()).orElseThrow();
 
-    private List<PCMUncertainTransposeFlowGraph> determineFlowGraphsForSEFF(ResourceDemandingSEFF calledSEFF, AbstractPCMVertex<?> callingVertex, AbstractPCMVertex<?> returningVertex, AssemblyContext targetContext, AssemblyContext replacingContext, UncertainState uncertainState) {
-        StartAction startAction = PCMQueryUtils.getFirstStartActionInActionList(calledSEFF.getSteps_Behaviour())
-                .orElseThrow();
-        StopAction stopAction = calledSEFF.getSteps_Behaviour().stream()
-                .filter(StopAction.class::isInstance)
-                .map(StopAction.class::cast)
-                .reduce((first, second) -> second)
-                .orElseThrow();
+        StartAction startAction = PCMQueryUtils.getFirstStartActionInActionList(calledSEFF.seff().getSteps_Behaviour()).get();
+        StopAction stopAction = PCMQueryUtils.getFirstStopActionInActionList(calledSEFF.seff().getSteps_Behaviour()).get();
         PCMTransposeFlowGraphFinder finder = new PCMTransposeFlowGraphFinder(this.resourceProvider);
-        List<PCMUncertainTransposeFlowGraph> transposeFlowGraphs = finder.findTransposeFlowGraphs(List.of(stopAction), List.of(startAction)).stream()
+        List<PCMUncertainTransposeFlowGraph> replacements = finder.findTransposeFlowGraphs(List.of(stopAction), List.of(startAction)).stream()
                 .map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.relevantUncertaintySources, uncertainState))
                 .toList();
-        transposeFlowGraphs.forEach(it -> it.getVertices().stream().filter(vertex -> vertex instanceof SEFFPCMVertex<?>).map(vertex -> (SEFFPCMVertex<?>) vertex).filter(vertex -> !vertex.getContext().isEmpty()).forEach(vertex -> vertex.getContext().remove(targetContext)));
-        transposeFlowGraphs.forEach(it -> it.getVertices().stream().filter(vertex -> vertex instanceof SEFFPCMVertex<?>).map(vertex -> (SEFFPCMVertex<?>) vertex).forEach(vertex -> vertex.getContext().push(replacingContext)));
-        transposeFlowGraphs
-                .forEach(it -> it.getVertices().stream().filter(AbstractVertex::isSource).map(vertex -> (AbstractPCMVertex<?>) vertex).findFirst().orElseThrow().setPreviousElements(List.of(callingVertex.copy(new IdentityHashMap<>()))));
-        transposeFlowGraphs = transposeFlowGraphs.stream().map(it -> {
-            AbstractPCMVertex<?> copiedCall = returningVertex.copy(new IdentityHashMap<>());
-            copiedCall.setPreviousElements(List.of(it.getSink()));
-            return new PCMUncertainTransposeFlowGraph(copiedCall, relevantUncertaintySources, uncertainState);
-        }).toList();
-        List<? extends AbstractPCMVertex<?>> previousElements = transposeFlowGraphs.stream().map(PCMTransposeFlowGraph::getSink).toList();
-        returningVertex.setPreviousElements(previousElements);
-        return transposeFlowGraphs;
+        replacements.stream()
+                .map(PCMUncertainTransposeFlowGraph::getVertices)
+                .flatMap(Collection::stream)
+                .filter(it -> it instanceof SEFFPCMVertex<?>)
+                .map(it -> (SEFFPCMVertex<?>) it)
+                .forEach(it -> {
+                    it.getContext().clear();
+                    it.getContext().addAll(calledSEFF.context());
+                    it.getParameter().clear();
+                    it.getParameter().addAll(((OperationSignature) calledSEFF.seff().getDescribedService__SEFF()).getParameters__OperationSignature());
+                });
+        List<PCMUncertainTransposeFlowGraph> results = new ArrayList<>();
+        replacements.forEach(tfg -> {
+            SEFFPCMVertex<?> startActionVertex = tfg.stream()
+                    .filter(it -> it instanceof SEFFPCMVertex<?>)
+                    .map(it -> (SEFFPCMVertex<?>) it)
+                    .filter(it -> it.getReferencedElement().equals(startAction))
+                    .findFirst().orElseThrow();
+            AbstractPCMVertex<?> callReplacement = new CallingSEFFPCMVertex(replacement, commonCallingVertex.get().getPreviousElements(), commonCallingVertex.get().getContext(), commonCallingVertex.get().getParameter(), true, this.resourceProvider);
+            startActionVertex.setPreviousElements(List.of(callReplacement));
+            AbstractPCMVertex<?> returnReplacement = new CallingSEFFPCMVertex(replacement, List.of(callReplacement, tfg.getSink()), commonReturningVertex.get().getContext(), commonReturningVertex.get().getParameter(), false, this.resourceProvider);
+            Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping = new HashMap<>();
+            mapping.put(commonCallingVertex.get(), callReplacement);
+            mapping.put(commonReturningVertex.get(), returnReplacement);
+            results.add(currentTransposeFlowGraph.copy(mapping, uncertainState));
+        });
+        return results;
     }
 
     public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInResource(PCMExternalUncertaintyScenarioInResource uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
