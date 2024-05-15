@@ -23,6 +23,10 @@
     <providedRole_AssemblyConnector href="default.repository#_vzchwNvzEeyYrpd_1AtxSw"/>
     <requiredRole_AssemblyConnector href="default.repository#_3miqoNvzEeyYrpd_1AtxSw"/>
   </connectors__ComposedStructure>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_KxCJJhLWEe-aSsaZVYMDOQ" entityName="secureDBConnector" requiringAssemblyContext_AssemblyConnector="_4YTEYITjEeywmO_IpTxeAg" providingAssemblyContext_AssemblyConnector="_7LOZMAxDEe-zZ_6fyoXC4A">
+    <providedRole_AssemblyConnector href="default.repository#_66j1EQxFEe-zZ_6fyoXC4A"/>
+    <requiredRole_AssemblyConnector href="default.repository#_Phu4BRLWEe-aSsaZVYMDOQ"/>
+  </connectors__ComposedStructure>
   <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_CWo80ITkEeywmO_IpTxeAg" entityName="SystemUserInterface">
     <providedInterface__OperationProvidedRole href="default.repository#_UhSk0ITjEeywmO_IpTxeAg"/>
   </providedRoles_InterfaceProvidingEntity>

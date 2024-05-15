@@ -20,10 +20,31 @@ import org.dataflowanalysis.analysis.pcm.core.seff.SEFFPCMVertex;
 import org.dataflowanalysis.analysis.pcm.core.user.CallingUserPCMVertex;
 import org.dataflowanalysis.analysis.pcm.core.user.UserPCMVertex;
 import org.dataflowanalysis.analysis.pcm.utils.PCMQueryUtils;
+import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.DataDictionaryCharacterizedFactory;
+import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.expressions.And;
+import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.expressions.ExpressionsFactory;
+import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.expressions.False;
+import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.expressions.Not;
+import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.expressions.Or;
+import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.expressions.Term;
+import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.expressions.True;
+import org.dataflowanalysis.pcm.extension.model.confidentiality.ConfidentialityFactory;
+import org.dataflowanalysis.pcm.extension.model.confidentiality.ConfidentialityVariableCharacterisation;
+import org.dataflowanalysis.pcm.extension.model.confidentiality.expression.ExpressionFactory;
+import org.dataflowanalysis.pcm.extension.model.confidentiality.expression.LhsEnumCharacteristicReference;
+import org.dataflowanalysis.pcm.extension.model.confidentiality.expression.NamedEnumCharacteristicReference;
+import org.dataflowanalysis.pcm.extension.model.confidentiality.expression.VariableCharacterizationLhs;
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.AbstractAssignee;
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.ResourceAssignee;
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.palladiosimulator.pcm.core.composition.AssemblyContext;
+import org.palladiosimulator.pcm.parameter.ParameterFactory;
+import org.palladiosimulator.pcm.parameter.VariableCharacterisation;
+import org.palladiosimulator.pcm.parameter.VariableUsage;
+import org.palladiosimulator.pcm.repository.BasicComponent;
+import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.repository.Parameter;
 import org.palladiosimulator.pcm.seff.AbstractAction;
@@ -37,6 +58,10 @@ import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
 import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
 import org.palladiosimulator.pcm.usagemodel.Start;
 import org.palladiosimulator.pcm.usagemodel.UsagemodelFactory;
+
+import de.uka.ipd.sdq.stoex.AbstractNamedReference;
+import de.uka.ipd.sdq.stoex.StoexFactory;
+import de.uka.ipd.sdq.stoex.VariableReference;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -67,10 +92,10 @@ public class PCMUncertaintyCalculator {
             return applyConnectorUncertaintyScenarioInExternalCall(castedScenario, uncertainState, currentTransposeFlowGraph);
         } else if (uncertaintyScenario instanceof PCMExternalUncertaintyScenarioInResource castedScenario) {
             return List.of(applyExternalUncertaintyScenarioInResource(castedScenario, uncertainState, currentTransposeFlowGraph));
-        } else if(uncertainState instanceof PCMExternalUncertaintyScenarioInUsage castedScenario) {
+        } else if(uncertaintyScenario instanceof PCMExternalUncertaintyScenarioInUsage castedScenario) {
             return List.of(applyExternalUncertaintyScenarioInUsage(castedScenario, uncertainState, currentTransposeFlowGraph));
-        } else if (uncertainState instanceof PCMInterfaceUncertaintyScenario castedScenario) {
-            return List.of(applyInterfaceUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph));
+        } else if (uncertaintyScenario instanceof PCMInterfaceUncertaintyScenario castedScenario) {
+            return applyInterfaceUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph);
         } else {
             throw new IllegalArgumentException("Unexpected PCM uncertainty scenario: %s"
                     .formatted(UncertaintyUtils.getUncertaintyScenarioName(uncertaintyScenario)));
@@ -341,57 +366,183 @@ public class PCMUncertaintyCalculator {
         return new PCMUncertainTransposeFlowGraph(newSink, this.relevantUncertaintySources, uncertainState);
     }
 
-    public PCMUncertainTransposeFlowGraph applyInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
+    public List<PCMUncertainTransposeFlowGraph> applyInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMInterfaceUncertaintySource uncertaintySource = (PCMInterfaceUncertaintySource) uncertaintyScenario.eContainer();
         OperationSignature target = uncertaintySource.getTarget();
         OperationSignature replacement = uncertaintyScenario.getTarget();
-        Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping = new IdentityHashMap<>();
 
-        var userVertices = currentTransposeFlowGraph.getVertices().stream()
-                .filter(CallingUserPCMVertex.class::isInstance)
-                .map(CallingUserPCMVertex.class::cast)
-                .filter(CallingUserPCMVertex::isCalling)
-                .filter(it -> it.getReferencedElement().getOperationSignature__EntryLevelSystemCall().equals(target))
-                .toList();
-        var seffVertices = currentTransposeFlowGraph.getVertices().stream()
+
+        Optional<CallingSEFFPCMVertex> commonCallingVertex = currentTransposeFlowGraph.getVertices().stream()
                 .filter(CallingSEFFPCMVertex.class::isInstance)
                 .map(CallingSEFFPCMVertex.class::cast)
-                .filter(CallingSEFFPCMVertex::isCalling)
+                .filter(CallReturnBehavior::isCalling)
                 .filter(it -> it.getReferencedElement().getCalledService_ExternalService().equals(target))
-                .toList();
-        if (userVertices.isEmpty() && seffVertices.isEmpty()) {
-            logger.error("PCM Interface uncertainty does not target any vertices in the current transpose flow graph");
-            throw new IllegalStateException();
+                .findAny();
+
+        Optional<CallingSEFFPCMVertex> commonReturningVertex = currentTransposeFlowGraph.getVertices().stream()
+                .filter(CallingSEFFPCMVertex.class::isInstance)
+                .map(CallingSEFFPCMVertex.class::cast)
+                .filter(CallReturnBehavior::isReturning)
+                .filter(it -> it.getReferencedElement().getCalledService_ExternalService().equals(target))
+                .findAny();
+
+
+        if (commonCallingVertex.isEmpty() || commonReturningVertex.isEmpty()) {
+            return List.of(currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState));
         }
 
-        userVertices.forEach(vertex -> {
-            EntryLevelSystemCall entryLevelSystemCall = UsagemodelFactory.eINSTANCE.createEntryLevelSystemCall();
-            entryLevelSystemCall.setOperationSignature__EntryLevelSystemCall(replacement);
-            entryLevelSystemCall.setProvidedRole_EntryLevelSystemCall(vertex.getReferencedElement().getProvidedRole_EntryLevelSystemCall());
-            entryLevelSystemCall.setPredecessor(vertex.getReferencedElement().getPredecessor());
-            entryLevelSystemCall.setEntityName(vertex.getReferencedElement().getEntityName());
-            entryLevelSystemCall.setScenarioBehaviour_AbstractUserAction(vertex.getReferencedElement().getScenarioBehaviour_AbstractUserAction());
-            entryLevelSystemCall.setSuccessor(vertex.getReferencedElement().getSuccessor());
-            entryLevelSystemCall.getInputParameterUsages_EntryLevelSystemCall().addAll(vertex.getReferencedElement().getInputParameterUsages_EntryLevelSystemCall());
-            entryLevelSystemCall.getOutputParameterUsages_EntryLevelSystemCall().addAll(vertex.getReferencedElement().getOutputParameterUsages_EntryLevelSystemCall());
-            mapping.put(vertex, new CallingUserPCMVertex(entryLevelSystemCall, vertex.getPreviousElements(), vertex.isCalling(), vertex.getResourceProvider()));
-        });
+        Optional<OperationRequiredRole> requiredRole = this.getRequiredRoleForInterface(commonCallingVertex.get(), replacement);
 
-        seffVertices.forEach(vertex -> {
-            ExternalCallAction externalCallAction = SeffFactory.eINSTANCE.createExternalCallAction();
-            externalCallAction.setEntityName(vertex.getReferencedElement().getEntityName());
-            externalCallAction.setCalledService_ExternalService(replacement);
-            externalCallAction.setRole_ExternalService(vertex.getReferencedElement().getRole_ExternalService());
-            externalCallAction.setPredecessor_AbstractAction(vertex.getReferencedElement().getPredecessor_AbstractAction());
-            externalCallAction.setResourceDemandingBehaviour_AbstractAction(vertex.getReferencedElement().getResourceDemandingBehaviour_AbstractAction());
-            externalCallAction.setSuccessor_AbstractAction(vertex.getReferencedElement().getSuccessor_AbstractAction());
-            externalCallAction.getInputVariableUsages__CallAction().addAll(vertex.getReferencedElement().getInputVariableUsages__CallAction());
-            externalCallAction.getReturnVariableUsage__CallReturnAction().addAll(vertex.getReferencedElement().getReturnVariableUsage__CallReturnAction());
-            List<Parameter> parameters = replacement.getParameters__OperationSignature();
-            mapping.put(vertex, new CallingSEFFPCMVertex(externalCallAction, vertex.getPreviousElements(), vertex.getContext(), parameters, vertex.isCalling(), vertex.getResourceProvider()));
-        });
+        if (requiredRole.isEmpty()) {
+            return List.of(currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState));
+        }
 
-        return currentTransposeFlowGraph.copy(mapping, uncertainState);
+        ExternalCallAction replacementCallElement = SeffFactory.eINSTANCE.createExternalCallAction();
+        replacementCallElement.setEntityName(commonCallingVertex.get().getReferencedElement().getEntityName());
+        replacementCallElement.setCalledService_ExternalService(replacement);
+        replacementCallElement.setRole_ExternalService(requiredRole.get());
+        replacementCallElement.setPredecessor_AbstractAction(commonCallingVertex.get().getReferencedElement().getPredecessor_AbstractAction());
+        replacementCallElement.setSuccessor_AbstractAction(commonCallingVertex.get().getReferencedElement().getSuccessor_AbstractAction());
+        replacementCallElement.getInputVariableUsages__CallAction().addAll(this.copyVariableUsages(commonCallingVertex.get().getReferencedElement().getInputVariableUsages__CallAction()));
+        replacementCallElement.getReturnVariableUsage__CallReturnAction().addAll(this.copyVariableUsages(commonCallingVertex.get().getReferencedElement().getReturnVariableUsage__CallReturnAction()));
+
+        var calledSEFF = PCMQueryUtils.findCalledSEFF(requiredRole.get(), replacement, commonCallingVertex.get().getContext()).orElseThrow();
+        replacementCallElement.setResourceDemandingBehaviour_AbstractAction(calledSEFF.seff());
+
+        StartAction startAction = PCMQueryUtils.getFirstStartActionInActionList(calledSEFF.seff().getSteps_Behaviour()).get();
+        StopAction stopAction = PCMQueryUtils.getFirstStopActionInActionList(calledSEFF.seff().getSteps_Behaviour()).get();
+        PCMTransposeFlowGraphFinder finder = new PCMTransposeFlowGraphFinder(this.resourceProvider);
+        List<PCMUncertainTransposeFlowGraph> replacements = finder.findTransposeFlowGraphs(List.of(stopAction), List.of(startAction)).stream()
+                .map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.relevantUncertaintySources, uncertainState))
+                .toList();
+        replacements.stream()
+                .map(PCMUncertainTransposeFlowGraph::getVertices)
+                .flatMap(Collection::stream)
+                .filter(it -> it instanceof SEFFPCMVertex<?>)
+                .map(it -> (SEFFPCMVertex<?>) it)
+                .forEach(it -> {
+                    it.getContext().clear();
+                    it.getContext().addAll(calledSEFF.context());
+                    it.getParameter().clear();
+                    it.getParameter().addAll(((OperationSignature) calledSEFF.seff().getDescribedService__SEFF()).getParameters__OperationSignature());
+                });
+        List<PCMUncertainTransposeFlowGraph> results = new ArrayList<>();
+        replacements.forEach(tfg -> {
+            SEFFPCMVertex<?> startActionVertex = tfg.stream()
+                    .filter(it -> it instanceof SEFFPCMVertex<?>)
+                    .map(it -> (SEFFPCMVertex<?>) it)
+                    .filter(it -> it.getReferencedElement().equals(startAction))
+                    .findFirst().orElseThrow();
+            AbstractPCMVertex<?> callReplacement = new CallingSEFFPCMVertex(replacementCallElement, commonCallingVertex.get().getPreviousElements(), commonCallingVertex.get().getContext(), commonCallingVertex.get().getParameter(), true, this.resourceProvider);
+            startActionVertex.setPreviousElements(List.of(callReplacement));
+            AbstractPCMVertex<?> returnReplacement = new CallingSEFFPCMVertex(replacementCallElement, List.of(callReplacement, tfg.getSink()), commonCallingVertex.get().getContext(), commonCallingVertex.get().getParameter(),false, this.resourceProvider);
+            Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping = new HashMap<>();
+            mapping.put(commonCallingVertex.get(), callReplacement);
+            mapping.put(commonReturningVertex.get(), returnReplacement);
+            results.add(currentTransposeFlowGraph.copy(mapping, uncertainState));
+        });
+        return results;
+    }
+
+    private List<VariableUsage> copyVariableUsages(List<VariableUsage> variableUsages) {
+        return variableUsages.stream()
+                .map(it -> {
+                    VariableUsage variableUsage = ParameterFactory.eINSTANCE.createVariableUsage();
+                    variableUsage.setAssemblyContext__VariableUsage(it.getAssemblyContext__VariableUsage());
+                    variableUsage.setCallAction__VariableUsage(it.getCallAction__VariableUsage());
+                    variableUsage.setSetVariableAction_VariableUsage(it.getSetVariableAction_VariableUsage());
+                    variableUsage.setNamedReference__VariableUsage(this.copyNamedReference(it.getNamedReference__VariableUsage()));
+                    variableUsage.setUserData_VariableUsage(it.getUserData_VariableUsage());
+                    variableUsage.setCallReturnAction__VariableUsage(it.getCallReturnAction__VariableUsage());
+                    variableUsage.setEntryLevelSystemCall_InputParameterUsage(it.getEntryLevelSystemCall_InputParameterUsage());
+                    variableUsage.setEntryLevelSystemCall_OutputParameterUsage(it.getEntryLevelSystemCall_OutputParameterUsage());
+                    List<ConfidentialityVariableCharacterisation> variableCharacterizations = this.copyVariableCharacterizations(new ArrayList<>(it.getVariableCharacterisation_VariableUsage()));
+                    variableUsage.getVariableCharacterisation_VariableUsage().clear();
+                    variableUsage.getVariableCharacterisation_VariableUsage().addAll(variableCharacterizations);
+                    return variableUsage;
+                })
+                .toList();
+    }
+    
+    private AbstractNamedReference copyNamedReference(AbstractNamedReference reference) {
+    	VariableReference variableReference = StoexFactory.eINSTANCE.createVariableReference();
+    	variableReference.setReferenceName(reference.getReferenceName());
+    	return variableReference;
+    }
+
+    private List<ConfidentialityVariableCharacterisation> copyVariableCharacterizations(List<VariableCharacterisation> variableCharacterisations) {
+        return variableCharacterisations.stream()
+                .filter(ConfidentialityVariableCharacterisation.class::isInstance)
+                .map(ConfidentialityVariableCharacterisation.class::cast)
+                .map(it -> {
+                    ConfidentialityVariableCharacterisation variableCharacterisation = ConfidentialityFactory.eINSTANCE.createConfidentialityVariableCharacterisation();
+                    variableCharacterisation.setLhs(this.copyLhs(it.getLhs()));
+                    variableCharacterisation.setRhs(this.copyRhs(it.getRhs()));
+                    variableCharacterisation.setSpecification_VariableCharacterisation(it.getSpecification_VariableCharacterisation());
+                    variableCharacterisation.setVariableUsage_VariableCharacterisation(it.getVariableUsage_VariableCharacterisation());
+                    variableCharacterisation.setType(it.getType());
+                    return variableCharacterisation;
+                })
+                .toList();
+    }
+    
+    private VariableCharacterizationLhs copyLhs(VariableCharacterizationLhs reference) {
+    	if (!(reference instanceof LhsEnumCharacteristicReference enumReference)) {
+    		return null;
+    	}
+    	LhsEnumCharacteristicReference copy = ExpressionFactory.eINSTANCE.createLhsEnumCharacteristicReference();
+    	copy.setCharacteristicType(enumReference.getCharacteristicType());
+    	copy.setId(enumReference.getId());
+    	copy.setLiteral(enumReference.getLiteral());
+    	return copy;
+    }
+    
+    private Term copyRhs(Term term) {
+    	if (term instanceof And old) {
+    		And and = ExpressionsFactory.eINSTANCE.createAnd();
+    		and.setId(old.getId());
+    		and.setLeft(this.copyRhs(old.getLeft()));
+    		and.setRight(this.copyRhs(old.getRight()));
+    		return and;
+    	} else if (term instanceof Or old) {
+    		Or copy = ExpressionsFactory.eINSTANCE.createOr();
+    		copy.setId(old.getId());
+    		copy.setLeft(this.copyRhs(old.getLeft()));
+    		copy.setRight(this.copyRhs(old.getRight()));
+    		return copy;
+    	} else if (term instanceof True old) {
+    		True copy = ExpressionsFactory.eINSTANCE.createTrue();
+    		copy.setId(old.getId());
+    		return copy;
+    	} else if (term instanceof False old) {
+    		False copy = ExpressionsFactory.eINSTANCE.createFalse();
+    		copy.setId(old.getId());
+    		return copy;
+    	} else if (term instanceof Not old) {
+    		Not copy = ExpressionsFactory.eINSTANCE.createNot();
+    		copy.setId(old.getId());
+    		copy.setTerm(this.copyRhs(old.getTerm()));
+    		return copy;
+    	} else if (term instanceof NamedEnumCharacteristicReference reference){
+    		NamedEnumCharacteristicReference copy = ExpressionFactory.eINSTANCE.createNamedEnumCharacteristicReference();
+    		copy.setCharacteristicType(reference.getCharacteristicType());
+    		copy.setId(reference.getId());
+    		copy.setLiteral(reference.getLiteral());
+    		copy.setNamedReference(this.copyNamedReference(reference.getNamedReference()));
+    		return copy;
+    	} else {
+    		return null;
+    	}
+    }
+
+    private Optional<OperationRequiredRole> getRequiredRoleForInterface(CallingSEFFPCMVertex oldElement, OperationSignature signature) {
+        OperationInterface operationInterface = signature.getInterface__OperationSignature();
+        BasicComponent component = PCMQueryUtils.findParentOfType(oldElement.getReferencedElement(), BasicComponent.class, false).orElseThrow();
+        return component.getRequiredRoles_InterfaceRequiringEntity().stream()
+                .filter(OperationRequiredRole.class::isInstance)
+                .map(OperationRequiredRole.class::cast)
+                .filter(it -> it.getRequiredInterface__OperationRequiredRole().equals(operationInterface))
+                .findFirst();
     }
 
     private AbstractPCMVertex<?> copyWithProxies(Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping, AbstractPCMVertex<?> vertex, AbstractAssignee target, AbstractAssignee replacement) {
