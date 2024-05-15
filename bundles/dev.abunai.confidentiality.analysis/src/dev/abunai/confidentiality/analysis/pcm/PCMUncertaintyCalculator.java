@@ -329,14 +329,16 @@ public class PCMUncertaintyCalculator {
         PCMExternalUncertaintySourceInResource uncertaintySource = (PCMExternalUncertaintySourceInResource) uncertaintyScenario.eContainer();
         ResourceAssignee target = uncertaintySource.getTarget();
         ResourceAssignee replacement = uncertaintyScenario.getTarget();
-        return currentTransposeFlowGraph.copy(this.createMappingForExternalUncertainty(currentTransposeFlowGraph, target, replacement), uncertainState);
+        AbstractPCMVertex<?> newSink = this.copyWithProxies(new HashMap<>(), currentTransposeFlowGraph.getSink(), target ,replacement);
+        return new PCMUncertainTransposeFlowGraph(newSink, this.relevantUncertaintySources, uncertainState);
     }
 
     public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInUsage(PCMExternalUncertaintyScenarioInUsage uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMExternalUncertaintySourceInUsage uncertaintySource = (PCMExternalUncertaintySourceInUsage) uncertaintyScenario.eContainer();
         UsageAssignee target = uncertaintySource.getTarget();
         UsageAssignee replacement = uncertaintyScenario.getTarget();
-        return currentTransposeFlowGraph.copy(this.createMappingForExternalUncertainty(currentTransposeFlowGraph, target, replacement), uncertainState);
+        AbstractPCMVertex<?> newSink = this.copyWithProxies(new HashMap<>(), currentTransposeFlowGraph.getSink(), target ,replacement);
+        return new PCMUncertainTransposeFlowGraph(newSink, this.relevantUncertaintySources, uncertainState);
     }
 
     public PCMUncertainTransposeFlowGraph applyInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
@@ -392,24 +394,32 @@ public class PCMUncertaintyCalculator {
         return currentTransposeFlowGraph.copy(mapping, uncertainState);
     }
 
-    private Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> createMappingForExternalUncertainty(PCMUncertainTransposeFlowGraph currentTransposeFlowGraph, AbstractAssignee target, AbstractAssignee replacement) {
-        Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping = new IdentityHashMap<>();
-        currentTransposeFlowGraph.getVertices().stream()
-                .filter(it -> it instanceof SEFFPCMVertex<?>)
-                .map(it -> (SEFFPCMVertex<?>) it)
-                .forEach(it -> mapping.put(it, new UncertainSEFFPCMVertex<AbstractAction>(it.getReferencedElement(), it.getPreviousElements(), it.getContext(), it.getParameter(), it.getResourceProvider(), Map.of(target, replacement))));
-        currentTransposeFlowGraph.getVertices().stream()
-                .filter(CallingSEFFPCMVertex.class::isInstance)
-                .map(CallingSEFFPCMVertex.class::cast)
-                .forEach(it -> mapping.put(it, new UncertainCallingSEFFPCMVertex(it.getReferencedElement(), it.getPreviousElements(), it.getContext(), it.getParameter(), it.isCalling(), it.getResourceProvider(), Map.of(target, replacement))));
-        currentTransposeFlowGraph.getVertices().stream()
-                .filter(it -> it instanceof UserPCMVertex<?>)
-                .map(it -> (UserPCMVertex<?>) it)
-                .forEach(it -> mapping.put(it, new UncertainUserPCMVertex<AbstractUserAction>(it.getReferencedElement(), it.getPreviousElements(), it.getResourceProvider(), Map.of(target, replacement))));
-        currentTransposeFlowGraph.getVertices().stream()
-                .filter(CallingUserPCMVertex.class::isInstance)
-                .map(CallingUserPCMVertex.class::cast)
-                .forEach(it -> mapping.put(it, new UncertainCallingUserPCMVertex(it.getReferencedElement(), it.getPreviousElements(), it.isCalling(), it.getResourceProvider(), Map.of(target, replacement))));
-        return mapping;
+    private AbstractPCMVertex<?> copyWithProxies(Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping, AbstractPCMVertex<?> vertex, AbstractAssignee target, AbstractAssignee replacement) {
+        if (mapping.containsKey(vertex)) {
+            return mapping.get(vertex);
+        }
+        List<? extends AbstractPCMVertex<?>> previousVertices = vertex.getPreviousElements().stream()
+                .map(it -> copyWithProxies(mapping, it, target, replacement))
+               .toList();
+
+        if (vertex instanceof CallingUserPCMVertex callingUserVertex) {
+            UncertainCallingUserPCMVertex replacingVertex = new UncertainCallingUserPCMVertex(callingUserVertex.getReferencedElement(), previousVertices, callingUserVertex.isCalling(), callingUserVertex.getResourceProvider(), Map.of(target, replacement));
+            mapping.put(vertex, replacingVertex);
+            return replacingVertex;
+        } else if (vertex instanceof UserPCMVertex<?> userVertex) {
+            UncertainUserPCMVertex<?> replacingVertex = new UncertainUserPCMVertex<AbstractUserAction>(userVertex.getReferencedElement(), previousVertices, userVertex.getResourceProvider(), Map.of(target, replacement));
+            mapping.put(vertex, replacingVertex);
+            return replacingVertex;
+        } else if (vertex instanceof CallingSEFFPCMVertex callingSEFFVertex) {
+            UncertainCallingSEFFPCMVertex replacingVertex = new UncertainCallingSEFFPCMVertex(callingSEFFVertex.getReferencedElement(), previousVertices, callingSEFFVertex.getContext(), callingSEFFVertex.getParameter(), callingSEFFVertex.isCalling(), callingSEFFVertex.getResourceProvider(), Map.of(target, replacement));
+            mapping.put(vertex, replacingVertex);
+            return replacingVertex;
+        } else if (vertex instanceof SEFFPCMVertex<?> seffVertex) {
+            UncertainSEFFPCMVertex<?> replacingVertex = new UncertainSEFFPCMVertex<AbstractAction>(seffVertex.getReferencedElement(), previousVertices, seffVertex.getContext(), seffVertex.getParameter(), seffVertex.getResourceProvider(), Map.of(target, replacement));
+            mapping.put(vertex, replacingVertex);
+            return replacingVertex;
+        } else {
+            throw new IllegalArgumentException("Unknown vertex type encountered");
+        }
     }
 }
