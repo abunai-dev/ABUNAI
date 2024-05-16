@@ -58,21 +58,20 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		this.relevantUncertaintySources = relevantUncertaintySources;
 	}
 
-	// TODO: Implement impact set, currently broken
 	@Override
 	public List<? extends DFDVertex> getImpactSet(ResourceProvider resourceProvider) {
-		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(this.getVertices());
-		
-		List<Node> targetNodes = this.relevantUncertaintySources.stream()
-				.map(it -> dfdQueryHelper.findTargetNodes((DFDUncertaintySource) it))
-				.flatMap(List::stream)
-				.toList();
-
-		List<DFDVertex> longestAffectedElementList = this.getVertices().stream()
+		return this.getVertices().stream()
+				.filter(DFDVertex.class::isInstance)
 				.map(DFDVertex.class::cast)
-				.dropWhile(it -> !targetNodes.contains(it.getReferencedElement()))
-				.toList();
-		return longestAffectedElementList;
+				.filter(this::affectedByUncertainty).toList();
+	}
+
+	private boolean affectedByUncertainty(AbstractVertex<?> vertex) {
+		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(List.of(vertex));
+		if (this.relevantUncertaintySources.stream().anyMatch(it -> dfdQueryHelper.hasTargetNode((DFDUncertaintySource) it))) {
+			return true;
+		}
+		return vertex.getPreviousElements().stream().anyMatch(this::affectedByUncertainty);
 	}
 
 	@Override

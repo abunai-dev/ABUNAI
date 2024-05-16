@@ -5,9 +5,12 @@ import java.util.*;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
+import dev.abunai.confidentiality.analysis.dfd.DFDQueryHelper;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
+import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
+import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.dataflowanalysis.analysis.pcm.core.AbstractPCMVertex;
 import org.dataflowanalysis.analysis.pcm.core.PCMTransposeFlowGraph;
 import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
@@ -41,22 +44,18 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 
 	@Override
 	public List<? extends AbstractPCMVertex<?>> getImpactSet(ResourceProvider resourceProvider) {
-		if (!(resourceProvider instanceof PCMResourceProvider pcmResourceProvider)) {
-			throw new IllegalArgumentException();
-		}
-		PCMQueryHelper pcmQueryHelper = new PCMQueryHelper(this.getVertices(), pcmResourceProvider);
-		
-		List<? extends AbstractPCMVertex<?>> targetNodes = this.relevantUncertaintySources.stream()
-				.map(it -> pcmQueryHelper.findTargetNodes((PCMUncertaintySource) it))
-				.flatMap(List::stream)
-				.toList();
-
-		List<? extends AbstractPCMVertex<?>> longestAffectedElementList = super.getVertices().stream()
+		return this.getVertices().stream()
+				.filter(it -> it instanceof AbstractPCMVertex<?>)
 				.map(it -> (AbstractPCMVertex<?>) it)
-				.dropWhile(it -> !targetNodes.contains(it.getReferencedElement()))
-				.toList();
-		// OLD CODE: new DFDActionSequence((List<AbstractActionSequenceElement<?>>) longestAffectedElementList);
-		return longestAffectedElementList;
+				.filter(it -> this.affectedByUncertainty(it, (PCMResourceProvider) resourceProvider)).toList();
+	}
+
+	private boolean affectedByUncertainty(AbstractVertex<?> vertex, PCMResourceProvider resourceProvider) {
+		PCMQueryHelper pcmQueryHelper = new PCMQueryHelper(List.of(vertex), resourceProvider);
+		if (this.relevantUncertaintySources.stream().anyMatch(it -> pcmQueryHelper.hasTargetNode((PCMUncertaintySource) it))) {
+			return true;
+		}
+		return vertex.getPreviousElements().stream().anyMatch(it -> this.affectedByUncertainty(it, resourceProvider));
 	}
 
     @Override
