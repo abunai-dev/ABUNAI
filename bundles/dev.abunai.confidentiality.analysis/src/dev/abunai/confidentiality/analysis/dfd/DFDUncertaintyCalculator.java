@@ -22,11 +22,10 @@ import org.dataflowanalysis.dfd.datadictionary.Behaviour;
 import org.dataflowanalysis.dfd.datadictionary.Label;
 import org.dataflowanalysis.dfd.datadictionary.Pin;
 import org.dataflowanalysis.dfd.datadictionary.datadictionaryFactory;
-import org.dataflowanalysis.dfd.dataflowdiagram.External;
 import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
 import org.dataflowanalysis.dfd.dataflowdiagram.Node;
-import org.dataflowanalysis.dfd.dataflowdiagram.Store;
 import org.dataflowanalysis.dfd.dataflowdiagram.dataflowdiagramFactory;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import java.util.HashMap;
 import java.util.IdentityHashMap;
@@ -92,7 +91,7 @@ public class DFDUncertaintyCalculator {
                 .toList();
         List<Label> newPropertiesToAdd = uncertaintyScenario.getTargetProperties();
 
-        Node replacingNode = this.copyNode(target);
+        Node replacingNode = EcoreUtil.copy(target);
         replacingNode.getProperties().clear();
         replacingNode.getProperties()
                 .addAll(Streams.concat(filteredOldProperties.stream(), newPropertiesToAdd.stream()).toList());
@@ -131,15 +130,14 @@ public class DFDUncertaintyCalculator {
                 .toList();
 
         if (targetedNodes.isEmpty()) {
-            throw new IllegalStateException("Found no targeted nodes by behaviour uncertainty");
+            return currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState);
         }
 
         Behaviour replacingBehavior = this.copyBehavior(targetBehaviour, Stream.concat(filteredAssignments.stream(), addedAssignments.stream()).toList());
 
         Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
         targetedNodes.forEach(vertex -> {
-            Node targetedNode = vertex.getReferencedElement();
-            Node replacingNode = this.copyNode(targetedNode);
+            Node replacingNode = EcoreUtil.copy(vertex.getReferencedElement());
 
             replacingNode.setBehaviour(replacingBehavior);
             mapping.put(vertex, this.copyVertex(vertex, replacingNode));
@@ -195,9 +193,7 @@ public class DFDUncertaintyCalculator {
                 .map(it -> new DFDUncertainTransposeFlowGraph(it.getSink(), currentTransposeFlowGraph.getRelevantUncertaintySources(), uncertainState))
                 .toList();
 
-        Flow replacingFlow = dataflowdiagramFactory.eINSTANCE.createFlow();
-        replacingFlow.setSourceNode(targetFlow.getSourceNode());
-        replacingFlow.setSourcePin(targetFlow.getSourcePin());
+        Flow replacingFlow = EcoreUtil.copy(targetFlow);
         replacingFlow.setDestinationNode(replacingNode);
         replacingFlow.setDestinationPin(replacingPin);
 
@@ -265,28 +261,6 @@ public class DFDUncertaintyCalculator {
                 .forEach(it -> mapping.put(it, this.copyVertex(it, replacingNode)));
 
         return currentTransposeFlowGraph.copy(mapping, uncertainState);
-    }
-
-    /**
-     * Copies the given node
-     * @param node Node that should be copied
-     * @return Returns a new copied node
-     */
-    private Node copyNode(Node node) {
-        Node copy;
-        if (node instanceof External) {
-            copy = dataflowdiagramFactory.eINSTANCE.createExternal();
-        } else if (node instanceof org.dataflowanalysis.dfd.dataflowdiagram.Process) {
-            copy = dataflowdiagramFactory.eINSTANCE.createProcess();
-        } else if (node instanceof Store) {
-            copy = dataflowdiagramFactory.eINSTANCE.createStore();
-        } else {
-            throw new IllegalArgumentException("Unexpected DFD node type.");
-        }
-        copy.setEntityName(node.getEntityName());
-        copy.setBehaviour(node.getBehaviour());
-        copy.getProperties().addAll(node.getProperties());
-        return copy;
     }
 
     /**
