@@ -2,7 +2,6 @@ package dev.abunai.confidentiality.analysis.core;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Deque;
 import java.util.List;
 
@@ -25,31 +24,52 @@ import tools.mdsd.modelingfoundations.identifier.Entity;
 
 public class UncertaintyUtils {
 
-	@SuppressWarnings("unchecked")
+	/**
+	 * Gets all uncertainty scenarios from a given uncertainty source
+	 * @param uncertaintySource Given uncertainty source of which all uncertainty scenarios should be calculated
+	 * @return Returns a list of all uncertainty scenarios from a given uncertainty source
+	 */
 	public static List<? extends UncertaintyScenario> getUncertaintyScenarios(UncertaintySource uncertaintySource) {
-
 		String scenariosFeatureName = "scenarios";
 		Object scenarios = uncertaintySource
 				.eGet(uncertaintySource.eClass().getEStructuralFeature(scenariosFeatureName));
 
-		if (scenarios instanceof List<?> scenarioList
-				&& scenarioList.stream().allMatch(it -> it instanceof UncertaintyScenario)) {
-			return (List<? extends UncertaintyScenario>) scenarios;
-		} else {
+		if (!(scenarios instanceof List<?> scenarioList) || !scenarioList.stream()
+				.allMatch(UncertaintyScenario.class::isInstance)) {
 			throw new IllegalStateException(
 					"Meta model problem: All non-abstract uncertainty sources are expected to have a scenarios field.");
 		}
+
+		return scenarioList.stream()
+				.filter(UncertaintyScenario.class::isInstance)
+				.map(UncertaintyScenario.class::cast)
+				.toList();
 	}
 
+	/**
+	 * Returns the name of a given uncertainty source
+	 * @param uncertaintySource Given uncertainty source of which the name should be calculated
+	 * @return Returns the name of the uncertainty source
+	 */
 	public static String getUncertaintySourceName(UncertaintySource uncertaintySource) {
-		return tryToGetNameOfTypeAndTarget(uncertaintySource);
+		return getUncertaintyInformation(uncertaintySource);
 	}
 
+	/**
+	 * Returns the name of a given uncertainty scenario
+	 * @param uncertaintyScenario Given uncertainty scenario of which the name should be calculated
+	 * @return Returns the name of the uncertainty scenario
+	 */
 	public static String getUncertaintyScenarioName(UncertaintyScenario uncertaintyScenario) {
-		return tryToGetNameOfTypeAndTarget(uncertaintyScenario);
+		return getUncertaintyInformation(uncertaintyScenario);
 	}
 
-	private static String tryToGetNameOfTypeAndTarget(Entity entity) {
+	/**
+	 * Returns uncertainty information for an uncertainty source or uncertainty scenario
+	 * @param entity Given entity of which the uncertainty information should be calculated
+	 * @return Returns the uncertainty information of an entity in a String
+	 */
+	private static String getUncertaintyInformation(Entity entity) {
 		String entityClassName = entity.getClass().getSimpleName().replace("Impl", "");
 
 		String defaultEntityName = "aName";
@@ -75,6 +95,12 @@ public class UncertaintyUtils {
 		}
 	}
 
+	/**
+	 * Determines whether a given uncertainty scenario is a default scenario in a given uncertainty source
+	 * @param uncertaintySource Uncertainty source in which the uncertainty scenario os contained
+	 * @param uncertaintyScenario Given uncertainty scenario
+	 * @return Returns true, if the uncertainty scenario is a default scenario in the uncertainty source
+	 */
 	public static boolean isDefaultScenario(UncertaintySource uncertaintySource,
 			UncertaintyScenario uncertaintyScenario) {
 		if (uncertaintySource instanceof PCMUncertaintySource) {
@@ -121,6 +147,10 @@ public class UncertaintyUtils {
 		}
 	}
 
+	/**
+	 * Adds a default scenario to the given uncertainty source
+	 * @param uncertaintySource Uncertainty source to which the default scenario should be added
+	 */
 	public static void addDefaultScenario(UncertaintySource uncertaintySource) {
 		List<? extends UncertaintyScenario> scenarios = getUncertaintyScenarios(uncertaintySource);
 		double sumOfAllProbabilities = scenarios.stream().mapToDouble(UncertaintyScenario::getProbability).sum();
@@ -129,7 +159,6 @@ public class UncertaintyUtils {
 		if (sumOfAllProbabilities < 0) {
 			probabilityOfDefaultScenario = -1.0;
 		}
-
 
 		String defaultScenarioEntityName = "Default Scenario";
 		createDefaultScenario(uncertaintySource, probabilityOfDefaultScenario, defaultScenarioEntityName);
@@ -233,6 +262,16 @@ public class UncertaintyUtils {
 		}
 	}
 
+	/**
+	 * Determines whether the first or second uncertainty source should be applied first
+	 * @param transposeFlowGraph Given transpose flow graph
+	 * @param resourceProvider Resource provider used to resolve uncertainty sources
+	 * @param o1 First uncertainty
+	 * @param o2 Second uncertainty
+	 * @return	Returns -1, if the first uncertainty should be applied before the second uncertainty
+	 * 			Returns 0, if the application order is irrelevant or not determinable
+	 * 			Returns 1, if the second uncertainty should be applied before the first uncertainty
+	 */
 	public static int compareApplicationOrder(AbstractTransposeFlowGraph transposeFlowGraph, ResourceProvider resourceProvider, UncertaintySource o1, UncertaintySource o2) {
 		if (UncertaintyUtils.compareOrder(transposeFlowGraph, resourceProvider, o1, o2) != 0) {
 			return UncertaintyUtils.compareOrder(transposeFlowGraph, resourceProvider, o1, o2);
@@ -241,6 +280,17 @@ public class UncertaintyUtils {
 		}
 	}
 
+	/**
+	 * Determines whether the first or second uncertainty source should be applied first,
+	 * given the location in the transpose flow graph
+	 * @param transposeFlowGraph Given transpose flow graph
+	 * @param resourceProvider Resource provider used to resolve uncertainty sources
+	 * @param o1 First uncertainty
+	 * @param o2 Second uncertainty
+	 * @return	Returns -1, if the first uncertainty should be applied before the second uncertainty
+	 * 			Returns 0, if the application order is irrelevant or not determinable
+	 * 			Returns 1, if the second uncertainty should be applied before the first uncertainty
+	 */
 	public static int compareOrder(AbstractTransposeFlowGraph transposeFlowGraph, ResourceProvider resourceProvider, UncertaintySource o1, UncertaintySource o2) {
 		if (transposeFlowGraph instanceof DFDUncertainTransposeFlowGraph) {
 			return UncertaintyUtils.compareOrderDFD(transposeFlowGraph, o1, o2);
@@ -249,6 +299,16 @@ public class UncertaintyUtils {
 		}
 	}
 
+	/**
+	 * Determines whether the first or second uncertainty source should be applied first,
+	 * given the location in the transpose flow graph
+	 * @param transposeFlowGraph Given transpose flow graph
+	 * @param o1 First uncertainty
+	 * @param o2 Second uncertainty
+	 * @return	Returns -1, if the first uncertainty should be applied before the second uncertainty
+	 * 			Returns 0, if the application order is irrelevant or not determinable
+	 * 			Returns 1, if the second uncertainty should be applied before the first uncertainty
+	 */
 	public static int compareOrderDFD(AbstractTransposeFlowGraph transposeFlowGraph, UncertaintySource o1, UncertaintySource o2) {
 		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(transposeFlowGraph.getVertices());
 
@@ -281,6 +341,11 @@ public class UncertaintyUtils {
 		}
 	}
 
+	/**
+	 * Determines a list of all previous vertices of a given vertex
+	 * @param vertex Given vertex of which all predecessors should be calculated
+	 * @return Returns a list of all predecessors of a vertex
+	 */
 	private static List<DFDVertex> getAllPredecessorsDFD(DFDVertex vertex) {
 		List<DFDVertex> result = new ArrayList<>();
 		Deque<DFDVertex> currentVertices = new ArrayDeque<>();
@@ -293,6 +358,13 @@ public class UncertaintyUtils {
 		return result;
 	}
 
+	/**
+	 * Returns a list of all vertices that are affected by an uncertainty source
+	 * @param transposeFlowGraph Given transpose flow graph of which all directly affected vertices should be calculated
+	 * @param dfdQueryHelper Query helper used to find targeted nodes
+	 * @param uncertaintySource Uncertainty source of which the affected nodes should be calculated
+	 * @return Returns a list of all vertices that are affected by the given uncertainty source
+	 */
 	private static List<DFDVertex> getVerticesDFD(AbstractTransposeFlowGraph transposeFlowGraph, DFDQueryHelper dfdQueryHelper, DFDUncertaintySource uncertaintySource) {
 		List<Node> nodes = dfdQueryHelper.findTargetNodes(uncertaintySource);
 		return transposeFlowGraph.getVertices().stream()
@@ -302,6 +374,17 @@ public class UncertaintyUtils {
 				.toList();
 	}
 
+	/**
+	 * Determines whether the first or second uncertainty source should be applied first,
+	 * given the location in the transpose flow graph
+	 * @param transposeFlowGraph Given transpose flow graph
+	 * @param resourceProvider Resource provider used to resolve uncertainty sources
+	 * @param o1 First uncertainty
+	 * @param o2 Second uncertainty
+	 * @return	Returns -1, if the first uncertainty should be applied before the second uncertainty
+	 * 			Returns 0, if the application order is irrelevant or not determinable
+	 * 			Returns 1, if the second uncertainty should be applied before the first uncertainty
+	 */
 	public static int compareOrderPCM(AbstractTransposeFlowGraph transposeFlowGraph, PCMResourceProvider resourceProvider, UncertaintySource o1, UncertaintySource o2) {
 		PCMQueryHelper pcmQueryHelper = new PCMQueryHelper(transposeFlowGraph.getVertices(), resourceProvider);
 
@@ -334,6 +417,11 @@ public class UncertaintyUtils {
 		}
 	}
 
+	/**
+	 * Determines a list of all previous vertices of a given vertex
+	 * @param vertex Given vertex of which all predecessors should be calculated
+	 * @return Returns a list of all predecessors of a vertex
+	 */
 	private static List<AbstractPCMVertex<?>> getAllPredecessorsPCM(AbstractPCMVertex<?> vertex) {
 		List<AbstractPCMVertex<?>> result = new ArrayList<>();
 		AbstractPCMVertex<?> currentVertex = vertex;
@@ -350,10 +438,25 @@ public class UncertaintyUtils {
 		return result;
 	}
 
+	/**
+	 * Returns a list of all vertices that are affected by an uncertainty source
+	 * @param transposeFlowGraph Given transpose flow graph of which all directly affected vertices should be calculated
+	 * @param pcmQueryHelper Query helper used to find targeted nodes
+	 * @param uncertaintySource Uncertainty source of which the affected nodes should be calculated
+	 * @return Returns a list of all vertices that are affected by the given uncertainty source
+	 */
 	private static List<? extends AbstractPCMVertex<?>> getVerticesPCM(AbstractTransposeFlowGraph transposeFlowGraph, PCMQueryHelper pcmQueryHelper, PCMUncertaintySource uncertaintySource) {
 		return pcmQueryHelper.findTargetNodes(uncertaintySource);
 	}
 
+	/**
+	 * Compares the precedence of two uncertainty sources
+	 * @param o1 First uncertainty source
+	 * @param o2 Second uncertainty source
+	 * @return 	Returns -1, if the first uncertainty should be applied before the second uncertainty
+	 * 			Returns 0, if the application order is irrelevant or not determinable
+	 * 			Returns 1, if the second uncertainty should be applied before the first uncertainty
+	 */
 	public static int compareApplicationPrecedence(UncertaintySource o1, UncertaintySource o2) {
 		if (o1 instanceof DFDBehaviorUncertaintySource || o1 instanceof PCMBehaviorUncertaintySource) {
 			return -1;
