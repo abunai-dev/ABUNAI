@@ -65,6 +65,11 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 				.filter(this::affectedByUncertainty).toList();
 	}
 
+	/**
+	 * Determines whether a vertex is affected by the list of relevant uncertainty sources
+	 * @param vertex Given vertex that should be checked
+	 * @return Returns true, if the vertex is affected by an uncertainty. Otherwise, the method returns false
+	 */
 	private boolean affectedByUncertainty(AbstractVertex<?> vertex) {
 		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(List.of(vertex));
 		if (this.relevantUncertaintySources.stream().anyMatch(it -> dfdQueryHelper.hasTargetNode((DFDUncertaintySource) it))) {
@@ -104,38 +109,63 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		DFDUncertaintyCalculator calculator = new DFDUncertaintyCalculator(dfdUncertaintyResourceProvider);
 		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(dfdUncertaintyResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.DFD);
 
-		List<DFDUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
-		Deque<DFDUncertainTransposeFlowGraph> currentPartialFlowGraphs = new ArrayDeque<>();
+		List<DFDUncertainTransposeFlowGraph> alternateTransposeFlowGraphs = new ArrayList<>();
+		Deque<DFDUncertainTransposeFlowGraph> currentTransposeFlowGraphs = new ArrayDeque<>();
 		List<UncertaintySource> relevantUncertaintySources = new ArrayList<>();
 
-		currentPartialFlowGraphs.push(this);
-		while(!currentPartialFlowGraphs.isEmpty()) {
-			DFDUncertainTransposeFlowGraph currentPartialFlowGraph = currentPartialFlowGraphs.pop();
-            Optional<? extends UncertaintySource> uncertaintySource = this.determineRelevantUncertaintySources(currentPartialFlowGraph.getVertices(), uncertaintySourceManager).stream()
-                    .filter(it -> !relevantUncertaintySources.contains(it))
-					.min(((o1, o2) -> UncertaintyUtils.compareApplicationOrder(currentPartialFlowGraph, dfdUncertaintyResourceProvider, o1, o2)));
+		currentTransposeFlowGraphs.push(this);
+		while(!currentTransposeFlowGraphs.isEmpty()) {
+			DFDUncertainTransposeFlowGraph currentPartialFlowGraph = currentTransposeFlowGraphs.pop();
+            Optional<? extends UncertaintySource> uncertaintySource = getFirstUncertaintySource(currentPartialFlowGraph, uncertaintySourceManager, dfdUncertaintyResourceProvider);
 			if (uncertaintySource.isEmpty()) {
-				alternatePartialFlowGraphs.add(currentPartialFlowGraph);
+				alternateTransposeFlowGraphs.add(currentPartialFlowGraph);
 				continue;
 			}
 			relevantUncertaintySources.add(uncertaintySource.get());
-			currentPartialFlowGraphs.addAll(this.applyUncertaintySource(uncertaintySource.get(), currentPartialFlowGraph, calculator));
+			currentTransposeFlowGraphs.addAll(this.applyUncertaintySource(uncertaintySource.get(), currentPartialFlowGraph, calculator));
 		}
-		alternatePartialFlowGraphs.forEach(it -> it.setRelevantUncertaintySources(relevantUncertaintySources));
-		return alternatePartialFlowGraphs;
+		alternateTransposeFlowGraphs.forEach(it -> it.setRelevantUncertaintySources(relevantUncertaintySources));
+		return alternateTransposeFlowGraphs;
 	}
 
-	private List<DFDUncertainTransposeFlowGraph> applyUncertaintySource(UncertaintySource uncertaintySource, DFDUncertainTransposeFlowGraph currentPartialFlowGraph, DFDUncertaintyCalculator calculator) {
+	/**
+	 * Determines the first encountered uncertainty source that should be applied to the transpose flow graph that has not been applied yet
+	 * @param currentPartialFlowGraph Current partial flow graph of which the next applied uncertainty source should be calculated
+	 * @param relevantUncertaintySources List of uncertainty sources that were already applied
+	 * @param uncertaintySourceManager Uncertainty source manager providing uncertainty sources
+	 * @param dfdUncertaintyResourceProvider Resource provider providing access to the model
+	 * @return Returns an Optional containing the first encountered uncertainty source
+	 */
+	private Optional<? extends UncertaintySource> getFirstUncertaintySource(DFDUncertainTransposeFlowGraph currentPartialFlowGraph, Deque<UncertaintySource> relevantUncertaintySources, UncertaintySourceManager uncertaintySourceManager, DFDUncertaintyResourceProvider dfdUncertaintyResourceProvider) {
+		return this.determineRelevantUncertaintySources(currentPartialFlowGraph.getVertices(), uncertaintySourceManager).stream()
+				.filter(it -> !relevantUncertaintySources.contains(it))
+				.min(((o1, o2) -> UncertaintyUtils.compareApplicationOrder(currentPartialFlowGraph, dfdUncertaintyResourceProvider, o1, o2)));
+	}
+
+	/**
+	 * Applies the given uncertainty source on the transpose flow graph
+	 * @param uncertaintySource Uncertainty source that is applied to the transpose flow graph
+	 * @param transposeFlowGraph Transpose flow graph that the uncertainty source is applied to
+	 * @param calculator Uncertainty calculator used to resolve the applied uncertainty source
+	 * @return Returns a list of all resulting transpose flow graphs that result from the uncertainty source
+	 */
+	private List<DFDUncertainTransposeFlowGraph> applyUncertaintySource(UncertaintySource uncertaintySource, DFDUncertainTransposeFlowGraph transposeFlowGraph, DFDUncertaintyCalculator calculator) {
 		List<? extends UncertaintyScenario> uncertaintyScenarios = UncertaintyUtils.getUncertaintyScenarios(uncertaintySource);
 		List<DFDUncertainTransposeFlowGraph> results = new ArrayList<>();
 		for (UncertaintyScenario uncertaintyScenario : uncertaintyScenarios) {
-			UncertainState uncertainState = currentPartialFlowGraph.uncertainState.orElseGet(UncertainState::new);
+			UncertainState uncertainState = transposeFlowGraph.uncertainState.orElseGet(UncertainState::new);
 			uncertainState.addSelectedScenario(uncertaintyScenario);
-			results.addAll(calculator.applyUncertaintyScenario(uncertaintyScenario, uncertainState, currentPartialFlowGraph));
+			results.addAll(calculator.applyUncertaintyScenario(uncertaintyScenario, uncertainState, transposeFlowGraph));
 		}
 		return results;
 	}
 
+	/**
+	 * Determines the relevant uncertainty sources for a given list of vertices and uncertainty sources
+	 * @param vertices Given list of vertices of which the relevant uncertainty sources are calculated
+	 * @param uncertaintySourceManager Uncertainty source manager used to get all uncertainty sources
+	 * @return Returns a list of all uncertainty sources relevant to the given list of vertices
+	 */
 	private List<? extends DFDUncertaintySource> determineRelevantUncertaintySources(List<? extends AbstractVertex<?>> vertices, UncertaintySourceManager uncertaintySourceManager) {
 		DFDQueryHelper dfdQueryHelper = new DFDQueryHelper(vertices);
 
