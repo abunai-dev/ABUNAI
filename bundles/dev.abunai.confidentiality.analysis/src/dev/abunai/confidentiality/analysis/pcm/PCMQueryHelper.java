@@ -9,9 +9,12 @@ import org.dataflowanalysis.analysis.pcm.core.seff.SEFFPCMVertex;
 import org.dataflowanalysis.analysis.pcm.core.user.CallingUserPCMVertex;
 import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
 import org.palladiosimulator.pcm.allocation.Allocation;
+import org.palladiosimulator.pcm.allocation.AllocationContext;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
+import org.palladiosimulator.pcm.seff.ServiceEffectSpecification;
 import org.palladiosimulator.pcm.seff.StartAction;
 
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
@@ -25,18 +28,34 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMInterfaceUnc
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource;
 
 public class PCMQueryHelper {
-	private List<? extends AbstractVertex<?>> vertices;
-	private PCMResourceProvider resourceProvider;
-	
+	private final List<? extends AbstractVertex<?>> vertices;
+	private final PCMResourceProvider resourceProvider;
+
+	/**
+	 * Creates a new pcm query helper with the given list of vertices and a resource provider
+	 * @param vertices List of vertices that are used in the queries
+	 * @param resourceProvider Resource provider used to access the model
+	 */
 	public PCMQueryHelper(List<? extends AbstractVertex<?>> vertices, PCMResourceProvider resourceProvider) {
 		this.vertices = vertices;
 		this.resourceProvider = resourceProvider;
 	}
 
+	/**
+	 * Determines whether the given uncertainty source has a target node in the list of vertices
+	 * @param uncertaintySource Uncertainty source
+	 * @return 	Returns true, if at least one vertex is affected by the uncertainty source.
+	 * 			Otherwise, the method returns false
+	 */
 	public boolean hasTargetNode(PCMUncertaintySource uncertaintySource) {
-		return this.findTargetNodes(uncertaintySource).size() > 0;
+		return !this.findTargetNodes(uncertaintySource).isEmpty();
 	}
-	
+
+	/**
+	 * Determines the list of targeted vertices by a given uncertainty source
+	 * @param source Given uncertainty source of which the targeted nodes should be found
+	 * @return Returns a list of vertices that are targeted by the given uncertainty source
+	 */
 	public List<? extends AbstractPCMVertex<?>> findTargetNodes(PCMUncertaintySource source) {
 		if (source instanceof PCMExternalUncertaintySourceInResource castedSource) {
 			return this.findTargetNodesOfExternalUncertaintyInResource(castedSource);
@@ -58,6 +77,11 @@ public class PCMQueryHelper {
 		}
 	}
 
+	/**
+	 * Determines the targeted nodes of a component uncertainty
+	 * @param castedSource Given uncertainty
+	 * @return Returns a list of all nodes that are targeted by the uncertainty
+	 */
 	private List<? extends AbstractPCMVertex<?>> findTargetNodesOfComponentUncertainty(
 			PCMComponentUncertaintySource castedSource) {
 		return this.vertices.stream()
@@ -68,6 +92,11 @@ public class PCMQueryHelper {
 				.collect(Collectors.toList());
 	}
 
+	/**
+	 * Determines the targeted nodes of a connector uncertainty in entry level system call
+	 * @param castedSource Given uncertainty
+	 * @return Returns a list of all nodes that are targeted by the uncertainty
+	 */
 	private List<? extends AbstractPCMVertex<?>> findTargetNodesOfConnectorUncertaintySourceInEntryLevelSystemCall(
 			PCMConnectorUncertaintySourceInEntryLevelSystemCall castedSource) {
 		return this.vertices.stream()
@@ -76,6 +105,11 @@ public class PCMQueryHelper {
 				.toList();
 	}
 
+	/**
+	 * Determines the targeted nodes of a connector uncertainty in an external call
+	 * @param castedSource Given uncertainty
+	 * @return Returns a list of all nodes that are targeted by the uncertainty
+	 */
 	private List<? extends AbstractPCMVertex<?>> findTargetNodesOfConnectorUncertaintyInExternalCall(
 			PCMConnectorUncertaintySourceInExternalCall castedSource) {
 		return this.vertices.stream()
@@ -84,6 +118,11 @@ public class PCMQueryHelper {
 				.toList();
 	}
 
+	/**
+	 * Determines the targeted nodes of an interface uncertainty
+	 * @param castedSource Given uncertainty
+	 * @return Returns a list of all nodes that are targeted by the uncertainty
+	 */
 	private List<? extends AbstractPCMVertex<?>> findTargetNodesOfInterfaceUncertainty(
 			PCMInterfaceUncertaintySource castedSource) {
 		return this.vertices.stream()
@@ -94,15 +133,27 @@ public class PCMQueryHelper {
 				.filter(it -> this.implementsInterface(it, castedSource.getTarget()))
 				.toList();
 	}
-	
+
+	/**
+	 * Determines whether a vertex calls against the given signature
+	 * @param vertex Vertex that is checked
+	 * @param signature Signature that is called against
+	 * @return 	Returns true, if the vertex calls against that signature.
+	 * 			Otherwise, the method returns false
+	 */
 	private boolean implementsInterface(SEFFPCMVertex<?> vertex, OperationSignature signature) {
-		if (!(vertex.getReferencedElement().eContainer() instanceof ResourceDemandingSEFF seff)) {
+		if (!(vertex.getReferencedElement().eContainer() instanceof ServiceEffectSpecification seff)) {
 			return false;
 		}
-		// TODO: Correct?
-		return signature.getInterface__OperationSignature().getSignatures__OperationInterface().contains(seff.getDescribedService__SEFF());
+		return signature.equals(seff.getDescribedService__SEFF());
 	}
 
+
+	/**
+	 * Determines the targeted nodes of a behavior uncertainty
+	 * @param castedSource Given uncertainty
+	 * @return Returns a list of all nodes that are targeted by the uncertainty
+	 */
 	private List<? extends AbstractPCMVertex<?>> findTargetNodesOfBehaviourUncertainty(
 			PCMBehaviorUncertaintySource castedSource) {
 		return this.vertices.stream()
@@ -111,6 +162,11 @@ public class PCMQueryHelper {
 				.toList();
 	}
 
+	/**
+	 * Determines the targeted nodes of an external uncertainty in the usage scenario
+	 * @param castedSource Given uncertainty
+	 * @return Returns a list of all nodes that are targeted by the uncertainty
+	 */
 	private List<? extends AbstractPCMVertex<?>> findTargetNodesOfExternalUncertaintyInUsage(
 			PCMExternalUncertaintySourceInUsage castedSource) {
 		return this.vertices.stream()
@@ -120,6 +176,11 @@ public class PCMQueryHelper {
 				.toList();
 	}
 
+	/**
+	 * Determines the targeted nodes of an external uncertainty in the resource environment
+	 * @param castedSource Given uncertainty
+	 * @return Returns a list of all nodes that are targeted by the uncertainty
+	 */
 	private List<? extends AbstractPCMVertex<?>> findTargetNodesOfExternalUncertaintyInResource(
 			PCMExternalUncertaintySourceInResource castedSource) {
 		return this.vertices.stream()
@@ -128,12 +189,17 @@ public class PCMQueryHelper {
 				.filter(it -> it.getContext().stream().anyMatch(this.getDeployedContexts(castedSource.getTarget().getResourcecontainer())::contains))
 				.toList();
 	}
-	
-	private List<?> getDeployedContexts(ResourceContainer resourceContainer) {
+
+	/**
+	 * Determines all assembly contexts of the given resource container
+	 * @param resourceContainer Given resource container of which the assembly context should be calculated
+	 * @return Returns a list of all deployed assembly contexts of a resource container
+	 */
+	private List<AssemblyContext> getDeployedContexts(ResourceContainer resourceContainer) {
 		Allocation allocation = this.resourceProvider.getAllocation();
 		return allocation.getAllocationContexts_Allocation().stream()
 				.filter(it -> it.getResourceContainer_AllocationContext().equals(resourceContainer))
-				.map(it -> it.getAssemblyContext_AllocationContext())
+				.map(AllocationContext::getAssemblyContext_AllocationContext)
 				.toList();
 	}
 }
