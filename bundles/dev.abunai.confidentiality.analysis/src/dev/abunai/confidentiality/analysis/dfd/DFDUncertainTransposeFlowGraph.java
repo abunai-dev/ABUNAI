@@ -116,7 +116,7 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		currentTransposeFlowGraphs.push(this);
 		while(!currentTransposeFlowGraphs.isEmpty()) {
 			DFDUncertainTransposeFlowGraph currentPartialFlowGraph = currentTransposeFlowGraphs.pop();
-            Optional<? extends UncertaintySource> uncertaintySource = getFirstUncertaintySource(currentPartialFlowGraph, uncertaintySourceManager, dfdUncertaintyResourceProvider);
+            Optional<? extends UncertaintySource> uncertaintySource = getFirstUncertaintySource(currentPartialFlowGraph, relevantUncertaintySources, uncertaintySourceManager, dfdUncertaintyResourceProvider);
 			if (uncertaintySource.isEmpty()) {
 				alternateTransposeFlowGraphs.add(currentPartialFlowGraph);
 				continue;
@@ -136,7 +136,7 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 	 * @param dfdUncertaintyResourceProvider Resource provider providing access to the model
 	 * @return Returns an Optional containing the first encountered uncertainty source
 	 */
-	private Optional<? extends UncertaintySource> getFirstUncertaintySource(DFDUncertainTransposeFlowGraph currentPartialFlowGraph, Deque<UncertaintySource> relevantUncertaintySources, UncertaintySourceManager uncertaintySourceManager, DFDUncertaintyResourceProvider dfdUncertaintyResourceProvider) {
+	private Optional<? extends UncertaintySource> getFirstUncertaintySource(DFDUncertainTransposeFlowGraph currentPartialFlowGraph, List<UncertaintySource> relevantUncertaintySources, UncertaintySourceManager uncertaintySourceManager, DFDUncertaintyResourceProvider dfdUncertaintyResourceProvider) {
 		return this.determineRelevantUncertaintySources(currentPartialFlowGraph.getVertices(), uncertaintySourceManager).stream()
 				.filter(it -> !relevantUncertaintySources.contains(it))
 				.min(((o1, o2) -> UncertaintyUtils.compareApplicationOrder(currentPartialFlowGraph, dfdUncertaintyResourceProvider, o1, o2)));
