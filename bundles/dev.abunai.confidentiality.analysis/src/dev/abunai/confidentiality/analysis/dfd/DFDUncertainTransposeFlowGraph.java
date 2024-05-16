@@ -29,7 +29,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintyS
 public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implements UncertainTransposeFlowGraph {
 	private final Logger logger = Logger.getLogger(DFDUncertainTransposeFlowGraph.class);
 	private final Optional<UncertainState> uncertainState;
-	private final List<? extends UncertaintySource> relevantUncertaintySources;
+	private List<? extends UncertaintySource> relevantUncertaintySources;
 
 	/**
 	 * Create a new dfd uncertain transpose flow graph with the given sink and relevant uncertainty sources.
@@ -107,12 +107,12 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 
 		List<DFDUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
 		Deque<DFDUncertainTransposeFlowGraph> currentPartialFlowGraphs = new ArrayDeque<>();
-		List<DFDUncertaintySource> relevantUncertaintySources = new ArrayList<>();
+		List<UncertaintySource> relevantUncertaintySources = new ArrayList<>();
 
 		currentPartialFlowGraphs.push(this);
 		while(!currentPartialFlowGraphs.isEmpty()) {
 			DFDUncertainTransposeFlowGraph currentPartialFlowGraph = currentPartialFlowGraphs.pop();
-            Optional<? extends DFDUncertaintySource> uncertaintySource = this.determineRelevantUncertaintySources(currentPartialFlowGraph.getVertices(), uncertaintySourceManager).stream()
+            Optional<? extends UncertaintySource> uncertaintySource = this.determineRelevantUncertaintySources(currentPartialFlowGraph.getVertices(), uncertaintySourceManager).stream()
                     .filter(it -> !relevantUncertaintySources.contains(it))
 					.min(((o1, o2) -> UncertaintyUtils.compareApplicationOrder(currentPartialFlowGraph, dfdUncertaintyResourceProvider, o1, o2)));
 			if (uncertaintySource.isEmpty()) {
@@ -122,17 +122,12 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 			relevantUncertaintySources.add(uncertaintySource.get());
 			List<? extends UncertaintyScenario> uncertaintyScenarios = UncertaintyUtils.getUncertaintyScenarios(uncertaintySource.get());
 			for (UncertaintyScenario uncertaintyScenario : uncertaintyScenarios) {
-				UncertainState uncertainState;
-				if (currentPartialFlowGraph.uncertainState.isEmpty()) {
-					uncertainState = new UncertainState();
-				} else {
-					uncertainState = new UncertainState(currentPartialFlowGraph.getUncertainState().getSelectedUncertaintyScenarios());
-
-				}
+				UncertainState uncertainState = currentPartialFlowGraph.uncertainState.orElseGet(UncertainState::new);
 				uncertainState.addSelectedScenario(uncertaintyScenario);
 				currentPartialFlowGraphs.addAll(calculator.applyUncertaintyScenario(uncertaintyScenario, uncertainState, currentPartialFlowGraph));
 			}
 		}
+		alternatePartialFlowGraphs.forEach(it -> it.setRelevantUncertaintySources(relevantUncertaintySources));
 		return alternatePartialFlowGraphs;
 	}
 
@@ -168,6 +163,10 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 	@Override
 	public List<? extends UncertaintySource> getRelevantUncertaintySources() {
 		return this.relevantUncertaintySources;
+	}
+
+	public void setRelevantUncertaintySources(List<? extends UncertaintySource> relevantUncertaintySources) {
+		this.relevantUncertaintySources = relevantUncertaintySources;
 	}
 
 	@Override

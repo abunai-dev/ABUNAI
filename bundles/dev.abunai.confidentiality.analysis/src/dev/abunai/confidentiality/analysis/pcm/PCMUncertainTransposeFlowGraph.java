@@ -90,13 +90,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 			relevantUncertaintySources.add(uncertaintySource.get());
 			List<? extends UncertaintyScenario> uncertaintyScenarios = UncertaintyUtils.getUncertaintyScenarios(uncertaintySource.get());
 			for (UncertaintyScenario uncertaintyScenario : uncertaintyScenarios) {
-				UncertainState uncertainState;
-				if (currentPartialFlowGraph.uncertainState.isEmpty()) {
-					uncertainState = new UncertainState();
-				} else {
-					uncertainState = new UncertainState(currentPartialFlowGraph.getUncertainState().getSelectedUncertaintyScenarios());
-
-				}
+				UncertainState uncertainState = currentPartialFlowGraph.uncertainState.orElseGet(UncertainState::new);
 				uncertainState.addSelectedScenario(uncertaintyScenario);
 				currentPartialFlowGraphs.addAll(calculator.applyUncertaintyScenario(uncertaintyScenario, uncertainState, currentPartialFlowGraph));
 			}
