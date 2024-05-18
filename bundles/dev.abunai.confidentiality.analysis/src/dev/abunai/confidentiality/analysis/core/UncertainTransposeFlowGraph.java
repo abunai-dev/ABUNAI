@@ -40,4 +40,8 @@ public interface UncertainTransposeFlowGraph {
 	 * @return Returns a list of all relevant uncertainty sources to the transpose flow graph
 	 */
 	List<? extends UncertaintySource> getRelevantUncertaintySources();
+
+	default boolean containsDefaultScenario() {
+		return this.getUncertainState().getSelectedUncertaintyScenarios().stream().allMatch(it -> UncertaintyUtils.isDefaultScenario((UncertaintySource) it.eContainer(), it));
+	}
 }

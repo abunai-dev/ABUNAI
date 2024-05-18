@@ -59,6 +59,14 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 
 	@Override
 	public List<? extends DFDVertex> getImpactSet(ResourceProvider resourceProvider) {
+		if (this.uncertainState.isEmpty()) {
+			logger.error("Impact set cannot be calculated without calculating alternate transpose flow graphs first");
+			throw new IllegalStateException();
+		}
+		if (!this.containsDefaultScenario()) {
+			logger.error("Impact set can only be caluclated on uncertain transpose flow graphs that model the default scenario");
+			throw new IllegalStateException();
+		}
 		return this.getVertices().stream()
 				.filter(DFDVertex.class::isInstance)
 				.map(DFDVertex.class::cast)

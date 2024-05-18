@@ -44,6 +44,14 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 
 	@Override
 	public List<? extends AbstractPCMVertex<?>> getImpactSet(ResourceProvider resourceProvider) {
+		if (this.uncertainState.isEmpty()) {
+			logger.error("Impact set cannot be calculated without calculating alternate transpose flow graphs first");
+			throw new IllegalStateException();
+		}
+		if (!this.containsDefaultScenario()) {
+			logger.error("Impact set can only be caluclated on uncertain transpose flow graphs that model the default scenario");
+			throw new IllegalStateException();
+		}
 		return this.getVertices().stream()
 				.filter(it -> it instanceof AbstractPCMVertex<?>)
 				.map(it -> (AbstractPCMVertex<?>) it)
