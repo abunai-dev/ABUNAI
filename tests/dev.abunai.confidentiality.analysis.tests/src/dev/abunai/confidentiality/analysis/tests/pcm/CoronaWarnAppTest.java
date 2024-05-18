@@ -1,18 +1,20 @@
 package dev.abunai.confidentiality.analysis.tests.pcm;
 
-import org.junit.jupiter.api.Disabled;
+import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
+import dev.abunai.confidentiality.analysis.pcm.PCMUncertainFlowGraphCollection;
 import org.junit.jupiter.api.Test;
 
-import dev.abunai.confidentiality.analysis.core.UncertainState;
-import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
-@Disabled
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class CoronaWarnAppTest extends PCMTestBase {
 
 	@Override
 	protected String getFolderName() {
-		return "CoronaWarnApp";
+		return "CaseStudy-CoronaWarnApp";
 	}
 
 	@Override
@@ -22,19 +24,19 @@ public class CoronaWarnAppTest extends PCMTestBase {
 
 	@Override
 	protected String getBaseFolder() {
-		return "casestudies/CaseStudy-CoronaWarnApp";
+		return "casestudies";
 	}
 
-	@Disabled("Test case needs to be repaired")
 	@Test
 	void testCWA() {
-		var sourceCollection = analysis.getUncertaintySources();
-		var scenarios = UncertaintyUtils.getUncertaintyScenarios(sourceCollection.get(0));
-		System.out.println(scenarios.size());
+		PCMUncertainFlowGraphCollection flowGraphs = (PCMUncertainFlowGraphCollection) analysis.findFlowGraph();
+		PCMUncertainFlowGraphCollection uncertainFlowGraphs = flowGraphs.createUncertainFlows();
+		uncertainFlowGraphs.evaluate();
 
-		// All states
-		System.out.println(
-				"-> All states: %d".formatted(UncertainState.calculateNumberOfAllUncertainStates(sourceCollection)));
+		List<UncertainConstraintViolation> result = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+			return false;
+		});
+		assertTrue(flowGraphs.getTransposeFlowGraphs().size() < uncertainFlowGraphs.getTransposeFlowGraphs().size());
 	}
 
 }
