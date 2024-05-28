@@ -24,7 +24,6 @@ import org.dataflowanalysis.dfd.datadictionary.Pin;
 import org.dataflowanalysis.dfd.datadictionary.datadictionaryFactory;
 import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
 import org.dataflowanalysis.dfd.dataflowdiagram.Node;
-import org.dataflowanalysis.dfd.dataflowdiagram.dataflowdiagramFactory;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import java.util.HashMap;

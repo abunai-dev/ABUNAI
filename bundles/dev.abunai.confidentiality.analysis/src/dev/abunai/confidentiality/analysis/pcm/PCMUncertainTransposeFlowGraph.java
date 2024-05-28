@@ -5,12 +5,11 @@ import java.util.*;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
-import dev.abunai.confidentiality.analysis.dfd.DFDQueryHelper;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
+
 import org.apache.log4j.Logger;
+
 import org.dataflowanalysis.analysis.core.AbstractVertex;
-import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.dataflowanalysis.analysis.pcm.core.AbstractPCMVertex;
 import org.dataflowanalysis.analysis.pcm.core.PCMTransposeFlowGraph;
 import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
