@@ -47,16 +47,31 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ *This class is used to calculate the impact of uncertainties in a PCM model
+ */
 public class PCMUncertaintyCalculator {
     private final Logger logger = Logger.getLogger(PCMUncertaintyCalculator.class);
     private final List<? extends UncertaintySource> relevantUncertaintySources;
     private final PCMUncertaintyResourceProvider resourceProvider;
 
+    /**
+     * Create a new uncertainty calculator with the given relevant uncertainty sources and resource provider
+     * @param relevantUncertaintySources Relevant uncertainty sources
+     * @param resourceProvider Resource provider
+     */
     public PCMUncertaintyCalculator(List<? extends  UncertaintySource> relevantUncertaintySources, PCMUncertaintyResourceProvider resourceProvider) {
         this.relevantUncertaintySources = relevantUncertaintySources;
         this.resourceProvider = resourceProvider;
     }
 
+    /**
+     * Apply a given uncertainty scenario to the given transpose flow graph and add the given uncertain state
+     * @param uncertaintyScenario Given uncertainty scenario which is applied
+     * @param uncertainState Uncertain state that is applied to the resulting transpose flow graphs
+     * @param currentTransposeFlowGraph Transpose flow graph to which the uncertainties are applied
+     * @return Returns a list of transpose flow graph that have the uncertainty scenario and uncertain state applied
+     */
     public List<PCMUncertainTransposeFlowGraph> applyUncertaintyScenario(UncertaintyScenario uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         if (uncertaintyScenario instanceof PCMBehaviorUncertaintyScenario castedScenario) {
             return List.of(applyBehaviourUncertaintyScenario(castedScenario, uncertainState, currentTransposeFlowGraph));
@@ -78,6 +93,13 @@ public class PCMUncertaintyCalculator {
         }
     }
 
+    /**
+     * Applies a behavior uncertainty to the given transpose flow graph and applies the uncertain state
+     * @param uncertaintyScenario Behavior uncertainty that is applied
+     * @param uncertainState Uncertain state of the resulting transpose flow graphs
+     * @param currentTransposeFlowGraph Transpose flow graph to which the behavior is applied
+     * @return Returns a transpose flow graph with the behavior uncertainty applied
+     */
     private PCMUncertainTransposeFlowGraph applyBehaviourUncertaintyScenario(
             PCMBehaviorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMBehaviorUncertaintySource uncertaintySource = (PCMBehaviorUncertaintySource) uncertaintyScenario.eContainer();
@@ -98,6 +120,13 @@ public class PCMUncertaintyCalculator {
     }
 
 
+    /**
+     * Applies a component uncertainty to the given transpose flow graph and applies the uncertain state
+     * @param uncertaintyScenario Component uncertainty that is applied
+     * @param uncertainState Uncertain state of the resulting transpose flow graphs
+     * @param currentTransposeFlowGraph Transpose flow graph to which the behavior is applied
+     * @return Returns transpose flow graphs with the component uncertainty applied
+     */
     public List<PCMUncertainTransposeFlowGraph> applyComponentUncertaintyScenario(PCMComponentUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMComponentUncertaintySource uncertaintySource = (PCMComponentUncertaintySource) uncertaintyScenario.eContainer();
         AssemblyContext target = uncertaintySource.getTarget();
@@ -202,6 +231,13 @@ public class PCMUncertaintyCalculator {
         return result;
     }
 
+    /**
+     * Applies a connector uncertainty in an entry level system call to the given transpose flow graph and applies the uncertain state
+     * @param uncertaintyScenario Connector uncertainty that is applied
+     * @param uncertainState Uncertain state of the resulting transpose flow graphs
+     * @param currentTransposeFlowGraph Transpose flow graph to which the behavior is applied
+     * @return Returns a transpose flow graph with the connector uncertainty applied
+     */
     public List<PCMUncertainTransposeFlowGraph> applyConnectorUncertaintyScenarioInEntryLevelSystemCall(PCMConnectorUncertaintyScenarioInEntryLevelSystemCall uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMConnectorUncertaintySourceInEntryLevelSystemCall uncertaintySource = (PCMConnectorUncertaintySourceInEntryLevelSystemCall) uncertaintyScenario.eContainer();
         EntryLevelSystemCall target = uncertaintySource.getTarget();
@@ -264,6 +300,14 @@ public class PCMUncertaintyCalculator {
         });
         return results;
     }
+    
+    /**
+     * Applies a connector uncertainty in an external call to the given transpose flow graph and applies the uncertain state
+     * @param uncertaintyScenario Connector uncertainty that is applied
+     * @param uncertainState Uncertain state of the resulting transpose flow graphs
+     * @param currentTransposeFlowGraph Transpose flow graph to which the behavior is applied
+     * @return Returns a transpose flow graph with the connector uncertainty applied
+     */
     public List<PCMUncertainTransposeFlowGraph> applyConnectorUncertaintyScenarioInExternalCall(PCMConnectorUncertaintyScenarioInExternalCall uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMConnectorUncertaintySourceInExternalCall uncertaintySource = (PCMConnectorUncertaintySourceInExternalCall) uncertaintyScenario.eContainer();
         ExternalCallAction target = uncertaintySource.getTarget();
@@ -326,6 +370,13 @@ public class PCMUncertaintyCalculator {
         return results;
     }
 
+    /**
+     * Applies a external uncertainty in a resource to the given transpose flow graph and applies the uncertain state
+     * @param uncertaintyScenario External uncertainty that is applied
+     * @param uncertainState Uncertain state of the resulting transpose flow graphs
+     * @param currentTransposeFlowGraph Transpose flow graph to which the behavior is applied
+     * @return Returns a transpose flow graph with the external uncertainty applied
+     */
     public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInResource(PCMExternalUncertaintyScenarioInResource uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMExternalUncertaintySourceInResource uncertaintySource = (PCMExternalUncertaintySourceInResource) uncertaintyScenario.eContainer();
         ResourceAssignee target = uncertaintySource.getTarget();
@@ -334,6 +385,13 @@ public class PCMUncertaintyCalculator {
         return new PCMUncertainTransposeFlowGraph(newSink, this.relevantUncertaintySources, uncertainState);
     }
 
+    /**
+     * Applies a external uncertainty in a usage model to the given transpose flow graph and applies the uncertain state
+     * @param uncertaintyScenario External uncertainty that is applied
+     * @param uncertainState Uncertain state of the resulting transpose flow graphs
+     * @param currentTransposeFlowGraph Transpose flow graph to which the behavior is applied
+     * @return Returns a transpose flow graph with the external uncertainty applied
+     */
     public PCMUncertainTransposeFlowGraph applyExternalUncertaintyScenarioInUsage(PCMExternalUncertaintyScenarioInUsage uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMExternalUncertaintySourceInUsage uncertaintySource = (PCMExternalUncertaintySourceInUsage) uncertaintyScenario.eContainer();
         UsageAssignee target = uncertaintySource.getTarget();
@@ -342,6 +400,13 @@ public class PCMUncertaintyCalculator {
         return new PCMUncertainTransposeFlowGraph(newSink, this.relevantUncertaintySources, uncertainState);
     }
 
+    /**
+     * Applies a interface uncertainty to the given transpose flow graph and applies the uncertain state
+     * @param uncertaintyScenario External uncertainty that is applied
+     * @param uncertainState Uncertain state of the resulting transpose flow graphs
+     * @param currentTransposeFlowGraph Transpose flow graph to which the behavior is applied
+     * @return Returns a transpose flow graph with the external uncertainty applied
+     */
     public List<PCMUncertainTransposeFlowGraph> applyInterfaceUncertaintyScenario(PCMInterfaceUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         PCMInterfaceUncertaintySource uncertaintySource = (PCMInterfaceUncertaintySource) uncertaintyScenario.eContainer();
         OperationSignature target = uncertaintySource.getTarget();
@@ -420,10 +485,21 @@ public class PCMUncertaintyCalculator {
         return results;
     }
 
+    /**
+     * Copies the list of variable usages into a list of new variable usages
+     * @param variableUsages Given list of variable usages
+     * @return Returns a list copied variable usages
+     */
     private List<VariableUsage> copyVariableUsages(List<VariableUsage> variableUsages) {
         return variableUsages.stream().map(EcoreUtil::copy).toList();
     }
 
+    /**
+     * Returns a required role for the given element and signature
+     * @param oldElement Element which determines the context of the interface
+     * @param signature Signature of the interface
+     * @return Returns a required role, if one can be found.
+     */
     private Optional<OperationRequiredRole> getRequiredRoleForInterface(CallingSEFFPCMVertex oldElement, OperationSignature signature) {
         OperationInterface operationInterface = signature.getInterface__OperationSignature();
         BasicComponent component = PCMQueryUtils.findParentOfType(oldElement.getReferencedElement(), BasicComponent.class, false).orElseThrow();
@@ -434,6 +510,14 @@ public class PCMUncertaintyCalculator {
                 .findFirst();
     }
 
+    /**
+     * Puts a mapping in the given map, which replaces the given vertex with a uncertain proxy replacing the target assignee with the replacement.
+     * @param mapping Map in which the replacing vertex will be saved
+     * @param vertex Vertex that should be replaced
+     * @param target Target assignee which is replaced
+     * @param replacement Replacement assignee which replaces the target assignee
+     * @return Returns the vertex that replaces the given vertex
+     */
     private AbstractPCMVertex<?> copyWithProxies(Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping, AbstractPCMVertex<?> vertex, AbstractAssignee target, AbstractAssignee replacement) {
         if (mapping.containsKey(vertex)) {
             return mapping.get(vertex);
