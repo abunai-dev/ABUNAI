@@ -103,7 +103,14 @@ public class UncertainState {
 				Streams.concat(selectedScenarios.stream(), additionalDefaultScenarios.stream()).toList());
 	}
 
-	@Override
+	/**
+	 * Determines whether this object and the given object are equal
+	 * <p/>
+	 * Warning: Performance of this method is poor and depends on the number of selected scenarios
+	 * @param obj Other object
+	 * @return Returns true, if the objects are equal. Otherwise, the method returns false
+	 */
+    @Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
