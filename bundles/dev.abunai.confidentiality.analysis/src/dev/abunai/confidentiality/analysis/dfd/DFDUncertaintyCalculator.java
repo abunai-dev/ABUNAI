@@ -22,6 +22,7 @@ import org.dataflowanalysis.dfd.datadictionary.Behaviour;
 import org.dataflowanalysis.dfd.datadictionary.Label;
 import org.dataflowanalysis.dfd.datadictionary.Pin;
 import org.dataflowanalysis.dfd.datadictionary.datadictionaryFactory;
+import org.dataflowanalysis.dfd.dataflowdiagram.DataFlowDiagram;
 import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
 import org.dataflowanalysis.dfd.dataflowdiagram.Node;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -30,6 +31,7 @@ import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
@@ -91,6 +93,7 @@ public class DFDUncertaintyCalculator {
         List<Label> newPropertiesToAdd = uncertaintyScenario.getTargetProperties();
 
         Node replacingNode = EcoreUtil.copy(target);
+        ((DataFlowDiagram)target.eContainer()).getNodes().add(replacingNode);
         replacingNode.getProperties().clear();
         replacingNode.getProperties()
                 .addAll(Streams.concat(filteredOldProperties.stream(), newPropertiesToAdd.stream()).toList());
@@ -137,7 +140,7 @@ public class DFDUncertaintyCalculator {
         Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
         targetedNodes.forEach(vertex -> {
             Node replacingNode = EcoreUtil.copy(vertex.getReferencedElement());
-
+            ((DataFlowDiagram)vertex.getReferencedElement().eContainer()).getNodes().add(replacingNode);
             replacingNode.setBehaviour(replacingBehavior);
             mapping.put(vertex, this.copyVertex(vertex, replacingNode));
         });
@@ -176,16 +179,19 @@ public class DFDUncertaintyCalculator {
      * @return Returns a list of all transpose flow graphs resulting from the replaced flow
      */
     private List<DFDUncertainTransposeFlowGraph> replaceFlow(Flow targetFlow, Node replacingNode, Pin replacingPin, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph, UncertainState uncertainState, Function<Node, Node> mapping) {
-        DFDVertex commonVertex = currentTransposeFlowGraph.getVertices().stream()
+        Optional<DFDVertex> commonVertex = currentTransposeFlowGraph.getVertices().stream()
                 .filter(DFDVertex.class::isInstance)
                 .map(DFDVertex.class::cast)
                 .filter(it -> it.getReferencedElement().equals(targetFlow.getSourceNode()))
-                .findAny().orElseThrow();
+                .findAny();
+        if (commonVertex.isEmpty()) {
+        	return List.of(currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState));
+        }
 
         Map<Pin, DFDVertex> copiedPinDFDVertexMap = new HashMap<>();
-        commonVertex.getPinDFDVertexMap().keySet()
-                .forEach(key -> copiedPinDFDVertexMap.put(key, commonVertex.getPinDFDVertexMap().get(key).copy(new IdentityHashMap<>())));
-        DFDVertex copiedVertex = new DFDVertex(mapping.apply(commonVertex.getReferencedElement()), copiedPinDFDVertexMap, new HashMap<>(commonVertex.getPinFlowMap()));
+        commonVertex.get().getPinDFDVertexMap().keySet()
+                .forEach(key -> copiedPinDFDVertexMap.put(key, commonVertex.get().getPinDFDVertexMap().get(key).copy(new IdentityHashMap<>())));
+        DFDVertex copiedVertex = new DFDVertex(mapping.apply(commonVertex.get().getReferencedElement()), copiedPinDFDVertexMap, new HashMap<>(commonVertex.get().getPinFlowMap()));
 
         DFDTransposeFlowGraphFinder finder = new DFDTransposeFlowGraphFinder(resourceProvider);
         List<DFDUncertainTransposeFlowGraph> followingFlowGraphs = finder.findTransposeFlowGraphs(List.of(replacingNode)).stream()
@@ -195,6 +201,7 @@ public class DFDUncertaintyCalculator {
         Flow replacingFlow = EcoreUtil.copy(targetFlow);
         replacingFlow.setDestinationNode(replacingNode);
         replacingFlow.setDestinationPin(replacingPin);
+        ((DataFlowDiagram)targetFlow.eContainer()).getFlows().add(replacingFlow);
 
         followingFlowGraphs.stream()
                 .map(it -> it.getVertices().stream()

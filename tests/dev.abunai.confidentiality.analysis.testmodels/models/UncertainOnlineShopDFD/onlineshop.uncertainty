@@ -7,4 +7,11 @@
       <targetProperties href="onlineshop.datadictionary#_YruBAL6EEe6fAKdvyu1GEg"/>
     </scenarios>
   </sources>
+  <sources xsi:type="dfd:DFDInterfaceUncertaintySource" id="_wo60uR0xEe-ByYqkgwgvgg">
+    <targetFlow href="onlineshop.dataflowdiagram#_7b7igL6CEe6fAKdvyu1GEg"/>
+    <scenarios id="_ykE50B0xEe-ByYqkgwgvgg">
+      <targetInPin href="onlineshop.datadictionary#_cLmb8B0xEe-ByYqkgwgvgg"/>
+      <targetNode xsi:type="dataflowdiagram:Store" href="onlineshop.dataflowdiagram#_ikgewh0xEe-ByYqkgwgvgg"/>
+    </scenarios>
+  </sources>
 </uncertainty:UncertaintySourceCollection>

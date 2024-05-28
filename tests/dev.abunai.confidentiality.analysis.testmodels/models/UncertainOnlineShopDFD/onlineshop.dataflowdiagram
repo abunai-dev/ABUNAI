@@ -28,7 +28,7 @@
     <destinationPin href="onlineshop.datadictionary#_Jx9aoL6IEe6fAKdvyu1GEg"/>
     <sourcePin href="onlineshop.datadictionary#_283j8b6HEe6fAKdvyu1GEg"/>
   </flows>
-  <flows id="_7b7igL6CEe6fAKdvyu1GEg" entityName="data" sourceNode="_basao76CEe6fAKdvyu1GEg" destinationNode="_U27Lor6CEe6fAKdvyu1GEg">
+  <flows id="_7b7igL6CEe6fAKdvyu1GEg" entityName="dataToDB" sourceNode="_basao76CEe6fAKdvyu1GEg" destinationNode="_U27Lor6CEe6fAKdvyu1GEg">
     <destinationPin href="onlineshop.datadictionary#_zWPQ8L6GEe6fAKdvyu1GEg"/>
     <sourcePin href="onlineshop.datadictionary#_Mc7MEb6IEe6fAKdvyu1GEg"/>
   </flows>
@@ -54,5 +54,9 @@
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="_basao76CEe6fAKdvyu1GEg" entityName="encrypt">
     <behaviour href="onlineshop.datadictionary#_Iow98b6IEe6fAKdvyu1GEg"/>
+  </nodes>
+  <nodes xsi:type="dataflowdiagram:Store" id="_ikgewh0xEe-ByYqkgwgvgg" entityName="EUDatabase">
+    <behaviour href="onlineshop.datadictionary#_amQ10R0xEe-ByYqkgwgvgg"/>
+    <properties href="onlineshop.datadictionary#_YruBAL6EEe6fAKdvyu1GEg"/>
   </nodes>
 </dataflowdiagram:DataFlowDiagram>

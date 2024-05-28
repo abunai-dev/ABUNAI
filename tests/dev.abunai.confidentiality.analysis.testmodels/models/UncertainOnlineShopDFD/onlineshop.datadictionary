@@ -57,4 +57,7 @@
       <term xsi:type="datadictionary:TRUE" id="_SMaecL6IEe6fAKdvyu1GEg"/>
     </assignment>
   </behaviour>
+  <behaviour id="_amQ10R0xEe-ByYqkgwgvgg" entityName="DatabaseEU">
+    <inPin id="_cLmb8B0xEe-ByYqkgwgvgg" entityName="EUDB_in"/>
+  </behaviour>
 </datadictionary:DataDictionary>
