@@ -121,7 +121,6 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		Deque<DFDUncertainTransposeFlowGraph> currentTransposeFlowGraphs = new ArrayDeque<>();
 		List<UncertaintySource> relevantUncertaintySources = new ArrayList<>();
 
-		// FIXME: Relevant uncertainty sources should only contain uncertainty sources on path or branches of it
 		currentTransposeFlowGraphs.push(this);
 		while(!currentTransposeFlowGraphs.isEmpty()) {
 			DFDUncertainTransposeFlowGraph currentPartialFlowGraph = currentTransposeFlowGraphs.pop();
