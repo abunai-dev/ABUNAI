@@ -25,6 +25,6 @@ public class UncertainCallingSEFFPCMVertex extends CallingSEFFPCMVertex {
     @Override
     protected List<CharacteristicValue> getVertexCharacteristics() {
         PCMVertexCharacteristicsCalculator vertexCharacteristicsCalculator = new PCMVertexCharacteristicsCalculator(this.resourceProvider);
-        return vertexCharacteristicsCalculator.getNodeCharacteristics(this.referencedElement, this.context, assignmentMapping);
+        return vertexCharacteristicsCalculator.getVertexCharacteristics(this.referencedElement, this.context, assignmentMapping);
     }
 }

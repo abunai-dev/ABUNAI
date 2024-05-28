@@ -27,6 +27,6 @@ public class UncertainUserPCMVertex<T extends AbstractUserAction> extends UserPC
     @Override
     protected List<CharacteristicValue> getVertexCharacteristics() {
        PCMVertexCharacteristicsCalculator vertexCharacteristicsCalculator = new PCMVertexCharacteristicsCalculator(this.resourceProvider);
-       return vertexCharacteristicsCalculator.getNodeCharacteristics(this.referencedElement, this.context, assignmentMapping);
+       return vertexCharacteristicsCalculator.getVertexCharacteristics(this.referencedElement, this.context, assignmentMapping);
     }
 }
