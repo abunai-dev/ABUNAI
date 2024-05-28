@@ -2,7 +2,6 @@ package dev.abunai.confidentiality.analysis.tests.pcm;
 
 import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
 import dev.abunai.confidentiality.analysis.pcm.PCMUncertainFlowGraphCollection;
-import dev.abunai.confidentiality.analysis.pcm.proxy.UncertainSEFFPCMVertex;
 import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 import org.dataflowanalysis.analysis.core.CharacteristicValue;
 import org.dataflowanalysis.analysis.pcm.core.seff.SEFFPCMVertex;
