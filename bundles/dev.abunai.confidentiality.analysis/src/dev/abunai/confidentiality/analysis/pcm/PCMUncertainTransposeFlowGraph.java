@@ -80,29 +80,29 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		PCMUncertaintyCalculator calculator = new PCMUncertaintyCalculator(pcmUncertaintyResourceProvider.getUncertaintySourceCollection().getSources(), pcmUncertaintyResourceProvider);
 		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(pcmUncertaintyResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.PCM);
 
-		List<PCMUncertainTransposeFlowGraph> alternatePartialFlowGraphs = new ArrayList<>();
-		Deque<PCMUncertainTransposeFlowGraph> currentPartialFlowGraphs = new ArrayDeque<>();
+		List<PCMUncertainTransposeFlowGraph> alternateTransposeFlowGraphs = new ArrayList<>();
+		Deque<PCMUncertainTransposeFlowGraph> currentTransposeFlowGraphs = new ArrayDeque<>();
 		List<PCMUncertaintySource> relevantUncertaintySources = new ArrayList<>();
 
-		currentPartialFlowGraphs.push(this);
-		while(!currentPartialFlowGraphs.isEmpty()) {
-			PCMUncertainTransposeFlowGraph currentPartialFlowGraph = currentPartialFlowGraphs.pop();
-			Optional<? extends PCMUncertaintySource> uncertaintySource = this.determineRelevantUncertaintySources(currentPartialFlowGraph.getVertices(), pcmUncertaintyResourceProvider, uncertaintySourceManager).stream()
-					.filter(it -> !relevantUncertaintySources.contains(it))
-					.min(((o1, o2) -> UncertaintyUtils.compareApplicationOrder(currentPartialFlowGraph, pcmUncertaintyResourceProvider, o1, o2)));
+		currentTransposeFlowGraphs.push(this);
+		while(!currentTransposeFlowGraphs.isEmpty()) {
+			PCMUncertainTransposeFlowGraph currentTransposeFlowGraph = currentTransposeFlowGraphs.pop();
+			Optional<? extends PCMUncertaintySource> uncertaintySource = this.determineRelevantUncertaintySources(currentTransposeFlowGraph.getVertices(), pcmUncertaintyResourceProvider, uncertaintySourceManager).stream()
+					.filter(it -> !currentTransposeFlowGraph.uncertainState.orElseGet(UncertainState::new).getUncertaintySources().contains(it))
+					.min(((o1, o2) -> UncertaintyUtils.compareApplicationOrder(currentTransposeFlowGraph, pcmUncertaintyResourceProvider, o1, o2)));
 			if (uncertaintySource.isEmpty()) {
-				alternatePartialFlowGraphs.add(currentPartialFlowGraph);
+				alternateTransposeFlowGraphs.add(currentTransposeFlowGraph);
 				continue;
 			}
 			relevantUncertaintySources.add(uncertaintySource.get());
 			List<? extends UncertaintyScenario> uncertaintyScenarios = UncertaintyUtils.getUncertaintyScenarios(uncertaintySource.get());
 			for (UncertaintyScenario uncertaintyScenario : uncertaintyScenarios) {
-				UncertainState uncertainState = currentPartialFlowGraph.uncertainState.orElseGet(UncertainState::new);
+				UncertainState uncertainState = currentTransposeFlowGraph.uncertainState.orElseGet(UncertainState::new);
 				uncertainState.addSelectedScenario(uncertaintyScenario);
-				currentPartialFlowGraphs.addAll(calculator.applyUncertaintyScenario(uncertaintyScenario, uncertainState, currentPartialFlowGraph));
+				currentTransposeFlowGraphs.addAll(calculator.applyUncertaintyScenario(uncertaintyScenario, uncertainState, currentTransposeFlowGraph));
 			}
 		}
-		return alternatePartialFlowGraphs;
+		return alternateTransposeFlowGraphs;
 	}
 
 	private List<? extends PCMUncertaintySource> determineRelevantUncertaintySources(List<? extends AbstractVertex<?>> vertices, PCMResourceProvider resourceProvider, UncertaintySourceManager uncertaintySourceManager) {
