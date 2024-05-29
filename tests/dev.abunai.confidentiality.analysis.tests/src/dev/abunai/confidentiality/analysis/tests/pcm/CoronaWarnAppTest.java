@@ -14,7 +14,7 @@ public class CoronaWarnAppTest extends PCMTestBase {
 
 	@Override
 	protected String getFolderName() {
-		return "CaseStudy-CoronaWarnApp";
+		return "CoronaWarnApp";
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class CoronaWarnAppTest extends PCMTestBase {
 
 	@Override
 	protected String getBaseFolder() {
-		return "casestudies";
+		return "casestudies/CaseStudy-CoronaWarnApp";
 	}
 
 	@Test

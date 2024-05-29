@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pcm="http://abunai.dev/uncertainty/pcm" xmlns:uncertainty="http://abunai.dev/uncertainty" id="_ymoxMMQyEe6YheupIDJFOQ">
-  <sources xsi:type="pcm:PCMExternalUncertaintySourceInUsage" id="_VmdakRVHEe-9odL8N8xo8Q" entityName="LabTeleTANAccess">
-    <target href="default.nodecharacteristics#_ot91ALCAEe68v9cyPGWAcQ"/>
-    <scenarios id="_Z2OmoBVHEe-9odL8N8xo8Q">
-      <target href="default.nodecharacteristics#_Lc6-wBVHEe-9odL8N8xo8Q"/>
-    </scenarios>
-  </sources>
-</uncertainty:UncertaintySourceCollection>
