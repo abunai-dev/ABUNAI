@@ -41,7 +41,7 @@ public class CoronaWarnAppTest extends PCMTestBase {
 		assertTrue(illegalLocations.size() > 0);
 		
 		List<UncertainConstraintViolation> leaks = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-			return it.getVertexCharacteristicNames("Status").contains("Leaked");
+			return it.getDataCharacteristicNamesMap("Status").values().stream().flatMap(List::stream).anyMatch(cv -> cv.equals("Leaked"));
 		});
 		assertTrue(leaks.size() > 0);
 	}
