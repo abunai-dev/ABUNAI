@@ -31,12 +31,19 @@ public class CoronaWarnAppTest extends PCMTestBase {
 	void testCWA() {
 		PCMUncertainFlowGraphCollection flowGraphs = (PCMUncertainFlowGraphCollection) analysis.findFlowGraph();
 		PCMUncertainFlowGraphCollection uncertainFlowGraphs = flowGraphs.createUncertainFlows();
+		assertTrue(flowGraphs.getTransposeFlowGraphs().size() < uncertainFlowGraphs.getTransposeFlowGraphs().size());
+		
 		uncertainFlowGraphs.evaluate();
 
-		List<UncertainConstraintViolation> result = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-			return false;
+		List<UncertainConstraintViolation> illegalLocations = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+			return it.getVertexCharacteristicNames("Location").contains("IllegalLocation");
 		});
-		assertTrue(flowGraphs.getTransposeFlowGraphs().size() < uncertainFlowGraphs.getTransposeFlowGraphs().size());
+		assertTrue(illegalLocations.size() > 0);
+		
+		List<UncertainConstraintViolation> leaks = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+			return it.getVertexCharacteristicNames("Status").contains("Leaked");
+		});
+		assertTrue(leaks.size() > 0);
 	}
 
 }
