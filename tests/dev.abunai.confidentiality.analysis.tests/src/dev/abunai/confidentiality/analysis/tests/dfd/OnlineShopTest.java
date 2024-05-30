@@ -9,6 +9,7 @@ import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.List;
@@ -38,8 +39,8 @@ class OnlineShopTest extends DFDTestBase {
         List<UncertainConstraintViolation> violations = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
             return this.retrieveNodeLabels(it).contains("nonEU") && this.retrieveDataLabels(it).contains("Personal");
         });
-        // Smoke tests
-        assertTrue(true);
+        // Smoke test
+        assertFalse(violations.isEmpty());
     }
 
     @Test
