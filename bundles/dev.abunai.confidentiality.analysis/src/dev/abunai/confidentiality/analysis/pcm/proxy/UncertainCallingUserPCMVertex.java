@@ -11,6 +11,9 @@ import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class proxies a calling Usage PCM vertex that replaces the vertex assignments according to the given map
+ */
 public class UncertainCallingUserPCMVertex extends CallingUserPCMVertex {
     private final Map<AbstractAssignee, AbstractAssignee> assignmentMapping;
 

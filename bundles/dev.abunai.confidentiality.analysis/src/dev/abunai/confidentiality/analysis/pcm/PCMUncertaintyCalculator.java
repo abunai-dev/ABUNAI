@@ -444,7 +444,7 @@ public class PCMUncertaintyCalculator {
     /**
      * Returns a required role for the given element and signature
      * @param oldElement Element which determines the context of the interface
-     * @param signature Signature of the interface
+     * @param replacement Signature of the interface
      * @return Returns a required role, if one can be found.
      */
     private Optional<OperationRequiredRole> getRequiredRoleForInterface(CallingSEFFPCMVertex oldElement, OperationSignature replacement) {

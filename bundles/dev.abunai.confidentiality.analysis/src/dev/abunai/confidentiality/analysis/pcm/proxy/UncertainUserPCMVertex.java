@@ -11,6 +11,9 @@ import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class proxies a Usage PCM vertex that replaces the vertex assignments according to the given map
+ */
 public class UncertainUserPCMVertex<T extends AbstractUserAction> extends UserPCMVertex<T> {
     private final Map<AbstractAssignee, AbstractAssignee> assignmentMapping;
 

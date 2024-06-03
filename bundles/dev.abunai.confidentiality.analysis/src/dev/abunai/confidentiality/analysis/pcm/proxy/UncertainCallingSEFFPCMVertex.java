@@ -14,6 +14,9 @@ import java.util.Deque;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class proxies a calling SEFF PCM vertex that replaces the vertex assignments according to the given map
+ */
 public class UncertainCallingSEFFPCMVertex extends CallingSEFFPCMVertex {
     private final Map<AbstractAssignee, AbstractAssignee> assignmentMapping;
 
