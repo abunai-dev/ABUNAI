@@ -126,7 +126,7 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 			DFDUncertainTransposeFlowGraph currentPartialFlowGraph = currentTransposeFlowGraphs.pop();
             Optional<? extends UncertaintySource> uncertaintySource = getFirstUncertaintySource(currentPartialFlowGraph, relevantUncertaintySources, uncertaintySourceManager, dfdUncertaintyResourceProvider);
 			if (uncertaintySource.isEmpty()) {
-				alternateTransposeFlowGraphs.add(currentPartialFlowGraph);
+				alternateTransposeFlowGraphs.add(currentPartialFlowGraph.copy(new IdentityHashMap<>(), currentPartialFlowGraph.uncertainState.orElseGet(UncertainState::new)));
 				continue;
 			}
 			relevantUncertaintySources.add(uncertaintySource.get());
