@@ -47,32 +47,9 @@ public class DFDInterfaceUncertaintySourceItemProvider extends DFDUncertaintySou
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addTargetInPinPropertyDescriptor(object);
 			addTargetFlowPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Target In Pin feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTargetInPinPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_DFDInterfaceUncertaintySource_targetInPin_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_DFDInterfaceUncertaintySource_targetInPin_feature", "_UI_DFDInterfaceUncertaintySource_type"),
-				 DfdPackage.Literals.DFD_INTERFACE_UNCERTAINTY_SOURCE__TARGET_IN_PIN,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
 	}
 
 	/**

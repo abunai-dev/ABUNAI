@@ -1,34 +1,26 @@
 package dev.abunai.confidentiality.analysis.pcm;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.*;
 
-import org.dataflowanalysis.analysis.core.AbstractActionSequenceElement;
-import org.dataflowanalysis.analysis.core.DataCharacteristicsCalculatorFactory;
-import org.dataflowanalysis.analysis.core.NodeCharacteristicsCalculator;
+import dev.abunai.confidentiality.analysis.core.*;
+import org.apache.log4j.Logger;
+import org.dataflowanalysis.analysis.core.FlowGraphCollection;
 import org.dataflowanalysis.analysis.pcm.PCMDataFlowConfidentialityAnalysis;
 import org.eclipse.core.runtime.Plugin;
 
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
-import dev.abunai.confidentiality.analysis.core.UncertainActionSequence;
-import dev.abunai.confidentiality.analysis.core.UncertainState;
-import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
-import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
+import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraphCollection;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
 public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfidentialityAnalysis
 		implements UncertaintyAwareConfidentialityAnalysis {
 
+	private final Logger logger = Logger.getLogger(PCMUncertaintyAwareConfidentialityAnalysis.class);
 	private UncertaintySourceManager uncertaintySourceManager;
 
-	public PCMUncertaintyAwareConfidentialityAnalysis(NodeCharacteristicsCalculator nodeCharacteristicsCalculator,
-			DataCharacteristicsCalculatorFactory dataCharacteristicsCalculatorFactory,
-			PCMUncertaintyResourceProvider resourceProvider, String modelProjectName,
-			Optional<Class<? extends Plugin>> modelProjectActivator) {
-		super(nodeCharacteristicsCalculator, dataCharacteristicsCalculatorFactory, resourceProvider, modelProjectName,
-				modelProjectActivator);
+	public PCMUncertaintyAwareConfidentialityAnalysis(PCMUncertaintyResourceProvider resourceProvider,
+			Optional<Class<? extends Plugin>> modelProjectActivator, String modelProjectName) {
+		super(resourceProvider, modelProjectName, modelProjectActivator);
 	}
 
 	@Override
@@ -42,34 +34,24 @@ public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfi
 	}
 
 	@Override
-	public boolean initializeAnalysis() {
-		if (!super.initializeAnalysis()) {
-			return false;
-		} else {
-			this.uncertaintySourceManager = new UncertaintySourceManager(
+	public void initializeAnalysis() {
+		super.initializeAnalysis();
+		this.uncertaintySourceManager = new UncertaintySourceManager(
 					this.getResourceProvider().getUncertaintySourceCollection(), UncertaintySourceType.PCM);
-			return true;
-		}
+	}
+	
+	@Override
+	public PCMUncertainFlowGraphCollection findFlowGraph() {
+		return new PCMUncertainFlowGraphCollection(this.getResourceProvider());
+	}
+	
+	@Override
+	public DFDUncertainFlowGraphCollection evaluateUncertainDataFlows(FlowGraphCollection flowGraph) {
+		return ((DFDUncertainFlowGraphCollection) flowGraph).createUncertainFlows();
 	}
 
 	@Override
-	public List<? extends UncertainActionSequence> findAllUncertainSequences() {
-		// TODO Auto-generated method stub
-		return null;
+	public Logger getLogger() {
+		return logger;
 	}
-
-	@Override
-	public List<? extends UncertainActionSequence> evaluateUncertainDataFlows(
-			List<? extends UncertainActionSequence> sequences) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Map<UncertainState, List<AbstractActionSequenceElement<?>>> queryUncertainDataFlow(
-			UncertainActionSequence sequence, Predicate<? super AbstractActionSequenceElement<?>> condition) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

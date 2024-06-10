@@ -5,8 +5,7 @@ package dev.abunai.confidentiality.analysis.model.uncertainty.dfd;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 
 import org.dataflowanalysis.dfd.datadictionary.Pin;
-
-import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
+import org.dataflowanalysis.dfd.dataflowdiagram.Node;
 
 /**
  * <!-- begin-user-doc -->
@@ -18,7 +17,7 @@ import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
  * </p>
  * <ul>
  *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetInPin <em>Target In Pin</em>}</li>
- *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetFlow <em>Target Flow</em>}</li>
+ *   <li>{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetNode <em>Target Node</em>}</li>
  * </ul>
  *
  * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage#getDFDInterfaceUncertaintyScenario()
@@ -49,25 +48,25 @@ public interface DFDInterfaceUncertaintyScenario extends UncertaintyScenario {
 	void setTargetInPin(Pin value);
 
 	/**
-	 * Returns the value of the '<em><b>Target Flow</b></em>' reference.
+	 * Returns the value of the '<em><b>Target Node</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Target Flow</em>' reference.
-	 * @see #setTargetFlow(Flow)
-	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage#getDFDInterfaceUncertaintyScenario_TargetFlow()
+	 * @return the value of the '<em>Target Node</em>' reference.
+	 * @see #setTargetNode(Node)
+	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage#getDFDInterfaceUncertaintyScenario_TargetNode()
 	 * @model required="true"
 	 * @generated
 	 */
-	Flow getTargetFlow();
+	Node getTargetNode();
 
 	/**
-	 * Sets the value of the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetFlow <em>Target Flow</em>}' reference.
+	 * Sets the value of the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario#getTargetNode <em>Target Node</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Target Flow</em>' reference.
-	 * @see #getTargetFlow()
+	 * @param value the new value of the '<em>Target Node</em>' reference.
+	 * @see #getTargetNode()
 	 * @generated
 	 */
-	void setTargetFlow(Flow value);
+	void setTargetNode(Node value);
 
 } // DFDInterfaceUncertaintyScenario

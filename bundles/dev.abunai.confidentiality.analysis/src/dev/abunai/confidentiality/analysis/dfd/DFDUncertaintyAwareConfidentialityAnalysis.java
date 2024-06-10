@@ -1,28 +1,21 @@
 package dev.abunai.confidentiality.analysis.dfd;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Predicate;
+import java.util.*;
 
-import org.dataflowanalysis.analysis.core.AbstractActionSequenceElement;
-import org.dataflowanalysis.analysis.core.ActionSequence;
+import dev.abunai.confidentiality.analysis.core.*;
+import org.apache.log4j.Logger;
+import org.dataflowanalysis.analysis.core.FlowGraphCollection;
 import org.dataflowanalysis.analysis.dfd.DFDConfidentialityAnalysis;
-import org.dataflowanalysis.analysis.dfd.core.DFDActionSequence;
-import org.dataflowanalysis.analysis.dfd.core.DFDCharacteristicsCalculator;
 import org.eclipse.core.runtime.Plugin;
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
-import dev.abunai.confidentiality.analysis.core.UncertainActionSequence;
-import dev.abunai.confidentiality.analysis.core.UncertainState;
-import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
-import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 
-public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentialityAnalysis
-		implements UncertaintyAwareConfidentialityAnalysis {
-
+/**
+ * This class represents an uncertainty aware confidentiality analysis for the dfd metamodel.
+ * The method {@link #evaluateUncertainDataFlows(FlowGraphCollection)} must be called to create uncertain data flows
+ */
+public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentialityAnalysis implements UncertaintyAwareConfidentialityAnalysis {
+	private final Logger logger = Logger.getLogger(DFDUncertaintyAwareConfidentialityAnalysis.class);
 	private UncertaintySourceManager uncertaintySourceManager;
 
 	public DFDUncertaintyAwareConfidentialityAnalysis(DFDUncertaintyResourceProvider resourceProvider,
@@ -41,60 +34,24 @@ public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentiali
 	}
 
 	@Override
-	public boolean initializeAnalysis() {
-		if (!super.initializeAnalysis()) {
-			return false;
-		} else {
-			this.uncertaintySourceManager = new UncertaintySourceManager(
+	public void initializeAnalysis() {
+		super.initializeAnalysis();
+		this.uncertaintySourceManager = new UncertaintySourceManager(
 					this.getResourceProvider().getUncertaintySourceCollection(), UncertaintySourceType.DFD);
-			return true;
-		}
 	}
-
-	public List<UncertainDFDActionSequence> findAllUncertainSequences() {
-		return this.findAllSequences().stream().map(it -> new UncertainDFDActionSequence((DFDActionSequence) it,
-				this.getUncertaintySources().stream().map(DFDUncertaintySource.class::cast).toList())).toList();
+	
+	@Override
+	public DFDUncertainFlowGraphCollection findFlowGraph() {
+		return new DFDUncertainFlowGraphCollection(this.getResourceProvider());
+	}
+	
+	@Override
+	public DFDUncertainFlowGraphCollection evaluateUncertainDataFlows(FlowGraphCollection flowGraph) {
+		return ((DFDUncertainFlowGraphCollection) flowGraph).createUncertainFlows();
 	}
 
 	@Override
-	public List<UncertainDFDActionSequence> evaluateUncertainDataFlows(
-			List<? extends UncertainActionSequence> sequences) {
-		var castedSequences = sequences.stream().map(UncertainDFDActionSequence.class::cast).toList();
-
-		for (var sequence : castedSequences) {
-			Map<UncertainState, ? extends ActionSequence> mapping = sequence.getScenarioToActionSequenceMapping();
-			Map<UncertainState, ActionSequence> evaluatedMapping = new HashMap<>();
-
-			for (UncertainState state : mapping.keySet()) {
-				ActionSequence dfdSequence = mapping.get(state);
-				ActionSequence evaluatedDFDSequence = DFDCharacteristicsCalculator
-						.fillDataFlowVariables((DFDActionSequence) dfdSequence);
-				evaluatedMapping.put(state, evaluatedDFDSequence);
-			}
-
-			if (mapping.size() != evaluatedMapping.size()) {
-				throw new IllegalStateException("Evaluated mapping differs in size.");
-			}
-
-			sequence.setScenarioToActionSequenceMapping(evaluatedMapping);
-		}
-
-		return castedSequences;
+	public Logger getLogger() {
+		return logger;
 	}
-
-	@Override
-	public Map<UncertainState, List<AbstractActionSequenceElement<?>>> queryUncertainDataFlow(
-			UncertainActionSequence sequence, Predicate<? super AbstractActionSequenceElement<?>> condition) {
-		Map<UncertainState, List<AbstractActionSequenceElement<?>>> result = new HashMap<>();
-		Map<UncertainState, ? extends ActionSequence> mapping = sequence.getScenarioToActionSequenceMapping();
-
-		for (var state : mapping.keySet()) {
-			ActionSequence dfdSequence = mapping.get(state);
-			List<AbstractActionSequenceElement<?>> violations = this.queryDataFlow(dfdSequence, condition);
-			result.put(state, violations);
-		}
-
-		return result;
-	}
-
 }

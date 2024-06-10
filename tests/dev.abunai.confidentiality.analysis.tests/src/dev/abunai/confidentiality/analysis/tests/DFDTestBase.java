@@ -1,7 +1,11 @@
 package dev.abunai.confidentiality.analysis.tests;
 
 import java.nio.file.Paths;
+import java.util.List;
 
+import org.dataflowanalysis.analysis.core.AbstractVertex;
+import org.dataflowanalysis.analysis.core.DataCharacteristic;
+import org.dataflowanalysis.analysis.dfd.core.DFDCharacteristicValue;
 import org.junit.jupiter.api.BeforeEach;
 
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
@@ -30,4 +34,15 @@ public abstract class DFDTestBase extends TestBase {
 		this.analysis = analysis;
 	}
 
+	protected List<String> retrieveNodeLabels(AbstractVertex<?> vertex) {
+		return vertex.getAllVertexCharacteristics().stream().map(DFDCharacteristicValue.class::cast)
+				.map(DFDCharacteristicValue::getValueName).toList();
+	}
+
+	protected List<String> retrieveDataLabels(AbstractVertex<?> vertex) {
+		return vertex.getAllIncomingDataCharacteristics().stream()
+				.map(DataCharacteristic::getAllCharacteristics)
+				.flatMap(List::stream).map(DFDCharacteristicValue.class::cast).map(DFDCharacteristicValue::getValueName)
+				.toList();
+	}
 }

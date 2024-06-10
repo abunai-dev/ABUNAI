@@ -12,6 +12,9 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCo
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintySource;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource;
 
+/**
+ * This class manages the uncertainty sources contained in the model
+ */
 public class UncertaintySourceManager {
 
 	private final Logger logger = Logger.getLogger(UncertaintySourceManager.class);
@@ -19,6 +22,11 @@ public class UncertaintySourceManager {
 	private final List<UncertaintySource> validatedUncertaintySources;
 	private final UncertaintySourceType uncertaintySourceType;
 
+	/**
+	 * Create a new uncertainty source manager with the given uncertainty source collection model element and the type of uncertainty sources (e.g. PCM or DFD)
+	 * @param uncertaintySourceCollection Uncertainty source collection model element, which contains the uncertainty sources
+	 * @param uncertaintySourceType Uncertainty source type (e.g. PCM or DFD)
+	 */
 	public UncertaintySourceManager(UncertaintySourceCollection uncertaintySourceCollection,
 			UncertaintySourceType uncertaintySourceType) {
 
@@ -26,10 +34,19 @@ public class UncertaintySourceManager {
 		this.validatedUncertaintySources = this.validateUncertaintySources(uncertaintySourceCollection);
 	}
 
+	/**
+	 * Returns a list of all uncertainty sources contained in the uncertainty source collection
+	 * @return Returns a list of all uncertainty sources in the model
+	 */
 	public List<UncertaintySource> getUncertaintySources() {
 		return Collections.unmodifiableList(this.validatedUncertaintySources);
 	}
 
+	/**
+	 * Validate the uncertainty sources contained in the uncertainty source collection
+	 * @param uncertaintySourceCollection Model element containing the uncertainty sources that should be validated
+	 * @return Returns a list of all validated uncertainty sources
+	 */
 	private List<UncertaintySource> validateUncertaintySources(
 			UncertaintySourceCollection uncertaintySourceCollection) {
 		logger.info("Started validating uncertainty sources.");
@@ -40,15 +57,15 @@ public class UncertaintySourceManager {
 		uncertaintySources.forEach(this::validateUncertaintySourceTypes);
 		uncertaintySources.forEach(this::validateScenarioProbabilities);
 		uncertaintySources.forEach(this::validateDefaultScenario);
-		
-		// FIXME: Validation should check that there is at least one action sequence for each scenario
-		// There is even one of these errors in the current test cases (should be 6 instead of 4)
-		// TODO: Check whether this is an actual issue or intened behavior 
 
 		logger.info("Finished validating uncertainty sources.");
 		return uncertaintySources;
 	}
 
+	/**
+	 * Validates the emf model of the given uncertainty source collection
+	 * @param uncertaintySourceCollection Uncertainty source collection that should be validated
+	 */
 	private void validateEMFModel(UncertaintySourceCollection uncertaintySourceCollection) {
 		Diagnostic result = Diagnostician.INSTANCE.validate(uncertaintySourceCollection);
 
@@ -58,8 +75,12 @@ public class UncertaintySourceManager {
 		}
 	}
 
+	/**
+	 * Validate the given uncertainty source type whether it conforms to the uncertainty source type stored
+	 * @param uncertaintySource Given uncertainty source type that should be validated
+	 */
 	private void validateUncertaintySourceTypes(UncertaintySource uncertaintySource) {
-		String errorMessage = "Uncertainty type missmatch: Found %s uncertainty sources in a %s analysis.";
+		String errorMessage = "Uncertainty type mismatch: Found %s uncertainty sources in a %s analysis.";
 
 		if (uncertaintySourceType == UncertaintySourceType.DFD
 				&& !(uncertaintySource instanceof DFDUncertaintySource)) {
@@ -72,6 +93,10 @@ public class UncertaintySourceManager {
 		}
 	}
 
+	/**
+	 * Validates the probabilities of an uncertainty source with its given uncertainty scenarios
+	 * @param uncertaintySource Uncertainty source that should be validated
+	 */
 	private void validateScenarioProbabilities(UncertaintySource uncertaintySource) {
 		List<? extends UncertaintyScenario> scenarios = UncertaintyUtils.getUncertaintyScenarios(uncertaintySource);
 
@@ -87,25 +112,28 @@ public class UncertaintySourceManager {
 			return;
 		}
 
-		Double sumOfAllProbabilities = scenarios.stream().mapToDouble(UncertaintyScenario::getProbability).sum();
+		double sumOfAllProbabilities = scenarios.stream().mapToDouble(UncertaintyScenario::getProbability).sum();
 		if (sumOfAllProbabilities > 1.0) {
 			logger.warn("Sum of all probabilities in %s is higher than 1.0, resetting to -1.0 (no probabilities)."
 					.formatted(UncertaintyUtils.getUncertaintySourceName(uncertaintySource)));
 
 			scenarios.forEach(it -> it.setProbability(-1.0));
-			return;
-		}
+        }
 	}
 
+	/**
+	 * Validates the default scenario of the uncertainty source
+	 * @param uncertaintySource Given uncertainty source of which the default scenario should be validated
+	 */
 	private void validateDefaultScenario(UncertaintySource uncertaintySource) {
 		List<? extends UncertaintyScenario> scenarios = UncertaintyUtils.getUncertaintyScenarios(uncertaintySource);
 
-		if (scenarios.size() == 0) {
+		if (scenarios.isEmpty()) {
 			logger.warn("No scenarios in %s. Creating a default scenario now."
 					.formatted(UncertaintyUtils.getUncertaintySourceName(uncertaintySource)));
 			UncertaintyUtils.addDefaultScenario(uncertaintySource);
 
-		} else if (!scenarios.stream().anyMatch(it -> UncertaintyUtils.isDefaultScenario(uncertaintySource, it))) {
+		} else if (scenarios.stream().noneMatch(it -> UncertaintyUtils.isDefaultScenario(uncertaintySource, it))) {
 			logger.warn("No default scenario in %s. Creating one now."
 					.formatted(UncertaintyUtils.getUncertaintySourceName(uncertaintySource)));
 			UncertaintyUtils.addDefaultScenario(uncertaintySource);

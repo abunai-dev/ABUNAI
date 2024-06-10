@@ -6,11 +6,11 @@ Bundle-Version: 1.0.0.qualifier
 Export-Package: dev.abunai.confidentiality.analysis,
  dev.abunai.confidentiality.analysis.core,
  dev.abunai.confidentiality.analysis.dfd,
- dev.abunai.confidentiality.analysis.pcm
+ dev.abunai.confidentiality.analysis.pcm,
+ dev.abunai.confidentiality.analysis.pcm.proxy
 Require-Bundle: org.dataflowanalysis.analysis;bundle-version="1.0.0";visibility:=reexport,
  dev.abunai.confidentiality.analysis.model;bundle-version="0.1.0";visibility:=reexport,
  org.dataflowanalysis.analysis.pcm;bundle-version="1.0.0";visibility:=reexport,
- org.dataflowanalysis.analysis.dfd;visibility:=reexport,
- edu.kit.kastel.dsis.uncertainty.impactanalysis
+ org.dataflowanalysis.analysis.dfd;visibility:=reexport
 Automatic-Module-Name: dev.abunai.confidentiality.analysis
 Bundle-RequiredExecutionEnvironment: JavaSE-17

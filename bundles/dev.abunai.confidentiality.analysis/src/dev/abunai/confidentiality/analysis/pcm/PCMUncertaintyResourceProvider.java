@@ -13,7 +13,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySourceCo
 
 public class PCMUncertaintyResourceProvider extends PCMURIResourceProvider implements UncertaintyResourceProvider {
 
-	private URI uncertaintyModelURI;
+	private final URI uncertaintyModelURI;
 	private UncertaintySourceCollection uncertaintySourceCollection;
 
 	public PCMUncertaintyResourceProvider(URI usageModelURI, URI allocationModelURI, URI nodeCharacteristicsURI,
@@ -26,10 +26,10 @@ public class PCMUncertaintyResourceProvider extends PCMURIResourceProvider imple
 	public void loadRequiredResources() {
 		super.loadRequiredResources();
 		this.uncertaintySourceCollection = (UncertaintySourceCollection) this.loadModelContent(uncertaintyModelURI);
-		List<Resource> loadedResources = null;
+		List<Resource> loadedResources;
 		do {
 			loadedResources = new ArrayList<>(this.resources.getResources());
-			loadedResources.forEach(it -> EcoreUtil.resolveAll(it));
+			loadedResources.forEach(EcoreUtil::resolveAll);
 		} while (loadedResources.size() != this.resources.getResources().size());
 	}
 

@@ -1,26 +1,49 @@
 package dev.abunai.confidentiality.analysis;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Predicate;
 
-import org.dataflowanalysis.analysis.DataFlowConfidentialityAnalysis;
-import org.dataflowanalysis.analysis.core.AbstractActionSequenceElement;
+import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
+import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
+import org.apache.log4j.Logger;
+import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
+import org.dataflowanalysis.analysis.core.AbstractVertex;
+import org.dataflowanalysis.analysis.core.FlowGraphCollection;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
 
-import dev.abunai.confidentiality.analysis.core.UncertainActionSequence;
-import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 
-public interface UncertaintyAwareConfidentialityAnalysis extends DataFlowConfidentialityAnalysis {
+public interface UncertaintyAwareConfidentialityAnalysis {
+	void initializeAnalysis();
+	
 	List<UncertaintySource> getUncertaintySources();
 
 	ResourceProvider getResourceProvider();
 
-	List<? extends UncertainActionSequence> findAllUncertainSequences();
+	FlowGraphCollection findFlowGraph();
 	
-	List<? extends UncertainActionSequence> evaluateUncertainDataFlows(List<? extends UncertainActionSequence> sequences);
-	
-	Map<UncertainState, List<AbstractActionSequenceElement<?>>> queryUncertainDataFlow(UncertainActionSequence sequence,
-			Predicate<? super AbstractActionSequenceElement<?>> condition);
+	FlowGraphCollection evaluateUncertainDataFlows(FlowGraphCollection flowGraph);
+
+	default List<UncertainConstraintViolation> queryUncertainDataFlow(FlowGraphCollection flowGraph,
+															  Predicate<? super AbstractVertex<?>> condition) {
+		List<UncertainConstraintViolation> result = new ArrayList<>();
+
+		for (AbstractTransposeFlowGraph transposeFlowGraph : flowGraph.getTransposeFlowGraphs()) {
+			if(!(transposeFlowGraph instanceof UncertainTransposeFlowGraph uncertainTransposeFlowGraph)) {
+				this.getLogger().error("Found incompatible transpose flow graph in uncertain flow graph");
+				throw new IllegalArgumentException();
+			}
+			List<? extends AbstractVertex<?>> violations = transposeFlowGraph.getVertices().stream()
+					.filter(condition)
+					.toList();
+			if (!violations.isEmpty()) {
+				result.add(new UncertainConstraintViolation(uncertainTransposeFlowGraph.getUncertainState(), uncertainTransposeFlowGraph, violations));
+			}
+		}
+
+		return result;
+	}
+
+	Logger getLogger();
 }

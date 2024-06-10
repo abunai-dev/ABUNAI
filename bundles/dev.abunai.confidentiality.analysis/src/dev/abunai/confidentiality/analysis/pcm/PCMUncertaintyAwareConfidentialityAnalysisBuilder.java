@@ -2,8 +2,6 @@ package dev.abunai.confidentiality.analysis.pcm;
 
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.pcm.PCMDataFlowConfidentialityAnalysisBuilder;
-import org.dataflowanalysis.analysis.pcm.core.PCMDataCharacteristicsCalculatorFactory;
-import org.dataflowanalysis.analysis.pcm.core.PCMNodeCharacteristicsCalculator;
 import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
 import org.dataflowanalysis.analysis.utils.ResourceUtils;
 import org.eclipse.core.runtime.Plugin;
@@ -83,8 +81,6 @@ public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFl
 				ResourceUtils.createRelativePluginURI(this.relativeNodeCharacteristicsPath, modelProjectName),
 				ResourceUtils.createRelativePluginURI(this.relativeUncertaintyModelPath, modelProjectName));
 
-		return new PCMUncertaintyAwareConfidentialityAnalysis(new PCMNodeCharacteristicsCalculator(resourceProvider),
-				new PCMDataCharacteristicsCalculatorFactory(resourceProvider), resourceProvider, modelProjectName,
-				pluginActivator);
+		return new PCMUncertaintyAwareConfidentialityAnalysis(resourceProvider, pluginActivator, modelProjectName);
 	}
 }

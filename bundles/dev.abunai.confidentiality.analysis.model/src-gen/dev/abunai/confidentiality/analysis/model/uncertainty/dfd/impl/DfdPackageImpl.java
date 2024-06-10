@@ -351,7 +351,7 @@ public class DfdPackageImpl extends EPackageImpl implements DfdPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDFDInterfaceUncertaintySource_TargetInPin() {
+	public EReference getDFDInterfaceUncertaintySource_TargetFlow() {
 		return (EReference)dfdInterfaceUncertaintySourceEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -360,17 +360,8 @@ public class DfdPackageImpl extends EPackageImpl implements DfdPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDFDInterfaceUncertaintySource_TargetFlow() {
-		return (EReference)dfdInterfaceUncertaintySourceEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getDFDInterfaceUncertaintySource_Scenarios() {
-		return (EReference)dfdInterfaceUncertaintySourceEClass.getEStructuralFeatures().get(2);
+		return (EReference)dfdInterfaceUncertaintySourceEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -396,7 +387,7 @@ public class DfdPackageImpl extends EPackageImpl implements DfdPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDFDInterfaceUncertaintyScenario_TargetFlow() {
+	public EReference getDFDInterfaceUncertaintyScenario_TargetNode() {
 		return (EReference)dfdInterfaceUncertaintyScenarioEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -459,8 +450,17 @@ public class DfdPackageImpl extends EPackageImpl implements DfdPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDFDConnectorUncertaintyScenario_TargetFlow() {
+	public EReference getDFDConnectorUncertaintyScenario_TargetPin() {
 		return (EReference)dfdConnectorUncertaintyScenarioEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDFDConnectorUncertaintyScenario_TargetNode() {
+		return (EReference)dfdConnectorUncertaintyScenarioEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -555,13 +555,12 @@ public class DfdPackageImpl extends EPackageImpl implements DfdPackage {
 		createEReference(dfdBehaviorUncertaintyScenarioEClass, DFD_BEHAVIOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS);
 
 		dfdInterfaceUncertaintySourceEClass = createEClass(DFD_INTERFACE_UNCERTAINTY_SOURCE);
-		createEReference(dfdInterfaceUncertaintySourceEClass, DFD_INTERFACE_UNCERTAINTY_SOURCE__TARGET_IN_PIN);
 		createEReference(dfdInterfaceUncertaintySourceEClass, DFD_INTERFACE_UNCERTAINTY_SOURCE__TARGET_FLOW);
 		createEReference(dfdInterfaceUncertaintySourceEClass, DFD_INTERFACE_UNCERTAINTY_SOURCE__SCENARIOS);
 
 		dfdInterfaceUncertaintyScenarioEClass = createEClass(DFD_INTERFACE_UNCERTAINTY_SCENARIO);
 		createEReference(dfdInterfaceUncertaintyScenarioEClass, DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_IN_PIN);
-		createEReference(dfdInterfaceUncertaintyScenarioEClass, DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_FLOW);
+		createEReference(dfdInterfaceUncertaintyScenarioEClass, DFD_INTERFACE_UNCERTAINTY_SCENARIO__TARGET_NODE);
 
 		dfdConnectorUncertaintySourceEClass = createEClass(DFD_CONNECTOR_UNCERTAINTY_SOURCE);
 		createEReference(dfdConnectorUncertaintySourceEClass, DFD_CONNECTOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS);
@@ -570,7 +569,8 @@ public class DfdPackageImpl extends EPackageImpl implements DfdPackage {
 
 		dfdConnectorUncertaintyScenarioEClass = createEClass(DFD_CONNECTOR_UNCERTAINTY_SCENARIO);
 		createEReference(dfdConnectorUncertaintyScenarioEClass, DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_ASSIGNMENTS);
-		createEReference(dfdConnectorUncertaintyScenarioEClass, DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_FLOW);
+		createEReference(dfdConnectorUncertaintyScenarioEClass, DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_PIN);
+		createEReference(dfdConnectorUncertaintyScenarioEClass, DFD_CONNECTOR_UNCERTAINTY_SCENARIO__TARGET_NODE);
 
 		dfdComponentUncertaintySourceEClass = createEClass(DFD_COMPONENT_UNCERTAINTY_SOURCE);
 		createEReference(dfdComponentUncertaintySourceEClass, DFD_COMPONENT_UNCERTAINTY_SOURCE__TARGET);
@@ -645,13 +645,12 @@ public class DfdPackageImpl extends EPackageImpl implements DfdPackage {
 		initEReference(getDFDBehaviorUncertaintyScenario_TargetAssignments(), thedatadictionaryPackage.getAbstractAssignment(), null, "targetAssignments", null, 0, -1, DFDBehaviorUncertaintyScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dfdInterfaceUncertaintySourceEClass, DFDInterfaceUncertaintySource.class, "DFDInterfaceUncertaintySource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDFDInterfaceUncertaintySource_TargetInPin(), thedatadictionaryPackage.getPin(), null, "targetInPin", null, 1, 1, DFDInterfaceUncertaintySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDFDInterfaceUncertaintySource_TargetFlow(), thedataflowdiagramPackage.getFlow(), null, "targetFlow", null, 1, 1, DFDInterfaceUncertaintySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getDFDInterfaceUncertaintySource_Scenarios(), this.getDFDInterfaceUncertaintyScenario(), null, "scenarios", null, 0, -1, DFDInterfaceUncertaintySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dfdInterfaceUncertaintyScenarioEClass, DFDInterfaceUncertaintyScenario.class, "DFDInterfaceUncertaintyScenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDFDInterfaceUncertaintyScenario_TargetInPin(), thedatadictionaryPackage.getPin(), null, "targetInPin", null, 1, 1, DFDInterfaceUncertaintyScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDFDInterfaceUncertaintyScenario_TargetFlow(), thedataflowdiagramPackage.getFlow(), null, "targetFlow", null, 1, 1, DFDInterfaceUncertaintyScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDFDInterfaceUncertaintyScenario_TargetNode(), thedataflowdiagramPackage.getNode(), null, "targetNode", null, 1, 1, DFDInterfaceUncertaintyScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dfdConnectorUncertaintySourceEClass, DFDConnectorUncertaintySource.class, "DFDConnectorUncertaintySource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDFDConnectorUncertaintySource_TargetAssignments(), thedatadictionaryPackage.getAbstractAssignment(), null, "targetAssignments", null, 0, -1, DFDConnectorUncertaintySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -660,7 +659,8 @@ public class DfdPackageImpl extends EPackageImpl implements DfdPackage {
 
 		initEClass(dfdConnectorUncertaintyScenarioEClass, DFDConnectorUncertaintyScenario.class, "DFDConnectorUncertaintyScenario", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDFDConnectorUncertaintyScenario_TargetAssignments(), thedatadictionaryPackage.getAbstractAssignment(), null, "targetAssignments", null, 0, -1, DFDConnectorUncertaintyScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDFDConnectorUncertaintyScenario_TargetFlow(), thedataflowdiagramPackage.getFlow(), null, "targetFlow", null, 1, 1, DFDConnectorUncertaintyScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDFDConnectorUncertaintyScenario_TargetPin(), thedatadictionaryPackage.getPin(), null, "targetPin", null, 1, 1, DFDConnectorUncertaintyScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDFDConnectorUncertaintyScenario_TargetNode(), thedataflowdiagramPackage.getNode(), null, "targetNode", null, 1, 1, DFDConnectorUncertaintyScenario.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(dfdComponentUncertaintySourceEClass, DFDComponentUncertaintySource.class, "DFDComponentUncertaintySource", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDFDComponentUncertaintySource_Target(), thedataflowdiagramPackage.getNode(), null, "target", null, 1, 1, DFDComponentUncertaintySource.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
