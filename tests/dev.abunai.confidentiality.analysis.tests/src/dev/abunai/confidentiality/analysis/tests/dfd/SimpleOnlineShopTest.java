@@ -17,6 +17,10 @@ import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraphCollection;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 
+/**
+ * The online shop uncertainty replaces the label of the database {@code nonEU} with {@code EU}.
+ * The violation occurs in the default scenario of the uncertainty in the Database Node
+ */
 public class SimpleOnlineShopTest extends DFDTestBase {
 	private final Logger logger = Logger.getLogger(SimpleOnlineShopTest.class);
 

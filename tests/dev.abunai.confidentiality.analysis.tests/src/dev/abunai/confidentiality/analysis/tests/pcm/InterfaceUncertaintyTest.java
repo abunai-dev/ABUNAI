@@ -13,6 +13,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
+/**
+ * The atomic interface uncertainty test replaces the interface {@code UserDatabaseInterface} with {@code SecureUserDataInterface} that is implemented within the EU.
+ * The violation occurs in the default scenario of the uncertainty starting at the save data action
+ */
 public class InterfaceUncertaintyTest extends PCMTestBase {
     @Override
     protected String getFolderName() {

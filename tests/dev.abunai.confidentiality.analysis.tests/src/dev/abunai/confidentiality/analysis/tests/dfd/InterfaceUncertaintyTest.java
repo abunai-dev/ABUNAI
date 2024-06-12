@@ -12,6 +12,10 @@ import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
 import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraphCollection;
 import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 
+/**
+ * The atomic interface uncertainty test replaces the flow {@code userToBuy} with a flow to {@code encryptedBuy}.
+ * The violation occurs in the default scenario of the uncertainty in the Database Node
+ */
 public class InterfaceUncertaintyTest extends DFDTestBase {
 	@Override
 	protected String getFolderName() {

@@ -14,6 +14,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
+/**
+ * The atomic external uncertainty test replaces the cloud server location {@code nonEU} with location {@code EU}.
+ * The violation occurs in the default scenario of the uncertainty starting at the save data action
+ */
 public class ExternalUncertaintyTest extends PCMTestBase {
     @Override
     protected String getFolderName() {

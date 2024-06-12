@@ -14,6 +14,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * The atomic behaviour uncertainty test replaces the return action in {@code loadInventory(InventoryDatabaseService)} with a return action that accidentally returns sensitive information.
+ * The violations occur starting at the replaced return action in the alternative uncertainty scenario (e.g. uncertainty applied)
+ */
 public class BehaviorUncertaintyTest extends PCMTestBase {
     @Override
     protected String getFolderName() {

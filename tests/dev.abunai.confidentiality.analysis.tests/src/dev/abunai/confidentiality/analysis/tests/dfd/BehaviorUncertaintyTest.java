@@ -11,6 +11,10 @@ import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
 import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraphCollection;
 import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 
+/**
+ * The atomic behaviour uncertainty test replaces the behavior {@code buyBehavior} with {@code encryptingBuyBehavior}.
+ * The violation occurs in the default scenario of the uncertainty in the Database Node
+ */
 public class BehaviorUncertaintyTest extends DFDTestBase {
 
 
