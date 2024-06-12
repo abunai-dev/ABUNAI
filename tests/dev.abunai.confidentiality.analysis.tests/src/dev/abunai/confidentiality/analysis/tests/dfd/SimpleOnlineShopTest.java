@@ -30,10 +30,6 @@ public class SimpleOnlineShopTest extends DFDTestBase {
 		return "onlineshop";
 	}
 
-	@Override
-	protected String getBaseFolder() {
-		return "models";
-	}
 	
 	@Test
 	public void testSourceLoading() {

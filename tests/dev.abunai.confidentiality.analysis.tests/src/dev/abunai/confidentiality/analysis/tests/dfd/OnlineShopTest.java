@@ -25,10 +25,6 @@ class OnlineShopTest extends DFDTestBase {
         return "onlineshop";
     }
 
-    @Override
-    protected String getBaseFolder() {
-        return "models";
-    }
 
     @Test
     void testAnalysis() {

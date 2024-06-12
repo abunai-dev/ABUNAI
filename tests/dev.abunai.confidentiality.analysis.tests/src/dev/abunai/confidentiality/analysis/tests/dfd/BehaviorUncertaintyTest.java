@@ -13,6 +13,7 @@ import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 
 public class BehaviorUncertaintyTest extends DFDTestBase {
 
+
 	@Override
 	protected String getFolderName() {
 		return "DFDBehaviorUncertainty";
@@ -23,10 +24,6 @@ public class BehaviorUncertaintyTest extends DFDTestBase {
 		return "default";
 	}
 
-	@Override
-	protected String getBaseFolder() {
-		return "models";
-	}
 	
 	@Test
 	public void testResults() {

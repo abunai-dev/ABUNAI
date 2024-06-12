@@ -22,11 +22,6 @@ public class ExternalUncertaintyTest extends DFDTestBase {
 	protected String getFilesName() {
 		return "default";
 	}
-
-	@Override
-	protected String getBaseFolder() {
-		return "models";
-	}
 	
 	@Test
 	public void testResults() {

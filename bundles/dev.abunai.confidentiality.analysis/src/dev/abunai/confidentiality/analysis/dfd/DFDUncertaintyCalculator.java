@@ -134,6 +134,9 @@ public class DFDUncertaintyCalculator {
         if (targetedNodes.isEmpty()) {
             return currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState);
         }
+        
+        // TODO Behavior: Input pin names must be called equal. Output pin must have equal name
+        // TODO Behavior: Move replacement assignment to targeted behavior
 
         Behaviour replacingBehavior = this.copyBehavior(targetBehaviour, Stream.concat(filteredAssignments.stream(), addedAssignments.stream()).toList());
 

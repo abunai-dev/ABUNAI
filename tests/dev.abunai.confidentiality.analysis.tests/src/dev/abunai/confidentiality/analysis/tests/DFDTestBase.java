@@ -14,6 +14,11 @@ import dev.abunai.confidentiality.analysis.testmodels.Activator;
 
 public abstract class DFDTestBase extends TestBase {
 
+	@Override
+	protected String getBaseFolder() {
+		return "models/dfd";
+	}
+
 	@BeforeEach
 	public void setup() {
 		final var dataFlowDiagramPath = Paths.get(getBaseFolder(), getFolderName(), getFilesName() + ".dataflowdiagram")
