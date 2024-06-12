@@ -1,7 +1,11 @@
 package dev.abunai.confidentiality.analysis.core;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -21,6 +25,8 @@ public class UncertaintySourceManager {
 
 	private final List<UncertaintySource> validatedUncertaintySources;
 	private final UncertaintySourceType uncertaintySourceType;
+	private final Optional<String> stringFilter;
+	private final Optional<List<Integer>> indices;
 
 	/**
 	 * Create a new uncertainty source manager with the given uncertainty source collection model element and the type of uncertainty sources (e.g. PCM or DFD)
@@ -32,6 +38,38 @@ public class UncertaintySourceManager {
 
 		this.uncertaintySourceType = uncertaintySourceType;
 		this.validatedUncertaintySources = this.validateUncertaintySources(uncertaintySourceCollection);
+		this.stringFilter = Optional.empty();
+		this.indices = Optional.empty();
+	}
+
+	/**
+	 * Create a new uncertainty source manager with the given uncertainty source collection model element and the type of uncertainty sources (e.g. PCM or DFD)
+	 * @param uncertaintySourceCollection Uncertainty source collection model element, which contains the uncertainty sources
+	 * @param uncertaintySourceType Uncertainty source type (e.g. PCM or DFD)
+	 * @param filter String filter that the uncertainty source name must contain
+	 */
+	public UncertaintySourceManager(UncertaintySourceCollection uncertaintySourceCollection,
+									UncertaintySourceType uncertaintySourceType, String filter) {
+
+		this.uncertaintySourceType = uncertaintySourceType;
+		this.validatedUncertaintySources = this.validateUncertaintySources(uncertaintySourceCollection);
+		this.stringFilter = Optional.of(filter);
+		this.indices = Optional.empty();
+	}
+
+	/**
+	 * Create a new uncertainty source manager with the given uncertainty source collection model element and the type of uncertainty sources (e.g. PCM or DFD)
+	 * @param uncertaintySourceCollection Uncertainty source collection model element, which contains the uncertainty sources
+	 * @param uncertaintySourceType Uncertainty source type (e.g. PCM or DFD)
+	 * @param indices List of indices that will be kept
+	 */
+	public UncertaintySourceManager(UncertaintySourceCollection uncertaintySourceCollection,
+									UncertaintySourceType uncertaintySourceType, List<Integer> indices) {
+
+		this.uncertaintySourceType = uncertaintySourceType;
+		this.validatedUncertaintySources = this.validateUncertaintySources(uncertaintySourceCollection);
+		this.stringFilter = Optional.empty();
+		this.indices = Optional.of(indices);
 	}
 
 	/**
@@ -39,6 +77,18 @@ public class UncertaintySourceManager {
 	 * @return Returns a list of all uncertainty sources in the model
 	 */
 	public List<UncertaintySource> getUncertaintySources() {
+		if (this.stringFilter.isPresent()) {
+			return this.validatedUncertaintySources.stream()
+					.filter(it -> it.getEntityName().contains(this.stringFilter.get()))
+					.collect(Collectors.toUnmodifiableList());
+		}
+		if (this.indices.isPresent()) {
+			List<UncertaintySource> result = new ArrayList<>();
+			for (int index : this.indices.get()) {
+				result.add(this.validatedUncertaintySources.get(index));
+			}
+			return Collections.unmodifiableList(result);
+		}
 		return Collections.unmodifiableList(this.validatedUncertaintySources);
 	}
 

@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
  * Uncertain flows may be created with {@link UncertainFlowGraphCollection#createUncertainFlows()}
  */
 public interface UncertainFlowGraphCollection {
-	static final String NUMBER_MESSAGE = "Global: %d, TFG-based: %d, UncertainTFG-based: %d";
+	String NUMBER_MESSAGE = "Global: %d, TFG-based: %d, UncertainTFG-based: %d";
 
 	/**
 	 * Create an {@link UncertainFlowGraphCollection} with uncertain transpose flow graphs that were created by the stored uncertainty scenarios
@@ -22,6 +22,6 @@ public interface UncertainFlowGraphCollection {
 	int getUncertaintyAmountUncertainTFG();
 
 	default void printUncertaintyMessage(Logger logger) {
-		logger.error(NUMBER_MESSAGE.formatted(this.getUncertaintyAmountGlobal(), this.getUncertaintyAmountTFG(), this.getUncertaintyAmountUncertainTFG()));
+		logger.info(NUMBER_MESSAGE.formatted(this.getUncertaintyAmountGlobal(), this.getUncertaintyAmountTFG(), this.getUncertaintyAmountUncertainTFG()));
 	}
 }
