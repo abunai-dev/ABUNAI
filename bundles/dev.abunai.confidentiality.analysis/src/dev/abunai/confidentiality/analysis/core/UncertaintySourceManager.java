@@ -49,27 +49,12 @@ public class UncertaintySourceManager {
 	 * @param filter String filter that the uncertainty source name must contain
 	 */
 	public UncertaintySourceManager(UncertaintySourceCollection uncertaintySourceCollection,
-									UncertaintySourceType uncertaintySourceType, String filter) {
+									UncertaintySourceType uncertaintySourceType, Optional<String> filter, Optional<List<Integer>> indices) {
 
 		this.uncertaintySourceType = uncertaintySourceType;
 		this.validatedUncertaintySources = this.validateUncertaintySources(uncertaintySourceCollection);
-		this.stringFilter = Optional.of(filter);
-		this.indices = Optional.empty();
-	}
-
-	/**
-	 * Create a new uncertainty source manager with the given uncertainty source collection model element and the type of uncertainty sources (e.g. PCM or DFD)
-	 * @param uncertaintySourceCollection Uncertainty source collection model element, which contains the uncertainty sources
-	 * @param uncertaintySourceType Uncertainty source type (e.g. PCM or DFD)
-	 * @param indices List of indices that will be kept
-	 */
-	public UncertaintySourceManager(UncertaintySourceCollection uncertaintySourceCollection,
-									UncertaintySourceType uncertaintySourceType, List<Integer> indices) {
-
-		this.uncertaintySourceType = uncertaintySourceType;
-		this.validatedUncertaintySources = this.validateUncertaintySources(uncertaintySourceCollection);
-		this.stringFilter = Optional.empty();
-		this.indices = Optional.of(indices);
+		this.stringFilter = filter;
+		this.indices = indices;
 	}
 
 	/**

@@ -17,10 +17,14 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentialityAnalysis implements UncertaintyAwareConfidentialityAnalysis {
 	private final Logger logger = Logger.getLogger(DFDUncertaintyAwareConfidentialityAnalysis.class);
 	private UncertaintySourceManager uncertaintySourceManager;
+	private final Optional<String> stringFilter;
+	private final Optional<List<Integer>> indicesFilter;
 
 	public DFDUncertaintyAwareConfidentialityAnalysis(DFDUncertaintyResourceProvider resourceProvider,
-			Optional<Class<? extends Plugin>> modelProjectActivator, String modelProjectName) {
+			Optional<Class<? extends Plugin>> modelProjectActivator, String modelProjectName, Optional<String> stringFilter, Optional<List<Integer>> indicesFilter) {
 		super(resourceProvider, modelProjectActivator, modelProjectName);
+		this.stringFilter = stringFilter;
+		this.indicesFilter = indicesFilter;
 	}
 
 	@Override
@@ -37,12 +41,12 @@ public class DFDUncertaintyAwareConfidentialityAnalysis extends DFDConfidentiali
 	public void initializeAnalysis() {
 		super.initializeAnalysis();
 		this.uncertaintySourceManager = new UncertaintySourceManager(
-					this.getResourceProvider().getUncertaintySourceCollection(), UncertaintySourceType.DFD);
+					this.getResourceProvider().getUncertaintySourceCollection(), UncertaintySourceType.DFD, stringFilter, indicesFilter);
 	}
 	
 	@Override
 	public DFDUncertainFlowGraphCollection findFlowGraph() {
-		return new DFDUncertainFlowGraphCollection(this.getResourceProvider());
+		return new DFDUncertainFlowGraphCollection(this.getResourceProvider(), this.uncertaintySourceManager);
 	}
 	
 	@Override

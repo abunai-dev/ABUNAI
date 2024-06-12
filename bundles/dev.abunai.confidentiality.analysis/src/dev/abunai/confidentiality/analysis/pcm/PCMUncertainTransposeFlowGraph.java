@@ -24,21 +24,24 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintyS
 public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implements UncertainTransposeFlowGraph {
 	private final Logger logger = Logger.getLogger(PCMUncertainTransposeFlowGraph.class);
 	private final Optional<UncertainState> uncertainState;
+	private final UncertaintySourceManager uncertaintySourceManager;
 	private List<? extends UncertaintySource> relevantUncertaintySources;
 
 
 	public PCMUncertainTransposeFlowGraph(AbstractVertex<?> sink,
-										  List<? extends UncertaintySource> relevantUncertaintySources) {
+										  List<? extends UncertaintySource> relevantUncertaintySources, UncertaintySourceManager uncertaintySourceManager) {
 		super(sink);
 		this.uncertainState = Optional.empty();
 		this.relevantUncertaintySources = relevantUncertaintySources;
+		this.uncertaintySourceManager = uncertaintySourceManager;
 	}
 	
 	public PCMUncertainTransposeFlowGraph(AbstractVertex<?> sink,
-										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
+										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState, UncertaintySourceManager uncertaintySourceManager) {
 		super(sink);
 		this.uncertainState = Optional.of(uncertainState);
 		this.relevantUncertaintySources = relevantUncertaintySources;
+		this.uncertaintySourceManager = uncertaintySourceManager;
 	}
 
 	@Override
@@ -140,14 +143,14 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		AbstractPCMVertex<?> pcmSink = (AbstractPCMVertex<?>) this.sink;
 		AbstractPCMVertex<?> clonedSink = pcmSink.copy(mapping);
 
-		return new PCMUncertainTransposeFlowGraph(clonedSink, this.relevantUncertaintySources);
+		return new PCMUncertainTransposeFlowGraph(clonedSink, this.relevantUncertaintySources, this.uncertaintySourceManager);
 	}
 
 	public PCMUncertainTransposeFlowGraph copy(Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping, UncertainState uncertainState) {
 		AbstractPCMVertex<?> pcmSink = (AbstractPCMVertex<?>) this.sink;
 		AbstractPCMVertex<?> clonedSink = pcmSink.copy(mapping);
 
-		return new PCMUncertainTransposeFlowGraph(clonedSink, this.relevantUncertaintySources, uncertainState);
+		return new PCMUncertainTransposeFlowGraph(clonedSink, this.relevantUncertaintySources, uncertainState, this.uncertaintySourceManager);
 	}
 
 	@Override
@@ -170,5 +173,9 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 	@Override
 	public UncertainState getUncertainState() {
 		return this.uncertainState.orElseThrow();
+	}
+
+	public UncertaintySourceManager getUncertaintySourceManager() {
+		return uncertaintySourceManager;
 	}
 }

@@ -20,17 +20,20 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintyS
 
 public class PCMUncertainFlowGraphCollection extends PCMFlowGraphCollection implements UncertainFlowGraphCollection {
 	private final Logger logger = Logger.getLogger(PCMUncertainFlowGraphCollection.class);
+	private final UncertaintySourceManager uncertaintySourceManager;
 
-	public PCMUncertainFlowGraphCollection(PCMResourceProvider resourceProvider) {
+	public PCMUncertainFlowGraphCollection(PCMResourceProvider resourceProvider, UncertaintySourceManager uncertaintySourceManager) {
 		super(resourceProvider);
+		this.uncertaintySourceManager = uncertaintySourceManager;
 		if (!(this.resourceProvider instanceof PCMResourceProvider pcmResourceProvder)) {
             logger.error("Cannot find partial flow graphs for non-pcm resource provider");
             throw new IllegalArgumentException();
 		}
 	}
 	
-	public PCMUncertainFlowGraphCollection(List<PCMUncertainTransposeFlowGraph> partialFlowGraphs, PCMResourceProvider resourceProvider) {
+	public PCMUncertainFlowGraphCollection(List<PCMUncertainTransposeFlowGraph> partialFlowGraphs, PCMResourceProvider resourceProvider, UncertaintySourceManager uncertaintySourceManager) {
 		super(partialFlowGraphs, resourceProvider);
+		this.uncertaintySourceManager = uncertaintySourceManager;
 		if (!(this.resourceProvider instanceof PCMResourceProvider pcmResourceProvider)) {
             logger.error("Cannot find partial flow graphs for non-pcm resource provider");
             throw new IllegalArgumentException();
@@ -43,7 +46,7 @@ public class PCMUncertainFlowGraphCollection extends PCMFlowGraphCollection impl
 				.map(PCMUncertainTransposeFlowGraph.class::cast)
 				.flatMap(it -> it.determineAlternativeTransposeFlowGraphs((PCMUncertaintyResourceProvider) this.resourceProvider).stream())
 				.toList();
-		PCMUncertainFlowGraphCollection result = new PCMUncertainFlowGraphCollection(uncertainPartialFlows, (PCMUncertaintyResourceProvider) resourceProvider);
+		PCMUncertainFlowGraphCollection result = new PCMUncertainFlowGraphCollection(uncertainPartialFlows, (PCMUncertaintyResourceProvider) resourceProvider, uncertaintySourceManager);
 		result.printUncertaintyMessage(this.logger);
 		return result;
 	}
@@ -58,7 +61,7 @@ public class PCMUncertainFlowGraphCollection extends PCMFlowGraphCollection impl
 		
 		return new PCMTransposeFlowGraphFinder(pcmResourceProvider).findTransposeFlowGraphs().stream()
 				.map(PCMTransposeFlowGraph.class::cast)
-				.map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.determineRelevantUncertaintySource(it, uncertaintySourceManager, pcmResourceProvider)))
+				.map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.determineRelevantUncertaintySource(it, uncertaintySourceManager, pcmResourceProvider), uncertaintySourceManager))
 				.toList();
 	}
 

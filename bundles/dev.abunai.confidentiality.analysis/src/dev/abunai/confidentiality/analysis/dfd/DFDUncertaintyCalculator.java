@@ -198,7 +198,7 @@ public class DFDUncertaintyCalculator {
 
         DFDTransposeFlowGraphFinder finder = new DFDTransposeFlowGraphFinder(resourceProvider);
         List<DFDUncertainTransposeFlowGraph> followingFlowGraphs = finder.findTransposeFlowGraphs(List.of(replacingNode)).stream()
-                .map(it -> new DFDUncertainTransposeFlowGraph(it.getSink(), currentTransposeFlowGraph.getRelevantUncertaintySources(), uncertainState))
+                .map(it -> new DFDUncertainTransposeFlowGraph(it.getSink(), currentTransposeFlowGraph.getRelevantUncertaintySources(), uncertainState, currentTransposeFlowGraph.getUncertaintySourceManager()))
                 .toList();
 
         Flow replacingFlow = EcoreUtil.copy(targetFlow);

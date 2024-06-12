@@ -16,11 +16,15 @@ public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfi
 		implements UncertaintyAwareConfidentialityAnalysis {
 
 	private final Logger logger = Logger.getLogger(PCMUncertaintyAwareConfidentialityAnalysis.class);
+	private final Optional<String> nameFilter;
+	private final Optional<List<Integer>> indicesFilter;
 	private UncertaintySourceManager uncertaintySourceManager;
 
 	public PCMUncertaintyAwareConfidentialityAnalysis(PCMUncertaintyResourceProvider resourceProvider,
-			Optional<Class<? extends Plugin>> modelProjectActivator, String modelProjectName) {
+			Optional<Class<? extends Plugin>> modelProjectActivator, String modelProjectName, Optional<String> nameFilter, Optional<List<Integer>> indicesFilter) {
 		super(resourceProvider, modelProjectName, modelProjectActivator);
+		this.nameFilter = nameFilter;
+		this.indicesFilter = indicesFilter;
 	}
 
 	@Override
@@ -37,12 +41,12 @@ public class PCMUncertaintyAwareConfidentialityAnalysis extends PCMDataFlowConfi
 	public void initializeAnalysis() {
 		super.initializeAnalysis();
 		this.uncertaintySourceManager = new UncertaintySourceManager(
-					this.getResourceProvider().getUncertaintySourceCollection(), UncertaintySourceType.PCM);
+					this.getResourceProvider().getUncertaintySourceCollection(), UncertaintySourceType.PCM, this.nameFilter, this.indicesFilter);
 	}
 	
 	@Override
 	public PCMUncertainFlowGraphCollection findFlowGraph() {
-		return new PCMUncertainFlowGraphCollection(this.getResourceProvider());
+		return new PCMUncertainFlowGraphCollection(this.getResourceProvider(), this.uncertaintySourceManager);
 	}
 	
 	@Override

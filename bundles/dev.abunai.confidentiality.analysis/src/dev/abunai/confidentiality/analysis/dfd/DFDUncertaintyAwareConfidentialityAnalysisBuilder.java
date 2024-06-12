@@ -6,6 +6,9 @@ import org.dataflowanalysis.analysis.dfd.resource.DFDResourceProvider;
 import org.dataflowanalysis.analysis.utils.ResourceUtils;
 import org.eclipse.core.runtime.Plugin;
 
+import java.util.List;
+import java.util.Optional;
+
 /**
  * Builder class of {@link DFDUncertaintyAwareConfidentialityAnalysis}
  */
@@ -14,6 +17,8 @@ public class DFDUncertaintyAwareConfidentialityAnalysisBuilder extends DFDDataFl
 	private final Logger logger = Logger.getLogger(DFDUncertaintyAwareConfidentialityAnalysisBuilder.class);
 
 	private String relativeUncertaintyModelPath;
+	private Optional<String> stringFilter;
+	private Optional<List<Integer>> indicesFilter;
 
 	/**
 	 * Sets the path the uncertainty model is located
@@ -61,6 +66,16 @@ public class DFDUncertaintyAwareConfidentialityAnalysisBuilder extends DFDDataFl
 		logger.error("Custom resource providers are not supported by the uncertainty-aware confidentiality analysis.");
 	}
 
+	public DFDUncertaintyAwareConfidentialityAnalysisBuilder useFilter(String nameFilter) {
+		this.stringFilter = Optional.of(nameFilter);
+		return this;
+	}
+
+	public DFDUncertaintyAwareConfidentialityAnalysisBuilder useFilter(List<Integer> indicesFilter) {
+		this.indicesFilter = Optional.of(indicesFilter);
+		return this;
+	}
+
 	@Override
 	public void validate() {
 		super.validate();
@@ -81,7 +96,7 @@ public class DFDUncertaintyAwareConfidentialityAnalysisBuilder extends DFDDataFl
 				ResourceUtils.createRelativePluginURI(this.relativeUncertaintyModelPath, modelProjectName));
 
 		return new DFDUncertaintyAwareConfidentialityAnalysis(resourceProvider, this.pluginActivator,
-				this.modelProjectName);
+				this.modelProjectName, this.stringFilter, this.indicesFilter);
 	}
 
 }
