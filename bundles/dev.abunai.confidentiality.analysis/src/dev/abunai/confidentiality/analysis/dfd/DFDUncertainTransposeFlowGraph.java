@@ -129,7 +129,9 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 				alternateTransposeFlowGraphs.add(currentPartialFlowGraph.copy(new IdentityHashMap<>(), currentPartialFlowGraph.uncertainState.orElseGet(UncertainState::new)));
 				continue;
 			}
-			relevantUncertaintySources.add(uncertaintySource.get());
+			if (!relevantUncertaintySources.contains(uncertaintySource.get())){
+				relevantUncertaintySources.add(uncertaintySource.get());
+			}
 			currentTransposeFlowGraphs.addAll(this.applyUncertaintySource(uncertaintySource.get(), currentPartialFlowGraph, calculator));
 		}
 		alternateTransposeFlowGraphs.forEach(it -> it.setRelevantUncertaintySources(relevantUncertaintySources));
@@ -210,6 +212,14 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 
 	public void setRelevantUncertaintySources(List<? extends UncertaintySource> relevantUncertaintySources) {
 		this.relevantUncertaintySources = relevantUncertaintySources;
+	}
+
+	@Override
+	public List<? extends UncertaintyScenario> getSelectedUncertaintyScenarios() {
+		if (this.uncertainState.isEmpty()) {
+			return List.of();
+		}
+		return this.uncertainState.get().getSelectedUncertaintyScenarios();
 	}
 
 	@Override

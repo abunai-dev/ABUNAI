@@ -5,7 +5,6 @@ import org.dataflowanalysis.analysis.pcm.PCMDataFlowConfidentialityAnalysisBuild
 import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
 import org.dataflowanalysis.analysis.utils.ResourceUtils;
 import org.eclipse.core.runtime.Plugin;
-
 public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFlowConfidentialityAnalysisBuilder {
 
 	private final Logger logger = Logger.getLogger(PCMUncertaintyAwareConfidentialityAnalysisBuilder.class);

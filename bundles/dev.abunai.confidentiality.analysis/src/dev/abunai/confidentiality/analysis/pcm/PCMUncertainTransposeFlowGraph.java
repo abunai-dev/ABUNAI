@@ -92,7 +92,9 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 				alternateTransposeFlowGraphs.add(currentTransposeFlowGraph);
 				continue;
 			}
-			relevantUncertaintySources.add(uncertaintySource.get());
+			if (!relevantUncertaintySources.contains(uncertaintySource.get())){
+				relevantUncertaintySources.add(uncertaintySource.get());
+			}
 			currentTransposeFlowGraphs.addAll(this.applyUncertaintySource(uncertaintySource.get(), currentTransposeFlowGraph, calculator));
 		}
 		alternateTransposeFlowGraphs.forEach(it -> it.setRelevantUncertaintySources(relevantUncertaintySources));
@@ -104,7 +106,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 	 * @param currentPartialFlowGraph Current partial flow graph of which the next applied uncertainty source should be calculated
 	 * @param relevantUncertaintySources List of uncertainty sources that were already applied
 	 * @param uncertaintySourceManager Uncertainty source manager providing uncertainty sources
-	 * @param dfdUncertaintyResourceProvider Resource provider providing access to the model
+	 * @param pcmUncertaintyResourceProvider Resource provider providing access to the model
 	 * @return Returns an Optional containing the first encountered uncertainty source
 	 */
 	private Optional<? extends PCMUncertaintySource> getFirstUncertaintySource(PCMUncertainTransposeFlowGraph currentPartialFlowGraph, List<PCMUncertaintySource> relevantUncertaintySources, UncertaintySourceManager uncertaintySourceManager, PCMUncertaintyResourceProvider pcmUncertaintyResourceProvider) {
@@ -152,7 +154,15 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 	public List<? extends UncertaintySource> getRelevantUncertaintySources() {
 		return this.relevantUncertaintySources;
 	}
-	
+
+	@Override
+	public List<? extends UncertaintyScenario> getSelectedUncertaintyScenarios() {
+		if (this.uncertainState.isEmpty()) {
+			return List.of();
+		}
+		return this.uncertainState.get().getSelectedUncertaintyScenarios();
+	}
+
 	public void setRelevantUncertaintySources(List<? extends UncertaintySource> relevantUncertaintySources) {
 		this.relevantUncertaintySources = relevantUncertaintySources;
 	}

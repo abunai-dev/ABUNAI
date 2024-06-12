@@ -3,6 +3,10 @@ package dev.abunai.confidentiality.analysis.pcm;
 import java.util.List;
 
 import dev.abunai.confidentiality.analysis.core.UncertainFlowGraphCollection;
+import dev.abunai.confidentiality.analysis.core.UncertainState;
+import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
+import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
+import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.pcm.core.PCMFlowGraphCollection;
@@ -39,7 +43,9 @@ public class PCMUncertainFlowGraphCollection extends PCMFlowGraphCollection impl
 				.map(PCMUncertainTransposeFlowGraph.class::cast)
 				.flatMap(it -> it.determineAlternativeTransposeFlowGraphs((PCMUncertaintyResourceProvider) this.resourceProvider).stream())
 				.toList();
-		return new PCMUncertainFlowGraphCollection(uncertainPartialFlows, (PCMUncertaintyResourceProvider) resourceProvider);
+		PCMUncertainFlowGraphCollection result = new PCMUncertainFlowGraphCollection(uncertainPartialFlows, (PCMUncertaintyResourceProvider) resourceProvider);
+		result.printUncertaintyMessage(this.logger);
+		return result;
 	}
 
 	@Override
@@ -63,5 +69,39 @@ public class PCMUncertainFlowGraphCollection extends PCMFlowGraphCollection impl
 				.map(PCMUncertaintySource.class::cast)
 				.filter(pcmQueryHelper::hasTargetNode)
 				.toList();
+	}
+
+	@Override
+	public int getUncertaintyAmountGlobal() {
+		if (!(resourceProvider instanceof PCMUncertaintyResourceProvider pcmUncertaintyResourceProvider)) {
+			logger.error("Resource provider is not an pcm uncertainty resource provider");
+			throw new IllegalStateException();
+		}
+		List<UncertainState> allStates = UncertainState.createAllUncertainStates(pcmUncertaintyResourceProvider.getUncertaintySourceCollection().getSources());
+		return this.getTransposeFlowGraphs().size() * allStates.size();
+	}
+
+	@Override
+	public int getUncertaintyAmountTFG() {
+		int result = 0;
+		for(AbstractTransposeFlowGraph transposeFlowGraph : this.getTransposeFlowGraphs()) {
+			UncertainTransposeFlowGraph uncertainTransposeFlowGraph = (UncertainTransposeFlowGraph) transposeFlowGraph;
+			List<? extends UncertaintyScenario> uncertaintyScenarios = uncertainTransposeFlowGraph.getRelevantUncertaintySources().stream()
+					.map(UncertaintyUtils::getUncertaintyScenarios)
+					.flatMap(List::stream)
+					.toList();
+			result += uncertaintyScenarios.size();
+		}
+		return result;
+	}
+
+	@Override
+	public int getUncertaintyAmountUncertainTFG() {
+		int result = 0;
+		for(AbstractTransposeFlowGraph transposeFlowGraph : this.getTransposeFlowGraphs()) {
+			UncertainTransposeFlowGraph uncertainTransposeFlowGraph = (UncertainTransposeFlowGraph) transposeFlowGraph;
+			result += uncertainTransposeFlowGraph.getSelectedUncertaintyScenarios().size();
+		}
+		return result;
 	}
 }

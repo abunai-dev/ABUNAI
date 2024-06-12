@@ -1,8 +1,13 @@
 package dev.abunai.confidentiality.analysis.dfd;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import dev.abunai.confidentiality.analysis.core.UncertainFlowGraphCollection;
+import dev.abunai.confidentiality.analysis.core.UncertainState;
+import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
+import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
+import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
 import org.dataflowanalysis.analysis.dfd.core.DFDFlowGraphCollection;
@@ -46,7 +51,9 @@ public class DFDUncertainFlowGraphCollection extends DFDFlowGraphCollection impl
 				.map(DFDUncertainTransposeFlowGraph.class::cast)
 				.flatMap(it -> it.determineAlternativeTransposeFlowGraphs(this.resourceProvider).stream())
 				.toList();
-		return new DFDUncertainFlowGraphCollection(uncertainPartialFlows, resourceProvider);
+		DFDUncertainFlowGraphCollection result = new DFDUncertainFlowGraphCollection(uncertainPartialFlows, resourceProvider);
+		result.printUncertaintyMessage(this.logger);
+		return result;
 	}
 
 	@Override
@@ -76,5 +83,39 @@ public class DFDUncertainFlowGraphCollection extends DFDFlowGraphCollection impl
 				.map(DFDUncertaintySource.class::cast)
 				.filter(dfdQueryHelper::hasTargetNode)
 				.toList();
+	}
+
+	@Override
+	public int getUncertaintyAmountGlobal() {
+		List<UncertainState> allStates = UncertainState.createAllUncertainStates(this.resourceProvider.getUncertaintySourceCollection().getSources());
+		return this.getTransposeFlowGraphs().size() * allStates.size();
+	}
+
+	@Override
+	public int getUncertaintyAmountTFG() {
+		int result = 0;
+		for(AbstractTransposeFlowGraph transposeFlowGraph : this.getTransposeFlowGraphs()) {
+			UncertainTransposeFlowGraph uncertainTransposeFlowGraph = (UncertainTransposeFlowGraph) transposeFlowGraph;
+			List<? extends UncertaintyScenario> uncertaintyScenarios = uncertainTransposeFlowGraph.getRelevantUncertaintySources().stream()
+					.map(UncertaintyUtils::getUncertaintyScenarios)
+					.flatMap(List::stream)
+					.toList();
+			result += uncertaintyScenarios.size();
+		}
+		return result;
+	}
+
+	@Override
+	public int getUncertaintyAmountUncertainTFG() {
+		int result = 0;
+		for(AbstractTransposeFlowGraph transposeFlowGraph : this.getTransposeFlowGraphs()) {
+			UncertainTransposeFlowGraph uncertainTransposeFlowGraph = (UncertainTransposeFlowGraph) transposeFlowGraph;
+			if (uncertainTransposeFlowGraph.getSelectedUncertaintyScenarios().isEmpty()) {
+				result += 1;
+			} else {
+				result += uncertainTransposeFlowGraph.getSelectedUncertaintyScenarios().size();
+			}
+		}
+		return result;
 	}
 }
