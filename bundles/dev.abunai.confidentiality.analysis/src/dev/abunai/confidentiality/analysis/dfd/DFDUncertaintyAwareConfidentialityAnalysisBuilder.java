@@ -17,8 +17,8 @@ public class DFDUncertaintyAwareConfidentialityAnalysisBuilder extends DFDDataFl
 	private final Logger logger = Logger.getLogger(DFDUncertaintyAwareConfidentialityAnalysisBuilder.class);
 
 	private String relativeUncertaintyModelPath;
-	private Optional<String> stringFilter;
-	private Optional<List<Integer>> indicesFilter;
+	private Optional<String> stringFilter = Optional.empty();
+	private Optional<List<Integer>> indicesFilter = Optional.empty();
 
 	/**
 	 * Sets the path the uncertainty model is located

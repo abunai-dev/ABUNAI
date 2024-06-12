@@ -31,9 +31,10 @@ public class DFDUncertainFlowGraphCollection extends DFDFlowGraphCollection impl
 	 * @param resourceProvider Resource provider used to find transpose flow graphs
 	 */
 	public DFDUncertainFlowGraphCollection(DFDUncertaintyResourceProvider resourceProvider, UncertaintySourceManager uncertaintySourceManager) {
-		super(resourceProvider);
+		super();
 		this.resourceProvider = resourceProvider;
 		this.uncertaintySourceManager = uncertaintySourceManager;
+		super.initialize(resourceProvider);
 	}
 
 	/**

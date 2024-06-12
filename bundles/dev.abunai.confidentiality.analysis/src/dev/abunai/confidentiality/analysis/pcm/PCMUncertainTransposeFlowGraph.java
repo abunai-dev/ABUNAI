@@ -81,7 +81,6 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		}
 
 		PCMUncertaintyCalculator calculator = new PCMUncertaintyCalculator(pcmUncertaintyResourceProvider.getUncertaintySourceCollection().getSources(), pcmUncertaintyResourceProvider);
-		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(pcmUncertaintyResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.PCM);
 
 		List<PCMUncertainTransposeFlowGraph> alternateTransposeFlowGraphs = new ArrayList<>();
 		Deque<PCMUncertainTransposeFlowGraph> currentTransposeFlowGraphs = new ArrayDeque<>();

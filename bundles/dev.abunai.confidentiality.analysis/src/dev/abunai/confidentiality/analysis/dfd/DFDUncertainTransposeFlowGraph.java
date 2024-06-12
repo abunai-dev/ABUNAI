@@ -118,7 +118,6 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		}
 
 		DFDUncertaintyCalculator calculator = new DFDUncertaintyCalculator(dfdUncertaintyResourceProvider);
-		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(dfdUncertaintyResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.DFD);
 
 		List<DFDUncertainTransposeFlowGraph> alternateTransposeFlowGraphs = new ArrayList<>();
 		Deque<DFDUncertainTransposeFlowGraph> currentTransposeFlowGraphs = new ArrayDeque<>();
