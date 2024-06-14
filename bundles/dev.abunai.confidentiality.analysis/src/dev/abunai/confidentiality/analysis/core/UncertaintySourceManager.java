@@ -59,6 +59,10 @@ public class UncertaintySourceManager {
 
 	/**
 	 * Returns a list of all uncertainty sources contained in the uncertainty source collection
+	 * <p/>
+	 * If a string filter was provided during initialization, uncertainty sources will be filtered using this filter.
+	 * If a list of indices was provided during initialization, uncertainty sources will be filtered using this filter.
+	 * Otherwise, all uncertainty sources will be returned
 	 * @return Returns a list of all uncertainty sources in the model
 	 */
 	public List<UncertaintySource> getUncertaintySources() {
