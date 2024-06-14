@@ -15,6 +15,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDExternalUnce
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource;
 
+import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraphFinder;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.dataflowanalysis.dfd.datadictionary.AbstractAssignment;
@@ -26,8 +27,10 @@ import org.dataflowanalysis.dfd.dataflowdiagram.DataFlowDiagram;
 import org.dataflowanalysis.dfd.dataflowdiagram.Flow;
 import org.dataflowanalysis.dfd.dataflowdiagram.Node;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import tools.mdsd.modelingfoundations.identifier.NamedElement;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +42,7 @@ import java.util.stream.Stream;
  * Calculator used to determine the impact of an uncertainty state on a transpose flow graph
  */
 public class DFDUncertaintyCalculator {
+    private final Logger logger = Logger.getLogger(DFDUncertaintyCalculator.class);
     private final DFDUncertaintyResourceProvider resourceProvider;
 
     /**
@@ -134,10 +138,8 @@ public class DFDUncertaintyCalculator {
         if (targetedNodes.isEmpty()) {
             return currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState);
         }
-        
-        // TODO Behavior: Input pin names must be called equal. Output pin must have equal name
-        // TODO Behavior: Move replacement assignment to targeted behavior
 
+        targetedNodes.forEach(it -> this.replaceAssignments(addedAssignments, it));
         Behaviour replacingBehavior = this.copyBehavior(targetBehaviour, Stream.concat(filteredAssignments.stream(), addedAssignments.stream()).toList());
 
         Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
@@ -149,6 +151,36 @@ public class DFDUncertaintyCalculator {
         });
         
         return currentTransposeFlowGraph.copy(mapping, uncertainState);
+    }
+
+    private void replaceAssignments(List<AbstractAssignment> addedAssignments, DFDVertex vertex) {
+        List<String> inputPins = vertex.getReferencedElement().getBehaviour().getInPin().stream().map(NamedElement::getEntityName).toList();
+        List<String> outputPins = vertex.getReferencedElement().getBehaviour().getOutPin().stream().map(NamedElement::getEntityName).toList();
+        for(AbstractAssignment assignment : addedAssignments) {
+            if (!assignment.getInputPins().stream()
+                    .map(NamedElement::getEntityName)
+                    .allMatch(inputPins::contains)) {
+                logger.error("Replacing assignment contains unknown input pin!");
+                throw new IllegalArgumentException();
+            }
+            if(!outputPins.contains(assignment.getOutputPin().getEntityName())) {
+                logger.error("Replacing assignment contains unknown output pin!");
+                throw new IllegalArgumentException();
+            }
+            List<Pin> mappedInputPins = assignment.getInputPins().stream()
+                    .map(pin -> vertex.getReferencedElement().getBehaviour().getInPin().stream()
+                            .filter(it -> it.getEntityName().equals(pin.getEntityName()))
+                            .findAny().orElseThrow()
+                    )
+                    .toList();
+            assignment.getInputPins().clear();
+            assignment.getInputPins().addAll(mappedInputPins);
+
+            Pin mappedOutputPin = vertex.getReferencedElement().getBehaviour().getOutPin().stream()
+                    .filter( it -> it.getEntityName().equals(assignment.getOutputPin().getEntityName()))
+                    .findAny().orElseThrow();
+            assignment.setOutputPin(mappedOutputPin);
+        }
     }
 
     /**
