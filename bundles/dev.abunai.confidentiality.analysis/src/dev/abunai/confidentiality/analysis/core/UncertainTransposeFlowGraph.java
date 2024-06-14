@@ -2,6 +2,7 @@ package dev.abunai.confidentiality.analysis.core;
 
 import java.util.List;
 
+import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import org.dataflowanalysis.analysis.core.AbstractVertex;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
 
@@ -40,6 +41,8 @@ public interface UncertainTransposeFlowGraph {
 	 * @return Returns a list of all relevant uncertainty sources to the transpose flow graph
 	 */
 	List<? extends UncertaintySource> getRelevantUncertaintySources();
+
+	List<? extends UncertaintyScenario> getSelectedUncertaintyScenarios();
 
 	default boolean containsDefaultScenario() {
 		return this.getUncertainState().getSelectedUncertaintyScenarios().stream().allMatch(it -> UncertaintyUtils.isDefaultScenario((UncertaintySource) it.eContainer(), it));

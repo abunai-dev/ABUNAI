@@ -6,11 +6,16 @@ import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
 import org.dataflowanalysis.analysis.utils.ResourceUtils;
 import org.eclipse.core.runtime.Plugin;
 
+import java.util.List;
+import java.util.Optional;
+
 public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFlowConfidentialityAnalysisBuilder {
 
 	private final Logger logger = Logger.getLogger(PCMUncertaintyAwareConfidentialityAnalysisBuilder.class);
 
 	private String relativeUncertaintyModelPath;
+	private Optional<String> stringFilter = Optional.empty();
+	private Optional<List<Integer>> indicesFilter = Optional.empty();
 
 	@Override
 	public PCMUncertaintyAwareConfidentialityAnalysisBuilder standalone() {
@@ -61,6 +66,16 @@ public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFl
 		return this;
 	}
 
+	public PCMUncertaintyAwareConfidentialityAnalysisBuilder useFilter(String nameFilter) {
+		this.stringFilter = Optional.of(nameFilter);
+		return this;
+	}
+
+	public PCMUncertaintyAwareConfidentialityAnalysisBuilder useFilter(List<Integer> indicesFilter) {
+		this.indicesFilter = Optional.of(indicesFilter);
+		return this;
+	}
+
 	@Override
 	public void validate() {
 		super.validate();
@@ -81,6 +96,6 @@ public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFl
 				ResourceUtils.createRelativePluginURI(this.relativeNodeCharacteristicsPath, modelProjectName),
 				ResourceUtils.createRelativePluginURI(this.relativeUncertaintyModelPath, modelProjectName));
 
-		return new PCMUncertaintyAwareConfidentialityAnalysis(resourceProvider, pluginActivator, modelProjectName);
+		return new PCMUncertaintyAwareConfidentialityAnalysis(resourceProvider, pluginActivator, modelProjectName, this.stringFilter, this.indicesFilter);
 	}
 }

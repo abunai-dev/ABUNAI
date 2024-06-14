@@ -14,4 +14,10 @@
     </characteristics>
     <resourcecontainer href="default.resourceenvironment#_qvz80ITgEeywmO_IpTxeAg"/>
   </assignee>
+  <assignee xsi:type="nodecharacteristics:ResourceAssignee" id="_7jYKcSiSEe-oVsmCTbSh5A">
+    <characteristics id="_8_N2UCiSEe-oVsmCTbSh5A">
+      <type xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicTypes@1"/>
+      <values href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicEnumerations@1.literals@0"/>
+    </characteristics>
+  </assignee>
 </nodecharacteristics:Assignments>

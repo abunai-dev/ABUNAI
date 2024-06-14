@@ -24,21 +24,24 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintyS
 public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implements UncertainTransposeFlowGraph {
 	private final Logger logger = Logger.getLogger(PCMUncertainTransposeFlowGraph.class);
 	private final Optional<UncertainState> uncertainState;
+	private final UncertaintySourceManager uncertaintySourceManager;
 	private List<? extends UncertaintySource> relevantUncertaintySources;
 
 
 	public PCMUncertainTransposeFlowGraph(AbstractVertex<?> sink,
-										  List<? extends UncertaintySource> relevantUncertaintySources) {
+										  List<? extends UncertaintySource> relevantUncertaintySources, UncertaintySourceManager uncertaintySourceManager) {
 		super(sink);
 		this.uncertainState = Optional.empty();
 		this.relevantUncertaintySources = relevantUncertaintySources;
+		this.uncertaintySourceManager = uncertaintySourceManager;
 	}
 	
 	public PCMUncertainTransposeFlowGraph(AbstractVertex<?> sink,
-										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
+										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState, UncertaintySourceManager uncertaintySourceManager) {
 		super(sink);
 		this.uncertainState = Optional.of(uncertainState);
 		this.relevantUncertaintySources = relevantUncertaintySources;
+		this.uncertaintySourceManager = uncertaintySourceManager;
 	}
 
 	@Override
@@ -78,7 +81,6 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		}
 
 		PCMUncertaintyCalculator calculator = new PCMUncertaintyCalculator(pcmUncertaintyResourceProvider.getUncertaintySourceCollection().getSources(), pcmUncertaintyResourceProvider);
-		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(pcmUncertaintyResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.PCM);
 
 		List<PCMUncertainTransposeFlowGraph> alternateTransposeFlowGraphs = new ArrayList<>();
 		Deque<PCMUncertainTransposeFlowGraph> currentTransposeFlowGraphs = new ArrayDeque<>();
@@ -92,7 +94,9 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 				alternateTransposeFlowGraphs.add(currentTransposeFlowGraph);
 				continue;
 			}
-			relevantUncertaintySources.add(uncertaintySource.get());
+			if (!relevantUncertaintySources.contains(uncertaintySource.get())){
+				relevantUncertaintySources.add(uncertaintySource.get());
+			}
 			currentTransposeFlowGraphs.addAll(this.applyUncertaintySource(uncertaintySource.get(), currentTransposeFlowGraph, calculator));
 		}
 		alternateTransposeFlowGraphs.forEach(it -> it.setRelevantUncertaintySources(relevantUncertaintySources));
@@ -104,7 +108,7 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 	 * @param currentPartialFlowGraph Current partial flow graph of which the next applied uncertainty source should be calculated
 	 * @param relevantUncertaintySources List of uncertainty sources that were already applied
 	 * @param uncertaintySourceManager Uncertainty source manager providing uncertainty sources
-	 * @param dfdUncertaintyResourceProvider Resource provider providing access to the model
+	 * @param pcmUncertaintyResourceProvider Resource provider providing access to the model
 	 * @return Returns an Optional containing the first encountered uncertainty source
 	 */
 	private Optional<? extends PCMUncertaintySource> getFirstUncertaintySource(PCMUncertainTransposeFlowGraph currentPartialFlowGraph, List<PCMUncertaintySource> relevantUncertaintySources, UncertaintySourceManager uncertaintySourceManager, PCMUncertaintyResourceProvider pcmUncertaintyResourceProvider) {
@@ -138,21 +142,29 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 		AbstractPCMVertex<?> pcmSink = (AbstractPCMVertex<?>) this.sink;
 		AbstractPCMVertex<?> clonedSink = pcmSink.copy(mapping);
 
-		return new PCMUncertainTransposeFlowGraph(clonedSink, this.relevantUncertaintySources);
+		return new PCMUncertainTransposeFlowGraph(clonedSink, this.relevantUncertaintySources, this.uncertaintySourceManager);
 	}
 
 	public PCMUncertainTransposeFlowGraph copy(Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping, UncertainState uncertainState) {
 		AbstractPCMVertex<?> pcmSink = (AbstractPCMVertex<?>) this.sink;
 		AbstractPCMVertex<?> clonedSink = pcmSink.copy(mapping);
 
-		return new PCMUncertainTransposeFlowGraph(clonedSink, this.relevantUncertaintySources, uncertainState);
+		return new PCMUncertainTransposeFlowGraph(clonedSink, this.relevantUncertaintySources, uncertainState, this.uncertaintySourceManager);
 	}
 
 	@Override
 	public List<? extends UncertaintySource> getRelevantUncertaintySources() {
 		return this.relevantUncertaintySources;
 	}
-	
+
+	@Override
+	public List<? extends UncertaintyScenario> getSelectedUncertaintyScenarios() {
+		if (this.uncertainState.isEmpty()) {
+			return List.of();
+		}
+		return this.uncertainState.get().getSelectedUncertaintyScenarios();
+	}
+
 	public void setRelevantUncertaintySources(List<? extends UncertaintySource> relevantUncertaintySources) {
 		this.relevantUncertaintySources = relevantUncertaintySources;
 	}
@@ -160,5 +172,9 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 	@Override
 	public UncertainState getUncertainState() {
 		return this.uncertainState.orElseThrow();
+	}
+
+	public UncertaintySourceManager getUncertaintySourceManager() {
+		return uncertaintySourceManager;
 	}
 }

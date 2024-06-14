@@ -12,6 +12,10 @@ import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
 import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraphCollection;
 import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 
+/**
+ * The atomic external uncertainty test replaces the label of the Database {@code nonEU} with {@code EU}.
+ * The violation occurs in the default scenario of the uncertainty in the Database Node
+ */
 public class ExternalUncertaintyTest extends DFDTestBase {
 	@Override
 	protected String getFolderName() {
@@ -21,11 +25,6 @@ public class ExternalUncertaintyTest extends DFDTestBase {
 	@Override
 	protected String getFilesName() {
 		return "default";
-	}
-
-	@Override
-	protected String getBaseFolder() {
-		return "models";
 	}
 	
 	@Test

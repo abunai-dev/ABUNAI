@@ -13,6 +13,10 @@ import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The atomic component uncertainty test replaces the deployment location of the Database Service from Location {@code nonEU} with Location {@code EU}.
+ * The violation occurs in the default scenario starting at the save data action
+ */
 public class ComponentUncertaintyTest extends PCMTestBase {
 	@Override
     protected String getFolderName() {

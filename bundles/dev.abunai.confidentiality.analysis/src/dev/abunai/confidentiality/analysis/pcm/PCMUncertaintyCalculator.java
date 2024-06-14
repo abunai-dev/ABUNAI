@@ -1,6 +1,7 @@
 package dev.abunai.confidentiality.analysis.pcm;
 
 import dev.abunai.confidentiality.analysis.core.UncertainState;
+import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
@@ -154,7 +155,7 @@ public class PCMUncertaintyCalculator {
 
         AtomicReference<List<PCMUncertainTransposeFlowGraph>> result = new AtomicReference<>(new ArrayList<>());
         result.get().add(currentTransposeFlowGraph);
-        calledSEFFs.forEach(seff -> getReplacementsForSEFFCall(uncertainState, seff, result, List.of(replacement)));
+        calledSEFFs.forEach(seff -> getReplacementsForSEFFCall(uncertainState, seff, result, List.of(replacement), currentTransposeFlowGraph));
         return result.get();
     }
 
@@ -165,7 +166,7 @@ public class PCMUncertaintyCalculator {
      * @param result Reference in which the results for the replacement should be placed
      * @param context Replacement assembly contexts
      */
-    private void getReplacementsForSEFFCall(UncertainState uncertainState, ResourceDemandingSEFF seff, AtomicReference<List<PCMUncertainTransposeFlowGraph>> result, Collection<AssemblyContext> context) {
+    private void getReplacementsForSEFFCall(UncertainState uncertainState, ResourceDemandingSEFF seff, AtomicReference<List<PCMUncertainTransposeFlowGraph>> result, Collection<AssemblyContext> context, PCMUncertainTransposeFlowGraph uncertainTransposeFlowGraph) {
         StartAction startAction = PCMQueryUtils.getFirstStartActionInActionList(seff.getSteps_Behaviour()).orElseThrow();
         StopAction stopAction = PCMQueryUtils.getFirstStopActionInActionList(seff.getSteps_Behaviour()).orElseThrow();
 
@@ -180,7 +181,7 @@ public class PCMUncertaintyCalculator {
         OperationSignature signature = (OperationSignature) seff.getDescribedService__SEFF();
         PCMTransposeFlowGraphFinder finder = new PCMTransposeFlowGraphFinder(this.resourceProvider, context, signature.getParameters__OperationSignature());
         List<PCMUncertainTransposeFlowGraph> replacements = finder.findTransposeFlowGraphs(List.of(stopAction), List.of(startAction)).stream()
-                .map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.relevantUncertaintySources, uncertainState))
+                .map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.relevantUncertaintySources, uncertainState, uncertainTransposeFlowGraph.getUncertaintySourceManager()))
                 .toList();
         
         result.set(result.get().stream().map(tfg -> {
@@ -216,7 +217,7 @@ public class PCMUncertaintyCalculator {
         OperationSignature signature =  (OperationSignature) calledSEFF.seff().getDescribedService__SEFF();
         PCMTransposeFlowGraphFinder finder = new PCMTransposeFlowGraphFinder(this.resourceProvider, calledSEFF.context(), signature.getParameters__OperationSignature());
         List<PCMUncertainTransposeFlowGraph> replacements = finder.findTransposeFlowGraphs(List.of(stopAction), List.of(startAction)).stream()
-                .map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.relevantUncertaintySources, uncertainState))
+                .map(it -> new PCMUncertainTransposeFlowGraph(it.getSink(), this.relevantUncertaintySources, uncertainState, currentTransposeFlowGraph.getUncertaintySourceManager()))
                 .toList();
 
         List<PCMUncertainTransposeFlowGraph> results = new ArrayList<>();
@@ -357,7 +358,7 @@ public class PCMUncertaintyCalculator {
         ResourceAssignee replacement = uncertaintyScenario.getTarget();
         replacement.setResourcecontainer(target.getResourcecontainer());
         AbstractPCMVertex<?> newSink = this.copyWithProxies(new HashMap<>(), currentTransposeFlowGraph.getSink(), target ,replacement);
-        return new PCMUncertainTransposeFlowGraph(newSink, this.relevantUncertaintySources, uncertainState);
+        return new PCMUncertainTransposeFlowGraph(newSink, this.relevantUncertaintySources, uncertainState, currentTransposeFlowGraph.getUncertaintySourceManager());
     }
 
     /**
@@ -373,7 +374,7 @@ public class PCMUncertaintyCalculator {
         UsageAssignee replacement = uncertaintyScenario.getTarget();
         replacement.setUsagescenario(target.getUsagescenario());
         AbstractPCMVertex<?> newSink = this.copyWithProxies(new HashMap<>(), currentTransposeFlowGraph.getSink(), target ,replacement);
-        return new PCMUncertainTransposeFlowGraph(newSink, this.relevantUncertaintySources, uncertainState);
+        return new PCMUncertainTransposeFlowGraph(newSink, this.relevantUncertaintySources, uncertainState, currentTransposeFlowGraph.getUncertaintySourceManager());
     }
 
     /**

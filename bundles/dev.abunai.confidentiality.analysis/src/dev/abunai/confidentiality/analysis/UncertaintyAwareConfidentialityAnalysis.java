@@ -25,6 +25,13 @@ public interface UncertaintyAwareConfidentialityAnalysis {
 	
 	FlowGraphCollection evaluateUncertainDataFlows(FlowGraphCollection flowGraph);
 
+	/**
+	 * Returns a list of constraint violations that contain the violations contained in the flow graph collection.
+	 * If a transpose flow graph does not contain a violation, no constraint violation object will be created
+	 * @param flowGraph Flow graph collection that contains the transpose flow graphs
+	 * @param condition Predicate that determines whether a vertex is a violation
+	 * @return Returns a list of constraint violations contained in the flow graph collection
+	 */
 	default List<UncertainConstraintViolation> queryUncertainDataFlow(FlowGraphCollection flowGraph,
 															  Predicate<? super AbstractVertex<?>> condition) {
 		List<UncertainConstraintViolation> result = new ArrayList<>();

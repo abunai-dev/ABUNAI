@@ -14,6 +14,10 @@ import org.junit.jupiter.api.Test;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * The atomic connector uncertainty test replaces the {@code StoreUserDataCall} in {@code OnlineShop.buy()} with {@code EncryptedStoreUserDataCall}.
+ * The violation occurs in the default scenario of the uncertainty starting at the StoreUserDataCall
+ */
 public class ConnectorUncertaintyTest extends PCMTestBase {
     @Override
     protected String getFolderName() {

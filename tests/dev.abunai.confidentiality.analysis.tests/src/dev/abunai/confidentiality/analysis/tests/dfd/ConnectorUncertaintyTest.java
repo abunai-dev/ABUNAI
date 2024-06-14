@@ -12,6 +12,10 @@ import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
 import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraphCollection;
 import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 
+/**
+ * The atomic connector uncertainty test replaces the flow {@code buyToNonEUDatabase} with a flow to the {@code EUDatabase}.
+ * The violation occurs in the default scenario of the uncertainty in the Database Node
+ */
 public class ConnectorUncertaintyTest extends DFDTestBase {
 	@Override
 	protected String getFolderName() {
@@ -23,10 +27,6 @@ public class ConnectorUncertaintyTest extends DFDTestBase {
 		return "default";
 	}
 
-	@Override
-	protected String getBaseFolder() {
-		return "models";
-	}
 	
 	@Test
 	public void testResults() {

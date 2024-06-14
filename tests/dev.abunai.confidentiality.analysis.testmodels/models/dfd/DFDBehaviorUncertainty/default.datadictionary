@@ -27,8 +27,8 @@
     <inPin id="_udk6cPvzEe6qEO2G6RwOIg" entityName="inDatabase"/>
   </behaviour>
   <behaviour id="_4CtWwfv1Ee6qEO2G6RwOIg" entityName="encryptingBuyBehavior">
-    <inPin id="__7ZxUPv1Ee6qEO2G6RwOIg" entityName="inEncryptingBuy"/>
-    <outPin id="_C16aofv2Ee6qEO2G6RwOIg" entityName="outEncryptingBuy"/>
+    <inPin id="__7ZxUPv1Ee6qEO2G6RwOIg" entityName="inBuy"/>
+    <outPin id="_C16aofv2Ee6qEO2G6RwOIg" entityName="outBuy"/>
     <assignment xsi:type="datadictionary:Assignment" id="_F9BVgvv2Ee6qEO2G6RwOIg" entityName="encryptedBuyBehavior" inputPins="__7ZxUPv1Ee6qEO2G6RwOIg" outputPin="_C16aofv2Ee6qEO2G6RwOIg" outputLabels="_83VjYPv1Ee6qEO2G6RwOIg">
       <term xsi:type="datadictionary:TRUE" id="_TokpEPwCEe6pwqpi6UYVkQ"/>
     </assignment>

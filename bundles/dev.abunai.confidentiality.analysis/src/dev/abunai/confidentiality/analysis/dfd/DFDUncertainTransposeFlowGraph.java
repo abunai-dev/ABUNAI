@@ -28,6 +28,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDUncertaintyS
 public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implements UncertainTransposeFlowGraph {
 	private final Logger logger = Logger.getLogger(DFDUncertainTransposeFlowGraph.class);
 	private final Optional<UncertainState> uncertainState;
+	private final UncertaintySourceManager uncertaintySourceManager;
 	private List<? extends UncertaintySource> relevantUncertaintySources;
 
 	/**
@@ -37,10 +38,11 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 	 * @param relevantUncertaintySources Relevant uncertainty sources of the uncertain transpose flow graph
 	 */
 	public DFDUncertainTransposeFlowGraph(AbstractVertex<?> sink,
-										  List<? extends UncertaintySource> relevantUncertaintySources) {
+										  List<? extends UncertaintySource> relevantUncertaintySources, UncertaintySourceManager uncertaintySourceManager) {
 		super(sink);
 		this.uncertainState = Optional.empty();
 		this.relevantUncertaintySources = relevantUncertaintySources;
+		this.uncertaintySourceManager = uncertaintySourceManager;
 	}
 
 	/**
@@ -51,10 +53,11 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 	 * @param uncertainState Uncertain state of the transpose flow graph
 	 */
 	public DFDUncertainTransposeFlowGraph(AbstractVertex<?> sink,
-										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState) {
+										  List<? extends UncertaintySource> relevantUncertaintySources, UncertainState uncertainState, UncertaintySourceManager uncertaintySourceManager) {
 		super(sink);
 		this.uncertainState = Optional.of(uncertainState);
 		this.relevantUncertaintySources = relevantUncertaintySources;
+		this.uncertaintySourceManager = uncertaintySourceManager;
 	}
 
 	@Override
@@ -99,7 +102,7 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
         DFDVertex newSink = dfdSink.copy(new IdentityHashMap<>());
         newSink.unify(new HashSet<>());
         newSink.evaluateDataFlow();
-        return new DFDUncertainTransposeFlowGraph(newSink,relevantUncertaintySources, uncertainState.get());
+        return new DFDUncertainTransposeFlowGraph(newSink,relevantUncertaintySources, uncertainState.get(), this.uncertaintySourceManager);
 	}
 
 	@Override
@@ -115,7 +118,6 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 		}
 
 		DFDUncertaintyCalculator calculator = new DFDUncertaintyCalculator(dfdUncertaintyResourceProvider);
-		UncertaintySourceManager uncertaintySourceManager = new UncertaintySourceManager(dfdUncertaintyResourceProvider.getUncertaintySourceCollection(), UncertaintySourceType.DFD);
 
 		List<DFDUncertainTransposeFlowGraph> alternateTransposeFlowGraphs = new ArrayList<>();
 		Deque<DFDUncertainTransposeFlowGraph> currentTransposeFlowGraphs = new ArrayDeque<>();
@@ -129,7 +131,9 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 				alternateTransposeFlowGraphs.add(currentPartialFlowGraph.copy(new IdentityHashMap<>(), currentPartialFlowGraph.uncertainState.orElseGet(UncertainState::new)));
 				continue;
 			}
-			relevantUncertaintySources.add(uncertaintySource.get());
+			if (!relevantUncertaintySources.contains(uncertaintySource.get())){
+				relevantUncertaintySources.add(uncertaintySource.get());
+			}
 			currentTransposeFlowGraphs.addAll(this.applyUncertaintySource(uncertaintySource.get(), currentPartialFlowGraph, calculator));
 		}
 		alternateTransposeFlowGraphs.forEach(it -> it.setRelevantUncertaintySources(relevantUncertaintySources));
@@ -187,8 +191,8 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 	public AbstractTransposeFlowGraph copy(Map<DFDVertex, DFDVertex> mapping) {
 		DFDVertex copiedSink = mapping.getOrDefault((DFDVertex) sink, ((DFDVertex) sink).copy(mapping));
 		copiedSink.unify(new HashSet<>());
-		return this.uncertainState.map(state -> new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, state))
-				.orElseGet(() -> new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources));
+		return this.uncertainState.map(state -> new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, state, this.uncertaintySourceManager))
+				.orElseGet(() -> new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, this.uncertaintySourceManager));
 	}
 
 	/**
@@ -200,7 +204,7 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 	public DFDUncertainTransposeFlowGraph copy(Map<DFDVertex, DFDVertex> mapping, UncertainState uncertainState) {
 		DFDVertex copiedSink = mapping.getOrDefault((DFDVertex) sink, ((DFDVertex) sink).copy(mapping));
 		copiedSink.unify(new HashSet<>());
-		return new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, uncertainState);
+		return new DFDUncertainTransposeFlowGraph(copiedSink, this.relevantUncertaintySources, uncertainState, this.uncertaintySourceManager);
 	}
 
 	@Override
@@ -213,7 +217,19 @@ public class DFDUncertainTransposeFlowGraph extends DFDTransposeFlowGraph implem
 	}
 
 	@Override
+	public List<? extends UncertaintyScenario> getSelectedUncertaintyScenarios() {
+		if (this.uncertainState.isEmpty()) {
+			return List.of();
+		}
+		return this.uncertainState.get().getSelectedUncertaintyScenarios();
+	}
+
+	@Override
 	public UncertainState getUncertainState() {
 		return this.uncertainState.orElseThrow();
+	}
+
+	public UncertaintySourceManager getUncertaintySourceManager() {
+		return uncertaintySourceManager;
 	}
 }

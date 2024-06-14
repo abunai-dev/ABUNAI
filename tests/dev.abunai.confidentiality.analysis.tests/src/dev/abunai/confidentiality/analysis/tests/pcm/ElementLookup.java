@@ -32,7 +32,6 @@ import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage;
 
 import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
-@Disabled
 public class ElementLookup extends PCMTestBase {
 	@Override
 	protected String getFolderName() {
@@ -49,7 +48,6 @@ public class ElementLookup extends PCMTestBase {
 		return "casestudies/CaseStudy-CoronaWarnApp";
 	}
 
-	@Disabled("Test case needs to be repaired")
 	@Test
 	public void printAllRelevantElements() {
 		printDivider("Node Characteristics Assignees", "External Uncertainty");
@@ -80,6 +78,9 @@ public class ElementLookup extends PCMTestBase {
 				UsageAssignee.class);
 
 		for (var assignee : resourceAssignees) {
+			if (assignee.getResourcecontainer() == null) {
+				continue;
+			}
 			System.out.println("%s - %s, %s, [%s]".formatted(assignee.getId(), "Resource Assignee",
 					assignee.getResourcecontainer().getEntityName(),
 					prettyPrintCharacteristics(assignee.getCharacteristics())));

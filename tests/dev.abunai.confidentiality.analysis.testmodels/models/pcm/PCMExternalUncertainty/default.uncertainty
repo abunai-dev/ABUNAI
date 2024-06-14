@@ -3,7 +3,7 @@
   <sources xsi:type="pcm:PCMExternalUncertaintySourceInResource" id="_UHKc4AxFEe-zZ_6fyoXC4A">
     <target href="default.nodecharacteristics#_Qh8vMLB7Ee6PGKdWgLSwQQ"/>
     <scenarios id="_ZWPw4AxFEe-zZ_6fyoXC4A">
-      <target href="default.nodecharacteristics#_8BEvULB-Ee6TRb5PGryaNg"/>
+      <target href="default.nodecharacteristics#_7jYKcSiSEe-oVsmCTbSh5A"/>
     </scenarios>
   </sources>
 </uncertainty:UncertaintySourceCollection>

@@ -10,6 +10,11 @@ import dev.abunai.confidentiality.analysis.testmodels.Activator;
 
 public abstract class PCMTestBase extends TestBase {
 
+	@Override
+	protected String getBaseFolder() {
+		return "models/pcm";
+	}
+
 	@BeforeEach
 	public void setup() {
 		final var usageModelPath = Paths.get(getBaseFolder(), getFolderName(), getFilesName() + ".usagemodel")

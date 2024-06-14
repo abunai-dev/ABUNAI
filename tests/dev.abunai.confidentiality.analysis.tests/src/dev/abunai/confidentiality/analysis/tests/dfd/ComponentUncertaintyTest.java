@@ -12,6 +12,10 @@ import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
 import dev.abunai.confidentiality.analysis.dfd.DFDUncertainFlowGraphCollection;
 import dev.abunai.confidentiality.analysis.tests.DFDTestBase;
 
+/**
+ * The atomic component uncertainty test replaces the node {@code nonEUDatabase} with {@code EUDatabase}.
+ * The violation occurs in the default scenario of the uncertainty in the Database Node
+ */
 public class ComponentUncertaintyTest extends DFDTestBase {
 	@Override
 	protected String getFolderName() {
@@ -23,10 +27,6 @@ public class ComponentUncertaintyTest extends DFDTestBase {
 		return "default";
 	}
 
-	@Override
-	protected String getBaseFolder() {
-		return "models";
-	}
 	
 	@Test
 	public void testResults() {
