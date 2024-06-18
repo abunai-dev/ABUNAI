@@ -15,13 +15,13 @@ public interface UncertainFlowGraphCollection {
 	 */
 	UncertainFlowGraphCollection createUncertainFlows();
 
-	int getUncertaintyAmountGlobal();
+	int getScenarioAwareComplexity();
 
-	int getUncertaintyAmountTFG();
+	int getDataFlowAwareComplexity();
 
-	int getUncertaintyAmountUncertainTFG();
+	int getImpactAwareComplexity();
 
 	default void printUncertaintyMessage(Logger logger) {
-		logger.info(NUMBER_MESSAGE.formatted(this.getUncertaintyAmountGlobal(), this.getUncertaintyAmountTFG(), this.getUncertaintyAmountUncertainTFG()));
+		logger.error(NUMBER_MESSAGE.formatted(this.getScenarioAwareComplexity(), this.getDataFlowAwareComplexity(), this.getImpactAwareComplexity()));
 	}
 }
