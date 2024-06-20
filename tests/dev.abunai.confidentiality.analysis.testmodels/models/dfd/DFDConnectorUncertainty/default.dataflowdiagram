@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataflowdiagram:DataFlowDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dataflowdiagram="http://www.example.org/dataflowdiagram" id="_tSVBkPvuEe6Tj7t8uRR9yQ">
+<dataflowdiagram:DataFlowDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dataflowdiagram="http://dataflowanalysis.org/dfd/dataflowdiagram" id="_tSVBkPvuEe6Tj7t8uRR9yQ">
   <flows id="_NlJ2cPv0Ee6qEO2G6RwOIg" entityName="userToBuy" sourceNode="_8-sagfvzEe6qEO2G6RwOIg" destinationNode="_yn0tUvvzEe6qEO2G6RwOIg">
     <destinationPin href="default.datadictionary#_jNu94PvzEe6qEO2G6RwOIg"/>
     <sourcePin href="default.datadictionary#_45pGIfvyEe6qEO2G6RwOIg"/>
