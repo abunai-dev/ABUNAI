@@ -5,20 +5,26 @@
     <scenarios id="_WHB10C1VEe-lUc5YrocPyg" entityName="U1 Default">
       <target href="default.usagemodel#_hq6RAITkEeywmO_IpTxeAg"/>
     </scenarios>
-    <scenarios id="_tFAGEC1YEe-lUc5YrocPyg" entityName="U1 Validated">
+    <scenarios id="_tFAGEC1YEe-lUc5YrocPyg" entityName="U1 Invalid">
       <target href="default.usagemodel#_UQNBoC1WEe-lUc5YrocPyg"/>
     </scenarios>
-    <scenarios id="_uv794C1YEe-lUc5YrocPyg" entityName="U1 Encrypted">
+    <scenarios id="_uv794C1YEe-lUc5YrocPyg" entityName="U1 Malicious">
       <target href="default.usagemodel#_VK_O4C1WEe-lUc5YrocPyg"/>
     </scenarios>
-    <scenarios id="_xC8iUC1YEe-lUc5YrocPyg" entityName="U1 Validation &amp; Encryption">
-      <target href="default.usagemodel#_V7-m8C1WEe-lUc5YrocPyg"/>
-    </scenarios>
   </sources>
-  <sources xsi:type="pcm:PCMConnectorUncertaintySourceInExternalCall" id="_P9UTVC1aEe-lUc5YrocPyg" entityName="U2a">
-    <target href="default.repository#_yVL18ITkEeywmO_IpTxeAg"/>
-    <scenarios id="_SD3wIC1aEe-lUc5YrocPyg" entityName="U2_a Default">
-      <target href="default.repository#_yVL18ITkEeywmO_IpTxeAg"/>
+  <sources xsi:type="pcm:PCMBehaviorUncertaintySource" id="_nq9fETIVEe-m4c0ChzWfPg" entityName="U2">
+    <target href="default.repository#_oEBNYDIXEe-m4c0ChzWfPg"/>
+    <scenarios id="_xNk9cDIYEe-m4c0ChzWfPg" entityName="U2 Default">
+      <target href="default.repository#_oEBNYDIXEe-m4c0ChzWfPg"/>
+    </scenarios>
+    <scenarios id="_zbm7QDIYEe-m4c0ChzWfPg" entityName="U2 Broken Encryption">
+      <target href="default.repository#_H53koDIYEe-m4c0ChzWfPg"/>
+    </scenarios>
+    <scenarios id="_19mW4DIYEe-m4c0ChzWfPg" entityName="U2 Broken Validation">
+      <target href="default.repository#_Y5wNMDIYEe-m4c0ChzWfPg"/>
+    </scenarios>
+    <scenarios id="_FPxgcDIZEe-uyranPFI0tg" entityName="U2 Broken Validation &amp; Encryption">
+      <target href="default.repository#_b_cLwDIYEe-m4c0ChzWfPg"/>
     </scenarios>
   </sources>
   <sources xsi:type="pcm:PCMComponentUncertaintySource" id="_g2LAdi1SEe-lUc5YrocPyg" entityName="U3">

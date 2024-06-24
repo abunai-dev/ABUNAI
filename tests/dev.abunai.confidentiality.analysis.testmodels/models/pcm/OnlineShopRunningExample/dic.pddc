@@ -20,8 +20,14 @@ enum Encryption {
 	Encrypted
 	Unencrypted
 }
+enum Type {
+	Valid
+	Invalid
+	Malicious
+}
 enumCharacteristicType DataSensitivity using Sensitivity
 enumCharacteristicType ServerLocation using Location
 enumCharacteristicType ProviderTrustworthiness using Trustworthiness
 enumCharacteristicType DataValidation using Validation
 enumCharacteristicType DataEncryption using Encryption
+enumCharacteristicType DataType using Type
