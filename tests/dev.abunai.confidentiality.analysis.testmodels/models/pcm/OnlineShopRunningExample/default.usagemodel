@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<usagemodel:UsageModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DataDictionaryCharacterized="http://dataflowanalysis.org/pcm/extension/dictionary/characterized/1.0" xmlns:confidentiality="http://dataflowanalysis.org/pcm/extension/model/0.1.0" xmlns:expression="http://dataflowanalysis.org/pcm/extension/model/0.1.0/expression" xmlns:expressions="http://dataflowanalysis.org/pcm/extension/dictionary/characterized/expressions/1.0" xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/2.2" xmlns:usagemodel="http://palladiosimulator.org/PalladioComponentModel/UsageModel/5.2">
+  <usageScenario_UsageModel id="_LPnI8CHdEd6lJo4DCALHMw" entityName="Buy from Shop">
+    <scenarioBehaviour_UsageScenario id="_LPwS4CHdEd6lJo4DCALHMw" entityName="Buy from Shop">
+      <actions_ScenarioBehaviour xsi:type="usagemodel:Start" id="_LPwS4SHdEd6lJo4DCALHMw" successor="_Js2OAITnEeywmO_IpTxeAg"/>
+      <actions_ScenarioBehaviour xsi:type="usagemodel:Stop" id="_LPwS4iHdEd6lJo4DCALHMw" predecessor="_hq6RAITkEeywmO_IpTxeAg"/>
+      <actions_ScenarioBehaviour xsi:type="usagemodel:EntryLevelSystemCall" id="_hq6RAITkEeywmO_IpTxeAg" entityName="Purchase item" successor="_LPwS4iHdEd6lJo4DCALHMw" predecessor="_Js2OAITnEeywmO_IpTxeAg">
+        <providedRole_EntryLevelSystemCall href="default.system#_CWo80ITkEeywmO_IpTxeAg"/>
+        <operationSignature__EntryLevelSystemCall href="default.repository#_W8bxkITjEeywmO_IpTxeAg"/>
+        <inputParameterUsages_EntryLevelSystemCall>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_Xvu58ITnEeywmO_IpTxeAg"/>
+            <rhs xsi:type="expression:NamedEnumCharacteristicReference" id="_Xvu58YTnEeywmO_IpTxeAg">
+              <namedReference xsi:type="stoex:VariableReference" referenceName="inventory"/>
+            </rhs>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="inventory"/>
+        </inputParameterUsages_EntryLevelSystemCall>
+        <inputParameterUsages_EntryLevelSystemCall>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_4ESwEC1WEe-lUc5YrocPyg">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicTypes@0"/>
+              <literal href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicEnumerations@0.literals@0"/>
+            </lhs>
+            <rhs xsi:type="expressions:True" id="_4ESwES1WEe-lUc5YrocPyg"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="userData"/>
+        </inputParameterUsages_EntryLevelSystemCall>
+        <inputParameterUsages_EntryLevelSystemCall>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_26ZKwDIiEe-gSZ_8nAnaAA">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicTypes@5"/>
+              <literal href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicEnumerations@5.literals@0"/>
+            </lhs>
+            <rhs xsi:type="expressions:True" id="_26ZKwTIiEe-gSZ_8nAnaAA"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="userData"/>
+        </inputParameterUsages_EntryLevelSystemCall>
+      </actions_ScenarioBehaviour>
+      <actions_ScenarioBehaviour xsi:type="usagemodel:EntryLevelSystemCall" id="_Js2OAITnEeywmO_IpTxeAg" entityName="Input search details" successor="_hq6RAITkEeywmO_IpTxeAg" predecessor="_LPwS4SHdEd6lJo4DCALHMw">
+        <providedRole_EntryLevelSystemCall href="default.system#_CWo80ITkEeywmO_IpTxeAg"/>
+        <operationSignature__EntryLevelSystemCall href="default.repository#_YWtP0ITmEeywmO_IpTxeAg"/>
+        <outputParameterUsages_EntryLevelSystemCall>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_RPECQITnEeywmO_IpTxeAg"/>
+            <rhs xsi:type="expression:NamedEnumCharacteristicReference" id="_RPECQYTnEeywmO_IpTxeAg">
+              <namedReference xsi:type="stoex:VariableReference" referenceName="RETURN"/>
+            </rhs>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="inventory"/>
+        </outputParameterUsages_EntryLevelSystemCall>
+      </actions_ScenarioBehaviour>
+      <actions_ScenarioBehaviour xsi:type="usagemodel:EntryLevelSystemCall" id="_UQNBoC1WEe-lUc5YrocPyg" entityName="U1 Purchase item Invalid">
+        <providedRole_EntryLevelSystemCall href="default.system#_CWo80ITkEeywmO_IpTxeAg"/>
+        <operationSignature__EntryLevelSystemCall href="default.repository#_W8bxkITjEeywmO_IpTxeAg"/>
+        <inputParameterUsages_EntryLevelSystemCall>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_FZBVgC1XEe-lUc5YrocPyg">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicTypes@0"/>
+              <literal href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicEnumerations@0.literals@0"/>
+            </lhs>
+            <rhs xsi:type="expressions:True" id="_FZBVgS1XEe-lUc5YrocPyg"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="userData"/>
+        </inputParameterUsages_EntryLevelSystemCall>
+        <inputParameterUsages_EntryLevelSystemCall>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_OvpRMC1YEe-lUc5YrocPyg"/>
+            <rhs xsi:type="expression:NamedEnumCharacteristicReference" id="_WDOMgy1YEe-lUc5YrocPyg">
+              <namedReference xsi:type="stoex:VariableReference" referenceName="inventory"/>
+            </rhs>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="inventory"/>
+        </inputParameterUsages_EntryLevelSystemCall>
+        <inputParameterUsages_EntryLevelSystemCall>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_BcnzYDIjEe-gSZ_8nAnaAA">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicTypes@5"/>
+              <literal href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicEnumerations@5.literals@1"/>
+            </lhs>
+            <rhs xsi:type="expressions:True" id="_BcnzYTIjEe-gSZ_8nAnaAA"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="userData"/>
+        </inputParameterUsages_EntryLevelSystemCall>
+      </actions_ScenarioBehaviour>
+      <actions_ScenarioBehaviour xsi:type="usagemodel:EntryLevelSystemCall" id="_VK_O4C1WEe-lUc5YrocPyg" entityName="U1 Purchase item Malicious">
+        <providedRole_EntryLevelSystemCall href="default.system#_CWo80ITkEeywmO_IpTxeAg"/>
+        <operationSignature__EntryLevelSystemCall href="default.repository#_W8bxkITjEeywmO_IpTxeAg"/>
+        <inputParameterUsages_EntryLevelSystemCall>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_fWr78C1YEe-lUc5YrocPyg"/>
+            <rhs xsi:type="expression:NamedEnumCharacteristicReference" id="_gIUNMy1YEe-lUc5YrocPyg">
+              <namedReference xsi:type="stoex:VariableReference" referenceName="inventory"/>
+            </rhs>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="inventory"/>
+        </inputParameterUsages_EntryLevelSystemCall>
+        <inputParameterUsages_EntryLevelSystemCall>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_c4vIQC1XEe-lUc5YrocPyg">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicTypes@0"/>
+              <literal href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicEnumerations@0.literals@0"/>
+            </lhs>
+            <rhs xsi:type="expressions:True" id="_c4vIQS1XEe-lUc5YrocPyg"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="userData"/>
+        </inputParameterUsages_EntryLevelSystemCall>
+        <inputParameterUsages_EntryLevelSystemCall>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_G4sagDIjEe-gSZ_8nAnaAA">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicTypes@5"/>
+              <literal href="dic.pddc#_AQnL0IThEeywmO_IpTxeAg-characteristicEnumerations@5.literals@2"/>
+            </lhs>
+            <rhs xsi:type="expressions:True" id="_G4sagTIjEe-gSZ_8nAnaAA"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="userData"/>
+        </inputParameterUsages_EntryLevelSystemCall>
+      </actions_ScenarioBehaviour>
+    </scenarioBehaviour_UsageScenario>
+  </usageScenario_UsageModel>
+  <usageScenario_UsageModel id="_ICoJ8DIWEe-m4c0ChzWfPg" entityName="Request Support">
+    <scenarioBehaviour_UsageScenario id="_S-0xwDIWEe-m4c0ChzWfPg" entityName="Request Support">
+      <actions_ScenarioBehaviour xsi:type="usagemodel:Start" id="_S-1Y0DIWEe-m4c0ChzWfPg" successor="_l5-0MDIWEe-m4c0ChzWfPg"/>
+      <actions_ScenarioBehaviour xsi:type="usagemodel:Stop" id="_S-1Y0TIWEe-m4c0ChzWfPg" predecessor="_l5-0MDIWEe-m4c0ChzWfPg"/>
+      <actions_ScenarioBehaviour xsi:type="usagemodel:EntryLevelSystemCall" id="_l5-0MDIWEe-m4c0ChzWfPg" entityName="Request support contact" successor="_S-1Y0TIWEe-m4c0ChzWfPg" predecessor="_S-1Y0DIWEe-m4c0ChzWfPg">
+        <providedRole_EntryLevelSystemCall href="default.system#_CWo80ITkEeywmO_IpTxeAg"/>
+        <operationSignature__EntryLevelSystemCall href="default.repository#_a41a8DIWEe-m4c0ChzWfPg"/>
+      </actions_ScenarioBehaviour>
+    </scenarioBehaviour_UsageScenario>
+  </usageScenario_UsageModel>
+  <usageScenario_UsageModel id="_uqwGQDIWEe-m4c0ChzWfPg" entityName="View Shop">
+    <scenarioBehaviour_UsageScenario id="_y_mmoDIWEe-m4c0ChzWfPg" entityName="View Shop">
+      <actions_ScenarioBehaviour xsi:type="usagemodel:Start" id="_y_nNsDIWEe-m4c0ChzWfPg" successor="_20WDkDIWEe-m4c0ChzWfPg"/>
+      <actions_ScenarioBehaviour xsi:type="usagemodel:Stop" id="_y_nNsTIWEe-m4c0ChzWfPg" predecessor="_20WDkDIWEe-m4c0ChzWfPg"/>
+      <actions_ScenarioBehaviour xsi:type="usagemodel:EntryLevelSystemCall" id="_20WDkDIWEe-m4c0ChzWfPg" entityName="Input search details" successor="_y_nNsTIWEe-m4c0ChzWfPg" predecessor="_y_nNsDIWEe-m4c0ChzWfPg">
+        <providedRole_EntryLevelSystemCall href="default.system#_CWo80ITkEeywmO_IpTxeAg"/>
+        <operationSignature__EntryLevelSystemCall href="default.repository#_YWtP0ITmEeywmO_IpTxeAg"/>
+        <outputParameterUsages_EntryLevelSystemCall>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_AHDSKDIkEe-gSZ_8nAnaAA"/>
+            <rhs xsi:type="expression:NamedEnumCharacteristicReference" id="_AHDSKTIkEe-gSZ_8nAnaAA">
+              <namedReference xsi:type="stoex:VariableReference" referenceName="RETURN"/>
+            </rhs>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="inventory"/>
+        </outputParameterUsages_EntryLevelSystemCall>
+      </actions_ScenarioBehaviour>
+    </scenarioBehaviour_UsageScenario>
+  </usageScenario_UsageModel>
+</usagemodel:UsageModel>

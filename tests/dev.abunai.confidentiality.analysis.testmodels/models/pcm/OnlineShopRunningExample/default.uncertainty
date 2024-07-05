@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pcm="http://abunai.dev/uncertainty/pcm" xmlns:uncertainty="http://abunai.dev/uncertainty" id="_JT-hcC1SEe-lUc5YrocPyg">
+  <sources xsi:type="pcm:PCMConnectorUncertaintySourceInEntryLevelSystemCall" id="_UOg1BS1VEe-lUc5YrocPyg" entityName="U1">
+    <target href="default.usagemodel#_hq6RAITkEeywmO_IpTxeAg"/>
+    <scenarios id="_WHB10C1VEe-lUc5YrocPyg" entityName="U1 Default">
+      <target href="default.usagemodel#_hq6RAITkEeywmO_IpTxeAg"/>
+    </scenarios>
+    <scenarios id="_tFAGEC1YEe-lUc5YrocPyg" entityName="U1 Invalid">
+      <target href="default.usagemodel#_UQNBoC1WEe-lUc5YrocPyg"/>
+    </scenarios>
+    <scenarios id="_uv794C1YEe-lUc5YrocPyg" entityName="U1 Malicious">
+      <target href="default.usagemodel#_VK_O4C1WEe-lUc5YrocPyg"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="pcm:PCMBehaviorUncertaintySource" id="_nq9fETIVEe-m4c0ChzWfPg" entityName="U2">
+    <target href="default.repository#_oEBNYDIXEe-m4c0ChzWfPg"/>
+    <scenarios id="_xNk9cDIYEe-m4c0ChzWfPg" entityName="U2 Default">
+      <target href="default.repository#_oEBNYDIXEe-m4c0ChzWfPg"/>
+    </scenarios>
+    <scenarios id="_zbm7QDIYEe-m4c0ChzWfPg" entityName="U2 Broken Encryption">
+      <target href="default.repository#_H53koDIYEe-m4c0ChzWfPg"/>
+    </scenarios>
+    <scenarios id="_19mW4DIYEe-m4c0ChzWfPg" entityName="U2 Broken Validation">
+      <target href="default.repository#_Y5wNMDIYEe-m4c0ChzWfPg"/>
+    </scenarios>
+    <scenarios id="_FPxgcDIZEe-uyranPFI0tg" entityName="U2 Broken Validation &amp; Encryption">
+      <target href="default.repository#_b_cLwDIYEe-m4c0ChzWfPg"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="pcm:PCMComponentUncertaintySource" id="_g2LAdi1SEe-lUc5YrocPyg" entityName="U3">
+    <target href="default.system#_5qOmUITjEeywmO_IpTxeAg"/>
+    <scenarios id="_n9vqoC1TEe-lUc5YrocPyg" entityName="U3 Default">
+      <target href="default.system#_5qOmUITjEeywmO_IpTxeAg"/>
+    </scenarios>
+    <scenarios id="_EClq4C1TEe-lUc5YrocPyg" entityName="U3 Alternative">
+      <target href="default.system#_JKZ5QC1TEe-lUc5YrocPyg"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="pcm:PCMExternalUncertaintySourceInResource" id="_WoFb0C1SEe-lUc5YrocPyg" entityName="U4">
+    <target href="default.nodecharacteristics#_0ap3QS1TEe-lUc5YrocPyg"/>
+    <scenarios id="_9ATecC1TEe-lUc5YrocPyg" entityName="U4 Default">
+      <target href="default.nodecharacteristics#_0ap3QS1TEe-lUc5YrocPyg"/>
+    </scenarios>
+    <scenarios id="__WwYcC1TEe-lUc5YrocPyg" entityName="U4 Alternative">
+      <target href="default.nodecharacteristics#_Mw30MS1UEe-lUc5YrocPyg"/>
+    </scenarios>
+  </sources>
+</uncertainty:UncertaintySourceCollection>

@@ -1,0 +1,33 @@
+dictionary id "_AQnL0IThEeywmO_IpTxeAg"
+
+enum Sensitivity {
+	Personal
+	Public
+}
+enum Location {
+	EU
+	nonEU
+}
+enum Trustworthiness {
+	Trusted
+	Untrusted
+}
+enum Validation {
+	Validated
+	Unvalidated
+}
+enum Encryption {
+	Encrypted
+	Unencrypted
+}
+enum Type {
+	Valid
+	Invalid
+	Malicious
+}
+enumCharacteristicType DataSensitivity using Sensitivity
+enumCharacteristicType ServerLocation using Location
+enumCharacteristicType ProviderTrustworthiness using Trustworthiness
+enumCharacteristicType DataValidation using Validation
+enumCharacteristicType DataEncryption using Encryption
+enumCharacteristicType DataType using Type
