@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
  * Uncertain flows may be created with {@link UncertainFlowGraphCollection#createUncertainFlows()}
  */
 public interface UncertainFlowGraphCollection {
-	String NUMBER_MESSAGE = "ScenarioAware: %d, DataFlowAware: %d, ImpactAware: %d";
+	String NUMBER_MESSAGE = "ScenarioAware: %d, GraphAware: %d, ImpactAware: %d";
 
 	/**
 	 * Create an {@link UncertainFlowGraphCollection} with uncertain transpose flow graphs that were created by the stored uncertainty scenarios
@@ -17,11 +17,11 @@ public interface UncertainFlowGraphCollection {
 
 	int getScenarioAwareComplexity();
 
-	int getDataFlowAwareComplexity();
+	int getGraphAwareComplexity();
 
 	int getImpactAwareComplexity();
 
 	default void printUncertaintyMessage(Logger logger) {
-		logger.info(NUMBER_MESSAGE.formatted(this.getScenarioAwareComplexity(), this.getDataFlowAwareComplexity(), this.getImpactAwareComplexity()));
+		logger.info(NUMBER_MESSAGE.formatted(this.getScenarioAwareComplexity(), this.getGraphAwareComplexity(), this.getImpactAwareComplexity()));
 	}
 }

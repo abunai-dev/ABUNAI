@@ -79,7 +79,7 @@ public class RunningExampleTest extends PCMTestBase {
         assertEquals(3, flowGraphs.getTransposeFlowGraphs().size(), "Running example contains 3 TFGs");
         assertEquals(40, uncertainFlowGraphs.getTransposeFlowGraphs().size(), "Running example contains 40 Uncertain TFGs");
         assertEquals(3*(3*4*2*2), uncertainFlowGraphs.getScenarioAwareComplexity(), "Scenario Aware Complexity is 144");
-        assertEquals(1+4+48, uncertainFlowGraphs.getDataFlowAwareComplexity(), "Scenario Aware Complexity is 53");
+        assertEquals(1+4+48, uncertainFlowGraphs.getGraphAwareComplexity(), "Scenario Aware Complexity is 53");
         assertEquals((1)+(1+2)+(12+24), uncertainFlowGraphs.getImpactAwareComplexity(), "Impact Aware Complexity is 40");
         
         assertTrue(!invalidData.isEmpty());

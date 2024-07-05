@@ -82,7 +82,7 @@ public class PCMUncertainFlowGraphCollection extends PCMFlowGraphCollection impl
 	}
 
 	@Override
-	public int getDataFlowAwareComplexity() {
+	public int getGraphAwareComplexity() {
 		int result = 0;
 		for(AbstractTransposeFlowGraph transposeFlowGraph : this.getTransposeFlowGraphs()) {
 			UncertainTransposeFlowGraph uncertainTransposeFlowGraph = (UncertainTransposeFlowGraph) transposeFlowGraph;
