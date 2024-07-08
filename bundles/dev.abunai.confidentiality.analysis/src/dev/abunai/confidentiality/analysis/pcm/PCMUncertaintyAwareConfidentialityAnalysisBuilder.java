@@ -1,5 +1,6 @@
 package dev.abunai.confidentiality.analysis.pcm;
 
+import dev.abunai.confidentiality.analysis.UncertaintyResourceProvider;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.pcm.PCMDataFlowConfidentialityAnalysisBuilder;
 import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
@@ -16,6 +17,7 @@ public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFl
 	private String relativeUncertaintyModelPath;
 	private Optional<String> stringFilter = Optional.empty();
 	private Optional<List<Integer>> indicesFilter = Optional.empty();
+	private Optional<PCMUncertaintyResourceProvider> resourceProvider = Optional.empty();
 
 	@Override
 	public PCMUncertaintyAwareConfidentialityAnalysisBuilder standalone() {
@@ -48,9 +50,8 @@ public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFl
 		return this;
 	}
 
-	@Override
-	public PCMDataFlowConfidentialityAnalysisBuilder useCustomResourceProvider(PCMResourceProvider resourceProvider) {
-		logger.error("Custom resource providers are not supported by the uncertainty-aware confidentiality analysis.");
+	public PCMUncertaintyAwareConfidentialityAnalysisBuilder useCustomResourceProvider(PCMUncertaintyResourceProvider resourceProvider) {
+		this.resourceProvider = Optional.of(resourceProvider);
 		return this;
 	}
 
@@ -90,12 +91,12 @@ public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFl
 	public PCMUncertaintyAwareConfidentialityAnalysis build() {
 		this.validate();
 
-		PCMUncertaintyResourceProvider resourceProvider = new PCMUncertaintyResourceProvider(
-				ResourceUtils.createRelativePluginURI(this.relativeUsageModelPath, modelProjectName),
-				ResourceUtils.createRelativePluginURI(this.relativeAllocationModelPath, modelProjectName),
-				ResourceUtils.createRelativePluginURI(this.relativeNodeCharacteristicsPath, modelProjectName),
-				ResourceUtils.createRelativePluginURI(this.relativeUncertaintyModelPath, modelProjectName));
-
+		PCMUncertaintyResourceProvider resourceProvider;
+        resourceProvider = this.resourceProvider.orElseGet(() -> new PCMUncertaintyResourceProvider(
+                ResourceUtils.createRelativePluginURI(this.relativeUsageModelPath, modelProjectName),
+                ResourceUtils.createRelativePluginURI(this.relativeAllocationModelPath, modelProjectName),
+                ResourceUtils.createRelativePluginURI(this.relativeNodeCharacteristicsPath, modelProjectName),
+                ResourceUtils.createRelativePluginURI(this.relativeUncertaintyModelPath, modelProjectName)));
 		return new PCMUncertaintyAwareConfidentialityAnalysis(resourceProvider, pluginActivator, modelProjectName, this.stringFilter, this.indicesFilter);
 	}
 }
