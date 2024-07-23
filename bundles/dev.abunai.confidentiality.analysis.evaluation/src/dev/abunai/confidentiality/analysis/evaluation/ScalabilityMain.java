@@ -1,6 +1,6 @@
 package dev.abunai.confidentiality.analysis.evaluation;
 
-public class ScalibiliyMain {
+public class ScalabilityMain {
     private static AnalysisExecutor analysisExecutor = new PCMAnalysisExecutor();
 
     public static void main(String[] args) {

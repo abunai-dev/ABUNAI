@@ -47,7 +47,7 @@ public class PCMMemoryResourceProvider extends PCMUncertaintyResourceProvider {
                 return (UncertaintySourceCollection) resource.getContents().get(0);
             }
         }
-        throw new IllegalStateException("Resources do not contain a allocation");
+        throw new IllegalStateException("Resources do not contain a uncertainty source collection");
     }
 
     @Override

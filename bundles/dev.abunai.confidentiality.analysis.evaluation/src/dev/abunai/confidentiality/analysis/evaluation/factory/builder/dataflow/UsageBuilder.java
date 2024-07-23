@@ -7,6 +7,7 @@ import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionar
 import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.Literal;
 import org.dataflowanalysis.pcm.extension.model.confidentiality.characteristics.CharacteristicsFactory;
 import org.dataflowanalysis.pcm.extension.model.confidentiality.characteristics.EnumCharacteristic;
+import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
 import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
 import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
 import org.palladiosimulator.pcm.usagemodel.ScenarioBehaviour;
@@ -49,15 +50,14 @@ public class UsageBuilder {
 		return this;
 	}
 	
-	public UsageBuilder addCharacteristic(EnumCharacteristicType characteristicType, String characteristicValue) {
+	public UsageAssignee addCharacteristic(EnumCharacteristicType characteristicType, String characteristicValue) {
 		Literal literal = characteristicType.getType().getLiterals().stream()
 					.filter(it -> it.getName().equalsIgnoreCase(characteristicValue))
 					.findAny().orElseThrow(() -> new IllegalArgumentException("Unknown characteristic value"));
 		EnumCharacteristic characteristic = CharacteristicsFactory.eINSTANCE.createEnumCharacteristic();
 		characteristic.setType(characteristicType);
 		characteristic.getValues().add(literal);
-		nodeCharacteristicBuilder.addCharacteristic(scenario, characteristic);
-		return this;
+		return nodeCharacteristicBuilder.addCharacteristic(scenario, characteristic);
 	}
 	
 	public UsageCallBuilder addCall(String name) {

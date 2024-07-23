@@ -58,3 +58,5 @@ xtend-gen/
 
 # Intellij IDEA
 *.iml
+bundles/dev.abunai.confidentiality.analysis.evaluation/results
+tests/dev.abunai.confidentiality.analysis.evaluation.testmodels/testmodels

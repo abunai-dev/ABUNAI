@@ -25,6 +25,10 @@ public class NodeCharacteristicBuilderImpl implements NodeCharacteristicBuilder 
 		this.resource = new XMLResourceImpl(uri);
 	}
 	
+	public NodeCharacteristicBuilderImpl(Resource resource) {
+		this.resource = resource;
+	}
+	
 	@Override
 	public void setup() {
 		this.assignments = NodeCharacteristicsFactory.eINSTANCE.createAssignments();
@@ -37,26 +41,29 @@ public class NodeCharacteristicBuilderImpl implements NodeCharacteristicBuilder 
 	}
 
 	@Override
-	public void addCharacteristic(ResourceContainer container, EnumCharacteristic characteristic) {
+	public ResourceAssignee addCharacteristic(ResourceContainer container, EnumCharacteristic characteristic) {
 		ResourceAssignee assignee = NodeCharacteristicsFactory.eINSTANCE.createResourceAssignee();
 		assignee.setResourcecontainer(container);
 		assignee.getCharacteristics().add(characteristic);
 		assignments.getAssignee().add(assignee);
+		return assignee;
 	}
 
 	@Override
-	public void addCharacteristic(UsageScenario scenario, EnumCharacteristic characteristic) {
+	public UsageAssignee addCharacteristic(UsageScenario scenario, EnumCharacteristic characteristic) {
 		UsageAssignee assignee = NodeCharacteristicsFactory.eINSTANCE.createUsageAssignee();
 		assignee.setUsagescenario(scenario);
 		assignee.getCharacteristics().add(characteristic);
 		assignments.getAssignee().add(assignee);
+		return assignee;
 	}
 
 	@Override
-	public void addCharacteristic(AssemblyContext assemblyContext, EnumCharacteristic characteristic) {
+	public AssemblyAssignee addCharacteristic(AssemblyContext assemblyContext, EnumCharacteristic characteristic) {
 		AssemblyAssignee assignee = NodeCharacteristicsFactory.eINSTANCE.createAssemblyAssignee();
 		assignee.setAssemblycontext(assemblyContext);
 		assignee.getCharacteristics().add(characteristic);
 		assignments.getAssignee().add(assignee);
+		return assignee;
 	}
 }

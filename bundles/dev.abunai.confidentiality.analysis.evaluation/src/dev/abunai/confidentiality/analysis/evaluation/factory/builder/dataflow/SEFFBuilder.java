@@ -37,7 +37,7 @@ public class SEFFBuilder {
 		return new SEFFBuilder(seff);
 	}
 	
-	public SEFFBuilder addVariableAction(String name) {
+	public SetVariableAction addVariableAction(String name) {
 		SetVariableAction action = SeffFactory.eINSTANCE.createSetVariableAction();
 		action.setId(UUID.randomUUID().toString());
 		action.setEntityName(name);
@@ -45,7 +45,7 @@ public class SEFFBuilder {
 		this.lastAction.setSuccessor_AbstractAction(action);
 		this.lastAction = action;
 		this.seff.getSteps_Behaviour().add(action);
-		return this;
+		return action;
 	}
 	
 	public SEFFCallBuilder addCall(String name) {

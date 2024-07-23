@@ -90,7 +90,7 @@ public class DFDUncertainFlowGraphCollection extends DFDFlowGraphCollection impl
 
 	@Override
 	public int getScenarioAwareComplexity() {
-		List<UncertainState> allStates = UncertainState.createAllUncertainStates(this.resourceProvider.getUncertaintySourceCollection().getSources());
+		List<UncertainState> allStates = UncertainState.createAllUncertainStates(this.uncertaintySourceManager.getUncertaintySources());
 		List<UncertainTransposeFlowGraph> originalFlowGraphs = this.getTransposeFlowGraphs().stream()
 				.filter(UncertainTransposeFlowGraph.class::isInstance)
 				.map(UncertainTransposeFlowGraph.class::cast)

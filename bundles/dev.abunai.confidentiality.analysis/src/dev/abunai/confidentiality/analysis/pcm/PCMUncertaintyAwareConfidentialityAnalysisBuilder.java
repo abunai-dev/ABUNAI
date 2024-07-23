@@ -52,6 +52,7 @@ public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFl
 
 	public PCMUncertaintyAwareConfidentialityAnalysisBuilder useCustomResourceProvider(PCMUncertaintyResourceProvider resourceProvider) {
 		this.resourceProvider = Optional.of(resourceProvider);
+		this.customResourceProvider = Optional.of(resourceProvider);
 		return this;
 	}
 
@@ -81,7 +82,7 @@ public class PCMUncertaintyAwareConfidentialityAnalysisBuilder extends PCMDataFl
 	public void validate() {
 		super.validate();
 
-		if (this.relativeUncertaintyModelPath == null || this.relativeUncertaintyModelPath.isEmpty()) {
+		if (this.customResourceProvider.isEmpty() && (this.relativeUncertaintyModelPath == null || this.relativeUncertaintyModelPath.isEmpty())) {
 			logger.warn(
 					"Uncertainty model missing. Only confidentiality analysis without considering uncertainty will be possible.");
 		}

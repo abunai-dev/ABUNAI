@@ -9,11 +9,8 @@ import java.util.List;
 
 import dev.abunai.confidentiality.analysis.evaluation.result.ScalibilityParameter;
 import dev.abunai.confidentiality.analysis.evaluation.result.ScalibilityTest;
-import dev.abunai.confidentiality.analysis.evaluation.tests.BranchCountTest;
-import dev.abunai.confidentiality.analysis.evaluation.tests.CharacteristicsPropagationTest;
-import dev.abunai.confidentiality.analysis.evaluation.tests.NodeCharacteristicsTest;
-import dev.abunai.confidentiality.analysis.evaluation.tests.SEFFParameterTest;
-import dev.abunai.confidentiality.analysis.evaluation.tests.VariableActionsTest;
+import dev.abunai.confidentiality.analysis.evaluation.tests.PrimaryUncertaintyTest;
+import dev.abunai.confidentiality.analysis.evaluation.tests.SecondaryUncertaintyTest;
 import org.apache.log4j.Logger;
 
 public class TestRunner {
@@ -37,7 +34,7 @@ public class TestRunner {
 	}
 	
 	public void runTests(int start) {
-		for(int i = start; i < 3; i++) {
+		for(int i = start; i < 100; i++) {
 			for(ScalibilityTest test : this.tests) {
 				logger.info("Running test with name " + test.getTestName());
 				logger.info("Saving results to: " + new File(BASE_PATH).getAbsolutePath());
@@ -79,21 +76,15 @@ public class TestRunner {
 	
 	public static List<ScalibilityTest> getTests() {
 		return List.of(
-				new CharacteristicsPropagationTest(),
-				new BranchCountTest(),
-				new NodeCharacteristicsTest(),
-				new SEFFParameterTest(),
-				new VariableActionsTest()
+				//new PrimaryUncertaintyTest(),
+				new SecondaryUncertaintyTest()
 		);
 	}
 	
 	public static List<ScalibilityTest> getAllTests() {
 		return List.of(
-				new CharacteristicsPropagationTest(),
-				new BranchCountTest(),
-				new NodeCharacteristicsTest(),
-				new SEFFParameterTest(),
-				new VariableActionsTest()
+				//new PrimaryUncertaintyTest(),
+				new SecondaryUncertaintyTest()
 		);
 	}
 }
