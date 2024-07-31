@@ -14,7 +14,7 @@ import dev.abunai.confidentiality.analysis.evaluation.tests.SecondaryUncertainty
 import org.apache.log4j.Logger;
 
 public class TestRunner {
-	private static final int RUNS_PER_STAGE = 10;
+	private static final int RUNS_PER_STAGE = 1;
 	public static final String BASE_PATH = ".";
 	
 	private final Logger logger = Logger.getLogger(TestRunner.class);
@@ -34,7 +34,7 @@ public class TestRunner {
 	}
 	
 	public void runTests(int start) {
-		for(int i = start; i < 100; i++) {
+		for(int i = start; i < 8; i++) {
 			for(ScalibilityTest test : this.tests) {
 				logger.info("Running test with name " + test.getTestName());
 				logger.info("Saving results to: " + new File(BASE_PATH).getAbsolutePath());
@@ -44,11 +44,12 @@ public class TestRunner {
 	}
 	
 	private void runTest(ScalibilityTest test, int index) {
+		/*
 		for (int i = 0; i < 5; i++) {
 			logger.info("Running warmup " + i + "/5");
 			ScalibilityParameter parameter = new ScalibilityParameter(10, test.getTestName());
 			test.run(parameter, analysisExecutor);
-		}
+		} */
 		for (int j = 0; j < RUNS_PER_STAGE; j++) {
 			int modelSize = test.getModelSize(index);
 			String modelName = test.getTestName();
@@ -76,14 +77,14 @@ public class TestRunner {
 	
 	public static List<ScalibilityTest> getTests() {
 		return List.of(
-				//new PrimaryUncertaintyTest(),
+				new PrimaryUncertaintyTest(),
 				new SecondaryUncertaintyTest()
 		);
 	}
 	
 	public static List<ScalibilityTest> getAllTests() {
 		return List.of(
-				//new PrimaryUncertaintyTest(),
+				new PrimaryUncertaintyTest(),
 				new SecondaryUncertaintyTest()
 		);
 	}

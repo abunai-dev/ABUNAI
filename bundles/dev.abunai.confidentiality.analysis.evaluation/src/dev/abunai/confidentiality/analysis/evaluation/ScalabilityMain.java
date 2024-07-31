@@ -11,6 +11,9 @@ public class ScalabilityMain {
             int start = Integer.parseInt(args[1]);
             TestRunner runner = new TestRunner(TestRunner.getTests(), analysisExecutor);
             runner.runTests(start);
+		} else if (args.length > 0 && args[0].equalsIgnoreCase("-graph")) {
+			GraphExporter exporter = new GraphExporter();
+			exporter.exportResults(TestRunner.getAllTests(), analysisExecutor);
         } else {
             TestRunner runner = new TestRunner(TestRunner.getTests(), analysisExecutor);
             runner.runTests();

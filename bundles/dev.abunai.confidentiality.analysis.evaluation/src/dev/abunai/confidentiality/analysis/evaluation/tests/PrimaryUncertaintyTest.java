@@ -1,79 +1,78 @@
 package dev.abunai.confidentiality.analysis.evaluation.tests;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
+import java.util.Random;
+import java.util.UUID;
 
-import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.utils.ResourceUtils;
-import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.EnumCharacteristic;
-import org.dataflowanalysis.pcm.extension.dictionary.characterized.DataDictionaryCharacterized.EnumCharacteristicType;
-import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.palladiosimulator.pcm.repository.BasicComponent;
-import org.palladiosimulator.pcm.repository.DataType;
-import org.palladiosimulator.pcm.repository.OperationInterface;
-import org.palladiosimulator.pcm.repository.OperationProvidedRole;
-import org.palladiosimulator.pcm.repository.OperationSignature;
-import org.palladiosimulator.pcm.resourceenvironment.ResourceContainer;
-import org.palladiosimulator.pcm.seff.AbstractAction;
-import org.palladiosimulator.pcm.seff.ExternalCallAction;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
 import org.palladiosimulator.pcm.seff.SetVariableAction;
 
 import dev.abunai.confidentiality.analysis.evaluation.AnalysisExecutor;
-import dev.abunai.confidentiality.analysis.evaluation.AnalysisUtils;
 import dev.abunai.confidentiality.analysis.evaluation.factory.PCMModelFactory;
-import dev.abunai.confidentiality.analysis.evaluation.factory.builder.AssemblyAllocationBuilder;
-import dev.abunai.confidentiality.analysis.evaluation.factory.builder.CharacteristicBuilder;
-import dev.abunai.confidentiality.analysis.evaluation.factory.builder.ComponentBuilder;
-import dev.abunai.confidentiality.analysis.evaluation.factory.builder.InterfaceBuilder;
-import dev.abunai.confidentiality.analysis.evaluation.factory.builder.dataflow.SEFFBuilder;
-import dev.abunai.confidentiality.analysis.evaluation.factory.builder.dataflow.UsageBuilder;
-import dev.abunai.confidentiality.analysis.evaluation.factory.builder.dataflow.UsageCallBuilder;
 import dev.abunai.confidentiality.analysis.evaluation.result.ScalibilityParameter;
 import dev.abunai.confidentiality.analysis.evaluation.result.ScalibilityTest;
-import dev.abunai.confidentiality.analysis.evaluation.testmodels.Activator;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintyScenario;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMBehaviorUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMExternalUncertaintySource;
-import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource;
 
 public class PrimaryUncertaintyTest extends ScalibilityTest {
-	private Logger logger = Logger.getLogger(PrimaryUncertaintyTest.class);
-	
 	@Override
 	public void run(ScalibilityParameter parameter, AnalysisExecutor analysisExecutor) {
 		PCMModelFactory factory = new PCMModelFactory(
-					ResourceUtils.createRelativePluginURI("models/CoronaWarnApp/default.usagemodel", "dev.abunai.confidentiality.analysis.evaluation.testmodels"),
-					ResourceUtils.createRelativePluginURI("models/CoronaWarnApp/default.allocation", "dev.abunai.confidentiality.analysis.evaluation.testmodels"),
-					ResourceUtils.createRelativePluginURI("models/CoronaWarnApp/default.nodecharacteristics", "dev.abunai.confidentiality.analysis.evaluation.testmodels"),
-					ResourceUtils.createRelativePluginURI("models/CoronaWarnApp/default.uncertainty", "dev.abunai.confidentiality.analysis.evaluation.testmodels")
-					);
-		BasicComponent targetComponent = factory.getRepository().getComponents__Repository().stream()
+				ResourceUtils.createRelativePluginURI("models/CoronaWarnApp/default.usagemodel", "dev.abunai.confidentiality.analysis.evaluation.testmodels"),
+				ResourceUtils.createRelativePluginURI("models/CoronaWarnApp/default.allocation", "dev.abunai.confidentiality.analysis.evaluation.testmodels"),
+				ResourceUtils.createRelativePluginURI("models/CoronaWarnApp/default.nodecharacteristics", "dev.abunai.confidentiality.analysis.evaluation.testmodels"),
+				ResourceUtils.createRelativePluginURI("models/CoronaWarnApp/default.uncertainty", "dev.abunai.confidentiality.analysis.evaluation.testmodels")
+				);
+		
+		List<BasicComponent> components = factory.getRepository().getComponents__Repository().stream()
 				.filter(BasicComponent.class::isInstance)
 				.map(BasicComponent.class::cast)
-				.filter(it -> it.getEntityName().equals("CoronaWarnAppServer"))
-				.findFirst().orElseThrow();
-		ResourceDemandingSEFF targetSEFF = targetComponent.getServiceEffectSpecifications__BasicComponent().stream()
+				.toList();
+		
+		List<ResourceDemandingSEFF> seffs = components.stream()
+				.map(BasicComponent::getServiceEffectSpecifications__BasicComponent)
+				.flatMap(List::stream)
 				.filter(ResourceDemandingSEFF.class::isInstance)
 				.map(ResourceDemandingSEFF.class::cast)
-				.filter(it -> it.getId().equals("_zNxa8LLIEe2Y1pKtbIeM6Q"))
-				.findFirst().orElseThrow();
-		ExternalCallAction targetElement = targetSEFF.getSteps_Behaviour().stream()
-				.filter(ExternalCallAction.class::isInstance)
-				.map(ExternalCallAction.class::cast)
-				.filter(it -> it.getId().equals("_zqW-0LmjEe2dIMSi7oNVYQ"))
-				.findFirst().orElseThrow();
-		AbstractAction followingElement = targetElement.getSuccessor_AbstractAction();
-	
-		SetVariableAction defaultAssignee = null; // _3OJsULm8Ee2dIMSi7oNVYQ
-		SetVariableAction alternativeAssignee = null; // _DtcUaR54Ee-0xpe3f1_PnQ
-		for(int i = 0; i < parameter.getModelSize(); i++) {
-			PCMBehaviorUncertaintySource uncertaintySource = factory.createBehaviorUncertainty(defaultAssignee, "generatedDefault", List.of(alternativeAssignee), List.of("generatedAlternative"));
+				.toList();
+		
+		List<SetVariableAction> targets = seffs.stream()
+				.map(ResourceDemandingSEFF::getSteps_Behaviour)
+				.flatMap(List::stream)
+				.filter(SetVariableAction.class::isInstance)
+				.map(SetVariableAction.class::cast)
+				.toList();
+		
+		int elements = Math.min(targets.size(), parameter.getModelSize());
+		Map<SetVariableAction, SetVariableAction> mapping = new HashMap<>(elements);
+		List<Integer> indexMapping = new ArrayList<>(targets.size());
+		for (int i = 0; i < targets.size(); i++) {
+			indexMapping.add(i);
 		}
-		super.runAnalysis(factory, parameter, analysisExecutor);
+		Collections.shuffle(indexMapping, new Random(1337L));
+		for (int i = 0; i < elements; i++) {
+			SetVariableAction target = targets.get(indexMapping.get(i));
+			
+			SetVariableAction replacement = EcoreUtil.copy(target);
+			replacement.setId(String.valueOf(UUID.randomUUID()));
+			replacement.setPredecessor_AbstractAction(null);
+			replacement.setSuccessor_AbstractAction(null);
+			replacement.getLocalVariableUsages_SetVariableAction().clear();
+			target.getResourceDemandingBehaviour_AbstractAction().getSteps_Behaviour().add(replacement);
+			
+			mapping.put(target, replacement);
+		}
+		
+		for(var entry : mapping.entrySet()) {
+			factory.createBehaviorUncertainty(entry.getKey(), "generated", List.of(entry.getValue()), List.of("generatedAlternative"));
+		}
+		super.runAnalysis(factory, parameter, analysisExecutor);	
 		try {
 			factory.saveModel();
 		} catch (IOException e) {
@@ -86,7 +85,7 @@ public class PrimaryUncertaintyTest extends ScalibilityTest {
 		if (currentIndex == 0) {
 			return 1;
 		}
-		return 10 * currentIndex;
+		return 5 * currentIndex;
 	}
 
 	@Override
