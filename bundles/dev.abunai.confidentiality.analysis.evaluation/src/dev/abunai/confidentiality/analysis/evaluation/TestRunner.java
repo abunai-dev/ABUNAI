@@ -9,6 +9,7 @@ import java.util.List;
 
 import dev.abunai.confidentiality.analysis.evaluation.result.ScalibilityParameter;
 import dev.abunai.confidentiality.analysis.evaluation.result.ScalibilityTest;
+import dev.abunai.confidentiality.analysis.evaluation.tests.CombinedUncertaintyTest;
 import dev.abunai.confidentiality.analysis.evaluation.tests.PrimaryUncertaintyTest;
 import dev.abunai.confidentiality.analysis.evaluation.tests.SecondaryUncertaintyTest;
 import org.apache.log4j.Logger;
@@ -78,14 +79,16 @@ public class TestRunner {
 	public static List<ScalibilityTest> getTests() {
 		return List.of(
 				new PrimaryUncertaintyTest(),
-				new SecondaryUncertaintyTest()
+				new SecondaryUncertaintyTest(),
+				new CombinedUncertaintyTest()
 		);
 	}
 	
 	public static List<ScalibilityTest> getAllTests() {
 		return List.of(
 				new PrimaryUncertaintyTest(),
-				new SecondaryUncertaintyTest()
+				new SecondaryUncertaintyTest(),
+				new CombinedUncertaintyTest()
 		);
 	}
 }

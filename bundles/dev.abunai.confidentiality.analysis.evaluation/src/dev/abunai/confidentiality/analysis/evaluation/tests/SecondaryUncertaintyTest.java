@@ -1,6 +1,7 @@
 package dev.abunai.confidentiality.analysis.evaluation.tests;
 
 import java.io.IOException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -9,10 +10,15 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
+import org.dataflowanalysis.analysis.pcm.utils.PCMQueryUtils;
 import org.dataflowanalysis.analysis.utils.ResourceUtils;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
+import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.OperationInterface;
+import org.palladiosimulator.pcm.repository.OperationProvidedRole;
+import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.seff.ExternalCallAction;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
@@ -69,16 +75,25 @@ public class SecondaryUncertaintyTest extends ScalibilityTest {
 		Collections.shuffle(indexMapping, new Random(1337L));
 		for (int i = 0; i < elements; i++) {
 			ExternalCallAction target = targets.get(indexMapping.get(i));
-			OperationInterface targetInterface = interfaces.stream()
-					.filter(it -> it.getSignatures__OperationInterface().contains(target.getCalledService_ExternalService()))
-					.findAny().orElseThrow();
-			ResourceDemandingSEFF seff = seffs.stream()
-					.filter(it -> target.getCalledService_ExternalService().equals(it.getDescribedService__SEFF()))
-					.findAny().orElseThrow();
-			BasicComponent component = components.stream()
-					.filter(it -> it.getServiceEffectSpecifications__BasicComponent().contains(seff))
+			OperationInterface targetInterface = target.getCalledService_ExternalService().getInterface__OperationSignature();
+			BasicComponent callingComponent = (BasicComponent) target.eContainer().eContainer();
+			AssemblyContext context = factory.getSystem().getConnectors__ComposedStructure().stream()
+					.filter(AssemblyConnector.class::isInstance)
+					.map(AssemblyConnector.class::cast)
+					.filter(it -> it.getRequiringAssemblyContext_AssemblyConnector().getEncapsulatedComponent__AssemblyContext().equals(callingComponent))
+					.filter(it -> it.getRequiredRole_AssemblyConnector().equals(target.getRole_ExternalService()))
+					.map(it -> it.getProvidingAssemblyContext_AssemblyConnector())
 					.findAny().orElseThrow();
 			
+			BasicComponent calledComponent = components.stream()
+					.filter(it -> it.getServiceEffectSpecifications__BasicComponent().stream()
+							.map(ResourceDemandingSEFF.class::cast)
+							.anyMatch(seff -> seff.getDescribedService__SEFF().equals(target.getCalledService_ExternalService())))
+					.filter(it -> it.getProvidedRoles_InterfaceProvidingEntity().stream()
+							.map(OperationProvidedRole.class::cast)
+							.anyMatch(pr -> pr.getProvidedInterface__OperationProvidedRole().equals(target.getRole_ExternalService().getRequiredInterface__OperationRequiredRole())))
+					.filter(it -> context.getEncapsulatedComponent__AssemblyContext().equals(it))
+					.findAny().orElseThrow();
 			
 			OperationSignature signature = EcoreUtil.copy(target.getCalledService_ExternalService());
 			signature.setId(String.valueOf(UUID.randomUUID()));
@@ -88,9 +103,9 @@ public class SecondaryUncertaintyTest extends ScalibilityTest {
 			
 			ResourceDemandingSEFF replacementSEFF = SeffFactory.eINSTANCE.createResourceDemandingSEFF();
 			replacementSEFF.setId(String.valueOf(UUID.randomUUID()));
-			replacementSEFF.setBasicComponent_ServiceEffectSpecification(component);
+			replacementSEFF.setBasicComponent_ServiceEffectSpecification(calledComponent);
 			replacementSEFF.setDescribedService__SEFF(signature);
-			component.getServiceEffectSpecifications__BasicComponent().add(replacementSEFF);
+			calledComponent.getServiceEffectSpecifications__BasicComponent().add(replacementSEFF);
 			
 			StartAction start = SeffFactory.eINSTANCE.createStartAction();
 			start.setId(String.valueOf(UUID.randomUUID()));
