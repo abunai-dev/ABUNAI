@@ -8,6 +8,7 @@ import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CoronaWarnAppTest extends PCMTestBase {
@@ -35,11 +36,19 @@ public class CoronaWarnAppTest extends PCMTestBase {
 		
 		uncertainFlowGraphs.evaluate();
 
+		//Scenario 1 & 2 IllegalLocation
 		List<UncertainConstraintViolation> illegalLocations = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
 			return it.getVertexCharacteristicNames("Location").contains("IllegalLocation");
 		});
 		assertTrue(illegalLocations.size() > 0);
 		
+		//Scenario 3 Tan Validation Failed
+		List<UncertainConstraintViolation> validationFailures = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+			return !it.getDataCharacteristicNames("Status").contains("Validated");
+		});
+		assertTrue(validationFailures.size() > 0);
+		
+		//Scenario 4 Leaked Data		
 		List<UncertainConstraintViolation> leaks = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
 			return it.getDataCharacteristicNamesMap("Status").values().stream().flatMap(List::stream).anyMatch(cv -> cv.equals("Leaked"));
 		});
