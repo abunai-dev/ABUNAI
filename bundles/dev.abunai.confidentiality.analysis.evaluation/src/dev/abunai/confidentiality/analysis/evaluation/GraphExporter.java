@@ -31,23 +31,9 @@ public class GraphExporter {
 			Instant timestamp = Instant.now();
 			FileOutputStream output = new FileOutputStream(TestRunner.BASE_PATH + "/results/graphs/" + test.getTestName() + timestamp.toString() + ".csv");
 			this.writeHeader(output);
-			Map<String, List<ScalibilityParameter>> indexedData = new HashMap<>();
-			for (ScalibilityParameter parameter : inputData) {
-				if(!parameter.getTestName().equals(test.getTestName())) {
-					continue;
-				}
-				String key = parameter.getTestName() + parameter.getModelSize();
-				if(indexedData.containsKey(key)) {
-					indexedData.get(key).add(parameter);
-				} else {
-					List<ScalibilityParameter> data = new ArrayList<>();
-					data.add(parameter);
-					indexedData.put(key, data);
-				}
-			}
-			TreeMap<String, List<ScalibilityParameter>> sortedData = new TreeMap<>(indexedData);
-			for(List<ScalibilityParameter> parameters : sortedData.values()) {
-				exportParameter(parameters, output);
+			Collections.sort(inputData);
+			for(ScalibilityParameter parameter : inputData) {
+				exportParameter(parameter, output);
 				output.write(System.lineSeparator().getBytes());
 			}
 			inputObjects.close();
@@ -74,12 +60,12 @@ public class GraphExporter {
 		}
 	}
 	
-	private void exportParameter(List<ScalibilityParameter> parameters, FileOutputStream file) {
+	private void exportParameter(ScalibilityParameter parameter, FileOutputStream file) {
 		StringJoiner string = new StringJoiner(",");
-		string.add(Long.toString(parameters.get(0).getModelSize()));
-		string.add(Long.toString(parameters.get(0).getScenarioAwareComplexity()));
-		string.add(Long.toString(parameters.get(0).getGraphAwareComplexity()));
-		string.add(Long.toString(parameters.get(0).getImpactAwareComplexity()));
+		string.add(Long.toString(parameter.getModelSize()));
+		string.add(Long.toString(parameter.getScenarioAwareComplexity()));
+		string.add(Long.toString(parameter.getGraphAwareComplexity()));
+		string.add(Long.toString(parameter.getImpactAwareComplexity()));
 		
 		
 		

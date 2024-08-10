@@ -172,6 +172,6 @@ public class CombinedUncertaintyTest extends ScalibilityTest {
 
 	@Override
 	public String getTestName() {
-		return "SecondaryUncertaintyTest";
+		return "CombinedUncertaintyTest";
 	}
 }

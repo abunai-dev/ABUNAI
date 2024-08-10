@@ -91,7 +91,11 @@ public class PCMUncertainTransposeFlowGraph extends PCMTransposeFlowGraph implem
 			PCMUncertainTransposeFlowGraph currentTransposeFlowGraph = currentTransposeFlowGraphs.pop();
 			Optional<? extends PCMUncertaintySource> uncertaintySource = this.getFirstUncertaintySource(currentTransposeFlowGraph, relevantUncertaintySources, uncertaintySourceManager, pcmUncertaintyResourceProvider);
 			if (uncertaintySource.isEmpty()) {
-				alternateTransposeFlowGraphs.add(currentTransposeFlowGraph);
+				if (currentTransposeFlowGraph.uncertainState.isEmpty()) {
+					alternateTransposeFlowGraphs.add(currentTransposeFlowGraph.copy(new HashMap<>(), new UncertainState()));
+				} else {
+					alternateTransposeFlowGraphs.add(currentTransposeFlowGraph);
+				}
 				continue;
 			}
 			if (!relevantUncertaintySources.contains(uncertaintySource.get())){
