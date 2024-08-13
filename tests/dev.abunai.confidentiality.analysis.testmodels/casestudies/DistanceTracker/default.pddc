@@ -1,0 +1,15 @@
+dictionary id "_ZSNvMLHIEe2fRLFFhL_FWA"
+
+enum Role {
+	User
+	DistanceTracker
+	TrackingService
+}
+
+enum Origin {
+	Leaked
+}
+
+enumCharacteristicType AllowedRoles using Role
+enumCharacteristicType OwnedRoles using Role
+enumCharacteristicType DataOrigin using Origin

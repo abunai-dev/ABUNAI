@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pcm="http://abunai.dev/uncertainty/pcm" xmlns:uncertainty="http://abunai.dev/uncertainty" id="_IgDcEFlCEe-B5Z82k07Xlg">
+  <sources xsi:type="pcm:PCMBehaviorUncertaintySource" id="_I7urcFlCEe-B5Z82k07Xlg" entityName="U1">
+    <target href="default.repository#_YHA_UFlBEe-PG5tivUPi9Q"/>
+    <scenarios id="_de8Q0FlCEe-B5Z82k07Xlg" entityName="U1-Alternative">
+      <target href="default.repository#_QryHYFlCEe-PG5tivUPi9Q"/>
+    </scenarios>
+  </sources>
+</uncertainty:UncertaintySourceCollection>
