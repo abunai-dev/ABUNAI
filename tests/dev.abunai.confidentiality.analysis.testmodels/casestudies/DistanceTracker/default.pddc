@@ -6,10 +6,5 @@ enum Role {
 	TrackingService
 }
 
-enum Origin {
-	Leaked
-}
-
 enumCharacteristicType AllowedRoles using Role
 enumCharacteristicType OwnedRoles using Role
-enumCharacteristicType DataOrigin using Origin

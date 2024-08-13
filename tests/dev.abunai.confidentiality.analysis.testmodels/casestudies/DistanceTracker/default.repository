@@ -79,6 +79,18 @@
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="distance"/>
         </inputVariableUsages__CallAction>
       </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_4aJSMFlyEe-Rbb2iWahO8A" entityName="DistanceTrackerLogic.publishGPS" calledService_ExternalService="_5_GXsDobEeujr6PSMKhjng" role_ExternalService="_cU140DocEeujr6PSMKhjng">
+        <inputVariableUsages__CallAction>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_Ni838FlzEe-Rbb2iWahO8A"/>
+            <rhs xsi:type="expression:NamedEnumCharacteristicReference" id="_Ni838VlzEe-Rbb2iWahO8A">
+              <namedReference xsi:type="stoex:VariableReference" referenceName="distance"/>
+            </rhs>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="distance"/>
+        </inputVariableUsages__CallAction>
+      </steps_Behaviour>
     </serviceEffectSpecifications__BasicComponent>
   </components__Repository>
   <components__Repository xsi:type="repository:BasicComponent" id="_OYLwsDocEeujr6PSMKhjng" entityName="TrackingService.Logic">

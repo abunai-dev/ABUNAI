@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ASCII"?>
 <allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.2" id="_cm2i8DopEeujr6PSMKhjng" entityName="New Allocation">
-  <targetResourceEnvironment_Allocation href="default.resourceenvironment#/0"/>
+  <targetResourceEnvironment_Allocation href="default.resourceenvironment#/"/>
   <system_Allocation href="default.system#_YR6YcDooEeujr6PSMKhjng"/>
   <allocationContexts_Allocation id="_hMkJ0DopEeujr6PSMKhjng" entityName="Allocation_Assembly_TrackingService">
     <resourceContainer_AllocationContext href="default.resourceenvironment#_Yb7aoDopEeujr6PSMKhjng"/>
