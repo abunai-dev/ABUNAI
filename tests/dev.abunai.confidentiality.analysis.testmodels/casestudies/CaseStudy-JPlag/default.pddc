@@ -1,0 +1,14 @@
+dictionary id "_LKykIForEe-UVtvHkt5kKg"
+
+enum Location {
+	Local
+	Cloud
+}
+
+enum Status {
+	Sensitive
+	Evaluated
+}
+
+enumCharacteristicType Location using Location
+enumCharacteristicType Status using Status
