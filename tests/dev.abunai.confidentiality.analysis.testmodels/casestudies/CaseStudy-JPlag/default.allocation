@@ -14,4 +14,12 @@
     <resourceContainer_AllocationContext href="default.resourceenvironment#_BzDDkFopEe-UVtvHkt5kKg"/>
     <assemblyContext_AllocationContext href="default.system#_OpEwQFooEe-UVtvHkt5kKg"/>
   </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_QHBJYFoyEe-UVtvHkt5kKg" entityName="Allocation_Assembly_ReportViewer_deployedInTheCloud">
+    <resourceContainer_AllocationContext href="default.resourceenvironment#_DYPfwFopEe-UVtvHkt5kKg"/>
+    <assemblyContext_AllocationContext href="default.system#_-yaOAFoxEe-UVtvHkt5kKg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_RjRsAFoyEe-UVtvHkt5kKg" entityName="Allocation_Assembly_PlagiarismDetector_deployedInTheCloud">
+    <resourceContainer_AllocationContext href="default.resourceenvironment#_DYPfwFopEe-UVtvHkt5kKg"/>
+    <assemblyContext_AllocationContext href="default.system#_y3cQ0FoxEe-UVtvHkt5kKg"/>
+  </allocationContexts_Allocation>
 </allocation:Allocation>
