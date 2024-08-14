@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.2" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.2" id="_dqFLECHbEd6tG9VclJz3cw" entityName="defaultRepository">
+  <components__Repository xsi:type="repository:BasicComponent" id="_QNDsgFodEe-UVtvHkt5kKg" entityName="ReportViewer">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_R3yeEFofEe-UVtvHkt5kKg" entityName="PlagiarismDetector.ReportViewerInterface.OperationProvidedRole" providedInterface__OperationProvidedRole="_f1h2MFodEe-UVtvHkt5kKg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Um2FUFofEe-UVtvHkt5kKg" entityName="PlagiarismDetector.VersionServiceInterface.OperationRequiredRole" requiredInterface__OperationRequiredRole="_jA3JwFodEe-UVtvHkt5kKg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_R3zsMFofEe-UVtvHkt5kKg" describedService__SEFF="_T-uK0FoeEe-UVtvHkt5kKg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_R30TQFofEe-UVtvHkt5kKg" successor_AbstractAction="_R30TQVofEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_R30TQVofEe-UVtvHkt5kKg" predecessor_AbstractAction="_R30TQFofEe-UVtvHkt5kKg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_Sq0vcFodEe-UVtvHkt5kKg" entityName="PlagiarismDetector">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_RC42YFofEe-UVtvHkt5kKg" entityName="ReportViewer.JPlagInterface.OperationProvidedRole" providedInterface__OperationProvidedRole="_brnagFodEe-UVtvHkt5kKg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_SlLIgFofEe-UVtvHkt5kKg" entityName="ReportViewer.ReportViewerInterface.OperationRequiredRole" requiredInterface__OperationRequiredRole="_f1h2MFodEe-UVtvHkt5kKg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_UFj9MFofEe-UVtvHkt5kKg" entityName="ReportViewer.VersionServiceInterface.OperationRequiredRole" requiredInterface__OperationRequiredRole="_jA3JwFodEe-UVtvHkt5kKg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_RDLxUFofEe-UVtvHkt5kKg" describedService__SEFF="_QX4nAFoeEe-UVtvHkt5kKg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_RDMYYFofEe-UVtvHkt5kKg" successor_AbstractAction="_RDMYYVofEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_RDMYYVofEe-UVtvHkt5kKg" predecessor_AbstractAction="_RDMYYFofEe-UVtvHkt5kKg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_REPhQFofEe-UVtvHkt5kKg" describedService__SEFF="_O_9KwFoeEe-UVtvHkt5kKg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_REPhQVofEe-UVtvHkt5kKg" successor_AbstractAction="_REPhQlofEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_REPhQlofEe-UVtvHkt5kKg" predecessor_AbstractAction="_REPhQVofEe-UVtvHkt5kKg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_REXdEFofEe-UVtvHkt5kKg" describedService__SEFF="_RjwkQFoeEe-UVtvHkt5kKg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_REXdEVofEe-UVtvHkt5kKg" successor_AbstractAction="_REXdElofEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_REXdElofEe-UVtvHkt5kKg" predecessor_AbstractAction="_REXdEVofEe-UVtvHkt5kKg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_Tf9nsFodEe-UVtvHkt5kKg" entityName="VersionService">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_TelcwFofEe-UVtvHkt5kKg" entityName="VersionService.VersionServiceInterface.OperationProvidedRole1" providedInterface__OperationProvidedRole="_jA3JwFodEe-UVtvHkt5kKg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_TemD0FofEe-UVtvHkt5kKg" describedService__SEFF="_XP5nsFoeEe-UVtvHkt5kKg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_TemD0VofEe-UVtvHkt5kKg" successor_AbstractAction="_Temq4FofEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Temq4FofEe-UVtvHkt5kKg" predecessor_AbstractAction="_TemD0VofEe-UVtvHkt5kKg"/>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_brnagFodEe-UVtvHkt5kKg" entityName="JPlagInterface">
+    <signatures__OperationInterface id="_O_9KwFoeEe-UVtvHkt5kKg" entityName="run" returnType__OperationSignature="_mh8q4FodEe-UVtvHkt5kKg">
+      <parameters__OperationSignature dataType__Parameter="_E6xqgFoeEe-UVtvHkt5kKg" parameterName="submissions"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_QX4nAFoeEe-UVtvHkt5kKg" entityName="runAndView">
+      <parameters__OperationSignature dataType__Parameter="_E6xqgFoeEe-UVtvHkt5kKg" parameterName="submissions"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_RjwkQFoeEe-UVtvHkt5kKg" entityName="view">
+      <parameters__OperationSignature dataType__Parameter="_mh8q4FodEe-UVtvHkt5kKg" parameterName="results"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_f1h2MFodEe-UVtvHkt5kKg" entityName="ReportViewerInterface">
+    <signatures__OperationInterface id="_T-uK0FoeEe-UVtvHkt5kKg" entityName="displayResults">
+      <parameters__OperationSignature dataType__Parameter="_mh8q4FodEe-UVtvHkt5kKg" parameterName="results"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_jA3JwFodEe-UVtvHkt5kKg" entityName="VersionServiceInterface">
+    <signatures__OperationInterface id="_XP5nsFoeEe-UVtvHkt5kKg" entityName="getCurrentVersion" returnType__OperationSignature="_GYoIkFoeEe-UVtvHkt5kKg"/>
+  </interfaces__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_mh8q4FodEe-UVtvHkt5kKg" entityName="ResultArchive"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_E6xqgFoeEe-UVtvHkt5kKg" entityName="Submissions"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_GYoIkFoeEe-UVtvHkt5kKg" entityName="VersionInfo"/>
+</repository:Repository>
