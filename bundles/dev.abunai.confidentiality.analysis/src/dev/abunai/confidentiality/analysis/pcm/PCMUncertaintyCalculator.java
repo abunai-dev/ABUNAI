@@ -1,7 +1,6 @@
 package dev.abunai.confidentiality.analysis.pcm;
 
 import dev.abunai.confidentiality.analysis.core.UncertainState;
-import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;

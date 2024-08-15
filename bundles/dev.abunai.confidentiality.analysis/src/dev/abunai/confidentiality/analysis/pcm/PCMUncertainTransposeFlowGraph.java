@@ -3,7 +3,6 @@ package dev.abunai.confidentiality.analysis.pcm;
 import java.util.*;
 
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
-import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 

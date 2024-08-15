@@ -1,9 +1,7 @@
 package dev.abunai.confidentiality.analysis.pcm;
 
-import dev.abunai.confidentiality.analysis.UncertaintyResourceProvider;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.pcm.PCMDataFlowConfidentialityAnalysisBuilder;
-import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
 import org.dataflowanalysis.analysis.utils.ResourceUtils;
 import org.eclipse.core.runtime.Plugin;
 

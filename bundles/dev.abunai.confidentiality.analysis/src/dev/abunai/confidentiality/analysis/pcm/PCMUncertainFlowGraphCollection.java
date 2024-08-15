@@ -6,7 +6,6 @@ import dev.abunai.confidentiality.analysis.core.UncertainFlowGraphCollection;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
 import dev.abunai.confidentiality.analysis.core.UncertainTransposeFlowGraph;
 import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
-import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintyScenario;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
@@ -16,7 +15,6 @@ import org.dataflowanalysis.analysis.pcm.core.finder.PCMTransposeFlowGraphFinder
 import org.dataflowanalysis.analysis.pcm.resource.PCMResourceProvider;
 
 import dev.abunai.confidentiality.analysis.core.UncertaintySourceManager;
-import dev.abunai.confidentiality.analysis.core.UncertaintySourceType;
 import dev.abunai.confidentiality.analysis.model.uncertainty.pcm.PCMUncertaintySource;
 
 public class PCMUncertainFlowGraphCollection extends PCMFlowGraphCollection implements UncertainFlowGraphCollection {
