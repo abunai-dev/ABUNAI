@@ -62,8 +62,9 @@ public class DFDUncertaintyAwareConfidentialityAnalysisBuilder extends DFDDataFl
 	}
 
 	@Override
-	public void useCustomResourceProvider(DFDResourceProvider resourceProvider) {
+	public DFDUncertaintyAwareConfidentialityAnalysisBuilder useCustomResourceProvider(DFDResourceProvider resourceProvider) {
 		logger.error("Custom resource providers are not supported by the uncertainty-aware confidentiality analysis.");
+		return this;
 	}
 
 	public DFDUncertaintyAwareConfidentialityAnalysisBuilder useFilter(String nameFilter) {
