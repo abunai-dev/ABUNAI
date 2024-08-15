@@ -33,6 +33,25 @@
   <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_0g7tQFooEe-UVtvHkt5kKg" entityName="newProvidedDelegationConnector" outerProvidedRole_ProvidedDelegationConnector="_WeWDYFooEe-UVtvHkt5kKg" assemblyContext_ProvidedDelegationConnector="_KglQ4FooEe-UVtvHkt5kKg">
     <innerProvidedRole_ProvidedDelegationConnector href="default.repository#_R3yeEFofEe-UVtvHkt5kKg"/>
   </connectors__ComposedStructure>
+  <connectors__ComposedStructure xsi:type="composition:ProvidedDelegationConnector" id="_UhzlsFsOEe-TFaLbLnF2Dw" entityName="newProvidedDelegationConnector" outerProvidedRole_ProvidedDelegationConnector="_VlESAFooEe-UVtvHkt5kKg" assemblyContext_ProvidedDelegationConnector="_y3cQ0FoxEe-UVtvHkt5kKg">
+    <innerProvidedRole_ProvidedDelegationConnector href="default.repository#_RC42YFofEe-UVtvHkt5kKg"/>
+  </connectors__ComposedStructure>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_Wbg5UFsOEe-TFaLbLnF2Dw" entityName="newAssemblyConnector" requiringAssemblyContext_AssemblyConnector="_y3cQ0FoxEe-UVtvHkt5kKg" providingAssemblyContext_AssemblyConnector="_KglQ4FooEe-UVtvHkt5kKg">
+    <providedRole_AssemblyConnector href="default.repository#_R3yeEFofEe-UVtvHkt5kKg"/>
+    <requiredRole_AssemblyConnector href="default.repository#_SlLIgFofEe-UVtvHkt5kKg"/>
+  </connectors__ComposedStructure>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_Xry1cFsOEe-TFaLbLnF2Dw" entityName="newAssemblyConnector" requiringAssemblyContext_AssemblyConnector="_y3cQ0FoxEe-UVtvHkt5kKg" providingAssemblyContext_AssemblyConnector="_S0N7AFooEe-UVtvHkt5kKg">
+    <providedRole_AssemblyConnector href="default.repository#_TelcwFofEe-UVtvHkt5kKg"/>
+    <requiredRole_AssemblyConnector href="default.repository#_UFj9MFofEe-UVtvHkt5kKg"/>
+  </connectors__ComposedStructure>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_Z20ikFsOEe-TFaLbLnF2Dw" entityName="newAssemblyConnector" requiringAssemblyContext_AssemblyConnector="_-yaOAFoxEe-UVtvHkt5kKg" providingAssemblyContext_AssemblyConnector="_S0N7AFooEe-UVtvHkt5kKg">
+    <providedRole_AssemblyConnector href="default.repository#_TelcwFofEe-UVtvHkt5kKg"/>
+    <requiredRole_AssemblyConnector href="default.repository#_Um2FUFofEe-UVtvHkt5kKg"/>
+  </connectors__ComposedStructure>
+  <connectors__ComposedStructure xsi:type="composition:AssemblyConnector" id="_brp9QFsOEe-TFaLbLnF2Dw" entityName="newAssemblyConnector" requiringAssemblyContext_AssemblyConnector="_y3cQ0FoxEe-UVtvHkt5kKg" providingAssemblyContext_AssemblyConnector="_-yaOAFoxEe-UVtvHkt5kKg">
+    <providedRole_AssemblyConnector href="default.repository#_R3yeEFofEe-UVtvHkt5kKg"/>
+    <requiredRole_AssemblyConnector href="default.repository#_SlLIgFofEe-UVtvHkt5kKg"/>
+  </connectors__ComposedStructure>
   <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_VlESAFooEe-UVtvHkt5kKg" entityName="JPlagInterfaceProvidedRole">
     <providedInterface__OperationProvidedRole href="default.repository#_brnagFodEe-UVtvHkt5kKg"/>
   </providedRoles_InterfaceProvidingEntity>
