@@ -16,7 +16,7 @@ import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUnc
 import dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDInterfaceUncertaintySource;
 
 import org.apache.log4j.Logger;
-import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraphFinder;
+import org.dataflowanalysis.analysis.dfd.core.DFDCyclicTransposeFlowGraphFinder;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.dataflowanalysis.dfd.datadictionary.AbstractAssignment;
 import org.dataflowanalysis.dfd.datadictionary.Behaviour;
@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import tools.mdsd.modelingfoundations.identifier.NamedElement;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
@@ -228,7 +227,7 @@ public class DFDUncertaintyCalculator {
                 .forEach(key -> copiedPinDFDVertexMap.put(key, commonVertex.get().getPinDFDVertexMap().get(key).copy(new IdentityHashMap<>())));
         DFDVertex copiedVertex = new DFDVertex(mapping.apply(commonVertex.get().getReferencedElement()), copiedPinDFDVertexMap, new HashMap<>(commonVertex.get().getPinFlowMap()));
 
-        DFDTransposeFlowGraphFinder finder = new DFDTransposeFlowGraphFinder(resourceProvider);
+        DFDCyclicTransposeFlowGraphFinder finder = new DFDCyclicTransposeFlowGraphFinder(resourceProvider);
         List<DFDUncertainTransposeFlowGraph> followingFlowGraphs = finder.findTransposeFlowGraphs(List.of(replacingNode)).stream()
                 .map(it -> new DFDUncertainTransposeFlowGraph(it.getSink(), currentTransposeFlowGraph.getRelevantUncertaintySources(), uncertainState, currentTransposeFlowGraph.getUncertaintySourceManager()))
                 .toList();
