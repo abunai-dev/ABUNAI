@@ -9,7 +9,6 @@ import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CoronaWarnAppTest extends PCMTestBase {
@@ -57,6 +56,7 @@ public class CoronaWarnAppTest extends PCMTestBase {
 		
 		List<UncertainConstraintViolation> violations = new ArrayList<>();
 		violations.addAll(illegalLocations);
+		violations.addAll(validationFailures);
 		violations.addAll(leaks);
 		printMetrics("CoronaWarnApp", analysis.getResourceProvider(), uncertainFlowGraphs, violations);
 	}
