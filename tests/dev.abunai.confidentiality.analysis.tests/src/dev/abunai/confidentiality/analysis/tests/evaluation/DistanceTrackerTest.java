@@ -1,13 +1,13 @@
-package dev.abunai.confidentiality.analysis.tests.pcm;
+package dev.abunai.confidentiality.analysis.tests.evaluation;
 
 import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
 import dev.abunai.confidentiality.analysis.pcm.PCMUncertainFlowGraphCollection;
 
-import org.dataflowanalysis.analysis.core.CharacteristicValue;
 import org.junit.jupiter.api.Test;
 
 import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -45,6 +45,10 @@ public class DistanceTrackerTest extends PCMTestBase {
 	        		&& !allowedRoles.stream().allMatch(var -> var.stream().anyMatch(role -> ownedRoles.contains(role)));
 		});
 		assertTrue(accessViolations.size() > 0);
+
+		List<UncertainConstraintViolation> violations = new ArrayList<>();
+		violations.addAll(accessViolations);
+		printMetrics("DistanceTracker", analysis.getResourceProvider(), uncertainFlowGraphs, violations);
 	}
 
 }

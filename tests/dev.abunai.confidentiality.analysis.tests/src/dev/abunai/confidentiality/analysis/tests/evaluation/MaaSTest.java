@@ -1,4 +1,4 @@
-package dev.abunai.confidentiality.analysis.tests.pcm;
+package dev.abunai.confidentiality.analysis.tests.evaluation;
 
 import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
 import dev.abunai.confidentiality.analysis.pcm.PCMUncertainFlowGraphCollection;
@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -53,6 +54,12 @@ public class MaaSTest extends PCMTestBase {
 					it.getDataCharacteristicNamesMap("DataType").values().stream().anyMatch(vars -> vars.stream().anyMatch(cv -> cv.equals("LoginData")));
 		});
 		assertTrue(leaks.size() > 0);
+		
+		List<UncertainConstraintViolation> violations = new ArrayList<>();
+		violations.addAll(illegalLocations);
+		violations.addAll(leakedCredentials);
+		violations.addAll(leaks);
+		printMetrics("MaaS", analysis.getResourceProvider(), uncertainFlowGraphs, violations);
 	}
 
 }

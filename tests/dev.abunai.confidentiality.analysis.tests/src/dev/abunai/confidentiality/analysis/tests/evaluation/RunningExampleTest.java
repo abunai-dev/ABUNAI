@@ -1,8 +1,9 @@
-package dev.abunai.confidentiality.analysis.tests.pcm;
+package dev.abunai.confidentiality.analysis.tests.evaluation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -84,5 +85,10 @@ public class RunningExampleTest extends PCMTestBase {
         
         assertTrue(!invalidData.isEmpty());
         assertTrue(!invalidStoring.isEmpty());
+        
+        List<UncertainConstraintViolation> violations = new ArrayList<>();
+        violations.addAll(invalidData);
+        violations.addAll(invalidStoring);
+        printMetrics("OnlineShop", analysis.getResourceProvider(), uncertainFlowGraphs, violations);
 	}
 }
