@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pcm="http://abunai.dev/uncertainty/pcm" xmlns:uncertainty="http://abunai.dev/uncertainty" id="_PGxisFwGEe-Im5QDkKaNzA" entityName="U1">
+  <sources xsi:type="pcm:PCMBehaviorUncertaintySource" id="_RWYN0lwGEe-Im5QDkKaNzA">
+    <target href="travelPlanner.repository#_rjEOUJggEe6mOuFnQfU4ag"/>
+    <scenarios id="_EqPyEFwJEe-Im5QDkKaNzA">
+      <target href="travelPlanner.repository#_91GfMFwIEe-Im5QDkKaNzA"/>
+    </scenarios>
+  </sources>
+</uncertainty:UncertaintySourceCollection>
