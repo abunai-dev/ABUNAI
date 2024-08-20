@@ -41,6 +41,7 @@ import org.palladiosimulator.pcm.seff.StartAction;
 import org.palladiosimulator.pcm.seff.StopAction;
 import org.palladiosimulator.pcm.usagemodel.AbstractUserAction;
 import org.palladiosimulator.pcm.usagemodel.EntryLevelSystemCall;
+import org.palladiosimulator.pcm.usagemodel.UsagemodelFactory;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -395,6 +396,13 @@ public class PCMUncertaintyCalculator {
                 .filter(CallReturnBehavior::isCalling)
                 .filter(it -> it.getReferencedElement().getCalledService_ExternalService().equals(target))
                 .findAny();
+        
+        Optional<CallingUserPCMVertex> commonCallingUserVertex = currentTransposeFlowGraph.getVertices().stream()
+                .filter(CallingUserPCMVertex.class::isInstance)
+                .map(CallingUserPCMVertex.class::cast)
+                .filter(CallReturnBehavior::isCalling)
+                .filter(it -> it.getReferencedElement().getOperationSignature__EntryLevelSystemCall().equals(target))
+                .findAny();
 
         Optional<CallingSEFFPCMVertex> commonReturningVertex = currentTransposeFlowGraph.getVertices().stream()
                 .filter(CallingSEFFPCMVertex.class::isInstance)
@@ -402,10 +410,21 @@ public class PCMUncertaintyCalculator {
                 .filter(CallReturnBehavior::isReturning)
                 .filter(it -> it.getReferencedElement().getCalledService_ExternalService().equals(target))
                 .findAny();
+        
+        Optional<CallingUserPCMVertex> commonReturningUserVertex = currentTransposeFlowGraph.getVertices().stream()
+                .filter(CallingUserPCMVertex.class::isInstance)
+                .map(CallingUserPCMVertex.class::cast)
+                .filter(CallReturnBehavior::isReturning)
+                .filter(it -> it.getReferencedElement().getOperationSignature__EntryLevelSystemCall().equals(target))
+                .findAny();
 
 
         if (commonCallingVertex.isEmpty() || commonReturningVertex.isEmpty()) {
-            return List.of(currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState));
+        	if (commonCallingUserVertex.isEmpty() || commonReturningUserVertex.isEmpty()) {
+                return List.of(currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState));
+        	} else {
+        		return this.processUserInterfaceUncertainty(uncertainState, currentTransposeFlowGraph, target, replacement, commonCallingUserVertex.get(), commonReturningUserVertex.get());
+        	}
         }
 
         Optional<OperationRequiredRole> requiredRole = this.getRequiredRoleForInterface(commonCallingVertex.get(), replacement);
@@ -432,6 +451,30 @@ public class PCMUncertaintyCalculator {
         AbstractPCMVertex<?> returnReplacement = new CallingSEFFPCMVertex(replacementCallElement, List.of(callReplacement), commonCallingVertex.get().getContext(), commonCallingVertex.get().getParameter(),false, this.resourceProvider);
         return this.getSEFFReplacementStart(uncertainState, currentTransposeFlowGraph, callReplacement, returnReplacement, calledSEFF, commonCallingVertex.get(), commonReturningVertex.get(), mapping);
     }
+    
+    private List<PCMUncertainTransposeFlowGraph> processUserInterfaceUncertainty(UncertainState uncertainState, PCMUncertainTransposeFlowGraph currentTransposeFlowGraph, OperationSignature target, OperationSignature replacement, CallingUserPCMVertex callingVertex, CallingUserPCMVertex returningVertex) {
+    	Optional<OperationProvidedRole> providedRole = this.getProvidedRoleForInterface(callingVertex, replacement);
+        if (providedRole.isEmpty()) {
+        	logger.warn("Could not determine required role of new interface. Not applying uncertainty...");
+            return List.of(currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState));
+        }
+
+        EntryLevelSystemCall replacementCallElement = UsagemodelFactory.eINSTANCE.createEntryLevelSystemCall();
+        replacementCallElement.setEntityName(callingVertex.getReferencedElement().getEntityName());
+        replacementCallElement.setOperationSignature__EntryLevelSystemCall(EcoreUtil.copy(replacement));
+        replacementCallElement.setProvidedRole_EntryLevelSystemCall(providedRole.get());
+        replacementCallElement.setPredecessor(callingVertex.getReferencedElement().getPredecessor());
+        replacementCallElement.setSuccessor(callingVertex.getReferencedElement().getSuccessor());
+        replacementCallElement.getInputParameterUsages_EntryLevelSystemCall().addAll(this.copyVariableUsages(callingVertex.getReferencedElement().getInputParameterUsages_EntryLevelSystemCall()));
+        replacementCallElement.getOutputParameterUsages_EntryLevelSystemCall().addAll(this.copyVariableUsages(callingVertex.getReferencedElement().getOutputParameterUsages_EntryLevelSystemCall()));
+        replacementCallElement.setScenarioBehaviour_AbstractUserAction(callingVertex.getReferencedElement().getScenarioBehaviour_AbstractUserAction());
+        
+        var calledSEFF = PCMQueryUtils.findCalledSEFF(providedRole.get(), replacement, callingVertex.getContext()).orElseThrow();
+        Map<AbstractPCMVertex<?>, AbstractPCMVertex<?>> mapping = new HashMap<>();
+        AbstractPCMVertex<?> callReplacement = new CallingUserPCMVertex(replacementCallElement, callingVertex.getPreviousElements(), true, this.resourceProvider);
+        AbstractPCMVertex<?> returnReplacement = new CallingUserPCMVertex(replacementCallElement, List.of(callReplacement), false, this.resourceProvider);
+        return this.getSEFFReplacementStart(uncertainState, currentTransposeFlowGraph, callReplacement, returnReplacement, calledSEFF, callingVertex, returningVertex, mapping);
+    }
 
     /**
      * Copies the list of variable usages into a list of new variable usages
@@ -456,6 +499,21 @@ public class PCMUncertaintyCalculator {
                 .map(OperationRequiredRole.class::cast)
                 .filter(it -> it.getRequiredInterface__OperationRequiredRole().equals(replacementInterface))
                 .findFirst();
+    }
+    
+    /**
+     * Returns a required role for the given element and signature
+     * @param oldElement Element which determines the context of the interface
+     * @param replacement Signature of the interface
+     * @return Returns a required role, if one can be found.
+     */
+    private Optional<OperationProvidedRole> getProvidedRoleForInterface(CallingUserPCMVertex oldElement, OperationSignature replacement) {
+        OperationInterface replacementInterface = replacement.getInterface__OperationSignature();
+        return this.resourceProvider.getAllocation().getSystem_Allocation().getProvidedRoles_InterfaceProvidingEntity().stream()
+        	.filter(OperationProvidedRole.class::isInstance)
+        	.map(OperationProvidedRole.class::cast)
+        	.filter(it -> it.getProvidedInterface__OperationProvidedRole().equals(replacementInterface))
+        	.findAny();
     }
 
     /**
