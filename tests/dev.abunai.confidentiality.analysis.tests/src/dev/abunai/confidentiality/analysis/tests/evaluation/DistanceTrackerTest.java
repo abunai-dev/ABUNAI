@@ -48,7 +48,7 @@ public class DistanceTrackerTest extends PCMTestBase {
 
 		List<UncertainConstraintViolation> violations = new ArrayList<>();
 		violations.addAll(accessViolations);
-		printMetrics("DistanceTracker", analysis.getResourceProvider(), uncertainFlowGraphs, violations);
+		printMetrics("DistanceTracker", analysis.getResourceProvider(), flowGraphs, uncertainFlowGraphs, violations);
 	}
 
 }

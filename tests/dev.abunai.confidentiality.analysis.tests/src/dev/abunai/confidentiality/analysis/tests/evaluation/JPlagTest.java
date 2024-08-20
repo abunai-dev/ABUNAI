@@ -52,7 +52,7 @@ public class JPlagTest extends PCMTestBase {
 		List<UncertainConstraintViolation> violations = new ArrayList<>();
 		violations.addAll(illegalEvaluation);
 		violations.addAll(sensitiveDataInTheCloud);
-		printMetrics("JPlag", analysis.getResourceProvider(), uncertainFlowGraphs, violations);
+		printMetrics("JPlag", analysis.getResourceProvider(), flowGraphs, uncertainFlowGraphs, violations);
 	}
 
 }

@@ -60,6 +60,6 @@ public class TravelPlannerTest extends PCMTestBase {
 
 		List<UncertainConstraintViolation> accessViolations = analysis.queryUncertainDataFlow(uncertainFlowGraphs, this::travelPlannerCondition);
 		assertEquals(1, accessViolations.size());
-		printMetrics("TravelPlanner", analysis.getResourceProvider(), uncertainFlowGraphs, accessViolations);
+		printMetrics("TravelPlanner", analysis.getResourceProvider(), flowGraphs, uncertainFlowGraphs, accessViolations);
 	}
 }

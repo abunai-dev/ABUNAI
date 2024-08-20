@@ -58,7 +58,7 @@ public class CoronaWarnAppTest extends PCMTestBase {
 		violations.addAll(illegalLocations);
 		violations.addAll(validationFailures);
 		violations.addAll(leaks);
-		printMetrics("CoronaWarnApp", analysis.getResourceProvider(), uncertainFlowGraphs, violations);
+		printMetrics("CoronaWarnApp", analysis.getResourceProvider(), flowGraphs, uncertainFlowGraphs, violations);
 	}
 
 }

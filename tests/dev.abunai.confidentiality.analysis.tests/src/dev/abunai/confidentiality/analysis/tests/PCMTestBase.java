@@ -16,6 +16,8 @@ import org.palladiosimulator.pcm.repository.RepositoryPackage;
 import dev.abunai.confidentiality.analysis.UncertaintyAwareConfidentialityAnalysis;
 import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
 import dev.abunai.confidentiality.analysis.core.UncertainState;
+import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
+import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import dev.abunai.confidentiality.analysis.pcm.PCMUncertainFlowGraphCollection;
 import dev.abunai.confidentiality.analysis.pcm.PCMUncertaintyAwareConfidentialityAnalysisBuilder;
 import dev.abunai.confidentiality.analysis.pcm.PCMUncertaintyResourceProvider;
@@ -47,11 +49,10 @@ public abstract class PCMTestBase extends TestBase {
 
 		UncertaintyAwareConfidentialityAnalysis analysis = builder.build();
 		analysis.initializeAnalysis();
-
 		this.analysis = analysis;
 	}
 	
-	protected void printMetrics(String name, ResourceProvider resourceProvider, PCMUncertainFlowGraphCollection uncertainFlowGraphs, List<UncertainConstraintViolation> violations) {
+	protected void printMetrics(String name, ResourceProvider resourceProvider, PCMUncertainFlowGraphCollection flowGraphCollection,  PCMUncertainFlowGraphCollection uncertainFlowGraphs, List<UncertainConstraintViolation> violations) {
 		if (!(resourceProvider instanceof PCMUncertaintyResourceProvider pcmUncertaintyResourceProvider)) {
 			logger.error("Resource provider is not an pcm uncertainty resource provider");
 			throw new IllegalStateException();
@@ -64,8 +65,8 @@ public abstract class PCMTestBase extends TestBase {
 				.map(BasicComponent.class::cast)
 				.map(it -> it.getServiceEffectSpecifications__BasicComponent().size())
 				.reduce(0, (a,b) -> a+b);
-		int numberTFGs = uncertainFlowGraphs.getTransposeFlowGraphs().size();
-		int numberVertices = uncertainFlowGraphs.getTransposeFlowGraphs().stream()
+		int numberTFGs = flowGraphCollection.getTransposeFlowGraphs().size();
+		int numberVertices = flowGraphCollection.getTransposeFlowGraphs().stream()
 				.map(it -> it.getVertices().size())
 				.reduce(0, (a,b) -> a+b);
 		int numberUncertainties = pcmUncertaintyResourceProvider.getUncertaintySourceCollection().getSources().size();
@@ -74,8 +75,15 @@ public abstract class PCMTestBase extends TestBase {
 		for (UncertainConstraintViolation violation : violations) {
 			UncertainState state = violation.uncertainState();
 			String scenarioNames = state.getSelectedUncertaintyScenarios().stream()
-					.map(it -> it.getEntityName()).collect(Collectors.joining(", "));
-			violatingContextsBuilder.add(scenarioNames);
+					.map(it -> {
+						UncertaintySource source = (UncertaintySource) it.eContainer();
+						if (UncertaintyUtils.isDefaultScenario(source, it)) {
+							return source.getEntityName() + "-Default";
+						}
+						return it.getEntityName();
+					})
+					.collect(Collectors.joining(", "));
+			violatingContextsBuilder.add("[" + scenarioNames + "]");
 		}
 		String violatingContexts = "[" + violatingContextsBuilder.toString() + "]";
 		

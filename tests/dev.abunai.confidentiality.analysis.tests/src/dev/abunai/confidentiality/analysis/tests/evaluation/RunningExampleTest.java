@@ -89,6 +89,6 @@ public class RunningExampleTest extends PCMTestBase {
         List<UncertainConstraintViolation> violations = new ArrayList<>();
         violations.addAll(invalidData);
         violations.addAll(invalidStoring);
-        printMetrics("OnlineShop", analysis.getResourceProvider(), uncertainFlowGraphs, violations);
+        printMetrics("OnlineShop", analysis.getResourceProvider(), flowGraphs, uncertainFlowGraphs, violations);
 	}
 }
