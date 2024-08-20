@@ -20,7 +20,7 @@
   </sources>
   <sources xsi:type="pcm:PCMConnectorUncertaintySourceInExternalCall" id="_rRx4ZFivEe-1dYFuXzLZMA" entityName="U4">
     <target href="MaaS.repository#_5citABEpEe-OH5ude3wjOg"/>
-    <scenarios id="_d_cqMFiwEe-1dYFuXzLZMA">
+    <scenarios id="_d_cqMFiwEe-1dYFuXzLZMA" entityName="U4-Alternative">
       <target href="MaaS.repository#_v7WrkFivEe-1dYFuXzLZMA"/>
     </scenarios>
   </sources>
