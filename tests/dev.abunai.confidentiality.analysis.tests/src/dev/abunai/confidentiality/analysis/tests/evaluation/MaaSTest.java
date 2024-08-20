@@ -49,9 +49,7 @@ public class MaaSTest extends PCMTestBase {
 		assertTrue(leakedCredentials.size() > 0);
 		
 		List<UncertainConstraintViolation> leaks = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-			return it.getVertexCharacteristicNames("Role").contains("Customer") 
-					&& 
-					it.getDataCharacteristicNamesMap("DataType").values().stream().anyMatch(vars -> vars.stream().anyMatch(cv -> cv.equals("LoginData")));
+			return it.getDataCharacteristicNamesMap("Origin").values().stream().flatMap(List::stream).anyMatch(cv -> cv.equals("Leaked"));
 		});
 		assertTrue(leaks.size() > 0);
 		
@@ -59,7 +57,7 @@ public class MaaSTest extends PCMTestBase {
 		violations.addAll(illegalLocations);
 		violations.addAll(leakedCredentials);
 		violations.addAll(leaks);
-		printMetrics("MaaS", analysis.getResourceProvider(), uncertainFlowGraphs, violations);
+		printMetrics("MaaS", analysis.getResourceProvider(), flowGraphs, uncertainFlowGraphs, violations);
 	}
 
 }

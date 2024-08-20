@@ -206,6 +206,14 @@
             </lhs>
             <rhs xsi:type="expressions:True" id="_cc8nlliuEe-1dYFuXzLZMA"/>
           </variableCharacterisation_VariableUsage>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_MHs9UF7WEe-XNcmuRwV8VA">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="MaaS.pddc#_2v_rYBEiEe-OH5ude3wjOg-characteristicTypes@9"/>
+              <literal href="MaaS.pddc#_2v_rYBEiEe-OH5ude3wjOg-characteristicEnumerations@9.literals@0"/>
+            </lhs>
+            <rhs xsi:type="expressions:True" id="_OGDgZl7WEe-XNcmuRwV8VA"/>
+          </variableCharacterisation_VariableUsage>
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="RETURN"/>
         </localVariableUsages_SetVariableAction>
       </steps_Behaviour>
@@ -1011,6 +1019,14 @@
               <literal href="MaaS.pddc#_2v_rYBEiEe-OH5ude3wjOg-characteristicEnumerations@8.literals@1"/>
             </lhs>
             <rhs xsi:type="expressions:True" id="_NYNDxlizEe-1dYFuXzLZMA"/>
+          </variableCharacterisation_VariableUsage>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_gIARoF7QEe-XNcmuRwV8VA">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="MaaS.pddc#_2v_rYBEiEe-OH5ude3wjOg-characteristicTypes@9"/>
+              <literal href="MaaS.pddc#_2v_rYBEiEe-OH5ude3wjOg-characteristicEnumerations@9.literals@0"/>
+            </lhs>
+            <rhs xsi:type="expressions:True" id="_iixD5l7QEe-XNcmuRwV8VA"/>
           </variableCharacterisation_VariableUsage>
           <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="RETURN"/>
         </localVariableUsages_SetVariableAction>

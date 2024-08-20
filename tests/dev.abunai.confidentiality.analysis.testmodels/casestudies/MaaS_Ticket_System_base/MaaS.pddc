@@ -69,6 +69,10 @@ enum sensitivity {
 	Private
 }
 
+enum leak {
+	Leaked
+}
+
 enumCharacteristicType Deployment using deployment
 enumCharacteristicType Role using role
 enumCharacteristicType DataType using type
@@ -78,3 +82,4 @@ enumCharacteristicType StateMachineAccessType using interfaceType
 enumCharacteristicType WriteAction using writeActions
 enumCharacteristicType ReadAction using readActions
 enumCharacteristicType DataSensitivity using sensitivity
+enumCharacteristicType Origin using leak
