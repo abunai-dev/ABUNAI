@@ -71,7 +71,7 @@ public abstract class PCMTestBase extends TestBase {
 				.reduce(0, (a,b) -> a+b);
 		int numberUncertainties = pcmUncertaintyResourceProvider.getUncertaintySourceCollection().getSources().size();
 		int numberViolations = violations.size();
-		StringJoiner violatingContextsBuilder = new StringJoiner(",");
+		StringJoiner violatingContextsBuilder = new StringJoiner(",\n");
 		for (UncertainConstraintViolation violation : violations) {
 			UncertainState state = violation.uncertainState();
 			String scenarioNames = state.getSelectedUncertaintyScenarios().stream()
@@ -83,9 +83,12 @@ public abstract class PCMTestBase extends TestBase {
 						return it.getEntityName();
 					})
 					.collect(Collectors.joining(", "));
-			violatingContextsBuilder.add("[" + scenarioNames + "]");
+			String violatingNodes = violation.violations().stream()
+					.map(it -> it.toString())
+					.collect(Collectors.joining(", "));
+			violatingContextsBuilder.add("{" + violatingNodes + "} = [" + scenarioNames + "]");
 		}
-		String violatingContexts = "[" + violatingContextsBuilder.toString() + "]";
+		String violatingContexts = "[\n" + violatingContextsBuilder.toString() + "]";
 		
 		logger.info("-------- Results of Test Model " + name + "--------");
 		logger.info("Number of Components: " + numberComponents);

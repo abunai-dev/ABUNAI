@@ -69,7 +69,6 @@ public class RunningExampleTest extends PCMTestBase {
                     .map(CharacteristicValue::getValueName)
                     .toList();
 
-
             return dataSensitivity.stream()
                     .anyMatch(l -> l.equals("Personal"))
                     && serverLocation.stream()
