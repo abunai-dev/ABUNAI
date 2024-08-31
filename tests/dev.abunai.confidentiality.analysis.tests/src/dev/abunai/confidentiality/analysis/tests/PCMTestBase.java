@@ -86,7 +86,7 @@ public abstract class PCMTestBase extends TestBase {
 			String violatingNodes = violation.violations().stream()
 					.map(it -> it.toString())
 					.collect(Collectors.joining(", "));
-			violatingContextsBuilder.add("{" + violatingNodes + "} = [" + scenarioNames + "]");
+			violatingContextsBuilder.add("[" + scenarioNames + "] --(" + violation.violations().size() + ")--> {" + violatingNodes + "}");
 		}
 		String violatingContexts = "[\n" + violatingContextsBuilder.toString() + "]";
 		
