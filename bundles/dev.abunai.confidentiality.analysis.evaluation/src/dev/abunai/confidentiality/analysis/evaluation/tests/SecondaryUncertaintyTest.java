@@ -1,7 +1,6 @@
 package dev.abunai.confidentiality.analysis.evaluation.tests;
 
 import java.io.IOException;
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,7 +9,6 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
-import org.dataflowanalysis.analysis.pcm.utils.PCMQueryUtils;
 import org.dataflowanalysis.analysis.utils.ResourceUtils;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.palladiosimulator.pcm.core.composition.AssemblyConnector;
@@ -18,7 +16,6 @@ import org.palladiosimulator.pcm.core.composition.AssemblyContext;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.OperationInterface;
 import org.palladiosimulator.pcm.repository.OperationProvidedRole;
-import org.palladiosimulator.pcm.repository.OperationRequiredRole;
 import org.palladiosimulator.pcm.repository.OperationSignature;
 import org.palladiosimulator.pcm.seff.ExternalCallAction;
 import org.palladiosimulator.pcm.seff.ResourceDemandingSEFF;
@@ -59,11 +56,6 @@ public class SecondaryUncertaintyTest extends ScalibilityTest {
 				.flatMap(List::stream)
 				.filter(ExternalCallAction.class::isInstance)
 				.map(ExternalCallAction.class::cast)
-				.toList();
-		
-		List<OperationInterface> interfaces = factory.getRepository().getInterfaces__Repository().stream()
-				.filter(OperationInterface.class::isInstance)
-				.map(OperationInterface.class::cast)
 				.toList();
 		
 		int elements = Math.min(targets.size(), parameter.getModelSize());
