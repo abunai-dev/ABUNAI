@@ -7,9 +7,11 @@
     <label id="40" entityName="monitoring_dashboard"/>
     <label id="41" entityName="circuit_breaker"/>
     <label id="53" entityName="github_repository"/>
+    <label id="54" entityName="entrypoint"/>
     <label id="58" entityName="configuration_server"/>
     <label id="68" entityName="restful_http"/>
     <label id="73" entityName="authenticated_request"/>
+    <label id="174" entityName="encrypted_connection"/>
     <label id="102" entityName="circuit_breaker_link"/>
     <label id="107" entityName="feign_connection"/>
     <label id="108" entityName="load_balanced_link"/>
@@ -108,13 +110,19 @@
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="150" inputPins="99" outputPin="105"/>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="151" inputPins="99" outputPin="111"/>
   </behaviour>
-  <behaviour id="51">
+  <behaviour id="51" entityName="notencrypted_git">
     <outPin id="66"/>
-    <assignment xsi:type="datadictionary:Assignment" id="127" outputPin="66" outputLabels="53 68 70">
+    <assignment xsi:type="datadictionary:Assignment" id="127" entityName="notenctryptedentry" outputPin="66" outputLabels="53 54 68 70">
       <term xsi:type="datadictionary:TRUE" id="128"/>
     </assignment>
   </behaviour>
-  <behaviour id="56" entityName="notauthent-req">
+  <behaviour id="52" entityName="encrypted_git">
+    <outPin id="66"/>
+    <assignment xsi:type="datadictionary:Assignment" id="2127" entityName="enctryptedentry" outputPin="66" outputLabels="53 54 68 70 174">
+      <term xsi:type="datadictionary:TRUE" id="128"/>
+    </assignment>
+  </behaviour>
+  <behaviour id="56" entityName="notauthent_conf">
     <inPin id="65"/>
     <outPin id="72"/>
     <outPin id="75"/>
@@ -123,25 +131,25 @@
     <outPin id="90"/>
     <outPin id="95"/>
     <outPin id="100"/>
-    <assignment xsi:type="datadictionary:Assignment" id="129" entityName="aName129" inputPins="65" outputPin="72" outputLabels="58 15 68 73">
+    <assignment xsi:type="datadictionary:Assignment" id="129" entityName="noauthconf129" inputPins="65" outputPin="72" outputLabels="58 15 68 73">
       <term xsi:type="datadictionary:TRUE" id="130"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="131" entityName="aName131" inputPins="65" outputPin="75" outputLabels="58 15 68">
+    <assignment xsi:type="datadictionary:Assignment" id="131" entityName="noauthconf131" inputPins="65" outputPin="75" outputLabels="58 15 68">
       <term xsi:type="datadictionary:TRUE" id="132"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="133" entityName="aName133" inputPins="65" outputPin="80" outputLabels="58 15 68">
+    <assignment xsi:type="datadictionary:Assignment" id="133" entityName="noauthconf133" inputPins="65" outputPin="80" outputLabels="58 15 68">
       <term xsi:type="datadictionary:TRUE" id="134"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="135" entityName="aName135" inputPins="65" outputPin="85" outputLabels="58 15 68">
+    <assignment xsi:type="datadictionary:Assignment" id="135" entityName="noauthconf135" inputPins="65" outputPin="85" outputLabels="58 15 68">
       <term xsi:type="datadictionary:TRUE" id="136"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="137" entityName="aName137" inputPins="65" outputPin="90" outputLabels="58 15 68">
+    <assignment xsi:type="datadictionary:Assignment" id="137" entityName="noauthconf137" inputPins="65" outputPin="90" outputLabels="58 15 68">
       <term xsi:type="datadictionary:TRUE" id="138"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="139" entityName="aName139" inputPins="65" outputPin="95" outputLabels="58 15 68">
+    <assignment xsi:type="datadictionary:Assignment" id="139" entityName="noauthconf139" inputPins="65" outputPin="95" outputLabels="58 15 68">
       <term xsi:type="datadictionary:TRUE" id="140"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="141" entityName="aName141" inputPins="65" outputPin="100" outputLabels="58 15 68 102 49">
+    <assignment xsi:type="datadictionary:Assignment" id="141" entityName="noauthconf141" inputPins="65" outputPin="100" outputLabels="58 15 68 102 49">
       <term xsi:type="datadictionary:TRUE" id="142"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="152" inputPins="65" outputPin="72"/>
@@ -152,7 +160,7 @@
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="157" inputPins="65" outputPin="95"/>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="158" inputPins="65" outputPin="100"/>
   </behaviour>
-  <behaviour id="57" entityName="authent_req">
+  <behaviour id="57" entityName="authent_conf">
     <inPin id="65"/>
     <outPin id="72"/>
     <outPin id="75"/>
@@ -161,25 +169,63 @@
     <outPin id="90"/>
     <outPin id="95"/>
     <outPin id="100"/>
-    <assignment xsi:type="datadictionary:Assignment" id="2129" entityName="bName129" inputPins="65" outputPin="72" outputLabels="58 15 68 73">
+    <assignment xsi:type="datadictionary:Assignment" id="2129" entityName="authconf129" inputPins="65" outputPin="72" outputLabels="58 15 68 73">
       <term xsi:type="datadictionary:TRUE" id="130"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="2131" entityName="bName131" inputPins="65" outputPin="75" outputLabels="58 15 68 73">
+    <assignment xsi:type="datadictionary:Assignment" id="2131" entityName="authconf131" inputPins="65" outputPin="75" outputLabels="58 15 68 73">
       <term xsi:type="datadictionary:TRUE" id="132"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="2133" entityName="bName133" inputPins="65" outputPin="80" outputLabels="58 15 68 73">
+    <assignment xsi:type="datadictionary:Assignment" id="2133" entityName="authconf133" inputPins="65" outputPin="80" outputLabels="58 15 68 73">
       <term xsi:type="datadictionary:TRUE" id="134"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="2135" entityName="bName135" inputPins="65" outputPin="85" outputLabels="58 15 68 73">
+    <assignment xsi:type="datadictionary:Assignment" id="2135" entityName="authconf135" inputPins="65" outputPin="85" outputLabels="58 15 68 73">
       <term xsi:type="datadictionary:TRUE" id="136"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="2137" entityName="bName137" inputPins="65" outputPin="90" outputLabels="58 15 68 73">
+    <assignment xsi:type="datadictionary:Assignment" id="2137" entityName="authconf137" inputPins="65" outputPin="90" outputLabels="58 15 68 73">
       <term xsi:type="datadictionary:TRUE" id="138"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="2139" entityName="bName139" inputPins="65" outputPin="95" outputLabels="58 15 68 73">
+    <assignment xsi:type="datadictionary:Assignment" id="2139" entityName="authconf139" inputPins="65" outputPin="95" outputLabels="58 15 68 73">
       <term xsi:type="datadictionary:TRUE" id="140"/>
     </assignment>
-    <assignment xsi:type="datadictionary:Assignment" id="2141" entityName="bName141" inputPins="65" outputPin="100" outputLabels="58 15 68 73 102 49">
+    <assignment xsi:type="datadictionary:Assignment" id="2141" entityName="authconf141" inputPins="65" outputPin="100" outputLabels="58 15 68 73 102 49">
+      <term xsi:type="datadictionary:TRUE" id="142"/>
+    </assignment>
+    <assignment xsi:type="datadictionary:ForwardingAssignment" id="152" inputPins="65" outputPin="72"/>
+    <assignment xsi:type="datadictionary:ForwardingAssignment" id="153" inputPins="65" outputPin="75"/>
+    <assignment xsi:type="datadictionary:ForwardingAssignment" id="154" inputPins="65" outputPin="80"/>
+    <assignment xsi:type="datadictionary:ForwardingAssignment" id="155" inputPins="65" outputPin="85"/>
+    <assignment xsi:type="datadictionary:ForwardingAssignment" id="156" inputPins="65" outputPin="90"/>
+    <assignment xsi:type="datadictionary:ForwardingAssignment" id="157" inputPins="65" outputPin="95"/>
+    <assignment xsi:type="datadictionary:ForwardingAssignment" id="158" inputPins="65" outputPin="100"/>
+  </behaviour>
+  <behaviour id="58" entityName="encrypted_config">
+    <inPin id="65"/>
+    <outPin id="72"/>
+    <outPin id="75"/>
+    <outPin id="80"/>
+    <outPin id="85"/>
+    <outPin id="90"/>
+    <outPin id="95"/>
+    <outPin id="100"/>
+    <assignment xsi:type="datadictionary:Assignment" id="3129" entityName="encryptconf129" inputPins="65" outputPin="72" outputLabels="58 15 68 73 174">
+      <term xsi:type="datadictionary:TRUE" id="130"/>
+    </assignment>
+    <assignment xsi:type="datadictionary:Assignment" id="3131" entityName="encryptconf131" inputPins="65" outputPin="75" outputLabels="58 15 68 174">
+      <term xsi:type="datadictionary:TRUE" id="132"/>
+    </assignment>
+    <assignment xsi:type="datadictionary:Assignment" id="3133" entityName="encryptconf133" inputPins="65" outputPin="80" outputLabels="58 15 68 174">
+      <term xsi:type="datadictionary:TRUE" id="134"/>
+    </assignment>
+    <assignment xsi:type="datadictionary:Assignment" id="3135" entityName="encryptconf135" inputPins="65" outputPin="85" outputLabels="58 15 68 174">
+      <term xsi:type="datadictionary:TRUE" id="136"/>
+    </assignment>
+    <assignment xsi:type="datadictionary:Assignment" id="3137" entityName="encryptconf137" inputPins="65" outputPin="90" outputLabels="58 15 68 174">
+      <term xsi:type="datadictionary:TRUE" id="138"/>
+    </assignment>
+    <assignment xsi:type="datadictionary:Assignment" id="3139" entityName="encryptconf139" inputPins="65" outputPin="95" outputLabels="58 15 68 174">
+      <term xsi:type="datadictionary:TRUE" id="140"/>
+    </assignment>
+    <assignment xsi:type="datadictionary:Assignment" id="3141" entityName="encryptconf141" inputPins="65" outputPin="100" outputLabels="58 15 68 174 102 49">
       <term xsi:type="datadictionary:TRUE" id="142"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="152" inputPins="65" outputPin="72"/>
