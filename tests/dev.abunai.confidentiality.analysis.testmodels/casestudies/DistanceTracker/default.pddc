@@ -1,0 +1,10 @@
+dictionary id "_ZSNvMLHIEe2fRLFFhL_FWA"
+
+enum Role {
+	User
+	DistanceTracker
+	TrackingService
+}
+
+enumCharacteristicType AllowedRoles using Role
+enumCharacteristicType OwnedRoles using Role

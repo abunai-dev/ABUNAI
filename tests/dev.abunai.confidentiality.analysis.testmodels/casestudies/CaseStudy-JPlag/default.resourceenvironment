@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resourceenvironment:ResourceEnvironment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:resourceenvironment="http://palladiosimulator.org/PalladioComponentModel/ResourceEnvironment/5.2">
+  <linkingResources__ResourceEnvironment id="_ExsmAFopEe-UVtvHkt5kKg" entityName="TheInternet" connectedResourceContainers_LinkingResource="_BzDDkFopEe-UVtvHkt5kKg _DYPfwFopEe-UVtvHkt5kKg">
+    <communicationLinkResourceSpecifications_LinkingResource id="_Ext0IFopEe-UVtvHkt5kKg">
+      <latency_CommunicationLinkResourceSpecification/>
+      <throughput_CommunicationLinkResourceSpecification/>
+    </communicationLinkResourceSpecifications_LinkingResource>
+  </linkingResources__ResourceEnvironment>
+  <resourceContainer_ResourceEnvironment id="_BzDDkFopEe-UVtvHkt5kKg" entityName="Client System"/>
+  <resourceContainer_ResourceEnvironment id="_DYPfwFopEe-UVtvHkt5kKg" entityName="Cloud Service"/>
+</resourceenvironment:ResourceEnvironment>

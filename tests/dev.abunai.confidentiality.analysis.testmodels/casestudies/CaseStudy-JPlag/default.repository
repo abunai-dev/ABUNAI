@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repository:Repository xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DataDictionaryCharacterized="http://dataflowanalysis.org/pcm/extension/dictionary/characterized/1.0" xmlns:confidentiality="http://dataflowanalysis.org/pcm/extension/model/0.1.0" xmlns:expression="http://dataflowanalysis.org/pcm/extension/model/0.1.0/expression" xmlns:expressions="http://dataflowanalysis.org/pcm/extension/dictionary/characterized/expressions/1.0" xmlns:repository="http://palladiosimulator.org/PalladioComponentModel/Repository/5.2" xmlns:seff="http://palladiosimulator.org/PalladioComponentModel/SEFF/5.2" xmlns:stoex="http://sdq.ipd.uka.de/StochasticExpressions/2.2" id="_dqFLECHbEd6tG9VclJz3cw" entityName="defaultRepository">
+  <components__Repository xsi:type="repository:BasicComponent" id="_QNDsgFodEe-UVtvHkt5kKg" entityName="ReportViewer">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_R3yeEFofEe-UVtvHkt5kKg" entityName="PlagiarismDetector.ReportViewerInterface.OperationProvidedRole" providedInterface__OperationProvidedRole="_f1h2MFodEe-UVtvHkt5kKg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_Um2FUFofEe-UVtvHkt5kKg" entityName="PlagiarismDetector.VersionServiceInterface.OperationRequiredRole" requiredInterface__OperationRequiredRole="_jA3JwFodEe-UVtvHkt5kKg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_R3zsMFofEe-UVtvHkt5kKg" describedService__SEFF="_T-uK0FoeEe-UVtvHkt5kKg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_R30TQFofEe-UVtvHkt5kKg" successor_AbstractAction="_a2krEFosEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_R30TQVofEe-UVtvHkt5kKg" predecessor_AbstractAction="_fZSoUFosEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_a2krEFosEe-UVtvHkt5kKg" entityName="searchForUpdates" predecessor_AbstractAction="_R30TQFofEe-UVtvHkt5kKg" successor_AbstractAction="_fZSoUFosEe-UVtvHkt5kKg" calledService_ExternalService="_XP5nsFoeEe-UVtvHkt5kKg" role_ExternalService="_Um2FUFofEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_fZSoUFosEe-UVtvHkt5kKg" entityName="displayResults" predecessor_AbstractAction="_a2krEFosEe-UVtvHkt5kKg" successor_AbstractAction="_R30TQVofEe-UVtvHkt5kKg">
+        <localVariableUsages_SetVariableAction>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_nCbj8losEe-UVtvHkt5kKg"/>
+            <rhs xsi:type="expression:NamedEnumCharacteristicReference" id="_nCbj81osEe-UVtvHkt5kKg">
+              <namedReference xsi:type="stoex:VariableReference" referenceName="results"/>
+            </rhs>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="display"/>
+        </localVariableUsages_SetVariableAction>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_Sq0vcFodEe-UVtvHkt5kKg" entityName="PlagiarismDetector">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_RC42YFofEe-UVtvHkt5kKg" entityName="ReportViewer.JPlagInterface.OperationProvidedRole" providedInterface__OperationProvidedRole="_brnagFodEe-UVtvHkt5kKg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_SlLIgFofEe-UVtvHkt5kKg" entityName="ReportViewer.ReportViewerInterface.OperationRequiredRole" requiredInterface__OperationRequiredRole="_f1h2MFodEe-UVtvHkt5kKg"/>
+    <requiredRoles_InterfaceRequiringEntity xsi:type="repository:OperationRequiredRole" id="_UFj9MFofEe-UVtvHkt5kKg" entityName="ReportViewer.VersionServiceInterface.OperationRequiredRole" requiredInterface__OperationRequiredRole="_jA3JwFodEe-UVtvHkt5kKg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_RDLxUFofEe-UVtvHkt5kKg" describedService__SEFF="_QX4nAFoeEe-UVtvHkt5kKg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_RDMYYFofEe-UVtvHkt5kKg" successor_AbstractAction="_jQu-gFotEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_RDMYYVofEe-UVtvHkt5kKg" predecessor_AbstractAction="_nNDDEFotEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_jQu-gFotEe-UVtvHkt5kKg" entityName="searchForUpdates" predecessor_AbstractAction="_RDMYYFofEe-UVtvHkt5kKg" successor_AbstractAction="_la7lMFotEe-UVtvHkt5kKg" calledService_ExternalService="_XP5nsFoeEe-UVtvHkt5kKg" role_ExternalService="_UFj9MFofEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_la7lMFotEe-UVtvHkt5kKg" entityName="calculateResult" predecessor_AbstractAction="_jQu-gFotEe-UVtvHkt5kKg" successor_AbstractAction="_nNDDEFotEe-UVtvHkt5kKg">
+        <localVariableUsages_SetVariableAction>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_xEm-HlotEe-UVtvHkt5kKg"/>
+            <rhs xsi:type="expression:NamedEnumCharacteristicReference" id="_xEm-H1otEe-UVtvHkt5kKg">
+              <namedReference xsi:type="stoex:VariableReference" referenceName="submissions"/>
+            </rhs>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="results"/>
+        </localVariableUsages_SetVariableAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_nNDDEFotEe-UVtvHkt5kKg" entityName="callResultViewer" predecessor_AbstractAction="_la7lMFotEe-UVtvHkt5kKg" successor_AbstractAction="_RDMYYVofEe-UVtvHkt5kKg" calledService_ExternalService="_T-uK0FoeEe-UVtvHkt5kKg" role_ExternalService="_SlLIgFofEe-UVtvHkt5kKg">
+        <inputVariableUsages__CallAction>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_1xuNdVotEe-UVtvHkt5kKg">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicTypes@1"/>
+              <literal href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicEnumerations@1.literals@0"/>
+            </lhs>
+            <rhs xsi:type="expressions:False" id="_1xuNdlotEe-UVtvHkt5kKg"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="results"/>
+        </inputVariableUsages__CallAction>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_REPhQFofEe-UVtvHkt5kKg" describedService__SEFF="_O_9KwFoeEe-UVtvHkt5kKg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_REPhQVofEe-UVtvHkt5kKg" successor_AbstractAction="_QWilYFotEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_REPhQlofEe-UVtvHkt5kKg" predecessor_AbstractAction="_JyY74FotEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_JyY74FotEe-UVtvHkt5kKg" entityName="calculateResult" predecessor_AbstractAction="_QWilYFotEe-UVtvHkt5kKg" successor_AbstractAction="_REPhQlofEe-UVtvHkt5kKg">
+        <localVariableUsages_SetVariableAction>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_YNkMDlotEe-UVtvHkt5kKg"/>
+            <rhs xsi:type="expression:NamedEnumCharacteristicReference" id="_YNkMD1otEe-UVtvHkt5kKg">
+              <namedReference xsi:type="stoex:VariableReference" referenceName="submissions"/>
+            </rhs>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="RETURN"/>
+        </localVariableUsages_SetVariableAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_QWilYFotEe-UVtvHkt5kKg" entityName="searchForUpdates" predecessor_AbstractAction="_REPhQVofEe-UVtvHkt5kKg" successor_AbstractAction="_JyY74FotEe-UVtvHkt5kKg" calledService_ExternalService="_XP5nsFoeEe-UVtvHkt5kKg" role_ExternalService="_UFj9MFofEe-UVtvHkt5kKg"/>
+    </serviceEffectSpecifications__BasicComponent>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_REXdEFofEe-UVtvHkt5kKg" describedService__SEFF="_RjwkQFoeEe-UVtvHkt5kKg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_REXdEVofEe-UVtvHkt5kKg" successor_AbstractAction="_cMVusFotEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_REXdElofEe-UVtvHkt5kKg" predecessor_AbstractAction="_cMVusFotEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:ExternalCallAction" id="_cMVusFotEe-UVtvHkt5kKg" entityName="callResultViewer" predecessor_AbstractAction="_REXdEVofEe-UVtvHkt5kKg" successor_AbstractAction="_REXdElofEe-UVtvHkt5kKg" calledService_ExternalService="_T-uK0FoeEe-UVtvHkt5kKg" role_ExternalService="_SlLIgFofEe-UVtvHkt5kKg">
+        <inputVariableUsages__CallAction>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="__63nsFotEe-UVtvHkt5kKg">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicTypes@1"/>
+              <literal href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicEnumerations@1.literals@0"/>
+            </lhs>
+            <rhs xsi:type="expressions:False" id="__63nsVotEe-UVtvHkt5kKg"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="results"/>
+        </inputVariableUsages__CallAction>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <components__Repository xsi:type="repository:BasicComponent" id="_Tf9nsFodEe-UVtvHkt5kKg" entityName="VersionService">
+    <providedRoles_InterfaceProvidingEntity xsi:type="repository:OperationProvidedRole" id="_TelcwFofEe-UVtvHkt5kKg" entityName="VersionService.VersionServiceInterface.OperationProvidedRole1" providedInterface__OperationProvidedRole="_jA3JwFodEe-UVtvHkt5kKg"/>
+    <serviceEffectSpecifications__BasicComponent xsi:type="seff:ResourceDemandingSEFF" id="_TemD0FofEe-UVtvHkt5kKg" describedService__SEFF="_XP5nsFoeEe-UVtvHkt5kKg">
+      <steps_Behaviour xsi:type="seff:StartAction" id="_TemD0VofEe-UVtvHkt5kKg" successor_AbstractAction="_qJ3O8FosEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:StopAction" id="_Temq4FofEe-UVtvHkt5kKg" predecessor_AbstractAction="_u93JcFosEe-UVtvHkt5kKg"/>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_qJ3O8FosEe-UVtvHkt5kKg" entityName="noEvaluation" predecessor_AbstractAction="_TemD0VofEe-UVtvHkt5kKg" successor_AbstractAction="_u93JcFosEe-UVtvHkt5kKg">
+        <localVariableUsages_SetVariableAction>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_0lLXQFosEe-UVtvHkt5kKg">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicTypes@1"/>
+              <literal href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicEnumerations@1.literals@1"/>
+            </lhs>
+            <rhs xsi:type="expressions:False" id="_0lLXQVosEe-UVtvHkt5kKg"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="evaluationData"/>
+        </localVariableUsages_SetVariableAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_s13iMFosEe-UVtvHkt5kKg" entityName="evaluationOfMetadata">
+        <localVariableUsages_SetVariableAction>
+          <variableCharacterisation_VariableUsage xsi:type="confidentiality:ConfidentialityVariableCharacterisation">
+            <specification_VariableCharacterisation specification="false"/>
+            <lhs xsi:type="expression:LhsEnumCharacteristicReference" id="_5Zy80FosEe-UVtvHkt5kKg">
+              <characteristicType xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicTypes@1"/>
+              <literal href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicEnumerations@1.literals@1"/>
+            </lhs>
+            <rhs xsi:type="expressions:True" id="_5Zy80VosEe-UVtvHkt5kKg"/>
+          </variableCharacterisation_VariableUsage>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="evaluationData"/>
+        </localVariableUsages_SetVariableAction>
+      </steps_Behaviour>
+      <steps_Behaviour xsi:type="seff:SetVariableAction" id="_u93JcFosEe-UVtvHkt5kKg" entityName="ReturnVersion" predecessor_AbstractAction="_qJ3O8FosEe-UVtvHkt5kKg" successor_AbstractAction="_Temq4FofEe-UVtvHkt5kKg">
+        <localVariableUsages_SetVariableAction>
+          <namedReference__VariableUsage xsi:type="stoex:VariableReference" referenceName="RETURN"/>
+        </localVariableUsages_SetVariableAction>
+      </steps_Behaviour>
+    </serviceEffectSpecifications__BasicComponent>
+  </components__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_brnagFodEe-UVtvHkt5kKg" entityName="JPlagInterface">
+    <signatures__OperationInterface id="_O_9KwFoeEe-UVtvHkt5kKg" entityName="run" returnType__OperationSignature="_mh8q4FodEe-UVtvHkt5kKg">
+      <parameters__OperationSignature dataType__Parameter="_E6xqgFoeEe-UVtvHkt5kKg" parameterName="submissions"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_QX4nAFoeEe-UVtvHkt5kKg" entityName="runAndView">
+      <parameters__OperationSignature dataType__Parameter="_E6xqgFoeEe-UVtvHkt5kKg" parameterName="submissions"/>
+    </signatures__OperationInterface>
+    <signatures__OperationInterface id="_RjwkQFoeEe-UVtvHkt5kKg" entityName="view">
+      <parameters__OperationSignature dataType__Parameter="_mh8q4FodEe-UVtvHkt5kKg" parameterName="results"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_f1h2MFodEe-UVtvHkt5kKg" entityName="ReportViewerInterface">
+    <signatures__OperationInterface id="_T-uK0FoeEe-UVtvHkt5kKg" entityName="displayResults">
+      <parameters__OperationSignature dataType__Parameter="_mh8q4FodEe-UVtvHkt5kKg" parameterName="results"/>
+    </signatures__OperationInterface>
+  </interfaces__Repository>
+  <interfaces__Repository xsi:type="repository:OperationInterface" id="_jA3JwFodEe-UVtvHkt5kKg" entityName="VersionServiceInterface">
+    <signatures__OperationInterface id="_XP5nsFoeEe-UVtvHkt5kKg" entityName="getCurrentVersion" returnType__OperationSignature="_GYoIkFoeEe-UVtvHkt5kKg"/>
+  </interfaces__Repository>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_mh8q4FodEe-UVtvHkt5kKg" entityName="ResultArchive"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_E6xqgFoeEe-UVtvHkt5kKg" entityName="Submissions"/>
+  <dataTypes__Repository xsi:type="repository:CompositeDataType" id="_GYoIkFoeEe-UVtvHkt5kKg" entityName="VersionInfo"/>
+</repository:Repository>

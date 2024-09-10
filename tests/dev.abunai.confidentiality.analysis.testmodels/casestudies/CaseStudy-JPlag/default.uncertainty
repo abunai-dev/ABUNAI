@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pcm="http://abunai.dev/uncertainty/pcm" xmlns:uncertainty="http://abunai.dev/uncertainty" id="_29YWAFoyEe-JbsIEk2TQjQ">
+  <sources xsi:type="pcm:PCMComponentUncertaintySource" id="_3rbHwFoyEe-JbsIEk2TQjQ" entityName="U1">
+    <target href="default.system#_KglQ4FooEe-UVtvHkt5kKg"/>
+    <scenarios id="_9dVcAFoyEe-JbsIEk2TQjQ" entityName="U1-Alternative">
+      <target href="default.system#_-yaOAFoxEe-UVtvHkt5kKg"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="pcm:PCMConnectorUncertaintySourceInEntryLevelSystemCall" id="_AsPA9VozEe-JbsIEk2TQjQ" entityName="U2">
+    <target href="default.usagemodel#_AwOfMFoqEe-UVtvHkt5kKg"/>
+    <scenarios id="_GedeQFozEe-JbsIEk2TQjQ" entityName="U2-Alternative">
+      <target href="default.usagemodel#_EH3JYFoqEe-UVtvHkt5kKg"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="pcm:PCMComponentUncertaintySource" id="_IyGU1lozEe-JbsIEk2TQjQ" entityName="U3">
+    <target href="default.system#_OpEwQFooEe-UVtvHkt5kKg"/>
+    <scenarios id="_MFQHoFozEe-JbsIEk2TQjQ" entityName="U3-Alternative">
+      <target href="default.system#_y3cQ0FoxEe-UVtvHkt5kKg"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="pcm:PCMBehaviorUncertaintySource" id="_Nc9hclozEe-JbsIEk2TQjQ" entityName="U4">
+    <target href="default.repository#_qJ3O8FosEe-UVtvHkt5kKg"/>
+    <scenarios id="_RWMc0FozEe-JbsIEk2TQjQ" entityName="U4-Alternative">
+      <target href="default.repository#_s13iMFosEe-UVtvHkt5kKg"/>
+    </scenarios>
+  </sources>
+</uncertainty:UncertaintySourceCollection>

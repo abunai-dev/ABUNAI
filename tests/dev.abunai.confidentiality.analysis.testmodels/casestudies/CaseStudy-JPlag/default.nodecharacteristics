@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nodecharacteristics:Assignments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:DataDictionaryCharacterized="http://dataflowanalysis.org/pcm/extension/dictionary/characterized/1.0" xmlns:nodecharacteristics="http://dataflowanalysis.org/pcm/extension/nodecharacteristics/0.1.0">
+  <assignee xsi:type="nodecharacteristics:ResourceAssignee" id="_ZTop8VoyEe-UVtvHkt5kKg">
+    <characteristics id="_eCx5oFoyEe-UVtvHkt5kKg">
+      <type xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicTypes@0"/>
+      <values href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicEnumerations@0.literals@1"/>
+    </characteristics>
+    <resourcecontainer href="default.resourceenvironment#_DYPfwFopEe-UVtvHkt5kKg"/>
+  </assignee>
+  <assignee xsi:type="nodecharacteristics:ResourceAssignee" id="_gm1x0VoyEe-UVtvHkt5kKg">
+    <characteristics id="_hpRfMFoyEe-UVtvHkt5kKg">
+      <type xsi:type="DataDictionaryCharacterized:EnumCharacteristicType" href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicTypes@0"/>
+      <values href="default.pddc#_LKykIForEe-UVtvHkt5kKg-characteristicEnumerations@0.literals@0"/>
+    </characteristics>
+    <resourcecontainer href="default.resourceenvironment#_BzDDkFopEe-UVtvHkt5kKg"/>
+  </assignee>
+</nodecharacteristics:Assignments>

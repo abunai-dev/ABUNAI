@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pcm="http://abunai.dev/uncertainty/pcm" xmlns:uncertainty="http://abunai.dev/uncertainty" id="_XPi18FirEe-1dYFuXzLZMA">
+  <sources xsi:type="pcm:PCMExternalUncertaintySourceInUsage" id="_Qlz28VitEe-1dYFuXzLZMA" entityName="U1">
+    <target href="MaaS.nodecharacteristics#_F_vqIBz3Ee-jDKmmiRikig"/>
+    <scenarios id="_RWftAFitEe-1dYFuXzLZMA" entityName="U1-Alternative">
+      <target href="MaaS.nodecharacteristics#_I7Yh4FitEe-1dYFuXzLZMA"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="pcm:PCMBehaviorUncertaintySource" id="_ZKlmUlirEe-1dYFuXzLZMA" entityName="U2">
+    <target href="MaaS.repository#_Qes5sBEtEe-OH5ude3wjOg"/>
+    <scenarios id="_d9gtUFisEe-1dYFuXzLZMA" entityName="U2-Alternative">
+      <target href="MaaS.repository#_y87REFitEe-1dYFuXzLZMA"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="pcm:PCMInterfaceUncertaintySource" id="_Zuu1M1irEe-1dYFuXzLZMA" entityName="U3">
+    <target href="MaaS.repository#__OTbYGs8Ee23aJFbrnYJeA"/>
+    <scenarios id="_ediRMFisEe-1dYFuXzLZMA" entityName="U3-Alternative">
+      <target href="MaaS.repository#_dVFMoFiyEe-1dYFuXzLZMA"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="pcm:PCMConnectorUncertaintySourceInExternalCall" id="_rRx4ZFivEe-1dYFuXzLZMA" entityName="U4">
+    <target href="MaaS.repository#_5citABEpEe-OH5ude3wjOg"/>
+    <scenarios id="_d_cqMFiwEe-1dYFuXzLZMA" entityName="U4-Alternative">
+      <target href="MaaS.repository#_v7WrkFivEe-1dYFuXzLZMA"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="pcm:PCMComponentUncertaintySource" id="_awYfdlirEe-1dYFuXzLZMA" entityName="U5">
+    <target href="MaaS.system#_ALb5kComEe-eJeFXQtnblg"/>
+    <scenarios id="_fVJOoFisEe-1dYFuXzLZMA" entityName="U5-Alternative">
+      <target href="MaaS.system#_aUhbIFixEe-1dYFuXzLZMA"/>
+    </scenarios>
+  </sources>
+</uncertainty:UncertaintySourceCollection>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<allocation:Allocation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:allocation="http://palladiosimulator.org/PalladioComponentModel/Allocation/5.2" id="_JiPBICHdEd6lJo4DCALHMw" entityName="defaultAllocation">
+  <targetResourceEnvironment_Allocation href="default.resourceenvironment#/"/>
+  <system_Allocation href="default.system#_84D0kCHcEd6lJo4DCALHMw"/>
+  <allocationContexts_Allocation id="_NCtZ8FopEe-UVtvHkt5kKg" entityName="Allocation_Assembly_VersionService">
+    <resourceContainer_AllocationContext href="default.resourceenvironment#_DYPfwFopEe-UVtvHkt5kKg"/>
+    <assemblyContext_AllocationContext href="default.system#_S0N7AFooEe-UVtvHkt5kKg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_N1ErAFopEe-UVtvHkt5kKg" entityName="Allocation_Assembly_ReportViewer">
+    <resourceContainer_AllocationContext href="default.resourceenvironment#_BzDDkFopEe-UVtvHkt5kKg"/>
+    <assemblyContext_AllocationContext href="default.system#_KglQ4FooEe-UVtvHkt5kKg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_OA2dMFopEe-UVtvHkt5kKg" entityName="Allocation_Assembly_PlagiarismDetector">
+    <resourceContainer_AllocationContext href="default.resourceenvironment#_BzDDkFopEe-UVtvHkt5kKg"/>
+    <assemblyContext_AllocationContext href="default.system#_OpEwQFooEe-UVtvHkt5kKg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_QHBJYFoyEe-UVtvHkt5kKg" entityName="Allocation_Assembly_ReportViewer_deployedInTheCloud">
+    <resourceContainer_AllocationContext href="default.resourceenvironment#_DYPfwFopEe-UVtvHkt5kKg"/>
+    <assemblyContext_AllocationContext href="default.system#_-yaOAFoxEe-UVtvHkt5kKg"/>
+  </allocationContexts_Allocation>
+  <allocationContexts_Allocation id="_RjRsAFoyEe-UVtvHkt5kKg" entityName="Allocation_Assembly_PlagiarismDetector_deployedInTheCloud">
+    <resourceContainer_AllocationContext href="default.resourceenvironment#_DYPfwFopEe-UVtvHkt5kKg"/>
+    <assemblyContext_AllocationContext href="default.system#_y3cQ0FoxEe-UVtvHkt5kKg"/>
+  </allocationContexts_Allocation>
+</allocation:Allocation>
