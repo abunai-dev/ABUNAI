@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dataflowdiagram="http://dataflowanalysis.org/dfd/dataflowdiagram" xmlns:dfd="http://abunai.dev/uncertainty/dfd" xmlns:uncertainty="http://abunai.dev/uncertainty" id="_KFO3cG-6Ee-0mtfbpibAWg">
+  <sources xsi:type="dfd:DFDExternalUncertaintySource" id="_KoShN2-6Ee-0mtfbpibAWg">
+    <target xsi:type="dataflowdiagram:Process" href="jferrater_0.dataflowdiagram#11"/>
+    <targetProperties href="jferrater_0.datadictionary#1116"/>
+    <scenarios id="_pRrB4HBVEe-JbaZjPWQrog">
+      <targetProperties href="jferrater_0.datadictionary#2116"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="dfd:DFDExternalUncertaintySource" id="_nmX9t3BVEe-JbaZjPWQrog">
+    <target xsi:type="dataflowdiagram:Process" href="jferrater_0.dataflowdiagram#11"/>
+    <targetProperties href="jferrater_0.datadictionary#1117"/>
+    <scenarios id="_q2hf0HBVEe-JbaZjPWQrog">
+      <targetProperties href="jferrater_0.datadictionary#2117"/>
+    </scenarios>
+  </sources>
+</uncertainty:UncertaintySourceCollection>
