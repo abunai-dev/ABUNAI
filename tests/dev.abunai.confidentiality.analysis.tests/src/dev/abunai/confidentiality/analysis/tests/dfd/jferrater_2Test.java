@@ -53,7 +53,7 @@ public class jferrater_2Test extends DFDTestBase {
         return "jferrater_0";
     }
     protected String getUncertainName() {
-        return "jferrater_2";
+        return "jferrater";
     }
 
     
