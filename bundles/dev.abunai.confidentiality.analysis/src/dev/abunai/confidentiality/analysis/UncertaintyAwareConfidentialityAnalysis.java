@@ -51,6 +51,32 @@ public interface UncertaintyAwareConfidentialityAnalysis {
 
 		return result;
 	}
+	
+	default List<UncertainConstraintViolation> queryUncertainDataNodes(FlowGraphCollection flowGraph,
+                                                                String condition) {
+	    List<UncertainConstraintViolation> result = new ArrayList<>();
+
+	    for (AbstractTransposeFlowGraph transposeFlowGraph : flowGraph.getTransposeFlowGraphs()) {
+	        if(!(transposeFlowGraph instanceof UncertainTransposeFlowGraph uncertainTransposeFlowGraph)) {
+	            this.getLogger().error("Found incompatible transpose flow graph in uncertain flow graph");
+	            throw new IllegalArgumentException();
+	        }
+	        Boolean violations = transposeFlowGraph.getVertices()
+	                .contains(condition);
+	        Boolean hasNode = false;
+	        for (var vertex: transposeFlowGraph.getVertices()) {
+	            hasNode = vertex.getAllVertexCharacteristics().contains(condition)|| hasNode;
+	        }
+	        
+	        
+	        if (!hasNode) {
+	            result.add(new UncertainConstraintViolation(uncertainTransposeFlowGraph.getUncertainState(), uncertainTransposeFlowGraph, transposeFlowGraph.getVertices()));
+	        }
+	    }
+
+	    return result;
+}
+	
 
 	Logger getLogger();
 }

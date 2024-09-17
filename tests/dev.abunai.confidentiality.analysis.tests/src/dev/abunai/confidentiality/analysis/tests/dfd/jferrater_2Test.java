@@ -53,7 +53,7 @@ public class jferrater_2Test extends DFDTestBase {
         return "jferrater_0";
     }
     protected String getUncertainName() {
-        return "jferrater";
+        return "jferrater_3";
     }
 
     
@@ -63,16 +63,34 @@ public class jferrater_2Test extends DFDTestBase {
         DFDUncertainFlowGraphCollection uncertainFlowGraphs = flowGraphs.createUncertainFlows();
         uncertainFlowGraphs.evaluate();
         
-        List<UncertainConstraintViolation> result = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-            return this.retrieveNodeLabels(it).contains("internal") && this.retrieveDataLabels(it).contains("authenticated_request");
+        List<UncertainConstraintViolation> resultAuth = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+            return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveDataLabels(it).contains("authenticated_request");
         });
+        System.out.println("Authenticated request: " + resultAuth.size());
+        /*
+        List<UncertainConstraintViolation> resultAuthServer = analysis.queryUncertainDataNodes(uncertainFlowGraphs, "authorization_server");
+        System.out.println(resultAuthServer);
         
-        /*assertEquals(1, result.size());
-        assertEquals(1, result.get(0).uncertainState().getSelectedUncertaintyScenarios().size());
-        assertEquals(1, result.get(0).violations().size());
-        assertTrue(result.get(0).violations().get(0) instanceof DFDVertex);
+               List<UncertainConstraintViolation> resultLogServer = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+            return !this.retrieveNodeLabels(it).contains("logging_server");
+        });
+        System.out.println(resultLogServer);
+        List<UncertainConstraintViolation> resultSecret = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+            return !this.retrieveNodeLabels(it).contains("secret_manager");
+        });
+        System.out.println(resultSecret);*/
+        List<UncertainConstraintViolation> resultLoginAttempts = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+            return this.retrieveDataLabels(it).contains("authorization_server") && !this.retrieveDataLabels(it).contains("login_attempts_regulation");
+        });
+        System.out.println("Login Attempts: " + resultLoginAttempts.size());
+        List<UncertainConstraintViolation> resultEncryptExtern = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+            return this.retrieveDataLabels(it).contains("entrypoint") && !this.retrieveDataLabels(it).contains("encrypted_connection");
+        });
+        System.out.println("Encrypt Extern: " + resultEncryptExtern.size());
+        List<UncertainConstraintViolation> resultEncryptIntern = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+            return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveDataLabels(it).contains("encrypted_connection");
+        });
+        System.out.println("Encrypt Intern: " + resultEncryptIntern.size());
 
-        assertEquals("Default Scenario", result.get(0).uncertainState().getSelectedUncertaintyScenarios().get(0).getEntityName());
-        assertEquals("database", ((DFDVertex) result.get(0).violations().get(0)).getReferencedElement().getEntityName());*/
     }
 }
