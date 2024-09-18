@@ -156,30 +156,38 @@
     <properties href="jferrater_0.datadictionary#22"/>
     <properties href="jferrater_0.datadictionary#24"/>
     <properties href="jferrater_0.datadictionary#25"/>
+    <properties href="jferrater_0.datadictionary#_-wGYQHW5Ee-pUNsaj26y1w"/>
+    <properties href="jferrater_0.datadictionary#1117"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="6" entityName="customer_service">
     <behaviour href="jferrater_0.datadictionary#30"/>
     <properties href="jferrater_0.datadictionary#22"/>
     <properties href="jferrater_0.datadictionary#32"/>
     <properties href="jferrater_0.datadictionary#33"/>
+    <properties href="jferrater_0.datadictionary#1116"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="7" entityName="store_service">
     <behaviour href="jferrater_0.datadictionary#61"/>
     <properties href="jferrater_0.datadictionary#22"/>
     <properties href="jferrater_0.datadictionary#63"/>
     <properties href="jferrater_0.datadictionary#64"/>
+    <properties href="jferrater_0.datadictionary#_-wGYQHW5Ee-pUNsaj26y1w"/>
+    <properties href="jferrater_0.datadictionary#1117"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="8" entityName="item_service">
     <behaviour href="jferrater_0.datadictionary#26"/>
     <properties href="jferrater_0.datadictionary#22"/>
     <properties href="jferrater_0.datadictionary#28"/>
     <properties href="jferrater_0.datadictionary#29"/>
+    <properties href="jferrater_0.datadictionary#1116"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="9" entityName="price_service">
     <behaviour href="jferrater_0.datadictionary#34"/>
     <properties href="jferrater_0.datadictionary#22"/>
     <properties href="jferrater_0.datadictionary#36"/>
     <properties href="jferrater_0.datadictionary#37"/>
+    <properties href="jferrater_0.datadictionary#_-wGYQHW5Ee-pUNsaj26y1w"/>
+    <properties href="jferrater_0.datadictionary#1117"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="10" entityName="foodtray_service">
     <behaviour href="jferrater_0.datadictionary#38"/>

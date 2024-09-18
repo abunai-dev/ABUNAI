@@ -82,6 +82,17 @@ public class jferrater_2Test extends DFDTestBase {
             return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveDataLabels(it).contains("encrypted_connection");
         });
         System.out.println("Encrypt Intern: " + resultEncryptIntern.size());
+        
+        
+        List<UncertainConstraintViolation> resultLocalLog = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+            return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveNodeLabels(it).contains("local_logging");
+        });
+        System.out.println("Local Logging: " + resultLocalLog.size());
+        
+        List<UncertainConstraintViolation> resultLogSan= analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+            return this.retrieveNodeLabels(it).contains("local_logging") && !this.retrieveNodeLabels(it).contains("log_sanitization");
+        });
+        System.out.println("Log Sanitization: " + resultLogSan.size());
 
     }
 }

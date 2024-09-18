@@ -21,6 +21,8 @@
     <label id="102" entityName="circuit_breaker_link"/>
     <label id="107" entityName="feign_connection"/>
     <label id="108" entityName="load_balanced_link"/>
+    <label id="_-wGYQHW5Ee-pUNsaj26y1w" entityName="local_logging"/>
+    <label id="_FRbXQHW6Ee-pUNsaj26y1w" entityName="log_sanitization"/>
   </labelTypes>
   <labelTypes id="16" entityName="Port">
     <label id="17" entityName="8888"/>
