@@ -53,7 +53,7 @@ public class jferrater_2Test extends DFDTestBase {
         return "jferrater_0";
     }
     protected String getUncertainName() {
-        return "jferrater_3";
+        return "jferrater";
     }
 
     
@@ -67,20 +67,11 @@ public class jferrater_2Test extends DFDTestBase {
             return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveDataLabels(it).contains("authenticated_request");
         });
         System.out.println("Authenticated request: " + resultAuth.size());
-        /*
-        List<UncertainConstraintViolation> resultAuthServer = analysis.queryUncertainDataNodes(uncertainFlowGraphs, "authorization_server");
-        System.out.println(resultAuthServer);
-        
-               List<UncertainConstraintViolation> resultLogServer = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-            return !this.retrieveNodeLabels(it).contains("logging_server");
-        });
-        System.out.println(resultLogServer);
-        List<UncertainConstraintViolation> resultSecret = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-            return !this.retrieveNodeLabels(it).contains("secret_manager");
-        });
-        System.out.println(resultSecret);*/
+       
+        List<UncertainConstraintViolation> resultSecret = analysis.queryUncertainDataNodes(uncertainFlowGraphs, "secret_manager");
+        System.out.println("Secret manager: " + resultSecret.size());
         List<UncertainConstraintViolation> resultLoginAttempts = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-            return this.retrieveDataLabels(it).contains("authorization_server") && !this.retrieveDataLabels(it).contains("login_attempts_regulation");
+            return this.retrieveNodeLabels(it).contains("authorization_server") && !this.retrieveNodeLabels(it).contains("login_attempts_regulation");
         });
         System.out.println("Login Attempts: " + resultLoginAttempts.size());
         List<UncertainConstraintViolation> resultEncryptExtern = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {

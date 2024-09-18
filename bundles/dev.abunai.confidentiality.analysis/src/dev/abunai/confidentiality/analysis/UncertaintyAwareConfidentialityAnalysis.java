@@ -41,6 +41,7 @@ public interface UncertaintyAwareConfidentialityAnalysis {
 				this.getLogger().error("Found incompatible transpose flow graph in uncertain flow graph");
 				throw new IllegalArgumentException();
 			}
+			
 			List<? extends AbstractVertex<?>> violations = transposeFlowGraph.getVertices().stream()
 					.filter(condition)
 					.toList();
@@ -61,11 +62,9 @@ public interface UncertaintyAwareConfidentialityAnalysis {
 	            this.getLogger().error("Found incompatible transpose flow graph in uncertain flow graph");
 	            throw new IllegalArgumentException();
 	        }
-	        Boolean violations = transposeFlowGraph.getVertices()
-	                .contains(condition);
 	        Boolean hasNode = false;
 	        for (var vertex: transposeFlowGraph.getVertices()) {
-	            hasNode = vertex.getAllVertexCharacteristics().contains(condition)|| hasNode;
+	            hasNode = vertex.getVertexCharacteristicNames("Stereotype").contains(condition)|| hasNode;
 	        }
 	        
 	        

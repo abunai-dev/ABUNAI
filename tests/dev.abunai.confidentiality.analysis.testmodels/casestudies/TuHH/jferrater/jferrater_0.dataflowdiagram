@@ -197,8 +197,8 @@
   <nodes xsi:type="dataflowdiagram:Process" id="11" entityName="authorization_server">
     <behaviour href="jferrater_0.datadictionary#13"/>
     <properties href="jferrater_0.datadictionary#15"/>
-    <properties href="jferrater_0.datadictionary#1116"/>
     <properties href="jferrater_0.datadictionary#1117"/>
+    <properties href="jferrater_0.datadictionary#2116"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="12" entityName="logging_server">
     <behaviour href="jferrater_0.datadictionary#3313"/>
