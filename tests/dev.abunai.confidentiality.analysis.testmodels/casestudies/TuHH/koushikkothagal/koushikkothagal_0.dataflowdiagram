@@ -24,6 +24,22 @@
     <destinationPin href="koushikkothagal_0.datadictionary#48"/>
     <sourcePin href="koushikkothagal_0.datadictionary#57"/>
   </flows>
+  <flows id="_-cw1MHZsEe-pmpCa7vPvig" entityName="authorization_server" sourceNode="_DoP4E3ZsEe-pmpCa7vPvig" destinationNode="3">
+    <destinationPin href="koushikkothagal_0.datadictionary#42"/>
+    <sourcePin href="koushikkothagal_0.datadictionary#_ccxhoXZsEe-pmpCa7vPvig"/>
+  </flows>
+  <flows id="_FqrNYHZtEe-pmpCa7vPvig" entityName="authorization_server" sourceNode="_DoP4E3ZsEe-pmpCa7vPvig" destinationNode="6">
+    <destinationPin href="koushikkothagal_0.datadictionary#_1guHQHZsEe-pmpCa7vPvig"/>
+    <sourcePin href="koushikkothagal_0.datadictionary#_beiXwXZsEe-pmpCa7vPvig"/>
+  </flows>
+  <flows id="_LjUbwHZtEe-pmpCa7vPvig" entityName="authorization_server" sourceNode="_DoP4E3ZsEe-pmpCa7vPvig" destinationNode="5">
+    <destinationPin href="koushikkothagal_0.datadictionary#48"/>
+    <sourcePin href="koushikkothagal_0.datadictionary#_YLq40XZsEe-pmpCa7vPvig"/>
+  </flows>
+  <flows id="_P2PpgHZtEe-pmpCa7vPvig" entityName="authorization_server" sourceNode="_DoP4E3ZsEe-pmpCa7vPvig" destinationNode="4">
+    <destinationPin href="koushikkothagal_0.datadictionary#54"/>
+    <sourcePin href="koushikkothagal_0.datadictionary#_cCxGMXZsEe-pmpCa7vPvig"/>
+  </flows>
   <nodes xsi:type="dataflowdiagram:External" id="2" entityName="external_website">
     <behaviour href="koushikkothagal_0.datadictionary#24"/>
     <properties href="koushikkothagal_0.datadictionary#26"/>
@@ -59,5 +75,11 @@
     <properties href="koushikkothagal_0.datadictionary#20"/>
     <properties href="koushikkothagal_0.datadictionary#21"/>
     <properties href="koushikkothagal_0.datadictionary#23"/>
+  </nodes>
+  <nodes xsi:type="dataflowdiagram:Process" id="_DoP4E3ZsEe-pmpCa7vPvig" entityName="auth_Server">
+    <behaviour href="koushikkothagal_0.datadictionary#_WbAzhXZsEe-pmpCa7vPvig"/>
+    <properties href="koushikkothagal_0.datadictionary#31"/>
+    <properties href="koushikkothagal_0.datadictionary#_LsNugHZsEe-pmpCa7vPvig"/>
+    <properties href="koushikkothagal_0.datadictionary#_QDFBEHZsEe-pmpCa7vPvig"/>
   </nodes>
 </dataflowdiagram:DataFlowDiagram>

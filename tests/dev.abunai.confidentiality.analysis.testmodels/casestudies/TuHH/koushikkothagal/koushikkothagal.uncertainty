@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:datadictionary="http://dataflowanalysis.org/dfd/datadictionary" xmlns:dfd="http://abunai.dev/uncertainty/dfd" xmlns:uncertainty="http://abunai.dev/uncertainty" id="_Vcs4gHZpEe-pmpCa7vPvig">
+<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:datadictionary="http://dataflowanalysis.org/dfd/datadictionary" xmlns:dataflowdiagram="http://dataflowanalysis.org/dfd/dataflowdiagram" xmlns:dfd="http://abunai.dev/uncertainty/dfd" xmlns:uncertainty="http://abunai.dev/uncertainty" id="_Vcs4gHZpEe-pmpCa7vPvig">
   <sources xsi:type="dfd:DFDBehaviorUncertaintySource" id="_VzvfgnZpEe-pmpCa7vPvig" entityName="ratings">
     <target href="koushikkothagal_0.datadictionary#36"/>
     <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#69"/>
@@ -23,6 +23,13 @@
     <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#59"/>
     <scenarios id="_TclwAHZrEe-pmpCa7vPvig">
       <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#_8j-ZgnZqEe-pmpCa7vPvig"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="dfd:DFDExternalUncertaintySource" id="_iRdAl3ZtEe-pmpCa7vPvig" entityName="AuthServer">
+    <target xsi:type="dataflowdiagram:Process" href="koushikkothagal_0.dataflowdiagram#_DoP4E3ZsEe-pmpCa7vPvig"/>
+    <targetProperties href="koushikkothagal_0.datadictionary#_QDFBEHZsEe-pmpCa7vPvig"/>
+    <scenarios id="_ltj7EHZtEe-pmpCa7vPvig">
+      <targetProperties href="koushikkothagal_0.datadictionary#_flhl0HZtEe-pmpCa7vPvig"/>
     </scenarios>
   </sources>
 </uncertainty:UncertaintySourceCollection>

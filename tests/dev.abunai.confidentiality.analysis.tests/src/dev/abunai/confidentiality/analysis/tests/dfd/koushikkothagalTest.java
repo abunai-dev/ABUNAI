@@ -64,5 +64,12 @@ public class koushikkothagalTest extends DFDTestBase {
             return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveDataLabels(it).contains("authenticated_request");
         });
         System.out.println("Authenticated request: " + resultAuth.size());
+        
+        List<UncertainConstraintViolation> resultLoginAttempts = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+            return this.retrieveNodeLabels(it).contains("authorization_server") && !this.retrieveNodeLabels(it).contains("login_attempts_regulation");
+        });
+        System.out.println("Login Attempts: " + resultLoginAttempts.size());
+        
+        
     }
 }
