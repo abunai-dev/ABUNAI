@@ -32,4 +32,25 @@
       <targetProperties href="koushikkothagal_0.datadictionary#_flhl0HZtEe-pmpCa7vPvig"/>
     </scenarios>
   </sources>
+  <sources xsi:type="dfd:DFDExternalUncertaintySource" id="_4X39yHZwEe-pmpCa7vPvig" entityName="movie_catalog">
+    <target xsi:type="dataflowdiagram:Process" href="koushikkothagal_0.dataflowdiagram#6"/>
+    <targetProperties href="koushikkothagal_0.datadictionary#_j2m5IHZwEe-pmpCa7vPvig"/>
+    <scenarios id="_84TcAHZwEe-pmpCa7vPvig">
+      <targetProperties href="koushikkothagal_0.datadictionary#_qiKLIHZwEe-pmpCa7vPvig"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="dfd:DFDExternalUncertaintySource" id="_-9tpWHZwEe-pmpCa7vPvig" entityName="Info">
+    <target xsi:type="dataflowdiagram:Process" href="koushikkothagal_0.dataflowdiagram#5"/>
+    <targetProperties href="koushikkothagal_0.datadictionary#_QDFBEHZsEe-pmpCa7vPvig"/>
+    <scenarios id="_Be0UIHZxEe-pmpCa7vPvig">
+      <targetProperties href="koushikkothagal_0.datadictionary#_odrK4HZwEe-pmpCa7vPvig"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="dfd:DFDExternalUncertaintySource" id="_GmR9OHZxEe-pmpCa7vPvig" entityName="ratings">
+    <target xsi:type="dataflowdiagram:Process" href="koushikkothagal_0.dataflowdiagram#4"/>
+    <targetProperties href="koushikkothagal_0.datadictionary#_QDFBEHZsEe-pmpCa7vPvig"/>
+    <scenarios id="_KGFr8HZxEe-pmpCa7vPvig">
+      <targetProperties href="koushikkothagal_0.datadictionary#_odrK4HZwEe-pmpCa7vPvig"/>
+    </scenarios>
+  </sources>
 </uncertainty:UncertaintySourceCollection>

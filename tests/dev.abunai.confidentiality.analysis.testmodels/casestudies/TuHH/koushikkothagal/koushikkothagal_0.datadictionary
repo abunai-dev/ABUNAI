@@ -13,6 +13,9 @@
     <label id="_QDFBEHZsEe-pmpCa7vPvig" entityName="dummy_1"/>
     <label id="_flhl0HZtEe-pmpCa7vPvig" entityName="login_attempts_regulation"/>
     <label id="_Dl7nEHZwEe-pmpCa7vPvig" entityName="encrypted_connection"/>
+    <label id="_j2m5IHZwEe-pmpCa7vPvig" entityName="dummy_2"/>
+    <label id="_odrK4HZwEe-pmpCa7vPvig" entityName="local_logging"/>
+    <label id="_qiKLIHZwEe-pmpCa7vPvig" entityName="log_sanitization"/>
   </labelTypes>
   <labelTypes id="11" entityName="Endpoints">
     <label id="12" entityName="movies"/>

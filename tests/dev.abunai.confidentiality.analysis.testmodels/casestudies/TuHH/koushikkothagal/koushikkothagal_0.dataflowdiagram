@@ -59,6 +59,7 @@
     <properties href="koushikkothagal_0.datadictionary#39"/>
     <properties href="koushikkothagal_0.datadictionary#40"/>
     <properties href="koushikkothagal_0.datadictionary#41"/>
+    <properties href="koushikkothagal_0.datadictionary#_QDFBEHZsEe-pmpCa7vPvig"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="5" entityName="movie_info_service">
     <behaviour href="koushikkothagal_0.datadictionary#8"/>
@@ -66,6 +67,7 @@
     <properties href="koushikkothagal_0.datadictionary#12"/>
     <properties href="koushikkothagal_0.datadictionary#13"/>
     <properties href="koushikkothagal_0.datadictionary#15"/>
+    <properties href="koushikkothagal_0.datadictionary#_QDFBEHZsEe-pmpCa7vPvig"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="6" entityName="movie_catalog_service">
     <behaviour href="koushikkothagal_0.datadictionary#16"/>
@@ -75,6 +77,8 @@
     <properties href="koushikkothagal_0.datadictionary#20"/>
     <properties href="koushikkothagal_0.datadictionary#21"/>
     <properties href="koushikkothagal_0.datadictionary#23"/>
+    <properties href="koushikkothagal_0.datadictionary#_j2m5IHZwEe-pmpCa7vPvig"/>
+    <properties href="koushikkothagal_0.datadictionary#_odrK4HZwEe-pmpCa7vPvig"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="_DoP4E3ZsEe-pmpCa7vPvig" entityName="auth_Server">
     <behaviour href="koushikkothagal_0.datadictionary#_WbAzhXZsEe-pmpCa7vPvig"/>
