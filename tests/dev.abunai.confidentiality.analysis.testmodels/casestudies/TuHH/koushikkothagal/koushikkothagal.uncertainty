@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uncertainty:UncertaintySourceCollection xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:datadictionary="http://dataflowanalysis.org/dfd/datadictionary" xmlns:dfd="http://abunai.dev/uncertainty/dfd" xmlns:uncertainty="http://abunai.dev/uncertainty" id="_Vcs4gHZpEe-pmpCa7vPvig">
+  <sources xsi:type="dfd:DFDBehaviorUncertaintySource" id="_VzvfgnZpEe-pmpCa7vPvig" entityName="ratings">
+    <target href="koushikkothagal_0.datadictionary#36"/>
+    <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#69"/>
+    <scenarios id="_c271cHZpEe-pmpCa7vPvig">
+      <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#_CtHz8nZpEe-pmpCa7vPvig"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="dfd:DFDBehaviorUncertaintySource" id="__poYWXZpEe-pmpCa7vPvig" entityName="movie_catalog">
+    <target href="koushikkothagal_0.datadictionary#16"/>
+    <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#61"/>
+    <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#63"/>
+    <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#65"/>
+    <scenarios id="_H_kIgHZqEe-pmpCa7vPvig">
+      <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#_opm80nZqEe-pmpCa7vPvig"/>
+      <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#_sWh6gnZqEe-pmpCa7vPvig"/>
+      <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#_vkx_MnZqEe-pmpCa7vPvig"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="dfd:DFDBehaviorUncertaintySource" id="_MqPSeXZrEe-pmpCa7vPvig" entityName="Movie_info">
+    <target href="koushikkothagal_0.datadictionary#8"/>
+    <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#59"/>
+    <scenarios id="_TclwAHZrEe-pmpCa7vPvig">
+      <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#_8j-ZgnZqEe-pmpCa7vPvig"/>
+    </scenarios>
+  </sources>
+</uncertainty:UncertaintySourceCollection>
