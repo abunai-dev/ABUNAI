@@ -10,11 +10,21 @@
   <sources xsi:type="dfd:DFDBehaviorUncertaintySource" id="__poYWXZpEe-pmpCa7vPvig" entityName="movie_catalog">
     <target href="koushikkothagal_0.datadictionary#16"/>
     <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#61"/>
-    <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#63"/>
-    <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#65"/>
     <scenarios id="_H_kIgHZqEe-pmpCa7vPvig">
       <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#_opm80nZqEe-pmpCa7vPvig"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="dfd:DFDBehaviorUncertaintySource" id="_QYQyaXcmEe-Kt-99qYhbTg" entityName="movie_catalog2">
+    <target href="koushikkothagal_0.datadictionary#16"/>
+    <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#63"/>
+    <scenarios id="_aRT7IHcmEe-Kt-99qYhbTg">
       <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#_sWh6gnZqEe-pmpCa7vPvig"/>
+    </scenarios>
+  </sources>
+  <sources xsi:type="dfd:DFDBehaviorUncertaintySource" id="_Ua0B2XcmEe-Kt-99qYhbTg" entityName="movie_catalog3">
+    <target href="koushikkothagal_0.datadictionary#16"/>
+    <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#_vkx_MnZqEe-pmpCa7vPvig"/>
+    <scenarios id="_arFGAHcmEe-Kt-99qYhbTg">
       <targetAssignments xsi:type="datadictionary:Assignment" href="koushikkothagal_0.datadictionary#_vkx_MnZqEe-pmpCa7vPvig"/>
     </scenarios>
   </sources>

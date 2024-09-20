@@ -77,11 +77,11 @@
     <inPin id="74"/>
     <outPin id="77"/>
     <outPin id="7121"/>
-    <assignment xsi:type="datadictionary:Assignment" id="113" entityName="account_service" inputPins="74" outputPin="77" outputLabels="22 68">
+    <assignment xsi:type="datadictionary:Assignment" id="113" entityName="account_service1" inputPins="74" outputPin="77" outputLabels="22 68">
       <term xsi:type="datadictionary:TRUE" id="114"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="145" inputPins="74" outputPin="77"/>
-    <assignment xsi:type="datadictionary:Assignment" id="7113" entityName="account_service" inputPins="74" outputPin="7121" outputLabels="22 68">
+    <assignment xsi:type="datadictionary:Assignment" id="7113" entityName="account_service2" inputPins="74" outputPin="7121" outputLabels="22 68">
       <term xsi:type="datadictionary:TRUE" id="7114"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="7145" inputPins="74" outputPin="7121"/>
@@ -90,11 +90,11 @@
     <inPin id="74"/>
     <outPin id="77"/>
     <outPin id="7121"/>
-    <assignment xsi:type="datadictionary:Assignment" id="2113" entityName="encrypt_account_service" inputPins="74" outputPin="77" outputLabels="22 68 174">
+    <assignment xsi:type="datadictionary:Assignment" id="2113" entityName="encrypt_account_service1" inputPins="74" outputPin="77" outputLabels="22 68 174">
       <term xsi:type="datadictionary:TRUE" id="2114"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="2145" inputPins="74" outputPin="77"/>
-    <assignment xsi:type="datadictionary:Assignment" id="27113" entityName="account_service" inputPins="74" outputPin="7121" outputLabels="22 68 174">
+    <assignment xsi:type="datadictionary:Assignment" id="27113" entityName="encrypt_account_service2" inputPins="74" outputPin="7121" outputLabels="22 68 174">
       <term xsi:type="datadictionary:TRUE" id="27114"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="27145" inputPins="74" outputPin="7121"/>
@@ -107,7 +107,7 @@
       <term xsi:type="datadictionary:TRUE" id="116"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="146" inputPins="89" outputPin="92"/>
-    <assignment xsi:type="datadictionary:Assignment" id="7115" entityName="item_service" inputPins="89" outputPin="792" outputLabels="22 68">
+    <assignment xsi:type="datadictionary:Assignment" id="7115" entityName="item_service2" inputPins="89" outputPin="792" outputLabels="22 68">
       <term xsi:type="datadictionary:TRUE" id="7116"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="7146" inputPins="89" outputPin="792"/>
@@ -120,7 +120,7 @@
       <term xsi:type="datadictionary:TRUE" id="2116"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="2146" inputPins="89" outputPin="92"/>
-    <assignment xsi:type="datadictionary:Assignment" id="72115" entityName="encrypt_item_service" inputPins="89" outputPin="792" outputLabels="22 68 174">
+    <assignment xsi:type="datadictionary:Assignment" id="72115" entityName="encrypt_item_service2" inputPins="89" outputPin="792" outputLabels="22 68 174">
       <term xsi:type="datadictionary:TRUE" id="72116"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="72146" inputPins="89" outputPin="792"/>
@@ -133,7 +133,7 @@
       <term xsi:type="datadictionary:TRUE" id="118"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="147" inputPins="79" outputPin="82"/>
-    <assignment xsi:type="datadictionary:Assignment" id="7117" entityName="customer_service" inputPins="79" outputPin="782" outputLabels="22 68">
+    <assignment xsi:type="datadictionary:Assignment" id="7117" entityName="customer_service2" inputPins="79" outputPin="782" outputLabels="22 68">
       <term xsi:type="datadictionary:TRUE" id="7118"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="7147" inputPins="79" outputPin="782"/>
@@ -146,7 +146,7 @@
       <term xsi:type="datadictionary:TRUE" id="2118"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="2147" inputPins="79" outputPin="82"/>
-    <assignment xsi:type="datadictionary:Assignment" id="72117" entityName="encrypt_customer_service" inputPins="79" outputPin="782" outputLabels="22 68 174">
+    <assignment xsi:type="datadictionary:Assignment" id="72117" entityName="encrypt_customer_service2" inputPins="79" outputPin="782" outputLabels="22 68 174">
       <term xsi:type="datadictionary:TRUE" id="72118"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="72147" inputPins="79" outputPin="782"/>
@@ -159,7 +159,7 @@
       <term xsi:type="datadictionary:TRUE" id="120"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="148" inputPins="94" outputPin="97"/>
-    <assignment xsi:type="datadictionary:Assignment" id="7119" entityName="price_service" inputPins="94" outputPin="797" outputLabels="22 68">
+    <assignment xsi:type="datadictionary:Assignment" id="7119" entityName="price_service2" inputPins="94" outputPin="797" outputLabels="22 68">
       <term xsi:type="datadictionary:TRUE" id="7120"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="7148" inputPins="94" outputPin="797"/>
@@ -172,7 +172,7 @@
       <term xsi:type="datadictionary:TRUE" id="2120"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="2148" inputPins="94" outputPin="97"/>
-    <assignment xsi:type="datadictionary:Assignment" id="72119" entityName="encrypt_price_service" inputPins="94" outputPin="797" outputLabels="22 68 174">
+    <assignment xsi:type="datadictionary:Assignment" id="72119" entityName="encrypt_price_service2" inputPins="94" outputPin="797" outputLabels="22 68 174">
       <term xsi:type="datadictionary:TRUE" id="72120"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="72148" inputPins="94" outputPin="797"/>
@@ -306,12 +306,12 @@
       <term xsi:type="datadictionary:TRUE" id="144"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="159" inputPins="84" outputPin="87"/>
-    <assignment xsi:type="datadictionary:Assignment" id="7143" entityName="store_service" inputPins="84" outputPin="787" outputLabels="22 68">
+    <assignment xsi:type="datadictionary:Assignment" id="7143" entityName="store_service2" inputPins="84" outputPin="787" outputLabels="22 68">
       <term xsi:type="datadictionary:TRUE" id="7144"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="7159" inputPins="84" outputPin="787"/>
   </behaviour>
-  <behaviour id="261" entityName="encrypt_store_service">
+  <behaviour id="261" entityName="encrypt_store_service2">
     <inPin id="84"/>
     <outPin id="87"/>
     <outPin id="787"/>
@@ -319,7 +319,7 @@
       <term xsi:type="datadictionary:TRUE" id="2144"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="2159" inputPins="84" outputPin="87"/>
-    <assignment xsi:type="datadictionary:Assignment" id="72143" entityName="encrypt_store_service" inputPins="84" outputPin="787" outputLabels="22 68 174">
+    <assignment xsi:type="datadictionary:Assignment" id="72143" entityName="encrypt_store_service2" inputPins="84" outputPin="787" outputLabels="22 68 174">
       <term xsi:type="datadictionary:TRUE" id="72144"/>
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="72159" inputPins="84" outputPin="787"/>
