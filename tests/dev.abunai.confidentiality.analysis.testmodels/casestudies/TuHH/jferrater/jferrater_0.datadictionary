@@ -75,8 +75,8 @@
   </behaviour>
   <behaviour id="20" entityName="account_service">
     <inPin id="74"/>
-    <outPin id="77"/>
-    <outPin id="7121"/>
+    <outPin id="77" entityName="acc1"/>
+    <outPin id="7121" entityName="acc2"/>
     <assignment xsi:type="datadictionary:Assignment" id="113" entityName="account_service1" inputPins="74" outputPin="77" outputLabels="22 68">
       <term xsi:type="datadictionary:TRUE" id="114"/>
     </assignment>
@@ -88,8 +88,8 @@
   </behaviour>
   <behaviour id="220" entityName="encrypt_account_service">
     <inPin id="74"/>
-    <outPin id="77"/>
-    <outPin id="7121"/>
+    <outPin id="77" entityName="acc1"/>
+    <outPin id="7121" entityName="acc2"/>
     <assignment xsi:type="datadictionary:Assignment" id="2113" entityName="encrypt_account_service1" inputPins="74" outputPin="77" outputLabels="22 68 174">
       <term xsi:type="datadictionary:TRUE" id="2114"/>
     </assignment>
@@ -101,8 +101,8 @@
   </behaviour>
   <behaviour id="26" entityName="item_service">
     <inPin id="89"/>
-    <outPin id="92"/>
-    <outPin id="792"/>
+    <outPin id="92" entityName="item1"/>
+    <outPin id="792" entityName="item2"/>
     <assignment xsi:type="datadictionary:Assignment" id="115" entityName="item_service" inputPins="89" outputPin="92" outputLabels="22 68">
       <term xsi:type="datadictionary:TRUE" id="116"/>
     </assignment>
@@ -114,8 +114,8 @@
   </behaviour>
   <behaviour id="226" entityName="encrypt_item_service">
     <inPin id="89"/>
-    <outPin id="92"/>
-    <outPin id="792"/>
+    <outPin id="92" entityName="item1"/>
+    <outPin id="792" entityName="item2"/>
     <assignment xsi:type="datadictionary:Assignment" id="2115" entityName="encrypt_item_service" inputPins="89" outputPin="92" outputLabels="22 68 174">
       <term xsi:type="datadictionary:TRUE" id="2116"/>
     </assignment>
@@ -127,8 +127,8 @@
   </behaviour>
   <behaviour id="30" entityName="customer_service">
     <inPin id="79"/>
-    <outPin id="82"/>
-    <outPin id="782"/>
+    <outPin id="82" entityName="cus1"/>
+    <outPin id="782" entityName="cus2"/>
     <assignment xsi:type="datadictionary:Assignment" id="117" entityName="customer_service" inputPins="79" outputPin="82" outputLabels="22 68">
       <term xsi:type="datadictionary:TRUE" id="118"/>
     </assignment>
@@ -140,8 +140,8 @@
   </behaviour>
   <behaviour id="230" entityName="encrypt_customer_service">
     <inPin id="79"/>
-    <outPin id="82"/>
-    <outPin id="782"/>
+    <outPin id="82" entityName="cus1"/>
+    <outPin id="782" entityName="cus2"/>
     <assignment xsi:type="datadictionary:Assignment" id="3117" entityName="encrypt_customer_service" inputPins="79" outputPin="82" outputLabels="22 68 174">
       <term xsi:type="datadictionary:TRUE" id="2118"/>
     </assignment>
@@ -153,8 +153,8 @@
   </behaviour>
   <behaviour id="34" entityName="price_service">
     <inPin id="94"/>
-    <outPin id="97"/>
-    <outPin id="797"/>
+    <outPin id="97" entityName="p1"/>
+    <outPin id="797" entityName="p2"/>
     <assignment xsi:type="datadictionary:Assignment" id="119" entityName="price_service" inputPins="94" outputPin="97" outputLabels="22 68">
       <term xsi:type="datadictionary:TRUE" id="120"/>
     </assignment>
@@ -166,8 +166,8 @@
   </behaviour>
   <behaviour id="234" entityName="encrypt_price_service">
     <inPin id="94"/>
-    <outPin id="97"/>
-    <outPin id="797"/>
+    <outPin id="97" entityName="p1"/>
+    <outPin id="797" entityName="p2"/>
     <assignment xsi:type="datadictionary:Assignment" id="2119" entityName="encrypt_price_service" inputPins="94" outputPin="97" outputLabels="22 68 174">
       <term xsi:type="datadictionary:TRUE" id="2120"/>
     </assignment>
@@ -300,8 +300,8 @@
   </behaviour>
   <behaviour id="61" entityName="store_service">
     <inPin id="84"/>
-    <outPin id="87"/>
-    <outPin id="787"/>
+    <outPin id="87" entityName="s1"/>
+    <outPin id="787" entityName="s2"/>
     <assignment xsi:type="datadictionary:Assignment" id="143" entityName="store_service" inputPins="84" outputPin="87" outputLabels="22 68">
       <term xsi:type="datadictionary:TRUE" id="144"/>
     </assignment>
@@ -313,8 +313,8 @@
   </behaviour>
   <behaviour id="261" entityName="encrypt_store_service2">
     <inPin id="84"/>
-    <outPin id="87"/>
-    <outPin id="787"/>
+    <outPin id="87" entityName="s1"/>
+    <outPin id="787" entityName="s2"/>
     <assignment xsi:type="datadictionary:Assignment" id="2143" entityName="encrypt_store_service" inputPins="84" outputPin="87" outputLabels="22 68 174">
       <term xsi:type="datadictionary:TRUE" id="2144"/>
     </assignment>
