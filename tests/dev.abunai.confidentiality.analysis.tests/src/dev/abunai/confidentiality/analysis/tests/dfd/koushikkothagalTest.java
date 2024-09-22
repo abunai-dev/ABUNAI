@@ -71,7 +71,7 @@ public class koushikkothagalTest extends DFDTestBase {
         System.out.println("Login Attempts: " + resultLoginAttempts.size());
         
         List<UncertainConstraintViolation> resultEncryptIntern = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-            return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveDataLabels(it).contains("encrypted_connection");
+            return this.retrieveNodeLabels(it).contains("internal") && this.retrieveAllDataLabels(it).contains("encrypted_connection");
         });
         System.out.println("Encrypt Intern: " + resultEncryptIntern.size());
         

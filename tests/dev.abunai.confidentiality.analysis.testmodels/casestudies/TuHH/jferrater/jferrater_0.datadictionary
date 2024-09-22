@@ -298,7 +298,7 @@
     </assignment>
     <assignment xsi:type="datadictionary:ForwardingAssignment" id="7159" inputPins="84" outputPin="787"/>
   </behaviour>
-  <behaviour id="261" entityName="encrypt_store_service2">
+  <behaviour id="261" entityName="encrypt_store_service">
     <inPin id="84"/>
     <outPin id="87" entityName="s1"/>
     <outPin id="787" entityName="s2"/>

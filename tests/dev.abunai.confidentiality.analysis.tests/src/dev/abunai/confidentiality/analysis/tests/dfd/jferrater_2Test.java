@@ -64,7 +64,7 @@ public class jferrater_2Test extends DFDTestBase {
         uncertainFlowGraphs.evaluate();
         
         List<UncertainConstraintViolation> resultAuth = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-            return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveDataLabels(it).contains("authenticated_request");
+            return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveAllDataLabels(it).contains("authenticated_request");
         });
         System.out.println("Authenticated request: " + resultAuth.size());
        
@@ -75,11 +75,11 @@ public class jferrater_2Test extends DFDTestBase {
         });
         System.out.println("Login Attempts: " + resultLoginAttempts.size());
         List<UncertainConstraintViolation> resultEncryptExtern = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-            return this.retrieveDataLabels(it).contains("entrypoint") && !this.retrieveDataLabels(it).contains("encrypted_connection");
+            return this.retrieveDataLabels(it).contains("entrypoint") && !this.retrieveAllDataLabels(it).contains("encrypted_connection");
         });
         System.out.println("Encrypt Extern: " + resultEncryptExtern.size());
         List<UncertainConstraintViolation> resultEncryptIntern = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-            return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveDataLabels(it).contains("encrypted_connection");
+            return this.retrieveNodeLabels(it).contains("internal") && this.retrieveAllDataLabels(it).contains("encrypted_connection");
         });
         System.out.println("Encrypt Intern: " + resultEncryptIntern.size());
         
