@@ -9,7 +9,7 @@ import dev.abunai.confidentiality.analysis.core.UncertaintyUtils;
 import dev.abunai.confidentiality.analysis.model.uncertainty.UncertaintySource;
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.core.AbstractTransposeFlowGraph;
-import org.dataflowanalysis.analysis.dfd.core.DFDCyclicTransposeFlowGraphFinder;
+import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraphFinder;
 import org.dataflowanalysis.analysis.dfd.core.DFDFlowGraphCollection;
 import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraph;
 
@@ -64,7 +64,7 @@ public class DFDUncertainFlowGraphCollection extends DFDFlowGraphCollection impl
 			logger.error("Cannot determine transpose flow graphs without dfd uncertainty resource provider");
 			throw new IllegalStateException();
 		}
-		return new DFDCyclicTransposeFlowGraphFinder(uncertaintyResourceProvider).findTransposeFlowGraphs().stream()
+		return new DFDTransposeFlowGraphFinder(uncertaintyResourceProvider).findTransposeFlowGraphs().stream()
 				.map(DFDTransposeFlowGraph.class::cast)
 				.map(it -> new DFDUncertainTransposeFlowGraph(it.getSink(), this.determineRelevantUncertaintySource(it), this.uncertaintySourceManager))
 				.toList();
