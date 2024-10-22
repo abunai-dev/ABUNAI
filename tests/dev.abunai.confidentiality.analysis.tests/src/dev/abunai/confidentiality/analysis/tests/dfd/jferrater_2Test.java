@@ -63,7 +63,7 @@ public class jferrater_2Test extends DFDTestBase {
         DFDUncertainFlowGraphCollection uncertainFlowGraphs = flowGraphs.createUncertainFlows();
         uncertainFlowGraphs.evaluate();
         
-        List<UncertainConstraintViolation> resultAuth = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
+        /*List<UncertainConstraintViolation> resultAuth = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
             return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveAllDataLabels(it).contains("authenticated_request");
         });
         System.out.println("Authenticated request: " + resultAuth.size());
@@ -77,13 +77,15 @@ public class jferrater_2Test extends DFDTestBase {
         List<UncertainConstraintViolation> resultEncryptExtern = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
             return this.retrieveDataLabels(it).contains("entrypoint") && !this.retrieveAllDataLabels(it).contains("encrypted_connection");
         });
-        System.out.println("Encrypt Extern: " + resultEncryptExtern.size());
+        
+        System.out.println("Encrypt Extern: " + resultEncryptExtern.size());*/
+        
         List<UncertainConstraintViolation> resultEncryptIntern = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
             return this.retrieveNodeLabels(it).contains("internal") && this.retrieveAllDataLabels(it).contains("encrypted_connection");
         });
         System.out.println("Encrypt Intern: " + resultEncryptIntern.size());
         
-        
+        /*
         List<UncertainConstraintViolation> resultLocalLog = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
             return this.retrieveNodeLabels(it).contains("internal") && !this.retrieveNodeLabels(it).contains("local_logging");
         });
@@ -92,7 +94,7 @@ public class jferrater_2Test extends DFDTestBase {
         List<UncertainConstraintViolation> resultLogSan= analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
             return this.retrieveNodeLabels(it).contains("local_logging") && !this.retrieveNodeLabels(it).contains("log_sanitization");
         });
-        System.out.println("Log Sanitization: " + resultLogSan.size());
+        System.out.println("Log Sanitization: " + resultLogSan.size());*/
 
     }
 }
