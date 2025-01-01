@@ -9,14 +9,14 @@
     <sourcePin href="default.datadictionary#_lHBawfvzEe6qEO2G6RwOIg"/>
   </flows>
   <nodes xsi:type="dataflowdiagram:Process" id="_yn0tUvvzEe6qEO2G6RwOIg" entityName="buy">
-    <behaviour href="default.datadictionary#_cEId8fvzEe6qEO2G6RwOIg"/>
+    <behavior href="default.datadictionary#_cEId8fvzEe6qEO2G6RwOIg"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:External" id="_8-sagfvzEe6qEO2G6RwOIg" entityName="user">
-    <behaviour href="default.datadictionary#_Iu2BEfvvEe6Ie5mhRfc0tw"/>
+    <behavior href="default.datadictionary#_Iu2BEfvvEe6Ie5mhRfc0tw"/>
     <properties href="default.datadictionary#_GyeowPv0Ee6qEO2G6RwOIg"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Store" id="_BZ-TAvv0Ee6qEO2G6RwOIg" entityName="database">
-    <behaviour href="default.datadictionary#_rWcxcfvzEe6qEO2G6RwOIg"/>
+    <behavior href="default.datadictionary#_rWcxcfvzEe6qEO2G6RwOIg"/>
     <properties href="default.datadictionary#_Hrkz8Pv0Ee6qEO2G6RwOIg"/>
   </nodes>
 </dataflowdiagram:DataFlowDiagram>

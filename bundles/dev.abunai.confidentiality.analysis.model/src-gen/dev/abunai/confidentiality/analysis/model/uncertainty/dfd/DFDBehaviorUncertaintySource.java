@@ -5,7 +5,7 @@ package dev.abunai.confidentiality.analysis.model.uncertainty.dfd;
 import java.util.List;
 
 import org.dataflowanalysis.dfd.datadictionary.AbstractAssignment;
-import org.dataflowanalysis.dfd.datadictionary.Behaviour;
+import org.dataflowanalysis.dfd.datadictionary.Behavior;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,12 +31,12 @@ public interface DFDBehaviorUncertaintySource extends DFDUncertaintySource {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Target</em>' reference.
-	 * @see #setTarget(Behaviour)
+	 * @see #setTarget(Behavior)
 	 * @see dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DfdPackage#getDFDBehaviorUncertaintySource_Target()
 	 * @model required="true"
 	 * @generated
 	 */
-	Behaviour getTarget();
+	Behavior getTarget();
 
 	/**
 	 * Sets the value of the '{@link dev.abunai.confidentiality.analysis.model.uncertainty.dfd.DFDBehaviorUncertaintySource#getTarget <em>Target</em>}' reference.
@@ -46,7 +46,7 @@ public interface DFDBehaviorUncertaintySource extends DFDUncertaintySource {
 	 * @see #getTarget()
 	 * @generated
 	 */
-	void setTarget(Behaviour value);
+	void setTarget(Behavior value);
 
 	/**
 	 * Returns the value of the '<em><b>Target Assignments</b></em>' reference list.

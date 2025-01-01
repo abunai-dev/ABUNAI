@@ -33,30 +33,30 @@
     <sourcePin href="onlineshop.datadictionary#_Mc7MEb6IEe6fAKdvyu1GEg"/>
   </flows>
   <nodes xsi:type="dataflowdiagram:External" id="_LX33QL6CEe6fAKdvyu1GEg" entityName="User">
-    <behaviour href="onlineshop.datadictionary#_jsBswb6EEe6fAKdvyu1GEg"/>
+    <behavior href="onlineshop.datadictionary#_jsBswb6EEe6fAKdvyu1GEg"/>
     <properties href="onlineshop.datadictionary#_YruBAL6EEe6fAKdvyu1GEg"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="_Q0i7U76CEe6fAKdvyu1GEg" entityName="view">
-    <behaviour href="onlineshop.datadictionary#_vB4VQb6FEe6fAKdvyu1GEg"/>
+    <behavior href="onlineshop.datadictionary#_vB4VQb6FEe6fAKdvyu1GEg"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="_TFmX876CEe6fAKdvyu1GEg" entityName="display">
-    <behaviour href="onlineshop.datadictionary#_kbnEtb6GEe6fAKdvyu1GEg"/>
+    <behavior href="onlineshop.datadictionary#_kbnEtb6GEe6fAKdvyu1GEg"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Store" id="_U27Lor6CEe6fAKdvyu1GEg" entityName="Database">
-    <behaviour href="onlineshop.datadictionary#_xevj0b6GEe6fAKdvyu1GEg"/>
+    <behavior href="onlineshop.datadictionary#_xevj0b6GEe6fAKdvyu1GEg"/>
     <properties href="onlineshop.datadictionary#_Zd8vML6EEe6fAKdvyu1GEg"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="_Y50ZU76CEe6fAKdvyu1GEg" entityName="buy">
-    <behaviour href="onlineshop.datadictionary#_tf6hUb6HEe6fAKdvyu1GEg"/>
+    <behavior href="onlineshop.datadictionary#_tf6hUb6HEe6fAKdvyu1GEg"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="_aPLpw76CEe6fAKdvyu1GEg" entityName="process">
-    <behaviour href="onlineshop.datadictionary#_05joZb6HEe6fAKdvyu1GEg"/>
+    <behavior href="onlineshop.datadictionary#_05joZb6HEe6fAKdvyu1GEg"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Process" id="_basao76CEe6fAKdvyu1GEg" entityName="encrypt">
-    <behaviour href="onlineshop.datadictionary#_Iow98b6IEe6fAKdvyu1GEg"/>
+    <behavior href="onlineshop.datadictionary#_Iow98b6IEe6fAKdvyu1GEg"/>
   </nodes>
   <nodes xsi:type="dataflowdiagram:Store" id="_ikgewh0xEe-ByYqkgwgvgg" entityName="EUDatabase">
-    <behaviour href="onlineshop.datadictionary#_amQ10R0xEe-ByYqkgwgvgg"/>
+    <behavior href="onlineshop.datadictionary#_amQ10R0xEe-ByYqkgwgvgg"/>
     <properties href="onlineshop.datadictionary#_YruBAL6EEe6fAKdvyu1GEg"/>
   </nodes>
 </dataflowdiagram:DataFlowDiagram>
