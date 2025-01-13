@@ -114,7 +114,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="DFDBehaviorUncertaintySource" eSuperTypes="#//dfd/DFDUncertaintySource">
       <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
-          eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.datadictionary/model/datadictionary.ecore#//Behaviour"/>
+          eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.datadictionary/model/datadictionary.ecore#//Behavior"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="targetAssignments" ordered="false"
           upperBound="-1" eType="ecore:EClass platform:/plugin/org.dataflowanalysis.dfd.datadictionary/model/datadictionary.ecore#//AbstractAssignment"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="scenarios" upperBound="-1"

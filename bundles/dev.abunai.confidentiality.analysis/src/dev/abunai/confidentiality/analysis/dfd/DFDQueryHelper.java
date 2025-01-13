@@ -87,8 +87,8 @@ public class DFDQueryHelper {
 	private List<Node> findTargetNodesOfBehaviorUncertainty(DFDBehaviorUncertaintySource uncertaintySource) {
 		return vertices.stream().map(DFDVertex.class::cast)
 				.map(DFDVertex::getReferencedElement)
-				.filter(it -> it.getBehaviour().equals(uncertaintySource.getTarget()))
-				.filter(it -> new HashSet<>(it.getBehaviour().getAssignment()).containsAll(uncertaintySource.getTargetAssignments()))
+				.filter(it -> it.getBehavior().equals(uncertaintySource.getTarget()))
+				.filter(it -> new HashSet<>(it.getBehavior().getAssignment()).containsAll(uncertaintySource.getTargetAssignments()))
 				.toList();
 	}
 
@@ -102,7 +102,7 @@ public class DFDQueryHelper {
 	private List<Node> findTargetNodesOfInterfaceUncertainty(DFDInterfaceUncertaintySource uncertaintySource) {
 		return vertices.stream().map(DFDVertex.class::cast)
 				.map(DFDVertex::getReferencedElement)
-				.filter(it -> it.getBehaviour().getInPin().contains(uncertaintySource.getTargetFlow().getDestinationPin()))
+				.filter(it -> it.getBehavior().getInPin().contains(uncertaintySource.getTargetFlow().getDestinationPin()))
 				.filter(it -> ((DataFlowDiagram) it.eContainer()).getFlows().stream()
 						.filter(flow -> flow.getDestinationPin().equals(uncertaintySource.getTargetFlow().getDestinationPin()))
 						.anyMatch(flow -> flow.equals(uncertaintySource.getTargetFlow())))
@@ -120,7 +120,7 @@ public class DFDQueryHelper {
 		return vertices.stream().map(DFDVertex.class::cast)
 				.map(DFDVertex::getReferencedElement)
 				.filter(it -> uncertaintySource.getTargetFlow().getDestinationNode().equals(it))
-				.filter(it -> new HashSet<>(uncertaintySource.getTargetFlow().getSourceNode().getBehaviour().getAssignment())
+				.filter(it -> new HashSet<>(uncertaintySource.getTargetFlow().getSourceNode().getBehavior().getAssignment())
 						.containsAll(uncertaintySource.getTargetAssignments()))
 				.toList();
 	}

@@ -10,8 +10,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.dataflowanalysis.dfd.datadictionary.AbstractAssignment;
-import org.dataflowanalysis.dfd.datadictionary.Behaviour;
-
+import org.dataflowanalysis.dfd.datadictionary.Behavior;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -50,7 +49,7 @@ public class DFDBehaviorUncertaintySourceImpl extends DFDUncertaintySourceImpl i
 	 * @generated
 	 * @ordered
 	 */
-	protected Behaviour target;
+	protected Behavior target;
 
 	/**
 	 * The cached value of the '{@link #getTargetAssignments() <em>Target Assignments</em>}' reference list.
@@ -96,10 +95,10 @@ public class DFDBehaviorUncertaintySourceImpl extends DFDUncertaintySourceImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Behaviour getTarget() {
+	public Behavior getTarget() {
 		if (target != null && target.eIsProxy()) {
 			InternalEObject oldTarget = (InternalEObject)target;
-			target = (Behaviour)eResolveProxy(oldTarget);
+			target = (Behavior)eResolveProxy(oldTarget);
 			if (target != oldTarget) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DfdPackage.DFD_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET, oldTarget, target));
@@ -113,7 +112,7 @@ public class DFDBehaviorUncertaintySourceImpl extends DFDUncertaintySourceImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Behaviour basicGetTarget() {
+	public Behavior basicGetTarget() {
 		return target;
 	}
 
@@ -122,8 +121,8 @@ public class DFDBehaviorUncertaintySourceImpl extends DFDUncertaintySourceImpl i
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTarget(Behaviour newTarget) {
-		Behaviour oldTarget = target;
+	public void setTarget(Behavior newTarget) {
+		Behavior oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DfdPackage.DFD_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET, oldTarget, target));
@@ -196,7 +195,7 @@ public class DFDBehaviorUncertaintySourceImpl extends DFDUncertaintySourceImpl i
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DfdPackage.DFD_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET:
-				setTarget((Behaviour)newValue);
+				setTarget((Behavior)newValue);
 				return;
 			case DfdPackage.DFD_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS:
 				getTargetAssignments().clear();
@@ -219,7 +218,7 @@ public class DFDBehaviorUncertaintySourceImpl extends DFDUncertaintySourceImpl i
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case DfdPackage.DFD_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET:
-				setTarget((Behaviour)null);
+				setTarget((Behavior)null);
 				return;
 			case DfdPackage.DFD_BEHAVIOR_UNCERTAINTY_SOURCE__TARGET_ASSIGNMENTS:
 				getTargetAssignments().clear();

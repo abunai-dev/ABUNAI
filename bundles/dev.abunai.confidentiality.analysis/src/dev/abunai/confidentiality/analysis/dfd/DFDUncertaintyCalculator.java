@@ -19,7 +19,8 @@ import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.dfd.core.DFDTransposeFlowGraphFinder;
 import org.dataflowanalysis.analysis.dfd.core.DFDVertex;
 import org.dataflowanalysis.dfd.datadictionary.AbstractAssignment;
-import org.dataflowanalysis.dfd.datadictionary.Behaviour;
+import org.dataflowanalysis.dfd.datadictionary.Assignment;
+import org.dataflowanalysis.dfd.datadictionary.Behavior;
 import org.dataflowanalysis.dfd.datadictionary.Label;
 import org.dataflowanalysis.dfd.datadictionary.Pin;
 import org.dataflowanalysis.dfd.datadictionary.datadictionaryFactory;
@@ -120,10 +121,10 @@ public class DFDUncertaintyCalculator {
      */
     private DFDUncertainTransposeFlowGraph applyBehaviorUncertaintyScenario(DFDBehaviorUncertaintyScenario uncertaintyScenario, UncertainState uncertainState, DFDUncertainTransposeFlowGraph currentTransposeFlowGraph) {
         DFDBehaviorUncertaintySource uncertaintySource = (DFDBehaviorUncertaintySource) uncertaintyScenario.eContainer();
-        Behaviour targetBehaviour = uncertaintySource.getTarget();
+        Behavior targetBehavior = uncertaintySource.getTarget();
         List<AbstractAssignment> targetedAssignments = uncertaintySource.getTargetAssignments();
 
-        List<AbstractAssignment> filteredAssignments = targetBehaviour.getAssignment().stream()
+        List<AbstractAssignment> filteredAssignments = targetBehavior.getAssignment().stream()
                 .filter(it -> !(targetedAssignments.contains(it)))
                 .toList();
         List<AbstractAssignment> addedAssignments = uncertaintyScenario.getTargetAssignments();
@@ -131,7 +132,7 @@ public class DFDUncertaintyCalculator {
         List<DFDVertex> targetedNodes = currentTransposeFlowGraph.getVertices().stream()
                 .filter(DFDVertex.class::isInstance)
                 .map(DFDVertex.class::cast)
-                .filter(it -> it.getReferencedElement().getBehaviour().equals(targetBehaviour))
+                .filter(it -> it.getReferencedElement().getBehavior().equals(targetBehavior))
                 .toList();
 
         if (targetedNodes.isEmpty()) {
@@ -139,13 +140,13 @@ public class DFDUncertaintyCalculator {
         }
 
         targetedNodes.forEach(it -> this.replaceAssignments(addedAssignments, it));
-        Behaviour replacingBehavior = this.copyBehavior(targetBehaviour, Stream.concat(filteredAssignments.stream(), addedAssignments.stream()).toList());
+        Behavior replacingBehavior = this.copyBehavior(targetBehavior, Stream.concat(filteredAssignments.stream(), addedAssignments.stream()).toList());
 
         Map<DFDVertex, DFDVertex> mapping = new IdentityHashMap<>();
         targetedNodes.forEach(vertex -> {
             Node replacingNode = EcoreUtil.copy(vertex.getReferencedElement());
             ((DataFlowDiagram)vertex.getReferencedElement().eContainer()).getNodes().add(replacingNode);
-            replacingNode.setBehaviour(replacingBehavior);
+            replacingNode.setBehavior(replacingBehavior);
             mapping.put(vertex, this.copyVertex(vertex, replacingNode));
         });
         
@@ -153,9 +154,9 @@ public class DFDUncertaintyCalculator {
     }
 
     private void replaceAssignments(List<AbstractAssignment> addedAssignments, DFDVertex vertex) {
-        List<String> inputPins = vertex.getReferencedElement().getBehaviour().getInPin().stream().map(NamedElement::getEntityName).toList();
-        List<String> outputPins = vertex.getReferencedElement().getBehaviour().getOutPin().stream().map(NamedElement::getEntityName).toList();
-        for(AbstractAssignment assignment : addedAssignments) {
+        List<String> inputPins = vertex.getReferencedElement().getBehavior().getInPin().stream().map(NamedElement::getEntityName).toList();
+        List<String> outputPins = vertex.getReferencedElement().getBehavior().getOutPin().stream().map(NamedElement::getEntityName).toList();
+        for(Assignment assignment : addedAssignments.stream().filter(Assignment.class::isInstance).map(Assignment.class::cast).toList()) {
             if (!assignment.getInputPins().stream()
                     .map(NamedElement::getEntityName)
                     .allMatch(inputPins::contains)) {
@@ -167,7 +168,7 @@ public class DFDUncertaintyCalculator {
                 throw new IllegalArgumentException();
             }
             List<Pin> mappedInputPins = assignment.getInputPins().stream()
-                    .map(pin -> vertex.getReferencedElement().getBehaviour().getInPin().stream()
+                    .map(pin -> vertex.getReferencedElement().getBehavior().getInPin().stream()
                             .filter(it -> it.getEntityName().equals(pin.getEntityName()))
                             .findAny().orElseThrow()
                     )
@@ -175,7 +176,7 @@ public class DFDUncertaintyCalculator {
             assignment.getInputPins().clear();
             assignment.getInputPins().addAll(mappedInputPins);
 
-            Pin mappedOutputPin = vertex.getReferencedElement().getBehaviour().getOutPin().stream()
+            Pin mappedOutputPin = vertex.getReferencedElement().getBehavior().getOutPin().stream()
                     .filter( it -> it.getEntityName().equals(assignment.getOutputPin().getEntityName()))
                     .findAny().orElseThrow();
             assignment.setOutputPin(mappedOutputPin);
@@ -219,7 +220,7 @@ public class DFDUncertaintyCalculator {
                 .filter(it -> it.getReferencedElement().equals(targetFlow.getSourceNode()))
                 .findAny();
         if (commonVertex.isEmpty()) {
-        	return List.of(currentTransposeFlowGraph.copy(new IdentityHashMap<>(), uncertainState));
+        	return List.of(currentTransposeFlowGraph.copy(new HashMap<>(), uncertainState));
         }
 
         Map<Pin, DFDVertex> copiedPinDFDVertexMap = new HashMap<>();
@@ -268,14 +269,14 @@ public class DFDUncertaintyCalculator {
         Pin replacingPin = uncertaintyScenario.getTargetPin();
         
         List<AbstractAssignment> targetedAssignments = uncertaintySource.getTargetAssignments();
-        List<AbstractAssignment> filteredAssignments = targetFlow.getSourceNode().getBehaviour().getAssignment().stream()
+        List<AbstractAssignment> filteredAssignments = targetFlow.getSourceNode().getBehavior().getAssignment().stream()
                 .filter(it -> !(targetedAssignments.contains(it)))
                 .toList();
         List<AbstractAssignment> addedAssignments = uncertaintyScenario.getTargetAssignments();
 
         return this.replaceFlow(targetFlow, replacingNode, replacingPin, currentTransposeFlowGraph, uncertainState, node -> {
-            Behaviour targetBehavior = this.copyBehavior(targetFlow.getSourceNode().getBehaviour(), Stream.concat(filteredAssignments.stream(), addedAssignments.stream()).toList());
-            node.setBehaviour(targetBehavior);
+            Behavior targetBehavior = this.copyBehavior(targetFlow.getSourceNode().getBehavior(), Stream.concat(filteredAssignments.stream(), addedAssignments.stream()).toList());
+            node.setBehavior(targetBehavior);
             return node;
         });
     }
@@ -305,14 +306,14 @@ public class DFDUncertaintyCalculator {
 
     /**
      * Copies the given behavior with the given list of new assignments
-     * @param behaviour Behavior that should be copied
+     * @param Behavior Behavior that should be copied
      * @param assignments List of assignments of the new behavior
      * @return Returns a new behavior with the copied name and id of the given behavior and the given list of assignments
      */
-    private Behaviour copyBehavior(Behaviour behaviour, List<AbstractAssignment> assignments) {
-        Behaviour copy = datadictionaryFactory.eINSTANCE.createBehaviour();
-        copy.setEntityName(behaviour.getEntityName());
-        copy.setId(behaviour.getId());
+    private Behavior copyBehavior(Behavior Behavior, List<AbstractAssignment> assignments) {
+        Behavior copy = datadictionaryFactory.eINSTANCE.createBehavior();
+        copy.setEntityName(Behavior.getEntityName());
+        copy.setId(Behavior.getId());
         copy.getAssignment().addAll(assignments);
         return copy;
     }
