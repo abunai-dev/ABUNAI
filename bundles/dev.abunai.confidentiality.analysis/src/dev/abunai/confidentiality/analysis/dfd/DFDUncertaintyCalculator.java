@@ -91,8 +91,9 @@ public class DFDUncertaintyCalculator {
         DFDExternalUncertaintySource uncertaintySource = (DFDExternalUncertaintySource) uncertaintyScenario.eContainer();
 
         Node target = uncertaintySource.getTarget();
+        List<Label> targetedProperties = uncertaintySource.getTargetProperties();
         List<Label> filteredOldProperties = target.getProperties().stream()
-                .filter(it -> !uncertaintySource.getTargetProperties().stream().map(Label::getEntityName).toList().contains(it.getEntityName()))
+                .filter(it -> !targetedProperties.contains(it))
                 .toList();
         List<Label> newPropertiesToAdd = uncertaintyScenario.getTargetProperties();
 
