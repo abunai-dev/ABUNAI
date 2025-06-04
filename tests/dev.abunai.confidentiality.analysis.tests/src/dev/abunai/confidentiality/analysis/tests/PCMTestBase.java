@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.dataflowanalysis.analysis.resource.ResourceProvider;
+import org.eclipse.core.runtime.Plugin;
 import org.junit.jupiter.api.BeforeEach;
 import org.palladiosimulator.pcm.repository.BasicComponent;
 import org.palladiosimulator.pcm.repository.Repository;
@@ -31,6 +32,14 @@ public abstract class PCMTestBase extends TestBase {
 		return "models/pcm";
 	}
 
+	protected Class<? extends Plugin> getActivator() {
+		return Activator.class;
+	}
+
+	protected String getModelProjectName() {
+		return TEST_MODEL_PROJECT_NAME;
+	}
+
 	@BeforeEach
 	public void setup() {
 		final var usageModelPath = Paths.get(getBaseFolder(), getFolderName(), getFilesName() + ".usagemodel")
@@ -43,7 +52,7 @@ public abstract class PCMTestBase extends TestBase {
 				.toString();
 
 		var builder = new PCMUncertaintyAwareConfidentialityAnalysisBuilder().standalone()
-				.modelProjectName(TEST_MODEL_PROJECT_NAME).usePluginActivator(Activator.class)
+				.modelProjectName(getModelProjectName()).usePluginActivator(getActivator())
 				.useUsageModel(usageModelPath).useAllocationModel(allocationPath).useUncertaintyModel(uncertaintyPath)
 				.useNodeCharacteristicsModel(nodeCharacteristicsPath);
 

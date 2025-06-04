@@ -2,6 +2,8 @@ package dev.abunai.confidentiality.analysis.tests.evaluation;
 
 import dev.abunai.confidentiality.analysis.core.UncertainConstraintViolation;
 import dev.abunai.confidentiality.analysis.pcm.PCMUncertainFlowGraphCollection;
+import dev.abunai.evaluationscenario.cwa.Activator;
+import org.eclipse.core.runtime.Plugin;
 import org.junit.jupiter.api.Test;
 
 import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
@@ -15,7 +17,7 @@ public class CoronaWarnAppTest extends PCMTestBase {
 
 	@Override
 	protected String getFolderName() {
-		return "CoronaWarnApp";
+		return "CoronaWarnApp_UncertaintyModel";
 	}
 
 	@Override
@@ -24,8 +26,18 @@ public class CoronaWarnAppTest extends PCMTestBase {
 	}
 
 	@Override
+	protected Class<? extends Plugin> getActivator() {
+		return Activator.class;
+	}
+
+	@Override
+	protected String getModelProjectName() {
+		return "dev.abunai.evaluationscenario.cwa";
+	}
+
+	@Override
 	protected String getBaseFolder() {
-		return "casestudies/CaseStudy-CoronaWarnApp";
+		return "";
 	}
 
 	@Test
