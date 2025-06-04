@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import dev.abunai.evaluationscenario.cwa.Activator;
 import org.dataflowanalysis.analysis.pcm.utils.PCMQueryUtils;
 import org.dataflowanalysis.pcm.extension.model.confidentiality.characteristics.EnumCharacteristic;
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.NodeCharacteristicsPackage;
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.ResourceAssignee;
 import org.dataflowanalysis.pcm.extension.nodecharacteristics.nodecharacteristics.UsageAssignee;
+import org.eclipse.core.runtime.Plugin;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.junit.jupiter.api.Test;
@@ -32,9 +34,10 @@ import org.palladiosimulator.pcm.usagemodel.UsagemodelPackage;
 import dev.abunai.confidentiality.analysis.tests.PCMTestBase;
 
 public class ElementLookup extends PCMTestBase {
+
 	@Override
 	protected String getFolderName() {
-		return "CoronaWarnApp";
+		return "CoronaWarnApp_UncertaintyModel";
 	}
 
 	@Override
@@ -43,8 +46,18 @@ public class ElementLookup extends PCMTestBase {
 	}
 
 	@Override
+	protected Class<? extends Plugin> getActivator() {
+		return Activator.class;
+	}
+
+	@Override
+	protected String getModelProjectName() {
+		return "dev.abunai.evaluationscenario.cwa";
+	}
+
+	@Override
 	protected String getBaseFolder() {
-		return "casestudies/CaseStudy-CoronaWarnApp";
+		return "";
 	}
 
 	@Test
