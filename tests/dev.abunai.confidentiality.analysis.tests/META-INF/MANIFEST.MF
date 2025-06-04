@@ -10,6 +10,7 @@ Require-Bundle: dev.abunai.confidentiality.analysis.testmodels;bundle-version="1
  dev.abunai.confidentiality.analysis;bundle-version="1.0.0",
  org.dataflowanalysis.pcm.extension.nodecharacteristics,
  org.dataflowanalysis.analysis.pcm,
- org.dataflowanalysis.analysis.dfd
+ org.dataflowanalysis.analysis.dfd,
+ org.apache.log4j
 Automatic-Module-Name: dev.abunai.confidentiality.analysis.tests
 Bundle-RequiredExecutionEnvironment: JavaSE-17

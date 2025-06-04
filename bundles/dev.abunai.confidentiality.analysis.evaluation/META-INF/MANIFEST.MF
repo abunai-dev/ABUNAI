@@ -10,6 +10,9 @@ Require-Bundle: org.dataflowanalysis.analysis;bundle-version="1.0.0";visibility:
  org.dataflowanalysis.analysis.pcm;bundle-version="1.0.0";visibility:=reexport,
  org.dataflowanalysis.analysis.dfd;visibility:=reexport,
  dev.abunai.confidentiality.analysis;bundle-version="1.0.0",
- dev.abunai.confidentiality.analysis.evaluation.testmodels;bundle-version="1.0.0"
+ dev.abunai.confidentiality.analysis.evaluation.testmodels;bundle-version="1.0.0",
+ org.apache.log4j,
+ tools.mdsd.library.standalone.initialization,
+ org.dataflowanalysis.pcm.extension.dddsl
 Automatic-Module-Name: dev.abunai.confidentiality.analysis.evaluation
 Bundle-RequiredExecutionEnvironment: JavaSE-17
