@@ -56,7 +56,7 @@ public class CoronaWarnAppTest extends PCMTestBase {
 		
 		//Scenario 3 Tan Validation Failed
 		List<UncertainConstraintViolation> validationFailures = analysis.queryUncertainDataFlow(uncertainFlowGraphs, it -> {
-			return !it.getDataCharacteristicNames("Status").contains("Validated");
+			return !it.getDataCharacteristicNamesMap("Status").values().stream().flatMap(List::stream).anyMatch(cv -> cv.equals("Validated"));
 		});
 		assertTrue(validationFailures.size() > 0);
 		
