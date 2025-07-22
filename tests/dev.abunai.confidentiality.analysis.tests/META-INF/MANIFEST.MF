@@ -5,7 +5,7 @@ Bundle-SymbolicName: dev.abunai.confidentiality.analysis.tests
 Bundle-Version: 1.0.0.qualifier
 Export-Package: 
  dev.abunai.confidentiality.analysis.tests
-Import-Package: org.junit.jupiter.api;version="5.9.1"
+Import-Package: org.junit.jupiter.api;version="5.8.1"
 Require-Bundle: dev.abunai.confidentiality.analysis.testmodels;bundle-version="1.0.0",
  dev.abunai.confidentiality.analysis;bundle-version="1.0.0",
  dev.abunai.evaluationscenario.cwa,

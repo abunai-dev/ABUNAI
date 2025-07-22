@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="dev.abunai.confidentiality.analysis.feature">
+      <category name="dev.abunai.confidentiality.analysis.category"/>
+   </feature>
+</site>
+

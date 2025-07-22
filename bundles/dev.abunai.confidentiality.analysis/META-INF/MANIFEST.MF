@@ -12,6 +12,7 @@ Require-Bundle: org.dataflowanalysis.analysis;bundle-version="1.0.0";visibility:
  dev.abunai.confidentiality.analysis.model;bundle-version="0.1.0";visibility:=reexport,
  org.dataflowanalysis.analysis.pcm;bundle-version="1.0.0";visibility:=reexport,
  org.dataflowanalysis.analysis.dfd;visibility:=reexport,
- org.apache.log4j
+ org.apache.log4j,
+ com.google.guava
 Automatic-Module-Name: dev.abunai.confidentiality.analysis
 Bundle-RequiredExecutionEnvironment: JavaSE-17

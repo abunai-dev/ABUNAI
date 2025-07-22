@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="dev.abunai.confidentiality.analysis.feature"
+      label="ABUNAI Feature"
+      version="1.0.0.qualifier"
+      plugin="org.palladiosimulator.branding"
+      license-feature="org.palladiosimulator.license.epl2"
+      license-feature-version="1.0.0">
+
+   <plugin
+         id="dev.abunai.confidentiality.analysis"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="dev.abunai.confidentiality.analysis.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="dev.abunai.confidentiality.analysis.model.edit"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+    unpack="false"/>
+
+<plugin
+         id="dev.abunai.confidentiality.analysis.model.editor"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+    unpack="false"/>
+
+<plugin
+         id="dev.abunai.confidentiality.analysis.testmodels"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+
+</feature>

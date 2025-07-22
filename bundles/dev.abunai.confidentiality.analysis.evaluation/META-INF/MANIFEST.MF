@@ -13,6 +13,7 @@ Require-Bundle: org.dataflowanalysis.analysis;bundle-version="1.0.0";visibility:
  dev.abunai.confidentiality.analysis.evaluation.testmodels;bundle-version="1.0.0",
  org.apache.log4j,
  tools.mdsd.library.standalone.initialization,
+ org.eclipse.xtext,
  org.dataflowanalysis.pcm.extension.dddsl
 Automatic-Module-Name: dev.abunai.confidentiality.analysis.evaluation
 Bundle-RequiredExecutionEnvironment: JavaSE-17
