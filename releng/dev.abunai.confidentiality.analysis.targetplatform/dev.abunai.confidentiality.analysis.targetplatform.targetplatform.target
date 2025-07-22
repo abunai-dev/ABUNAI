@@ -138,14 +138,11 @@
 <repository location="https://updatesite.palladio-simulator.com/palladio-supporting-branding/releases/latest/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
-<unit id="org.dataflowanalysis.analysis.feature.feature.group" version="0.0.0"/>
-<repository location="https://dataflowanalysis.github.io/updatesite/nightly/dataflowanalysis/"/>
-    </location>
-<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+      <unit id="org.dataflowanalysis.analysis.feature.feature.group" version="0.0.0"/>
 <unit id="org.dataflowanalysis.dfd.dataflowdiagram.feature.feature.group" version="0.0.0"/>
 <unit id="org.dataflowanalysis.dfd.datadictionary.feature.feature.group" version="0.0.0"/>
-<repository location="https://dataflowanalysis.github.io/updatesite/nightly/dfd-metamodel/"/>
-</location>
+<repository location="https://dataflowanalysis.github.io/updatesite/nightly/dataflowanalysis/"/>
+    </location>
 <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
 <unit id="dev.abunai.evaluationscenario.cwa.feature.feature.group" version="0.0.0"/>
       <repository location="https://abunai-dev.github.io/updatesite/nightly/evaluationscenario-cwa/"/>
